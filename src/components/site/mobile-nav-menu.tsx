@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, LogOut, Menu } from "lucide-react";
+import { ArrowRight, ExternalLink, LogOut, Menu } from "lucide-react";
 
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { Button } from "@/components/ui/button";
@@ -99,6 +99,17 @@ export function MobileNavMenu({ className }: { className?: string }) {
             >
               Profile
             </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <a
+              href="https://x.com/AiAtlasNYC"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[#E7E1D8] bg-transparent px-4 py-3 text-sm font-semibold text-[#181818] transition hover:bg-[rgb(17_17_17_/_0.035)]"
+            >
+              Follow @AiAtlasNYC
+              <ExternalLink className="size-4 text-[#9B948A]" />
+            </a>
           </SheetClose>
           {ready && isSignedIn ? (
             <SheetClose asChild>
