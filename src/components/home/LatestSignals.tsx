@@ -39,8 +39,8 @@ export function LatestSignals({
           </div>
         </div>
 
-        <div className="latestSignalsGrid mt-4 grid divide-y divide-[#E7E1D8] lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:border-0">
-          {items.slice(0, 3).map((item, index) => {
+        <div className="latestSignalsGrid mt-5 grid divide-y divide-[#E7E1D8] md:grid-cols-2 md:divide-x md:divide-y-0 xl:grid-cols-5 xl:border-y xl:border-[#E7E1D8]">
+          {items.slice(0, 5).map((item, index) => {
             const company = item.companyId
               ? companiesById.get(item.companyId)
               : undefined;
@@ -48,7 +48,7 @@ export function LatestSignals({
             return (
               <article
                 key={item.id}
-                className="companyRow group py-4 transition hover:bg-[rgb(17_17_17_/_0.025)] lg:px-10 lg:py-0 first:lg:pl-0 last:lg:pr-0"
+                className="companyRow group min-h-[148px] px-0 py-4 transition hover:bg-[rgb(17_17_17_/_0.025)] md:px-5 xl:px-6"
                 style={{ animationDelay: `${index * 40}ms` }}
               >
                 <div className="min-w-0">
@@ -71,7 +71,7 @@ export function LatestSignals({
                     </Link>
                   </h3>
                   {item.body ? (
-                    <p className="mt-2 line-clamp-2 text-sm leading-[1.5] text-[#66625C]">
+                    <p className="mt-3 line-clamp-3 text-sm leading-[1.55] text-[#66625C]">
                       <LinkedCompanyText
                         text={item.body}
                         companies={companiesById}

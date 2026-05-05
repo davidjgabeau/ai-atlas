@@ -11,10 +11,11 @@ import { createContentHash, createId } from "./hash";
 import { generateInclusionReason } from "./generateInclusionReason";
 import { generateCurrentReadFallback } from "./generateCurrentReadFallback";
 import { generateCurrentReadWithAnthropic } from "./generateCurrentReadWithAnthropic";
+import { generateLatestSignalsWithAnthropic } from "./generateLatestSignalsWithAnthropic";
 import { hasBannedUserFacingPhrase, qualityGateCurrentRead } from "./qualityGate";
 import { normalizeSignalLabel } from "../signals/companySignal";
 
-const promptVersion = "agentic-editorial-v2-specific-current-read";
+const promptVersion = "agentic-editorial-v3-llm-signals";
 const surfaceTtlDays = 2;
 
 const categoryPhrases: Record<string, string> = {
@@ -56,7 +57,6 @@ export async function generateEditorialSurfaces({
 }> {
   const generatedAt = new Date().toISOString();
   const expiresAt = addDays(generatedAt, surfaceTtlDays);
-  const companyById = new Map(companies.map((company) => [company.id, company]));
   const recentEvents = events
     .filter((event) => event.finalScore >= 0.55)
     .sort((a, b) => b.finalScore - a.finalScore);
@@ -98,33 +98,31 @@ export async function generateEditorialSurfaces({
     });
   });
 
-  const latestSignals = recentEvents
-    .filter((event) => event.finalScore >= 0.75)
-    .filter((event) => isWithinDays(event.discoveredAt, generatedAt, 30))
-    .slice(0, 5)
-    .map((event) => {
-      const company = companyById.get(event.companyId);
-      return {
-        id: createId("signal_item", event.id),
-        title: event.title,
-        body: event.summary,
-        companyId: event.companyId,
-        category: company?.category,
-        label: labelForEvent(event),
-        supportingEventIds: [event.id],
-        supportingCompanyIds: [event.companyId],
-        score: event.finalScore,
-        sourceName: event.sourceName,
-        sourceUrl: event.sourceUrl,
-        occurredAt: event.occurredAt,
-      } satisfies EditorialItem;
-    });
+  const {
+    items: latestSignals,
+    model: latestSignalsModel,
+    errors: latestSignalErrors,
+  } = await createLatestSignals({
+    companies,
+    events: recentEvents,
+    currentSnapshot,
+    priorSurface: getPriorSurface(priorSurfaces, "latest_signals"),
+    generatedAt,
+  });
+  errors.push(...latestSignalErrors);
   nextSurfaces.push(
-    createSurface("latest_signals", latestSignals, generatedAt, expiresAt, {
-      companyIds: latestSignals.flatMap((item) => item.companyId ?? []),
-      eventIds: latestSignals.flatMap((item) => item.supportingEventIds ?? []),
-      snapshotIds: [currentSnapshot.id],
-    }),
+    createSurface(
+      "latest_signals",
+      latestSignals,
+      generatedAt,
+      expiresAt,
+      {
+        companyIds: latestSignals.flatMap((item) => item.companyId ?? []),
+        eventIds: latestSignals.flatMap((item) => item.supportingEventIds ?? []),
+        snapshotIds: [currentSnapshot.id],
+      },
+      latestSignalsModel,
+    ),
   );
 
   const { items: currentRead, rejected, model: currentReadModel, errors: currentReadErrors } = await createCurrentRead({
@@ -315,6 +313,250 @@ function createCompaniesToKnow({
     supportingEventIds: companyEvents.slice(0, 3).map((event) => event.id),
     score: Number(score.toFixed(3)),
   }));
+}
+
+async function createLatestSignals({
+  companies,
+  events,
+  currentSnapshot,
+  priorSurface,
+  generatedAt,
+}: {
+  companies: AgentCompany[];
+  events: CompanyEvent[];
+  currentSnapshot: MarketSnapshot;
+  priorSurface?: EditorialSurface;
+  generatedAt: string;
+}) {
+  const errors: string[] = [];
+  const companyById = new Map(companies.map((company) => [company.id, company]));
+  const generated = await generateLatestSignalsWithAnthropic({
+    companies,
+    events,
+    currentSnapshot,
+    priorItems: priorSurface?.items ?? [],
+    generatedAt,
+  });
+  if (generated.error) errors.push(generated.error);
+
+  const items = getAcceptedLatestSignals(generated.items, companyById);
+  const fallbackItems = createLatestSignalFallbackItems({
+    events,
+    companyById,
+    generatedAt,
+  });
+
+  for (const fallback of fallbackItems) {
+    if (items.length === 5) break;
+    if (items.some((item) => item.companyId === fallback.companyId)) continue;
+    items.push(fallback);
+  }
+
+  return {
+    items: items.slice(0, 5),
+    model: items.some((item) => item.id.startsWith("latest_signal_anthropic"))
+      ? generated.model
+      : undefined,
+    errors,
+  };
+}
+
+function getAcceptedLatestSignals(
+  items: EditorialItem[],
+  companyById: Map<string, AgentCompany>,
+) {
+  const accepted: EditorialItem[] = [];
+  const seenCompanies = new Set<string>();
+  const seenOpeners = new Set<string>();
+
+  for (const item of items) {
+    if (accepted.length === 5) break;
+    if (!item.companyId || seenCompanies.has(item.companyId)) continue;
+    const company = companyById.get(item.companyId);
+    if (!company) continue;
+    if (!isThoughtfulLatestSignal(item, company)) continue;
+
+    const opener = getOpeningKey(item.body ?? "");
+    if (seenOpeners.has(opener)) continue;
+
+    seenCompanies.add(item.companyId);
+    seenOpeners.add(opener);
+    accepted.push(item);
+  }
+
+  return accepted;
+}
+
+function createLatestSignalFallbackItems({
+  events,
+  companyById,
+  generatedAt,
+}: {
+  events: CompanyEvent[];
+  companyById: Map<string, AgentCompany>;
+  generatedAt: string;
+}) {
+  const seenCompanies = new Set<string>();
+  const items: EditorialItem[] = [];
+
+  for (const event of events) {
+    if (items.length === 5) break;
+    if (event.finalScore < 0.7) continue;
+    if (!isWithinDays(event.discoveredAt, generatedAt, 45)) continue;
+    if (seenCompanies.has(event.companyId)) continue;
+    const company = companyById.get(event.companyId);
+    if (!company) continue;
+
+    seenCompanies.add(company.id);
+    items.push({
+      id: createId("signal_item", {
+        eventId: event.id,
+        promptVersion,
+      }),
+      title: company.name,
+      body: createDeterministicLatestSignalBody(company, event),
+      companyId: company.id,
+      category: company.category,
+      label: labelForEvent(event),
+      supportingEventIds: [event.id],
+      supportingCompanyIds: [company.id],
+      score: event.finalScore,
+      sourceName: event.sourceName,
+      sourceUrl: event.sourceUrl,
+      occurredAt: event.occurredAt,
+    });
+  }
+
+  return items;
+}
+
+function createDeterministicLatestSignalBody(
+  company: AgentCompany,
+  event: CompanyEvent,
+) {
+  const description = sentenceFragment(
+    company.generated?.hook ||
+      company.inclusionReason?.body ||
+      company.oneSentenceDescription ||
+      company.description,
+  );
+  const eventSummary = sentenceFragment(event.summary);
+
+  if (event.type === "customer_signal" || event.type === "traction_signal") {
+    return truncateSignalBody(
+      `${company.name} is showing buyer pull around ${lowerFirst(description)}, with ${lowerFirst(eventSummary)}.`,
+    );
+  }
+  if (event.type === "product_launch") {
+    return truncateSignalBody(
+      `${company.name} is turning ${lowerFirst(description)} into a sharper product wedge for ${categoryBuyerPhrase(company.category)}.`,
+    );
+  }
+  if (event.type === "funding") {
+    return truncateSignalBody(
+      `${company.name}'s financing signal puts more attention on ${lowerFirst(description)}.`,
+    );
+  }
+  if (event.type === "hiring_signal") {
+    return truncateSignalBody(
+      `${company.name}'s hiring points to execution around ${lowerFirst(description)}.`,
+    );
+  }
+
+  return truncateSignalBody(
+    `${company.name} adds a specific angle to ${categoryBuyerPhrase(company.category)}: ${lowerFirst(description)}.`,
+  );
+}
+
+function isThoughtfulLatestSignal(item: EditorialItem, company: AgentCompany) {
+  const body = (item.body ?? "").trim();
+  const text = `${item.title} ${body} ${item.label ?? ""}`.toLowerCase();
+  if (body.length < 55 || body.length > 220) return false;
+  if (!item.supportingEventIds?.length) return false;
+  if (!/[.!?]$/.test(body)) return false;
+  if (hasBannedUserFacingPhrase(text)) return false;
+  if (
+    [
+      "fresh addition",
+      "added to ai atlas",
+      "joined the map",
+      "category depth",
+      "strong category fit",
+      "high potential",
+      "promising",
+    ].some((phrase) => text.includes(phrase))
+  ) {
+    return false;
+  }
+
+  const usefulTerms = [
+    company.name.toLowerCase(),
+    "buyer",
+    "customer",
+    "workflow",
+    "operator",
+    "team",
+    "product",
+    "platform",
+    "category",
+    "market",
+    "stack",
+    "data",
+    "clinical",
+    "finance",
+    "legal",
+    "consumer",
+    "social",
+    "security",
+    "research",
+  ];
+
+  return usefulTerms.some((term) => text.includes(term));
+}
+
+function getOpeningKey(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 4)
+    .join(" ");
+}
+
+function sentenceFragment(value: string) {
+  const clean = value
+    .replace(/^fresh addition:\s*/i, "")
+    .replace(/^added\s*:\s*/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const [firstSentence] = clean.split(/(?<=[.!?])\s+/);
+  return (firstSentence || clean || "a specific AI workflow").replace(/[.!?]$/, "");
+}
+
+function lowerFirst(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function categoryBuyerPhrase(category: string) {
+  if (/fintech|trading/i.test(category)) return "finance teams";
+  if (/legal|compliance/i.test(category)) return "regulated review teams";
+  if (/cybersecurity/i.test(category)) return "security operators";
+  if (/media|ads|creative/i.test(category)) return "creative and growth teams";
+  if (/health|clinical/i.test(category)) return "care teams";
+  if (/life sciences/i.test(category)) return "research teams";
+  if (/consumer|social/i.test(category)) return "consumer product builders";
+  if (/infrastructure|model|dev|data|memory/i.test(category)) {
+    return "technical teams";
+  }
+  if (/gtm|revops|enterprise/i.test(category)) return "revenue teams";
+  return "operators";
+}
+
+function truncateSignalBody(value: string) {
+  const clean = value.replace(/\s+/g, " ").trim();
+  if (clean.length <= 220) return clean;
+  return `${clean.slice(0, 219).trim().replace(/[,;:]$/, "")}.`;
 }
 
 async function createCurrentRead({

@@ -536,12 +536,8 @@ function numberFromText(value: string | undefined) {
 }
 
 function createLatestSignalFallbackItems(companies: Company[]): EditorialItem[] {
-  return companies.slice(0, 5).map((company) => {
-    const reason =
-      company.inclusionReason?.body?.trim() ||
-      company.generated?.hook?.trim() ||
-      company.short_description.trim();
-    const body = `Fresh addition: ${normalizeLatestSignalReason(reason)}`;
+  return companies.slice(0, 5).map((company, index) => {
+    const body = createFallbackSignalBody(company, index);
 
     return {
       id: `latest_signal_fallback_${company.id}`,
@@ -549,7 +545,7 @@ function createLatestSignalFallbackItems(companies: Company[]): EditorialItem[] 
       body,
       companyId: company.id,
       category: company.category,
-      label: isWithinDays(company.created_at, 14) ? "New" : "Recently added",
+      label: getCompanySignalLabel(company),
       supportingCompanyIds: [company.id],
       occurredAt: company.created_at || company.updated_at,
       sourceName: company.category,
@@ -557,8 +553,26 @@ function createLatestSignalFallbackItems(companies: Company[]): EditorialItem[] 
   });
 }
 
+function createFallbackSignalBody(company: Company, index: number) {
+  const reason = normalizeLatestSignalReason(
+    company.inclusionReason?.body?.trim() ||
+      company.generated?.hook?.trim() ||
+      company.one_line_thesis.trim() ||
+      company.short_description.trim(),
+  );
+  const buyer = getCategoryBuyerPhrase(company.category);
+  const templates = [
+    `${company.name} is worth watching because ${lowerFirst(reason)}`,
+    `The signal is specific: ${company.name} gives ${buyer} a clearer AI-native wedge around ${lowerFirst(reason)}`,
+    `${company.name} broadens the map beyond generic tooling by focusing on ${lowerFirst(reason)}`,
+    `For ${buyer}, ${company.name} points to a sharper workflow: ${lowerFirst(reason)}`,
+    `${company.name} stands out where product focus and buyer pain meet: ${lowerFirst(reason)}`,
+  ];
+
+  return truncateSignalBody(templates[index % templates.length]);
+}
+
 const bannedUserFacingSignalTerms = [
-  "agent",
   "cron",
   "pipeline",
   "refresh",
@@ -594,6 +608,29 @@ function normalizeLatestSignalReason(value: string) {
   return cleaned;
 }
 
+function getCategoryBuyerPhrase(category: Category) {
+  if (category === "Fintech & Trading AI") return "finance teams";
+  if (category === "Legal & Compliance AI") return "regulated teams";
+  if (category === "Cybersecurity AI") return "security operators";
+  if (category === "Media, Ads & Creative AI") return "creative teams";
+  if (category === "Health & Clinical AI") return "care teams";
+  if (category === "Life Sciences AI") return "research teams";
+  if (category === "AI-Native Consumer & Social") return "consumer product builders";
+  if (category === "Enterprise GTM & RevOps AI") return "revenue teams";
+  return "technical teams";
+}
+
+function lowerFirst(value: string) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function truncateSignalBody(value: string) {
+  const clean = value.replace(/\s+/g, " ").trim();
+  const punctuated = /[.!?]$/.test(clean) ? clean : `${clean}.`;
+  if (punctuated.length <= 210) return punctuated;
+  return `${punctuated.slice(0, 209).trim().replace(/[,;:]$/, "")}.`;
+}
+
 function getSafeLatestSignalItems(items: EditorialItem[] | undefined) {
   if (!items?.length) return [];
 
@@ -616,14 +653,6 @@ function getLatestHomepageUpdatedAt(values: Array<string | undefined>) {
   const latest = values.reduce((max, value) => Math.max(max, getDateTime(value)), 0);
 
   return latest > 0 ? new Date(latest).toISOString() : undefined;
-}
-
-function isWithinDays(value: string | undefined, days: number) {
-  const time = getDateTime(value);
-  if (!time) return false;
-
-  const diff = Date.now() - time;
-  return diff >= 0 && diff <= days * 24 * 60 * 60 * 1000;
 }
 
 function toGeneratedSignalLabel(label: string | undefined, company: Company) {
