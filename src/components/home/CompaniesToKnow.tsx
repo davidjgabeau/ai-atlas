@@ -69,7 +69,10 @@ export function CompaniesToKnow({ companies }: { companies: Company[] }) {
                 <p className="mt-2 flex min-w-0 items-center gap-2 text-[13px] font-medium leading-none text-[#66625C]">
                   <span className="truncate">{company.category}</span>
                   <span aria-hidden="true">·</span>
-                  <CompanyViewCount views={company.metrics?.views ?? 0} />
+                  <CompanyViewCount
+                    companyId={company.id}
+                    views={company.metrics?.views ?? 0}
+                  />
                 </p>
               </div>
             </Link>

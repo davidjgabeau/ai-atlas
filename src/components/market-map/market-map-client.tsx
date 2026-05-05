@@ -889,7 +889,10 @@ function CompanyTable({
               </div>
               <div className="flex flex-wrap items-center gap-2">
                 <CategoryBadge category={company.category} />
-                <CompanyViewCount views={company.metrics?.views ?? 0} />
+                <CompanyViewCount
+                  companyId={company.id}
+                  views={company.metrics?.views ?? 0}
+                />
               </div>
               <span className="text-sm text-[#5F5A52]">{company.stage}</span>
               <div>

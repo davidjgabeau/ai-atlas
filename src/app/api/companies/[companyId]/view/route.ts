@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
-import { incrementCompanyViews } from "@/lib/metrics/companyViews";
+import {
+  getSeededCompanyViews,
+  incrementCompanyViews,
+} from "@/lib/metrics/companyViews";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 
 export const dynamic = "force-dynamic";
@@ -24,7 +27,7 @@ export async function POST(
   const body = await readRequestBody(request);
   const metric = await incrementCompanyViews(
     companyId,
-    normalizeBaselineViews(body.currentViews ?? company.metrics?.views),
+    normalizeBaselineViews(body.currentViews ?? company.metrics?.views, companyId),
   );
 
   return NextResponse.json({
@@ -42,8 +45,8 @@ async function readRequestBody(request: Request) {
   }
 }
 
-function normalizeBaselineViews(value: unknown) {
+function normalizeBaselineViews(value: unknown, companyId: string) {
   return typeof value === "number" && Number.isFinite(value)
     ? Math.max(0, Math.floor(value))
-    : 0;
+    : getSeededCompanyViews(companyId);
 }

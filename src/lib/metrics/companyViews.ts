@@ -9,6 +9,15 @@ type CompanyViewMetricRow = {
 
 const memoryMetrics = new Map<string, CompanyMetrics>();
 
+export function getSeededCompanyViews(companyId: string) {
+  const hash = Array.from(companyId).reduce(
+    (value, char) => (value * 31 + char.charCodeAt(0)) >>> 0,
+    17,
+  );
+
+  return 12 + (hash % 88);
+}
+
 export async function getCompanyViewMetrics(companyIds?: string[]) {
   const supabase = createSupabasePrivilegedClient();
   if (!supabase) return new Map<string, CompanyMetrics>();
@@ -38,7 +47,72 @@ export async function getCompanyViewMetrics(companyIds?: string[]) {
 
 export async function incrementCompanyViews(
   companyId: string,
-  baselineViews = 0,
+  baselineViews = getSeededCompanyViews(companyId),
+): Promise<CompanyMetrics> {
+  const viewedAt = new Date().toISOString();
+  const supabase = createSupabasePrivilegedClient();
+
+  if (!supabase) {
+    return incrementMemoryMetric(companyId, baselineViews, viewedAt);
+  }
+
+  const { data: rpcData, error: rpcError } = await supabase.rpc(
+    "increment_company_view_metric",
+    {
+      p_company_id: companyId,
+      p_baseline_views: normalizeViewCount(baselineViews),
+    },
+  );
+
+  const row = Array.isArray(rpcData) ? rpcData[0] : rpcData;
+  if (!rpcError && row) {
+    const metric = normalizeCompanyMetric(row as CompanyViewMetricRow);
+    memoryMetrics.set(companyId, metric);
+    return metric;
+  }
+
+  if (rpcError) {
+    console.warn("Company view metric RPC fallback:", rpcError.message);
+  }
+
+  const metric = await incrementCompanyViewsWithUpsert(companyId, baselineViews);
+  memoryMetrics.set(companyId, metric);
+  return metric;
+}
+
+export function normalizeCompanyMetric(value: unknown): CompanyMetrics {
+  if (!value || typeof value !== "object") return { views: 0 };
+
+  const metric = value as Partial<
+    CompanyMetrics & {
+      views: number | null;
+      lastViewedAt: string | null;
+      last_viewed_at: string | null;
+    }
+  >;
+
+  return {
+    views: normalizeViewCount(metric.views),
+    lastViewedAt:
+      safeString(metric.lastViewedAt) ?? safeString(metric.last_viewed_at),
+  };
+}
+
+function incrementMemoryMetric(
+  companyId: string,
+  baselineViews: number,
+  viewedAt: string,
+): CompanyMetrics {
+  const current = memoryMetrics.get(companyId);
+  const views = Math.max(current?.views ?? 0, normalizeViewCount(baselineViews)) + 1;
+  const metric = { views, lastViewedAt: viewedAt };
+  memoryMetrics.set(companyId, metric);
+  return metric;
+}
+
+async function incrementCompanyViewsWithUpsert(
+  companyId: string,
+  baselineViews: number,
 ): Promise<CompanyMetrics> {
   const viewedAt = new Date().toISOString();
   const supabase = createSupabasePrivilegedClient();
@@ -79,39 +153,7 @@ export async function incrementCompanyViews(
     return incrementMemoryMetric(companyId, baselineViews, viewedAt);
   }
 
-  const metric = normalizeCompanyMetric(data as CompanyViewMetricRow);
-  memoryMetrics.set(companyId, metric);
-  return metric;
-}
-
-export function normalizeCompanyMetric(value: unknown): CompanyMetrics {
-  if (!value || typeof value !== "object") return { views: 0 };
-
-  const metric = value as Partial<
-    CompanyMetrics & {
-      views: number | null;
-      lastViewedAt: string | null;
-      last_viewed_at: string | null;
-    }
-  >;
-
-  return {
-    views: normalizeViewCount(metric.views),
-    lastViewedAt:
-      safeString(metric.lastViewedAt) ?? safeString(metric.last_viewed_at),
-  };
-}
-
-function incrementMemoryMetric(
-  companyId: string,
-  baselineViews: number,
-  viewedAt: string,
-): CompanyMetrics {
-  const current = memoryMetrics.get(companyId);
-  const views = Math.max(current?.views ?? 0, normalizeViewCount(baselineViews)) + 1;
-  const metric = { views, lastViewedAt: viewedAt };
-  memoryMetrics.set(companyId, metric);
-  return metric;
+  return normalizeCompanyMetric(data as CompanyViewMetricRow);
 }
 
 function normalizeViewCount(value: unknown, fallback = 0) {

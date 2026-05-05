@@ -70,6 +70,7 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
                     </>
                   ) : null}
                   <CompanyViewCount
+                    companyId={company.id}
                     views={company.metrics?.views ?? 0}
                     className="md:justify-end"
                   />
