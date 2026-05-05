@@ -439,6 +439,12 @@ function normalizeCategory(category: unknown, text: string) {
   }
 
   const lower = text.toLowerCase();
+  if (/cyber|security|soc|threat|vulnerab|phishing|pentest|exposure/.test(lower)) {
+    return "Cybersecurity AI";
+  }
+  if (/life science|biotech|biology|biological|drug discovery|protein|molecule|therap/.test(lower)) {
+    return "Life Sciences AI";
+  }
   if (/finance|fintech|accounting|investment|trading|private market/.test(lower)) {
     return "Fintech & Trading AI";
   }

@@ -21,7 +21,10 @@ insert into public.companies (
   why_it_matters,
   ai_usage_profile,
   openai_fit,
-  usage_potential,
+  founders,
+  consumption_profile,
+  consumption_intensity,
+  consumption_note,
   recent_activity_text,
   recent_activity_date,
   is_featured,
@@ -46,13 +49,16 @@ insert into public.companies (
   'Andreessen Horowitz',
   '',
   'Fintech & Trading AI',
-  'Growth',
+  'Early Stage',
   'Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting.',
   'Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting.',
   'Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting. Its Matrix product lets asset managers, investment banks, and private equity firms run multi-step analyses across millions of documents with cited, auditable answers. Customers include Charlesbank, Oak Hill Advisors, and major Wall Street institutions.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'Breakout Watch',
+  '[{"name":"George Sivulka","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,embeddings_semantic_search}',
+  'high',
+  'Hebbia uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Customers include Charlesbank, Oak Hill Advisors, and major Wall Street institutions',
   '2026-04-28T18:00:00.000Z',
   true,
@@ -60,7 +66,7 @@ insert into public.companies (
   'published',
   '2025-11-05T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"Research workflows for financial teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["fintech","trading","growth","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.216Z","sourceHash":"15f903a6"}'::jsonb
+  '{"hook":"Research workflows for financial teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.198Z","sourceHash":"71ec9974"}'::jsonb
 ),
 (
   'cmp_002',
@@ -83,7 +89,10 @@ insert into public.companies (
   'Bayesline builds GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with cloud-deployed solutions that produce custom equity factor and risk models in seconds. Founded by ex-BlackRock and ex-Bloomberg quants, it serves institutional investors who previously waited weeks for similar analytics.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'Emerging',
+  '[{"name":"Sebastian Janisch","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,code_generation}',
+  'high',
+  'Bayesline supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Serves institutional investors who previously waited weeks for similar analytics',
   '2026-04-27T18:00:00.000Z',
   false,
@@ -91,7 +100,7 @@ insert into public.companies (
   'published',
   '2025-11-07T14:00:00.000Z',
   '2026-04-27T18:00:00.000Z',
-  '{"hook":"Custom risk analytics for hedge funds","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.217Z","sourceHash":"b12c07ec"}'::jsonb
+  '{"hook":"Custom risk analytics for hedge funds","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.199Z","sourceHash":"254fd82f"}'::jsonb
 ),
 (
   'cmp_003',
@@ -114,7 +123,10 @@ insert into public.companies (
   'Brightwave is an AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a knowledge graph to deliver analyst-grade investment research. Customers include hedge funds, advisory firms, and asset managers who use it to accelerate deal coverage and due diligence.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'Promising',
+  '[{"name":"Mike Conover","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,embeddings_semantic_search}',
+  'high',
+  'Brightwave uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Customers include hedge funds, advisory firms, and asset managers who use it to accelerate deal coverage and due diligence',
   '2026-04-26T18:00:00.000Z',
   false,
@@ -122,7 +134,7 @@ insert into public.companies (
   'published',
   '2025-11-09T14:00:00.000Z',
   '2026-04-26T18:00:00.000Z',
-  '{"hook":"Investment research from filings and transcripts","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.217Z","sourceHash":"8cd88921"}'::jsonb
+  '{"hook":"Investment research from filings and transcripts","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.199Z","sourceHash":"5f285053"}'::jsonb
 ),
 (
   'cmp_004',
@@ -145,7 +157,10 @@ insert into public.companies (
   'Maybern is the AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for private equity, credit, and real estate firms. It supports more than $80B in AUM across clients including Madison Realty Capital, Gauge Capital, and Town Lane.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'High Potential',
+  '[{"name":"Ross Mechanic","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,agentic_loops,batch_document_processing}',
+  'high',
+  'Maybern likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Added to NYC AI tracker',
   '2026-04-25T18:00:00.000Z',
   false,
@@ -153,7 +168,7 @@ insert into public.companies (
   'published',
   '2025-11-11T14:00:00.000Z',
   '2026-04-25T18:00:00.000Z',
-  '{"hook":"Private fund operations for investment firms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","growth","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.217Z","sourceHash":"344808b2"}'::jsonb
+  '{"hook":"Private fund operations for investment firms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","growth","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"2115ab59"}'::jsonb
 ),
 (
   'cmp_005',
@@ -176,7 +191,10 @@ insert into public.companies (
   'Tabs is an AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and run revenue recognition end-to-end. It serves CFO and accounting teams replacing manual contract-to-cash workflows with autonomous AI agents.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'High Potential',
+  '[{"name":"Ali Hussain","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,agentic_loops,batch_document_processing}',
+  'high',
+  'Tabs likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Serves CFO and accounting teams replacing manual contract-to-cash workflows with autonomous AI agents',
   '2026-04-24T18:00:00.000Z',
   false,
@@ -184,7 +202,7 @@ insert into public.companies (
   'published',
   '2025-11-13T14:00:00.000Z',
   '2026-04-24T18:00:00.000Z',
-  '{"hook":"Contract-to-cash automation for finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.218Z","sourceHash":"db941d99"}'::jsonb
+  '{"hook":"Contract-to-cash automation for finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"91087ea4"}'::jsonb
 ),
 (
   'cmp_006',
@@ -207,7 +225,10 @@ insert into public.companies (
   'Trata is an AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investment research, and distribute it via subscription. Targeted at long-short hedge funds seeking unbiased stock analysis. YC W25.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'Emerging',
+  '[{"name":"Eric Cho","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,embeddings_semantic_search}',
+  'high',
+  'Trata uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Added to NYC AI tracker',
   '2026-04-23T18:00:00.000Z',
   false,
@@ -215,7 +236,7 @@ insert into public.companies (
   'published',
   '2025-11-15T14:00:00.000Z',
   '2026-04-23T18:00:00.000Z',
-  '{"hook":"Hedge fund research from analyst agents","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.218Z","sourceHash":"0814d0dd"}'::jsonb
+  '{"hook":"Hedge fund research from analyst agents","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"776bbd4c"}'::jsonb
 ),
 (
   'cmp_007',
@@ -238,7 +259,10 @@ insert into public.companies (
   'Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financial institutions. Backed by Blackstone, Bain Capital, Coatue, and Vanguard, its clients collectively manage over $30 trillion in AUM and use Norm for sanctions, marketing, and regulatory workflows.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'Breakout Watch',
+  '[{"name":"John Nay","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Norm Ai uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Backed by Blackstone, Bain Capital, Coatue, and Vanguard, its clients collectively manage over $30 trillion in AUM and use Norm for sanctions, marketing, and regulatory workflows',
   '2026-04-22T18:00:00.000Z',
   true,
@@ -246,7 +270,7 @@ insert into public.companies (
   'published',
   '2025-11-17T14:00:00.000Z',
   '2026-04-22T18:00:00.000Z',
-  '{"hook":"Regulatory AI agents for enterprises","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["legal","compliance","growth","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.218Z","sourceHash":"8295017a"}'::jsonb
+  '{"hook":"Regulatory AI agents for enterprises","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["legal","compliance","growth","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"45adcbfd"}'::jsonb
 ),
 (
   'cmp_008',
@@ -269,15 +293,18 @@ insert into public.companies (
   'Manifest OS powers the next generation of AI-native law firms with outcomes-based fixed pricing, starting with business immigration. Its operating system handles client intake, business development, billing, and legal automation while attorneys focus on advocacy. Backed by Menlo Ventures and Kleiner Perkins at a $750M Series A valuation.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'Breakout Watch',
+  '[{"name":"Dan Mishin","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Manifest OS uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Backed by Menlo Ventures and Kleiner Perkins at a $750M Series A valuation',
   '2026-04-21T18:00:00.000Z',
   false,
-  true,
+  false,
   'published',
   '2025-11-19T14:00:00.000Z',
   '2026-04-21T18:00:00.000Z',
-  '{"hook":"Infrastructure for AI-native legal services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series a","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.218Z","sourceHash":"483e8d4f"}'::jsonb
+  '{"hook":"Infrastructure for AI-native legal services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series a","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"193780ad"}'::jsonb
 ),
 (
   'cmp_009',
@@ -300,7 +327,10 @@ insert into public.companies (
   'Soxton is an AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, and human-in-the-loop attorney review. Founded by a Harvard JD and former Cooley LLP attorney, it has helped 270+ businesses with incorporation, equity, fundraising, and compliance.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'Emerging',
+  '[{"name":"Logan Brown","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Soxton uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Founded by a Harvard JD and former Cooley LLP attorney, it has helped 270+ businesses with incorporation, equity, fundraising, and compliance',
   '2026-04-20T18:00:00.000Z',
   false,
@@ -308,7 +338,7 @@ insert into public.companies (
   'published',
   '2025-11-21T14:00:00.000Z',
   '2026-04-20T18:00:00.000Z',
-  '{"hook":"Legal copilot for startup legal work","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.218Z","sourceHash":"250a43c9"}'::jsonb
+  '{"hook":"Legal copilot for startup legal work","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.200Z","sourceHash":"03cade1f"}'::jsonb
 ),
 (
   'cmp_010',
@@ -331,7 +361,10 @@ insert into public.companies (
   'Bretton AI (formerly Greenlite AI) builds long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs. Customers include Mercury, Ramp, Robinhood, and Lead Bank; backed by Sapphire Ventures and Greylock with a $75M Series B in early 2026.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'High Potential',
+  '[{"name":"Will Lawrence","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Bretton AI uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Backed by Sapphire Ventures and Greylock with a $75M Series B in early 2026',
   '2026-04-19T18:00:00.000Z',
   false,
@@ -339,7 +372,7 @@ insert into public.companies (
   'published',
   '2025-11-23T14:00:00.000Z',
   '2026-04-19T18:00:00.000Z',
-  '{"hook":"KYC and AML agents for financial teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series b","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"f0f1268f"}'::jsonb
+  '{"hook":"KYC and AML agents for financial teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series b","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"d19e1a1a"}'::jsonb
 ),
 (
   'cmp_011',
@@ -362,7 +395,10 @@ insert into public.companies (
   'Alkymi is an AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial services compliance, operations, and reporting workflows. Founded in 2017 in NYC, it serves asset managers, banks, and insurers replacing manual document processing.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'Promising',
+  '[{"name":"Harald Collet","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Alkymi uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Serves asset managers, banks, and insurers replacing manual document processing',
   '2026-04-18T18:00:00.000Z',
   false,
@@ -370,7 +406,7 @@ insert into public.companies (
   'published',
   '2025-11-25T14:00:00.000Z',
   '2026-04-18T18:00:00.000Z',
-  '{"hook":"Document workflows for financial services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow","operations"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"0ddb9114"}'::jsonb
+  '{"hook":"Document workflows for financial services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow","operations"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"9fd76ab8"}'::jsonb
 ),
 (
   'cmp_012',
@@ -393,7 +429,10 @@ insert into public.companies (
   'ZeroDrift is an AI-driven compliance enforcement platform that helps regulated companies monitor and enforce policy adherence in real time. Raised a $2M pre-seed led by Andreessen Horowitz in early 2026 and serves financial services, healthcare, and other compliance-sensitive verticals.',
   'LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.',
   'Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'ZeroDrift uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Raised $2M',
   '2026-04-17T18:00:00.000Z',
   false,
@@ -401,7 +440,7 @@ insert into public.companies (
   'published',
   '2025-11-27T14:00:00.000Z',
   '2026-04-17T18:00:00.000Z',
-  '{"hook":"Real-time policy enforcement for regulated teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","pre-seed","agent","workflow","health"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"db97a99d"}'::jsonb
+  '{"hook":"Real-time policy enforcement for regulated teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","pre-seed","agent","workflow","health"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"6baa52b5"}'::jsonb
 ),
 (
   'cmp_013',
@@ -418,13 +457,16 @@ insert into public.companies (
   'Sequoia / Andreessen Horowitz / Kleiner Perkins',
   '',
   'Media, Ads & Creative AI',
-  'Growth',
+  'Early Stage',
   'Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns.',
   'Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns.',
   'Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns. Backed by Sequoia, Andreessen Horowitz, and Kleiner Perkins; one of the most successful consumer AI products globally.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Breakout Watch',
+  '[{"name":"Gaurav Misra","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,batch_document_processing,multimodal_processing}',
+  'very_high',
+  'Mirage (formerly Captions) puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Backed by Sequoia, Andreessen Horowitz, and Kleiner Perkins',
   '2026-04-16T18:00:00.000Z',
   true,
@@ -432,7 +474,7 @@ insert into public.companies (
   'published',
   '2025-11-29T14:00:00.000Z',
   '2026-04-16T18:00:00.000Z',
-  '{"hook":"AI video generation for creative teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","growth","agent","workflow","consumer"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"046edfa0"}'::jsonb
+  '{"hook":"AI video generation for creative teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","early stage","agent","workflow","consumer"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"d496ee64"}'::jsonb
 ),
 (
   'cmp_014',
@@ -455,7 +497,10 @@ insert into public.companies (
   'Agentio is the AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, Meta, and beyond. Raised $40M Series B led by Forerunner at a $340M valuation; named to Forbes'' Next Billion Dollar Startups 2025.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Breakout Watch',
+  '[{"name":"Arthur Leopold","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,multimodal_processing}',
+  'high',
+  'Agentio uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Raised $40M',
   '2026-04-15T18:00:00.000Z',
   true,
@@ -463,7 +508,7 @@ insert into public.companies (
   'published',
   '2025-12-01T14:00:00.000Z',
   '2026-04-15T18:00:00.000Z',
-  '{"hook":"Creator-led advertising automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","series b","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"1493ab05"}'::jsonb
+  '{"hook":"Creator-led advertising automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","series b","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"68f64c19"}'::jsonb
 ),
 (
   'cmp_015',
@@ -486,15 +531,18 @@ insert into public.companies (
   'Aaru is an AI research platform that deploys swarms of simulated agents to predict consumer and political behavior for brands, agencies, and political clients. Raised an $80M Series A led by Redpoint Ventures in 2026, bringing total funding to $88M.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Breakout Watch',
+  '[{"name":"Cameron Fink","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,batch_document_processing}',
+  'very_high',
+  'Aaru puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Raised $80M',
   '2026-04-14T18:00:00.000Z',
   false,
-  true,
+  false,
   'published',
   '2025-12-03T14:00:00.000Z',
   '2026-04-14T18:00:00.000Z',
-  '{"hook":"Consumer video creation with real distribution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","series a","agent","research","workflow"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"fc04b453"}'::jsonb
+  '{"hook":"Consumer video creation with real distribution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","series a","agent","research","workflow"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"593aeada"}'::jsonb
 ),
 (
   'cmp_016',
@@ -517,7 +565,10 @@ insert into public.companies (
   'Icon bills itself as the ''AI Admaker''-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands. Strategic angel funding from Founders Fund, an OpenAI exec, and NFL star Saquon Barkley; reportedly 2,200+ paying brands within months of launch.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'High Potential',
+  '[{"name":"Kennan Davison","title":"Co-founder"}]'::jsonb,
+  '{batch_document_processing,multimodal_processing}',
+  'high',
+  'Icon relies on structured extraction and reasoning over documents or dense business records.',
   'Added to NYC AI tracker',
   '2026-04-13T18:00:00.000Z',
   false,
@@ -525,7 +576,7 @@ insert into public.companies (
   'published',
   '2025-12-05T14:00:00.000Z',
   '2026-04-13T18:00:00.000Z',
-  '{"hook":"AI video ads with creative testing","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"e710c581"}'::jsonb
+  '{"hook":"AI video ads with creative testing","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"328f96a4"}'::jsonb
 ),
 (
   'cmp_017',
@@ -548,7 +599,10 @@ insert into public.companies (
   'Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth. Founded and operating in NYC with a small focused team building agentic brand experiences.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,multimodal_processing}',
+  'high',
+  'Tildei uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Added to NYC AI tracker',
   '2026-04-12T18:00:00.000Z',
   false,
@@ -556,7 +610,7 @@ insert into public.companies (
   'published',
   '2025-12-07T14:00:00.000Z',
   '2026-04-12T18:00:00.000Z',
-  '{"hook":"Agentic brand conversations across channels","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"ec24eea6"}'::jsonb
+  '{"hook":"Agentic brand conversations across channels","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.201Z","sourceHash":"62c67b52"}'::jsonb
 ),
 (
   'cmp_018',
@@ -579,7 +633,10 @@ insert into public.companies (
   'Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place. Used by music video directors (Quavo, Loco), ad agencies, and architects to create rap videos, advertising storyboards, and architectural renderings. YC-backed, NYC-based.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Emerging',
+  '[]'::jsonb,
+  '{multimodal_processing}',
+  'high',
+  'Stewdio uses multimodal processing across visual or media inputs tied to production workflows.',
   'YC-backed NYC company',
   '2026-04-11T18:00:00.000Z',
   false,
@@ -587,7 +644,7 @@ insert into public.companies (
   'published',
   '2025-12-09T14:00:00.000Z',
   '2026-04-11T18:00:00.000Z',
-  '{"hook":"Creative workspace for generative media","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"27db9e39"}'::jsonb
+  '{"hook":"Creative workspace for generative media","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"953b803e"}'::jsonb
 ),
 (
   'cmp_019',
@@ -610,7 +667,10 @@ insert into public.companies (
   'Absurd makes AI brand and performance ads at scale. Their work for Kalshi (the ''Election Day'' spot) hit 1M+ views, with average organic reach above 400K per video. YC-backed, building short-form viral ad creative for fast-moving brands.',
   'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
   'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
-  'Emerging',
+  '[]'::jsonb,
+  '{batch_document_processing,multimodal_processing}',
+  'high',
+  'Absurd relies on structured extraction and reasoning over documents or dense business records.',
   'YC-backed NYC company',
   '2026-04-10T18:00:00.000Z',
   false,
@@ -618,7 +678,7 @@ insert into public.companies (
   'published',
   '2025-12-11T14:00:00.000Z',
   '2026-04-10T18:00:00.000Z',
-  '{"hook":"AI brand ads for performance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"89795eed"}'::jsonb
+  '{"hook":"AI brand ads for performance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"23dfcaac"}'::jsonb
 ),
 (
   'cmp_020',
@@ -641,7 +701,10 @@ insert into public.companies (
   'Anterior automates clinical workflows for health plans, including prior authorization, payment integrity, and risk adjustment. With a 99.24% clinical accuracy rate (validated by KLAS), it supports payers covering 50M+ lives, including Geisinger Health Plan. Raised $40M in February 2026, bringing total to $64M; backed by Sequoia, NEA, FPV, and Kinnevik.',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'Breakout Watch',
+  '[{"name":"Abdel Mahmoud","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'moderate',
+  'Anterior uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Raised $40M',
   '2026-04-09T18:00:00.000Z',
   true,
@@ -649,7 +712,7 @@ insert into public.companies (
   'published',
   '2025-12-13T14:00:00.000Z',
   '2026-04-09T18:00:00.000Z',
-  '{"hook":"Automating clinical admin work for health plans","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["health","clinical","growth","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"3f8ee837"}'::jsonb
+  '{"hook":"Automating clinical admin work for health plans","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["health","clinical","growth","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"12123c03"}'::jsonb
 ),
 (
   'cmp_021',
@@ -672,7 +735,10 @@ insert into public.companies (
   'Valerie Health is an AI front office for independent doctors'' offices, automating patient communications, scheduling, and the administrative space between patient and provider. Raised a $30M Series A led by Redpoint Ventures with participation from General Catalyst and Primary Ventures; total funding $39M.',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'High Potential',
+  '[{"name":"Peter Shalek","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'moderate',
+  'Valerie Health uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Raised $30M',
   '2026-04-08T18:00:00.000Z',
   false,
@@ -680,7 +746,7 @@ insert into public.companies (
   'published',
   '2025-12-15T14:00:00.000Z',
   '2026-04-08T18:00:00.000Z',
-  '{"hook":"Front-office AI for independent doctors","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series a","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"f4be5867"}'::jsonb
+  '{"hook":"Front-office AI for independent doctors","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series a","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"11b91c5d"}'::jsonb
 ),
 (
   'cmp_022',
@@ -703,7 +769,10 @@ insert into public.companies (
   'Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics, scheduling, billing, prescription refills, and more. Already serving virtual care companies, health systems, and a $5B health insurance company; raised $5.4M from Accel, Y Combinator, and Sequoia (scout).',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'Promising',
+  '[{"name":"Ryan Shaw","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,agentic_loops,batch_document_processing}',
+  'high',
+  'Clarion likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Raised $5.4M',
   '2026-04-07T18:00:00.000Z',
   false,
@@ -711,7 +780,7 @@ insert into public.companies (
   'published',
   '2025-12-17T14:00:00.000Z',
   '2026-04-07T18:00:00.000Z',
-  '{"hook":"Voice agents for healthcare communications","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","agent","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.219Z","sourceHash":"4ca97f2f"}'::jsonb
+  '{"hook":"Voice agents for healthcare communications","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","agent","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"4bf78bf4"}'::jsonb
 ),
 (
   'cmp_023',
@@ -734,7 +803,10 @@ insert into public.companies (
   'Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy. Customers include outpatient clinics, specialty practices, and digital health platforms like Talkiatry. YC-backed.',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'Promising',
+  '[]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'moderate',
+  'Sohar Health uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Customers include outpatient clinics, specialty practices, and digital health platforms like Talkiatry',
   '2026-04-06T18:00:00.000Z',
   false,
@@ -742,7 +814,7 @@ insert into public.companies (
   'published',
   '2025-12-19T14:00:00.000Z',
   '2026-04-06T18:00:00.000Z',
-  '{"hook":"Eligibility automation for behavioral health","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","workflow","revenue","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"7abd6729"}'::jsonb
+  '{"hook":"Eligibility automation for behavioral health","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","workflow","revenue","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"ed0a17f2"}'::jsonb
 ),
 (
   'cmp_024',
@@ -765,7 +837,10 @@ insert into public.companies (
   'Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families. Its AI models streamline claims processing with 95% first-pass accuracy and have managed $2B in claims, supporting 100,000 patients across 40 states. Raised $30M Series B in 2025 from Andreessen Horowitz and Y Combinator.',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'High Potential',
+  '[]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'moderate',
+  'Camber uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Raised $30M',
   '2026-04-05T18:00:00.000Z',
   false,
@@ -773,7 +848,7 @@ insert into public.companies (
   'published',
   '2025-12-21T14:00:00.000Z',
   '2026-04-05T18:00:00.000Z',
-  '{"hook":"Healthcare payments operations for clinics","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series b","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"aa03ad5f"}'::jsonb
+  '{"hook":"Healthcare payments operations for clinics","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series b","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"709a68bd"}'::jsonb
 ),
 (
   'cmp_025',
@@ -796,7 +871,10 @@ insert into public.companies (
   'Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care. NYC-based with hiring across engineering and product roles in Chelsea.',
   'AI used for clinical administration, patient communication, payer workflows, claims processing, eligibility checks, and safe summarization around care operations.',
   'Good fit for careful summarization, structured extraction, voice workflows, patient communication, administrative automation, and safety-aware reasoning.',
-  'Emerging',
+  '[]'::jsonb,
+  '{consumer_inference,agentic_loops,batch_document_processing}',
+  'very_high',
+  'Granted puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Added to NYC AI tracker',
   '2026-04-28T18:00:00.000Z',
   false,
@@ -804,7 +882,7 @@ insert into public.companies (
   'published',
   '2025-12-23T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"AI support for navigating health benefits","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","early stage","agent","workflow","consumer"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"53ee7914"}'::jsonb
+  '{"hook":"AI support for navigating health benefits","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","early stage","agent","workflow","consumer"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"def5ad19"}'::jsonb
 ),
 (
   'cmp_026',
@@ -827,7 +905,10 @@ insert into public.companies (
   'Series is an AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions across Gen Z and professional users. Active across 750+ college campuses with 82% Day-30 retention. Raised $5.1M pre-seed from Pear VC, Reddit CEO Steve Huffman, Venmo co-founder Iqram Magdon-Ismail, and GPTZero''s Edward Tian.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'Breakout Watch',
+  '[{"name":"Nathaneo Johnson","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,embeddings_semantic_search}',
+  'very_high',
+  'Series puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Raised $5.1M',
   '2026-04-27T18:00:00.000Z',
   true,
@@ -835,7 +916,7 @@ insert into public.companies (
   'published',
   '2025-12-25T14:00:00.000Z',
   '2026-04-27T18:00:00.000Z',
-  '{"hook":"Warm introductions inside iMessage","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["ai-native","consumer","social","pre-seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"00b967bf"}'::jsonb
+  '{"hook":"Warm introductions inside iMessage","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["ai-native","consumer","social","pre-seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"998f45f6"}'::jsonb
 ),
 (
   'cmp_027',
@@ -858,7 +939,10 @@ insert into public.companies (
   '222 uses AI to engineer ''meet-cutes,'' matching strangers for IRL dinners, hangouts, and dates in NYC and other major cities. The platform now plans follow-up hangs and full date logistics for users, evolving from one-time encounters into ongoing relationships. YC-backed; total funding $13.7M with offices in SoHo.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'High Potential',
+  '[{"name":"Keyan Kazemian","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,embeddings_semantic_search}',
+  'very_high',
+  '222 puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'YC-backed NYC company',
   '2026-04-26T18:00:00.000Z',
   false,
@@ -866,7 +950,7 @@ insert into public.companies (
   'published',
   '2025-12-27T14:00:00.000Z',
   '2026-04-26T18:00:00.000Z',
-  '{"hook":"AI matching for in-person social plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"34860ac2"}'::jsonb
+  '{"hook":"AI matching for in-person social plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.202Z","sourceHash":"3416afd0"}'::jsonb
 ),
 (
   'cmp_028',
@@ -889,7 +973,10 @@ insert into public.companies (
   'Cerca is a Gen Z dating app that uses social-graph AI to match users only with friends or friends-of-friends, eliminating stranger anxiety and rejection fear. ~60K users primarily in NYC and across universities; raised $1.6M seed and was selected for TechCrunch Disrupt 2025 Startup Battlefield.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'Promising',
+  '[{"name":"Myles Slayton","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,embeddings_semantic_search}',
+  'very_high',
+  'Cerca puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Raised $1.6M',
   '2026-04-25T18:00:00.000Z',
   false,
@@ -897,7 +984,7 @@ insert into public.companies (
   'published',
   '2025-12-29T14:00:00.000Z',
   '2026-04-25T18:00:00.000Z',
-  '{"hook":"Social graph matching for Gen Z dating","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"4c7561f2"}'::jsonb
+  '{"hook":"Social graph matching for Gen Z dating","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"f9639a7c"}'::jsonb
 ),
 (
   'cmp_029',
@@ -920,7 +1007,10 @@ insert into public.companies (
   'Remesh uses AI to engage live audiences in real-time conversations and surface insights at scale. Companies, political organizations, and researchers use Remesh to understand markets, improve products, and craft customer experiences in minutes rather than weeks.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'Promising',
+  '[{"name":"Andrew Konya","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,batch_document_processing}',
+  'very_high',
+  'Remesh puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Added to NYC AI tracker',
   '2026-04-24T18:00:00.000Z',
   false,
@@ -928,7 +1018,7 @@ insert into public.companies (
   'published',
   '2025-12-31T14:00:00.000Z',
   '2026-04-24T18:00:00.000Z',
-  '{"hook":"Real-time audience research with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","research","workflow"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"dc5c48cb"}'::jsonb
+  '{"hook":"Real-time audience research with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","research","workflow"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"d99859e3"}'::jsonb
 ),
 (
   'cmp_030',
@@ -951,7 +1041,10 @@ insert into public.companies (
   'Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar. Backed by Lerer Hippeau, Bling Capital, and Floodgate; NYC-based.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'Promising',
+  '[]'::jsonb,
+  '{realtime_voice,consumer_inference,agentic_loops}',
+  'very_high',
+  'Loyalist likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Backed by Lerer Hippeau, Bling Capital, and Floodgate',
   '2026-04-23T18:00:00.000Z',
   false,
@@ -959,7 +1052,7 @@ insert into public.companies (
   'published',
   '2026-01-02T14:00:00.000Z',
   '2026-04-23T18:00:00.000Z',
-  '{"hook":"Restaurant revenue automation with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"22eb485c"}'::jsonb
+  '{"hook":"Restaurant revenue automation with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"b62f8a1d"}'::jsonb
 ),
 (
   'cmp_031',
@@ -982,7 +1075,10 @@ insert into public.companies (
   'Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan. YC-backed and based in NYC, targeting consumers seeking proactive AI-powered wellness coaching.',
   'AI used for personalization, matching, recommendations, conversation, memory, social graph reasoning, and coordination across consumer workflows.',
   'Good fit for personalization, conversational UX, recommendation loops, memory, multimodal understanding, and safe action-taking in consumer contexts.',
-  'Emerging',
+  '[]'::jsonb,
+  '{consumer_inference,agentic_loops,multimodal_processing}',
+  'very_high',
+  'Nori puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'YC-backed NYC company',
   '2026-04-22T18:00:00.000Z',
   false,
@@ -990,7 +1086,7 @@ insert into public.companies (
   'published',
   '2026-01-04T14:00:00.000Z',
   '2026-04-22T18:00:00.000Z',
-  '{"hook":"Personal health memory for daily plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","health"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"535aa24a"}'::jsonb
+  '{"hook":"Personal health memory for daily plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","health"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"1002485a"}'::jsonb
 ),
 (
   'cmp_032',
@@ -1013,7 +1109,10 @@ insert into public.companies (
   'Emergence AI''s ''Agents Creating Agents'' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows. Its CRAFT self-serve platform gives business users no-code control over data-pipeline agents that interoperate with LangChain and Autogen. Raised a $97.2M Series A led by Learn Capital.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Breakout Watch',
+  '[{"name":"Satya Nitta","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,code_generation}',
+  'high',
+  'Emergence AI supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Raised $97.2M',
   '2026-04-21T18:00:00.000Z',
   true,
@@ -1021,7 +1120,7 @@ insert into public.companies (
   'published',
   '2026-01-06T14:00:00.000Z',
   '2026-04-21T18:00:00.000Z',
-  '{"hook":"Agents that orchestrate enterprise workflows","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["agent","infrastructure","series a","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"81dfbac6"}'::jsonb
+  '{"hook":"Agents that orchestrate enterprise workflows","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["agent","infrastructure","series a","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"93c45c4a"}'::jsonb
 ),
 (
   'cmp_033',
@@ -1044,7 +1143,10 @@ insert into public.companies (
   'Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically-matched product catalog. Powers AI shopping experiences, fashion stylists, and agentic commerce. YC-backed and headquartered in NYC.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Promising',
+  '[{"name":"Alex Krause","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,agentic_loops,code_generation}',
+  'high',
+  'Channel3 likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'YC-backed NYC company',
   '2026-04-20T18:00:00.000Z',
   false,
@@ -1052,7 +1154,7 @@ insert into public.companies (
   'published',
   '2026-01-08T14:00:00.000Z',
   '2026-04-20T18:00:00.000Z',
-  '{"hook":"Product catalog infrastructure for agentic commerce","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"3242e359"}'::jsonb
+  '{"hook":"Product catalog infrastructure for agentic commerce","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"cdbfb2d8"}'::jsonb
 ),
 (
   'cmp_034',
@@ -1075,7 +1177,10 @@ insert into public.companies (
   'Amika is infrastructure to build a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API. Customers plug in coding agents like Claude Code or Codex to autonomously ship PRs with live previews, mirroring infrastructure used internally at Ramp, Coinbase, and Stripe. YC-backed, NYC-based.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,code_generation}',
+  'high',
+  'Amika supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'YC-backed NYC company',
   '2026-04-19T18:00:00.000Z',
   false,
@@ -1083,7 +1188,7 @@ insert into public.companies (
   'published',
   '2026-01-10T14:00:00.000Z',
   '2026-04-19T18:00:00.000Z',
-  '{"hook":"Cloud sandboxes for AI coding agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"0260dd25"}'::jsonb
+  '{"hook":"Cloud sandboxes for AI coding agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"e6af3f2d"}'::jsonb
 ),
 (
   'cmp_035',
@@ -1106,7 +1211,10 @@ insert into public.companies (
   'Kay.ai accelerates data extraction workflows for enterprises using high-quality embeddings and fine-tuned LLMs, providing the context and retrieval layer that AI agents need to operate over enterprise documents. Founded by ex-Microsoft, Twitter, and Amazon ML engineers; backed by Wing VC.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Promising',
+  '[{"name":"Vishal Rohra","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,code_generation}',
+  'high',
+  'Kay.ai supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Backed by Wing VC',
   '2026-04-18T18:00:00.000Z',
   false,
@@ -1114,7 +1222,7 @@ insert into public.companies (
   'published',
   '2026-01-12T14:00:00.000Z',
   '2026-04-18T18:00:00.000Z',
-  '{"hook":"Document context layer for enterprise agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","early stage","workflow","documents"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows","context layer"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"1435c371"}'::jsonb
+  '{"hook":"Document context layer for enterprise agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","early stage","workflow","documents"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"e9aefadb"}'::jsonb
 ),
 (
   'cmp_036',
@@ -1137,7 +1245,10 @@ insert into public.companies (
   'Empromptu helps enterprises build AI apps through chat; users describe what they want, and the platform turns the request into a working internal tool. Raised a $2M pre-seed in late 2025 to expand its enterprise AI app builder; NYC-based.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,code_generation}',
+  'high',
+  'Empromptu supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Raised $2M',
   '2026-04-17T18:00:00.000Z',
   false,
@@ -1145,7 +1256,7 @@ insert into public.companies (
   'published',
   '2026-01-14T14:00:00.000Z',
   '2026-04-17T18:00:00.000Z',
-  '{"hook":"Chat-driven enterprise app creation","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","pre-seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"1c63aa25"}'::jsonb
+  '{"hook":"Chat-driven enterprise app creation","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","pre-seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"a1780a5f"}'::jsonb
 ),
 (
   'cmp_037',
@@ -1168,7 +1279,10 @@ insert into public.companies (
   'Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes. Each bot includes custom tools maintained through AI-powered code editors. YC-backed, NYC.',
   'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
   'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,code_generation}',
+  'high',
+  'Vortexify AI supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'YC-backed NYC company',
   '2026-04-16T18:00:00.000Z',
   false,
@@ -1176,7 +1290,7 @@ insert into public.companies (
   'published',
   '2026-01-16T14:00:00.000Z',
   '2026-04-16T18:00:00.000Z',
-  '{"hook":"Supply chain agents for operational planning","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow","operations"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.220Z","sourceHash":"7c093987"}'::jsonb
+  '{"hook":"Supply chain agents for operational planning","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["agent","infrastructure","seed","workflow","operations"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"5ef6f966"}'::jsonb
 ),
 (
   'cmp_038',
@@ -1199,15 +1313,18 @@ insert into public.companies (
   'Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook. NYC-based and backed by leading insurance and tech investors.',
   'AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.',
   'Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.',
-  'High Potential',
+  '[{"name":"Paul Monasterio","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing}',
+  'high',
+  'Kalepa uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'Backed by leading insurance and tech investors',
   '2026-04-15T18:00:00.000Z',
   true,
-  false,
+  true,
   'published',
   '2026-01-18T14:00:00.000Z',
   '2026-04-15T18:00:00.000Z',
-  '{"hook":"AI underwriting for commercial insurance","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"0dfb09cc"}'::jsonb
+  '{"hook":"AI underwriting for commercial insurance","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"ead9614f"}'::jsonb
 ),
 (
   'cmp_039',
@@ -1230,7 +1347,10 @@ insert into public.companies (
   'Slang.ai builds voice AI agents that answer phone calls on behalf of restaurants and retail businesses, handling reservations, appointments, and customer questions 24/7. Founded by former Spotify data leaders Alex Sambvani and Gabriel Duncan; backed by Wing VC.',
   'AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.',
   'Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.',
-  'High Potential',
+  '[{"name":"Alex Sambvani","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,agentic_loops}',
+  'high',
+  'Slang.ai likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Backed by Wing VC',
   '2026-04-14T18:00:00.000Z',
   false,
@@ -1238,7 +1358,7 @@ insert into public.companies (
   'published',
   '2026-01-20T14:00:00.000Z',
   '2026-04-14T18:00:00.000Z',
-  '{"hook":"Voice agents for restaurant and retail calls","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"064fc2a4"}'::jsonb
+  '{"hook":"Voice agents for restaurant and retail calls","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"cd834930"}'::jsonb
 ),
 (
   'cmp_040',
@@ -1261,7 +1381,10 @@ insert into public.companies (
   'Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis. YC-backed and NYC-based.',
   'AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.',
   'Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.',
-  'Promising',
+  '[]'::jsonb,
+  '{agentic_loops}',
+  'high',
+  'Concourse uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'YC-backed NYC company',
   '2026-04-13T18:00:00.000Z',
   false,
@@ -1269,7 +1392,7 @@ insert into public.companies (
   'published',
   '2026-01-22T14:00:00.000Z',
   '2026-04-13T18:00:00.000Z',
-  '{"hook":"AI agents for corporate finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"260ce628"}'::jsonb
+  '{"hook":"AI agents for corporate finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.203Z","sourceHash":"e3f78818"}'::jsonb
 ),
 (
   'cmp_041',
@@ -1292,7 +1415,10 @@ insert into public.companies (
   'RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation. Targets client intake, registrations, compliance forms, feedback surveys, and other GTM/customer workflows. YC-backed.',
   'AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.',
   'Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.',
-  'Emerging',
+  '[]'::jsonb,
+  '{realtime_voice,agentic_loops,batch_document_processing}',
+  'high',
+  'RowFlow likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'YC-backed NYC company',
   '2026-04-12T18:00:00.000Z',
   false,
@@ -1300,7 +1426,7 @@ insert into public.companies (
   'published',
   '2026-01-24T14:00:00.000Z',
   '2026-04-12T18:00:00.000Z',
-  '{"hook":"Conversational intake for business forms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"df7c17d6"}'::jsonb
+  '{"hook":"Conversational intake for business forms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"7252a901"}'::jsonb
 ),
 (
   'cmp_042',
@@ -1323,7 +1449,10 @@ insert into public.companies (
   'Tofu is an AI-native marketing platform that personalizes outbound campaigns and content across email, web, and ads at the account and persona level. Targets B2B revenue teams looking to consolidate fragmented martech stacks; backed by Index Ventures and others.',
   'AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.',
   'Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.',
-  'Promising',
+  '[{"name":"Pranav Piyush","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,batch_document_processing}',
+  'high',
+  'Tofu puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
   'Backed by Index Ventures and others',
   '2026-04-11T18:00:00.000Z',
   false,
@@ -1331,7 +1460,7 @@ insert into public.companies (
   'published',
   '2026-01-26T14:00:00.000Z',
   '2026-04-11T18:00:00.000Z',
-  '{"hook":"Sales workflows for revenue teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"292a8f44"}'::jsonb
+  '{"hook":"Sales workflows for revenue teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"300d36d9"}'::jsonb
 ),
 (
   'cmp_043',
@@ -1354,7 +1483,10 @@ insert into public.companies (
   'Standard Signal is the first hedge fund that researches and executes trades purely with AI. Its custom models discover and trade on new fundamental truths before humans can. YC-backed and NYC-based, building AI-native trading infrastructure for the hedge-fund-as-software thesis.',
   'Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.',
   'Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,batch_document_processing,embeddings_semantic_search}',
+  'high',
+  'Standard Signal uses long-running model loops to complete repeat work across tools, data, or decisions.',
   'YC-backed NYC company',
   '2026-04-10T18:00:00.000Z',
   false,
@@ -1362,7 +1494,7 @@ insert into public.companies (
   'published',
   '2026-01-28T14:00:00.000Z',
   '2026-04-10T18:00:00.000Z',
-  '{"hook":"AI-native trading research and execution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","seed","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"3f96abf6"}'::jsonb
+  '{"hook":"AI-native trading research and execution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","seed","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"6cc6661a"}'::jsonb
 ),
 (
   'cmp_044',
@@ -1385,7 +1517,10 @@ insert into public.companies (
   'Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions. NYC-based and serving enterprises building proprietary AI capabilities; raised significant Series A funding to scale its data exchange.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'Promising',
+  '[]'::jsonb,
+  '{batch_document_processing,code_generation,multimodal_processing}',
+  'high',
+  'Carbon Arc supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Added to NYC AI tracker',
   '2026-04-09T18:00:00.000Z',
   false,
@@ -1393,7 +1528,7 @@ insert into public.companies (
   'published',
   '2026-01-30T14:00:00.000Z',
   '2026-04-09T18:00:00.000Z',
-  '{"hook":"Licensed data marketplace for AI builders","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","series a"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"4df95a19"}'::jsonb
+  '{"hook":"Licensed data marketplace for AI builders","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","series a"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"73d9b0b8"}'::jsonb
 ),
 (
   'cmp_045',
@@ -1416,7 +1551,10 @@ insert into public.companies (
   'Wallaroo provides an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale, with model observability, monitoring, and inference orchestration. NYC-based, serving large enterprises operationalizing ML.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'Promising',
+  '[{"name":"Vid Jain","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,code_generation}',
+  'high',
+  'Wallaroo supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Added to NYC AI tracker',
   '2026-04-08T18:00:00.000Z',
   false,
@@ -1424,7 +1562,7 @@ insert into public.companies (
   'published',
   '2026-02-01T14:00:00.000Z',
   '2026-04-08T18:00:00.000Z',
-  '{"hook":"Model deployment infrastructure for enterprises","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"2fbc1681"}'::jsonb
+  '{"hook":"Model deployment infrastructure for enterprises","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"2040c621"}'::jsonb
 ),
 (
   'cmp_046',
@@ -1447,15 +1585,18 @@ insert into public.companies (
   'Canoe uses AI to automate alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and wealth managers. Its document-extraction engine processes capital-call notices, K-1s, and statements that traditionally required armies of analysts. NYC-based.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'High Potential',
+  '[{"name":"Seth Brotman","title":"Co-founder"}]'::jsonb,
+  '{realtime_voice,consumer_inference,batch_document_processing}',
+  'very_high',
+  'Canoe Intelligence likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
   'Added to NYC AI tracker',
   '2026-04-07T18:00:00.000Z',
   true,
-  false,
+  true,
   'published',
   '2026-02-03T14:00:00.000Z',
   '2026-04-07T18:00:00.000Z',
-  '{"hook":"Alternative-investment data automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"c01e8474"}'::jsonb
+  '{"hook":"Alternative-investment data automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"3e5f290a"}'::jsonb
 ),
 (
   'cmp_047',
@@ -1478,7 +1619,10 @@ insert into public.companies (
   'Hyperscience offers an AI software platform that turns unstructured documents into structured, machine-readable data with high accuracy. Used by Fortune 500s, government agencies, and financial institutions to automate document-heavy workflows. NYC-based.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'High Potential',
+  '[{"name":"Peter Brodsky","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,code_generation}',
+  'moderate',
+  'Hyperscience supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Added to NYC AI tracker',
   '2026-04-06T18:00:00.000Z',
   false,
@@ -1486,7 +1630,7 @@ insert into public.companies (
   'published',
   '2026-02-05T14:00:00.000Z',
   '2026-04-06T18:00:00.000Z',
-  '{"hook":"Turning messy documents into structured context","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage","workflow","documents"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"2d879e58"}'::jsonb
+  '{"hook":"Turning messy documents into structured context","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage","workflow","documents"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"f09d34a6"}'::jsonb
 ),
 (
   'cmp_048',
@@ -1509,7 +1653,10 @@ insert into public.companies (
   'Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations. NYC-based and backed by leading enterprise SaaS investors.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'Emerging',
+  '[]'::jsonb,
+  '{agentic_loops,batch_document_processing,code_generation}',
+  'high',
+  'Datagrid supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'Backed by leading enterprise SaaS investors',
   '2026-04-05T18:00:00.000Z',
   false,
@@ -1517,7 +1664,7 @@ insert into public.companies (
   'published',
   '2026-02-07T14:00:00.000Z',
   '2026-04-05T18:00:00.000Z',
-  '{"hook":"Enterprise context layer for business data","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage","agent","workflow"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"1f8a50f7"}'::jsonb
+  '{"hook":"Enterprise context layer for business data","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","early stage","agent","workflow"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"f2b57226"}'::jsonb
 ),
 (
   'cmp_049',
@@ -1540,7 +1687,10 @@ insert into public.companies (
   'Aspect''s visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data. Where Glean and Notion serve text corpuses, Aspect targets the multimodal data layer. YC-backed, NYC.',
   'Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.',
   'Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.',
-  'Emerging',
+  '[]'::jsonb,
+  '{batch_document_processing,code_generation,multimodal_processing}',
+  'high',
+  'Aspect supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
   'YC-backed NYC company',
   '2026-04-28T18:00:00.000Z',
   false,
@@ -1548,7 +1698,211 @@ insert into public.companies (
   'published',
   '2026-02-09T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"Multimodal data extraction for visual datasets","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","seed"],"trendDimensions":["data infrastructure","retrieval context","context layer","consumer behavior"],"generatedAt":"2026-05-05T12:51:39.221Z","sourceHash":"e9db8494"}'::jsonb
+  '{"hook":"Multimodal data extraction for visual datasets","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model workflow leverage.","keywords":["data","memory","layer","seed"],"trendDimensions":["data infrastructure","retrieval context","context layer","consumer behavior"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"08561896"}'::jsonb
+),
+(
+  'cmp_050',
+  'Artemis',
+  'artemis',
+  '/logos/artemis.svg',
+  'https://goartemis.ai',
+  'Shachar Hirshberg; Dan Shiebler',
+  '',
+  'Series A',
+  '$70M',
+  'April 2026',
+  '$70M',
+  'Felicis',
+  'Combined seed and Series A financing with participation from First Round Capital, Theory VC, and Lockstep.',
+  'Cybersecurity AI',
+  'Series A',
+  'Artemis is an AI-native SOC platform that correlates telemetry across cloud, identity, network, and endpoints to detect and respond to AI-powered attacks at machine speed.',
+  'Artemis is an AI-native SOC platform that correlates telemetry across cloud, identity, network, and endpoints to detect and respond to AI-powered attacks at machine speed.',
+  'Artemis is an AI-native SOC platform that correlates telemetry across cloud, identity, network, and endpoints to detect and respond to AI-powered attacks at machine speed. The New York company raised $70M across seed and Series A financing in April 2026, led by Felicis with participation from First Round Capital, Theory VC, and Lockstep.',
+  'Agentic analysis across security telemetry, exposure graphs, identity systems, human-layer risk, and response workflows.',
+  'Strong fit for tool-calling agents, retrieval over telemetry, structured triage, adversarial reasoning, and response workflows.',
+  '[{"name":"Shachar Hirshberg","title":"Co-founder & CEO"},{"name":"Dan Shiebler","title":"Co-founder & CTO"}]'::jsonb,
+  '{agentic_loops,embeddings_semantic_search}',
+  'high',
+  'Artemis uses agentic analysis across security telemetry, exposure, or human-layer risk.',
+  'Raised $70M',
+  '2026-04-27T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-11T14:00:00.000Z',
+  '2026-04-27T18:00:00.000Z',
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.204Z","sourceHash":"2db01b51"}'::jsonb
+),
+(
+  'cmp_051',
+  'Astelia',
+  'astelia',
+  '/logos/astelia.svg',
+  'https://astelia.io',
+  'Alon Noy; Nadav Ostrovsky; Roy Rajwan',
+  '488 Madison Ave, New York, NY 10022',
+  'Series A',
+  '$35M',
+  'February 2026',
+  '$35M',
+  'Index Ventures / Team8',
+  'Combined seed and Series A financing with participation from Holly Ventures.',
+  'Cybersecurity AI',
+  'Series A',
+  'Astelia builds an AI-native exposure management platform that maps real network topology and uses agentic AI to surface the small share of vulnerabilities that are genuinely reachable and exploitable.',
+  'Astelia builds an AI-native exposure management platform that maps real network topology and uses agentic AI to surface the small share of vulnerabilities that are genuinely reachable and exploitable.',
+  'Astelia builds an AI-native exposure management platform that maps real network topology and uses agentic AI to surface the small share of vulnerabilities that are genuinely reachable and exploitable. Headquartered at 488 Madison Ave in New York, Astelia raised $35M across seed and Series A financing in February 2026 from Index Ventures, Team8, and Holly Ventures.',
+  'Agentic analysis across security telemetry, exposure graphs, identity systems, human-layer risk, and response workflows.',
+  'Strong fit for tool-calling agents, retrieval over telemetry, structured triage, adversarial reasoning, and response workflows.',
+  '[{"name":"Alon Noy","title":"Co-founder & CEO"},{"name":"Nadav Ostrovsky","title":"Co-founder & CTO"},{"name":"Roy Rajwan","title":"Co-founder & CPO"}]'::jsonb,
+  '{agentic_loops,embeddings_semantic_search}',
+  'high',
+  'Astelia uses agentic analysis across security telemetry, exposure, or human-layer risk.',
+  'Raised $35M',
+  '2026-04-26T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-13T14:00:00.000Z',
+  '2026-04-26T18:00:00.000Z',
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.205Z","sourceHash":"fca0239d"}'::jsonb
+),
+(
+  'cmp_052',
+  'GhostEye',
+  'ghosteye',
+  '/logos/ghosteye.svg',
+  'https://ghosteye.ai',
+  'Mohammad Eshan; Charles Antoine Malenfant',
+  '',
+  'Pre-seed (YC-backed)',
+  'Undisclosed',
+  '2026',
+  'Undisclosed',
+  'Y Combinator',
+  '',
+  'Cybersecurity AI',
+  'Pre-Seed',
+  'GhostEye builds an AI-powered human pentesting platform that uses offensive agents to generate personalized phishing, voice, SMS, and deepfake campaigns from each employee''s public OSINT exposure.',
+  'GhostEye builds an AI-powered human pentesting platform that uses offensive agents to generate personalized phishing, voice, SMS, and deepfake campaigns from each employee''s public OSINT exposure.',
+  'GhostEye builds an AI-powered human pentesting platform that uses offensive agents to generate personalized phishing, voice, SMS, and deepfake campaigns from each employee''s public OSINT exposure. The YC-backed pre-seed company is based in New York and focuses on human-layer defense.',
+  'Agentic analysis across security telemetry, exposure graphs, identity systems, human-layer risk, and response workflows.',
+  'Strong fit for tool-calling agents, retrieval over telemetry, structured triage, adversarial reasoning, and response workflows.',
+  '[{"name":"Mohammad Eshan","title":"Founder & CEO"},{"name":"Charles Antoine Malenfant","title":"Co-founder & CTO"}]'::jsonb,
+  '{realtime_voice,consumer_inference,agentic_loops}',
+  'high',
+  'GhostEye likely drives model calls through low-latency voice conversations tied to repeat service workflows.',
+  'YC-backed NYC company',
+  '2026-04-25T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-15T14:00:00.000Z',
+  '2026-04-25T18:00:00.000Z',
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","pre-seed","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.205Z","sourceHash":"494b40a0"}'::jsonb
+),
+(
+  'cmp_053',
+  'Proxima Bio',
+  'proxima-bio',
+  '/logos/proxima-bio.svg',
+  'https://proximabio.com',
+  'Zachary Carpenter; Luca Naef',
+  '',
+  'Seed',
+  '$80M',
+  'January 2026',
+  '$80M',
+  'DCVC',
+  'Participation from NVentures, Roivant, Braidwell, and AIX Ventures.',
+  'Life Sciences AI',
+  'Seed',
+  'Proxima Bio, formerly VantAI, is an AI-native platform for proximity-based drug discovery, mapping protein-protein interactions to design medicines that reshape protein networks rather than inhibit single targets.',
+  'Proxima Bio, formerly VantAI, is an AI-native platform for proximity-based drug discovery, mapping protein-protein interactions to design medicines that reshape protein networks rather than inhibit single targets.',
+  'Proxima Bio, formerly VantAI, is an AI-native platform for proximity-based drug discovery, mapping protein-protein interactions to design medicines that reshape protein networks rather than inhibit single targets. The New York company raised an $80M seed round in January 2026 led by DCVC with participation from NVentures, Roivant, Braidwell, and AIX Ventures.',
+  'AI used for biological modeling, drug discovery, protein interaction mapping, lab data reasoning, and biotech infrastructure workflows.',
+  'Strong fit for multimodal reasoning, biological data retrieval, molecule and protein analysis, structured extraction, and research copilots.',
+  '[{"name":"Zachary Carpenter","title":"Co-founder & CEO"},{"name":"Luca Naef","title":"Co-founder & CTO"}]'::jsonb,
+  '{agentic_loops,multimodal_processing}',
+  'high',
+  'Proxima Bio applies models to biological data where retrieval, structure, and multimodal reasoning matter.',
+  'Raised $80M',
+  '2026-04-24T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-17T14:00:00.000Z',
+  '2026-04-24T18:00:00.000Z',
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.205Z","sourceHash":"6dbf1fc5"}'::jsonb
+),
+(
+  'cmp_054',
+  'Output Biosciences',
+  'output-biosciences',
+  '/logos/output-biosciences.svg',
+  'https://outputbio.com',
+  'Adi Mashiach; Mirella Mashiach',
+  'Union Square, New York, NY',
+  'Seed (YC S21)',
+  'Undisclosed',
+  'Undisclosed',
+  'Undisclosed',
+  'Y Combinator',
+  'Company is currently operating in stealth.',
+  'Life Sciences AI',
+  'Seed',
+  'Output Biosciences is building Large Biological Models, generative AI architectures designed to handle the long, nonlinear, fragmented data of biological systems across molecules, cells, and organisms.',
+  'Output Biosciences is building Large Biological Models, generative AI architectures designed to handle the long, nonlinear, fragmented data of biological systems across molecules, cells, and organisms.',
+  'Output Biosciences is building Large Biological Models, generative AI architectures designed to handle the long, nonlinear, fragmented data of biological systems across molecules, cells, and organisms. The YC S21 seed-stage company is headquartered in New York''s Union Square and currently operates in stealth.',
+  'AI used for biological modeling, drug discovery, protein interaction mapping, lab data reasoning, and biotech infrastructure workflows.',
+  'Strong fit for multimodal reasoning, biological data retrieval, molecule and protein analysis, structured extraction, and research copilots.',
+  '[{"name":"Adi Mashiach, MD","title":"Co-founder"},{"name":"Mirella Mashiach","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,batch_document_processing,multimodal_processing}',
+  'high',
+  'Output Biosciences applies models to biological data where retrieval, structure, and multimodal reasoning matter.',
+  'Added to NYC AI tracker',
+  '2026-04-23T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-19T14:00:00.000Z',
+  '2026-04-23T18:00:00.000Z',
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.205Z","sourceHash":"dda25adb"}'::jsonb
+),
+(
+  'cmp_055',
+  'Serinus Biosciences',
+  'serinus-biosciences',
+  '/logos/serinus-biosciences.svg',
+  'https://serinus.bio',
+  'Maxwell Sherman; Adam Yaari',
+  '430 E 29th St, New York, NY 10016',
+  'Seed',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'Life Sciences AI',
+  'Seed',
+  'Serinus Biosciences uses a knowledge-primed AI engine to design cancer combination therapies by mapping how tumor cells evolve treatment resistance and identifying molecules that override resistance escape routes.',
+  'Serinus Biosciences uses a knowledge-primed AI engine to design cancer combination therapies by mapping how tumor cells evolve treatment resistance and identifying molecules that override resistance escape routes.',
+  'Serinus Biosciences uses a knowledge-primed AI engine to design cancer combination therapies by mapping how tumor cells evolve treatment resistance and identifying molecules that override resistance escape routes. The seed-stage New York company is based at 430 E 29th St.',
+  'AI used for biological modeling, drug discovery, protein interaction mapping, lab data reasoning, and biotech infrastructure workflows.',
+  'Strong fit for multimodal reasoning, biological data retrieval, molecule and protein analysis, structured extraction, and research copilots.',
+  '[{"name":"Maxwell Sherman","title":"Co-founder"},{"name":"Adam Yaari","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,multimodal_processing,embeddings_semantic_search}',
+  'high',
+  'Serinus Biosciences applies models to biological data where retrieval, structure, and multimodal reasoning matter.',
+  'Added to NYC AI tracker',
+  '2026-04-22T18:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-21T14:00:00.000Z',
+  '2026-04-22T18:00:00.000Z',
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-05T15:25:38.205Z","sourceHash":"6eb7a867"}'::jsonb
 )
 on conflict (id) do update set
   name = excluded.name,
@@ -1570,7 +1924,10 @@ on conflict (id) do update set
   why_it_matters = excluded.why_it_matters,
   ai_usage_profile = excluded.ai_usage_profile,
   openai_fit = excluded.openai_fit,
-  usage_potential = excluded.usage_potential,
+  founders = excluded.founders,
+  consumption_profile = excluded.consumption_profile,
+  consumption_intensity = excluded.consumption_intensity,
+  consumption_note = excluded.consumption_note,
   recent_activity_text = excluded.recent_activity_text,
   recent_activity_date = excluded.recent_activity_date,
   is_featured = excluded.is_featured,
@@ -1586,7 +1943,6 @@ insert into public.submissions (
   founder_name,
   email,
   description,
-  usage_potential,
   status,
   created_at
 ) values
@@ -1596,7 +1952,6 @@ insert into public.submissions (
   'George Sivulka',
   'george@hebbia.com',
   'Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting. Its Matrix product lets asset managers, investment banks, and private equity firms run multi-step analyses across millions of documents with cited, auditable answers. Customers include Charlesbank, Oak Hill Advisors, and major Wall Street institutions.',
-  'Breakout Watch',
   'accepted',
   '2026-04-25T18:00:00.000Z'
 ),
@@ -1606,7 +1961,6 @@ insert into public.submissions (
   'Sebastian Janisch',
   'sebastian@bayesline.com',
   'Bayesline builds GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with cloud-deployed solutions that produce custom equity factor and risk models in seconds. Founded by ex-BlackRock and ex-Bloomberg quants, it serves institutional investors who previously waited weeks for similar analytics.',
-  'Emerging',
   'accepted',
   '2026-04-24T18:00:00.000Z'
 ),
@@ -1616,7 +1970,6 @@ insert into public.submissions (
   'Mike Conover',
   'mike@brightwave.io',
   'Brightwave is an AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a knowledge graph to deliver analyst-grade investment research. Customers include hedge funds, advisory firms, and asset managers who use it to accelerate deal coverage and due diligence.',
-  'Promising',
   'rejected',
   '2026-04-23T18:00:00.000Z'
 ),
@@ -1626,7 +1979,6 @@ insert into public.submissions (
   'Ross Mechanic',
   'ross@maybern.com',
   'Maybern is the AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for private equity, credit, and real estate firms. It supports more than $80B in AUM across clients including Madison Realty Capital, Gauge Capital, and Town Lane.',
-  'High Potential',
   'new',
   '2026-04-22T18:00:00.000Z'
 ),
@@ -1636,7 +1988,6 @@ insert into public.submissions (
   'Ali Hussain',
   'ali@tabs.inc',
   'Tabs is an AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and run revenue recognition end-to-end. It serves CFO and accounting teams replacing manual contract-to-cash workflows with autonomous AI agents.',
-  'High Potential',
   'new',
   '2026-04-21T18:00:00.000Z'
 ),
@@ -1646,7 +1997,6 @@ insert into public.submissions (
   'Eric Cho',
   'eric@trytrata.com',
   'Trata is an AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investment research, and distribute it via subscription. Targeted at long-short hedge funds seeking unbiased stock analysis. YC W25.',
-  'Emerging',
   'new',
   '2026-04-20T18:00:00.000Z'
 );

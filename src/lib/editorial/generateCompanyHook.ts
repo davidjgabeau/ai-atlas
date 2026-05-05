@@ -20,8 +20,10 @@ const bannedPhrases = [
 const categoryTrendDimensions: Record<Company["category"], string[]> = {
   "Fintech & Trading AI": ["regulated buyers", "research workflows"],
   "Legal & Compliance AI": ["regulated buyers", "workflow automation"],
+  "Cybersecurity AI": ["security operations", "agentic response"],
   "Media, Ads & Creative AI": ["creative workflow", "interface pattern"],
   "Health & Clinical AI": ["clinical operations", "workflow automation"],
+  "Life Sciences AI": ["biological modeling", "research workflows"],
   "AI-Native Consumer & Social": ["consumer interface", "memory behavior"],
   "Agent Infrastructure": ["agent infrastructure", "workflow reliability"],
   "Model Tools & Dev Platform": ["developer workflow", "production AI"],
@@ -156,6 +158,19 @@ function inferHook(company: CompanyHookInput, text: string) {
     return "Review workflows for legal and compliance teams";
   }
 
+  if (company.category === "Cybersecurity AI") {
+    if (matches(text, ["soc", "telemetry", "detect", "respond"])) {
+      return "AI-native security operations for enterprise teams";
+    }
+    if (matches(text, ["exposure", "vulnerabilities", "topology"])) {
+      return "Exposure management for reachable security risk";
+    }
+    if (matches(text, ["pentesting", "phishing", "deepfake", "osint"])) {
+      return "Human-layer pentesting with offensive agents";
+    }
+    return "Agentic workflows for security operations";
+  }
+
   if (company.category === "Media, Ads & Creative AI") {
     if (matches(text, ["video", "creator", "actors"])) {
       return "Consumer video creation with real distribution";
@@ -180,6 +195,19 @@ function inferHook(company: CompanyHookInput, text: string) {
       return "Healthcare operations workflows for payers";
     }
     return "Clinical operations workflows for healthcare teams";
+  }
+
+  if (company.category === "Life Sciences AI") {
+    if (matches(text, ["protein", "proximity", "drug discovery"])) {
+      return "Protein interaction maps for drug discovery";
+    }
+    if (matches(text, ["large biological models", "molecules", "cells"])) {
+      return "Large biological models for fragmented life-science data";
+    }
+    if (matches(text, ["tumor", "resistance", "combination therapies"])) {
+      return "AI-designed cancer combination therapies";
+    }
+    return "AI-native biotech research infrastructure";
   }
 
   if (company.category === "AI-Native Consumer & Social") {

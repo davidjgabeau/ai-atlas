@@ -8,14 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { UsagePotential } from "@/types/market";
 
 export type SubmitCompanyFormState = {
   company_name: string;
   website_url: string;
   founder_name: string;
   email: string;
-  usage_potential: UsagePotential;
   description: string;
 };
 
@@ -24,7 +22,6 @@ export const initialSubmitCompanyFormState: SubmitCompanyFormState = {
   website_url: "",
   founder_name: "",
   email: "",
-  usage_potential: "Promising",
   description: "",
 };
 

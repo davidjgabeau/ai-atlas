@@ -134,13 +134,26 @@ function isLikelyPersonByline(name: string, text: string) {
   if (words.length < 2 || words.length > 4) return false;
   if (!words.every((word) => /^[A-Z][a-z.'-]+$/.test(word))) return false;
 
+  if (
+    /\b(ai|bio|biosciences|health|labs?|systems?|technologies|therapeutics|robotics|data|security)\b/i.test(
+      name,
+    )
+  ) {
+    return false;
+  }
+
   return (
     relativeTimePattern.test(text) ||
-    /\b(by|author|reporter|writer|editor)\b/i.test(text) ||
+    /\b(author|reporter|writer|editor)\b/i.test(text) ||
+    new RegExp(`\\bby\\s+${escapeRegExp(name)}\\b`, "i").test(text) ||
     publisherPattern.test(text)
   );
 }
 
 function normalizeWhitespace(value: string) {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

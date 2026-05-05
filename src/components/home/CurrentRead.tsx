@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import type { Company, MarketInsight } from "@/types/market";
 
@@ -19,6 +22,13 @@ export function CurrentRead({
           <p className="mt-2 text-sm leading-[1.5] text-[#5F5A52]">
             Three notes from the full early-stage NYC AI map and latest additions.
           </p>
+          <Link
+            href="/patterns"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
+          >
+            View all patterns
+            <ArrowRight className="size-3.5" />
+          </Link>
         </div>
         <div className="lg:col-span-7 lg:col-start-6">
           <div className="divide-y divide-[#E7E1D8] border-y border-[#E7E1D8]">

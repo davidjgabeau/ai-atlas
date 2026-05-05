@@ -1,18 +1,22 @@
 import {
   categories,
   companyStatuses,
-  usagePotentials,
   type Category,
   type Company,
   type CompanyStatus,
   type DiscoveryReason,
+  type Founder,
   type GeneratedCompanyFields,
   type InclusionReason,
-  type UsagePotential,
 } from "@/types/market";
 import { generateCompanyHook } from "@/lib/editorial/generateCompanyHook";
 import { generateInclusionReason } from "@/lib/agent/generateInclusionReason";
 import { normalizeSignalLabel } from "@/lib/signals/companySignal";
+import {
+  inferConsumptionProfile,
+  normalizeConsumptionIntensity,
+  normalizeConsumptionProfiles,
+} from "@/lib/model-usage/consumptionProfile";
 
 const defaultGenerated: GeneratedCompanyFields = {
   hook: "Generated when saved",
@@ -45,7 +49,10 @@ const patchableCompanyFields = [
   "why_it_matters",
   "ai_usage_profile",
   "openai_fit",
-  "usage_potential",
+  "founders",
+  "consumption_profile",
+  "consumption_intensity",
+  "consumption_note",
   "recent_activity_text",
   "recent_activity_date",
   "is_featured",
@@ -90,7 +97,12 @@ export function companyToDatabasePayload(input: Partial<Company>) {
     why_it_matters: cleanString(input.why_it_matters),
     ai_usage_profile: cleanString(input.ai_usage_profile),
     openai_fit: cleanString(input.openai_fit),
-    usage_potential: normalizeUsagePotential(input.usage_potential),
+    founders: normalizeFounders(input.founders, founderName),
+    consumption_profile: normalizeConsumptionProfiles(input.consumption_profile),
+    consumption_intensity: normalizeConsumptionIntensity(
+      input.consumption_intensity,
+    ),
+    consumption_note: cleanString(input.consumption_note),
     recent_activity_text: cleanString(input.recent_activity_text),
     recent_activity_date:
       cleanString(input.recent_activity_date) || now,
@@ -100,6 +112,14 @@ export function companyToDatabasePayload(input: Partial<Company>) {
     created_at: cleanString(input.created_at) || now,
     updated_at: now,
   } satisfies Omit<Company, "generated">;
+  const consumption = company.consumption_profile.length > 0
+    ? {
+        consumption_profile: company.consumption_profile,
+        consumption_intensity: company.consumption_intensity,
+        consumption_note: company.consumption_note,
+      }
+    : inferConsumptionProfile(company);
+  Object.assign(company, consumption);
   const generated = generateCompanyHook(company);
   const companyWithGenerated = {
     ...company,
@@ -136,8 +156,6 @@ export function companyPatchToDatabasePayload(input: Partial<Company>) {
 
       if (field === "category") {
         payload.category = normalizeCategory(value);
-      } else if (field === "usage_potential") {
-        payload.usage_potential = normalizeUsagePotential(value);
       } else if (field === "status") {
         payload.status = normalizeCompanyStatus(value);
       } else if (field === "is_featured" || field === "is_breakout") {
@@ -150,6 +168,14 @@ export function companyPatchToDatabasePayload(input: Partial<Company>) {
         payload.inclusion_reason = normalizeInclusionReason(value);
       } else if (field === "founder_name") {
         payload.founder_name = cleanOptionalString(value);
+      } else if (field === "founders") {
+        payload.founders = normalizeFounders(value);
+      } else if (field === "consumption_profile") {
+        payload.consumption_profile = normalizeConsumptionProfiles(value);
+      } else if (field === "consumption_intensity") {
+        payload.consumption_intensity = normalizeConsumptionIntensity(value);
+      } else if (field === "consumption_note") {
+        payload.consumption_note = cleanString(value);
       } else if (field === "x_handle") {
         payload.x_handle = cleanSocialHandle(value);
       } else {
@@ -254,16 +280,36 @@ function normalizeCategory(value: unknown): Category {
     : "Fintech & Trading AI";
 }
 
-function normalizeUsagePotential(value: unknown): UsagePotential {
-  return usagePotentials.includes(value as UsagePotential)
-    ? (value as UsagePotential)
-    : "Emerging";
-}
-
 function normalizeCompanyStatus(value: unknown): CompanyStatus {
   return companyStatuses.includes(value as CompanyStatus)
     ? (value as CompanyStatus)
     : "draft";
+}
+
+function normalizeFounders(value: unknown, founderName?: string): Founder[] {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => {
+        if (!item || typeof item !== "object") return null;
+        const founder = item as Partial<Founder>;
+        const name = cleanString(founder.name);
+        if (!name) return null;
+
+        return {
+          name,
+          title: cleanString(founder.title) || "Co-founder",
+        };
+      })
+      .filter((item): item is Founder => Boolean(item))
+      .slice(0, 4);
+  }
+
+  return (founderName ?? "")
+    .split(/;|\band\b/)
+    .map((name) => name.trim())
+    .filter((name) => name && !/team|founders/i.test(name))
+    .slice(0, 4)
+    .map((name) => ({ name, title: "Co-founder" }));
 }
 
 function normalizeGenerated(value: unknown): GeneratedCompanyFields {

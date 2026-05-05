@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   ArrowUpRight,
+  ChevronDown,
   ExternalLink,
   Mail,
   MapPinned,
@@ -13,6 +14,7 @@ import {
 
 import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
+import { FoundationModelUsage } from "@/components/company/FoundationModelUsage";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import {
   buildCompanyMapLocations,
@@ -25,6 +27,13 @@ import { UsageBadge } from "@/components/market-map/usage-badge";
 import { SaveCompanyButton } from "@/components/profile/save-company-button";
 import { AppShell } from "@/components/site/app-shell";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Select,
   SelectContent,
@@ -50,8 +59,11 @@ import {
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
 import { cn } from "@/lib/utils";
 import {
+  consumptionProfileLabels,
+  consumptionProfiles,
   type Category,
   type Company,
+  type ConsumptionProfile,
 } from "@/types/market";
 
 const companyDetails: Record<
@@ -84,6 +96,7 @@ export function MarketMapClient({
   const [category, setCategory] = useState<Category | "all">("all");
   const [stage, setStage] = useState("all");
   const [neighborhood, setNeighborhood] = useState("all");
+  const [usageProfiles, setUsageProfiles] = useState<ConsumptionProfile[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [detailDrawerOpen, setDetailDrawerOpen] = useState(false);
 
@@ -152,7 +165,11 @@ export function MarketMapClient({
         (category === "all" || company.category === category) &&
         (stage === "all" || company.stage === stage) &&
         (activeNeighborhood === "all" ||
-          location?.neighborhood === activeNeighborhood)
+          location?.neighborhood === activeNeighborhood) &&
+        (usageProfiles.length === 0 ||
+          usageProfiles.some((profile) =>
+            company.consumption_profile.includes(profile),
+          ))
       );
     });
   }, [
@@ -162,6 +179,7 @@ export function MarketMapClient({
     locationBySlug,
     search,
     stage,
+    usageProfiles,
   ]);
 
   const filteredLocations = useMemo(
@@ -180,7 +198,8 @@ export function MarketMapClient({
     search.length > 0 ||
     category !== "all" ||
     stage !== "all" ||
-    activeNeighborhood !== "all";
+    activeNeighborhood !== "all" ||
+    usageProfiles.length > 0;
 
   const selectCompany = useCallback((slug: string) => {
     setSelectedId(slug);
@@ -197,6 +216,7 @@ export function MarketMapClient({
     setCategory("all");
     setStage("all");
     setNeighborhood("all");
+    setUsageProfiles([]);
     closeCompanyDrawer();
   }
 
@@ -222,6 +242,7 @@ export function MarketMapClient({
             neighborhood={activeNeighborhood}
             stages={stages}
             neighborhoods={neighborhoods}
+            usageProfiles={usageProfiles}
             hasFilters={hasFilters}
             onCategoryChange={(value) => {
               setCategory(value);
@@ -233,6 +254,10 @@ export function MarketMapClient({
             }}
             onNeighborhoodChange={(value) => {
               setNeighborhood(value);
+              closeCompanyDrawer();
+            }}
+            onUsageProfilesChange={(nextProfiles) => {
+              setUsageProfiles(nextProfiles);
               closeCompanyDrawer();
             }}
             onReset={resetView}
@@ -346,10 +371,12 @@ function MapFilterRow({
   neighborhood,
   stages,
   neighborhoods,
+  usageProfiles,
   hasFilters,
   onCategoryChange,
   onStageChange,
   onNeighborhoodChange,
+  onUsageProfilesChange,
   onReset,
 }: {
   category: Category | "all";
@@ -357,14 +384,16 @@ function MapFilterRow({
   neighborhood: string;
   stages: string[];
   neighborhoods: string[];
+  usageProfiles: ConsumptionProfile[];
   hasFilters: boolean;
   onCategoryChange: (value: Category | "all") => void;
   onStageChange: (value: string) => void;
   onNeighborhoodChange: (value: string) => void;
+  onUsageProfilesChange: (value: ConsumptionProfile[]) => void;
   onReset: () => void;
 }) {
   return (
-    <div className="mt-5 grid grid-cols-1 items-center gap-2.5 sm:grid-cols-[220px_170px_220px_auto]">
+    <div className="mt-5 grid grid-cols-1 items-center gap-2.5 sm:grid-cols-[220px_170px_220px_220px_auto]">
       <Select
         value={category}
         onValueChange={(value) => onCategoryChange(value as Category | "all")}
@@ -410,6 +439,11 @@ function MapFilterRow({
         </SelectContent>
       </Select>
 
+      <UsageProfileFilter
+        selected={usageProfiles}
+        onChange={onUsageProfilesChange}
+      />
+
       <Button
         variant="ghost"
         className="h-10 justify-self-start text-[#7A746C]"
@@ -419,6 +453,63 @@ function MapFilterRow({
         Clear
       </Button>
     </div>
+  );
+}
+
+function UsageProfileFilter({
+  selected,
+  onChange,
+}: {
+  selected: ConsumptionProfile[];
+  onChange: (value: ConsumptionProfile[]) => void;
+}) {
+  const selectedLabel =
+    selected.length === 0
+      ? "Usage profile"
+      : selected.length === 1
+        ? consumptionProfileLabels[selected[0]]
+        : `${selected.length} usage profiles`;
+
+  function toggleProfile(profile: ConsumptionProfile) {
+    onChange(
+      selected.includes(profile)
+        ? selected.filter((item) => item !== profile)
+        : [...selected, profile],
+    );
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          type="button"
+          variant="outline"
+          className="h-10 w-full justify-between rounded-md border-[#E7E1D8] bg-[#FBFAF7] px-3 text-left text-sm font-normal shadow-none hover:bg-[#FBFAF7]"
+        >
+          <span className="truncate">{selectedLabel}</span>
+          <ChevronDown className="size-4 text-[#7A746C]" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="start"
+        className="min-w-[260px] border border-[#E7E1D8] bg-[#FBFAF7] p-1 text-[#181818] shadow-none"
+      >
+        <DropdownMenuLabel className="px-2 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+          Usage profile
+        </DropdownMenuLabel>
+        {consumptionProfiles.map((profile) => (
+          <DropdownMenuCheckboxItem
+            key={profile}
+            checked={selected.includes(profile)}
+            onCheckedChange={() => toggleProfile(profile)}
+            onSelect={(event) => event.preventDefault()}
+            className="rounded-md px-2 py-2 text-sm text-[#181818] focus:bg-[rgb(154_61_43_/_0.08)]"
+          >
+            {consumptionProfileLabels[profile]}
+          </DropdownMenuCheckboxItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
@@ -854,6 +945,10 @@ function matchesCompanyQuery(
       company.why_it_matters,
       company.founder_name ?? "",
       company.openai_fit,
+      company.consumption_note,
+      ...company.consumption_profile.map(
+        (profile) => consumptionProfileLabels[profile],
+      ),
       company.recent_activity_text,
       getCompanySignalLabel(company),
       location?.neighborhood ?? "",
@@ -1047,13 +1142,8 @@ function CompanyInspector({
       </div>
 
       <div className="space-y-7 px-7 py-6">
-        <InspectorSection title="Model usage" action={<UsageBadge value={signalLabel} />}>
-          <p className="text-sm leading-6 text-[#5F5A52]">
-            {company.ai_usage_profile}
-          </p>
-          <p className="mt-3 text-xs leading-5 text-[#7A746C]">
-            Platform fit: {company.openai_fit}
-          </p>
+        <InspectorSection title="Foundation model usage">
+          <FoundationModelUsage company={company} compact />
         </InspectorSection>
 
         <InspectorSection

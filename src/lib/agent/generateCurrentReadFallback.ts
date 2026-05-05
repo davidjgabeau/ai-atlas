@@ -17,17 +17,23 @@ const workflowBySlug: Record<string, string> = {
   auctor: "enterprise software implementation",
   "bevel": "wearable health",
   "blossom-health": "telepsychiatry operations",
+  artemis: "security operations",
+  astelia: "exposure management",
   cvector: "industrial facilities",
   dualentry: "accounting and ERP",
   flora: "creative production",
   foresight: "private-market investing",
+  ghosteye: "human-layer security testing",
   "jimini-health": "care delivery",
   "manifest-os": "legal services",
   meridian: "spreadsheets and financial modeling",
   modus: "accounting and audit",
   "ohai-ai": "household coordination",
+  "output-biosciences": "large biological models",
   polimorphic: "government services",
   profound: "AI search visibility",
+  "proxima-bio": "proximity-based drug discovery",
+  "serinus-biosciences": "cancer combination therapy",
   tapestry: "social graphs",
   "thread-ai": "enterprise AI workflows",
   vellum: "LLM production tooling",
@@ -117,7 +123,9 @@ function createBuyerPatternInsight(
       categories: [
         "Fintech & Trading AI",
         "Legal & Compliance AI",
+        "Cybersecurity AI",
         "Health & Clinical AI",
+        "Life Sciences AI",
         "Enterprise GTM & RevOps AI",
       ],
     },
@@ -153,6 +161,7 @@ function createProductPatternInsight(
       categories: [
         "AI-Native Consumer & Social",
         "Health & Clinical AI",
+        "Life Sciences AI",
         "Media, Ads & Creative AI",
       ],
     },
@@ -281,8 +290,8 @@ function createInfrastructureFallback(companies: AgentCompany[]): EditorialItem 
 function createHealthcareFallback(companies: AgentCompany[]): EditorialItem | null {
   const selected = selectCompanies(companies, [
     { slugs: ["jimini-health", "bevel", "blossom-health"] },
-    { keywords: ["care delivery", "wearable health", "telepsychiatry", "clinical"] },
-    { categories: ["Health & Clinical AI"] },
+    { keywords: ["care delivery", "wearable health", "telepsychiatry", "clinical", "biological", "drug discovery"] },
+    { categories: ["Health & Clinical AI", "Life Sciences AI"] },
   ]);
 
   if (selected.length < 2) return null;
@@ -338,7 +347,9 @@ function getWorkflow(company: AgentCompany) {
   if (text.includes("spreadsheet")) return "spreadsheets";
   if (text.includes("private market")) return "private markets";
   if (text.includes("legal") || text.includes("compliance")) return "legal review";
+  if (text.includes("security") || text.includes("soc") || text.includes("vulnerab")) return "security operations";
   if (text.includes("clinical") || text.includes("care")) return "care delivery";
+  if (text.includes("drug") || text.includes("biology") || text.includes("biological")) return "biological modeling";
   if (text.includes("creative")) return "creative production";
   if (text.includes("social graph")) return "social graphs";
   if (text.includes("household") || text.includes("family")) return "household coordination";
@@ -368,8 +379,10 @@ function formatCategoryForWorkflow(category: string) {
   return category
     .replace("Fintech & Trading AI", "finance workflows")
     .replace("Legal & Compliance AI", "legal review")
+    .replace("Cybersecurity AI", "security operations")
     .replace("Media, Ads & Creative AI", "creative production")
     .replace("Health & Clinical AI", "care delivery")
+    .replace("Life Sciences AI", "drug discovery and biology")
     .replace("AI-Native Consumer & Social", "consumer behavior")
     .replace("Agent Infrastructure", "agent infrastructure")
     .replace("Model Tools & Dev Platform", "developer tooling")

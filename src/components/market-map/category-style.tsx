@@ -1,6 +1,8 @@
 import {
   Banknote,
   BriefcaseBusiness,
+  Dna,
+  ShieldCheck,
   Database,
   Megaphone,
   Network,
@@ -43,6 +45,15 @@ export const categoryStyles: Record<Category, CategoryStyle> = {
     badgeClassName: "bg-violet-50 text-[#7C3AED] ring-[#7C3AED]/20",
     surfaceClassName: "app-card-border category-hover-card",
   },
+  "Cybersecurity AI": {
+    icon: ShieldCheck,
+    avatarSrc: "/avatars/categories/cybersecurity-ai.png",
+    color: "#0F766E",
+    surfaceColor: "rgb(15 118 110 / 6%)",
+    iconClassName: "bg-teal-100 text-[#0F766E] ring-[#0F766E]/20",
+    badgeClassName: "bg-teal-50 text-[#0F766E] ring-[#0F766E]/20",
+    surfaceClassName: "app-card-border category-hover-card",
+  },
   "Media, Ads & Creative AI": {
     icon: Megaphone,
     avatarSrc: "/avatars/categories/media-ads-creative-ai.png",
@@ -59,6 +70,15 @@ export const categoryStyles: Record<Category, CategoryStyle> = {
     surfaceColor: "rgb(5 150 105 / 6%)",
     iconClassName: "bg-emerald-100 text-[#059669] ring-[#059669]/20",
     badgeClassName: "bg-emerald-50 text-[#059669] ring-[#059669]/20",
+    surfaceClassName: "app-card-border category-hover-card",
+  },
+  "Life Sciences AI": {
+    icon: Dna,
+    avatarSrc: "/avatars/categories/life-sciences-ai.png",
+    color: "#047857",
+    surfaceColor: "rgb(4 120 87 / 6%)",
+    iconClassName: "bg-emerald-100 text-[#047857] ring-[#047857]/20",
+    badgeClassName: "bg-emerald-50 text-[#047857] ring-[#047857]/20",
     surfaceClassName: "app-card-border category-hover-card",
   },
   "AI-Native Consumer & Social": {

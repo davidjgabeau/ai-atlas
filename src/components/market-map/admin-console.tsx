@@ -14,7 +14,6 @@ import {
 
 import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CompanyLogo } from "@/components/market-map/company-logo";
-import { UsageBadge } from "@/components/market-map/usage-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -48,15 +47,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { formatDate } from "@/lib/format";
 import { formatFundingHeadline } from "@/lib/funding";
 import {
+  formatConsumptionIntensity,
+  getConsumptionProfileLabel,
+} from "@/lib/model-usage/consumptionProfile";
+import {
   categories,
   companyStatuses,
-  usagePotentials,
+  consumptionIntensities,
+  consumptionProfiles,
   type Category,
   type Company,
   type CompanyStatus,
+  type ConsumptionIntensity,
+  type ConsumptionProfile,
   type Submission,
   type SubmissionStatus,
-  type UsagePotential,
 } from "@/types/market";
 
 export function AdminConsole({
@@ -134,7 +139,10 @@ export function AdminConsole({
       why_it_matters: "",
       ai_usage_profile: "",
       openai_fit: "",
-      usage_potential: "Emerging",
+      founders: [],
+      consumption_profile: [],
+      consumption_intensity: "low",
+      consumption_note: "",
       recent_activity_text: "",
       recent_activity_date: now.slice(0, 10),
       is_featured: false,
@@ -434,7 +442,11 @@ export function AdminConsole({
                       </span>
                     </TableCell>
                     <TableCell>
-                      <UsageBadge value={company.usage_potential} />
+                      <span className="text-sm text-[#5F5A52]">
+                        {company.consumption_profile[0]
+                          ? getConsumptionProfileLabel(company.consumption_profile[0])
+                          : "Not evaluated"}
+                      </span>
                     </TableCell>
                     <TableCell>
                       {company.is_featured ? (
@@ -508,7 +520,6 @@ export function AdminConsole({
                   <TableHead>Company</TableHead>
                   <TableHead>Founder</TableHead>
                   <TableHead>Description</TableHead>
-                  <TableHead>Suggested signal</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Created</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
@@ -544,13 +555,6 @@ export function AdminConsole({
                     </TableCell>
                     <TableCell className="max-w-sm whitespace-normal leading-6 text-[#5F5A52]">
                       {submission.description}
-                    </TableCell>
-                    <TableCell>
-                      {submission.usage_potential ? (
-                        <UsageBadge value={submission.usage_potential} />
-                      ) : (
-                        <span className="text-sm text-[#9B948A]">Not set</span>
-                      )}
                     </TableCell>
                     <TableCell>
                       <StatusBadge status={submission.status} />
@@ -908,25 +912,59 @@ function CompanyEditor({
               </EditorField>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
-              <EditorField label="Internal priority tier" id="usage_potential">
+              <EditorField label="Usage profile" id="consumption_profile">
                 <Select
-                  value={company.usage_potential}
-                  onValueChange={(value) =>
-                    update("usage_potential", value as UsagePotential)
-                  }
+                  value={company.consumption_profile[0] ?? "none"}
+                  onValueChange={(value) => {
+                    update(
+                      "consumption_profile",
+                      value === "none" ? [] : [value as ConsumptionProfile],
+                    );
+                  }}
                 >
-                  <SelectTrigger id="usage_potential" className="w-full">
+                  <SelectTrigger id="consumption_profile" className="w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {usagePotentials.map((potential) => (
-                      <SelectItem key={potential} value={potential}>
-                        {formatInternalUsageTier(potential)}
+                    <SelectItem value="none">Not evaluated</SelectItem>
+                    {consumptionProfiles.map((profile) => (
+                      <SelectItem key={profile} value={profile}>
+                        {getConsumptionProfileLabel(profile)}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </EditorField>
+              <EditorField label="Usage intensity" id="consumption_intensity">
+                <Select
+                  value={company.consumption_intensity}
+                  onValueChange={(value) =>
+                    update("consumption_intensity", value as ConsumptionIntensity)
+                  }
+                >
+                  <SelectTrigger id="consumption_intensity" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {consumptionIntensities.map((intensity) => (
+                      <SelectItem key={intensity} value={intensity}>
+                        {formatConsumptionIntensity(intensity)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </EditorField>
+              <EditorField label="Usage note" id="consumption_note">
+                <Input
+                  id="consumption_note"
+                  value={company.consumption_note}
+                  onChange={(event) =>
+                    update("consumption_note", event.target.value)
+                  }
+                />
+              </EditorField>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
               <EditorField label="Recent activity text" id="recent_activity_text">
                 <Input
                   id="recent_activity_text"
@@ -1065,17 +1103,6 @@ function StatusMessage({
       {error || message}
     </span>
   );
-}
-
-function formatInternalUsageTier(value: UsagePotential) {
-  const labels: Record<UsagePotential, string> = {
-    Emerging: "Tier 1",
-    Promising: "Tier 2",
-    "High Potential": "Tier 3",
-    "Breakout Watch": "Editorial watch",
-  };
-
-  return labels[value];
 }
 
 async function sendAdminRequest<T = Record<string, never>>(

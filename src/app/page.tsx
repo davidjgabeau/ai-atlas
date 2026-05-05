@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Search } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { CurrentRead } from "@/components/home/CurrentRead";
@@ -12,6 +12,7 @@ import { RecentlyAdded } from "@/components/home/RecentlyAdded";
 import { AtlasAvatarMark } from "@/components/site/atlas-avatar-mark";
 import { MobileNavMenu } from "@/components/site/mobile-nav-menu";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
+import { GlobalSearch } from "@/components/site/global-search";
 import { ProfileHeaderLink } from "@/components/site/profile-header-link";
 import { SpriteHeaderLink } from "@/components/site/sprite-header-link";
 import { Button } from "@/components/ui/button";
@@ -64,8 +65,10 @@ export async function generateMetadata(): Promise<Metadata> {
 const categoryPulsePhrases: Record<Category, string> = {
   "Fintech & Trading AI": "research, risk, diligence",
   "Legal & Compliance AI": "regulated review workflows",
+  "Cybersecurity AI": "security operations and exposure",
   "Media, Ads & Creative AI": "creative workflow signal",
   "Health & Clinical AI": "admin and payer workflows",
+  "Life Sciences AI": "drug discovery and biology",
   "AI-Native Consumer & Social": "social, memory, companions",
   "Agent Infrastructure": "runtime and reliability",
   "Model Tools & Dev Platform": "evals and app tooling",
@@ -222,22 +225,11 @@ function SiteNav() {
           </span>
         </Link>
 
-        <form
-          action="/companies"
-          className="relative mx-auto hidden min-w-[280px] flex-1 md:block lg:max-w-[560px]"
-        >
-          <label htmlFor="home-search" className="sr-only">
-            Search companies, sectors, founders
-          </label>
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]" />
-          <input
-            id="home-search"
-            name="q"
-            type="search"
-            placeholder="Search companies, sectors, founders"
-            className="h-10 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-sm text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
-          />
-        </form>
+        <GlobalSearch
+          id="home-search"
+          className="mx-auto hidden min-w-[280px] flex-1 md:block lg:max-w-[560px]"
+          inputClassName="h-10 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-sm text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+        />
 
         <nav
           aria-label="Primary"
@@ -249,6 +241,7 @@ function SiteNav() {
             label="Map"
           />
           <SpriteHeaderLink href="/categories" icon="grid" label="Categories" />
+          <SpriteHeaderLink href="/patterns" icon="compass" label="Patterns" />
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
           <SpriteHeaderLink href="/insights" icon="compass" label="Highlights" />
@@ -262,22 +255,11 @@ function SiteNav() {
           <MobileNavMenu />
         </div>
       </div>
-      <form
-        action="/companies"
-        className="relative mx-5 my-4 md:hidden"
-      >
-        <label htmlFor="home-search-mobile" className="sr-only">
-          Search companies, sectors, founders
-        </label>
-        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]" />
-        <input
-          id="home-search-mobile"
-          name="q"
-          type="search"
-          placeholder="Search companies, sectors, founders"
-          className="h-12 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-[16px] text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
-        />
-      </form>
+      <GlobalSearch
+        id="home-search-mobile"
+        className="mx-5 my-4 md:hidden"
+        inputClassName="h-12 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-[16px] text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+      />
     </header>
   );
 }
@@ -331,6 +313,9 @@ function SiteFooter() {
           </Link>
           <Link href="/categories" className="hover:text-[#181818]">
             Categories
+          </Link>
+          <Link href="/patterns" className="hover:text-[#181818]">
+            Patterns
           </Link>
           <Link href="/feed" className="hover:text-[#181818]">
             Newsfeed

@@ -17,7 +17,9 @@ type CompanyHashInput = Pick<
   | "why_it_matters"
   | "ai_usage_profile"
   | "openai_fit"
-  | "usage_potential"
+  | "consumption_profile"
+  | "consumption_intensity"
+  | "consumption_note"
   | "recent_activity_text"
   | "recent_activity_date"
 >;
@@ -39,7 +41,9 @@ export function getCompanySourceHash(company: CompanyHashInput) {
     why_it_matters: company.why_it_matters,
     ai_usage_profile: company.ai_usage_profile,
     openai_fit: company.openai_fit,
-    usage_potential: company.usage_potential,
+    consumption_profile: company.consumption_profile,
+    consumption_intensity: company.consumption_intensity,
+    consumption_note: company.consumption_note,
     recent_activity_text: company.recent_activity_text,
     recent_activity_date: company.recent_activity_date,
   });

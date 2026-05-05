@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { CompanyProfileViewCounter } from "@/components/company/CompanyProfileViewCounter";
 import { CompanyViewCount } from "@/components/company/CompanyViewCount";
+import { FoundationModelUsage } from "@/components/company/FoundationModelUsage";
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CompanyCard } from "@/components/market-map/company-card";
@@ -19,6 +20,7 @@ import {
   getCategorySlug,
   marketMapCompanies,
 } from "@/data/market";
+import { getPatternsForCompanySlug } from "@/data/patterns";
 import { formatDate } from "@/lib/format";
 import { formatFundingBody, getFundingRows } from "@/lib/funding";
 import {
@@ -102,6 +104,7 @@ export default async function CompanyProfilePage({
   const introRequestHref = getIntroRequestMailto(company);
   const signalLabel = getCompanySignalLabel(company);
   const profileBriefs = getCompanyProfileBriefs(company);
+  const companyPatterns = getPatternsForCompanySlug(company.slug);
   const companyPosts = await getCompanySocialFeed({
     companyId: company.id,
     limit: 4,
@@ -169,12 +172,10 @@ export default async function CompanyProfilePage({
               companies={companies}
               excludeCompanyId={company.id}
             />
-            <ProfileSection
-              title="How they use AI/models"
-              body={profileBriefs.aiModelUse}
-              companies={companies}
-              excludeCompanyId={company.id}
-            />
+            {company.founders.length > 0 ? (
+              <FoundersSection founders={company.founders} />
+            ) : null}
+            <FoundationUsageSection company={company} />
             <ProfileSection
               title="NYC footprint"
               body={footprintBody}
@@ -282,6 +283,9 @@ export default async function CompanyProfilePage({
                   </p>
                 )}
               </PanelSection>
+              <PanelSection title="Foundation model usage">
+                <FoundationModelUsage company={company} compact />
+              </PanelSection>
               <PanelSection title="Startup snapshot">
                 <dl className="grid gap-4 text-sm">
                   <SnapshotRow label="Stage" value={company.stage} />
@@ -379,6 +383,26 @@ export default async function CompanyProfilePage({
         </div>
       </section>
 
+      {companyPatterns.length > 0 ? (
+        <section className="border-t border-[#E7E1D8] bg-section">
+          <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#181818] md:text-[1.75rem]">
+              Patterns this company appears in
+            </h2>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {companyPatterns.map((pattern) => (
+                <Link
+                  key={pattern.slug}
+                  href={`/patterns/${pattern.slug}`}
+                  className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-3 py-2 text-sm font-semibold text-[#181818] transition hover:bg-[rgb(154_61_43_/_0.06)]"
+                >
+                  {pattern.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
       {relatedCompanies.length > 0 ? (
         <section className="border-t border-[#E7E1D8] bg-[var(--app-surface)]">
           <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -462,6 +486,40 @@ function ProfileSection({
           body
         )}
       </p>
+    </section>
+  );
+}
+
+function FoundersSection({ founders }: { founders: Company["founders"] }) {
+  return (
+    <section className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border">
+      <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+        Founders
+      </h2>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        {founders.map((founder) => (
+          <div
+            key={`${founder.name}:${founder.title}`}
+            className="border-t border-[#E7E1D8] pt-4"
+          >
+            <p className="font-semibold text-[#181818]">{founder.name}</p>
+            <p className="mt-1 text-sm text-[#7A746C]">{founder.title}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FoundationUsageSection({ company }: { company: Company }) {
+  return (
+    <section className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border">
+      <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+        Foundation model usage
+      </h2>
+      <div className="mt-3">
+        <FoundationModelUsage company={company} />
+      </div>
     </section>
   );
 }

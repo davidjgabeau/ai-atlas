@@ -98,7 +98,8 @@ export function inferCompanySignalLabel(
   if (
     category === "Agent Infrastructure" ||
     category === "Model Tools & Dev Platform" ||
-    category === "Data & Memory Layer"
+    category === "Data & Memory Layer" ||
+    category === "Life Sciences AI"
   ) {
     return "Infra signal";
   }
@@ -110,6 +111,7 @@ export function inferCompanySignalLabel(
   if (
     category === "Fintech & Trading AI" ||
     category === "Legal & Compliance AI" ||
+    category === "Cybersecurity AI" ||
     category === "Health & Clinical AI" ||
     matches(text, [
       "buyer",
@@ -118,6 +120,8 @@ export function inferCompanySignalLabel(
       "clinic",
       "finance team",
       "legal team",
+      "security team",
+      "soc",
       "government",
       "operator",
     ])

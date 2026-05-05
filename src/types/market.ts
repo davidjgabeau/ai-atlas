@@ -1,8 +1,10 @@
 export const categories = [
   "Fintech & Trading AI",
   "Legal & Compliance AI",
+  "Cybersecurity AI",
   "Media, Ads & Creative AI",
   "Health & Clinical AI",
+  "Life Sciences AI",
   "AI-Native Consumer & Social",
   "Agent Infrastructure",
   "Model Tools & Dev Platform",
@@ -10,18 +12,39 @@ export const categories = [
   "Data & Memory Layer",
 ] as const;
 
-export const usagePotentials = [
-  "Emerging",
-  "Promising",
-  "High Potential",
-  "Breakout Watch",
+export const consumptionProfiles = [
+  "consumer_inference",
+  "agentic_loops",
+  "batch_document_processing",
+  "realtime_voice",
+  "code_generation",
+  "multimodal_processing",
+  "embeddings_semantic_search",
+] as const;
+
+export const consumptionProfileLabels = {
+  consumer_inference: "Consumer inference",
+  agentic_loops: "Agentic loops",
+  batch_document_processing: "Batch document processing",
+  realtime_voice: "Real-time voice",
+  code_generation: "Code generation",
+  multimodal_processing: "Multimodal processing",
+  embeddings_semantic_search: "Embeddings & semantic search",
+} as const satisfies Record<(typeof consumptionProfiles)[number], string>;
+
+export const consumptionIntensities = [
+  "low",
+  "moderate",
+  "high",
+  "very_high",
 ] as const;
 
 export const companyStatuses = ["draft", "published", "archived"] as const;
 export const submissionStatuses = ["new", "accepted", "rejected"] as const;
 
 export type Category = (typeof categories)[number];
-export type UsagePotential = (typeof usagePotentials)[number];
+export type ConsumptionProfile = (typeof consumptionProfiles)[number];
+export type ConsumptionIntensity = (typeof consumptionIntensities)[number];
 export type CompanyStatus = (typeof companyStatuses)[number];
 export type SubmissionStatus = (typeof submissionStatuses)[number];
 
@@ -62,6 +85,11 @@ export type CompanyProfileBriefs = {
 export type CompanyMetrics = {
   views: number;
   lastViewedAt?: string;
+};
+
+export type Founder = {
+  name: string;
+  title: string;
 };
 
 export type DiscoveryReasonTrigger =
@@ -187,7 +215,10 @@ export type Company = {
   why_it_matters: string;
   ai_usage_profile: string;
   openai_fit: string;
-  usage_potential: UsagePotential;
+  founders: Founder[];
+  consumption_profile: ConsumptionProfile[];
+  consumption_intensity: ConsumptionIntensity;
+  consumption_note: string;
   recent_activity_text: string;
   recent_activity_date: string;
   is_featured: boolean;
@@ -208,7 +239,6 @@ export type Submission = {
   founder_name: string;
   email: string;
   description: string;
-  usage_potential?: UsagePotential;
   status: SubmissionStatus;
   created_at: string;
 };

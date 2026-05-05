@@ -6,6 +6,7 @@ import {
   hasSupabasePrivilegedCredentials,
 } from "@/lib/supabase/privileged";
 import { generateCompanyHook } from "@/lib/editorial/generateCompanyHook";
+import { inferConsumptionProfile } from "@/lib/model-usage/consumptionProfile";
 import type { AgentCompany, CandidateUpdate } from "@/types/agent";
 import type { Company } from "@/types/market";
 
@@ -247,7 +248,19 @@ function profileToCompanyRow(profile: DiscoveredCandidateProfile) {
     why_it_matters: description,
     ai_usage_profile: `${update.subcategory ? `${update.subcategory}. ` : ""}${description}`,
     openai_fit: getOpenAiFit(category),
-    usage_potential: "Promising",
+    founders: update.founders?.map((founder) => ({
+      name: founder.name,
+      title: founder.role ?? "Co-founder",
+    })) ?? [],
+    ...inferConsumptionProfile({
+      name,
+      category,
+      stage,
+      short_description: oneSentenceDescription,
+      one_line_thesis: oneSentenceDescription,
+      why_it_matters: description,
+      ai_usage_profile: `${update.subcategory ? `${update.subcategory}. ` : ""}${description}`,
+    }),
     recent_activity_text: inclusionReason.body,
     recent_activity_date: now,
     is_featured: false,
@@ -291,7 +304,10 @@ function profileToCompanyRow(profile: DiscoveredCandidateProfile) {
     why_it_matters: baseCompany.why_it_matters,
     ai_usage_profile: baseCompany.ai_usage_profile,
     openai_fit: baseCompany.openai_fit,
-    usage_potential: baseCompany.usage_potential,
+    founders: baseCompany.founders,
+    consumption_profile: baseCompany.consumption_profile,
+    consumption_intensity: baseCompany.consumption_intensity,
+    consumption_note: baseCompany.consumption_note,
     recent_activity_text: baseCompany.recent_activity_text,
     recent_activity_date: baseCompany.recent_activity_date,
     is_featured: false,
@@ -318,8 +334,14 @@ function getOpenAiFit(category: Company["category"]) {
   if (category === "Data & Memory Layer") {
     return "Strong fit for embeddings, retrieval, extraction, document intelligence, and persistent context layers.";
   }
+  if (category === "Cybersecurity AI") {
+    return "Strong fit for triage, structured detection, exposure analysis, and security workflow automation.";
+  }
   if (category === "Health & Clinical AI") {
     return "Good fit for careful summarization, structured extraction, patient communication, and safety-aware reasoning.";
+  }
+  if (category === "Life Sciences AI") {
+    return "Strong fit for multimodal biological data, literature synthesis, experiment planning, and structured scientific reasoning.";
   }
   if (category === "Fintech & Trading AI") {
     return "Strong fit for reasoning models, structured outputs, retrieval, document understanding, and financial workflows.";
@@ -343,8 +365,10 @@ function uniqueStrings(values: string[]) {
 const categorySet = new Set<Company["category"]>([
   "Fintech & Trading AI",
   "Legal & Compliance AI",
+  "Cybersecurity AI",
   "Media, Ads & Creative AI",
   "Health & Clinical AI",
+  "Life Sciences AI",
   "AI-Native Consumer & Social",
   "Agent Infrastructure",
   "Model Tools & Dev Platform",

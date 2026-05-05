@@ -11,6 +11,7 @@ import { isAdminEnabled } from "@/lib/admin";
 const publicNavItems = [
   { href: "/companies", label: "Map", icon: "globe" as const },
   { href: "/categories", label: "Categories", icon: "grid" as const },
+  { href: "/patterns", label: "Patterns", icon: "compass" as const },
   { href: "/feed", label: "Newsfeed", icon: "pin" as const },
   { href: "/jobs", label: "Jobs", icon: "skyline" as const },
   { href: "/insights", label: "Highlights", icon: "compass" as const },

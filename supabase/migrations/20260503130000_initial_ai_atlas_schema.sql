@@ -18,8 +18,10 @@ create table if not exists public.companies (
     category in (
       'Fintech & Trading AI',
       'Legal & Compliance AI',
+      'Cybersecurity AI',
       'Media, Ads & Creative AI',
       'Health & Clinical AI',
+      'Life Sciences AI',
       'AI-Native Consumer & Social',
       'Agent Infrastructure',
       'Model Tools & Dev Platform',
@@ -33,14 +35,12 @@ create table if not exists public.companies (
   why_it_matters text not null default '',
   ai_usage_profile text not null default '',
   openai_fit text not null default '',
-  usage_potential text not null check (
-    usage_potential in (
-      'Emerging',
-      'Promising',
-      'High Potential',
-      'Breakout Watch'
-    )
+  founders jsonb not null default '[]'::jsonb,
+  consumption_profile text[] not null default '{}'::text[],
+  consumption_intensity text not null default 'low' check (
+    consumption_intensity in ('low', 'moderate', 'high', 'very_high')
   ),
+  consumption_note text not null default '',
   recent_activity_text text not null default '',
   recent_activity_date timestamptz not null default now(),
   is_featured boolean not null default false,
@@ -64,14 +64,6 @@ create table if not exists public.submissions (
   founder_name text not null default '',
   email text not null,
   description text not null default '',
-  usage_potential text check (
-    usage_potential in (
-      'Emerging',
-      'Promising',
-      'High Potential',
-      'Breakout Watch'
-    )
-  ),
   status text not null default 'new' check (
     status in ('new', 'accepted', 'rejected')
   ),

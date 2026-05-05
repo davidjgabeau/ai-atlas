@@ -20,8 +20,10 @@ const surfaceTtlDays = 2;
 const categoryPhrases: Record<string, string> = {
   "Fintech & Trading AI": "finance workflows and analyst tools",
   "Legal & Compliance AI": "regulated review work",
+  "Cybersecurity AI": "security operations and exposure management",
   "Media, Ads & Creative AI": "creative production and brand intelligence",
   "Health & Clinical AI": "clinical operations and patient workflows",
+  "Life Sciences AI": "drug discovery and biological modeling",
   "AI-Native Consumer & Social": "consumer behavior and social products",
   "Agent Infrastructure": "agent orchestration and reliability",
   "Model Tools & Dev Platform": "evals and production tooling",

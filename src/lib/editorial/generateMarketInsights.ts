@@ -11,8 +11,10 @@ type InsightDraft = {
 const categoryNames: Record<Company["category"], string> = {
   "Fintech & Trading AI": "Finance AI",
   "Legal & Compliance AI": "Legal AI",
+  "Cybersecurity AI": "Cybersecurity AI",
   "Media, Ads & Creative AI": "Creative AI",
   "Health & Clinical AI": "Health AI",
+  "Life Sciences AI": "Life sciences AI",
   "AI-Native Consumer & Social": "Consumer AI",
   "Agent Infrastructure": "Agent infrastructure",
   "Model Tools & Dev Platform": "Model tooling",
@@ -23,8 +25,10 @@ const categoryNames: Record<Company["category"], string> = {
 const categoryPhrases: Record<Company["category"], string> = {
   "Fintech & Trading AI": "finance AI",
   "Legal & Compliance AI": "legal and compliance workflows",
+  "Cybersecurity AI": "security operations",
   "Media, Ads & Creative AI": "creative AI workflows",
   "Health & Clinical AI": "clinical operations",
+  "Life Sciences AI": "drug discovery and biological modeling",
   "AI-Native Consumer & Social": "consumer AI behavior",
   "Agent Infrastructure": "agent infrastructure",
   "Model Tools & Dev Platform": "production AI tooling",

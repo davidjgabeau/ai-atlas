@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { usagePotentials, type UsagePotential } from "@/types/market";
 
 type SubmissionPayload = {
   company_name?: string;
@@ -9,7 +8,6 @@ type SubmissionPayload = {
   founder_name?: string;
   email?: string;
   description?: string;
-  usage_potential?: UsagePotential;
 };
 
 export async function POST(request: Request) {
@@ -28,11 +26,6 @@ export async function POST(request: Request) {
     founder_name: payload.founder_name?.trim() ?? "",
     email: payload.email.trim(),
     description: payload.description?.trim() ?? "",
-    usage_potential: usagePotentials.includes(
-      payload.usage_potential as UsagePotential,
-    )
-      ? payload.usage_potential
-      : "Promising",
     status: "new",
   };
 

@@ -18,19 +18,23 @@ import {
   categories,
   companyStatuses,
   submissionStatuses,
-  usagePotentials,
   type Category,
   type Company,
   type CompanyMetrics,
   type CompanyProfileBriefs,
   type CompanyStatus,
+  type Founder,
   type DiscoveryReason,
   type GeneratedCompanyFields,
   type InclusionReason,
   type Submission,
   type SubmissionStatus,
-  type UsagePotential,
 } from "@/types/market";
+import {
+  inferConsumptionProfile,
+  normalizeConsumptionIntensity,
+  normalizeConsumptionProfiles,
+} from "@/lib/model-usage/consumptionProfile";
 
 type CompanyRow = Partial<Company> & {
   generated?: GeneratedCompanyFields | null;
@@ -198,7 +202,19 @@ export function normalizeCompany(row: CompanyRow): Company {
       name,
     ),
     openai_fit: normalizeCopyArtifacts(safeString(row.openai_fit, ""), name),
-    usage_potential: normalizeUsagePotential(row.usage_potential),
+    founders: normalizeFounders(row.founders, row.founder_name),
+    ...normalizeConsumptionFields(row, {
+      name,
+      category: normalizeCategory(row.category),
+      stage: safeString(row.stage, "Unknown"),
+      short_description: shortDescription,
+      one_line_thesis: oneLineThesis,
+      why_it_matters: whyItMatters,
+      ai_usage_profile: normalizeCopyArtifacts(
+        safeString(row.ai_usage_profile, ""),
+        name,
+      ),
+    }),
     recent_activity_text: normalizeRecentActivityText(
       safeString(row.recent_activity_text, ""),
       fundingAmount,
@@ -244,6 +260,68 @@ async function normalizeCompanyRowsWithMetrics(rows: CompanyRow[]) {
       metrics: metricsByCompanyId.get(safeString(row.id, "")) ?? row.metrics,
     }),
   );
+}
+
+function normalizeFounders(value: unknown, founderName?: unknown): Founder[] {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => {
+        if (!item || typeof item !== "object") return null;
+        const founder = item as Partial<Founder>;
+        const name = safeString(founder.name, "");
+        if (!name) return null;
+
+        return {
+          name,
+          title: safeString(founder.title, "Co-founder"),
+        };
+      })
+      .filter((item): item is Founder => Boolean(item))
+      .slice(0, 4);
+  }
+
+  return safeString(founderName, "")
+    .split(/;|\band\b/)
+    .map((name) => name.trim())
+    .filter((name) => {
+      const lowered = name.toLowerCase();
+      return (
+        name.length > 0 &&
+        !lowered.includes("team") &&
+        !lowered.includes("founders")
+      );
+    })
+    .slice(0, 4)
+    .map((name) => ({ name, title: "Co-founder" }));
+}
+
+function normalizeConsumptionFields(
+  row: CompanyRow,
+  company: Pick<
+    Company,
+    | "name"
+    | "category"
+    | "stage"
+    | "short_description"
+    | "one_line_thesis"
+    | "why_it_matters"
+    | "ai_usage_profile"
+  >,
+): Pick<
+  Company,
+  "consumption_profile" | "consumption_intensity" | "consumption_note"
+> {
+  const inferred = inferConsumptionProfile(company);
+  const profile = normalizeConsumptionProfiles(row.consumption_profile);
+
+  return {
+    consumption_profile: profile.length > 0 ? profile : inferred.consumption_profile,
+    consumption_intensity: normalizeConsumptionIntensity(
+      row.consumption_intensity || inferred.consumption_intensity,
+    ),
+    consumption_note:
+      safeString(row.consumption_note, "") || inferred.consumption_note,
+  };
 }
 
 function normalizeDiscoveryReason(value: unknown): DiscoveryReason | undefined {
@@ -305,9 +383,6 @@ export function normalizeSubmission(row: SubmissionRow): Submission {
     founder_name: safeString(row.founder_name, ""),
     email: safeString(row.email, ""),
     description: safeString(row.description, ""),
-    usage_potential: row.usage_potential
-      ? normalizeUsagePotential(row.usage_potential)
-      : undefined,
     status: normalizeSubmissionStatus(row.status),
     created_at: safeString(row.created_at, new Date().toISOString()),
   };
@@ -626,12 +701,6 @@ function normalizeCategory(value: unknown): Category {
   return categories.includes(value as Category)
     ? (value as Category)
     : "Fintech & Trading AI";
-}
-
-function normalizeUsagePotential(value: unknown): UsagePotential {
-  return usagePotentials.includes(value as UsagePotential)
-    ? (value as UsagePotential)
-    : "Promising";
 }
 
 function normalizeCompanyStatus(value: unknown): CompanyStatus {

@@ -48,7 +48,9 @@ export type GenerateInclusionReasonInput = {
 const categoryLabels: Record<string, string> = {
   "Fintech & Trading AI": "finance AI",
   "Legal & Compliance AI": "legal workflow AI",
+  "Cybersecurity AI": "security operations AI",
   "Health & Clinical AI": "health AI",
+  "Life Sciences AI": "life sciences AI",
   "Media, Ads & Creative AI": "creative AI",
   "AI-Native Consumer & Social": "consumer AI",
   "Agent Infrastructure": "agent infrastructure",

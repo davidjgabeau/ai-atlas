@@ -5,7 +5,7 @@ import { importLibrary, setOptions } from "@googlemaps/js-api-loader";
 
 import { categoryStyles } from "@/components/market-map/category-style";
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
-import type { Category, Company, UsagePotential } from "@/types/market";
+import type { Category, Company, ConsumptionIntensity } from "@/types/market";
 
 type LatLngLiteral = {
   lat: number;
@@ -113,6 +113,11 @@ const categoryClusters: Record<
     { neighborhood: "Grand Central", position: { lat: 40.7527, lng: -73.9772 } },
     { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
   ],
+  "Cybersecurity AI": [
+    { neighborhood: "Midtown", position: { lat: 40.7549, lng: -73.984 } },
+    { neighborhood: "Grand Central", position: { lat: 40.7527, lng: -73.9772 } },
+    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
+  ],
   "Media, Ads & Creative AI": [
     { neighborhood: "Chelsea", position: { lat: 40.7465, lng: -74.0014 } },
     { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
@@ -122,6 +127,11 @@ const categoryClusters: Record<
     { neighborhood: "Upper East Side", position: { lat: 40.7736, lng: -73.9566 } },
     { neighborhood: "Hudson Yards", position: { lat: 40.754, lng: -74.0022 } },
     { neighborhood: "Lower Manhattan", position: { lat: 40.709, lng: -74.01 } },
+  ],
+  "Life Sciences AI": [
+    { neighborhood: "Kips Bay", position: { lat: 40.7391, lng: -73.9764 } },
+    { neighborhood: "Union Square", position: { lat: 40.7359, lng: -73.9911 } },
+    { neighborhood: "NoMad", position: { lat: 40.744, lng: -73.9884 } },
   ],
   "AI-Native Consumer & Social": [
     { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
@@ -191,8 +201,10 @@ const knownOfficeCoordinates: Record<
 export const categoryColors: Record<Category, string> = {
   "Fintech & Trading AI": "#2563eb",
   "Legal & Compliance AI": "#7c3aed",
+  "Cybersecurity AI": "#0f766e",
   "Media, Ads & Creative AI": "#e11d48",
   "Health & Clinical AI": "#059669",
+  "Life Sciences AI": "#047857",
   "AI-Native Consumer & Social": "#f59e0b",
   "Agent Infrastructure": "#0891b2",
   "Model Tools & Dev Platform": "#0f766e",
@@ -200,11 +212,11 @@ export const categoryColors: Record<Category, string> = {
   "Data & Memory Layer": "#4f46e5",
 };
 
-const potentialRank: Record<UsagePotential, number> = {
-  Emerging: 1,
-  Promising: 2,
-  "High Potential": 3,
-  "Breakout Watch": 4,
+const intensityRank: Record<ConsumptionIntensity, number> = {
+  low: 1,
+  moderate: 2,
+  high: 3,
+  very_high: 4,
 };
 
 const darkMapStyles: MapStyle[] = [
@@ -343,7 +355,10 @@ export function GoogleStartupMap({
             optimized: true,
             position: pin.position,
             title: `${pin.company.name} - ${pin.neighborhood}, NYC`,
-            zIndex: 100 + potentialRank[pin.company.usage_potential] * 10 + index,
+            zIndex:
+              100 +
+              intensityRank[pin.company.consumption_intensity] * 10 +
+              index,
           });
 
           marker.addListener("click", () => {

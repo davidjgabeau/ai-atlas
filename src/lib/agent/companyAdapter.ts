@@ -20,7 +20,13 @@ export function toAgentCompany(company: Company): AgentCompany {
     category: company.category,
     description: company.short_description,
     oneSentenceDescription: company.one_line_thesis || company.short_description,
-    founders: parseFounders(company.founder_name),
+    founders:
+      company.founders.length > 0
+        ? company.founders.map((founder) => ({
+            name: founder.name,
+            role: founder.title,
+          }))
+        : parseFounders(company.founder_name),
     investors: splitList(company.lead_investor),
     funding: {
       totalRaised: emptyToUndefined(company.total_raised),

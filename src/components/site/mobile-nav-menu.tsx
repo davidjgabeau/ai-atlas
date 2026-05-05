@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 const mobileNavItems = [
   { label: "Map", href: "/companies", icon: "globe" as const },
   { label: "Categories", href: "/categories", icon: "grid" as const },
+  { label: "Patterns", href: "/patterns", icon: "compass" as const },
   { label: "Newsfeed", href: "/feed", icon: "pin" as const },
   { label: "Jobs", href: "/jobs", icon: "skyline" as const },
   { label: "Highlights", href: "/insights", icon: "compass" as const },

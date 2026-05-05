@@ -21,8 +21,10 @@ const size = {
 const categorySpritePaths: Record<Category, string> = {
   "Fintech & Trading AI": "/avatars/categories/fintech-trading-ai.png",
   "Legal & Compliance AI": "/avatars/categories/legal-compliance-ai.png",
+  "Cybersecurity AI": "/avatars/categories/cybersecurity-ai.png",
   "Media, Ads & Creative AI": "/avatars/categories/media-ads-creative-ai.png",
   "Health & Clinical AI": "/avatars/categories/health-clinical-ai.png",
+  "Life Sciences AI": "/avatars/categories/life-sciences-ai.png",
   "AI-Native Consumer & Social": "/avatars/categories/ai-native-consumer-social.png",
   "Agent Infrastructure": "/avatars/categories/agent-infrastructure.png",
   "Model Tools & Dev Platform": "/avatars/categories/model-tools-dev-platform.png",
