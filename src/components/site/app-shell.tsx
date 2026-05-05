@@ -3,14 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
-import { Search } from "lucide-react";
 
 import { AtlasAvatarMark } from "@/components/site/atlas-avatar-mark";
+import { GlobalSearch } from "@/components/site/global-search";
 import { MobileNavMenu } from "@/components/site/mobile-nav-menu";
 import { ProfileHeaderLink } from "@/components/site/profile-header-link";
 import { SpriteHeaderLink } from "@/components/site/sprite-header-link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import type { Category } from "@/types/market";
 
@@ -75,20 +74,13 @@ function PublicationHeader({
           </span>
         </Link>
 
-        <form action="/companies" className="relative hidden min-w-[260px] flex-1 md:block lg:max-w-[420px]">
-          <label htmlFor="app-search" className="sr-only">
-            Search companies, sectors, founders
-          </label>
-          <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]" />
-          <Input
-            id="app-search"
-            name="q"
-            value={search}
-            onChange={(event) => onSearchChange(event.target.value)}
-            placeholder="Search companies, sectors, founders"
-            className="h-10 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-sm text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
-          />
-        </form>
+        <GlobalSearch
+          id="app-search"
+          value={search}
+          onValueChange={onSearchChange}
+          className="hidden min-w-[260px] flex-1 md:block lg:max-w-[420px]"
+          inputClassName="h-10 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-sm text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+        />
 
         <nav aria-label="Primary" className="ml-auto hidden items-center gap-3 lg:flex">
           {navItems.map((item) => {
@@ -119,20 +111,13 @@ function PublicationHeader({
         </Button>
       </div>
 
-      <form action="/companies" className="relative mx-5 my-4 md:hidden">
-        <label htmlFor="app-search-mobile" className="sr-only">
-          Search companies, sectors, founders
-        </label>
-        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]" />
-        <Input
-          id="app-search-mobile"
-          name="q"
-          value={search}
-          onChange={(event) => onSearchChange(event.target.value)}
-          placeholder="Search companies, sectors, founders"
-          className="h-12 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-[16px] text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
-        />
-      </form>
+      <GlobalSearch
+        id="app-search-mobile"
+        value={search}
+        onValueChange={onSearchChange}
+        className="mx-5 my-4 md:hidden"
+        inputClassName="h-12 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-[16px] text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+      />
     </header>
   );
 }
