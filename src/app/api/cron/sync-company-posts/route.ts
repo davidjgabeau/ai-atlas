@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 
 export const maxDuration = 60;
 export const dynamic = "force-dynamic";
@@ -45,22 +45,25 @@ export async function GET(request: Request) {
     );
   }
 
-  const supabase = createSupabaseServerClient();
+  const supabase = createSupabasePrivilegedClient();
   if (!supabase) {
     return NextResponse.json(
-      { ok: false, error: "Supabase is not configured." },
+      { ok: false, error: "Supabase privileged credentials are not configured." },
       { status: 500 },
     );
   }
 
-  const xBearerToken =
-    process.env.X_BEARER_TOKEN ?? process.env.TWITTER_BEARER_TOKEN ?? "";
+  const xReadToken =
+    process.env.X_BEARER_TOKEN ??
+    process.env.TWITTER_BEARER_TOKEN ??
+    process.env.X_ACCESS_TOKEN ??
+    "";
 
-  if (!xBearerToken) {
+  if (!xReadToken) {
     return NextResponse.json({
       ok: true,
       synced: false,
-      reason: "X_BEARER_TOKEN is not configured.",
+      reason: "X_BEARER_TOKEN or X_ACCESS_TOKEN is not configured.",
       postsUpserted: 0,
     });
   }
@@ -89,8 +92,8 @@ export async function GET(request: Request) {
     if (!handle) continue;
 
     try {
-      const user = await getXUser(handle, xBearerToken);
-      const timeline = await getXUserPosts(user.id, xBearerToken);
+      const user = await getXUser(handle, xReadToken);
+      const timeline = await getXUserPosts(user.id, xReadToken);
       const rows = timeline.posts.map((post) => ({
         company_id: company.id,
         platform: "x",
@@ -177,7 +180,9 @@ async function getXUser(username: string, bearerToken: string): Promise<XUser> {
   );
 
   if (!response.ok) {
-    throw new Error(`X user lookup failed for @${username}: ${response.status}`);
+    throw new Error(
+      `X user lookup failed for @${username}: ${response.status} ${await summarizeResponse(response)}`,
+    );
   }
 
   const payload = (await response.json()) as { data?: XUser };
@@ -207,7 +212,9 @@ async function getXUserPosts(userId: string, bearerToken: string) {
   });
 
   if (!response.ok) {
-    throw new Error(`X timeline lookup failed: ${response.status}`);
+    throw new Error(
+      `X timeline lookup failed: ${response.status} ${await summarizeResponse(response)}`,
+    );
   }
 
   const payload = (await response.json()) as {
@@ -244,4 +251,9 @@ function getSyncCompanyLimit() {
 
 function normalizeHandle(value: string) {
   return value.replace(/^@/, "").trim();
+}
+
+async function summarizeResponse(response: Response) {
+  const text = await response.text().catch(() => "");
+  return text.replace(/\s+/g, " ").trim().slice(0, 220);
 }
