@@ -45,14 +45,29 @@ export async function upsertSocialPosts(rows: Array<Record<string, unknown>>) {
     };
   }
 
+  const normalizedRows = rows.map(normalizeSocialPostUpsertRow);
+
   const { error } = await supabase
     .from("atlas_social_posts")
-    .upsert(rows, { onConflict: "source_hash" });
+    .upsert(normalizedRows, { onConflict: "source_hash" });
 
   return {
     ok: !error,
     error: error?.message ?? "",
-    count: error ? 0 : rows.length,
+    count: error ? 0 : normalizedRows.length,
+  };
+}
+
+function normalizeSocialPostUpsertRow(row: Record<string, unknown>) {
+  return {
+    ...row,
+    external_post_url: row.external_post_url ?? "",
+    safety_notes: row.safety_notes ?? [],
+    decision_log: row.decision_log ?? [],
+    metrics: row.metrics ?? {},
+    raw: row.raw ?? {},
+    attempt_count: row.attempt_count ?? 0,
+    last_error: row.last_error ?? "",
   };
 }
 
