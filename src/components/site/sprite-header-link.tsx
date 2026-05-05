@@ -26,14 +26,14 @@ export function SpriteHeaderLink({
       href={href}
       aria-label={label}
       className={cn(
-        "group flex min-w-12 flex-col items-center justify-center gap-1 rounded-md px-1.5 py-1 text-[#4F4A43] transition hover:bg-[rgb(17_17_17_/_0.035)] hover:text-[#181818]",
+        "group flex min-w-10 flex-col items-center justify-center gap-1 rounded-md px-1 py-1 text-[#4F4A43] transition hover:bg-[rgb(17_17_17_/_0.035)] hover:text-[#181818]",
         active && "text-[#9A3D2B]",
         className,
       )}
     >
       <PixelSiteIcon
         name={icon}
-        size="md"
+        size="sm"
         className="transition group-hover:scale-[1.04]"
       />
       <span className="text-[10px] font-semibold leading-none tracking-[0.02em]">

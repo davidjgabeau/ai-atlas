@@ -23,6 +23,8 @@ type GlobalSearchProps = {
   onValueChange?: (value: string) => void;
   className?: string;
   inputClassName?: string;
+  iconClassName?: string;
+  autoFocus?: boolean;
 };
 
 type SearchResult = {
@@ -41,6 +43,8 @@ export function GlobalSearch({
   onValueChange,
   className,
   inputClassName,
+  iconClassName,
+  autoFocus = false,
 }: GlobalSearchProps) {
   const router = useRouter();
   const generatedId = useId();
@@ -55,7 +59,18 @@ export function GlobalSearch({
   const visibleResults = trimmedQuery ? results : [];
   const listboxId = `${inputId}-results`;
   const formRef = useRef<HTMLFormElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const activeResult = activeIndex >= 0 ? visibleResults[activeIndex] : null;
+
+  useEffect(() => {
+    if (!autoFocus) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [autoFocus]);
 
   useEffect(() => {
     if (!trimmedQuery) return;
@@ -169,8 +184,14 @@ export function GlobalSearch({
       <label htmlFor={inputId} className="sr-only">
         Search companies, sectors, founders
       </label>
-      <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]" />
+      <Search
+        className={cn(
+          "pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#9B948A]",
+          iconClassName,
+        )}
+      />
       <Input
+        ref={inputRef}
         id={inputId}
         name="q"
         type="search"
@@ -188,6 +209,7 @@ export function GlobalSearch({
         onKeyDown={handleKeyDown}
         placeholder="Search companies, sectors, founders"
         className={inputClassName}
+        autoFocus={autoFocus}
       />
 
       {open && trimmedQuery ? (

@@ -67,12 +67,12 @@ const categoryPulsePhrases: Record<Category, string> = {
   "Legal & Compliance AI": "regulated review workflows",
   "Cybersecurity AI": "security operations and exposure",
   "Media, Ads & Creative AI": "creative workflow signal",
-  "Health & Clinical AI": "admin and payer workflows",
+  "Health & Clinical AI": "care operations",
   "Life Sciences AI": "drug discovery and biology",
-  "AI-Native Consumer & Social": "social, memory, companions",
+  "AI-Native Consumer & Social": "daily behavior",
   "Agent Infrastructure": "runtime and reliability",
   "Model Tools & Dev Platform": "evals and app tooling",
-  "Enterprise GTM & RevOps AI": "sales and support workflows",
+  "Enterprise GTM & RevOps AI": "back-office workflows",
   "Data & Memory Layer": "context and retrieval layers",
 };
 
@@ -216,19 +216,19 @@ export default async function Home() {
 
 function SiteNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[#E7E1D8] bg-[rgb(248_246_241_/_0.94)] backdrop-blur-md">
-      <div className="editorial-container flex h-16 items-center gap-3 sm:gap-5">
-        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="AI Atlas NYC home">
-          <AtlasAvatarMark size="sm" />
-          <span className="font-heading text-[18px] font-medium tracking-[-0.025em] text-[#181818]">
+    <header className="sticky top-0 z-50 border-b border-transparent bg-[rgb(248_246_241_/_0.96)] backdrop-blur-md md:border-[#E7E1D8]">
+      <div className="editorial-container flex items-center gap-3 pt-5 sm:gap-5 md:h-[76px] md:pt-0">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5 md:gap-3" aria-label="AI Atlas NYC home">
+          <AtlasAvatarMark size="sm" className="size-10 md:size-7" />
+          <span className="font-heading text-[24px] font-medium tracking-[-0.025em] text-[#181818] md:text-[24px]">
             AI Atlas NYC
           </span>
         </Link>
 
         <GlobalSearch
           id="home-search"
-          className="mx-auto hidden min-w-[280px] flex-1 md:block lg:max-w-[560px]"
-          inputClassName="h-10 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-sm text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+          className="ml-7 hidden w-[300px] shrink-0 md:block xl:w-[410px]"
+          inputClassName="h-11 w-full rounded-lg border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-3 text-[15px] text-[#181818] outline-none transition placeholder:text-[#7A746C] focus:border-[#BDAF9E] focus:ring-0"
         />
 
         <nav
@@ -245,20 +245,24 @@ function SiteNav() {
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
           <SpriteHeaderLink href="/insights" icon="compass" label="Highlights" />
-          <ProfileHeaderLink compact />
-          <Button asChild className="app-primary-button">
+          <ProfileHeaderLink compact className="px-1.5 py-1" />
+          <Button asChild className="h-11 rounded-lg px-5 app-primary-button">
             <Link href="/submit">Submit Startup</Link>
           </Button>
         </nav>
-        <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
-          <ProfileHeaderLink className="inline-flex" compact />
-          <MobileNavMenu />
+        <div className="ml-auto flex shrink-0 items-center gap-3 lg:hidden">
+          <ProfileHeaderLink
+            className="inline-flex size-11 justify-center rounded-[13px] border border-[#D8CFC1] bg-[#FBFAF7] p-0 hover:bg-[rgb(17_17_17_/_0.025)]"
+            compact
+          />
+          <MobileNavMenu className="size-11 rounded-[13px] border-[#D8CFC1] bg-[#FBFAF7]" />
         </div>
       </div>
       <GlobalSearch
         id="home-search-mobile"
-        className="mx-5 my-4 md:hidden"
-        inputClassName="h-12 w-full rounded-md border border-[#E7E1D8] bg-[#FBFAF7] pl-10 pr-3 text-[16px] text-[#181818] outline-none transition placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+        className="mx-5 mb-0 mt-5 md:hidden"
+        inputClassName="h-14 w-full rounded-[14px] border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-4 text-[15px] text-[#181818] outline-none transition placeholder:text-[#8C857C] focus:border-[#BDAF9E] focus:ring-0"
+        iconClassName="left-4 size-[18px] text-[#6F675E]"
       />
     </header>
   );

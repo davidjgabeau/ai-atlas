@@ -13,7 +13,7 @@ export function formatTrackedLine(): string {
 }
 
 export function formatMobileSubheadline(stats: CompanyStats): string {
-  return `${formatAiStartupCount(
-    stats.totalCompanies,
-  )} across consumer, healthcare, infrastructure, and more.`;
+  return `${stats.totalCompanies} early-stage AI ${
+    stats.totalCompanies === 1 ? "company" : "companies"
+  } across consumer, healthcare, infrastructure, and more.`;
 }
