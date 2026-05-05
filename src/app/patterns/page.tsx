@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, RefreshCw } from "lucide-react";
 
 import { PublicShell } from "@/components/site/public-shell";
 import { patterns } from "@/data/patterns";
@@ -18,11 +18,21 @@ export const metadata: Metadata = createShareMetadata({
 });
 
 export default function PatternsPage() {
+  const latestUpdatedAt = getLatestPatternUpdatedAt();
+
   return (
     <PublicShell>
       <section className="hero">
         <div className="editorial-container py-12">
-          <p className="editorial-label">Pattern recognition</p>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <p className="editorial-label">Pattern recognition</p>
+            {latestUpdatedAt ? (
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                <RefreshCw className="size-3.5" />
+                Updated {formatUpdatedMarker(latestUpdatedAt)}
+              </span>
+            ) : null}
+          </div>
           <h1 className="mt-5 max-w-[840px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
             Patterns across the NYC AI map
           </h1>
@@ -66,4 +76,24 @@ export default function PatternsPage() {
       </section>
     </PublicShell>
   );
+}
+
+function getLatestPatternUpdatedAt() {
+  const latest = patterns.reduce((max, pattern) => {
+    const time = new Date(pattern.updated_at).getTime();
+    return Number.isNaN(time) ? max : Math.max(max, time);
+  }, 0);
+
+  return latest > 0 ? new Date(latest).toISOString() : undefined;
+}
+
+function formatUpdatedMarker(dateValue: string) {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "recently";
+
+  return date.toLocaleDateString("en", {
+    month: "short",
+    day: "numeric",
+    timeZone: "America/New_York",
+  });
 }
