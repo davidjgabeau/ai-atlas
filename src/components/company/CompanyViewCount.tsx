@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Eye } from "lucide-react";
 
 import { recordSampledCompanyView } from "@/lib/metrics/companyViewClient";
@@ -22,7 +22,7 @@ export function CompanyViewCount({
   showTextLabel = false,
   trackImpression = true,
 }: CompanyViewCountProps) {
-  const [displayViews, setDisplayViews] = useState(normalizeViews(views));
+  const displayViews = normalizeViews(views);
   const elementRef = useRef<HTMLSpanElement | null>(null);
   const recordedRef = useRef(false);
   const viewsRef = useRef(displayViews);
@@ -30,10 +30,6 @@ export function CompanyViewCount({
     () => formatViewCount(displayViews),
     [displayViews],
   );
-
-  useEffect(() => {
-    viewsRef.current = normalizeViews(views);
-  }, [views]);
 
   useEffect(() => {
     viewsRef.current = displayViews;
@@ -50,27 +46,19 @@ export function CompanyViewCount({
     const element = elementRef.current;
     if (!element) return;
 
-    let cancelled = false;
-
-    const recordImpression = async () => {
-      if (cancelled || recordedRef.current) return;
+    const recordImpression = () => {
+      if (recordedRef.current) return;
 
       recordedRef.current = true;
-
-      const nextViews = await recordSampledCompanyView(
+      void recordSampledCompanyView(
         companyId,
         viewsRef.current,
       );
-      if (!cancelled && typeof nextViews === "number") {
-        setDisplayViews(normalizeViews(nextViews));
-      }
     };
 
     if (!("IntersectionObserver" in window)) {
-      void recordImpression();
-      return () => {
-        cancelled = true;
-      };
+      recordImpression();
+      return;
     }
 
     const observer = new IntersectionObserver(
@@ -78,7 +66,7 @@ export function CompanyViewCount({
         if (!entries.some((entry) => entry.isIntersecting)) return;
 
         observer.disconnect();
-        void recordImpression();
+        recordImpression();
       },
       {
         rootMargin: "0px 0px -8% 0px",
@@ -89,7 +77,6 @@ export function CompanyViewCount({
     observer.observe(element);
 
     return () => {
-      cancelled = true;
       observer.disconnect();
     };
   }, [companyId, trackImpression]);

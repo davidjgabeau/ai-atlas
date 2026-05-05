@@ -5,26 +5,17 @@ export async function recordSampledCompanyView(
   companyId: string,
   currentViews: number,
 ) {
-  if (!shouldRecordCompanyView(companyId)) return null;
+  if (!shouldRecordCompanyView(companyId)) return;
 
   try {
-    const response = await fetch(
-      `/api/companies/${encodeURIComponent(companyId)}/view`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ currentViews }),
-        keepalive: true,
-      },
-    );
-
-    if (!response.ok) return null;
-
-    const data = (await response.json()) as { views?: number };
-    return typeof data.views === "number" ? data.views : null;
+    await fetch(`/api/companies/${encodeURIComponent(companyId)}/view`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ currentViews }),
+      keepalive: true,
+    });
   } catch (error) {
     console.warn("Company view count failed:", error);
-    return null;
   }
 }
 
