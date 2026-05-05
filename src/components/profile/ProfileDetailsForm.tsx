@@ -165,12 +165,12 @@ export function ProfileDetailsForm({
             <Button
               type="button"
               variant="outline"
-              className="border-[#E7E1D8] bg-[#FBFAF7]"
+              className="border-[#E7E1D8] bg-[#FBFAF7] lg:hidden"
               disabled={authBusy}
               onClick={onSignOut}
             >
               <LogOut className="size-4" />
-              Sign out
+              {authBusy ? "Signing out..." : "Log out"}
             </Button>
           ) : null}
           <StatusMessage error={authError} message={authMessage} />

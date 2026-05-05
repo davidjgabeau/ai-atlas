@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Menu } from "lucide-react";
+import { ArrowRight, LogOut, Menu } from "lucide-react";
 
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { Button } from "@/components/ui/button";
+import { useLocalProfile } from "@/hooks/use-local-profile";
 import {
   Sheet,
   SheetClose,
@@ -27,6 +28,7 @@ const mobileNavItems = [
 
 export function MobileNavMenu({ className }: { className?: string }) {
   const pathname = usePathname();
+  const { authBusy, isSignedIn, ready, signOut } = useLocalProfile();
 
   return (
     <Sheet>
@@ -98,6 +100,19 @@ export function MobileNavMenu({ className }: { className?: string }) {
               Profile
             </Link>
           </SheetClose>
+          {ready && isSignedIn ? (
+            <SheetClose asChild>
+              <button
+                type="button"
+                className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-4 text-sm font-semibold text-[#181818] transition hover:bg-[rgb(17_17_17_/_0.035)] disabled:cursor-not-allowed disabled:opacity-60"
+                disabled={authBusy}
+                onClick={() => void signOut()}
+              >
+                <LogOut className="size-4" />
+                {authBusy ? "Signing out..." : "Log out"}
+              </button>
+            </SheetClose>
+          ) : null}
         </div>
       </SheetContent>
     </Sheet>
