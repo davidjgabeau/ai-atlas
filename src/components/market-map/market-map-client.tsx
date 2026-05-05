@@ -536,13 +536,16 @@ function MapInsights({
   companies: Company[];
   locations: CompanyMapLocation[];
 }) {
-  const topCategory = getTopCount(companies.map((company) => company.category));
   const topSignal = getTopCount(
     companies.map((company) => getCompanySignalLabel(company)),
   );
   const topNeighborhood = getTopCount(
     locations.map((location) => location.neighborhood),
   );
+  const topStage = getTopCount(
+    companies.map((company) => company.stage).filter(Boolean),
+  );
+  const categoryCount = new Set(companies.map((company) => company.category)).size;
 
   return (
     <section className="border-y border-[#E7E1D8] py-5">
@@ -560,17 +563,20 @@ function MapInsights({
         </p>
       </div>
 
-      <div className="mt-5 grid divide-y divide-[#E7E1D8] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+      <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
         <InsightItem
-          label="Companies in view"
-          value={companies.length.toString()}
-          detail="Filtered by the controls above"
+          tone="lead"
+          label="Top signal"
+          value={topSignal?.value ?? "None"}
+          detail={
+            topSignal
+              ? `${topSignal.count} companies share this signal`
+              : "No signal yet"
+          }
         />
         <InsightItem
           label="Categories"
-          value={
-            new Set(companies.map((company) => company.category)).size.toString()
-          }
+          value={categoryCount.toString()}
           detail="Company categories in view"
         />
         <InsightItem
@@ -583,12 +589,12 @@ function MapInsights({
           }
         />
         <InsightItem
-          label="Top signal"
-          value={topSignal?.value ?? "None"}
+          label="Stage mix"
+          value={topStage?.value ?? "None"}
           detail={
-            topCategory
-              ? `${topCategory.value} is the densest category`
-              : "No category signal yet"
+            topStage
+              ? `${topStage.count} companies at this stage`
+              : "No stage data in view"
           }
         />
       </div>
@@ -600,20 +606,29 @@ function InsightItem({
   label,
   value,
   detail,
+  tone = "default",
 }: {
   label: string;
   value: string;
   detail: string;
+  tone?: "default" | "lead";
 }) {
   return (
-    <div className="py-3 sm:px-4 sm:first:pl-0 sm:last:pr-0">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+    <div
+      className={cn(
+        "min-h-[132px] rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3",
+        tone === "lead" && "border-[#D8C7B7] bg-[rgb(154_61_43_/_0.045)]",
+      )}
+    >
+      <p className="text-[10.5px] font-semibold uppercase leading-tight tracking-[0.08em] text-[#9A3D2B]">
         {label}
       </p>
-      <p className="mt-2 truncate font-heading text-xl font-medium leading-tight text-[#181818]">
+      <p className="mt-3 line-clamp-2 font-heading text-[22px] font-medium leading-[1.02] tracking-[-0.025em] text-[#181818]">
         {value}
       </p>
-      <p className="mt-1 text-sm leading-5 text-[#7A746C]">{detail}</p>
+      <p className="mt-2 line-clamp-2 text-xs leading-[1.45] text-[#7A746C]">
+        {detail}
+      </p>
     </div>
   );
 }
@@ -652,33 +667,35 @@ function NeighborhoodClusters({
       </div>
 
       {clusters.length > 0 ? (
-        <div className="mt-4 divide-y divide-[#E7E1D8]">
+        <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-3">
           {clusters.slice(0, 6).map((cluster) => (
             <button
               key={cluster.name}
               type="button"
               onClick={() => onSelectNeighborhood(cluster.name)}
               className={cn(
-                "grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 py-3 text-left transition hover:bg-[rgb(154_61_43_/_0.05)]",
+                "min-h-[112px] rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.05)]",
                 activeNeighborhood === cluster.name &&
                   "bg-[rgb(154_61_43_/_0.06)]",
               )}
             >
-              <CategoryPixelIcon
-                category={cluster.topCategory}
-                size="sm"
-                className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-0.5"
-              />
-              <span className="min-w-0">
+              <span className="flex items-start justify-between gap-2">
+                <CategoryPixelIcon
+                  category={cluster.topCategory}
+                  size="sm"
+                  className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-0.5"
+                />
+                <span className="text-sm font-medium text-[#9A3D2B]">
+                  {cluster.count}
+                </span>
+              </span>
+              <span className="mt-3 block min-w-0">
                 <span className="block truncate text-sm font-semibold text-[#181818]">
                   {cluster.name}
                 </span>
-                <span className="mt-0.5 block truncate text-xs text-[#7A746C]">
-                  {cluster.count} companies · {cluster.topCategory}
+                <span className="mt-1 line-clamp-2 text-xs leading-[1.4] text-[#7A746C]">
+                  {cluster.topCategory.replace(" AI", "")}
                 </span>
-              </span>
-              <span className="text-sm font-medium text-[#5F5A52]">
-                {cluster.count}
               </span>
             </button>
           ))}
@@ -741,7 +758,7 @@ function MapDotKey({ locations }: { locations: CompanyMapLocation[] }) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
             Top clusters
           </p>
-          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+          <div className="mt-2 grid grid-cols-2 gap-2">
             {clusters.map((cluster) => (
               <div
                 key={cluster.name}
@@ -858,7 +875,7 @@ function CompanyTable({
         <span>Signal</span>
         <span />
       </div>
-      <div className="divide-y divide-[#E7E1D8]">
+      <div className="grid grid-cols-2 gap-2 p-2 lg:block lg:divide-y lg:divide-[#E7E1D8] lg:p-0">
         {companies.map((company) => {
           const location = locationBySlug.get(company.slug);
 
@@ -875,9 +892,9 @@ function CompanyTable({
                 }
               }}
               className={cn(
-                "grid min-h-[86px] w-full gap-4 border-l-4 border-l-transparent px-4 py-4 text-left transition hover:border-l-[#E7E1D8] hover:bg-[rgb(154_61_43_/_0.06)] lg:grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] lg:items-center",
+                "grid min-h-[212px] w-full gap-3 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.06)] lg:min-h-[86px] lg:rounded-none lg:border-0 lg:border-l-4 lg:border-l-transparent lg:bg-transparent lg:px-4 lg:py-4 lg:hover:border-l-[#E7E1D8] lg:grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] lg:items-center",
                 selectedId === company.slug &&
-                  "border-l-[#9A3D2B] bg-[rgb(154_61_43_/_0.06)] shadow-[inset_0_0_0_1px_rgba(154,61,43,0.14)] hover:bg-[rgb(154_61_43_/_0.06)]",
+                  "border-[#9A3D2B] bg-[rgb(154_61_43_/_0.06)] shadow-[inset_0_0_0_1px_rgba(154,61,43,0.14)] hover:bg-[rgb(154_61_43_/_0.06)] lg:border-l-[#9A3D2B]",
               )}
             >
               <div className="flex min-w-0 items-start gap-3">
@@ -888,8 +905,8 @@ function CompanyTable({
                   className="size-10 text-xs"
                 />
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <p className="truncate text-sm font-semibold tracking-tight text-[#181818]">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <p className="min-w-0 truncate text-sm font-semibold tracking-tight text-[#181818]">
                       {company.name}
                     </p>
                     {company.is_breakout ? (
@@ -922,7 +939,7 @@ function CompanyTable({
                 companyName={company.name}
                 size="sm"
                 stopPropagation
-                className="justify-self-end whitespace-nowrap"
+                className="w-full justify-center whitespace-nowrap lg:w-auto lg:justify-self-end"
               />
             </div>
           );
