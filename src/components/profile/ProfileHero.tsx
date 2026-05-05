@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PenLine, Sparkles, UserRound } from "lucide-react";
+import { LogOut, PenLine, Sparkles, UserRound } from "lucide-react";
 
 import { Avatar } from "@/components/avatars/Avatar";
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,14 @@ type ProfileHeroProps = {
   handle: string;
   hasProfile: boolean;
   isEditing: boolean;
+  isSignedIn: boolean;
   name: string;
   publicPath: string;
   watchingCount: number;
+  authBusy?: boolean;
   onChangeAvatar: () => void;
   onEditProfile: () => void;
+  onSignOut?: () => void;
 };
 
 export function ProfileHero({
@@ -25,11 +28,14 @@ export function ProfileHero({
   handle,
   hasProfile,
   isEditing,
+  isSignedIn,
   name,
   publicPath,
   watchingCount,
+  authBusy = false,
   onChangeAvatar,
   onEditProfile,
+  onSignOut,
 }: ProfileHeroProps) {
   return (
     <section className="border-b border-[#E7E1D8] bg-[#F8F6F1]">
@@ -101,6 +107,18 @@ export function ProfileHero({
             <Sparkles className="size-4" />
             Change avatar
           </Button>
+          {isSignedIn && onSignOut ? (
+            <Button
+              type="button"
+              variant="outline"
+              className="hidden border-[#E7E1D8] bg-[#FBFAF7] text-[#111111] lg:inline-flex"
+              disabled={authBusy}
+              onClick={onSignOut}
+            >
+              <LogOut className="size-4" />
+              {authBusy ? "Signing out..." : "Log out"}
+            </Button>
+          ) : null}
         </div>
       </div>
     </section>

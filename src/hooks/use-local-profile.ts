@@ -538,6 +538,7 @@ export function useLocalProfile({
       ready: true,
       authMessage: "Signed out.",
     });
+    emitProfileStoreChange();
   }, [supabase]);
 
   const saveProfile = useCallback(

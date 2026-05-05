@@ -427,16 +427,19 @@ export function ProfileClient({ companies }: ProfileClientProps) {
   return (
     <>
       <ProfileHero
+        authBusy={authBusy}
         avatarId={displayAvatarId}
         bio={displayBio}
         handle={displayHandle}
         hasProfile={Boolean(profile)}
         isEditing={detailsEditable}
+        isSignedIn={isSignedIn}
         name={displayName}
         publicPath={publicPath}
         watchingCount={watchingCompanies.length}
         onChangeAvatar={openAvatarModal}
         onEditProfile={scrollToDetails}
+        onSignOut={() => void signOut()}
       />
 
       <ProfileStatsRow
