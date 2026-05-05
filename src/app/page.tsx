@@ -208,10 +208,10 @@ export default async function Home() {
         <FeaturedCompanies companies={featuredHomepageCompanies} />
         <BrowseByCategory categories={categoryMeta} counts={categoryCounts} />
         <SubmitCompanyCTA />
-        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
       </main>
 
       <SiteFooter />
+      <NewsBriefModal items={newsItems} companies={linkableCompanies} />
     </div>
   );
 }
