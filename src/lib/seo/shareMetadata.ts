@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 export const siteName = "AI Atlas NYC";
-export const shareCta = "NYC AI is heating up";
+export const shareCta = "NYC AI, mapped by hand";
+export const xAccountHandle = "@AiAtlasNYC";
 
 export function getSiteUrl() {
   return process.env.NEXT_PUBLIC_SITE_URL ?? "https://aiatlas.nyc";
@@ -69,6 +70,8 @@ export function createShareMetadata({
     },
     twitter: {
       card: "summary_large_image",
+      site: xAccountHandle,
+      creator: xAccountHandle,
       title,
       description,
       images: [imageUrl],

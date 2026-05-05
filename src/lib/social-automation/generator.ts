@@ -111,8 +111,9 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       continue;
     }
 
+    const postText = withPrimaryUrl(draft.text, candidate.primaryUrl);
     const safety = checkSocialPostSafety({
-      text: draft.text,
+      text: postText,
       companies: candidate.companies,
       sourceUrls: candidate.sourceUrls,
       recentTexts: recentPosts.map((post) => post.post_text),
@@ -122,7 +123,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       skipped += 1;
       rows.push(
         createSkippedRow(candidate, "Safety check failed.", {
-          postText: draft.text,
+          postText,
           safetyNotes: safety.notes,
           model: draft.model,
           reason: draft.reason,
@@ -143,7 +144,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       id: createId("social_post", candidate.sourceHash),
       source_kind: candidate.sourceKind,
       status: shouldSchedule ? "scheduled" : "draft",
-      post_text: draft.text,
+      post_text: postText,
       scheduled_for: shouldSchedule
         ? getScheduledFor(index, config.minMinutesBetweenPosts)
         : null,
@@ -167,6 +168,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
           autoPost: config.autoPost,
           risk: draft.risk,
           reason: draft.reason,
+          primaryUrl: candidate.primaryUrl,
         },
       ],
       raw: candidateToRaw(candidate),
@@ -310,6 +312,26 @@ function getScheduledFor(index: number, minMinutesBetweenPosts: number) {
   ).toISOString();
 }
 
+function withPrimaryUrl(text: string, primaryUrl: string | undefined) {
+  const normalizedText = text.replace(/\s+/g, " ").trim();
+  if (!primaryUrl) return normalizedText;
+
+  const withoutUrls = normalizedText
+    .replace(/https?:\/\/\S+/gi, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const maxBodyLength = Math.max(40, 280 - primaryUrl.length - 2);
+  const body =
+    withoutUrls.length <= maxBodyLength
+      ? withoutUrls
+      : `${withoutUrls
+          .slice(0, Math.max(0, maxBodyLength - 3))
+          .replace(/\s+\S*$/, "")
+          .trim()}...`;
+
+  return `${body}\n\n${primaryUrl}`;
+}
+
 function candidateToRaw(candidate: SocialPostCandidate) {
   return {
     sourceKind: candidate.sourceKind,
@@ -322,6 +344,7 @@ function candidateToRaw(candidate: SocialPostCandidate) {
         xHandle: company.x_handle,
     })),
     score: candidate.score,
+    primaryUrl: candidate.primaryUrl,
     sourceIds: {
       companies: candidate.sourceCompanyIds,
       events: candidate.sourceEventIds,

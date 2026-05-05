@@ -135,10 +135,13 @@ function buildWriterPrompt(candidate: SocialPostCandidate) {
     })),
     category: candidate.category,
     sourceUrls: candidate.sourceUrls,
+    primaryUrl: candidate.primaryUrl,
     allowedHandles,
     hardRules: [
       "Use only supplied facts.",
       "Stay under 260 characters when possible, never over 280.",
+      "End with primaryUrl exactly as supplied when primaryUrl is present.",
+      "Do not include any other URL when primaryUrl is present.",
       "Tag a company only if its verifiedXHandle is supplied in allowedHandles.",
       "Never invent handles.",
       "Do not claim funding, customers, hiring, location, or traction unless supplied.",

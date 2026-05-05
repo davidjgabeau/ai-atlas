@@ -1,4 +1,6 @@
 import { createContentHash } from "@/lib/agent/hash";
+import { getCategorySlug } from "@/data/market";
+import { absoluteUrl } from "@/lib/seo/shareMetadata";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 import type { CompanyEvent, MarketSnapshot } from "@/types/agent";
 import type { Category, NewsItem } from "@/types/market";
@@ -75,6 +77,7 @@ type CandidateInput = Omit<
       | "sourceNewsIds"
       | "sourceSnapshotIds"
       | "sourceUrls"
+      | "primaryUrl"
     >
   > & {
     raw?: Record<string, unknown>;
@@ -194,6 +197,8 @@ function createCompanyUpdateCandidates(
     .map((event) => {
       const company = companiesById.get(event.companyId);
       if (!company) return null;
+      const profileUrl = getCompanyProfileUrl(company);
+      const sourceUrls = uniqueUrls([event.sourceUrl, profileUrl]);
 
       return candidate({
         sourceKind: "company_update",
@@ -206,7 +211,8 @@ function createCompanyUpdateCandidates(
         companies: [company],
         sourceCompanyIds: [company.id],
         sourceEventIds: [event.id],
-        sourceUrls: [event.sourceUrl].filter(Boolean),
+        sourceUrls,
+        primaryUrl: profileUrl,
         raw: {
           type: event.type,
           occurredAt: event.occurredAt,
@@ -215,7 +221,7 @@ function createCompanyUpdateCandidates(
         score: scoreCandidate("company_update", {
           eventPriority: event.type === "funding" ? 5 : 4,
           companies: [company],
-          sourceUrls: [event.sourceUrl].filter(Boolean),
+          sourceUrls,
           hasEvent: true,
         }),
       });
@@ -234,6 +240,8 @@ function createJobCandidates(
     if (seenCompanies.has(job.company_id)) continue;
     const company = companiesById.get(job.company_id);
     if (!company) continue;
+    const profileUrl = getCompanyProfileUrl(company);
+    const sourceUrls = uniqueUrls([job.source_url, profileUrl]);
 
     seenCompanies.add(company.id);
     candidates.push(
@@ -248,12 +256,13 @@ function createJobCandidates(
         companies: [company],
         sourceCompanyIds: [company.id],
         sourceJobIds: [job.id],
-        sourceUrls: [job.source_url],
+        sourceUrls,
+        primaryUrl: profileUrl,
         raw: { jobTitle: job.title, sourceName: job.source_name },
         score: scoreCandidate("job_alert", {
           eventPriority: 3,
           companies: [company],
-          sourceUrls: [job.source_url],
+          sourceUrls,
         }),
       }),
     );
@@ -273,6 +282,11 @@ function createNewsCandidates(
         .slice(0, 3);
 
       if (matchedCompanies.length === 0) return null;
+      const primaryUrl = getCompanyProfileUrl(matchedCompanies[0]);
+      const sourceUrls = uniqueUrls([
+        item.source_url,
+        ...matchedCompanies.map(getCompanyProfileUrl),
+      ]);
 
       return candidate({
         sourceKind: "company_news",
@@ -285,12 +299,13 @@ function createNewsCandidates(
         companies: matchedCompanies,
         sourceCompanyIds: matchedCompanies.map((company) => company.id),
         sourceNewsIds: [item.id],
-        sourceUrls: [item.source_url],
+        sourceUrls,
+        primaryUrl,
         raw: { scope: item.scope, relevanceScore: item.relevance_score },
         score: scoreCandidate("company_news", {
           eventPriority: 5,
           companies: matchedCompanies,
-          sourceUrls: [item.source_url],
+          sourceUrls,
         }),
       });
     })
@@ -309,6 +324,7 @@ function createCategoryMovementCandidates(
     const categoryCompanies = companies
       .filter((company) => company.category === item.category)
       .slice(0, 3);
+    const primaryUrl = getCategoryUrl(item.category);
 
     return candidate({
       sourceKind: "category_movement",
@@ -324,12 +340,13 @@ function createCategoryMovementCandidates(
       category: item.category,
       sourceCompanyIds: categoryCompanies.map((company) => company.id),
       sourceSnapshotIds: [latest.id],
-      sourceUrls: [],
+      sourceUrls: [primaryUrl],
+      primaryUrl,
       raw: item,
       score: scoreCandidate("category_movement", {
         eventPriority: 3,
         companies: categoryCompanies,
-        sourceUrls: [],
+        sourceUrls: [primaryUrl],
       }),
     });
   });
@@ -351,6 +368,7 @@ function createCurrentReadCandidates(
       );
 
       if (!body) return null;
+      const primaryUrl = absoluteUrl("/insights");
 
       return candidate({
         sourceKind: "current_read",
@@ -360,7 +378,8 @@ function createCurrentReadCandidates(
         sourceCompanyIds: companyIds,
         sourceEventIds: arrayValue(surface.source_event_ids),
         sourceSnapshotIds: arrayValue(surface.source_snapshot_ids),
-        sourceUrls: ["https://aiatlas.nyc/"],
+        sourceUrls: [primaryUrl],
+        primaryUrl,
         raw: {
           surface: surface.surface,
           generatedAt: surface.generated_at,
@@ -369,7 +388,7 @@ function createCurrentReadCandidates(
         score: scoreCandidate("current_read", {
           eventPriority: 3,
           companies: mentionedCompanies,
-          sourceUrls: ["https://aiatlas.nyc/"],
+          sourceUrls: [primaryUrl],
           hasEvent: arrayValue(surface.source_event_ids).length > 0,
         }),
       });
@@ -381,8 +400,10 @@ function createEvergreenCandidates(companies: SocialCompany[]): SocialPostCandid
   return [...companies]
     .sort(compareEvergreenCompanies)
     .slice(0, 8)
-    .map((company) =>
-      candidate({
+    .map((company) => {
+      const profileUrl = getCompanyProfileUrl(company);
+
+      return candidate({
         sourceKind: "evergreen_spotlight",
         title: `${company.name} spotlight`,
         facts: [
@@ -392,15 +413,16 @@ function createEvergreenCandidates(companies: SocialCompany[]): SocialPostCandid
         ].filter(Boolean),
         companies: [company],
         sourceCompanyIds: [company.id],
-        sourceUrls: [`https://aiatlas.nyc/companies/${company.slug}`],
+        sourceUrls: [profileUrl],
+        primaryUrl: profileUrl,
         raw: { featured: company.is_featured, breakout: company.is_breakout },
         score: scoreCandidate("evergreen_spotlight", {
           eventPriority: 1,
           companies: [company],
-          sourceUrls: [`https://aiatlas.nyc/companies/${company.slug}`],
+          sourceUrls: [profileUrl],
         }),
-      }),
-    );
+      });
+    });
 }
 
 function candidate({
@@ -415,6 +437,7 @@ function candidate({
   sourceNewsIds = [],
   sourceSnapshotIds = [],
   sourceUrls = [],
+  primaryUrl,
   raw = {},
   score,
 }: CandidateInput): SocialPostCandidate {
@@ -440,6 +463,7 @@ function candidate({
     sourceNewsIds,
     sourceSnapshotIds,
     sourceUrls,
+    primaryUrl,
     sourceHash,
     score: score ?? 0,
     event: raw.event as CompanyEvent | undefined,
@@ -656,4 +680,16 @@ function arrayValue(value: unknown) {
 
 function stringValue(value: unknown) {
   return typeof value === "string" ? value : "";
+}
+
+function getCompanyProfileUrl(company: Pick<SocialCompany, "slug">) {
+  return absoluteUrl(`/companies/${company.slug}`);
+}
+
+function getCategoryUrl(category: Category | string) {
+  return absoluteUrl(`/categories/${getCategorySlug(category as Category)}`);
+}
+
+function uniqueUrls(urls: Array<string | undefined>) {
+  return Array.from(new Set(urls.filter((url): url is string => Boolean(url))));
 }

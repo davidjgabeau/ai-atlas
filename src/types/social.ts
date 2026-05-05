@@ -161,6 +161,7 @@ export type SocialPostCandidate = {
   sourceNewsIds: string[];
   sourceSnapshotIds: string[];
   sourceUrls: string[];
+  primaryUrl?: string;
   sourceHash: string;
   score: number;
 };
