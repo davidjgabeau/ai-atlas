@@ -15,6 +15,9 @@ npm run agent:refresh
 npm run agent:discover
 npm run agent:editorial
 npm run agent:all
+npm run social:generate
+npm run social:dispatch
+npm run social:engagement
 ```
 
 Manual sources can be pasted into:
@@ -45,6 +48,14 @@ Example:
 - `/api/cron/agent-refresh` every 3 hours
 - `/api/cron/agent-discover` every 12 hours
 - `/api/cron/agent-editorial` once per day
+- `/api/cron/social-generate` daily
+- `/api/cron/social-dispatch` daily
+- `/api/cron/social-engagement` daily
+- `/api/cron/social-handles-verify` daily
+
+The social cron routes are scheduled daily by default so they can deploy on
+Vercel Hobby. For hourly posting, run the same routes from Vercel Pro cron or
+an external scheduler at the cadences described in `docs/x-automation.md`.
 
 For durable writes from Vercel cron, set:
 
@@ -54,3 +65,7 @@ CRON_SECRET=
 ```
 
 Without the service role key, local JSON generation still works and the app falls back safely, but Vercel serverless writes will not persist as the canonical editorial store.
+
+Social automation writes to `atlas_social_posts`, `atlas_social_runs`, and
+`atlas_social_engagement_actions`. It uses the same cron auth pattern and stays
+draft-only unless `SOCIAL_AUTO_POST=true`.

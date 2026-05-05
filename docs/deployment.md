@@ -16,6 +16,19 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 SUPABASE_SECRET_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID=
+ANTHROPIC_API_KEY=
+X_CLIENT_ID=
+X_CLIENT_SECRET=
+X_ACCESS_TOKEN=
+X_REFRESH_TOKEN=
+X_BEARER_TOKEN=
+SOCIAL_AUTO_POST=false
+SOCIAL_ENGAGEMENT_ENABLED=false
+SOCIAL_KILL_SWITCH=false
+SOCIAL_DAILY_POST_LIMIT=12
+SOCIAL_MIN_MINUTES_BETWEEN_POSTS=25
+SOCIAL_MAX_POSTS_PER_HOUR=3
+SOCIAL_TIMEZONE=America/New_York
 ```
 
 `NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID` is optional unless you create a custom Google
@@ -23,6 +36,9 @@ Maps cloud style.
 
 `SUPABASE_SECRET_KEY` is server-only. It lets the server read admin data and
 write submissions without exposing elevated privileges to the browser.
+
+Keep `SOCIAL_AUTO_POST=false` and `SOCIAL_ENGAGEMENT_ENABLED=false` for launch
+until the generated drafts in `/admin` look right.
 
 ## Supabase Setup
 
@@ -54,3 +70,8 @@ development still works before the project is connected.
 4. Add custom domains:
    - `aiatlas.nyc`
    - `www.aiatlas.nyc`
+
+## X Automation Setup
+
+See `docs/x-automation.md` for the first-run checklist, safe launch defaults,
+manual X Developer Portal setup, and local smoke-test commands.
