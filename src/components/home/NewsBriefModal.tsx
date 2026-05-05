@@ -32,7 +32,7 @@ export function NewsBriefModal({
   const previewItems = items.slice(0, 3);
 
   return (
-    <section className="border-b border-[#E7E1D8] bg-section">
+    <section id="news-brief" className="border-b border-[#E7E1D8] bg-section">
       <div className="editorial-container py-8">
         <div className="grid gap-5 border-y border-[#E7E1D8] py-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
           <div className="min-w-0">

@@ -26,7 +26,7 @@ export function CurrentRead({
             href="/patterns"
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
           >
-            View all patterns
+            View pattern library
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
@@ -44,7 +44,7 @@ export function CurrentRead({
                   <div>
                     <h3 className="font-sans text-[17px] font-semibold tracking-[-0.01em] text-[#181818]">
                       <LinkedCompanyText
-                        text={insight.title}
+                        text={getCurrentReadDisplayTitle(insight)}
                         companies={companiesById}
                       />
                     </h3>
@@ -72,4 +72,40 @@ export function CurrentRead({
       </div>
     </section>
   );
+}
+
+const currentReadHeadlineOverrides = [
+  {
+    match: "vertical ai targets operators who skipped saas",
+    title: "Operators outside classic SaaS are in play",
+  },
+  {
+    match: "finance teams are the map's most contested buyer",
+    title: "Finance workflows keep pulling new wedges",
+  },
+  {
+    match: "llm tooling splits at the build-vs-deploy seam",
+    title: "Production AI is splitting into sharper jobs",
+  },
+  {
+    match: "real-time voice",
+    title: "Voice-heavy workflows are moving first",
+  },
+  {
+    match: "agentic loops",
+    title: "Review work is moving into repeat loops",
+  },
+  {
+    match: "consumer companion apps",
+    title: "Personal data graphs are the consumer wedge",
+  },
+] as const;
+
+function getCurrentReadDisplayTitle(insight: MarketInsight) {
+  const normalizedTitle = insight.title.toLowerCase().replace(/\u2019/g, "'");
+  const override = currentReadHeadlineOverrides.find(({ match }) =>
+    normalizedTitle.includes(match),
+  );
+
+  return override?.title ?? insight.title;
 }

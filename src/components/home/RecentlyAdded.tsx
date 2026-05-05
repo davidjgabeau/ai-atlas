@@ -13,7 +13,7 @@ import type { Company } from "@/types/market";
 
 export function RecentlyAdded({ companies }: { companies: Company[] }) {
   return (
-    <section className="border-b border-[#E7E1D8] bg-section">
+    <section id="recently-added" className="border-b border-[#E7E1D8] bg-section">
       <div className="editorial-container py-10">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>

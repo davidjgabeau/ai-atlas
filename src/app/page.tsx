@@ -199,9 +199,9 @@ export default async function Home() {
           latestUpdatedAt={latestUpdatedAt}
         />
         <HomePatterns />
-        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
         <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
         <RecentlyAdded companies={surfaceRecentlyAdded} />
+        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
         <LatestSignals
           items={displayedLatestSignals}
           companiesById={companiesById}
