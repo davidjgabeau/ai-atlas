@@ -1,12 +1,11 @@
 import "./load-env";
 
-import { getCompanySignalLabel } from "../src/lib/signals/companySignal";
+import { getSeededCompanyViews } from "../src/lib/metrics/companyViews";
 import {
   createSupabasePrivilegedClient,
   hasSupabasePrivilegedCredentials,
 } from "../src/lib/supabase/privileged";
 import { getPublishedCompanies } from "../src/lib/supabase/market-data";
-import type { Company } from "../src/types/market";
 
 const force = process.argv.includes("--force");
 
@@ -40,7 +39,10 @@ async function seedCompanyViewCounts() {
     .filter((company) => force || !existingViews.has(company.id))
     .map((company) => ({
       company_id: company.id,
-      views: getSeededViews(company),
+      views: Math.max(
+        existingViews.get(company.id) ?? 0,
+        getSeededCompanyViews(company.id),
+      ),
       last_viewed_at: now,
     }));
 
@@ -59,33 +61,6 @@ async function seedCompanyViewCounts() {
     seeded: rows.length,
     skipped: companies.length - rows.length,
   };
-}
-
-function getSeededViews(company: Company) {
-  const signal = getCompanySignalLabel(company);
-
-  if (company.is_breakout || signal === "Featured" || signal === "Funding signal") {
-    return stableRange(company.id, 800, 2_500);
-  }
-
-  if (
-    company.is_featured ||
-    signal === "Clear buyer pull" ||
-    signal === "Infra signal"
-  ) {
-    return stableRange(company.id, 300, 1_200);
-  }
-
-  return stableRange(company.id, 80, 450);
-}
-
-function stableRange(seed: string, min: number, max: number) {
-  const hash = Array.from(seed).reduce(
-    (value, char) => (value * 31 + char.charCodeAt(0)) >>> 0,
-    17,
-  );
-
-  return min + (hash % (max - min + 1));
 }
 
 seedCompanyViewCounts()

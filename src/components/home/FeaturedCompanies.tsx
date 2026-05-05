@@ -74,7 +74,10 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
                       <CategoryPixelIcon category={company.category} size="xs" />
                       <span className="truncate">{company.category}</span>
                       <span aria-hidden="true">·</span>
-                      <CompanyViewCount views={company.metrics?.views ?? 0} />
+                      <CompanyViewCount
+                        companyId={company.id}
+                        views={company.metrics?.views ?? 0}
+                      />
                     </p>
                     <ArrowRight className="size-3.5 shrink-0 text-[#9A3D2B] transition group-hover:translate-x-0.5" />
                   </div>

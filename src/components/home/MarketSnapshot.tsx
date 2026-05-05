@@ -30,21 +30,25 @@ export function MarketSnapshot({
 }: MarketSnapshotProps) {
   const statItems = [
     {
+      href: "/companies",
       icon: "map",
       label: "companies tracked",
       value: overrides?.totalCompanies ?? stats.totalCompanies,
     },
     {
+      href: "/categories",
       icon: "grid",
       label: "categories",
       value: overrides?.totalCategories ?? stats.totalCategories,
     },
     {
+      href: "/companies?sort=recent",
       icon: "pin",
       label: "recent additions",
       value: overrides?.recentlyAddedCount ?? stats.recentlyAddedCount,
     },
     {
+      href: "/patterns",
       icon: "compass",
       label: "current themes",
       value: overrides?.currentThemeCount ?? currentThemeCount,
@@ -65,12 +69,23 @@ export function MarketSnapshot({
 
       <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3">
         {statItems.map((stat) => (
-          <div key={stat.label} className="border-t border-[#E7E1D8] pt-3">
-            <dt className="flex items-center gap-1.5 text-[11px] font-semibold uppercase leading-none tracking-[0.08em] text-[#7A746C]">
+          <div
+            key={stat.label}
+            className="group/snapshot-stat relative border-t border-[#E7E1D8] pt-3 transition hover:bg-[rgb(154_61_43_/_0.035)]"
+          >
+            <Link
+              href={stat.href}
+              className="absolute inset-x-[-0.35rem] inset-y-0 z-10 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
+              aria-label={`View ${stat.label}`}
+            >
+              <span className="sr-only">View {stat.label}</span>
+            </Link>
+            <dt className="relative flex items-center gap-1.5 pr-5 text-[11px] font-semibold uppercase leading-none tracking-[0.08em] text-[#7A746C] transition group-hover/snapshot-stat:text-[#9A3D2B]">
               <PixelSiteIcon name={stat.icon} size="xs" />
               {stat.label}
+              <ArrowRight className="absolute right-0 size-3 text-[#9A3D2B] opacity-0 transition group-hover/snapshot-stat:translate-x-0.5 group-hover/snapshot-stat:opacity-100" />
             </dt>
-            <dd className="mt-2 font-heading text-[28px] font-medium leading-none tracking-[-0.035em] text-[#181818]">
+            <dd className="relative mt-2 font-heading text-[28px] font-medium leading-none tracking-[-0.035em] text-[#181818]">
               {stat.value}
             </dd>
           </div>

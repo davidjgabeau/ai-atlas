@@ -75,6 +75,7 @@ export function CompanyCard({
           </span>
           <UsageBadge value={getCompanySignalLabel(company)} />
           <CompanyViewCount
+            companyId={company.id}
             views={company.metrics?.views ?? 0}
             className="ml-0.5"
           />

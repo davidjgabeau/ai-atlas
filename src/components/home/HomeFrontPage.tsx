@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 import { CategoryPulse, type CategoryPulseItem } from "@/components/home/CategoryPulse";
 import { CompaniesToKnow } from "@/components/home/CompaniesToKnow";
@@ -85,6 +85,20 @@ export function HomeFrontPage({
                 className="h-12 border-[#E7E1D8] bg-transparent px-[18px] md:h-9 md:px-3"
               >
                 <Link href="#current-read">Read the memo</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="h-12 border-[#E7E1D8] bg-transparent px-[18px] text-[#5F5A52] md:h-9 md:px-3"
+              >
+                <a
+                  href="https://x.com/AiAtlasNYC"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Follow on X
+                  <ExternalLink className="size-4" />
+                </a>
               </Button>
             </div>
           </div>
