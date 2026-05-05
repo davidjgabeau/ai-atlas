@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
   Clock3,
   ExternalLink,
-  LockKeyhole,
   MapPin,
 } from "lucide-react";
 
+import {
+  JobsGateAuthReturn,
+  JobsGateBoard,
+} from "@/components/jobs/jobs-gate-board";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
@@ -21,10 +25,11 @@ import {
 import {
   type CompanyJobStats,
   getCompanyJobsForViewer,
+  getPublicCompanyJobs,
   getPublicCompanyJobStats,
 } from "@/lib/supabase/jobs";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
-import type { Company, CompanyJobWithCompany } from "@/types/market";
+import type { CompanyJobWithCompany } from "@/types/market";
 
 export const dynamic = "force-dynamic";
 
@@ -36,15 +41,22 @@ export const metadata: Metadata = createShareMetadata({
 });
 
 export default async function JobsPage() {
-  const [{ isSignedIn, jobs, error }, companies, publicJobStats] =
+  const requestHeaders = await headers();
+  const crawlerBypassed = isJobsGateCrawler(
+    requestHeaders.get("user-agent") ?? "",
+  );
+  const [{ isSignedIn, jobs, error }, companies, publicJobStats, publicJobs] =
     await Promise.all([
       getCompanyJobsForViewer(),
       getPublishedCompanies(),
       getPublicCompanyJobStats(),
+      getPublicCompanyJobs(),
     ]);
 
   const previewCompanies = companies.slice(0, 6);
+  const unlockedJobs = isSignedIn ? jobs : crawlerBypassed ? publicJobs : [];
   const jobStats = isSignedIn ? getStatsFromJobs(jobs) : publicJobStats;
+  const shouldShowUnlockedBoard = isSignedIn || crawlerBypassed;
 
   return (
     <PublicShell>
@@ -71,10 +83,14 @@ export default async function JobsPage() {
 
       <section className="bg-section">
         <div className="editorial-container py-4 sm:py-10">
-          {isSignedIn ? (
-            <UnlockedJobBoard jobs={jobs} error={error} />
+          {shouldShowUnlockedBoard ? (
+            <>
+              <JobsGateAuthReturn isSignedIn={isSignedIn} />
+              <UnlockedJobBoard jobs={unlockedJobs} error={error} />
+            </>
           ) : (
-            <LockedJobBoard
+            <JobsGateBoard
+              jobs={publicJobs}
               previewCompanies={previewCompanies}
               jobStats={jobStats}
             />
@@ -82,6 +98,12 @@ export default async function JobsPage() {
         </div>
       </section>
     </PublicShell>
+  );
+}
+
+function isJobsGateCrawler(userAgent: string) {
+  return /Googlebot|Bingbot|Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot/i.test(
+    userAgent,
   );
 }
 
@@ -162,94 +184,6 @@ function UnlockedJobBoard({
   );
 }
 
-function LockedJobBoard({
-  previewCompanies,
-  jobStats,
-}: {
-  previewCompanies: Company[];
-  jobStats: CompanyJobStats;
-}) {
-  const hasJobStats = jobStats.openRoles > 0 && jobStats.companiesHiring > 0;
-  const openRolesText = hasJobStats
-    ? formatRoleCount(jobStats.openRoles)
-    : "Daily sync";
-  const companiesText = hasJobStats
-    ? formatHiringCompanyCount(jobStats.companiesHiring)
-    : `${previewCompanies.length} companies checked`;
-  const latestSyncText = jobStats.latestSyncAt
-    ? `Updated ${formatRelativeUpdate(jobStats.latestSyncAt)}`
-    : "Updated daily";
-  const lockedBodyLead = hasJobStats
-    ? `all ${openRolesText.toLowerCase()} from ${companiesText}`
-    : "open roles from companies in AI Atlas";
-
-  return (
-    <div className="relative min-h-[500px] overflow-hidden rounded-md border border-[#E7E1D8] bg-[#FBFAF7] sm:min-h-[560px]">
-      <div className="pointer-events-none select-none opacity-45 blur-[2px]">
-        <div className="border-b border-[#E7E1D8] px-5 py-5">
-          <p className="editorial-label">Member view</p>
-          <h2 className="mt-3 editorial-section-title">Open roles</h2>
-        </div>
-        <div className="divide-y divide-[#E7E1D8]">
-          {previewCompanies.map((company, index) => (
-            <div
-              key={company.id}
-              className="grid gap-3 px-5 py-4 md:grid-cols-[44px_minmax(0,1fr)_180px]"
-            >
-              <CompanyLogo
-                company={company}
-                name={company.name}
-                category={company.category}
-                className="size-10 text-xs"
-              />
-              <div className="min-w-0">
-                <p className="font-semibold text-[#181818]">
-                  {sampleTitles[index % sampleTitles.length]}
-                </p>
-                <p className="mt-1 text-sm text-[#66625C]">
-                  {company.name} · {company.category}
-                </p>
-              </div>
-              <p className="text-sm font-medium text-[#66625C] md:text-right">
-                Company careers
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="absolute inset-0 flex flex-col items-center justify-start gap-3 overflow-y-auto bg-[rgb(248_246_241_/_0.72)] px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pt-4 backdrop-blur-[1px] sm:justify-center sm:gap-4 sm:p-5">
-        <div className="order-2 w-full max-w-[660px] overflow-hidden rounded-md border border-[#E7E1D8] bg-[rgb(251_250_247_/_0.96)] sm:order-1">
-          <dl className="grid divide-y divide-[#E7E1D8] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-            <LockedProofStat label="Open roles" value={openRolesText} />
-            <LockedProofStat label="Companies hiring" value={companiesText} />
-            <LockedProofStat label="Latest sync" value={latestSyncText} />
-          </dl>
-        </div>
-
-        <div className="order-1 w-full max-w-[420px] rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-4 text-center sm:order-2 sm:p-6">
-          <div className="mx-auto grid size-10 place-items-center rounded-md border border-[#E7E1D8] bg-[#F8F6F1] text-[#9A3D2B] sm:size-12">
-            <LockKeyhole className="size-4 sm:size-5" />
-          </div>
-          <h2 className="mt-3 font-heading text-[clamp(28px,8vw,32px)] font-medium leading-[1] tracking-[-0.025em] text-[#181818] sm:mt-4 sm:text-[30px]">
-            Create a profile to view jobs
-          </h2>
-          <p className="mt-3 text-sm leading-6 text-[#5F5A52]">
-            Sign in to see {lockedBodyLead} and keep the job board tied to your
-            saved company view.
-          </p>
-          <Button asChild className="mt-5 w-full max-w-[280px] app-primary-button sm:w-auto">
-            <Link href="/profile?next=/jobs">
-              Sign in or sign up with Google
-              <ArrowRight className="size-4" />
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function JobsProofLine({ stats }: { stats: CompanyJobStats }) {
   if (stats.openRoles <= 0 || stats.companiesHiring <= 0) return null;
 
@@ -267,17 +201,6 @@ function JobsProofLine({ stats }: { stats: CompanyJobStats }) {
         </>
       ) : null}
     </p>
-  );
-}
-
-function LockedProofStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="px-4 py-3 text-center">
-      <dt className="editorial-label text-[10px]">{label}</dt>
-      <dd className="mt-1 font-heading text-[24px] font-medium leading-none tracking-[-0.025em] text-[#181818]">
-        {value}
-      </dd>
-    </div>
   );
 }
 
@@ -377,12 +300,3 @@ function formatRoleCount(count: number) {
 function formatHiringCompanyCount(count: number) {
   return count === 1 ? "1 company" : `${count} companies`;
 }
-
-const sampleTitles = [
-  "Founding Engineer",
-  "Product Engineer",
-  "GTM Lead",
-  "Applied AI Engineer",
-  "Product Designer",
-  "Operations Lead",
-];

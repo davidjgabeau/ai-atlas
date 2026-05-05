@@ -94,6 +94,27 @@ export const getPublicCompanyJobStats = cache(async (): Promise<CompanyJobStats>
   };
 });
 
+export const getPublicCompanyJobs = cache(async (): Promise<CompanyJobWithCompany[]> => {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
+    .from("company_jobs")
+    .select("*, companies(*)")
+    .eq("status", "open")
+    .order("last_seen_at", { ascending: false })
+    .limit(200);
+
+  if (error || !data) return [];
+
+  return (data as CompanyJobRow[])
+    .map((row) => ({
+      ...normalizeCompanyJob(row),
+      company: row.companies ? normalizeCompany(row.companies) : undefined,
+    }))
+    .filter((job) => Boolean(job.company));
+});
+
 function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
   const now = new Date().toISOString();
 
