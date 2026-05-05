@@ -6,6 +6,10 @@ import {
 } from "@/lib/admin-company-record";
 import { revalidateMarketPages } from "@/lib/admin-revalidate";
 import { requireAdminRequest } from "@/lib/admin-server";
+import {
+  enrichCompanyPayloadWithDiscoveredXHandle,
+  saveDiscoveredXHandleTarget,
+} from "@/lib/social-automation/handle-discovery";
 import { normalizeCompany } from "@/lib/supabase/market-data";
 import type { Company } from "@/types/market";
 
@@ -81,11 +85,44 @@ export async function PATCH(request: Request, context: RouteContext) {
     );
   }
 
-  revalidateMarketPages(data.slug);
+  let companyData = data;
+  if (!("x_handle" in payload) && data.status === "published" && !data.x_handle) {
+    const { payload: enrichedPayload, discovery } =
+      await enrichCompanyPayloadWithDiscoveredXHandle({
+        id: data.id,
+        name: data.name,
+        website_url: data.website_url,
+        x_handle: data.x_handle,
+        x_user_id: data.x_user_id,
+      });
+
+    if (discovery.status === "found" && enrichedPayload.x_handle) {
+      const { data: enrichedData } = await supabase
+        .from("companies")
+        .update({
+          x_handle: enrichedPayload.x_handle,
+          x_user_id: enrichedPayload.x_user_id ?? "",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", companyId)
+        .select("*")
+        .single();
+
+      if (enrichedData) {
+        companyData = enrichedData;
+        await saveDiscoveredXHandleTarget({
+          companyId,
+          discovery,
+        });
+      }
+    }
+  }
+
+  revalidateMarketPages(companyData.slug);
 
   return NextResponse.json({
     ok: true,
-    company: normalizeCompany(data),
+    company: normalizeCompany(companyData),
   });
 }
 

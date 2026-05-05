@@ -3,6 +3,10 @@ import { NextResponse } from "next/server";
 import { companyToDatabasePayload } from "@/lib/admin-company-record";
 import { revalidateMarketPages } from "@/lib/admin-revalidate";
 import { requireAdminRequest } from "@/lib/admin-server";
+import {
+  enrichCompanyPayloadWithDiscoveredXHandle,
+  saveDiscoveredXHandleTarget,
+} from "@/lib/social-automation/handle-discovery";
 import { normalizeCompany } from "@/lib/supabase/market-data";
 import type { Company } from "@/types/market";
 
@@ -19,7 +23,10 @@ export async function POST(request: Request) {
     );
   }
 
-  const companyPayload = companyToDatabasePayload(payload);
+  const { payload: companyPayload, discovery } =
+    await enrichCompanyPayloadWithDiscoveredXHandle(
+      companyToDatabasePayload(payload),
+    );
 
   const { data, error } = await supabase
     .from("companies")
@@ -35,6 +42,10 @@ export async function POST(request: Request) {
   }
 
   revalidateMarketPages(data.slug);
+  await saveDiscoveredXHandleTarget({
+    companyId: data.id,
+    discovery,
+  });
 
   return NextResponse.json({
     ok: true,

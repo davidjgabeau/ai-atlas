@@ -2,6 +2,10 @@ import { generateInclusionReason } from "@/lib/agent/generateInclusionReason";
 import { createContentHash, createId } from "@/lib/agent/hash";
 import { refreshCompanyLogos } from "@/lib/logos/refreshCompanyLogos";
 import {
+  enrichCompanyPayloadWithDiscoveredXHandle,
+  saveDiscoveredXHandleTarget,
+} from "@/lib/social-automation/handle-discovery";
+import {
   createSupabasePrivilegedClient,
   hasSupabasePrivilegedCredentials,
 } from "@/lib/supabase/privileged";
@@ -44,7 +48,7 @@ export async function publishDiscoveredCompanies({
 
   const existingSlugs = new Set(existingCompanies.map((company) => company.slug));
   const nextSlugs = new Set(existingSlugs);
-  const rows = eligibleProfiles
+  const baseRows = eligibleProfiles
     .filter((profile) => {
       return validateDiscoveredCompanyCandidate({
         name: profile.proposedUpdate.name ?? profile.candidateCompanyName,
@@ -61,6 +65,11 @@ export async function publishDiscoveredCompanies({
       nextSlugs.add(row.slug);
       return true;
     });
+
+  const enrichedRows = await Promise.all(
+    baseRows.map((row) => enrichCompanyPayloadWithDiscoveredXHandle(row)),
+  );
+  const rows = enrichedRows.map(({ payload }) => payload);
 
   if (rows.length === 0) return { published: 0, errors: [] as string[] };
 
@@ -80,6 +89,14 @@ export async function publishDiscoveredCompanies({
     }
   }
 
+  await Promise.all(
+    enrichedRows.map(({ payload, discovery }) =>
+      saveDiscoveredXHandleTarget({
+        companyId: payload.id,
+        discovery,
+      }),
+    ),
+  );
   await refreshCompanyLogos({ limit: rows.length, force: false }).catch(() => null);
 
   return { published: rows.length, errors: [] as string[] };
@@ -289,6 +306,8 @@ function profileToCompanyRow(profile: DiscoveredCandidateProfile) {
     slug,
     logo_url: "",
     website_url: baseCompany.website_url,
+    x_handle: "",
+    x_user_id: "",
     founder_name: founders || null,
     office_address: baseCompany.office_address,
     funding_round: baseCompany.funding_round,
