@@ -24,9 +24,6 @@ export function SiteFooter() {
           <Link href="/jobs" className="hover:text-[#9A3D2B]">
             Jobs
           </Link>
-          <Link href="/insights" className="hover:text-[#9A3D2B]">
-            Heat Index
-          </Link>
           <Link href="/submit" className="hover:text-[#9A3D2B]">
             Submit
           </Link>

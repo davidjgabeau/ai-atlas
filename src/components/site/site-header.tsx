@@ -14,7 +14,6 @@ const publicNavItems = [
   { href: "/patterns", label: "Patterns", icon: "compass" as const },
   { href: "/feed", label: "Newsfeed", icon: "pin" as const },
   { href: "/jobs", label: "Jobs", icon: "skyline" as const },
-  { href: "/insights", label: "Highlights", icon: "compass" as const },
   { href: "/profile", label: "Profile" },
 ];
 

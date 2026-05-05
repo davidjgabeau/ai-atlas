@@ -25,10 +25,10 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
             </p>
           </div>
           <Link
-            href="/insights"
+            href="/companies"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B]"
           >
-            View highlights
+            View on map
             <ArrowRight className="size-3.5" />
           </Link>
         </div>

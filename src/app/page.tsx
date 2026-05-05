@@ -244,7 +244,6 @@ function SiteNav() {
           <SpriteHeaderLink href="/patterns" icon="compass" label="Patterns" />
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
-          <SpriteHeaderLink href="/insights" icon="compass" label="Highlights" />
           <ProfileHeaderLink compact className="px-1.5 py-1" />
           <Button asChild className="h-11 rounded-lg px-5 app-primary-button">
             <Link href="/submit">Submit Startup</Link>
@@ -323,9 +322,6 @@ function SiteFooter() {
           </Link>
           <Link href="/feed" className="hover:text-[#181818]">
             Newsfeed
-          </Link>
-          <Link href="/insights" className="hover:text-[#181818]">
-            Highlights
           </Link>
           <Link href="/submit" className="hover:text-[#181818]">
             Submit

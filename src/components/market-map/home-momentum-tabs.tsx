@@ -91,8 +91,8 @@ export function HomeMomentumTabs({ groups }: { groups: MomentumGroups }) {
           <p className="mt-1 text-sm text-[#5F5A52]">{activeDescription}</p>
         </div>
         <Button asChild variant="outline" className="bg-[var(--app-surface)]">
-          <Link href="/insights">
-            View highlights
+          <Link href="/companies">
+            View map
             <ArrowRight className="app-arrow size-4" />
           </Link>
         </Button>

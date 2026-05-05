@@ -19,7 +19,6 @@ const navItems = [
   { label: "Patterns", href: "/patterns", icon: "compass" as const },
   { label: "Newsfeed", href: "/feed", icon: "pin" as const },
   { label: "Jobs", href: "/jobs", icon: "skyline" as const },
-  { label: "Highlights", href: "/insights", icon: "compass" as const },
 ];
 
 type AppShellProps = {

@@ -23,7 +23,6 @@ const mobileNavItems = [
   { label: "Patterns", href: "/patterns", icon: "compass" as const },
   { label: "Newsfeed", href: "/feed", icon: "pin" as const },
   { label: "Jobs", href: "/jobs", icon: "skyline" as const },
-  { label: "Highlights", href: "/insights", icon: "compass" as const },
 ];
 
 export function MobileNavMenu({ className }: { className?: string }) {
@@ -55,7 +54,7 @@ export function MobileNavMenu({ className }: { className?: string }) {
             AI Atlas NYC
           </SheetTitle>
           <SheetDescription className="mt-1 text-sm leading-6 text-[#66625C]">
-            Map, news, jobs, highlights, and your profile.
+            Map, categories, patterns, news, jobs, and your profile.
           </SheetDescription>
         </div>
 
