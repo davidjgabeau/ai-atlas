@@ -4,12 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import type { CompanyStats } from "@/lib/companies/getCompanyStats";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import type { Company } from "@/types/market";
 
 type MarketSnapshotProps = {
   stats: CompanyStats;
   currentThemeCount: number;
   analystRead: string;
+  analystReadUpdatedAt?: string;
   companiesById: Map<string, Company>;
   overrides?: MarketSnapshotOverrides;
 };
@@ -25,6 +27,7 @@ export function MarketSnapshot({
   stats,
   currentThemeCount,
   analystRead,
+  analystReadUpdatedAt,
   companiesById,
 }: MarketSnapshotProps) {
   const statItems = [
@@ -107,13 +110,20 @@ export function MarketSnapshot({
             linkClassName="font-semibold text-[#181818] transition hover:text-[#9A3D2B]"
           />
         </p>
-        <Link
-          href="/companies?sort=recent"
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B]"
-        >
-          View recent additions
-          <ArrowRight className="size-3.5" />
-        </Link>
+        <div className="mt-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
+          <Link
+            href="/companies?sort=recent"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B]"
+          >
+            View recent additions
+            <ArrowRight className="size-3.5" />
+          </Link>
+          {analystReadUpdatedAt ? (
+            <p className="ml-auto text-right text-[11px] font-medium uppercase tracking-[0.08em] text-[#8A8177]">
+              Updated {formatRelativeUpdate(analystReadUpdatedAt)}
+            </p>
+          ) : null}
+        </div>
       </div>
     </section>
   );

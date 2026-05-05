@@ -177,11 +177,19 @@ export default async function Home() {
     marketSnapshotSurface?.items,
     storedSnapshot,
   );
+  const analystReadItem = marketSnapshotSurface?.items.find(
+    (item) => item.title === "Analyst read",
+  );
   const analystRead =
-    marketSnapshotSurface?.items.find((item) => item.title === "Analyst read")
-      ?.body ??
+    analystReadItem?.body ??
     surfaceCurrentRead[0]?.body ??
     "Recent early-stage additions skew toward practical AI: healthcare, finance, infrastructure, and operational workflows.";
+  const analystReadUpdatedAt =
+    analystReadItem?.body
+      ? marketSnapshotSurface?.generatedAt
+      : surfaceCurrentRead[0]?.body
+        ? currentReadSurface?.generatedAt
+        : latestUpdatedAt;
 
   return (
     <div className="min-h-screen bg-transparent text-[#181818]">
@@ -194,6 +202,7 @@ export default async function Home() {
           stats={stats}
           currentThemeCount={marketSnapshotCounts.currentThemeCount}
           analystRead={analystRead}
+          analystReadUpdatedAt={analystReadUpdatedAt}
           companiesById={companiesById}
           snapshotOverrides={marketSnapshotCounts}
           latestUpdatedAt={latestUpdatedAt}

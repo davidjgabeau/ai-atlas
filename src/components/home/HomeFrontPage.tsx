@@ -18,6 +18,7 @@ type HomeFrontPageProps = {
   stats: CompanyStats;
   currentThemeCount: number;
   analystRead: string;
+  analystReadUpdatedAt?: string;
   companiesById: Map<string, Company>;
   snapshotOverrides?: MarketSnapshotOverrides;
   latestUpdatedAt?: string;
@@ -29,6 +30,7 @@ export function HomeFrontPage({
   stats,
   currentThemeCount,
   analystRead,
+  analystReadUpdatedAt,
   companiesById,
   snapshotOverrides,
   latestUpdatedAt,
@@ -113,6 +115,7 @@ export function HomeFrontPage({
               stats={stats}
               currentThemeCount={currentThemeCount}
               analystRead={analystRead}
+              analystReadUpdatedAt={analystReadUpdatedAt}
               companiesById={companiesById}
               overrides={snapshotOverrides}
             />
