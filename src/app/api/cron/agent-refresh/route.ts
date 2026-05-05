@@ -1,7 +1,7 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 import { runRefreshKnownCompanies } from "@/lib/agent/pipeline";
+import { revalidateMarketPages } from "@/lib/admin-revalidate";
 
 export const maxDuration = 300;
 export const dynamic = "force-dynamic";
@@ -12,8 +12,7 @@ export async function GET(request: Request) {
   }
 
   const run = await runRefreshKnownCompanies();
-  revalidatePath("/");
-  revalidatePath("/companies");
+  revalidateMarketPages();
   return NextResponse.json({ ok: run.status !== "failed", run });
 }
 

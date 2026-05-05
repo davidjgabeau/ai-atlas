@@ -67,6 +67,12 @@ export function CursorCompanion() {
     let frameId = 0;
     let hasPointer = false;
 
+    function scheduleAnimation() {
+      if (frameId === 0) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    }
+
     function handleMouseMove(event: MouseEvent) {
       target.x = event.clientX + 14;
       target.y = event.clientY + 14;
@@ -77,21 +83,41 @@ export function CursorCompanion() {
         companion.style.opacity = "0.7";
         hasPointer = true;
       }
+
+      scheduleAnimation();
+    }
+
+    function handleMouseLeave() {
+      hasPointer = false;
+      companion.style.opacity = "0";
     }
 
     function animate() {
+      frameId = 0;
+
+      if (!hasPointer || document.hidden) return;
+
       current.x += (target.x - current.x) * 0.15;
       current.y += (target.y - current.y) * 0.15;
       companion.style.transform = `translate3d(${current.x}px, ${current.y}px, 0)`;
-      frameId = window.requestAnimationFrame(animate);
+
+      if (
+        Math.abs(target.x - current.x) > 0.2 ||
+        Math.abs(target.y - current.y) > 0.2
+      ) {
+        scheduleAnimation();
+      }
     }
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    frameId = window.requestAnimationFrame(animate);
+    window.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      if (frameId !== 0) {
+        window.cancelAnimationFrame(frameId);
+      }
     };
   }, [enabled, icon]);
 

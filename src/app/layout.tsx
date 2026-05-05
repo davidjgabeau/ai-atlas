@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
+import { Suspense } from "react";
 
+import { RouteTransitionFeedback } from "@/components/site/route-transition-feedback";
 import { CursorCompanion } from "@/components/ui/CursorCompanion";
 import {
   createShareMetadata,
@@ -76,6 +78,9 @@ export default function RootLayout({
       className={`${inter.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--app-bg)] text-[#181818]">
+        <Suspense fallback={null}>
+          <RouteTransitionFeedback />
+        </Suspense>
         {children}
         <CursorCompanion />
       </body>

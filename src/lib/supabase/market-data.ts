@@ -1,3 +1,4 @@
+import { unstable_cache } from "next/cache";
 import { cache } from "react";
 
 import {
@@ -5,6 +6,11 @@ import {
   submissions as localSubmissions,
 } from "@/data/market";
 import { validateDiscoveredCompanyCandidate } from "@/lib/agent/companyCandidateValidation";
+import {
+  MARKET_COMPANIES_CACHE_TAG,
+  MARKET_SUBMISSIONS_CACHE_TAG,
+} from "@/lib/cache-tags";
+import { runWithNextCacheFallback } from "@/lib/cache/runtime-cache";
 import { generateCompanyHook } from "@/lib/editorial/generateCompanyHook";
 import { formatFundingAmount, formatFundingText } from "@/lib/funding";
 import {
@@ -45,9 +51,38 @@ type CompanyRow = Partial<Company> & {
 
 type SubmissionRow = Partial<Submission>;
 
+const MARKET_DATA_CACHE_SECONDS = 300;
+
+const getCachedMarketCompanyRows = unstable_cache(
+  getMarketCompanyRows,
+  ["market-company-rows"],
+  {
+    revalidate: MARKET_DATA_CACHE_SECONDS,
+    tags: [MARKET_COMPANIES_CACHE_TAG],
+  },
+);
+
+const getCachedMarketSubmissions = unstable_cache(
+  getMarketSubmissionsDirect,
+  ["market-submissions"],
+  {
+    revalidate: MARKET_DATA_CACHE_SECONDS,
+    tags: [MARKET_SUBMISSIONS_CACHE_TAG],
+  },
+);
+
 export const getMarketCompanies = cache(async (): Promise<Company[]> => {
+  const rows = await runWithNextCacheFallback(
+    getCachedMarketCompanyRows,
+    getMarketCompanyRows,
+  );
+
+  return normalizeCompanyRowsWithMetrics(rows);
+});
+
+async function getMarketCompanyRows(): Promise<CompanyRow[]> {
   const supabase = createSupabaseServerClient();
-  if (!supabase) return localCompanies.map(normalizeCompany);
+  if (!supabase) return localCompanies;
 
   const { data, error } = await supabase
     .from("companies")
@@ -56,11 +91,11 @@ export const getMarketCompanies = cache(async (): Promise<Company[]> => {
 
   if (error || !data) {
     console.warn("Supabase companies fallback:", error?.message);
-    return localCompanies.map(normalizeCompany);
+    return localCompanies;
   }
 
-  return normalizeCompanyRowsWithMetrics(data as CompanyRow[]);
-});
+  return data as CompanyRow[];
+}
 
 export async function getAdminMarketCompanies(): Promise<Company[]> {
   const supabase = await createSupabaseAuthServerClient();
@@ -84,7 +119,14 @@ export const getPublishedCompanies = cache(async () => {
   return companies.filter(isPublicCompany);
 });
 
-export const getMarketSubmissions = cache(async (): Promise<Submission[]> => {
+export const getMarketSubmissions = cache(async (): Promise<Submission[]> =>
+  runWithNextCacheFallback(
+    getCachedMarketSubmissions,
+    getMarketSubmissionsDirect,
+  ),
+);
+
+async function getMarketSubmissionsDirect(): Promise<Submission[]> {
   const supabase = createSupabaseServerClient();
   if (!supabase) return localSubmissions;
 
@@ -99,7 +141,7 @@ export const getMarketSubmissions = cache(async (): Promise<Submission[]> => {
   }
 
   return (data as SubmissionRow[]).map(normalizeSubmission);
-});
+}
 
 export async function getAdminMarketSubmissions(): Promise<Submission[]> {
   const supabase = await createSupabaseAuthServerClient();

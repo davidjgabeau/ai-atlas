@@ -1,6 +1,6 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
+import { revalidateMarketPages } from "@/lib/admin-revalidate";
 import { refreshCompanyLogos } from "@/lib/logos/refreshCompanyLogos";
 
 export const maxDuration = 300;
@@ -16,11 +16,7 @@ export async function GET(request: Request) {
 
   const result = await refreshCompanyLogos();
 
-  revalidatePath("/");
-  revalidatePath("/companies");
-  revalidatePath("/categories");
-  revalidatePath("/feed");
-  revalidatePath("/insights");
+  revalidateMarketPages();
 
   return NextResponse.json(result);
 }

@@ -1,7 +1,7 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 import { refreshCompanyProfileBriefs } from "@/lib/agent/refreshCompanyProfileBriefs";
+import { revalidateMarketPages } from "@/lib/admin-revalidate";
 
 export const maxDuration = 300;
 export const dynamic = "force-dynamic";
@@ -19,11 +19,7 @@ export async function GET(request: Request) {
     persistJson: false,
   });
 
-  revalidatePath("/");
-  revalidatePath("/companies");
-  revalidatePath("/categories");
-  revalidatePath("/feed");
-  revalidatePath("/insights");
+  revalidateMarketPages();
 
   return NextResponse.json(result);
 }

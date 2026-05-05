@@ -1,3 +1,10 @@
+import { unstable_cache } from "next/cache";
+
+import { COMPANY_VIEW_METRICS_CACHE_TAG } from "@/lib/cache-tags";
+import {
+  runWithNextCacheFallback,
+  safeRevalidateTag,
+} from "@/lib/cache/runtime-cache";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 import type { CompanyMetrics } from "@/types/market";
 
@@ -10,30 +17,44 @@ type CompanyViewMetricRow = {
 const memoryMetrics = new Map<string, CompanyMetrics>();
 
 export async function getCompanyViewMetrics(companyIds?: string[]) {
-  const supabase = createSupabasePrivilegedClient();
-  if (!supabase) return new Map<string, CompanyMetrics>();
+  const rows = await runWithNextCacheFallback(
+    getCachedCompanyViewMetricRows,
+    getCompanyViewMetricRows,
+  );
 
-  let query = supabase
+  const filteredRows =
+    companyIds && companyIds.length > 0
+      ? rows.filter((row) => companyIds.includes(row.company_id))
+      : rows;
+
+  return new Map(
+    filteredRows.map((row) => [row.company_id, normalizeCompanyMetric(row)]),
+  );
+}
+
+const getCachedCompanyViewMetricRows = unstable_cache(
+  getCompanyViewMetricRows,
+  ["company-view-metric-rows"],
+  {
+    revalidate: 60,
+    tags: [COMPANY_VIEW_METRICS_CACHE_TAG],
+  },
+);
+
+async function getCompanyViewMetricRows() {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
     .from("company_view_metrics")
     .select("company_id, views, last_viewed_at");
 
-  if (companyIds && companyIds.length > 0) {
-    query = query.in("company_id", companyIds);
-  }
-
-  const { data, error } = await query;
-
   if (error || !data) {
     console.warn("Company view metrics fallback:", error?.message);
-    return new Map<string, CompanyMetrics>();
+    return [];
   }
 
-  return new Map(
-    (data as CompanyViewMetricRow[]).map((row) => [
-      row.company_id,
-      normalizeCompanyMetric(row),
-    ]),
-  );
+  return data as CompanyViewMetricRow[];
 }
 
 export async function incrementCompanyViews(
@@ -81,6 +102,7 @@ export async function incrementCompanyViews(
 
   const metric = normalizeCompanyMetric(data as CompanyViewMetricRow);
   memoryMetrics.set(companyId, metric);
+  safeRevalidateTag(COMPANY_VIEW_METRICS_CACHE_TAG);
   return metric;
 }
 
