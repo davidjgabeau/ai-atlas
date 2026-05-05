@@ -199,9 +199,8 @@ export default async function Home() {
           latestUpdatedAt={latestUpdatedAt}
         />
         <HomePatterns />
-        <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
         <RecentlyAdded companies={surfaceRecentlyAdded} />
-        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
+        <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
         <LatestSignals
           items={displayedLatestSignals}
           companiesById={companiesById}
@@ -209,6 +208,7 @@ export default async function Home() {
         <FeaturedCompanies companies={featuredHomepageCompanies} />
         <BrowseByCategory categories={categoryMeta} counts={categoryCounts} />
         <SubmitCompanyCTA />
+        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
       </main>
 
       <SiteFooter />
