@@ -48,10 +48,14 @@ Example:
 - `/api/cron/agent-refresh` every 3 hours
 - `/api/cron/agent-discover` every 12 hours
 - `/api/cron/agent-editorial` once per day
-- `/api/cron/social-generate` every 15 minutes
-- `/api/cron/social-dispatch` every 10 minutes
-- `/api/cron/social-engagement` every 30 minutes
+- `/api/cron/social-generate` daily
+- `/api/cron/social-dispatch` daily
+- `/api/cron/social-engagement` daily
 - `/api/cron/social-handles-verify` daily
+
+The social cron routes are scheduled daily by default so they can deploy on
+Vercel Hobby. For hourly posting, run the same routes from Vercel Pro cron or
+an external scheduler at the cadences described in `docs/x-automation.md`.
 
 For durable writes from Vercel cron, set:
 
