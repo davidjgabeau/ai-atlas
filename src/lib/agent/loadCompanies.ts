@@ -13,7 +13,9 @@ type CompanyRow = Partial<Company>;
 
 export async function loadPublishedCompaniesForAgent(): Promise<Company[]> {
   if (!isSupabaseConfigured()) {
-    return localCompanies.filter((company) => company.status === "published");
+    return localCompanies
+      .filter((company) => company.status === "published")
+      .map(normalizeCompany);
   }
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
@@ -30,7 +32,9 @@ export async function loadPublishedCompaniesForAgent(): Promise<Company[]> {
 
   if (error || !data) {
     console.warn("Agent company loader using local fallback:", error?.message);
-    return localCompanies.filter((company) => company.status === "published");
+    return localCompanies
+      .filter((company) => company.status === "published")
+      .map(normalizeCompany);
   }
 
   return (data as CompanyRow[]).map(normalizeCompany);

@@ -1140,7 +1140,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Data & Memory Layer",
-    "description": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema e...",
+    "description": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data.",
     "oneSentenceDescription": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data.",
     "founders": [
       {
@@ -1172,7 +1172,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Multimodal data extraction for visual datasets",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -1206,7 +1206,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Data & Memory Layer",
-    "description": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified contex...",
+    "description": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations.",
     "oneSentenceDescription": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations.",
     "founders": [
       {
@@ -1241,7 +1241,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Enterprise context layer for business data",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -1348,8 +1348,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Data & Memory Layer",
-    "description": "AI-powered AI to automate alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and we...",
-    "oneSentenceDescription": "Canoe uses AI to automate alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and wealth managers.",
+    "description": "Canoe automates alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and wealth managers.",
+    "oneSentenceDescription": "Canoe automates alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and wealth managers.",
     "founders": [
       {
         "name": "Seth Brotman"
@@ -1379,7 +1379,7 @@
       "context layer"
     ],
     "generated": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Alternative-investment data automation",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -1412,7 +1412,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Data & Memory Layer",
-    "description": "an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale...",
+    "description": "Wallaroo provides an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale, with model observability, monitoring, and inference orchestration.",
     "oneSentenceDescription": "Wallaroo provides an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale, with model observability, monitoring, and inference orchestration.",
     "founders": [
       {
@@ -1443,7 +1443,7 @@
       "context layer"
     ],
     "generated": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Model deployment infrastructure for enterprises",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -1476,7 +1476,7 @@
     "locationConfidence": "medium",
     "stage": "Series A",
     "category": "Data & Memory Layer",
-    "description": "better decisions.",
+    "description": "Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions.",
     "oneSentenceDescription": "Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions.",
     "founders": [
       {
@@ -1507,7 +1507,7 @@
       "context layer"
     ],
     "generated": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Licensed data marketplace for AI builders",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -1540,7 +1540,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Fintech & Trading AI",
-    "description": "first hedge fund that researches and executes trades purely with AI.",
+    "description": "Standard Signal is the first hedge fund that researches and executes trades purely with AI.",
     "oneSentenceDescription": "Standard Signal is the first hedge fund that researches and executes trades purely with AI.",
     "founders": [
       {
@@ -1575,7 +1575,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Research workflows for financial teams",
+      "hook": "AI-native trading research and execution",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -1680,7 +1680,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Enterprise GTM & RevOps AI",
-    "description": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into...",
+    "description": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation.",
     "oneSentenceDescription": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation.",
     "founders": [
       {
@@ -1714,7 +1714,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "Conversational intake for business forms",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -1750,7 +1750,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Enterprise GTM & RevOps AI",
-    "description": "AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operat...",
+    "description": "Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis.",
     "oneSentenceDescription": "Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis.",
     "founders": [
       {
@@ -1784,7 +1784,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "AI agents for corporate finance teams",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -1820,8 +1820,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Enterprise GTM & RevOps AI",
-    "description": "Slang.",
-    "oneSentenceDescription": "Slang.",
+    "description": "Slang.ai builds voice agents that answer calls for restaurants and retail businesses, handling reservations, appointments, and customer questions.",
+    "oneSentenceDescription": "Slang.ai builds voice agents that answer calls for restaurants and retail businesses, handling reservations, appointments, and customer questions.",
     "founders": [
       {
         "name": "Alex Sambvani"
@@ -1853,7 +1853,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "Voice agents for restaurant and retail calls",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -1888,7 +1888,7 @@
     "locationConfidence": "high",
     "stage": "Unknown",
     "category": "Enterprise GTM & RevOps AI",
-    "description": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to sco...",
+    "description": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
     "oneSentenceDescription": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
     "founders": [
       {
@@ -1921,7 +1921,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "AI underwriting for commercial insurance",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -1956,7 +1956,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Agent Infrastructure",
-    "description": "platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze mi...",
+    "description": "Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes.",
     "oneSentenceDescription": "Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes.",
     "founders": [
       {
@@ -1988,7 +1988,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Supply chain agents for operational planning",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -2022,8 +2022,8 @@
     "locationConfidence": "medium",
     "stage": "Pre-seed",
     "category": "Agent Infrastructure",
-    "description": "AI apps via a chatbot interface-users describe what they want (e.",
-    "oneSentenceDescription": "Empromptu helps enterprises build AI apps via a chatbot interface-users describe what they want (e.",
+    "description": "Empromptu helps enterprises build AI apps through chat, turning plain-language requests into working internal tools.",
+    "oneSentenceDescription": "Empromptu helps enterprises build AI apps through chat, turning plain-language requests into working internal tools.",
     "founders": [
       {
         "name": "Empromptu Team"
@@ -2053,7 +2053,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Chat-driven enterprise app creation",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -2086,8 +2086,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Agent Infrastructure",
-    "description": "Kay.",
-    "oneSentenceDescription": "Kay.",
+    "description": "Kay.ai accelerates enterprise data extraction with embeddings and fine-tuned LLMs that give agents useful context over documents.",
+    "oneSentenceDescription": "Kay.ai accelerates enterprise data extraction with embeddings and fine-tuned LLMs that give agents useful context over documents.",
     "founders": [
       {
         "name": "Vishal Rohra"
@@ -2119,7 +2119,7 @@
       "context layer"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Document context layer for enterprise agents",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -2154,7 +2154,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Agent Infrastructure",
-    "description": "a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
+    "description": "A software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
     "oneSentenceDescription": "Amika is infrastructure to build a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
     "founders": [
       {
@@ -2185,7 +2185,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Cloud sandboxes for AI coding agents",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -2218,7 +2218,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Agent Infrastructure",
-    "description": "Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically...",
+    "description": "Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically-matched product catalog.",
     "oneSentenceDescription": "Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically-matched product catalog.",
     "founders": [
       {
@@ -2249,7 +2249,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Product catalog infrastructure for agentic commerce",
       "signalLabel": "Infra signal",
       "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
       "keywords": [
@@ -2282,7 +2282,7 @@
     "locationConfidence": "high",
     "stage": "Series A",
     "category": "Agent Infrastructure",
-    "description": "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to...",
+    "description": "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows.",
     "oneSentenceDescription": "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows.",
     "founders": [
       {
@@ -2313,7 +2313,7 @@
       "agentic workflows"
     ],
     "generated": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Agents that orchestrate enterprise workflows",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -2346,7 +2346,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "AI-Native Consumer & Social",
-    "description": "concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a persona...",
+    "description": "Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan.",
     "oneSentenceDescription": "Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan.",
     "founders": [
       {
@@ -2381,7 +2381,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Personal health memory for daily plans",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -2418,7 +2418,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "AI-Native Consumer & Social",
-    "description": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging...",
+    "description": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar.",
     "oneSentenceDescription": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar.",
     "founders": [
       {
@@ -2453,7 +2453,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Restaurant revenue automation with AI",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -2490,8 +2490,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "AI-Native Consumer & Social",
-    "description": "AI-powered AI to engage live audiences in real-time conversations and surface insights at scale.",
-    "oneSentenceDescription": "Remesh uses AI to engage live audiences in real-time conversations and surface insights at scale.",
+    "description": "Remesh uses AI to run live audience conversations and surface research insights at scale.",
+    "oneSentenceDescription": "Remesh uses AI to run live audience conversations and surface research insights at scale.",
     "founders": [
       {
         "name": "Andrew Konya"
@@ -2525,7 +2525,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Real-time audience research with AI",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -2562,8 +2562,8 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "AI-Native Consumer & Social",
-    "description": "AI-powered social-graph AI to match users only with friends or friends-of-friends, eliminating stranger anxiety and rejection fear.",
-    "oneSentenceDescription": "Cerca is a Gen Z dating app that uses social-graph AI to match users only with friends or friends-of-friends, eliminating stranger anxiety and rejection fear.",
+    "description": "Cerca is a Gen Z dating app that uses social-graph AI to match users only with friends or friends-of-friends.",
+    "oneSentenceDescription": "Cerca is a Gen Z dating app that uses social-graph AI to match users only with friends or friends-of-friends.",
     "founders": [
       {
         "name": "Myles Slayton"
@@ -2597,7 +2597,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Social graph matching for Gen Z dating",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -2634,8 +2634,8 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "AI-Native Consumer & Social",
-    "description": "AI-powered AI to engineer 'meet-cutes,' matching strangers for IRL dinners, hangouts, and dates in NYC and other major cities.",
-    "oneSentenceDescription": "222 uses AI to engineer 'meet-cutes,' matching strangers for IRL dinners, hangouts, and dates in NYC and other major cities.",
+    "description": "222 uses AI to match people for in-person dinners, hangouts, and dates in NYC and other major cities.",
+    "oneSentenceDescription": "222 uses AI to match people for in-person dinners, hangouts, and dates in NYC and other major cities.",
     "founders": [
       {
         "name": "Keyan Kazemian"
@@ -2669,7 +2669,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "AI matching for in-person social plans",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -2706,7 +2706,7 @@
     "locationConfidence": "medium",
     "stage": "Pre-seed",
     "category": "AI-Native Consumer & Social",
-    "description": "AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions...",
+    "description": "Series is an AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions across Gen Z and professional users.",
     "oneSentenceDescription": "Series is an AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions across Gen Z and professional users.",
     "founders": [
       {
@@ -2741,7 +2741,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Warm introductions inside iMessage",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -2778,8 +2778,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Health & Clinical AI",
-    "description": "AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows-navigating...",
-    "oneSentenceDescription": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows-navigating health benefits, disputing denials, and helping consumers access care.",
+    "description": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care.",
+    "oneSentenceDescription": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care.",
     "founders": [
       {
         "name": "Granted Team"
@@ -2813,7 +2813,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "AI support for navigating health benefits",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -2850,7 +2850,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Health & Clinical AI",
-    "description": "healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
+    "description": "Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
     "oneSentenceDescription": "Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
     "founders": [
       {
@@ -2883,7 +2883,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Healthcare payments operations for clinics",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -2918,7 +2918,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Health & Clinical AI",
-    "description": "AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automatio...",
+    "description": "Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy.",
     "oneSentenceDescription": "Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy.",
     "founders": [
       {
@@ -2952,7 +2952,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Eligibility automation for behavioral health",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -2988,8 +2988,8 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Health & Clinical AI",
-    "description": "an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics-scheduling, billing, pre...",
-    "oneSentenceDescription": "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics-scheduling, billing, prescription refills, and more.",
+    "description": "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics, scheduling, billing, prescription refills, and more.",
+    "oneSentenceDescription": "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics, scheduling, billing, prescription refills, and more.",
     "founders": [
       {
         "name": "Ryan Shaw"
@@ -3022,7 +3022,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Voice agents for healthcare communications",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3058,7 +3058,7 @@
     "locationConfidence": "medium",
     "stage": "Series A",
     "category": "Health & Clinical AI",
-    "description": "AI front office for independent doctors' offices, automating patient communications, scheduling, and the administrative space between p...",
+    "description": "Valerie Health is an AI front office for independent doctors' offices, automating patient communications, scheduling, and the administrative space between patient and provider.",
     "oneSentenceDescription": "Valerie Health is an AI front office for independent doctors' offices, automating patient communications, scheduling, and the administrative space between patient and provider.",
     "founders": [
       {
@@ -3091,7 +3091,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Front-office AI for independent doctors",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3194,7 +3194,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Media, Ads & Creative AI",
-    "description": "AI brand and performance ads at scale.",
+    "description": "Absurd makes AI brand and performance ads at scale.",
     "oneSentenceDescription": "Absurd makes AI brand and performance ads at scale.",
     "founders": [
       {
@@ -3229,7 +3229,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "AI brand ads for performance teams",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3266,7 +3266,7 @@
     "locationConfidence": "medium",
     "stage": "Seed",
     "category": "Media, Ads & Creative AI",
-    "description": "AI-powered the latest image and video generation models in one place.",
+    "description": "Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place.",
     "oneSentenceDescription": "Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place.",
     "founders": [
       {
@@ -3301,7 +3301,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "Creative workspace for generative media",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3338,7 +3338,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Media, Ads & Creative AI",
-    "description": "recommendations, collect reviews, and drive growth.",
+    "description": "Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth.",
     "oneSentenceDescription": "Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth.",
     "founders": [
       {
@@ -3373,7 +3373,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "Agentic brand conversations across channels",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3410,7 +3410,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Media, Ads & Creative AI",
-    "description": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC bra...",
+    "description": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
     "oneSentenceDescription": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
     "founders": [
       {
@@ -3445,7 +3445,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "AI video ads with creative testing",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3550,7 +3550,7 @@
     "locationConfidence": "high",
     "stage": "Unknown",
     "category": "Media, Ads & Creative AI",
-    "description": "AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, M...",
+    "description": "Agentio is the AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, Meta, and beyond.",
     "oneSentenceDescription": "Agentio is the AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, Meta, and beyond.",
     "founders": [
       {
@@ -3585,7 +3585,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "Creator-led advertising automation",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -3622,7 +3622,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Media, Ads & Creative AI",
-    "description": "AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and v...",
+    "description": "Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns.",
     "oneSentenceDescription": "Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns.",
     "founders": [
       {
@@ -3657,7 +3657,7 @@
       "consumer behavior"
     ],
     "generated": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "AI video generation for creative teams",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -3729,7 +3729,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Real-time policy enforcement for regulated teams",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3766,7 +3766,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Legal & Compliance AI",
-    "description": "AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial...",
+    "description": "Alkymi is an AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial services compliance, operations, and reporting workflows.",
     "oneSentenceDescription": "Alkymi is an AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial services compliance, operations, and reporting workflows.",
     "founders": [
       {
@@ -3801,7 +3801,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Document workflows for financial services",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3838,8 +3838,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Legal & Compliance AI",
-    "description": "long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
-    "oneSentenceDescription": "Bretton AI (formerly Greenlite AI) builds long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
+    "description": "Bretton AI builds long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
+    "oneSentenceDescription": "Bretton AI builds long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
     "founders": [
       {
         "name": "Will Lawrence"
@@ -3872,7 +3872,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "KYC and AML agents for financial teams",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -3908,7 +3908,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Legal & Compliance AI",
-    "description": "AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, an...",
+    "description": "Soxton is an AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, and human-in-the-loop attorney review.",
     "oneSentenceDescription": "Soxton is an AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, and human-in-the-loop attorney review.",
     "founders": [
       {
@@ -3942,7 +3942,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Legal copilot for startup legal work",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -4045,7 +4045,7 @@
     "locationConfidence": "high",
     "stage": "Unknown",
     "category": "Legal & Compliance AI",
-    "description": "Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financia...",
+    "description": "Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financial institutions.",
     "oneSentenceDescription": "Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financial institutions.",
     "founders": [
       {
@@ -4081,7 +4081,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Regulatory AI agents for enterprises",
       "signalLabel": "Featured",
       "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
@@ -4117,7 +4117,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investm...",
+    "description": "Trata is an AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investment research, and distribute it via subscription.",
     "oneSentenceDescription": "Trata is an AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investment research, and distribute it via subscription.",
     "founders": [
       {
@@ -4152,7 +4152,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Research workflows for financial teams",
+      "hook": "Hedge fund research from analyst agents",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -4189,7 +4189,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and r...",
+    "description": "Tabs is an AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and run revenue recognition end-to-end.",
     "oneSentenceDescription": "Tabs is an AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and run revenue recognition end-to-end.",
     "founders": [
       {
@@ -4224,7 +4224,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Contract-to-cash workflows for finance teams",
+      "hook": "Contract-to-cash automation for finance teams",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -4261,7 +4261,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for...",
+    "description": "Maybern is the AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for private equity, credit, and real estate firms.",
     "oneSentenceDescription": "Maybern is the AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for private equity, credit, and real estate firms.",
     "founders": [
       {
@@ -4296,7 +4296,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Fund operations workflows for private markets",
+      "hook": "Private fund operations for investment firms",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -4333,7 +4333,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a...",
+    "description": "Brightwave is an AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a knowledge graph to deliver analyst-grade investment research.",
     "oneSentenceDescription": "Brightwave is an AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a knowledge graph to deliver analyst-grade investment research.",
     "founders": [
       {
@@ -4368,7 +4368,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Research workflows for financial teams",
+      "hook": "Investment research from filings and transcripts",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [
@@ -4405,7 +4405,7 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with...",
+    "description": "Bayesline builds GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with cloud-deployed solutions that produce custom equity factor and risk models in seconds.",
     "oneSentenceDescription": "Bayesline builds GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with cloud-deployed solutions that produce custom equity factor and risk models in seconds.",
     "founders": [
       {
@@ -4440,7 +4440,7 @@
       "regulated adoption"
     ],
     "generated": {
-      "hook": "Custom risk analytics for investment teams",
+      "hook": "Custom risk analytics for hedge funds",
       "signalLabel": "Workflow signal",
       "signalReason": "Built around a concrete workflow or durable product surface.",
       "keywords": [

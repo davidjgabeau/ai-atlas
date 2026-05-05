@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-02T19:50:01.298Z",
+  "generatedAt": "2026-05-05T12:51:39.223Z",
   "companies": {
     "cmp_001": {
       "hook": "Research workflows for financial teams",
-      "signalLabel": "Worth watching",
-      "signalReason": "Fintech & Trading AI company is worth watching based on editorial review.",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "fintech",
         "trading",
@@ -20,13 +20,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.303Z",
-      "sourceHash": "5f691d3e"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "15f903a6"
     },
     "cmp_002": {
-      "hook": "Custom risk analytics for investment teams",
+      "hook": "Custom risk analytics for hedge funds",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -42,13 +42,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.303Z",
-      "sourceHash": "86e33516"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "b12c07ec"
     },
     "cmp_003": {
-      "hook": "Research workflows for financial teams",
+      "hook": "Investment research from filings and transcripts",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -64,13 +64,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.303Z",
-      "sourceHash": "c8adf6f1"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "8cd88921"
     },
     "cmp_004": {
-      "hook": "Fund operations workflows for private markets",
+      "hook": "Private fund operations for investment firms",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -86,13 +86,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.303Z",
-      "sourceHash": "d46d331a"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "344808b2"
     },
     "cmp_005": {
-      "hook": "Contract-to-cash workflows for finance teams",
+      "hook": "Contract-to-cash automation for finance teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -108,13 +108,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "b7055af2"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "db941d99"
     },
     "cmp_006": {
-      "hook": "Research workflows for financial teams",
+      "hook": "Hedge fund research from analyst agents",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -130,13 +130,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "41585f21"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "0814d0dd"
     },
     "cmp_007": {
-      "hook": "Turning policies into operational AI agents",
-      "signalLabel": "Worth watching",
-      "signalReason": "Legal & Compliance AI company is worth watching based on editorial review.",
+      "hook": "Regulatory AI agents for enterprises",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "legal",
         "compliance",
@@ -151,13 +151,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "52dbd17e"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "8295017a"
     },
     "cmp_008": {
-      "hook": "Turning policies into operational AI agents",
-      "signalLabel": "Worth watching",
-      "signalReason": "Legal & Compliance AI company is worth watching based on editorial review.",
+      "hook": "Infrastructure for AI-native legal services",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "legal",
         "compliance",
@@ -172,13 +172,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "86e81518"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "483e8d4f"
     },
     "cmp_009": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Legal copilot for startup legal work",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "legal",
         "compliance",
@@ -193,13 +193,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "7c5a275a"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "250a43c9"
     },
     "cmp_010": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "KYC and AML agents for financial teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "legal",
         "compliance",
@@ -214,13 +214,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "a4346e96"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "f0f1268f"
     },
     "cmp_011": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Document workflows for financial services",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "legal",
         "compliance",
@@ -236,13 +236,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "9babe02b"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "0ddb9114"
     },
     "cmp_012": {
-      "hook": "Turning policies into operational AI agents",
+      "hook": "Real-time policy enforcement for regulated teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "legal",
         "compliance",
@@ -258,13 +258,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "e1c80266"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "db97a99d"
     },
     "cmp_013": {
-      "hook": "Consumer video creation with real distribution",
-      "signalLabel": "Worth watching",
-      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "hook": "AI video generation for creative teams",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "media,",
         "creative",
@@ -280,13 +280,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "70826d32"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "046edfa0"
     },
     "cmp_014": {
-      "hook": "Consumer video creation with real distribution",
-      "signalLabel": "Worth watching",
-      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "hook": "Creator-led advertising automation",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "media,",
         "creative",
@@ -302,13 +302,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "530d9e6d"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "1493ab05"
     },
     "cmp_015": {
       "hook": "Consumer video creation with real distribution",
-      "signalLabel": "Worth watching",
-      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "media,",
         "creative",
@@ -324,13 +324,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "da5ff555"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "fc04b453"
     },
     "cmp_016": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "AI video ads with creative testing",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "media,",
         "creative",
@@ -346,13 +346,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "ed274845"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "e710c581"
     },
     "cmp_017": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "Agentic brand conversations across channels",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "media,",
         "creative",
@@ -368,13 +368,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "e9eb4a2a"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "ec24eea6"
     },
     "cmp_018": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "Creative workspace for generative media",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "media,",
         "creative",
@@ -390,13 +390,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "c0b9d9f1"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "27db9e39"
     },
     "cmp_019": {
-      "hook": "Consumer video creation with real distribution",
+      "hook": "AI brand ads for performance teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "media,",
         "creative",
@@ -412,13 +412,13 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "b3ddf648"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "89795eed"
     },
     "cmp_020": {
       "hook": "Automating clinical admin work for health plans",
-      "signalLabel": "Worth watching",
-      "signalReason": "Health & Clinical AI company is worth watching based on editorial review.",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "health",
         "clinical",
@@ -432,13 +432,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "d579afd8"
+      "generatedAt": "2026-05-05T12:51:39.223Z",
+      "sourceHash": "3f8ee837"
     },
     "cmp_021": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Front-office AI for independent doctors",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "health",
         "clinical",
@@ -452,13 +452,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "a52296f2"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "f4be5867"
     },
     "cmp_022": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Voice agents for healthcare communications",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "health",
         "clinical",
@@ -473,13 +473,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.304Z",
-      "sourceHash": "cee90432"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "4ca97f2f"
     },
     "cmp_023": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Eligibility automation for behavioral health",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "health",
         "clinical",
@@ -494,13 +494,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "bb73b7f9"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "7abd6729"
     },
     "cmp_024": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "Healthcare payments operations for clinics",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "health",
         "clinical",
@@ -514,13 +514,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "b1f5ba33"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "aa03ad5f"
     },
     "cmp_025": {
-      "hook": "Automating clinical admin work for health plans",
+      "hook": "AI support for navigating health benefits",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "health",
         "clinical",
@@ -536,13 +536,13 @@
         "regulated adoption",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "2e28c9b1"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "53ee7914"
     },
     "cmp_026": {
-      "hook": "Personal memory workflows for everyday users",
-      "signalLabel": "Worth watching",
-      "signalReason": "AI-Native Consumer & Social company is worth watching based on editorial review.",
+      "hook": "Warm introductions inside iMessage",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "ai-native",
         "consumer",
@@ -558,11 +558,11 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "c382d66d"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "00b967bf"
     },
     "cmp_027": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "AI matching for in-person social plans",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -580,11 +580,11 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "0c2fcf37"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "34860ac2"
     },
     "cmp_028": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Social graph matching for Gen Z dating",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -602,11 +602,11 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "fc550601"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "4c7561f2"
     },
     "cmp_029": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Real-time audience research with AI",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -624,11 +624,11 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "c6f4f70f"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "dc5c48cb"
     },
     "cmp_030": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Restaurant revenue automation with AI",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -646,11 +646,11 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "2da556d7"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "22eb485c"
     },
     "cmp_031": {
-      "hook": "Personal memory workflows for everyday users",
+      "hook": "Personal health memory for daily plans",
       "signalLabel": "Consumer signal",
       "signalReason": "Consumer-facing product where AI shapes the core experience.",
       "keywords": [
@@ -668,13 +668,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "344b2696"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "535aa24a"
     },
     "cmp_032": {
-      "hook": "Testing infrastructure for autonomous agents",
-      "signalLabel": "Worth watching",
-      "signalReason": "Agent Infrastructure company is worth watching based on editorial review.",
+      "hook": "Agents that orchestrate enterprise workflows",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -686,13 +686,13 @@
         "workflow reliability",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "4d348b77"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "81dfbac6"
     },
     "cmp_033": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Product catalog infrastructure for agentic commerce",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -704,13 +704,13 @@
         "workflow reliability",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "2cbac075"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "3242e359"
     },
     "cmp_034": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Cloud sandboxes for AI coding agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -722,13 +722,13 @@
         "workflow reliability",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "d5d07a7b"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "0260dd25"
     },
     "cmp_035": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Document context layer for enterprise agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -742,13 +742,13 @@
         "agentic workflows",
         "context layer"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "af6fb21a"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "1435c371"
     },
     "cmp_036": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Chat-driven enterprise app creation",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -760,13 +760,13 @@
         "workflow reliability",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "f21509b6"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "1c63aa25"
     },
     "cmp_037": {
-      "hook": "Testing infrastructure for autonomous agents",
+      "hook": "Supply chain agents for operational planning",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -779,13 +779,13 @@
         "workflow reliability",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "5127a706"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "7c093987"
     },
     "cmp_038": {
-      "hook": "Sales workflows for revenue teams",
-      "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "hook": "AI underwriting for commercial insurance",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "enterprise",
         "revops",
@@ -799,13 +799,13 @@
         "workflow automation",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "865db615"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "0dfb09cc"
     },
     "cmp_039": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "Voice agents for restaurant and retail calls",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "enterprise",
         "revops",
@@ -819,13 +819,13 @@
         "workflow automation",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "695d797e"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "064fc2a4"
     },
     "cmp_040": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "AI agents for corporate finance teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "enterprise",
         "revops",
@@ -840,13 +840,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "28eaec63"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "260ce628"
     },
     "cmp_041": {
-      "hook": "Sales workflows for revenue teams",
+      "hook": "Conversational intake for business forms",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "enterprise",
         "revops",
@@ -861,13 +861,13 @@
         "agentic workflows",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "899c2070"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "df7c17d6"
     },
     "cmp_042": {
       "hook": "Sales workflows for revenue teams",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "enterprise",
         "revops",
@@ -881,13 +881,13 @@
         "workflow automation",
         "agentic workflows"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "56dc3706"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "292a8f44"
     },
     "cmp_043": {
-      "hook": "Research workflows for financial teams",
+      "hook": "AI-native trading research and execution",
       "signalLabel": "Workflow signal",
-      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "signalReason": "Product motion appears tied to a concrete workflow or interface.",
       "keywords": [
         "fintech",
         "trading",
@@ -903,13 +903,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "b5294ee7"
+      "generatedAt": "2026-05-05T12:51:39.224Z",
+      "sourceHash": "3f96abf6"
     },
     "cmp_044": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Licensed data marketplace for AI builders",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "data",
         "memory",
@@ -921,13 +921,13 @@
         "retrieval context",
         "context layer"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "bf2ba5f9"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "4df95a19"
     },
     "cmp_045": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Model deployment infrastructure for enterprises",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "data",
         "memory",
@@ -939,13 +939,13 @@
         "retrieval context",
         "context layer"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "b2291817"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "2fbc1681"
     },
     "cmp_046": {
-      "hook": "Turning messy documents into structured context",
-      "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "hook": "Alternative-investment data automation",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
       "keywords": [
         "data",
         "memory",
@@ -957,13 +957,13 @@
         "retrieval context",
         "context layer"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "981ca476"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "c01e8474"
     },
     "cmp_047": {
       "hook": "Turning messy documents into structured context",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "data",
         "memory",
@@ -978,13 +978,13 @@
         "agentic workflows",
         "context layer"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "69006afb"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "2d879e58"
     },
     "cmp_048": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Enterprise context layer for business data",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "data",
         "memory",
@@ -1000,13 +1000,13 @@
         "context layer",
         "regulated adoption"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "a9b27f75"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "1f8a50f7"
     },
     "cmp_049": {
-      "hook": "Turning messy documents into structured context",
+      "hook": "Multimodal data extraction for visual datasets",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
       "keywords": [
         "data",
         "memory",
@@ -1019,8 +1019,8 @@
         "context layer",
         "consumer behavior"
       ],
-      "generatedAt": "2026-05-02T19:50:01.305Z",
-      "sourceHash": "1139a5e8"
+      "generatedAt": "2026-05-05T12:51:39.225Z",
+      "sourceHash": "e9db8494"
     }
   }
 }

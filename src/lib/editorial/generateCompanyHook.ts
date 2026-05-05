@@ -29,6 +29,54 @@ const categoryTrendDimensions: Record<Company["category"], string[]> = {
   "Data & Memory Layer": ["data infrastructure", "retrieval context"],
 };
 
+const specificHooksBySlug: Record<string, string> = {
+  aspect: "Multimodal data extraction for visual datasets",
+  datagrid: "Enterprise context layer for business data",
+  "canoe-intelligence": "Alternative-investment data automation",
+  wallaroo: "Model deployment infrastructure for enterprises",
+  "carbon-arc": "Licensed data marketplace for AI builders",
+  "standard-signal": "AI-native trading research and execution",
+  "manifest-os": "Infrastructure for AI-native legal services",
+  zerodrift: "Real-time policy enforcement for regulated teams",
+  rowflow: "Conversational intake for business forms",
+  concourse: "AI agents for corporate finance teams",
+  "slang-ai": "Voice agents for restaurant and retail calls",
+  kalepa: "AI underwriting for commercial insurance",
+  "vortexify-ai": "Supply chain agents for operational planning",
+  empromptu: "Chat-driven enterprise app creation",
+  "kay-ai": "Document context layer for enterprise agents",
+  amika: "Cloud sandboxes for AI coding agents",
+  channel3: "Product catalog infrastructure for agentic commerce",
+  "emergence-ai": "Agents that orchestrate enterprise workflows",
+  nori: "Personal health memory for daily plans",
+  loyalist: "Restaurant revenue automation with AI",
+  remesh: "Real-time audience research with AI",
+  cerca: "Social graph matching for Gen Z dating",
+  "222": "AI matching for in-person social plans",
+  series: "Warm introductions inside iMessage",
+  granted: "AI support for navigating health benefits",
+  camber: "Healthcare payments operations for clinics",
+  "sohar-health": "Eligibility automation for behavioral health",
+  clarion: "Voice agents for healthcare communications",
+  "valerie-health": "Front-office AI for independent doctors",
+  absurd: "AI brand ads for performance teams",
+  stewdio: "Creative workspace for generative media",
+  tildei: "Agentic brand conversations across channels",
+  icon: "AI video ads with creative testing",
+  agentio: "Creator-led advertising automation",
+  mirage: "AI video generation for creative teams",
+  "mirage-formerly-captions": "AI video generation for creative teams",
+  alkymi: "Document workflows for financial services",
+  "bretton-ai": "KYC and AML agents for financial teams",
+  soxton: "Legal copilot for startup legal work",
+  "norm-ai": "Regulatory AI agents for enterprises",
+  trata: "Hedge fund research from analyst agents",
+  tabs: "Contract-to-cash automation for finance teams",
+  maybern: "Private fund operations for investment firms",
+  brightwave: "Investment research from filings and transcripts",
+  bayesline: "Custom risk analytics for hedge funds",
+};
+
 export function generateCompanyHook(
   company: CompanyHookInput,
 ): GeneratedCompanyFields {
@@ -66,6 +114,11 @@ export function generateCompanyHook(
 }
 
 function inferHook(company: CompanyHookInput, text: string) {
+  const specificHook = specificHooksBySlug[company.slug];
+  if (specificHook) {
+    return specificHook;
+  }
+
   if (company.category === "Fintech & Trading AI") {
     if (
       matches(text, [

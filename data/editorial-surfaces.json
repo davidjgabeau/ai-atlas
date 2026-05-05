@@ -8,7 +8,7 @@
       {
         "id": "companies_to_know_item_d1de15f447d448c1",
         "title": "Empromptu",
-        "body": "Testing infrastructure for autonomous agents",
+        "body": "Chat-driven enterprise app creation",
         "companyId": "cmp_036",
         "category": "Agent Infrastructure",
         "label": "Infra signal",
@@ -23,7 +23,7 @@
       {
         "id": "companies_to_know_item_9bad8ea1ca429b43",
         "title": "Norm Ai",
-        "body": "Turning policies into operational AI agents",
+        "body": "Regulatory AI agents for enterprises",
         "companyId": "cmp_007",
         "category": "Legal & Compliance AI",
         "label": "Featured",
@@ -38,7 +38,7 @@
       {
         "id": "companies_to_know_item_23ec6b21bc39089b",
         "title": "Soxton",
-        "body": "Turning policies into operational AI agents",
+        "body": "Legal copilot for startup legal work",
         "companyId": "cmp_009",
         "category": "Legal & Compliance AI",
         "label": "Workflow signal",
@@ -53,7 +53,7 @@
       {
         "id": "companies_to_know_item_335cc069247234c4",
         "title": "Granted",
-        "body": "Automating clinical admin work for health plans",
+        "body": "AI support for navigating health benefits",
         "companyId": "cmp_025",
         "category": "Health & Clinical AI",
         "label": "Workflow signal",

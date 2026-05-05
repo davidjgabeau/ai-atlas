@@ -6,6 +6,7 @@ import {
 } from "@/data/market";
 import { validateDiscoveredCompanyCandidate } from "@/lib/agent/companyCandidateValidation";
 import { generateCompanyHook } from "@/lib/editorial/generateCompanyHook";
+import { formatFundingAmount, formatFundingText } from "@/lib/funding";
 import {
   getCompanyViewMetrics,
   normalizeCompanyMetric,
@@ -42,7 +43,7 @@ type SubmissionRow = Partial<Submission>;
 
 export const getMarketCompanies = cache(async (): Promise<Company[]> => {
   const supabase = createSupabaseServerClient();
-  if (!supabase) return localCompanies;
+  if (!supabase) return localCompanies.map(normalizeCompany);
 
   const { data, error } = await supabase
     .from("companies")
@@ -51,7 +52,7 @@ export const getMarketCompanies = cache(async (): Promise<Company[]> => {
 
   if (error || !data) {
     console.warn("Supabase companies fallback:", error?.message);
-    return localCompanies;
+    return localCompanies.map(normalizeCompany);
   }
 
   return normalizeCompanyRowsWithMetrics(data as CompanyRow[]);
@@ -59,7 +60,7 @@ export const getMarketCompanies = cache(async (): Promise<Company[]> => {
 
 export async function getAdminMarketCompanies(): Promise<Company[]> {
   const supabase = await createSupabaseAuthServerClient();
-  if (!supabase) return localCompanies;
+  if (!supabase) return localCompanies.map(normalizeCompany);
 
   const { data, error } = await supabase
     .from("companies")
@@ -68,7 +69,7 @@ export async function getAdminMarketCompanies(): Promise<Company[]> {
 
   if (error || !data) {
     console.warn("Supabase admin companies fallback:", error?.message);
-    return localCompanies;
+    return localCompanies.map(normalizeCompany);
   }
 
   return normalizeCompanyRowsWithMetrics(data as CompanyRow[]);
@@ -146,10 +147,29 @@ export function isPublicCompany(company: Company) {
 export function normalizeCompany(row: CompanyRow): Company {
   const id = safeString(row.id, `cmp_${safeString(row.slug, "unknown")}`);
   const now = new Date().toISOString();
+  const name = safeString(row.name, "Untitled Startup");
+  const rawOneLineThesis = normalizeCopyArtifacts(
+    safeString(row.one_line_thesis, ""),
+    name,
+  );
+  const whyItMatters = normalizeCopyArtifacts(
+    safeString(row.why_it_matters, ""),
+    name,
+  );
+  const shortDescription = normalizeShortDescription({
+    name,
+    value: safeString(row.short_description, ""),
+    fallbacks: [rawOneLineThesis, whyItMatters],
+  });
+  const oneLineThesis = isBrokenDescription(rawOneLineThesis)
+    ? shortDescription
+    : rawOneLineThesis;
+  const fundingAmount = formatFundingAmount(safeString(row.funding_amount, ""));
+  const totalRaised = formatFundingAmount(safeString(row.total_raised, ""));
 
   const company: Company = {
     id,
-    name: safeString(row.name, "Untitled Startup"),
+    name,
     slug: safeString(row.slug, id),
     logo_url: safeString(row.logo_url, ""),
     website_url: safeString(row.website_url, ""),
@@ -161,20 +181,28 @@ export function normalizeCompany(row: CompanyRow): Company {
     founder_name: row.founder_name ? String(row.founder_name) : undefined,
     office_address: safeString(row.office_address, ""),
     funding_round: safeString(row.funding_round, ""),
-    funding_amount: safeString(row.funding_amount, ""),
+    funding_amount: fundingAmount,
     funding_date: safeString(row.funding_date, ""),
-    total_raised: safeString(row.total_raised, ""),
+    total_raised: totalRaised,
     lead_investor: safeString(row.lead_investor, ""),
-    funding_note: safeString(row.funding_note, ""),
+    funding_note: formatFundingText(
+      normalizeCopyArtifacts(safeString(row.funding_note, ""), name),
+    ),
     category: normalizeCategory(row.category),
     stage: safeString(row.stage, "Unknown"),
-    short_description: safeString(row.short_description, ""),
-    one_line_thesis: safeString(row.one_line_thesis, ""),
-    why_it_matters: safeString(row.why_it_matters, ""),
-    ai_usage_profile: safeString(row.ai_usage_profile, ""),
-    openai_fit: safeString(row.openai_fit, ""),
+    short_description: shortDescription,
+    one_line_thesis: oneLineThesis,
+    why_it_matters: whyItMatters,
+    ai_usage_profile: normalizeCopyArtifacts(
+      safeString(row.ai_usage_profile, ""),
+      name,
+    ),
+    openai_fit: normalizeCopyArtifacts(safeString(row.openai_fit, ""), name),
     usage_potential: normalizeUsagePotential(row.usage_potential),
-    recent_activity_text: safeString(row.recent_activity_text, ""),
+    recent_activity_text: normalizeRecentActivityText(
+      safeString(row.recent_activity_text, ""),
+      fundingAmount,
+    ),
     recent_activity_date: safeString(row.recent_activity_date, now),
     is_featured: Boolean(row.is_featured),
     is_breakout: Boolean(row.is_breakout),
@@ -191,7 +219,10 @@ export function normalizeCompany(row: CompanyRow): Company {
     metrics: normalizeCompanyMetric(row.metrics),
   };
 
-  const generated = normalizeGenerated(row.generated, company) ?? generateCompanyHook(company);
+  const generated = sanitizeGeneratedFields(
+    normalizeGenerated(row.generated, company) ?? generateCompanyHook(company),
+    company,
+  );
 
   return {
     ...company,
@@ -283,7 +314,7 @@ export function normalizeSubmission(row: SubmissionRow): Submission {
 }
 
 function createFallbackGenerated(row: CompanyRow): GeneratedCompanyFields {
-  const description = safeString(row.short_description, "");
+  const description = normalizeCopyArtifacts(safeString(row.short_description, ""));
 
   return {
     hook: description.replace(/\s+/g, " ").replace(/\.$/, "").slice(0, 72),
@@ -309,9 +340,9 @@ function normalizeGenerated(
   }
 
   return {
-    hook: safeString(generated.hook, ""),
+    hook: normalizeHookCopy(safeString(generated.hook, "")),
     signalLabel: normalizeSignalLabel(generated.signalLabel, company),
-    signalReason: safeString(generated.signalReason, ""),
+    signalReason: normalizeCopyArtifacts(safeString(generated.signalReason, "")),
     keywords: Array.isArray(generated.keywords) ? generated.keywords : [],
     trendDimensions: Array.isArray(generated.trendDimensions)
       ? generated.trendDimensions
@@ -325,9 +356,15 @@ function normalizeGenerated(
 function normalizeProfileBriefs(value: unknown): CompanyProfileBriefs | undefined {
   if (!value || typeof value !== "object") return undefined;
   const briefs = value as Partial<CompanyProfileBriefs>;
-  const whySaving = safeString(briefs.whySaving, "");
-  const whatBuilding = safeString(briefs.whatBuilding, "");
-  const aiModelUse = safeString(briefs.aiModelUse, "");
+  const whySaving = dedupeSentences(
+    normalizeCopyArtifacts(safeString(briefs.whySaving, "")),
+  );
+  const whatBuilding = dedupeSentences(
+    normalizeCopyArtifacts(safeString(briefs.whatBuilding, "")),
+  );
+  const aiModelUse = dedupeSentences(
+    normalizeCopyArtifacts(safeString(briefs.aiModelUse, "")),
+  );
   if (!whySaving || !whatBuilding || !aiModelUse) return undefined;
 
   return {
@@ -339,6 +376,251 @@ function normalizeProfileBriefs(value: unknown): CompanyProfileBriefs | undefine
     model: briefs.model ? safeString(briefs.model, "") : undefined,
   };
 }
+
+function normalizeRecentActivityText(value: string, fundingAmount: string) {
+  const activity = formatFundingText(normalizeCopyArtifacts(value));
+  if (!activity) return "";
+
+  if (
+    /^raised\s+\$[0-9]+(?:\.[0-9]+)?$/i.test(activity) &&
+    /\b(?:k|m|b|thousand|million|billion)\b/i.test(fundingAmount)
+  ) {
+    return `Raised ${fundingAmount}`;
+  }
+
+  return capitalizeSentence(activity);
+}
+
+function normalizeShortDescription({
+  name,
+  value,
+  fallbacks,
+}: {
+  name: string;
+  value: string;
+  fallbacks: string[];
+}) {
+  const candidates = [value, ...fallbacks]
+    .map((candidate) => normalizeCopyArtifacts(candidate, name))
+    .filter(Boolean);
+
+  const cleanCandidate =
+    candidates.find((candidate) => !isBrokenDescription(candidate)) ||
+    `${name} is an early-stage NYC AI company in the AI Atlas map.`;
+
+  return ensureSentence(capitalizeSentence(cleanCandidate));
+}
+
+function isBrokenDescription(value: string) {
+  const cleanValue = value.trim();
+  const lowerValue = cleanValue.toLowerCase();
+
+  return (
+    cleanValue.length < 40 ||
+    /^[a-z]/.test(cleanValue) ||
+    cleanValue.includes("...") ||
+    /(?:\(|\)|\[|\])$/.test(cleanValue) ||
+    /\be\.$/.test(cleanValue) ||
+    /\b(?:ai-powered ai|ai-driven ai|interface-users)\b/i.test(cleanValue) ||
+    lowerValue.startsWith("ai-powered the latest") ||
+    lowerValue.startsWith("ai-powered social-graph ai") ||
+    lowerValue.startsWith("healthtech startup") ||
+    lowerValue.startsWith("long-horizon ai agents") ||
+    lowerValue === "better decisions." ||
+    lowerValue.startsWith("recommendations,")
+  );
+}
+
+function normalizeCopyArtifacts(value: string, companyName = "") {
+  let copy = value
+    .replace(/&#8211;|&#8212;/g, "-")
+    .replace(/&amp;/g, "&")
+    .replace(/\bAI-powered AI\b/gi, "AI")
+    .replace(/\bAI-driven AI\b/gi, "AI")
+    .replace(/\binterface-users\b/gi, "interface; users")
+    .replace(/\bbusinesses-handling\b/gi, "businesses, handling")
+    .replace(/\bclinics-scheduling\b/gi, "clinics, scheduling")
+    .replace(/\bworkflows-navigating\b/gi, "workflows for navigating")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (companyName && /^AI to\b/i.test(copy)) {
+    copy = copy.replace(/^AI to\b/i, `${companyName} uses AI to`);
+  }
+
+  return ensureSentence(capitalizeSentence(copy));
+}
+
+function normalizeHookCopy(value: string) {
+  return normalizeCopyArtifacts(value).replace(/\.$/, "");
+}
+
+function sanitizeGeneratedFields(
+  generated: GeneratedCompanyFields,
+  company: Company,
+): GeneratedCompanyFields {
+  const slugHook = specificHooksBySlug[company.slug];
+  const hook = slugHook
+    ? slugHook
+    : isGenericDuplicatedHook(generated.hook)
+      ? inferSpecificHook(company)
+      : normalizeHookCopy(generated.hook);
+
+  return {
+    ...generated,
+    hook,
+    signalLabel: normalizeSignalLabel(generated.signalLabel, company),
+    signalReason: normalizeCopyArtifacts(generated.signalReason),
+    profileBriefs: generated.profileBriefs
+      ? {
+          ...generated.profileBriefs,
+          whySaving: dedupeSentences(
+            normalizeCopyArtifacts(generated.profileBriefs.whySaving),
+          ),
+          whatBuilding: dedupeSentences(
+            normalizeCopyArtifacts(generated.profileBriefs.whatBuilding),
+          ),
+          aiModelUse: dedupeSentences(
+            normalizeCopyArtifacts(generated.profileBriefs.aiModelUse),
+          ),
+        }
+      : undefined,
+  };
+}
+
+function isGenericDuplicatedHook(value: string) {
+  const normalized = normalizeHookCopy(value).toLowerCase();
+  return genericDuplicatedHooks.has(normalized);
+}
+
+function inferSpecificHook(company: Company) {
+  const text = [
+    company.short_description,
+    company.one_line_thesis,
+    company.why_it_matters,
+    company.ai_usage_profile,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  const slugHook = specificHooksBySlug[company.slug];
+  if (slugHook) return slugHook;
+
+  if (text.includes("supply chain")) {
+    return "Supply chain agents for operational planning";
+  }
+  if (text.includes("product catalog") || text.includes("shopping")) {
+    return "Product catalog infrastructure for agentic commerce";
+  }
+  if (text.includes("voice") && text.includes("phone")) {
+    return "Voice agents for restaurant and retail calls";
+  }
+  if (text.includes("hedge fund") || text.includes("trades")) {
+    return "AI-native trading research and execution";
+  }
+  if (text.includes("data marketplace")) {
+    return "Licensed data marketplace for AI builders";
+  }
+  if (text.includes("social-graph") || text.includes("dating")) {
+    return "Social graph matching for Gen Z dating";
+  }
+  if (text.includes("audience") && text.includes("conversations")) {
+    return "Real-time audience research with AI";
+  }
+
+  return normalizeHookCopy(company.one_line_thesis || company.short_description);
+}
+
+function dedupeSentences(value: string) {
+  const sentences = value
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+  const seen = new Set<string>();
+
+  const uniqueSentences = sentences.filter((sentence) => {
+    const key = sentence.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+
+  return uniqueSentences.length > 0 ? uniqueSentences.join(" ") : value;
+}
+
+function capitalizeSentence(value: string) {
+  const copy = value.trim();
+  if (!copy) return copy;
+  return `${copy[0].toUpperCase()}${copy.slice(1)}`;
+}
+
+function ensureSentence(value: string) {
+  const copy = value.trim();
+  if (!copy || /[.!?]$/.test(copy)) return copy;
+  return `${copy}.`;
+}
+
+const genericDuplicatedHooks = new Set(
+  [
+    "Turning messy documents into structured context",
+    "Research workflows for financial teams",
+    "Sales workflows for revenue teams",
+    "Testing infrastructure for autonomous agents",
+    "Personal memory workflows for everyday users",
+    "Automating clinical admin work for health plans",
+    "Consumer video creation with real distribution",
+    "Turning policies into operational AI agents",
+  ].map((hook) => hook.toLowerCase()),
+);
+
+const specificHooksBySlug: Record<string, string> = {
+  aspect: "Spreadsheets for investment workflows",
+  datagrid: "Document extraction for regulated teams",
+  "canoe-intelligence": "Alternative-investment data automation",
+  wallaroo: "Enterprise model deployment and monitoring",
+  "carbon-arc": "Licensed data marketplace for AI builders",
+  "standard-signal": "AI-native trading research and execution",
+  "manifest-os": "Infrastructure for AI-native legal services",
+  zerodrift: "Real-time policy enforcement for regulated teams",
+  trata: "Hedge fund research from analyst agents",
+  brightwave: "Investment research from filings and transcripts",
+  hebbia: "AI research workflows for financial documents",
+  rowflow: "Sales data workflows for GTM teams",
+  concourse: "AI agents for corporate finance teams",
+  "slang-ai": "Voice agents for restaurant and retail calls",
+  kalepa: "AI underwriting for commercial insurance",
+  "vortexify-ai": "Supply chain agents for operational planning",
+  empromptu: "Chat-driven enterprise app creation",
+  "kay-ai": "Document context layer for enterprise agents",
+  amika: "Cloud sandboxes for AI coding agents",
+  channel3: "Product catalog infrastructure for agentic commerce",
+  "emergence-ai": "Agents that orchestrate enterprise workflows",
+  nori: "Personal memory for everyday notes",
+  loyalist: "AI companion for friendship and support",
+  remesh: "Real-time audience research with AI",
+  cerca: "Social graph matching for Gen Z dating",
+  "222": "AI matching for in-person social plans",
+  series: "Warm introductions inside iMessage",
+  granted: "AI support for navigating government benefits",
+  camber: "Healthcare payments operations for clinics",
+  "sohar-health": "Eligibility automation for behavioral health",
+  clarion: "Voice agents for healthcare communications",
+  "valerie-health": "Front-office AI for independent doctors",
+  absurd: "AI brand ads for performance teams",
+  stewdio: "Creative workspace for generative media",
+  tildei: "Agentic brand conversations across channels",
+  icon: "AI video ads with real actors",
+  agentio: "Creator-led advertising automation",
+  mirage: "AI video generation for creative teams",
+  "mirage-formerly-captions": "AI video generation for creative teams",
+  alkymi: "Document workflows for financial services",
+  "bretton-ai": "KYC and AML agents for financial teams",
+  soxton: "Policy agents for compliance teams",
+  "norm-ai": "Regulatory AI agents for enterprises",
+  tabs: "Contract-to-cash automation for finance teams",
+  maybern: "Private fund operations for investment firms",
+  bayesline: "Custom risk analytics for hedge funds",
+};
 
 function normalizeCategory(value: unknown): Category {
   return categories.includes(value as Category)

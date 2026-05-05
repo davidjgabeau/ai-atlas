@@ -284,7 +284,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Ryan Shaw",
     email: "ryan@clarion.health",
     momentum_label: "Promising",
-    description: "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics-scheduling, billing, prescription refills, and more. Already serving virtual care companies, health systems, and a $5B health insurance company; raised $5.4M from Accel, Y Combinator, and Sequoia (scout).",
+    description: "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics, scheduling, billing, prescription refills, and more. Already serving virtual care companies, health systems, and a $5B health insurance company; raised $5.4M from Accel, Y Combinator, and Sequoia (scout).",
     category: "Health & Clinical AI"
   },
   {
@@ -311,7 +311,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Granted Team",
     email: "team@granted.health",
     momentum_label: "Emerging",
-    description: "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows-navigating health benefits, disputing denials, and helping consumers access care. NYC-based with hiring across engineering and product roles in Chelsea.",
+    description: "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care. NYC-based with hiring across engineering and product roles in Chelsea.",
     category: "Health & Clinical AI"
   },
   {
@@ -410,7 +410,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Empromptu Team",
     email: "team@empromptu.ai",
     momentum_label: "Emerging",
-    description: "Empromptu helps enterprises build AI apps via a chatbot interface-users describe what they want (e.g., a new HTML or JavaScript app) and the platform builds it. Raised a $2M pre-seed in late 2025 to expand its enterprise AI app builder; NYC-based.",
+    description: "Empromptu helps enterprises build AI apps through chat; users describe what they want, and the platform turns the request into a working internal tool. Raised a $2M pre-seed in late 2025 to expand its enterprise AI app builder; NYC-based.",
     category: "Agent Infrastructure"
   },
   {
@@ -437,7 +437,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Alex Sambvani",
     email: "alex@slang.ai",
     momentum_label: "High Potential",
-    description: "Slang.ai builds voice AI agents that answer phone calls on behalf of restaurants and retail businesses-handling reservations, appointments, and customer questions 24/7. Founded by former Spotify data leaders Alex Sambvani and Gabriel Duncan; backed by Wing VC.",
+    description: "Slang.ai builds voice AI agents that answer phone calls on behalf of restaurants and retail businesses, handling reservations, appointments, and customer questions 24/7. Founded by former Spotify data leaders Alex Sambvani and Gabriel Duncan; backed by Wing VC.",
     category: "Enterprise GTM & RevOps AI"
   },
   {
@@ -982,23 +982,26 @@ function slugify(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
+function cleanCopy(value: string) {
+  return value
+    .replace(/\bAI-powered AI\b/gi, "AI")
+    .replace(/\bAI-driven AI\b/gi, "AI")
+    .replace(/\binterface-users\b/gi, "interface; users")
+    .replace(/\bbusinesses-handling\b/gi, "businesses, handling")
+    .replace(/\bclinics-scheduling\b/gi, "clinics, scheduling")
+    .replace(/\bworkflows-navigating\b/gi, "workflows for navigating")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function firstSentence(description: string) {
-  const match = description.match(/^[^.!?]+[.!?]/);
-  return match ? match[0].trim() : description;
+  const cleanDescription = cleanCopy(description);
+  const match = cleanDescription.match(/^[^.!?]+[.!?]/);
+  return match ? match[0].trim() : cleanDescription;
 }
 
 function getShortDescription(description: string) {
-  const sentence = firstSentence(description)
-    .replace(/^[^.!?]+? is (?:an?|the) /i, "")
-    .replace(/^.*? builds? /i, "")
-    .replace(/^.*? uses? /i, "AI-powered ")
-    .replace(/^.*? provides? /i, "")
-    .replace(/^.*? makes? /i, "")
-    .trim();
-
-  return sentence.length > 138
-    ? `${sentence.slice(0, 135).trim()}...`
-    : sentence;
+  return firstSentence(description);
 }
 
 function inferStage(record: SourceRecord) {
@@ -1018,21 +1021,24 @@ function inferStage(record: SourceRecord) {
 }
 
 function getRecentActivity(record: SourceRecord) {
-  const raised = record.description.match(/Raised\s+(?:an?\s+)?([^.;]+)/i);
-  if (raised) return `Raised ${raised[1].trim()}`;
+  const description = cleanCopy(record.description);
+  const raised = description.match(
+    /raised\s+(?:an?\s+)?(\$[0-9]+(?:\.[0-9]+)?\s?(?:[KMB]|thousand|million|billion)?)/i,
+  );
+  if (raised) return `Raised ${raised[1].replace(/\s+/g, "")}`;
 
-  const backed = record.description.match(/Backed by\s+([^.;]+)/i);
+  const backed = description.match(/Backed by\s+([^.;]+)/i);
   if (backed) return `Backed by ${backed[1].trim()}`;
 
-  const customers = record.description.match(/Customers include\s+([^.;]+)/i);
+  const customers = description.match(/Customers include\s+([^.;]+)/i);
   if (customers) return `Customers include ${customers[1].trim()}`;
 
-  const serves = record.description.match(/serves\s+([^.;]+)/i);
+  const serves = description.match(/serves\s+([^.;]+)/i);
   if (serves) return `Serves ${serves[1].trim()}`;
 
-  if (/YC[-\s]?backed/i.test(record.description)) return "YC-backed NYC company";
+  if (/YC[-\s]?backed/i.test(description)) return "YC-backed NYC company";
 
-  const founder = record.description.match(/Founded by\s+([^.;]+)/i);
+  const founder = description.match(/Founded by\s+([^.;]+)/i);
   if (founder) return `Founded by ${founder[1].trim()}`;
 
   return "Added to NYC AI tracker";
@@ -1082,7 +1088,7 @@ export const companies: Company[] = sourceCompanies.map((record, index) => {
     stage: inferStage(record),
     short_description: getShortDescription(record.description),
     one_line_thesis: firstSentence(record.description),
-    why_it_matters: record.description,
+    why_it_matters: cleanCopy(record.description),
     ai_usage_profile: aiUsageProfiles[record.category],
     openai_fit: openAiFits[record.category],
     usage_potential: record.momentum_label,
@@ -1121,7 +1127,7 @@ export const submissions: Submission[] = sourceCompanies.slice(0, 6).map((record
   website_url: record.website,
   founder_name: record.founder_name,
   email: record.email,
-  description: record.description,
+  description: cleanCopy(record.description),
   usage_potential: record.momentum_label,
   status: index < 2 ? "accepted" : index === 2 ? "rejected" : "new",
   created_at: getRecentActivityDate(index + 3),
