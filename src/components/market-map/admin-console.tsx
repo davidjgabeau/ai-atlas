@@ -2,10 +2,12 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import {
+  Activity,
   Archive,
   Check,
   Pencil,
   Plus,
+  RefreshCw,
   Search,
   Star,
   Trash2,
@@ -58,18 +60,60 @@ import {
   type SubmissionStatus,
   type UsagePotential,
 } from "@/types/market";
+import type {
+  AtlasSocialEngagement,
+  AtlasSocialPost,
+  AtlasSocialRun,
+} from "@/types/social";
+
+type SocialHealthResponse = {
+  ok: boolean;
+  health: {
+    ok: boolean;
+    canRead: boolean;
+    canWrite: boolean;
+    reason: string;
+    user?: {
+      username?: string;
+    };
+  };
+  config: {
+    autoPost: boolean;
+    engagementEnabled: boolean;
+    killSwitch: boolean;
+    dailyPostLimit: number;
+    minMinutesBetweenPosts: number;
+    maxPostsPerHour: number;
+    timezone: string;
+    anthropicConfigured: boolean;
+    xReadConfigured: boolean;
+    xWriteConfigured: boolean;
+    xRefreshConfigured: boolean;
+    xAccountUsername: string;
+  };
+};
 
 export function AdminConsole({
   adminEmail,
   initialCompanies,
   initialSubmissions,
+  initialSocialPosts,
+  initialSocialRuns,
+  initialSocialEngagements,
 }: {
   adminEmail: string;
   initialCompanies: Company[];
   initialSubmissions: Submission[];
+  initialSocialPosts: AtlasSocialPost[];
+  initialSocialRuns: AtlasSocialRun[];
+  initialSocialEngagements: AtlasSocialEngagement[];
 }) {
   const [companies, setCompanies] = useState(initialCompanies);
   const [submissions, setSubmissions] = useState(initialSubmissions);
+  const [socialHealth, setSocialHealth] = useState<SocialHealthResponse | null>(
+    null,
+  );
+  const [activeTab, setActiveTab] = useState("companies");
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -305,18 +349,44 @@ export function AdminConsole({
     setBusyAction("");
   }
 
+  async function checkSocialHealth() {
+    setBusyAction("social-health");
+    setError("");
+    setNotice("");
+
+    const result = await sendAdminRequest<SocialHealthResponse>(
+      "/api/social/x/health",
+      {
+        method: "GET",
+      },
+    );
+
+    if (!result.ok) {
+      setError(result.error);
+      setBusyAction("");
+      return;
+    }
+
+    setSocialHealth(result.data);
+    setNotice(result.data.health.reason);
+    setBusyAction("");
+  }
+
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="companies" className="gap-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="gap-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <TabsList className="rounded-md">
             <TabsTrigger value="companies">Startups</TabsTrigger>
             <TabsTrigger value="submissions">Founder submissions</TabsTrigger>
+            <TabsTrigger value="social">X queue</TabsTrigger>
           </TabsList>
-          <Button className="app-primary-button" onClick={openNewCompany}>
-            <Plus className="size-4" />
-            Add startup
-          </Button>
+          {activeTab === "companies" ? (
+            <Button className="app-primary-button" onClick={openNewCompany}>
+              <Plus className="size-4" />
+              Add startup
+            </Button>
+          ) : null}
         </div>
         <div className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-4 py-3 text-sm text-[#5F5A52]">
           Signed in as{" "}
@@ -596,6 +666,17 @@ export function AdminConsole({
             </Table>
           </div>
         </TabsContent>
+
+        <TabsContent value="social" className="space-y-4">
+          <SocialQueuePanel
+            posts={initialSocialPosts}
+            runs={initialSocialRuns}
+            engagements={initialSocialEngagements}
+            health={socialHealth}
+            busy={busyAction === "social-health"}
+            onCheckHealth={checkSocialHealth}
+          />
+        </TabsContent>
       </Tabs>
 
       <CompanyEditor
@@ -642,6 +723,468 @@ export function AdminConsole({
           </DialogFooter>
         </DialogContent>
       </Dialog>
+    </div>
+  );
+}
+
+function SocialQueuePanel({
+  posts,
+  runs,
+  engagements,
+  health,
+  busy,
+  onCheckHealth,
+}: {
+  posts: AtlasSocialPost[];
+  runs: AtlasSocialRun[];
+  engagements: AtlasSocialEngagement[];
+  health: SocialHealthResponse | null;
+  busy: boolean;
+  onCheckHealth: () => void;
+}) {
+  const [queuePosts, setQueuePosts] = useState(posts);
+  const [queueRuns, setQueueRuns] = useState(runs);
+  const [queueEngagements, setQueueEngagements] = useState(engagements);
+  const [socialBusyAction, setSocialBusyAction] = useState("");
+  const [socialNotice, setSocialNotice] = useState("");
+  const [socialError, setSocialError] = useState("");
+
+  async function refreshQueue() {
+    setSocialBusyAction("refresh-queue");
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{
+      posts: AtlasSocialPost[];
+      engagements: AtlasSocialEngagement[];
+      runs: AtlasSocialRun[];
+    }>("/api/social/queue", { method: "GET" });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setQueuePosts(result.data.posts);
+    setQueueRuns(result.data.runs);
+    setQueueEngagements(result.data.engagements);
+    setSocialNotice("Queue refreshed.");
+    setSocialBusyAction("");
+  }
+
+  async function draftPosts() {
+    setSocialBusyAction("draft-posts");
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{
+      ok: boolean;
+      draftsCreated: number;
+      skipped: number;
+      errors: string[];
+    }>("/api/social/posts/draft", { method: "POST" });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setSocialNotice(
+      `${result.data.draftsCreated} draft(s), ${result.data.skipped} skipped.`,
+    );
+    await refreshQueue();
+  }
+
+  async function verifyHandles() {
+    setSocialBusyAction("verify-handles");
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{
+      verified: number;
+      failed: number;
+      errors: string[];
+    }>("/api/social/handles/verify", {
+      method: "POST",
+      body: JSON.stringify({ limit: 10 }),
+    });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setSocialNotice(
+      `${result.data.verified} handle(s) verified, ${result.data.failed} failed.`,
+    );
+    setSocialBusyAction("");
+  }
+
+  async function skipPost(post: AtlasSocialPost) {
+    setSocialBusyAction(`skip-${post.id}`);
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{ post: AtlasSocialPost }>(
+      `/api/social/posts/${post.id}/skip`,
+      {
+        method: "POST",
+        body: JSON.stringify({ reason: "Skipped from admin queue." }),
+      },
+    );
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setQueuePosts((current) =>
+      current.map((item) => (item.id === post.id ? result.data.post : item)),
+    );
+    setSocialNotice("Post skipped.");
+    setSocialBusyAction("");
+  }
+
+  async function publishNow(post: AtlasSocialPost) {
+    setSocialBusyAction(`publish-${post.id}`);
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{
+      ok: boolean;
+      status: string;
+      skippedReason?: string;
+      errors: string[];
+    }>(`/api/social/posts/${post.id}/publish-now`, {
+      method: "POST",
+    });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setSocialNotice(
+      result.data.skippedReason ||
+        (result.data.status === "success"
+          ? "Post published."
+          : "Publish action finished."),
+    );
+    await refreshQueue();
+  }
+
+  async function runEngagement() {
+    setSocialBusyAction("run-engagement");
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{
+      actionsCompleted: number;
+      skippedReason?: string;
+    }>("/api/social/engagements/run", { method: "POST" });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setSocialNotice(
+      result.data.skippedReason ||
+        `${result.data.actionsCompleted} engagement action(s) completed.`,
+    );
+    await refreshQueue();
+  }
+
+  async function requestPause(path: "/api/social/pause" | "/api/social/resume") {
+    setSocialBusyAction(path);
+    setSocialError("");
+    setSocialNotice("");
+
+    const result = await sendAdminRequest<{ message: string }>(path, {
+      method: "POST",
+    });
+
+    if (!result.ok) {
+      setSocialError(result.error);
+      setSocialBusyAction("");
+      return;
+    }
+
+    setSocialNotice(result.data.message);
+    setSocialBusyAction("");
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="rounded-md bg-[var(--app-surface)] p-4 shadow-sm app-card-border">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#181818]">
+              <Activity className="size-4 text-[#9A3D2B]" />
+              AI Atlas NYC X automation
+            </div>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-[#5F5A52]">
+              Draft queue, dispatch history, credential health, and safe launch
+              switches for the @AiAtlasNYC account.
+            </p>
+            {health ? (
+              <div className="mt-3 flex flex-wrap gap-2">
+                <StatusBadge status={health.config.autoPost ? "auto-post on" : "drafts only"} />
+                <StatusBadge
+                  status={
+                    health.config.engagementEnabled
+                      ? "engagement on"
+                      : "engagement off"
+                  }
+                />
+                <StatusBadge
+                  status={
+                    health.config.killSwitch
+                      ? "kill switch on"
+                      : "kill switch off"
+                  }
+                />
+                <StatusBadge
+                  status={health.health.canWrite ? "X write ok" : "X write off"}
+                />
+              </div>
+            ) : null}
+            {health ? (
+              <p className="mt-3 text-sm text-[#5F5A52]">
+                {health.health.reason}
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              disabled={busy || Boolean(socialBusyAction)}
+              onClick={() => onCheckHealth()}
+            >
+              <RefreshCw className={`size-4 ${busy ? "animate-spin" : ""}`} />
+              Check X auth
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void draftPosts()}
+            >
+              Draft posts
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void verifyHandles()}
+            >
+              Verify handles
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void runEngagement()}
+            >
+              Run engagement
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void refreshQueue()}
+            >
+              Refresh queue
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void requestPause("/api/social/pause")}
+            >
+              Pause
+            </Button>
+            <Button
+              variant="outline"
+              disabled={Boolean(socialBusyAction)}
+              onClick={() => void requestPause("/api/social/resume")}
+            >
+              Resume
+            </Button>
+          </div>
+        </div>
+        <StatusMessage error={socialError} message={socialNotice} />
+      </div>
+
+      <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-[rgb(154_61_43_/_0.06)]">
+              <TableHead>Status</TableHead>
+              <TableHead>Source</TableHead>
+              <TableHead>Draft</TableHead>
+              <TableHead>Handles</TableHead>
+              <TableHead>Score</TableHead>
+              <TableHead>Schedule</TableHead>
+              <TableHead>Last note</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {queuePosts.length > 0 ? (
+              queuePosts.map((post) => (
+                <TableRow key={post.id}>
+                  <TableCell>
+                    <StatusBadge status={post.status} />
+                  </TableCell>
+                  <TableCell className="min-w-40 text-sm font-medium text-[#181818]">
+                    {formatSourceKind(post.source_kind)}
+                  </TableCell>
+                  <TableCell className="max-w-xl whitespace-normal text-sm leading-6 text-[#5F5A52]">
+                    {post.post_text || "No public copy stored."}
+                  </TableCell>
+                  <TableCell className="text-sm text-[#5F5A52]">
+                    {post.tagged_handles.length > 0
+                      ? post.tagged_handles.map((handle) => `@${handle}`).join(", ")
+                      : "None"}
+                  </TableCell>
+                  <TableCell className="text-sm text-[#5F5A52]">
+                    {post.score}
+                  </TableCell>
+                  <TableCell className="min-w-36 text-sm text-[#5F5A52]">
+                    {formatSocialDate(post.published_at) ||
+                      formatSocialDate(post.scheduled_for) ||
+                      formatSocialDate(post.created_at)}
+                  </TableCell>
+                  <TableCell className="max-w-xs whitespace-normal text-sm leading-6 text-[#7A746C]">
+                    {post.last_error ||
+                      post.safety_notes.join(", ") ||
+                      formatDecision(post)}
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex justify-end gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={Boolean(socialBusyAction)}
+                        onClick={() => void publishNow(post)}
+                      >
+                        Post now
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        disabled={Boolean(socialBusyAction)}
+                        onClick={() => void skipPost(post)}
+                      >
+                        Skip
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={8}
+                  className="py-8 text-center text-sm text-[#7A746C]"
+                >
+                  No social drafts have been generated yet.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-[rgb(154_61_43_/_0.06)]">
+              <TableHead>Engagement</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Source post</TableHead>
+              <TableHead>Generated text</TableHead>
+              <TableHead>Created</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {queueEngagements.length > 0 ? (
+              queueEngagements.map((engagement) => (
+                <TableRow key={engagement.id}>
+                  <TableCell className="font-medium text-[#181818]">
+                    {engagement.action}
+                  </TableCell>
+                  <TableCell>
+                    <StatusBadge status={engagement.status} />
+                  </TableCell>
+                  <TableCell className="max-w-sm truncate text-sm text-[#5F5A52]">
+                    {engagement.source_post_url || engagement.source_post_id}
+                  </TableCell>
+                  <TableCell className="max-w-xl whitespace-normal text-sm leading-6 text-[#5F5A52]">
+                    {engagement.generated_text || "None"}
+                  </TableCell>
+                  <TableCell className="text-sm text-[#5F5A52]">
+                    {formatSocialDate(engagement.created_at)}
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={5}
+                  className="py-8 text-center text-sm text-[#7A746C]"
+                >
+                  No engagement candidates have been logged yet.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-[rgb(154_61_43_/_0.06)]">
+              <TableHead>Task</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Finished</TableHead>
+              <TableHead>Errors</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {queueRuns.length > 0 ? (
+              queueRuns.map((run) => (
+                <TableRow key={run.id}>
+                  <TableCell className="font-medium text-[#181818]">
+                    {run.task}
+                  </TableCell>
+                  <TableCell>
+                    <StatusBadge status={run.status} />
+                  </TableCell>
+                  <TableCell className="text-sm text-[#5F5A52]">
+                    {formatSocialDate(run.finished_at)}
+                  </TableCell>
+                  <TableCell className="max-w-xl whitespace-normal text-sm leading-6 text-[#7A746C]">
+                    {run.errors.length > 0 ? run.errors.join(", ") : "None"}
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={4}
+                  className="py-8 text-center text-sm text-[#7A746C]"
+                >
+                  No social automation runs have been logged yet.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
@@ -1027,12 +1570,22 @@ function EditorField({
   );
 }
 
-function StatusBadge({ status }: { status: CompanyStatus | SubmissionStatus }) {
+function StatusBadge({ status }: { status: string }) {
   const className =
-    status === "published" || status === "accepted"
+    status === "published" ||
+    status === "accepted" ||
+    status === "success" ||
+    status.endsWith(" ok") ||
+    status.endsWith(" off")
       ? "bg-emerald-50 text-emerald-700 ring-emerald-100"
-      : status === "draft" || status === "new"
+      : status === "draft" ||
+          status === "new" ||
+          status === "queued" ||
+          status === "scheduled" ||
+          status.endsWith(" only")
         ? "bg-[rgb(154_61_43_/_0.08)] text-[#9A3D2B] ring-[#E7E1D8]"
+        : status === "failed" || status.endsWith(" on")
+          ? "bg-red-50 text-red-700 ring-red-100"
         : "bg-slate-50 text-[#5F5A52] ring-[#E7E1D8]";
 
   return (
@@ -1043,6 +1596,35 @@ function StatusBadge({ status }: { status: CompanyStatus | SubmissionStatus }) {
       {status}
     </Badge>
   );
+}
+
+function formatSourceKind(value: string) {
+  return value
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function formatSocialDate(value?: string) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+
+  return date.toLocaleString("en", {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+function formatDecision(post: AtlasSocialPost) {
+  const latest = post.decision_log.at(-1);
+  if (!latest) return "";
+
+  return [latest.action, latest.error, latest.reason, latest.rationale]
+    .filter((value): value is string => typeof value === "string" && Boolean(value))
+    .join(": ");
 }
 
 function StatusMessage({

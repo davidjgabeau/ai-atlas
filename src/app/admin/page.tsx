@@ -4,6 +4,11 @@ import { PublicShell } from "@/components/site/public-shell";
 import { getAdminEmails, isAdminEnabled } from "@/lib/admin";
 import { getCurrentAdminUser, getCurrentUserEmail } from "@/lib/admin-server";
 import {
+  getAdminSocialEngagements,
+  getAdminSocialPosts,
+  getAdminSocialRuns,
+} from "@/lib/social-automation/store";
+import {
   getAdminMarketCompanies,
   getAdminMarketSubmissions,
 } from "@/lib/supabase/market-data";
@@ -18,12 +23,16 @@ export default async function AdminPage() {
   ]);
 
   const isAllowed = isAdminEnabled() && adminUser;
-  const [companies, submissions] = isAllowed
+  const [companies, submissions, socialPosts, socialRuns, socialEngagements] =
+    isAllowed
     ? await Promise.all([
         getAdminMarketCompanies(),
         getAdminMarketSubmissions(),
+        getAdminSocialPosts(),
+        getAdminSocialRuns(),
+        getAdminSocialEngagements(),
       ])
-    : [[], []];
+    : [[], [], [], [], []];
 
   return (
     <PublicShell>
@@ -48,6 +57,9 @@ export default async function AdminPage() {
               adminEmail={adminUser.email}
               initialCompanies={companies}
               initialSubmissions={submissions}
+              initialSocialPosts={socialPosts}
+              initialSocialRuns={socialRuns}
+              initialSocialEngagements={socialEngagements}
             />
           ) : (
             <AdminAccessPanel
