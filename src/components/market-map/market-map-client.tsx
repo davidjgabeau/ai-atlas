@@ -8,6 +8,7 @@ import {
   ExternalLink,
   Mail,
   MapPinned,
+  RefreshCw,
   Sparkles,
   X,
 } from "lucide-react";
@@ -102,6 +103,10 @@ export function MarketMapClient({
 
   const companyLocations = useMemo(
     () => buildCompanyMapLocations(companies),
+    [companies],
+  );
+  const latestUpdatedAt = useMemo(
+    () => getLatestCompanyUpdatedAt(companies),
     [companies],
   );
 
@@ -234,6 +239,7 @@ export function MarketMapClient({
         <div className="mx-auto max-w-[1320px] px-4 py-6 sm:px-6 lg:px-7">
           <MapTitleRow
             totalCompanies={companies.length}
+            updatedAt={latestUpdatedAt}
           />
 
           <MapFilterRow
@@ -348,8 +354,10 @@ export function MarketMapClient({
 
 function MapTitleRow({
   totalCompanies,
+  updatedAt,
 }: {
   totalCompanies: number;
+  updatedAt?: string;
 }) {
   return (
     <section className="border-b border-[#E7E1D8] pb-5">
@@ -358,9 +366,17 @@ function MapTitleRow({
           <h1 className="font-heading text-[clamp(42px,5vw,68px)] font-medium leading-[0.95] tracking-[-0.035em] text-[#181818]">
             NYC AI Map
           </h1>
-          <p className="mt-3 text-base font-medium text-[#5F5A52]">
-            {formatMappedCompanies(totalCompanies)} mapped
-          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2.5">
+            <p className="text-base font-medium text-[#5F5A52]">
+              {formatMappedCompanies(totalCompanies)} mapped
+            </p>
+            {updatedAt ? (
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                <RefreshCw className="size-3.5" />
+                Updated {formatUpdatedMarker(updatedAt)}
+              </span>
+            ) : null}
+          </div>
         </div>
       </div>
     </section>
@@ -932,6 +948,37 @@ function CompanyListFooter({ count }: { count: number }) {
 
 function formatMappedCompanies(count: number) {
   return `${count} ${count === 1 ? "company" : "companies"}`;
+}
+
+function getLatestCompanyUpdatedAt(companies: Company[]) {
+  const latest = companies.reduce((max, company) => {
+    return Math.max(
+      max,
+      getDateTime(company.updated_at),
+      getDateTime(company.recent_activity_date),
+      getDateTime(company.created_at),
+    );
+  }, 0);
+
+  return latest > 0 ? new Date(latest).toISOString() : undefined;
+}
+
+function formatUpdatedMarker(dateValue: string) {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "recently";
+
+  return date.toLocaleDateString("en", {
+    month: "short",
+    day: "numeric",
+    timeZone: "America/New_York",
+  });
+}
+
+function getDateTime(dateValue?: string) {
+  if (!dateValue) return 0;
+
+  const time = new Date(dateValue).getTime();
+  return Number.isNaN(time) ? 0 : time;
 }
 
 function matchesCompanyQuery(
