@@ -346,39 +346,53 @@
 
   @media (min-width: 1200px) {
     header .editorial-container,
-    .frontPage .editorial-container,
     #latest-signals .editorial-container {
       max-width: none;
       padding-inline: 52px;
     }
 
+    .frontPage .editorial-container {
+      max-width: 1480px;
+      padding-inline: 48px;
+    }
+
     .frontPage {
-      padding-block: 64px 12px;
+      padding-block: 56px 12px;
     }
 
     .frontPageGrid {
-      grid-template-columns: 360px minmax(500px, 1fr) 340px;
-      gap: 40px;
+      grid-template-columns: 360px minmax(0, 1fr) 316px;
+      gap: 36px;
     }
 
     .homeHeroCopy {
-      padding-right: 14px;
+      padding-right: 8px;
     }
 
     .home-map-moving-section {
       border-left: 1px solid #DCD2C3;
-      padding-left: 40px;
+      padding-left: 34px;
       padding-top: 0;
     }
 
     .home-right-rail {
       border-left: 1px solid #DCD2C3;
       gap: 24px;
-      padding-left: 32px;
+      padding-left: 28px;
     }
 
     .app-primary-button {
       border-radius: 8px !important;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .frontPage .editorial-container {
+      max-width: 1560px;
+    }
+
+    .frontPageGrid {
+      grid-template-columns: 390px minmax(0, 1fr) 330px;
     }
   }
 
