@@ -6,6 +6,7 @@ import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { CurrentRead } from "@/components/home/CurrentRead";
 import { FeaturedCompanies } from "@/components/home/FeaturedCompanies";
 import { HomeFrontPage } from "@/components/home/HomeFrontPage";
+import { HomePatterns } from "@/components/home/HomePatterns";
 import { LatestSignals } from "@/components/home/LatestSignals";
 import { NewsBriefModal } from "@/components/home/NewsBriefModal";
 import { RecentlyAdded } from "@/components/home/RecentlyAdded";
@@ -197,13 +198,14 @@ export default async function Home() {
           snapshotOverrides={marketSnapshotCounts}
           latestUpdatedAt={latestUpdatedAt}
         />
+        <HomePatterns />
+        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
+        <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
+        <RecentlyAdded companies={surfaceRecentlyAdded} />
         <LatestSignals
           items={displayedLatestSignals}
           companiesById={companiesById}
         />
-        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
-        <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
-        <RecentlyAdded companies={surfaceRecentlyAdded} />
         <FeaturedCompanies companies={featuredHomepageCompanies} />
         <BrowseByCategory categories={categoryMeta} counts={categoryCounts} />
         <SubmitCompanyCTA />
