@@ -393,7 +393,7 @@ export function GoogleStartupMap({
   }, [apiKey, mapId, onSelectCompany, pins]);
 
   return (
-    <div className="relative min-h-[420px] overflow-hidden bg-[#081523]">
+    <div className="relative min-h-[320px] overflow-hidden bg-[#081523] sm:min-h-[420px]">
       {apiKey ? (
         <div ref={mapRef} className="absolute inset-0" />
       ) : (
