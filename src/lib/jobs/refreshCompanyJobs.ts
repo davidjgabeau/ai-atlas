@@ -4,8 +4,13 @@ import {
   cleanJobTitleForDisplay,
   inferJobDepartment,
   isGenericJobDirectoryUrl,
+  isNonJobContentUrl,
   looksLikeSpecificRoleTitle,
 } from "@/lib/jobs/jobDisplay";
+import {
+  cleanJobSummaryForDisplay,
+  extractJobSummaryFromHtml,
+} from "@/lib/jobs/jobSummary";
 import {
   createSupabasePrivilegedClient,
   hasSupabasePrivilegedCredentials,
@@ -25,6 +30,7 @@ type DiscoveredJob = {
   location: string;
   employment_type: string;
   remote_policy: string;
+  role_summary: string;
   source_url: string;
   source_name: string;
   external_id: string;
@@ -33,6 +39,18 @@ type DiscoveredJob = {
   last_seen_at: string;
   status: "open";
   raw: Record<string, unknown>;
+};
+
+type ExtractedJob = Omit<
+  DiscoveredJob,
+  | "company_id"
+  | "discovered_at"
+  | "last_seen_at"
+  | "status"
+  | "source_name"
+  | "raw"
+> & {
+  extraction: string;
 };
 
 type RefreshCompanyJobsOptions = {
@@ -155,41 +173,33 @@ async function discoverJobsForCompany(
 
   const jobs: DiscoveredJob[] = [];
   const seenJobUrls = new Set<string>();
+  const summaryCache = new Map<string, Promise<string>>();
 
   for (const careerUrl of careerUrls) {
     const page = await fetchHtml(careerUrl);
     if (!page) continue;
 
-    for (const job of [
+    const candidates: ExtractedJob[] = [
       ...extractStructuredJobs(page.html, page.finalUrl),
       ...extractJobLinks(page.html, page.finalUrl),
-    ]) {
+    ];
+    const jobsToAdd: ExtractedJob[] = [];
+
+    for (const job of dedupeJobs(candidates)) {
       if (seenJobUrls.has(job.source_url)) continue;
       seenJobUrls.add(job.source_url);
+      jobsToAdd.push(job);
 
-      jobs.push({
-        company_id: company.id,
-        title: job.title,
-        department: job.department,
-        location: job.location,
-        employment_type: job.employment_type,
-        remote_policy: job.remote_policy,
-        source_url: job.source_url,
-        source_name: getSourceName(job.source_url),
-        external_id: job.external_id || createJobId(company.id, job.source_url),
-        posted_at: job.posted_at,
-        discovered_at: new Date().toISOString(),
-        last_seen_at: new Date().toISOString(),
-        status: "open",
-        raw: {
-          sourcePage: page.finalUrl,
-          company: company.slug,
-          extraction: job.extraction,
-        },
-      });
-
-      if (jobs.length >= jobsPerCompany) return jobs;
+      if (jobs.length + jobsToAdd.length >= jobsPerCompany) break;
     }
+
+    jobs.push(
+      ...(await mapWithConcurrency(jobsToAdd, 4, (job) =>
+        buildDiscoveredJob(company, job, page.finalUrl, summaryCache),
+      )),
+    );
+
+    if (jobs.length >= jobsPerCompany) return jobs.slice(0, jobsPerCompany);
   }
 
   return jobs;
@@ -214,8 +224,8 @@ function extractCareerLinks(html: string, baseUrl: string) {
   return urls;
 }
 
-function extractStructuredJobs(html: string, baseUrl: string) {
-  const jobs: Array<Omit<DiscoveredJob, "company_id" | "discovered_at" | "last_seen_at" | "status" | "source_name" | "raw"> & { extraction: string }> = [];
+function extractStructuredJobs(html: string, baseUrl: string): ExtractedJob[] {
+  const jobs: ExtractedJob[] = [];
 
   for (const match of html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     const rawJson = decodeHtml(match[1].trim());
@@ -245,6 +255,17 @@ function extractStructuredJobs(html: string, baseUrl: string) {
         location: getStructuredLocation(record.jobLocation),
         employment_type: normalizeText(String(record.employmentType ?? "")),
         remote_policy: "",
+        role_summary: cleanJobSummaryForDisplay(
+          [
+            record.description,
+            record.responsibilities,
+            record.qualifications,
+            record.skills,
+          ]
+            .flatMap(toStringList)
+            .join(" "),
+          title,
+        ),
         source_url: sourceUrl || baseUrl,
         external_id: createJobId(title, sourceUrl || baseUrl),
         posted_at: normalizeDate(String(record.datePosted ?? "")),
@@ -256,13 +277,14 @@ function extractStructuredJobs(html: string, baseUrl: string) {
   return jobs;
 }
 
-function extractJobLinks(html: string, baseUrl: string) {
-  const jobs: Array<Omit<DiscoveredJob, "company_id" | "discovered_at" | "last_seen_at" | "status" | "source_name" | "raw"> & { extraction: string }> = [];
+function extractJobLinks(html: string, baseUrl: string): ExtractedJob[] {
+  const jobs: ExtractedJob[] = [];
 
   for (const anchor of extractAnchors(html, baseUrl)) {
     const title = cleanJobTitle(anchor.text);
     if (!looksLikeJobTitle(title)) continue;
     if (isGenericJobDirectoryUrl(anchor.href)) continue;
+    if (isNonJobContentUrl(anchor.href)) continue;
     if (!looksLikeJobUrl(anchor.href) && !looksLikeSpecificJobTitle(title)) continue;
 
     jobs.push({
@@ -271,6 +293,7 @@ function extractJobLinks(html: string, baseUrl: string) {
       location: inferLocation(title, anchor.href),
       employment_type: "",
       remote_policy: inferRemotePolicy(title, anchor.href),
+      role_summary: "",
       source_url: anchor.href,
       external_id: createJobId(title, anchor.href),
       posted_at: undefined,
@@ -279,6 +302,109 @@ function extractJobLinks(html: string, baseUrl: string) {
   }
 
   return dedupeJobs(jobs);
+}
+
+async function buildDiscoveredJob(
+  company: CompanyJobSyncRow,
+  job: ExtractedJob,
+  sourcePageUrl: string,
+  summaryCache: Map<string, Promise<string>>,
+): Promise<DiscoveredJob> {
+  const roleSummary =
+    job.role_summary ||
+    (await fetchRoleSummaryForJob(job, sourcePageUrl, summaryCache));
+  const now = new Date().toISOString();
+
+  return {
+    company_id: company.id,
+    title: job.title,
+    department: job.department,
+    location: job.location,
+    employment_type: job.employment_type,
+    remote_policy: job.remote_policy,
+    role_summary: roleSummary,
+    source_url: job.source_url,
+    source_name: getSourceName(job.source_url),
+    external_id: job.external_id || createJobId(company.id, job.source_url),
+    posted_at: job.posted_at,
+    discovered_at: now,
+    last_seen_at: now,
+    status: "open",
+    raw: {
+      sourcePage: sourcePageUrl,
+      company: company.slug,
+      extraction: job.extraction,
+      roleSummary,
+    },
+  };
+}
+
+async function fetchRoleSummaryForJob(
+  job: ExtractedJob,
+  sourcePageUrl: string,
+  summaryCache: Map<string, Promise<string>>,
+) {
+  const url = normalizeUrl(job.source_url);
+  if (!url || url === sourcePageUrl || isGenericJobDirectoryUrl(url)) return "";
+
+  if (!summaryCache.has(url)) {
+    summaryCache.set(
+      url,
+      isAshbyJobUrl(url)
+        ? fetchAshbyRoleSummary(url, job.title)
+        : fetchHtml(url, 6000).then((page) =>
+            page ? extractJobSummaryFromHtml(page.html, job.title) : "",
+          ),
+    );
+  }
+
+  return summaryCache.get(url) ?? "";
+}
+
+function isAshbyJobUrl(value: string) {
+  try {
+    return new URL(value).hostname.replace(/^www\./, "") === "jobs.ashbyhq.com";
+  } catch {
+    return false;
+  }
+}
+
+async function fetchAshbyRoleSummary(value: string, title: string) {
+  try {
+    const url = new URL(value);
+    const [, board, jobId] = url.pathname.split("/");
+    if (!board || !jobId) return "";
+
+    const response = await fetchWithTimeout(
+      `https://api.ashbyhq.com/posting-api/job-board/${encodeURIComponent(board)}`,
+      {
+        headers: {
+          "User-Agent": "AI Atlas NYC jobs refresh (+https://aiatlas.nyc)",
+          Accept: "application/json",
+        },
+      },
+      6000,
+    );
+    if (!response.ok) return "";
+
+    const payload = (await response.json()) as { jobs?: Array<Record<string, unknown>> };
+    const jobs = Array.isArray(payload.jobs) ? payload.jobs : [];
+    const matchedJob =
+      jobs.find((job) => String(job.id ?? "") === jobId) ??
+      jobs.find((job) => String(job.jobUrl ?? "") === value) ??
+      jobs.find((job) =>
+        titlesRoughlyMatch(String(job.title ?? ""), title),
+      );
+
+    if (!matchedJob) return "";
+
+    return cleanJobSummaryForDisplay(
+      String(matchedJob.descriptionHtml ?? matchedJob.description ?? ""),
+      title,
+    );
+  } catch {
+    return "";
+  }
 }
 
 function extractAnchors(html: string, baseUrl: string) {
@@ -311,6 +437,7 @@ function getCommonCareerUrls(baseUrl: string) {
 
 function looksLikeJobUrl(value: string) {
   if (isGenericJobDirectoryUrl(value)) return false;
+  if (isNonJobContentUrl(value)) return false;
 
   return /\/(jobs?|careers?|openings?|roles?|positions?|postings?)[/?#-]/i.test(
     value,
@@ -393,14 +520,18 @@ function getSourceName(value: string) {
   }
 }
 
-async function fetchHtml(url: string) {
+async function fetchHtml(url: string, timeoutMs = 9000) {
   try {
-    const response = await fetchWithTimeout(url, {
-      headers: {
-        "User-Agent": "AI Atlas NYC jobs refresh (+https://aiatlas.nyc)",
-        Accept: "text/html,application/xhtml+xml",
+    const response = await fetchWithTimeout(
+      url,
+      {
+        headers: {
+          "User-Agent": "AI Atlas NYC jobs refresh (+https://aiatlas.nyc)",
+          Accept: "text/html,application/xhtml+xml",
+        },
       },
-    });
+      timeoutMs,
+    );
 
     if (!response.ok) return null;
     const contentType = response.headers.get("content-type") ?? "";
@@ -413,6 +544,29 @@ async function fetchHtml(url: string) {
   } catch {
     return null;
   }
+}
+
+async function mapWithConcurrency<T, U>(
+  values: T[],
+  concurrency: number,
+  mapper: (value: T) => Promise<U>,
+) {
+  const results: U[] = [];
+  let index = 0;
+
+  async function worker() {
+    while (index < values.length) {
+      const currentIndex = index;
+      index += 1;
+      results[currentIndex] = await mapper(values[currentIndex]);
+    }
+  }
+
+  await Promise.all(
+    Array.from({ length: Math.min(concurrency, values.length) }, worker),
+  );
+
+  return results;
 }
 
 async function fetchWithTimeout(
@@ -503,6 +657,28 @@ function flattenJsonLd(value: unknown): unknown[] {
   const record = value as Record<string, unknown>;
   const graph = record["@graph"];
   return [record, ...flattenJsonLd(graph)];
+}
+
+function toStringList(value: unknown): string[] {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.flatMap(toStringList);
+  if (typeof value === "string") return [value];
+  return [];
+}
+
+function titlesRoughlyMatch(left: string, right: string) {
+  const normalize = (value: string) =>
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim();
+  const normalizedLeft = normalize(left);
+  const normalizedRight = normalize(right);
+
+  return (
+    normalizedLeft.includes(normalizedRight) ||
+    normalizedRight.includes(normalizedLeft)
+  );
 }
 
 function dedupeJobs<T extends { source_url: string; title: string }>(jobs: T[]) {

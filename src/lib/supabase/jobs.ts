@@ -5,6 +5,7 @@ import {
   getJobDepartmentLabel,
   isNavigableCompanyJob,
 } from "@/lib/jobs/jobDisplay";
+import { cleanJobSummaryForDisplay } from "@/lib/jobs/jobSummary";
 import { normalizeCompany } from "@/lib/supabase/market-data";
 import { createSupabaseAuthServerClient } from "@/lib/supabase/auth-server";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
@@ -105,6 +106,11 @@ function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
   const now = new Date().toISOString();
   const title = cleanJobTitleForDisplay(safeString(row.title, "Open role"));
   const sourceUrl = safeString(row.source_url, "");
+  const raw = normalizeRaw(row.raw);
+  const roleSummary = cleanJobSummaryForDisplay(
+    safeString(row.role_summary, "") || getRawSummary(raw),
+    title,
+  );
   const department = getJobDepartmentLabel({
     title,
     source_url: sourceUrl,
@@ -119,6 +125,7 @@ function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
     location: safeString(row.location, ""),
     employment_type: safeString(row.employment_type, ""),
     remote_policy: safeString(row.remote_policy, ""),
+    role_summary: roleSummary,
     source_url: sourceUrl,
     source_name: safeString(row.source_name, "Company careers"),
     external_id: safeString(row.external_id, ""),
@@ -126,7 +133,7 @@ function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
     discovered_at: safeString(row.discovered_at, now),
     last_seen_at: safeString(row.last_seen_at, now),
     status: row.status === "closed" ? "closed" : "open",
-    raw: normalizeRaw(row.raw),
+    raw,
     created_at: safeString(row.created_at, now),
     updated_at: safeString(row.updated_at, now),
   };
@@ -145,6 +152,22 @@ function normalizeRaw(value: unknown) {
   return value && typeof value === "object"
     ? (value as Record<string, unknown>)
     : {};
+}
+
+function getRawSummary(raw: Record<string, unknown>) {
+  const candidates = [
+    raw.roleSummary,
+    raw.role_summary,
+    raw.description,
+    raw.summary,
+    raw.jobDescription,
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === "string" && candidate.trim()) return candidate;
+  }
+
+  return "";
 }
 
 function optionalString(value: unknown) {

@@ -78,6 +78,7 @@ export function isNavigableCompanyJob(
   const title = cleanJobTitleForDisplay(job.title);
 
   if (isGenericJobDirectoryUrl(job.source_url)) return false;
+  if (isNonJobContentUrl(job.source_url)) return false;
   if (!looksLikeSpecificRoleTitle(title)) return false;
 
   return true;
@@ -91,6 +92,19 @@ export function isGenericJobDirectoryUrl(value: string) {
     return (
       hostname === "linkedin.com" &&
       /^\/jobs\/[^/?#]+-jobs\/?$/i.test(url.pathname)
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function isNonJobContentUrl(value: string) {
+  try {
+    const url = new URL(value);
+    const path = url.pathname.toLowerCase();
+
+    return /\/(blog|changelog|customers?|enterprise-platform|events?|news|platform|pricing|privacy|resources?|solutions?|terms|use-cases?)(\/|$)/i.test(
+      path,
     );
   } catch {
     return false;

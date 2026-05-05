@@ -175,6 +175,7 @@ export type CompanyJob = {
   location: string;
   employment_type: string;
   remote_policy: string;
+  role_summary: string;
   source_url: string;
   source_name: string;
   external_id: string;

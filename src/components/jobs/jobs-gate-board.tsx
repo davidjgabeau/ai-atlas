@@ -25,6 +25,10 @@ import {
   getJobDepartmentLabel,
   getJobListedAt,
 } from "@/lib/jobs/jobDisplay";
+import {
+  getCompanyJobSummary,
+  getJobRoleSummary,
+} from "@/lib/jobs/jobSummary";
 import { cn } from "@/lib/utils";
 import type { Company, CompanyJobWithCompany } from "@/types/market";
 import type { CompanyJobStats } from "@/lib/supabase/jobs";
@@ -402,6 +406,8 @@ function LockedJobPreviewRow({
   const applyUrl = job.source_url || company?.website_url || "/";
   const department = getJobDepartmentLabel(job);
   const listedAt = getJobListedAt(job);
+  const companySummary = getCompanyJobSummary(company);
+  const roleSummary = getJobRoleSummary(job);
 
   return (
     <article
@@ -443,6 +449,22 @@ function LockedJobPreviewRow({
             Listed {formatRelativeUpdate(listedAt)}
           </span>
         </div>
+        {companySummary || roleSummary ? (
+          <div className="mt-3 grid max-w-[760px] gap-1.5 text-sm leading-[1.55] text-[#5F5A52]">
+            {companySummary ? (
+              <p>
+                <span className="font-semibold text-[#181818]">Company:</span>{" "}
+                {companySummary}
+              </p>
+            ) : null}
+            {roleSummary ? (
+              <p>
+                <span className="font-semibold text-[#181818]">Role:</span>{" "}
+                {roleSummary}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
       </div>
       <div className="flex md:justify-end">
         <Button
@@ -502,6 +524,7 @@ function buildSampleJobs(companies: Company[]): CompanyJobWithCompany[] {
     location: "New York, NY",
     employment_type: "",
     remote_policy: "",
+    role_summary: "",
     source_url: company.website_url || `/companies/${company.slug}`,
     source_name: "Company careers",
     external_id: "",
