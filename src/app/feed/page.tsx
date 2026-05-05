@@ -6,6 +6,7 @@ import { NewsItemCard } from "@/components/news/news-item-card";
 import { CompanySocialPostCard } from "@/components/social/company-social-post-card";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import { getNewsItems } from "@/lib/news/news-store";
 import {
   createShareMetadata,
@@ -14,6 +15,8 @@ import {
 } from "@/lib/seo/shareMetadata";
 import { getCompanySocialFeed } from "@/lib/supabase/social-feed";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
+import type { CompanySocialPostWithCompany } from "@/lib/supabase/social-feed";
+import type { NewsItem } from "@/types/market";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +34,7 @@ export default async function FeedPage() {
     getPublishedCompanies(),
   ]);
   const companiesById = new Map(companies.map((company) => [company.id, company]));
+  const latestUpdatedAt = getLatestFeedUpdatedAt(newsItems, posts);
 
   return (
     <PublicShell>
@@ -50,6 +54,11 @@ export default async function FeedPage() {
               Early-stage NYC AI links, broader context, and official posts
               from mapped companies.
             </p>
+            <FeedProofLine
+              newsCount={newsItems.length}
+              postCount={posts.length}
+              updatedAt={latestUpdatedAt}
+            />
           </div>
         </div>
       </section>
@@ -136,6 +145,36 @@ export default async function FeedPage() {
   );
 }
 
+function FeedProofLine({
+  newsCount,
+  postCount,
+  updatedAt,
+}: {
+  newsCount: number;
+  postCount: number;
+  updatedAt: string | null;
+}) {
+  if (newsCount <= 0 && postCount <= 0) return null;
+
+  return (
+    <p className="max-w-[640px] border-t border-[#E7E1D8] pt-4 text-sm font-medium leading-[1.6] text-[#66625C]">
+      {newsCount > 0 ? (
+        <span className="text-[#181818]">{formatNewsCount(newsCount)}</span>
+      ) : null}
+      {newsCount > 0 && postCount > 0 ? " · " : null}
+      {postCount > 0 ? (
+        <span className="text-[#181818]">{formatPostCount(postCount)}</span>
+      ) : null}
+      {updatedAt ? (
+        <>
+          <span aria-hidden="true"> · </span>
+          Updated {formatRelativeUpdate(updatedAt)}
+        </>
+      ) : null}
+    </p>
+  );
+}
+
 function SectionHeading({
   eyebrow,
   title,
@@ -156,6 +195,47 @@ function SectionHeading({
       <p className="text-sm text-[#7A746C]">{meta}</p>
     </div>
   );
+}
+
+function getLatestFeedUpdatedAt(
+  newsItems: NewsItem[],
+  posts: CompanySocialPostWithCompany[],
+) {
+  const latest = [...newsItems, ...posts].reduce((max, item) => {
+    if ("posted_at" in item) {
+      return Math.max(
+        max,
+        getDateTime(item.synced_at),
+        getDateTime(item.posted_at),
+        getDateTime(item.created_at),
+      );
+    }
+
+    return Math.max(
+      max,
+      getDateTime(item.updated_at),
+      getDateTime(item.discovered_at),
+      getDateTime(item.published_at),
+      getDateTime(item.created_at),
+    );
+  }, 0);
+
+  return latest > 0 ? new Date(latest).toISOString() : null;
+}
+
+function formatNewsCount(count: number) {
+  return count === 1 ? "1 news link" : `${count} news links`;
+}
+
+function formatPostCount(count: number) {
+  return count === 1 ? "1 company post" : `${count} company posts`;
+}
+
+function getDateTime(dateValue?: string) {
+  if (!dateValue) return 0;
+
+  const time = new Date(dateValue).getTime();
+  return Number.isNaN(time) ? 0 : time;
 }
 
 function EmptyNewsState() {

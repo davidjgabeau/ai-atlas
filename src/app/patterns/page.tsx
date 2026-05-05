@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, RefreshCw } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { PublicShell } from "@/components/site/public-shell";
 import { patterns } from "@/data/patterns";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
   createShareMetadata,
   getShareImageUrl,
@@ -24,21 +25,22 @@ export default function PatternsPage() {
     <PublicShell>
       <section className="hero">
         <div className="editorial-container py-12">
-          <div className="flex flex-wrap items-center gap-2.5">
-            <p className="editorial-label">Pattern recognition</p>
-            {latestUpdatedAt ? (
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
-                <RefreshCw className="size-3.5" />
-                Updated {formatUpdatedMarker(latestUpdatedAt)}
-              </span>
-            ) : null}
-          </div>
+          <p className="editorial-label">Pattern recognition</p>
           <h1 className="mt-5 max-w-[840px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
             Patterns across the NYC AI map
           </h1>
           <p className="mt-5 max-w-[700px] text-[18px] leading-[1.55] text-[#5F5A52]">
             Recurring shapes the map keeps producing. Each pattern names the
             companies that fit.
+          </p>
+          <p className="mt-5 max-w-[700px] border-t border-[#E7E1D8] pt-4 text-sm font-medium leading-[1.6] text-[#66625C]">
+            <span className="text-[#181818]">{patterns.length} patterns</span>
+            {latestUpdatedAt ? (
+              <>
+                <span aria-hidden="true"> · </span>
+                Updated {formatRelativeUpdate(latestUpdatedAt)}
+              </>
+            ) : null}
           </p>
         </div>
       </section>
@@ -85,15 +87,4 @@ function getLatestPatternUpdatedAt() {
   }, 0);
 
   return latest > 0 ? new Date(latest).toISOString() : undefined;
-}
-
-function formatUpdatedMarker(dateValue: string) {
-  const date = new Date(dateValue);
-  if (Number.isNaN(date.getTime())) return "recently";
-
-  return date.toLocaleDateString("en", {
-    month: "short",
-    day: "numeric",
-    timeZone: "America/New_York",
-  });
 }

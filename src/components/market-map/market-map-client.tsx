@@ -8,7 +8,6 @@ import {
   ExternalLink,
   Mail,
   MapPinned,
-  RefreshCw,
   Sparkles,
   X,
 } from "lucide-react";
@@ -57,6 +56,7 @@ import {
   getExternalUrl,
   getIntroRequestMailto,
 } from "@/lib/intro-request";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
 import { cn } from "@/lib/utils";
 import {
@@ -366,17 +366,15 @@ function MapTitleRow({
           <h1 className="font-heading text-[clamp(42px,5vw,68px)] font-medium leading-[0.95] tracking-[-0.035em] text-[#181818]">
             NYC AI Map
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-2.5">
-            <p className="text-base font-medium text-[#5F5A52]">
-              {formatMappedCompanies(totalCompanies)} mapped
-            </p>
+          <p className="mt-3 text-base font-medium text-[#5F5A52]">
+            {formatMappedCompanies(totalCompanies)} mapped
             {updatedAt ? (
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
-                <RefreshCw className="size-3.5" />
-                Updated {formatUpdatedMarker(updatedAt)}
-              </span>
+              <>
+                <span aria-hidden="true"> · </span>
+                Updated {formatRelativeUpdate(updatedAt)}
+              </>
             ) : null}
-          </div>
+          </p>
         </div>
       </div>
     </section>
@@ -961,17 +959,6 @@ function getLatestCompanyUpdatedAt(companies: Company[]) {
   }, 0);
 
   return latest > 0 ? new Date(latest).toISOString() : undefined;
-}
-
-function formatUpdatedMarker(dateValue: string) {
-  const date = new Date(dateValue);
-  if (Number.isNaN(date.getTime())) return "recently";
-
-  return date.toLocaleDateString("en", {
-    month: "short",
-    day: "numeric",
-    timeZone: "America/New_York",
-  });
 }
 
 function getDateTime(dateValue?: string) {
