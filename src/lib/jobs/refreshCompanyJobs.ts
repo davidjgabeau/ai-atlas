@@ -1,6 +1,12 @@
 import { createHash } from "node:crypto";
 
 import {
+  cleanJobTitleForDisplay,
+  inferJobDepartment,
+  isGenericJobDirectoryUrl,
+  looksLikeSpecificRoleTitle,
+} from "@/lib/jobs/jobDisplay";
+import {
   createSupabasePrivilegedClient,
   hasSupabasePrivilegedCredentials,
 } from "@/lib/supabase/privileged";
@@ -256,6 +262,7 @@ function extractJobLinks(html: string, baseUrl: string) {
   for (const anchor of extractAnchors(html, baseUrl)) {
     const title = cleanJobTitle(anchor.text);
     if (!looksLikeJobTitle(title)) continue;
+    if (isGenericJobDirectoryUrl(anchor.href)) continue;
     if (!looksLikeJobUrl(anchor.href) && !looksLikeSpecificJobTitle(title)) continue;
 
     jobs.push({
@@ -303,15 +310,15 @@ function getCommonCareerUrls(baseUrl: string) {
 }
 
 function looksLikeJobUrl(value: string) {
+  if (isGenericJobDirectoryUrl(value)) return false;
+
   return /\/(jobs?|careers?|openings?|roles?|positions?|postings?)[/?#-]/i.test(
     value,
   );
 }
 
 function looksLikeSpecificJobTitle(title: string) {
-  return /\b(engineer|designer|product|growth|sales|account|founder|chief|marketing|operations|data|research|scientist|manager|recruiter|finance|legal|clinical|customer|solutions|developer|analyst|lead|head of|staff|principal|intern)\b/i.test(
-    title,
-  );
+  return looksLikeSpecificRoleTitle(title);
 }
 
 function looksLikeJobTitle(title: string) {
@@ -328,20 +335,11 @@ function looksLikeJobTitle(title: string) {
 }
 
 function cleanJobTitle(value: string) {
-  return normalizeText(value)
-    .replace(/\s*[-|]\s*(apply|view job|learn more)$/i, "")
-    .replace(/\s*\(.*?apply.*?\)$/i, "")
-    .trim();
+  return cleanJobTitleForDisplay(value);
 }
 
 function inferDepartment(title: string, href: string) {
-  const value = `${title} ${href}`.toLowerCase();
-  if (/engineer|developer|infra|platform|software|data|ml|ai/.test(value)) return "Engineering";
-  if (/product|design|ux/.test(value)) return "Product";
-  if (/sales|account|customer|success|solutions|gtm/.test(value)) return "GTM";
-  if (/marketing|growth|content/.test(value)) return "Marketing";
-  if (/operations|finance|legal|people|recruit/.test(value)) return "Operations";
-  return "";
+  return inferJobDepartment("", title, href);
 }
 
 function inferLocation(title: string, href: string) {

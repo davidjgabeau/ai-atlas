@@ -1,5 +1,10 @@
 import { cache } from "react";
 
+import {
+  cleanJobTitleForDisplay,
+  getJobDepartmentLabel,
+  isNavigableCompanyJob,
+} from "@/lib/jobs/jobDisplay";
 import { normalizeCompany } from "@/lib/supabase/market-data";
 import { createSupabaseAuthServerClient } from "@/lib/supabase/auth-server";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
@@ -29,7 +34,7 @@ export const getCompanyJobsForViewer = cache(async (): Promise<{
     .select("*, companies(*)")
     .eq("status", "open")
     .order("last_seen_at", { ascending: false })
-    .limit(200);
+    .limit(500);
 
   if (error || !data) {
     return {
@@ -41,12 +46,7 @@ export const getCompanyJobsForViewer = cache(async (): Promise<{
 
   return {
     isSignedIn: true,
-    jobs: (data as CompanyJobRow[])
-      .map((row) => ({
-        ...normalizeCompanyJob(row),
-        company: row.companies ? normalizeCompany(row.companies) : undefined,
-      }))
-      .filter((job) => Boolean(job.company)),
+    jobs: normalizeCompanyJobRows(data as CompanyJobRow[]),
   };
 });
 
@@ -63,32 +63,23 @@ const emptyJobStats: CompanyJobStats = {
 };
 
 export const getPublicCompanyJobStats = cache(async (): Promise<CompanyJobStats> => {
-  const supabase = createSupabasePrivilegedClient();
-  if (!supabase) return emptyJobStats;
-
-  const { data, error } = await supabase
-    .from("company_jobs")
-    .select("company_id, last_seen_at")
-    .eq("status", "open")
-    .order("last_seen_at", { ascending: false })
-    .limit(2000);
-
-  if (error || !data) return emptyJobStats;
+  const jobs = await getPublicCompanyJobs();
+  if (jobs.length === 0) return emptyJobStats;
 
   const companiesHiring = new Set(
-    data
-      .map((row) => safeString(row.company_id, ""))
+    jobs
+      .map((job) => safeString(job.company_id, ""))
       .filter(Boolean),
   ).size;
 
   const latestSyncAt =
-    data
-      .map((row) => safeString(row.last_seen_at, ""))
+    jobs
+      .map((job) => safeString(job.last_seen_at, ""))
       .filter(Boolean)
       .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0] ?? null;
 
   return {
-    openRoles: data.length,
+    openRoles: jobs.length,
     companiesHiring,
     latestSyncAt,
   };
@@ -103,30 +94,32 @@ export const getPublicCompanyJobs = cache(async (): Promise<CompanyJobWithCompan
     .select("*, companies(*)")
     .eq("status", "open")
     .order("last_seen_at", { ascending: false })
-    .limit(200);
+    .limit(500);
 
   if (error || !data) return [];
 
-  return (data as CompanyJobRow[])
-    .map((row) => ({
-      ...normalizeCompanyJob(row),
-      company: row.companies ? normalizeCompany(row.companies) : undefined,
-    }))
-    .filter((job) => Boolean(job.company));
+  return normalizeCompanyJobRows(data as CompanyJobRow[]);
 });
 
 function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
   const now = new Date().toISOString();
+  const title = cleanJobTitleForDisplay(safeString(row.title, "Open role"));
+  const sourceUrl = safeString(row.source_url, "");
+  const department = getJobDepartmentLabel({
+    title,
+    source_url: sourceUrl,
+    department: safeString(row.department, ""),
+  });
 
   return {
     id: safeString(row.id, `job_${safeString(row.source_url, Date.now().toString())}`),
     company_id: safeString(row.company_id, ""),
-    title: safeString(row.title, "Open role"),
-    department: safeString(row.department, ""),
+    title,
+    department,
     location: safeString(row.location, ""),
     employment_type: safeString(row.employment_type, ""),
     remote_policy: safeString(row.remote_policy, ""),
-    source_url: safeString(row.source_url, ""),
+    source_url: sourceUrl,
     source_name: safeString(row.source_name, "Company careers"),
     external_id: safeString(row.external_id, ""),
     posted_at: optionalString(row.posted_at),
@@ -137,6 +130,15 @@ function normalizeCompanyJob(row: CompanyJobRow): CompanyJob {
     created_at: safeString(row.created_at, now),
     updated_at: safeString(row.updated_at, now),
   };
+}
+
+function normalizeCompanyJobRows(rows: CompanyJobRow[]) {
+  return rows
+    .map((row): CompanyJobWithCompany => ({
+      ...normalizeCompanyJob(row),
+      company: row.companies ? normalizeCompany(row.companies) : undefined,
+    }))
+    .filter((job) => Boolean(job.company) && isNavigableCompanyJob(job));
 }
 
 function normalizeRaw(value: unknown) {

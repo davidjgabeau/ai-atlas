@@ -21,6 +21,10 @@ import {
 } from "@/components/ui/dialog";
 import { useLocalProfile } from "@/hooks/use-local-profile";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
+import {
+  getJobDepartmentLabel,
+  getJobListedAt,
+} from "@/lib/jobs/jobDisplay";
 import { cn } from "@/lib/utils";
 import type { Company, CompanyJobWithCompany } from "@/types/market";
 import type { CompanyJobStats } from "@/lib/supabase/jobs";
@@ -396,6 +400,8 @@ function LockedJobPreviewRow({
 }) {
   const company = job.company;
   const applyUrl = job.source_url || company?.website_url || "/";
+  const department = getJobDepartmentLabel(job);
+  const listedAt = getJobListedAt(job);
 
   return (
     <article
@@ -420,12 +426,8 @@ function LockedJobPreviewRow({
         </h3>
         <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#66625C]">
           {company ? <span className="font-medium">{company.name}</span> : null}
-          {job.department ? (
-            <>
-              <span aria-hidden="true">·</span>
-              <span>{job.department}</span>
-            </>
-          ) : null}
+          <span aria-hidden="true">·</span>
+          <span>{department}</span>
           {job.location ? (
             <>
               <span aria-hidden="true">·</span>
@@ -438,7 +440,7 @@ function LockedJobPreviewRow({
           <span aria-hidden="true">·</span>
           <span className="inline-flex items-center gap-1">
             <Clock3 className="size-3.5" />
-            {formatRelativeUpdate(job.last_seen_at)}
+            Listed {formatRelativeUpdate(listedAt)}
           </span>
         </div>
       </div>
