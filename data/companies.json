@@ -1,0 +1,4543 @@
+[
+  {
+    "id": "cmp_052",
+    "slug": "bevel",
+    "name": "Bevel",
+    "website": "https://www.bevel.health",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Health & Clinical AI",
+    "description": "Bevel turns wearable and health data into personalized AI-powered health insights.",
+    "oneSentenceDescription": "Bevel turns wearable and health data into personalized AI-powered health insights.",
+    "founders": [
+      {
+        "name": "Grey Nguyen"
+      },
+      {
+        "name": "Ben Yang"
+      },
+      {
+        "name": "Aditya Agarwal"
+      }
+    ],
+    "investors": [
+      "General Catalyst"
+    ],
+    "funding": {
+      "latestRound": "Series A",
+      "latestRoundAmount": "$10M",
+      "latestRoundDate": "October 2025",
+      "leadInvestors": [
+        "General Catalyst"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Consumer signal",
+      "Health AI",
+      "Consumer AI",
+      "Wearables",
+      "Fitness",
+      "Personal Health",
+      "clinical operations",
+      "consumer interface"
+    ],
+    "generated": {
+      "hook": "AI health insights from wearable data",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "Health AI",
+        "Consumer AI",
+        "Wearables",
+        "Fitness",
+        "Personal Health"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "consumer interface"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.bevel.health"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_056",
+    "slug": "vellum",
+    "name": "Vellum",
+    "website": "https://www.vellum.ai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Model Tools & Dev Platform",
+    "description": "Vellum helps teams build, evaluate, and ship reliable LLM applications.",
+    "oneSentenceDescription": "Vellum helps teams build, evaluate, and ship reliable LLM applications.",
+    "founders": [
+      {
+        "name": "Akash Sharma"
+      }
+    ],
+    "investors": [
+      "Leaders Fund"
+    ],
+    "funding": {
+      "latestRound": "Series A",
+      "latestRoundAmount": "$20M",
+      "latestRoundDate": "July 2025",
+      "leadInvestors": [
+        "Leaders Fund"
+      ]
+    },
+    "tags": [
+      "Model Tools & Dev Platform",
+      "Infra signal",
+      "LLM Development",
+      "Evaluation",
+      "Developer Tools",
+      "AI Infrastructure",
+      "Production AI",
+      "developer workflow",
+      "production AI"
+    ],
+    "generated": {
+      "hook": "Production tooling for LLM applications",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "LLM Development",
+        "Evaluation",
+        "Developer Tools",
+        "AI Infrastructure",
+        "Production AI"
+      ],
+      "trendDimensions": [
+        "developer workflow",
+        "production AI"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.vellum.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_061",
+    "slug": "blossom-health",
+    "name": "Blossom Health",
+    "website": "https://www.joinblossomhealth.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed / Series A",
+    "category": "Health & Clinical AI",
+    "description": "Blossom Health pairs telepsychiatry care with AI copilots and admin automation.",
+    "oneSentenceDescription": "Blossom Health pairs telepsychiatry care with AI copilots and admin automation.",
+    "founders": [
+      {
+        "name": "John Zhao"
+      }
+    ],
+    "investors": [
+      "Headline"
+    ],
+    "funding": {
+      "totalRaised": "$20M",
+      "latestRound": "Seed / Series A",
+      "latestRoundAmount": "$20M",
+      "latestRoundDate": "March 2026",
+      "leadInvestors": [
+        "Headline"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Clear buyer pull",
+      "Health AI",
+      "Mental Health",
+      "Telepsychiatry",
+      "Clinical Workflows",
+      "AI Copilot",
+      "clinical operations",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI-supported workflows for psychiatry care",
+      "signalLabel": "Clear buyer pull",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Health AI",
+        "Mental Health",
+        "Telepsychiatry",
+        "Clinical Workflows",
+        "AI Copilot"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.joinblossomhealth.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_055",
+    "slug": "thread-ai",
+    "name": "Thread AI",
+    "website": "https://www.thread.ai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Agent Infrastructure",
+    "description": "Thread AI helps enterprises build and manage composable AI workflows.",
+    "oneSentenceDescription": "Thread AI helps enterprises build and manage composable AI workflows.",
+    "founders": [
+      {
+        "name": "Angela McNeal"
+      },
+      {
+        "name": "Mayada Gonimah"
+      }
+    ],
+    "investors": [
+      "Greycroft"
+    ],
+    "funding": {
+      "latestRound": "Series A",
+      "latestRoundAmount": "$20M",
+      "latestRoundDate": "June 2025",
+      "leadInvestors": [
+        "Greycroft"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "Enterprise AI",
+      "Workflow Automation",
+      "AI Orchestration",
+      "agent infrastructure",
+      "workflow reliability"
+    ],
+    "generated": {
+      "hook": "Composable infrastructure for enterprise AI workflows",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "Agent Infrastructure",
+        "Enterprise AI",
+        "Workflow Automation",
+        "AI Orchestration"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.thread.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_051",
+    "slug": "ohai-ai",
+    "name": "Ohai.ai",
+    "website": "https://www.ohai.ai",
+    "x": "https://x.com/ohaidotai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed",
+    "category": "AI-Native Consumer & Social",
+    "description": "Ohai.ai helps families reduce household mental load with an AI assistant for calendars, tasks, reminders, meals, and daily coordination.",
+    "oneSentenceDescription": "Ohai.ai helps families reduce household mental load with an AI assistant for calendars, tasks, reminders, meals, and daily coordination.",
+    "founders": [
+      {
+        "name": "Sheila Lirio Marcelo"
+      },
+      {
+        "name": "Kevin Yang"
+      },
+      {
+        "name": "Lauren Tornow"
+      }
+    ],
+    "investors": [
+      "Muse Capital"
+    ],
+    "funding": {
+      "latestRound": "Strategic funding",
+      "latestRoundDate": "August 2025",
+      "leadInvestors": [
+        "Muse Capital"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "Consumer AI",
+      "Family Tech",
+      "Personal Assistant",
+      "Household Coordination",
+      "consumer interface",
+      "memory behavior"
+    ],
+    "generated": {
+      "hook": "AI household coordination for busy families",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "Consumer AI",
+        "Family Tech",
+        "Personal Assistant",
+        "Household Coordination"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.ohai.ai",
+      "https://x.com/ohaidotai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_050",
+    "slug": "tapestry",
+    "name": "Tapestry",
+    "website": "https://www.usetapestry.dev",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "AI-Native Consumer & Social",
+    "description": "Tapestry provides open social graph infrastructure for consumer and agentic products.",
+    "oneSentenceDescription": "Tapestry provides open social graph infrastructure for consumer and agentic products.",
+    "founders": [
+      {
+        "name": "David Gabeau"
+      }
+    ],
+    "investors": [
+      "Union Square Ventures",
+      "Fabric Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$12.5M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$5.75M",
+      "latestRoundDate": "January 2025",
+      "leadInvestors": [
+        "Union Square Ventures",
+        "Fabric Ventures"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Infra signal",
+      "Open Social Graph",
+      "Agent Infrastructure",
+      "Consumer AI",
+      "Developer Infrastructure",
+      "Social Protocol",
+      "consumer interface",
+      "agent infrastructure"
+    ],
+    "generated": {
+      "hook": "Open social graph infrastructure for AI products",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "Open Social Graph",
+        "Agent Infrastructure",
+        "Consumer AI",
+        "Developer Infrastructure",
+        "Social Protocol"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "agent infrastructure"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.usetapestry.dev"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_053",
+    "slug": "profound",
+    "name": "Profound",
+    "website": "https://www.tryprofound.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Media, Ads & Creative AI",
+    "description": "Profound helps brands measure and improve their visibility across AI search and answer engines.",
+    "oneSentenceDescription": "Profound helps brands measure and improve their visibility across AI search and answer engines.",
+    "founders": [
+      {
+        "name": "James Cadwallader"
+      },
+      {
+        "name": "Dylan Babbs"
+      }
+    ],
+    "investors": [
+      "Sequoia Capital"
+    ],
+    "funding": {
+      "latestRound": "Series B",
+      "latestRoundAmount": "$35M",
+      "latestRoundDate": "August 2025",
+      "leadInvestors": [
+        "Sequoia Capital"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Funding signal",
+      "AI Search",
+      "Brand Intelligence",
+      "Marketing AI",
+      "Answer Engines",
+      "SEO",
+      "creative workflow",
+      "interface pattern"
+    ],
+    "generated": {
+      "hook": "Brand visibility for AI search",
+      "signalLabel": "Worth watching",
+      "signalReason": "Series A company building around a new brand-discovery surface created by AI answer engines.",
+      "keywords": [
+        "AI Search",
+        "Brand Intelligence",
+        "Marketing AI",
+        "Answer Engines",
+        "SEO"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.tryprofound.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_054",
+    "slug": "flora",
+    "name": "FLORA",
+    "website": "https://flora.ai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Media, Ads & Creative AI",
+    "description": "FLORA gives creative teams a collaborative environment for AI-assisted production workflows.",
+    "oneSentenceDescription": "FLORA gives creative teams a collaborative environment for AI-assisted production workflows.",
+    "founders": [
+      {
+        "name": "Weber Wong"
+      }
+    ],
+    "investors": [
+      "Redpoint Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$52M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$42M",
+      "latestRoundDate": "January 2026",
+      "leadInvestors": [
+        "Redpoint Ventures"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Consumer signal",
+      "Creative AI",
+      "Generative Media",
+      "Design Tools",
+      "Creative Workflows",
+      "creative workflow",
+      "interface pattern"
+    ],
+    "generated": {
+      "hook": "Collaborative workspace for AI creative production",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "Creative AI",
+        "Generative Media",
+        "Design Tools",
+        "Creative Workflows"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://flora.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_058",
+    "slug": "meridian",
+    "name": "Meridian",
+    "website": "https://www.meridian.ai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed",
+    "category": "Fintech & Trading AI",
+    "description": "Meridian is building an agentic spreadsheet for auditable financial modeling workflows.",
+    "oneSentenceDescription": "Meridian is building an agentic spreadsheet for auditable financial modeling workflows.",
+    "founders": [
+      {
+        "name": "John Ling"
+      },
+      {
+        "name": "George Fang"
+      },
+      {
+        "name": "Zach Kirshner"
+      }
+    ],
+    "investors": [
+      "Andreessen Horowitz",
+      "The General Partnership"
+    ],
+    "funding": {
+      "totalRaised": "$17M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$17M",
+      "latestRoundDate": "February 2026",
+      "leadInvestors": [
+        "Andreessen Horowitz",
+        "The General Partnership"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Clear buyer pull",
+      "Finance AI",
+      "Spreadsheets",
+      "Financial Modeling",
+      "Agents",
+      "Analyst Workflows",
+      "regulated buyers",
+      "research workflows"
+    ],
+    "generated": {
+      "hook": "Agentic spreadsheets for finance teams",
+      "signalLabel": "Worth watching",
+      "signalReason": "Seed-stage finance AI company targeting a core analyst workflow.",
+      "keywords": [
+        "Finance AI",
+        "Spreadsheets",
+        "Financial Modeling",
+        "Agents",
+        "Analyst Workflows"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.meridian.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_059",
+    "slug": "foresight",
+    "name": "Foresight",
+    "website": "https://www.foresight.ai",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed",
+    "category": "Data & Memory Layer",
+    "description": "Foresight brings unified data and AI workflows to private-market investing.",
+    "oneSentenceDescription": "Foresight brings unified data and AI workflows to private-market investing.",
+    "founders": [
+      {
+        "name": "Jason Miller"
+      },
+      {
+        "name": "Adam Devine"
+      }
+    ],
+    "investors": [
+      "NEA"
+    ],
+    "funding": {
+      "totalRaised": "$5.5M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$5.5M",
+      "latestRoundDate": "June 2025",
+      "leadInvestors": [
+        "NEA"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Workflow signal",
+      "Private Markets",
+      "Data Infrastructure",
+      "Finance AI",
+      "Investing",
+      "Enterprise AI",
+      "data infrastructure",
+      "retrieval context"
+    ],
+    "generated": {
+      "hook": "AI data infrastructure for private markets",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Private Markets",
+        "Data Infrastructure",
+        "Finance AI",
+        "Investing",
+        "Enterprise AI"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.foresight.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_060",
+    "slug": "polimorphic",
+    "name": "Polimorphic",
+    "website": "https://www.polimorphic.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "Polimorphic uses AI to help local governments automate resident services.",
+    "oneSentenceDescription": "Polimorphic uses AI to help local governments automate resident services.",
+    "founders": [
+      {
+        "name": "Parth Shah"
+      }
+    ],
+    "investors": [
+      "General Catalyst"
+    ],
+    "funding": {
+      "totalRaised": "$24.2M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$18.6M",
+      "latestRoundDate": "July 2025",
+      "leadInvestors": [
+        "General Catalyst"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Workflow signal",
+      "GovTech",
+      "Enterprise Automation",
+      "Resident Services",
+      "Public Sector AI",
+      "enterprise operations",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI workflows for local government services",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "GovTech",
+        "Enterprise Automation",
+        "Resident Services",
+        "Public Sector AI"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.polimorphic.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_062",
+    "slug": "jimini-health",
+    "name": "Jimini Health",
+    "website": "https://www.jiminihealth.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed",
+    "category": "Health & Clinical AI",
+    "description": "Jimini Health builds AI-backed infrastructure for mental health care delivery.",
+    "oneSentenceDescription": "Jimini Health builds AI-backed infrastructure for mental health care delivery.",
+    "founders": [
+      {
+        "name": "Luis Voloch"
+      },
+      {
+        "name": "Mark Jacobstein"
+      },
+      {
+        "name": "Sahil Sud"
+      }
+    ],
+    "investors": [
+      "M13"
+    ],
+    "funding": {
+      "totalRaised": ">$25M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$17M",
+      "latestRoundDate": "March 2026",
+      "leadInvestors": [
+        "M13"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Funding signal",
+      "Health AI",
+      "Mental Health",
+      "Patient Experience",
+      "Care Delivery",
+      "clinical operations",
+      "consumer interface"
+    ],
+    "generated": {
+      "hook": "Patient-facing AI for mental health care",
+      "signalLabel": "Worth watching",
+      "signalReason": "Seed-stage health AI company building around patient-facing mental health workflows.",
+      "keywords": [
+        "Health AI",
+        "Mental Health",
+        "Patient Experience",
+        "Care Delivery"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "consumer interface"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.jiminihealth.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_064",
+    "slug": "auctor",
+    "name": "Auctor",
+    "website": "https://www.getauctor.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "Auctor automates enterprise software implementation workflows with AI.",
+    "oneSentenceDescription": "Auctor automates enterprise software implementation workflows with AI.",
+    "founders": [
+      {
+        "name": "William Sun"
+      },
+      {
+        "name": "Xinan Rahman"
+      },
+      {
+        "name": "Matthew Blackburn"
+      },
+      {
+        "name": "Anthony Sky Ng-Thow-Hing"
+      }
+    ],
+    "investors": [
+      "Sequoia Capital"
+    ],
+    "funding": {
+      "totalRaised": "$20M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$20M",
+      "latestRoundDate": "April 2026",
+      "leadInvestors": [
+        "Sequoia Capital"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Enterprise signal",
+      "Enterprise AI",
+      "Implementation",
+      "Automation",
+      "Software Deployment",
+      "enterprise operations",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI automation for enterprise software implementations",
+      "signalLabel": "Enterprise signal",
+      "signalReason": "Series A company applying AI to a high-friction enterprise deployment workflow.",
+      "keywords": [
+        "Enterprise AI",
+        "Implementation",
+        "Automation",
+        "Software Deployment"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.getauctor.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_065",
+    "slug": "dualentry",
+    "name": "DualEntry",
+    "website": "https://www.dualentry.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Fintech & Trading AI",
+    "description": "DualEntry builds AI-native ERP software for finance and accounting teams.",
+    "oneSentenceDescription": "DualEntry builds AI-native ERP software for finance and accounting teams.",
+    "founders": [
+      {
+        "name": "Santiago Nestares"
+      },
+      {
+        "name": "Benedict Dohmen"
+      }
+    ],
+    "investors": [
+      "Lightspeed Venture Partners",
+      "Khosla Ventures"
+    ],
+    "funding": {
+      "totalRaised": ">$100M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$90M",
+      "latestRoundDate": "October 2025",
+      "leadInvestors": [
+        "Lightspeed Venture Partners",
+        "Khosla Ventures"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Clear buyer pull",
+      "Finance AI",
+      "ERP",
+      "Accounting",
+      "Enterprise AI",
+      "Automation",
+      "regulated buyers",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI-native ERP for finance teams",
+      "signalLabel": "Clear buyer pull",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Finance AI",
+        "ERP",
+        "Accounting",
+        "Enterprise AI",
+        "Automation"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.dualentry.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_066",
+    "slug": "modus",
+    "name": "Modus",
+    "website": "https://www.modusalliance.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Seed / Series A",
+    "category": "Fintech & Trading AI",
+    "description": "Modus is building AI-native accounting and audit automation infrastructure.",
+    "oneSentenceDescription": "Modus is building AI-native accounting and audit automation infrastructure.",
+    "founders": [
+      {
+        "name": "Arush Jain"
+      },
+      {
+        "name": "Pranav Pillai"
+      },
+      {
+        "name": "Vinay Kasat"
+      }
+    ],
+    "investors": [
+      "Lightspeed Venture Partners"
+    ],
+    "funding": {
+      "totalRaised": "$85M",
+      "latestRound": "Seed / Series A",
+      "latestRoundAmount": "$85M",
+      "latestRoundDate": "April 2026",
+      "leadInvestors": [
+        "Lightspeed Venture Partners"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Clear buyer pull",
+      "Accounting AI",
+      "Audit Automation",
+      "Finance AI",
+      "Professional Services",
+      "Enterprise AI",
+      "regulated buyers",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI-native accounting and audit workflows",
+      "signalLabel": "Clear buyer pull",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Accounting AI",
+        "Audit Automation",
+        "Finance AI",
+        "Professional Services",
+        "Enterprise AI"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.modusalliance.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_057",
+    "slug": "anchr",
+    "name": "Anchr",
+    "website": "https://anchr.tech",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Pre-seed",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "Anchr automates core operating workflows for food distributors with AI.",
+    "oneSentenceDescription": "Anchr automates core operating workflows for food distributors with AI.",
+    "founders": [
+      {
+        "name": "Tzar Taraporvala"
+      },
+      {
+        "name": "Smayan Mehra"
+      }
+    ],
+    "investors": [
+      "a16z Speedrun"
+    ],
+    "funding": {
+      "latestRound": "Seed",
+      "latestRoundAmount": "$5.8M",
+      "latestRoundDate": "March 2026",
+      "leadInvestors": [
+        "a16z Speedrun"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Clear buyer pull",
+      "Vertical AI",
+      "Food Distribution",
+      "Operations",
+      "Enterprise Automation",
+      "Supply Chain",
+      "enterprise operations",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI operations software for food distributors",
+      "signalLabel": "Worth watching",
+      "signalReason": "Early-stage vertical AI company targeting a specific operational workflow with clear buyer pain.",
+      "keywords": [
+        "Vertical AI",
+        "Food Distribution",
+        "Operations",
+        "Enterprise Automation",
+        "Supply Chain"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://anchr.tech"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_063",
+    "slug": "cvector",
+    "name": "CVector",
+    "website": "https://www.cvector.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Pre-seed",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "CVector brings AI operating systems to industrial facilities and operators.",
+    "oneSentenceDescription": "CVector brings AI operating systems to industrial facilities and operators.",
+    "founders": [
+      {
+        "name": "Richard Zhang"
+      },
+      {
+        "name": "Tyler Ruggles"
+      }
+    ],
+    "investors": [
+      "Powerhouse Ventures"
+    ],
+    "funding": {
+      "latestRound": "Seed",
+      "latestRoundAmount": "$5M",
+      "latestRoundDate": "January 2026",
+      "leadInvestors": [
+        "Powerhouse Ventures"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Infra signal",
+      "Industrial AI",
+      "Operations",
+      "Manufacturing",
+      "Utilities",
+      "Enterprise AI",
+      "enterprise operations",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "AI operating systems for industrial facilities",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "Industrial AI",
+        "Operations",
+        "Manufacturing",
+        "Utilities",
+        "Enterprise AI"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.cvector.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-05-04T01:45:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_049",
+    "slug": "aspect",
+    "name": "Aspect",
+    "website": "https://www.aspect.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Data & Memory Layer",
+    "description": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema e...",
+    "oneSentenceDescription": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data.",
+    "founders": [
+      {
+        "name": "Aspect Team"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Infra signal",
+      "data",
+      "memory",
+      "layer",
+      "seed",
+      "data infrastructure",
+      "retrieval context",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "seed"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "1139a5e8"
+    },
+    "sourceUrls": [
+      "https://www.aspect.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-02-09T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_048",
+    "slug": "datagrid",
+    "name": "Datagrid",
+    "website": "https://www.datagrid.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Data & Memory Layer",
+    "description": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified contex...",
+    "oneSentenceDescription": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations.",
+    "founders": [
+      {
+        "name": "Datagrid Team"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "Undisclosed",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Infra signal",
+      "data",
+      "memory",
+      "layer",
+      "early stage",
+      "agent",
+      "workflow",
+      "data infrastructure",
+      "retrieval context",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "a9b27f75"
+    },
+    "sourceUrls": [
+      "https://www.datagrid.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-02-07T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_047",
+    "slug": "hyperscience",
+    "name": "Hyperscience",
+    "website": "https://www.hyperscience.com",
+    "location": "285 Fulton Street, 88th Floor (One World Trade Center), New York, NY 10007",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Data & Memory Layer",
+    "description": "Hyperscience offers an AI software platform that turns unstructured documents into structured, machine-readable data with high accuracy.",
+    "oneSentenceDescription": "Hyperscience offers an AI software platform that turns unstructured documents into structured, machine-readable data with high accuracy.",
+    "founders": [
+      {
+        "name": "Peter Brodsky"
+      }
+    ],
+    "investors": [
+      "Tiger Global Management"
+    ],
+    "funding": {
+      "totalRaised": "$299M",
+      "latestRound": "Series E",
+      "latestRoundAmount": "$100M (Series E)",
+      "latestRoundDate": "December 2021",
+      "leadInvestors": [
+        "Tiger Global Management"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Infra signal",
+      "data",
+      "memory",
+      "layer",
+      "early stage",
+      "workflow",
+      "documents",
+      "data infrastructure",
+      "retrieval context",
+      "agentic workflows",
+      "context layer"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage",
+        "workflow",
+        "documents"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "agentic workflows",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "69006afb"
+    },
+    "sourceUrls": [
+      "https://www.hyperscience.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-02-05T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_046",
+    "slug": "canoe-intelligence",
+    "name": "Canoe Intelligence",
+    "website": "https://www.canoeintelligence.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Data & Memory Layer",
+    "description": "AI-powered AI to automate alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and we...",
+    "oneSentenceDescription": "Canoe uses AI to automate alternative-investment data collection, extraction, and reconciliation for allocators, family offices, and wealth managers.",
+    "founders": [
+      {
+        "name": "Seth Brotman"
+      }
+    ],
+    "investors": [
+      "Goldman Sachs Asset Management"
+    ],
+    "funding": {
+      "totalRaised": "$72.8M",
+      "latestRound": "Series C",
+      "latestRoundAmount": "$36M",
+      "latestRoundDate": "July 2024",
+      "leadInvestors": [
+        "Goldman Sachs Asset Management"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Featured",
+      "data",
+      "memory",
+      "layer",
+      "early stage",
+      "data infrastructure",
+      "retrieval context",
+      "context layer"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "981ca476"
+    },
+    "sourceUrls": [
+      "https://www.canoeintelligence.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-02-03T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_045",
+    "slug": "wallaroo",
+    "name": "Wallaroo",
+    "website": "https://www.wallaroo.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Data & Memory Layer",
+    "description": "an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale...",
+    "oneSentenceDescription": "Wallaroo provides an enterprise AI/ML production platform that enables clients to deploy machine learning and analytics projects into production at scale, with model observability, monitoring, and inference orchestration.",
+    "founders": [
+      {
+        "name": "Vid Jain"
+      }
+    ],
+    "investors": [
+      "Andreessen Horowitz"
+    ],
+    "funding": {
+      "totalRaised": "$40M+",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$25M",
+      "latestRoundDate": "2022",
+      "leadInvestors": [
+        "Andreessen Horowitz"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Infra signal",
+      "data",
+      "memory",
+      "layer",
+      "early stage",
+      "data infrastructure",
+      "retrieval context",
+      "context layer"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b2291817"
+    },
+    "sourceUrls": [
+      "https://www.wallaroo.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-02-01T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_044",
+    "slug": "carbon-arc",
+    "name": "Carbon Arc",
+    "website": "https://www.carbonarc.co",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Series A",
+    "category": "Data & Memory Layer",
+    "description": "better decisions.",
+    "oneSentenceDescription": "Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions.",
+    "founders": [
+      {
+        "name": "Carbon Arc Founders"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Series A",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Infra signal",
+      "data",
+      "memory",
+      "layer",
+      "series a",
+      "data infrastructure",
+      "retrieval context",
+      "context layer"
+    ],
+    "generated": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "series a"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "bf2ba5f9"
+    },
+    "sourceUrls": [
+      "https://www.carbonarc.co"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-30T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_043",
+    "slug": "standard-signal",
+    "name": "Standard Signal",
+    "website": "https://www.standardsignal.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Fintech & Trading AI",
+    "description": "first hedge fund that researches and executes trades purely with AI.",
+    "oneSentenceDescription": "Standard Signal is the first hedge fund that researches and executes trades purely with AI.",
+    "founders": [
+      {
+        "name": "Standard Signal Founders"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "seed",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b5294ee7"
+    },
+    "sourceUrls": [
+      "https://www.standardsignal.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-28T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_042",
+    "slug": "tofu",
+    "name": "Tofu",
+    "website": "https://www.tofuhq.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "AI-native marketing platform that personalizes outbound campaigns and content across email, web, and ads at the account and persona level.",
+    "oneSentenceDescription": "Tofu is an AI-native marketing platform that personalizes outbound campaigns and content across email, web, and ads at the account and persona level.",
+    "founders": [
+      {
+        "name": "Pranav Piyush"
+      }
+    ],
+    "investors": [
+      "Index Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$19M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$12M",
+      "latestRoundDate": "2023",
+      "leadInvestors": [
+        "Index Ventures"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Workflow signal",
+      "enterprise",
+      "revops",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "enterprise operations",
+      "workflow automation",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "56dc3706"
+    },
+    "sourceUrls": [
+      "https://www.tofuhq.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-26T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_041",
+    "slug": "rowflow",
+    "name": "RowFlow",
+    "website": "https://www.rowflow.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into...",
+    "oneSentenceDescription": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation.",
+    "founders": [
+      {
+        "name": "RowFlow Team"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Workflow signal",
+      "enterprise",
+      "revops",
+      "seed",
+      "agent",
+      "research",
+      "workflow",
+      "enterprise operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "899c2070"
+    },
+    "sourceUrls": [
+      "https://www.rowflow.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-24T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_040",
+    "slug": "concourse",
+    "name": "Concourse",
+    "website": "https://www.concourse.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operat...",
+    "oneSentenceDescription": "Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis.",
+    "founders": [
+      {
+        "name": "Concourse Founders"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Workflow signal",
+      "enterprise",
+      "revops",
+      "seed",
+      "agent",
+      "research",
+      "workflow",
+      "enterprise operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "28eaec63"
+    },
+    "sourceUrls": [
+      "https://www.concourse.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-22T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_039",
+    "slug": "slang-ai",
+    "name": "Slang.ai",
+    "website": "https://www.slang.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "Slang.",
+    "oneSentenceDescription": "Slang.",
+    "founders": [
+      {
+        "name": "Alex Sambvani"
+      }
+    ],
+    "investors": [
+      "Wing VC"
+    ],
+    "funding": {
+      "totalRaised": "$26M+",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$20M",
+      "latestRoundDate": "2023",
+      "leadInvestors": [
+        "Wing VC"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Workflow signal",
+      "enterprise",
+      "revops",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "enterprise operations",
+      "workflow automation",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "695d797e"
+    },
+    "sourceUrls": [
+      "https://www.slang.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-20T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_038",
+    "slug": "kalepa",
+    "name": "Kalepa",
+    "website": "https://www.kalepa.com",
+    "location": "920 Broadway, New York, NY 10010",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Enterprise GTM & RevOps AI",
+    "description": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to sco...",
+    "oneSentenceDescription": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
+    "founders": [
+      {
+        "name": "Paul Monasterio"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "$14M+",
+      "latestRound": "Series A",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2022-2023",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Enterprise GTM & RevOps AI",
+      "Featured",
+      "enterprise",
+      "revops",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "enterprise operations",
+      "workflow automation",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "865db615"
+    },
+    "sourceUrls": [
+      "https://www.kalepa.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-18T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_037",
+    "slug": "vortexify-ai",
+    "name": "Vortexify AI",
+    "website": "https://www.vortexify.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Agent Infrastructure",
+    "description": "platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze mi...",
+    "oneSentenceDescription": "Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes.",
+    "founders": [
+      {
+        "name": "Vortexify Founders"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "agent",
+      "infrastructure",
+      "seed",
+      "workflow",
+      "operations",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "5127a706"
+    },
+    "sourceUrls": [
+      "https://www.vortexify.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-16T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_036",
+    "slug": "empromptu",
+    "name": "Empromptu",
+    "website": "https://www.empromptu.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Pre-seed",
+    "category": "Agent Infrastructure",
+    "description": "AI apps via a chatbot interface-users describe what they want (e.",
+    "oneSentenceDescription": "Empromptu helps enterprises build AI apps via a chatbot interface-users describe what they want (e.",
+    "founders": [
+      {
+        "name": "Empromptu Team"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "$2M",
+      "latestRound": "Pre-seed",
+      "latestRoundAmount": "$2M",
+      "latestRoundDate": "Late 2025",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "agent",
+      "infrastructure",
+      "pre-seed",
+      "workflow",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "pre-seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "f21509b6"
+    },
+    "sourceUrls": [
+      "https://www.empromptu.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-14T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_035",
+    "slug": "kay-ai",
+    "name": "Kay.ai",
+    "website": "https://www.kay.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Agent Infrastructure",
+    "description": "Kay.",
+    "oneSentenceDescription": "Kay.",
+    "founders": [
+      {
+        "name": "Vishal Rohra"
+      }
+    ],
+    "investors": [
+      "Wing VC"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed / Series A",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2023-2024",
+      "leadInvestors": [
+        "Wing VC"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "agent",
+      "infrastructure",
+      "early stage",
+      "workflow",
+      "documents",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows",
+      "context layer"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "early stage",
+        "workflow",
+        "documents"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "af6fb21a"
+    },
+    "sourceUrls": [
+      "https://www.kay.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-12T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_034",
+    "slug": "amika",
+    "name": "Amika",
+    "website": "https://www.amika.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Agent Infrastructure",
+    "description": "a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
+    "oneSentenceDescription": "Amika is infrastructure to build a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
+    "founders": [
+      {
+        "name": "Amika Founders"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "agent",
+      "infrastructure",
+      "seed",
+      "workflow",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "d5d07a7b"
+    },
+    "sourceUrls": [
+      "https://www.amika.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-10T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_033",
+    "slug": "channel3",
+    "name": "Channel3",
+    "website": "https://www.trychannel3.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Agent Infrastructure",
+    "description": "Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically...",
+    "oneSentenceDescription": "Channel3 is building a database of every product on the internet, giving developers and AI agents API access to a unified, semantically-matched product catalog.",
+    "founders": [
+      {
+        "name": "Alex Krause"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Infra signal",
+      "agent",
+      "infrastructure",
+      "seed",
+      "workflow",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2cbac075"
+    },
+    "sourceUrls": [
+      "https://www.trychannel3.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-08T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_032",
+    "slug": "emergence-ai",
+    "name": "Emergence AI",
+    "website": "https://www.emergence.ai",
+    "location": "8 W 40th St, Floor 20, New York, NY 10018",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Agent Infrastructure",
+    "description": "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to...",
+    "oneSentenceDescription": "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows.",
+    "founders": [
+      {
+        "name": "Satya Nitta"
+      }
+    ],
+    "investors": [
+      "Learn Capital"
+    ],
+    "funding": {
+      "totalRaised": "$97.2M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$97.2M",
+      "latestRoundDate": "June 2024",
+      "leadInvestors": [
+        "Learn Capital"
+      ]
+    },
+    "tags": [
+      "Agent Infrastructure",
+      "Featured",
+      "agent",
+      "infrastructure",
+      "series a",
+      "workflow",
+      "agent infrastructure",
+      "workflow reliability",
+      "agentic workflows"
+    ],
+    "generated": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "series a",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "4d348b77"
+    },
+    "sourceUrls": [
+      "https://www.emergence.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-06T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_031",
+    "slug": "nori",
+    "name": "Nori",
+    "website": "https://www.nori.health",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "AI-Native Consumer & Social",
+    "description": "concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a persona...",
+    "oneSentenceDescription": "Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan.",
+    "founders": [
+      {
+        "name": "Nori Team"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "ai-native",
+      "consumer",
+      "social",
+      "seed",
+      "workflow",
+      "health",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "health"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "344b2696"
+    },
+    "sourceUrls": [
+      "https://www.nori.health"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-04T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_030",
+    "slug": "loyalist",
+    "name": "Loyalist",
+    "website": "https://www.loyalist.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "AI-Native Consumer & Social",
+    "description": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging...",
+    "oneSentenceDescription": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar.",
+    "founders": [
+      {
+        "name": "Loyalist Founders"
+      }
+    ],
+    "investors": [
+      "Lerer Hippeau / Bling Capital"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2023-2024",
+      "leadInvestors": [
+        "Lerer Hippeau / Bling Capital"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "ai-native",
+      "consumer",
+      "social",
+      "early stage",
+      "workflow",
+      "memory",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "early stage",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2da556d7"
+    },
+    "sourceUrls": [
+      "https://www.loyalist.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2026-01-02T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_029",
+    "slug": "remesh",
+    "name": "Remesh",
+    "website": "https://www.remesh.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "AI-Native Consumer & Social",
+    "description": "AI-powered AI to engage live audiences in real-time conversations and surface insights at scale.",
+    "oneSentenceDescription": "Remesh uses AI to engage live audiences in real-time conversations and surface insights at scale.",
+    "founders": [
+      {
+        "name": "Andrew Konya"
+      }
+    ],
+    "investors": [
+      "Two Sigma Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$26M+",
+      "latestRound": "Series B",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2021",
+      "leadInvestors": [
+        "Two Sigma Ventures"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "ai-native",
+      "consumer",
+      "social",
+      "early stage",
+      "research",
+      "workflow",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "early stage",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "c6f4f70f"
+    },
+    "sourceUrls": [
+      "https://www.remesh.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-31T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_028",
+    "slug": "cerca",
+    "name": "Cerca",
+    "website": "https://www.cerca.app",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "AI-Native Consumer & Social",
+    "description": "AI-powered social-graph AI to match users only with friends or friends-of-friends, eliminating stranger anxiety and rejection fear.",
+    "oneSentenceDescription": "Cerca is a Gen Z dating app that uses social-graph AI to match users only with friends or friends-of-friends, eliminating stranger anxiety and rejection fear.",
+    "founders": [
+      {
+        "name": "Myles Slayton"
+      }
+    ],
+    "investors": [
+      "Undisclosed seed investors"
+    ],
+    "funding": {
+      "totalRaised": "$1.6M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$1.6M",
+      "latestRoundDate": "2024",
+      "leadInvestors": [
+        "Undisclosed seed investors"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "ai-native",
+      "consumer",
+      "social",
+      "seed",
+      "workflow",
+      "memory",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "fc550601"
+    },
+    "sourceUrls": [
+      "https://www.cerca.app"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-29T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_027",
+    "slug": "222",
+    "name": "222",
+    "website": "https://www.two-two-two.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "AI-Native Consumer & Social",
+    "description": "AI-powered AI to engineer 'meet-cutes,' matching strangers for IRL dinners, hangouts, and dates in NYC and other major cities.",
+    "oneSentenceDescription": "222 uses AI to engineer 'meet-cutes,' matching strangers for IRL dinners, hangouts, and dates in NYC and other major cities.",
+    "founders": [
+      {
+        "name": "Keyan Kazemian"
+      }
+    ],
+    "investors": [
+      "Y Combinator + undisclosed institutional"
+    ],
+    "funding": {
+      "totalRaised": "$13.7M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator + undisclosed institutional"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Consumer signal",
+      "ai-native",
+      "consumer",
+      "social",
+      "seed",
+      "workflow",
+      "memory",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "0c2fcf37"
+    },
+    "sourceUrls": [
+      "https://www.two-two-two.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-27T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_026",
+    "slug": "series",
+    "name": "Series",
+    "website": "https://www.series.so",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Pre-seed",
+    "category": "AI-Native Consumer & Social",
+    "description": "AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions...",
+    "oneSentenceDescription": "Series is an AI-powered social networking platform that operates entirely inside iMessage, using conversational AI to facilitate warm introductions across Gen Z and professional users.",
+    "founders": [
+      {
+        "name": "Nathaneo Johnson"
+      }
+    ],
+    "investors": [
+      "Pear VC"
+    ],
+    "funding": {
+      "totalRaised": "$5.1M",
+      "latestRound": "Pre-seed",
+      "latestRoundAmount": "$5.1M",
+      "latestRoundDate": "April 2026",
+      "leadInvestors": [
+        "Pear VC"
+      ]
+    },
+    "tags": [
+      "AI-Native Consumer & Social",
+      "Featured",
+      "ai-native",
+      "consumer",
+      "social",
+      "pre-seed",
+      "workflow",
+      "memory",
+      "consumer interface",
+      "memory behavior",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "pre-seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "c382d66d"
+    },
+    "sourceUrls": [
+      "https://www.series.so"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-25T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_025",
+    "slug": "granted",
+    "name": "Granted",
+    "website": "https://www.granted.health",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Health & Clinical AI",
+    "description": "AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows-navigating...",
+    "oneSentenceDescription": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows-navigating health benefits, disputing denials, and helping consumers access care.",
+    "founders": [
+      {
+        "name": "Granted Team"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "Undisclosed",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Workflow signal",
+      "health",
+      "clinical",
+      "early stage",
+      "agent",
+      "workflow",
+      "consumer",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "early stage",
+        "agent",
+        "workflow",
+        "consumer"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2e28c9b1"
+    },
+    "sourceUrls": [
+      "https://www.granted.health"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-23T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_024",
+    "slug": "camber",
+    "name": "Camber",
+    "website": "https://www.camber.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Health & Clinical AI",
+    "description": "healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
+    "oneSentenceDescription": "Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
+    "founders": [
+      {
+        "name": "Camber Founders"
+      }
+    ],
+    "investors": [
+      "Andreessen Horowitz"
+    ],
+    "funding": {
+      "totalRaised": "$45M+",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$30M",
+      "latestRoundDate": "2025",
+      "leadInvestors": [
+        "Andreessen Horowitz"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Workflow signal",
+      "health",
+      "clinical",
+      "series b",
+      "workflow",
+      "operations",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "series b",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b1f5ba33"
+    },
+    "sourceUrls": [
+      "https://www.camber.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-21T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_023",
+    "slug": "sohar-health",
+    "name": "Sohar Health",
+    "website": "https://www.soharhealth.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Health & Clinical AI",
+    "description": "AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automatio...",
+    "oneSentenceDescription": "Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy.",
+    "founders": [
+      {
+        "name": "Sohar Health Team"
+      }
+    ],
+    "investors": [
+      "Kindred Capital"
+    ],
+    "funding": {
+      "totalRaised": "$4.3M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$3.8M",
+      "latestRoundDate": "March 2025",
+      "leadInvestors": [
+        "Kindred Capital"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Workflow signal",
+      "health",
+      "clinical",
+      "seed",
+      "workflow",
+      "revenue",
+      "operations",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "seed",
+        "workflow",
+        "revenue",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "bb73b7f9"
+    },
+    "sourceUrls": [
+      "https://www.soharhealth.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-19T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_022",
+    "slug": "clarion",
+    "name": "Clarion",
+    "website": "https://www.clarion.health",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Health & Clinical AI",
+    "description": "an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics-scheduling, billing, pre...",
+    "oneSentenceDescription": "Clarion builds an AI communication layer for healthcare, with voice agents that handle inbound and outbound calls for clinics-scheduling, billing, prescription refills, and more.",
+    "founders": [
+      {
+        "name": "Ryan Shaw"
+      }
+    ],
+    "investors": [
+      "Accel / Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "$5.4M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$5.4M",
+      "latestRoundDate": "2024",
+      "leadInvestors": [
+        "Accel / Y Combinator"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Workflow signal",
+      "health",
+      "clinical",
+      "seed",
+      "agent",
+      "workflow",
+      "operations",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "seed",
+        "agent",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "cee90432"
+    },
+    "sourceUrls": [
+      "https://www.clarion.health"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-17T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_021",
+    "slug": "valerie-health",
+    "name": "Valerie Health",
+    "website": "https://www.valeriehealth.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Series A",
+    "category": "Health & Clinical AI",
+    "description": "AI front office for independent doctors' offices, automating patient communications, scheduling, and the administrative space between p...",
+    "oneSentenceDescription": "Valerie Health is an AI front office for independent doctors' offices, automating patient communications, scheduling, and the administrative space between patient and provider.",
+    "founders": [
+      {
+        "name": "Peter Shalek"
+      }
+    ],
+    "investors": [
+      "Redpoint Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$39M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$30M",
+      "latestRoundDate": "December 2025",
+      "leadInvestors": [
+        "Redpoint Ventures"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Workflow signal",
+      "health",
+      "clinical",
+      "series a",
+      "workflow",
+      "operations",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "series a",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "a52296f2"
+    },
+    "sourceUrls": [
+      "https://www.valeriehealth.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-15T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_020",
+    "slug": "anterior",
+    "name": "Anterior",
+    "website": "https://www.anterior.com",
+    "location": "169 Madison Ave, Suite 2408, New York, NY 10016",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Health & Clinical AI",
+    "description": "Anterior automates clinical workflows for health plans, including prior authorization, payment integrity, and risk adjustment.",
+    "oneSentenceDescription": "Anterior automates clinical workflows for health plans, including prior authorization, payment integrity, and risk adjustment.",
+    "founders": [
+      {
+        "name": "Abdel Mahmoud"
+      }
+    ],
+    "investors": [
+      "NEA / Sequoia Capital"
+    ],
+    "funding": {
+      "totalRaised": "$64M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$40M",
+      "latestRoundDate": "February 2026",
+      "leadInvestors": [
+        "NEA / Sequoia Capital"
+      ]
+    },
+    "tags": [
+      "Health & Clinical AI",
+      "Featured",
+      "health",
+      "clinical",
+      "growth",
+      "workflow",
+      "operations",
+      "clinical operations",
+      "workflow automation",
+      "agentic workflows",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "health",
+        "clinical",
+        "growth",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "d579afd8"
+    },
+    "sourceUrls": [
+      "https://www.anterior.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-13T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_019",
+    "slug": "absurd",
+    "name": "Absurd",
+    "website": "https://www.absurd.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Media, Ads & Creative AI",
+    "description": "AI brand and performance ads at scale.",
+    "oneSentenceDescription": "Absurd makes AI brand and performance ads at scale.",
+    "founders": [
+      {
+        "name": "Absurd Team"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Workflow signal",
+      "media,",
+      "creative",
+      "seed",
+      "agent",
+      "workflow",
+      "memory",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "seed",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "b3ddf648"
+    },
+    "sourceUrls": [
+      "https://www.absurd.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-11T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_018",
+    "slug": "stewdio",
+    "name": "Stewdio",
+    "website": "https://www.stewdio.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Seed",
+    "category": "Media, Ads & Creative AI",
+    "description": "AI-powered the latest image and video generation models in one place.",
+    "oneSentenceDescription": "Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place.",
+    "founders": [
+      {
+        "name": "Stewdio Team"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC-backed)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Workflow signal",
+      "media,",
+      "creative",
+      "seed",
+      "agent",
+      "workflow",
+      "memory",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "seed",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "c0b9d9f1"
+    },
+    "sourceUrls": [
+      "https://www.stewdio.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-09T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_017",
+    "slug": "tildei",
+    "name": "Tildei",
+    "website": "https://www.tildei.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Media, Ads & Creative AI",
+    "description": "recommendations, collect reviews, and drive growth.",
+    "oneSentenceDescription": "Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth.",
+    "founders": [
+      {
+        "name": "Tildei Founders"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "Undisclosed",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Workflow signal",
+      "media,",
+      "creative",
+      "early stage",
+      "agent",
+      "workflow",
+      "memory",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "early stage",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "e9eb4a2a"
+    },
+    "sourceUrls": [
+      "https://www.tildei.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-07T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_016",
+    "slug": "icon",
+    "name": "Icon",
+    "website": "https://www.icon.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Media, Ads & Creative AI",
+    "description": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC bra...",
+    "oneSentenceDescription": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
+    "founders": [
+      {
+        "name": "Kennan Davison"
+      }
+    ],
+    "investors": [
+      "Founders Fund (strategic angel)"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Angel / Seed",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2024-2025",
+      "leadInvestors": [
+        "Founders Fund (strategic angel)"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Workflow signal",
+      "media,",
+      "creative",
+      "early stage",
+      "agent",
+      "workflow",
+      "memory",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "early stage",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "ed274845"
+    },
+    "sourceUrls": [
+      "https://www.icon.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-05T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_015",
+    "slug": "aaru",
+    "name": "Aaru",
+    "website": "https://www.aaru.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Data & Memory Layer",
+    "description": "Aaru uses simulated populations to predict consumer, market, and political behavior.",
+    "oneSentenceDescription": "Aaru uses simulated populations to predict consumer, market, and political behavior.",
+    "founders": [
+      {
+        "name": "Cam Fink"
+      },
+      {
+        "name": "Ned Koh"
+      },
+      {
+        "name": "John Kessler"
+      }
+    ],
+    "investors": [
+      "Redpoint Ventures"
+    ],
+    "funding": {
+      "latestRound": "Series A",
+      "latestRoundDate": "December 2025",
+      "leadInvestors": [
+        "Redpoint Ventures"
+      ]
+    },
+    "tags": [
+      "Data & Memory Layer",
+      "Workflow signal",
+      "Synthetic Research",
+      "Market Research",
+      "Consumer Insights",
+      "Simulation",
+      "Agents",
+      "data infrastructure",
+      "consumer insight"
+    ],
+    "generated": {
+      "hook": "Synthetic populations for market research",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Synthetic Research",
+        "Market Research",
+        "Consumer Insights",
+        "Simulation",
+        "Agents"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "consumer insight"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.aaru.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-03T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_014",
+    "slug": "agentio",
+    "name": "Agentio",
+    "website": "https://www.agentio.com",
+    "location": "295 Fifth Ave, 11th Floor, New York, NY 10016",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Media, Ads & Creative AI",
+    "description": "AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, M...",
+    "oneSentenceDescription": "Agentio is the AI-native ad platform for creator-led advertising, automating brand-creator matching, bidding, and campaign execution across YouTube, Meta, and beyond.",
+    "founders": [
+      {
+        "name": "Arthur Leopold"
+      }
+    ],
+    "investors": [
+      "Forerunner Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$56M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$40M",
+      "latestRoundDate": "November 2025",
+      "leadInvestors": [
+        "Forerunner Ventures"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Featured",
+      "media,",
+      "creative",
+      "series b",
+      "agent",
+      "workflow",
+      "memory",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "media,",
+        "creative",
+        "series b",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "530d9e6d"
+    },
+    "sourceUrls": [
+      "https://www.agentio.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-12-01T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_013",
+    "slug": "mirage-formerly-captions",
+    "name": "Mirage (formerly Captions)",
+    "website": "https://www.captions.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Media, Ads & Creative AI",
+    "description": "AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and v...",
+    "oneSentenceDescription": "Mirage (originally Captions) is an AI video creation company offering consumer apps for creators plus Mirage Studio, an enterprise platform that generates AI actors and videos for marketing campaigns.",
+    "founders": [
+      {
+        "name": "Gaurav Misra"
+      }
+    ],
+    "investors": [
+      "Sequoia / Andreessen Horowitz / Kleiner Perkins"
+    ],
+    "funding": {
+      "totalRaised": "$90M+",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$60M",
+      "latestRoundDate": "2023",
+      "leadInvestors": [
+        "Sequoia / Andreessen Horowitz / Kleiner Perkins"
+      ]
+    },
+    "tags": [
+      "Media, Ads & Creative AI",
+      "Featured",
+      "media,",
+      "creative",
+      "growth",
+      "agent",
+      "workflow",
+      "consumer",
+      "creative workflow",
+      "interface pattern",
+      "agentic workflows",
+      "context layer",
+      "consumer behavior"
+    ],
+    "generated": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "media,",
+        "creative",
+        "growth",
+        "agent",
+        "workflow",
+        "consumer"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "70826d32"
+    },
+    "sourceUrls": [
+      "https://www.captions.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-29T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_012",
+    "slug": "zerodrift",
+    "name": "ZeroDrift",
+    "website": "https://www.zerodrift.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Pre-seed",
+    "category": "Legal & Compliance AI",
+    "description": "AI-driven compliance enforcement platform that helps regulated companies monitor and enforce policy adherence in real time.",
+    "oneSentenceDescription": "ZeroDrift is an AI-driven compliance enforcement platform that helps regulated companies monitor and enforce policy adherence in real time.",
+    "founders": [
+      {
+        "name": "ZeroDrift Founders"
+      }
+    ],
+    "investors": [
+      "Andreessen Horowitz"
+    ],
+    "funding": {
+      "totalRaised": "$2M",
+      "latestRound": "Pre-seed",
+      "latestRoundAmount": "$2M",
+      "latestRoundDate": "Early 2026",
+      "leadInvestors": [
+        "Andreessen Horowitz"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Workflow signal",
+      "legal",
+      "compliance",
+      "pre-seed",
+      "agent",
+      "workflow",
+      "health",
+      "regulated buyers",
+      "workflow automation",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "pre-seed",
+        "agent",
+        "workflow",
+        "health"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "e1c80266"
+    },
+    "sourceUrls": [
+      "https://www.zerodrift.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-27T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_011",
+    "slug": "alkymi",
+    "name": "Alkymi",
+    "website": "https://www.alkymi.io",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Legal & Compliance AI",
+    "description": "AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial...",
+    "oneSentenceDescription": "Alkymi is an AI document data automation platform that extracts and structures data from emails, PDFs, and other unstructured sources for financial services compliance, operations, and reporting workflows.",
+    "founders": [
+      {
+        "name": "Harald Collet"
+      }
+    ],
+    "investors": [
+      "Intel Capital"
+    ],
+    "funding": {
+      "totalRaised": "$35M+",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$21M",
+      "latestRoundDate": "October 2022",
+      "leadInvestors": [
+        "Intel Capital"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Workflow signal",
+      "legal",
+      "compliance",
+      "early stage",
+      "agent",
+      "workflow",
+      "operations",
+      "regulated buyers",
+      "workflow automation",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "early stage",
+        "agent",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "9babe02b"
+    },
+    "sourceUrls": [
+      "https://www.alkymi.io"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-25T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_010",
+    "slug": "bretton-ai",
+    "name": "Bretton AI",
+    "website": "https://www.bretton.ai",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Legal & Compliance AI",
+    "description": "long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
+    "oneSentenceDescription": "Bretton AI (formerly Greenlite AI) builds long-horizon AI agents that automate KYC, sanctions screening, and complex anti-money-laundering investigations for banks and fintechs.",
+    "founders": [
+      {
+        "name": "Will Lawrence"
+      }
+    ],
+    "investors": [
+      "Sapphire Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$95M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$75M",
+      "latestRoundDate": "February 2026",
+      "leadInvestors": [
+        "Sapphire Ventures"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Workflow signal",
+      "legal",
+      "compliance",
+      "series b",
+      "agent",
+      "workflow",
+      "regulated buyers",
+      "workflow automation",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "series b",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "a4346e96"
+    },
+    "sourceUrls": [
+      "https://www.bretton.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-23T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_009",
+    "slug": "soxton",
+    "name": "Soxton",
+    "website": "https://www.soxton.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Legal & Compliance AI",
+    "description": "AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, an...",
+    "oneSentenceDescription": "Soxton is an AI-native legal platform for early-stage startups, offering 50+ ready-to-use contracts, an AI legal copilot trained on startup data, and human-in-the-loop attorney review.",
+    "founders": [
+      {
+        "name": "Logan Brown"
+      }
+    ],
+    "investors": [
+      "Undisclosed"
+    ],
+    "funding": {
+      "totalRaised": "$2.5M",
+      "latestRound": "Pre-seed",
+      "latestRoundAmount": "$2.5M",
+      "latestRoundDate": "December 2025",
+      "leadInvestors": [
+        "Undisclosed"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Workflow signal",
+      "legal",
+      "compliance",
+      "early stage",
+      "agent",
+      "workflow",
+      "regulated buyers",
+      "workflow automation",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "early stage",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "7c5a275a"
+    },
+    "sourceUrls": [
+      "https://www.soxton.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-21T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_008",
+    "slug": "manifest-os",
+    "name": "Manifest OS",
+    "website": "https://www.manifestos.com",
+    "location": "New York, NY",
+    "locationConfidence": "high",
+    "stage": "Series A",
+    "category": "Legal & Compliance AI",
+    "description": "Manifest OS builds infrastructure for AI-native legal service models.",
+    "oneSentenceDescription": "Manifest OS builds infrastructure for AI-native legal service models.",
+    "founders": [
+      {
+        "name": "Dan Mishin"
+      }
+    ],
+    "investors": [
+      "Menlo Ventures",
+      "Kleiner Perkins",
+      "First Round Capital",
+      "Quiet Capital"
+    ],
+    "funding": {
+      "latestRound": "Series A",
+      "latestRoundAmount": "$60M",
+      "latestRoundDate": "April 2026",
+      "leadInvestors": [
+        "Menlo Ventures",
+        "Kleiner Perkins",
+        "First Round Capital",
+        "Quiet Capital"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Clear buyer pull",
+      "Legal AI",
+      "AI-Native Services",
+      "Law Firm Infrastructure",
+      "Enterprise AI",
+      "regulated buyers",
+      "workflow automation"
+    ],
+    "generated": {
+      "hook": "Infrastructure for AI-native legal services",
+      "signalLabel": "Clear buyer pull",
+      "signalReason": "Serves a clear buyer or repeat workflow in the map.",
+      "keywords": [
+        "Legal AI",
+        "AI-Native Services",
+        "Law Firm Infrastructure",
+        "Enterprise AI"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation"
+      ],
+      "generatedAt": "2026-05-04T01:45:00.000Z",
+      "sourceHash": "manual-2026-05-04"
+    },
+    "sourceUrls": [
+      "https://www.manifestos.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-19T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_007",
+    "slug": "norm-ai",
+    "name": "Norm Ai",
+    "website": "https://www.norm.ai",
+    "location": "7 World Trade Center, 39th Floor, New York, NY 10007",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Legal & Compliance AI",
+    "description": "Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financia...",
+    "oneSentenceDescription": "Norm Ai converts laws, regulations, and internal policies into AI agents that automate legal and compliance reviews for global financial institutions.",
+    "founders": [
+      {
+        "name": "John Nay"
+      }
+    ],
+    "investors": [
+      "Blackstone (growth)",
+      "Coatue (Series A)"
+    ],
+    "funding": {
+      "totalRaised": "$140M+",
+      "latestRound": "Series A (+ Blackstone Growth)",
+      "latestRoundAmount": "$50M (Blackstone growth, Nov 2025) + $48M Series A (Mar 2025) + $27M Series A (2024)",
+      "latestRoundDate": "November 2025",
+      "leadInvestors": [
+        "Blackstone (growth)",
+        "Coatue (Series A)"
+      ]
+    },
+    "tags": [
+      "Legal & Compliance AI",
+      "Featured",
+      "legal",
+      "compliance",
+      "growth",
+      "agent",
+      "workflow",
+      "regulated buyers",
+      "workflow automation",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "growth",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "52dbd17e"
+    },
+    "sourceUrls": [
+      "https://www.norm.ai"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-17T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_006",
+    "slug": "trata",
+    "name": "Trata",
+    "website": "https://www.trytrata.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investm...",
+    "oneSentenceDescription": "Trata is an AI-powered research desk for hedge funds, using agents to interview anonymous buyside analysts at top funds, produce unfiltered investment research, and distribute it via subscription.",
+    "founders": [
+      {
+        "name": "Eric Cho"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "Undisclosed",
+      "latestRound": "Seed (YC W25)",
+      "latestRoundAmount": "Undisclosed",
+      "latestRoundDate": "2025",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "41585f21"
+    },
+    "sourceUrls": [
+      "https://www.trytrata.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-15T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_005",
+    "slug": "tabs",
+    "name": "Tabs",
+    "website": "https://www.tabs.inc",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and r...",
+    "oneSentenceDescription": "Tabs is an AI-native revenue automation platform purpose-built for B2B finance teams, using AI to extract contract terms, generate invoices, and run revenue recognition end-to-end.",
+    "founders": [
+      {
+        "name": "Ali Hussain"
+      }
+    ],
+    "investors": [
+      "Lightspeed Venture Partners"
+    ],
+    "funding": {
+      "totalRaised": "$91M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$55M",
+      "latestRoundDate": "September 2025",
+      "leadInvestors": [
+        "Lightspeed Venture Partners"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Contract-to-cash workflows for finance teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "b7055af2"
+    },
+    "sourceUrls": [
+      "https://www.tabs.inc"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-13T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_004",
+    "slug": "maybern",
+    "name": "Maybern",
+    "website": "https://www.maybern.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for...",
+    "oneSentenceDescription": "Maybern is the AI-enabled operating system for private fund management, automating capital calls, distributions, waterfalls, and fee calculations for private equity, credit, and real estate firms.",
+    "founders": [
+      {
+        "name": "Ross Mechanic"
+      }
+    ],
+    "investors": [
+      "Battery Ventures"
+    ],
+    "funding": {
+      "totalRaised": "$76M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$50M",
+      "latestRoundDate": "November 2025",
+      "leadInvestors": [
+        "Battery Ventures"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "growth",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Fund operations workflows for private markets",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "growth",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "d46d331a"
+    },
+    "sourceUrls": [
+      "https://www.maybern.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-11T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_003",
+    "slug": "brightwave",
+    "name": "Brightwave",
+    "website": "https://www.brightwave.io",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a...",
+    "oneSentenceDescription": "Brightwave is an AI-powered financial research platform that ingests SEC filings, earnings transcripts, breaking news, and proprietary documents into a knowledge graph to deliver analyst-grade investment research.",
+    "founders": [
+      {
+        "name": "Mike Conover"
+      }
+    ],
+    "investors": [
+      "Decibel Partners"
+    ],
+    "funding": {
+      "totalRaised": "$21M",
+      "latestRound": "Series A",
+      "latestRoundAmount": "$15M",
+      "latestRoundDate": "October 2024",
+      "leadInvestors": [
+        "Decibel Partners"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "c8adf6f1"
+    },
+    "sourceUrls": [
+      "https://www.brightwave.io"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-09T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_002",
+    "slug": "bayesline",
+    "name": "Bayesline",
+    "website": "https://bayesline.com",
+    "location": "New York, NY",
+    "locationConfidence": "medium",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with...",
+    "oneSentenceDescription": "Bayesline builds GPU-powered, highly customizable financial analytics for hedge funds and asset managers, replacing rigid off-the-shelf risk models with cloud-deployed solutions that produce custom equity factor and risk models in seconds.",
+    "founders": [
+      {
+        "name": "Sebastian Janisch"
+      }
+    ],
+    "investors": [
+      "Y Combinator"
+    ],
+    "funding": {
+      "totalRaised": "~$2.5M",
+      "latestRound": "Seed",
+      "latestRoundAmount": "$500K",
+      "latestRoundDate": "2024",
+      "leadInvestors": [
+        "Y Combinator"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Workflow signal",
+      "fintech",
+      "trading",
+      "early stage",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Custom risk analytics for investment teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "86e33516"
+    },
+    "sourceUrls": [
+      "https://bayesline.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-07T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  },
+  {
+    "id": "cmp_001",
+    "slug": "hebbia",
+    "name": "Hebbia",
+    "website": "https://www.hebbia.com",
+    "location": "110 Greene St, Suite 1200, New York, NY 10012",
+    "locationConfidence": "high",
+    "stage": "Unknown",
+    "category": "Fintech & Trading AI",
+    "description": "AI-powered research and reasoning platform built for finance, law, and consulting.",
+    "oneSentenceDescription": "Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting.",
+    "founders": [
+      {
+        "name": "George Sivulka"
+      }
+    ],
+    "investors": [
+      "Andreessen Horowitz"
+    ],
+    "funding": {
+      "totalRaised": "$161M",
+      "latestRound": "Series B",
+      "latestRoundAmount": "$130M",
+      "latestRoundDate": "July 2024",
+      "leadInvestors": [
+        "Andreessen Horowitz"
+      ]
+    },
+    "tags": [
+      "Fintech & Trading AI",
+      "Featured",
+      "fintech",
+      "trading",
+      "growth",
+      "agent",
+      "research",
+      "workflow",
+      "regulated buyers",
+      "research workflows",
+      "agentic workflows",
+      "context layer",
+      "regulated adoption"
+    ],
+    "generated": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Featured",
+      "signalReason": "Manually selected as an editorial pick.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "growth",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "5f691d3e"
+    },
+    "sourceUrls": [
+      "https://www.hebbia.com"
+    ],
+    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "createdAt": "2025-11-05T14:00:00+00:00",
+    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+  }
+]

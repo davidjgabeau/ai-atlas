@@ -1,0 +1,494 @@
+[
+  {
+    "id": "insight_history_1fcdb39c67ce2414",
+    "title": "Back-office AI is moving offline",
+    "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "sourceCompanyIds": [
+      "cmp_057",
+      "cmp_060",
+      "cmp_063"
+    ],
+    "sourceEventIds": [
+      "event_f1f0e40048ee4906",
+      "event_e3632b9d6ae57641",
+      "event_4d05d76aeeccc997"
+    ]
+  },
+  {
+    "id": "insight_history_3b3b56070775d107",
+    "title": "Specific buyers still beat broad tools",
+    "body": "Polimorphic, Auctor, and DualEntry target buyers with defined budgets and painful implementation work, not broad AI tooling.",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "sourceCompanyIds": [
+      "cmp_060",
+      "cmp_064",
+      "cmp_065"
+    ],
+    "sourceEventIds": [
+      "event_e3632b9d6ae57641",
+      "event_063f36ff51c23d57",
+      "event_8889689911f216b0"
+    ]
+  },
+  {
+    "id": "insight_history_9c152142af696ea9",
+    "title": "Workflow-first beats chat-first",
+    "body": "Tapestry, FLORA, and Jimini Health wrap AI around repeated behavior: social graphs, creative production, and care delivery.",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "sourceCompanyIds": [
+      "cmp_050",
+      "cmp_054",
+      "cmp_062"
+    ],
+    "sourceEventIds": [
+      "event_bf8a63257416b264",
+      "event_01072859c2c9e7ee",
+      "event_f43f4c93860a4777"
+    ]
+  },
+  {
+    "id": "insight_history_46bce82dcf271ab2",
+    "title": "Back-office AI is moving offline",
+    "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+    "generatedAt": "2026-05-04T14:03:13.432Z",
+    "sourceCompanyIds": [
+      "cmp_057",
+      "cmp_060",
+      "cmp_063"
+    ],
+    "sourceEventIds": [
+      "event_f1f0e40048ee4906",
+      "event_e3632b9d6ae57641",
+      "event_4d05d76aeeccc997"
+    ]
+  },
+  {
+    "id": "insight_history_0a006182f83a7e48",
+    "title": "Specific buyers still beat broad tools",
+    "body": "Polimorphic, Auctor, and DualEntry target buyers with defined budgets and painful implementation work, not broad AI tooling.",
+    "generatedAt": "2026-05-04T14:03:13.432Z",
+    "sourceCompanyIds": [
+      "cmp_060",
+      "cmp_064",
+      "cmp_065"
+    ],
+    "sourceEventIds": [
+      "event_e3632b9d6ae57641",
+      "event_063f36ff51c23d57",
+      "event_8889689911f216b0"
+    ]
+  },
+  {
+    "id": "insight_history_39a545ece37aef31",
+    "title": "Workflow-first beats chat-first",
+    "body": "Tapestry, FLORA, and Jimini Health wrap AI around repeated behavior: social graphs, creative production, and care delivery.",
+    "generatedAt": "2026-05-04T14:03:13.432Z",
+    "sourceCompanyIds": [
+      "cmp_050",
+      "cmp_054",
+      "cmp_062"
+    ],
+    "sourceEventIds": [
+      "event_bf8a63257416b264",
+      "event_01072859c2c9e7ee",
+      "event_f43f4c93860a4777"
+    ]
+  },
+  {
+    "id": "insight_history_f9dc6cdf0319c4d2",
+    "title": "Back-office AI is moving offline",
+    "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+    "generatedAt": "2026-05-04T14:00:16.227Z",
+    "sourceCompanyIds": [
+      "cmp_057",
+      "cmp_060",
+      "cmp_063"
+    ],
+    "sourceEventIds": [
+      "event_f1f0e40048ee4906",
+      "event_e3632b9d6ae57641",
+      "event_4d05d76aeeccc997"
+    ]
+  },
+  {
+    "id": "insight_history_e162d6b380111365",
+    "title": "Specific buyers still beat broad tools",
+    "body": "Polimorphic, Auctor, and DualEntry target buyers with defined budgets and painful implementation work, not broad AI tooling.",
+    "generatedAt": "2026-05-04T14:00:16.227Z",
+    "sourceCompanyIds": [
+      "cmp_060",
+      "cmp_064",
+      "cmp_065"
+    ],
+    "sourceEventIds": [
+      "event_e3632b9d6ae57641",
+      "event_063f36ff51c23d57",
+      "event_8889689911f216b0"
+    ]
+  },
+  {
+    "id": "insight_history_2e5f799b4bf48258",
+    "title": "Workflow-first beats chat-first",
+    "body": "Tapestry, FLORA, and Jimini Health wrap AI around repeated behavior: social graphs, creative production, and care delivery.",
+    "generatedAt": "2026-05-04T14:00:16.227Z",
+    "sourceCompanyIds": [
+      "cmp_050",
+      "cmp_054",
+      "cmp_062"
+    ],
+    "sourceEventIds": [
+      "event_bf8a63257416b264",
+      "event_01072859c2c9e7ee",
+      "event_f43f4c93860a4777"
+    ]
+  },
+  {
+    "id": "insight_history_6b6289f40dd2c03f",
+    "title": "Back-office AI is moving offline",
+    "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+    "generatedAt": "2026-05-04T13:36:20.358Z",
+    "sourceCompanyIds": [
+      "cmp_057",
+      "cmp_060",
+      "cmp_063"
+    ],
+    "sourceEventIds": [
+      "event_f1f0e40048ee4906",
+      "event_e3632b9d6ae57641",
+      "event_4d05d76aeeccc997"
+    ]
+  },
+  {
+    "id": "insight_history_8b67caab138b4925",
+    "title": "Specific buyers still beat broad tools",
+    "body": "Polimorphic, Auctor, and DualEntry target buyers with defined budgets and painful implementation work, not broad AI tooling.",
+    "generatedAt": "2026-05-04T13:36:20.358Z",
+    "sourceCompanyIds": [
+      "cmp_060",
+      "cmp_064",
+      "cmp_065"
+    ],
+    "sourceEventIds": [
+      "event_e3632b9d6ae57641",
+      "event_063f36ff51c23d57",
+      "event_8889689911f216b0"
+    ]
+  },
+  {
+    "id": "insight_history_2d6f95d5ce3767c0",
+    "title": "Workflow-first beats chat-first",
+    "body": "Tapestry, FLORA, and Jimini Health wrap AI around repeated behavior: social graphs, creative production, and care delivery.",
+    "generatedAt": "2026-05-04T13:36:20.358Z",
+    "sourceCompanyIds": [
+      "cmp_050",
+      "cmp_054",
+      "cmp_062"
+    ],
+    "sourceEventIds": [
+      "event_bf8a63257416b264",
+      "event_01072859c2c9e7ee",
+      "event_f43f4c93860a4777"
+    ]
+  },
+  {
+    "id": "insight_history_ba0558d0fc7f911a",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T13:23:14.911Z",
+    "sourceCompanyIds": [
+      "cmp_005",
+      "cmp_052",
+      "cmp_061",
+      "cmp_001"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_ab83677070f4a1e8",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T04:10:32.649Z",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_3a579d5135a753a6",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T04:10:32.649Z",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_015"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_73464ab68415520c",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T04:10:19.649+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_015"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_0af02649bc8f7da2",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T04:10:19.649+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_63bd8960ea51713b",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T04:07:58.531+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_015"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_4673d35980617122",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T04:07:58.531+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_2ca929b8c3db81bf",
+    "title": "Recent additions widen the map",
+    "body": "Recent additions include CVector, Tapestry, and Anchr, widening the map across applied workflows.",
+    "generatedAt": "2026-05-04T04:07:44.919+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_050",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": [
+      "event_4d05d76aeeccc997",
+      "event_bf8a63257416b264",
+      "event_f1f0e40048ee4906",
+      "event_1581c0188d5f46ac",
+      "event_6e95a19e70fc1c58"
+    ]
+  },
+  {
+    "id": "insight_history_8c3b5f9a678197e6",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T04:07:44.919+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_2af271fd91aa188d",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T04:03:05.914+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_9d30b0c04d93bd1e",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T04:03:05.914+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_015"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_3c5c5fd9577a77d1",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T03:18:01.048+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_9164acfa283fd857",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T03:17:28.668+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_fd6abb518d905c39",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T03:17:28.668+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_049"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_e94a74df764e41fd",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T03:00:47.227+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_049"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_7b6e411050552bd4",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T03:00:47.227+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_7e5f0aba92a1f32f",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T02:52:07.563+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_049"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_0d75fad5ead7dfc7",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T02:52:07.563+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_ab03bb4dc9cd9d0a",
+    "title": "Recent additions widen the map",
+    "body": "Recent additions include CVector, Tapestry, and Anchr, widening the map across applied workflows.",
+    "generatedAt": "2026-05-04T02:50:40.392+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_050",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": [
+      "event_4d05d76aeeccc997",
+      "event_bf8a63257416b264",
+      "event_f1f0e40048ee4906",
+      "event_1581c0188d5f46ac",
+      "event_6e95a19e70fc1c58"
+    ]
+  },
+  {
+    "id": "insight_history_83cf74e179e5d114",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T02:50:40.392+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_2219981c892dcd35",
+    "title": "Vertical buyers remain clearer",
+    "body": "The strongest entries are organized around specific buyers: finance teams, operators, clinicians, and governments.",
+    "generatedAt": "2026-05-04T02:49:45.269+00:00",
+    "sourceCompanyIds": [
+      "cmp_063",
+      "cmp_057",
+      "cmp_052",
+      "cmp_066"
+    ],
+    "sourceEventIds": []
+  },
+  {
+    "id": "insight_history_da8f74923bd14565",
+    "title": "The map is getting more applied",
+    "body": "Newer companies suggest the NYC map is expanding beyond apps into data, memory, and workflow infrastructure.",
+    "generatedAt": "2026-05-04T02:49:45.269+00:00",
+    "sourceCompanyIds": [
+      "cmp_059",
+      "cmp_056",
+      "cmp_055",
+      "cmp_049"
+    ],
+    "sourceEventIds": []
+  }
+]

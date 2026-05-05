@@ -6,21 +6,47 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:editorial": "tsx scripts/generate-editorial.ts",
+    "generate:supabase-seed": "tsx scripts/generate-supabase-seed.ts",
+    "agent:refresh": "tsx scripts/refresh-known-companies.ts",
+    "agent:discover": "tsx scripts/discover-new-candidates.ts",
+    "agent:editorial": "tsx scripts/regenerate-editorial-surfaces.ts",
+    "agent:check-current-read": "tsx scripts/assert-current-read-copy.ts",
+    "logos:refresh": "tsx scripts/refresh-company-logos.ts",
+    "jobs:refresh": "tsx scripts/refresh-company-jobs.ts",
+    "news:refresh": "tsx scripts/refresh-news.ts",
+    "company-briefs:refresh": "tsx scripts/refresh-company-profile-briefs.ts",
+    "seed:views": "tsx scripts/seed-company-view-counts.ts",
+    "backfill:inclusion-reasons": "tsx scripts/backfill-inclusion-reasons.ts",
+    "agent:all": "tsx scripts/refresh-known-companies.ts && tsx scripts/discover-new-candidates.ts && tsx scripts/regenerate-editorial-surfaces.ts"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^2.0.2",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.105.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "fast-xml-parser": "^5.7.2",
+    "lucide-react": "^1.11.0",
     "next": "16.2.4",
+    "radix-ui": "^1.4.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "shadcn": "^4.5.0",
+    "tailwind-merge": "^3.5.0",
+    "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/google.maps": "^3.64.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
+    "tsx": "^4.20.5",
     "typescript": "^5"
   }
 }

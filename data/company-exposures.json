@@ -1,0 +1,912 @@
+[
+  {
+    "id": "exposure_4bce39e6aeed70c0",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:19.649+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_9dbe5a2d0d9d7fbc",
+    "companyId": "cmp_051",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:19.649+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_68d0101bbb4e2fdd",
+    "companyId": "cmp_008",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:19.649+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_9dd19b064bdb690a",
+    "companyId": "cmp_055",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:19.649+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_905c2ece3fc20bd8",
+    "companyId": "cmp_062",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:19.649+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_93c2d95fd280cd71",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:58.531+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_2716f38db3540adb",
+    "companyId": "cmp_052",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:58.531+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_7fecae84ea75e791",
+    "companyId": "cmp_050",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:58.531+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_53ee6961c1d7d6b5",
+    "companyId": "cmp_066",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:58.531+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_d1dec03109a07f9d",
+    "companyId": "cmp_057",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:58.531+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_8549b897571ac419",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:44.919+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_1349afd5872cc5aa",
+    "companyId": "cmp_010",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:44.919+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_629633e826e6e836",
+    "companyId": "cmp_011",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:44.919+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_c0be7a628f49bc69",
+    "companyId": "cmp_024",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:44.919+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_ea850f5f009f9ad8",
+    "companyId": "cmp_063",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:07:44.919+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_4ff1ee0f10ac14bf",
+    "companyId": "cmp_007",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:03:05.914+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_6b3f4b51bf0d947a",
+    "companyId": "cmp_020",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:03:05.914+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_e436937a0e538421",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:03:05.914+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_c342351a7485d628",
+    "companyId": "cmp_035",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:03:05.914+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_08f615f1d7141113",
+    "companyId": "cmp_009",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:03:05.914+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_0e72965cd0cb7cdb",
+    "companyId": "cmp_012",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:56.692+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_465b8c405ec90491",
+    "companyId": "cmp_029",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:56.692+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_98512e6f41db7c40",
+    "companyId": "cmp_025",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:56.692+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_045566328b86aabf",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:56.692+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_d13e952e9a02fac9",
+    "companyId": "cmp_030",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:56.692+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_d5d8b76aca8fa504",
+    "companyId": "cmp_036",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:30.697+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_82cca90ff9fb9bb9",
+    "companyId": "cmp_015",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:30.697+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_e9dec8f8f0317cfd",
+    "companyId": "cmp_026",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:30.697+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_01ac58ae638bc258",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:30.697+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_aaf2c423b8d761f3",
+    "companyId": "cmp_061",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:30.697+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_c6e17c73aef432d5",
+    "companyId": "cmp_019",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:01.048+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_2395e02d1be39ec7",
+    "companyId": "cmp_041",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:01.048+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_505a35d05a05963c",
+    "companyId": "cmp_040",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:01.048+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_f19c76dc938bf11e",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:01.048+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_30248d5c619328d2",
+    "companyId": "cmp_018",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:18:01.048+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_9546ecac94728594",
+    "companyId": "cmp_053",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:17:28.668+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_384d082148028fbe",
+    "companyId": "cmp_043",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:17:28.668+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_783ecf009c00276d",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:17:28.668+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_af1dc6f2c4eda96a",
+    "companyId": "cmp_044",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:17:28.668+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_c6a072b6a8675948",
+    "companyId": "cmp_049",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:17:28.668+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_9c2e6ef6792bf0f5",
+    "companyId": "cmp_059",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:00:47.227+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_2b7bb53bbd05b695",
+    "companyId": "cmp_060",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:00:47.227+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_27fc76b6253d157c",
+    "companyId": "cmp_058",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:00:47.227+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_40acaea6c1df42b2",
+    "companyId": "cmp_054",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:00:47.227+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_ff4bbcc1d5f4c476",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T03:00:47.227+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_3982fa4f148047b1",
+    "companyId": "cmp_065",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:52:07.563+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_edb2fe07a65a8667",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:52:07.563+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_a92d2c6544de6bab",
+    "companyId": "cmp_021",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:52:07.563+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_86308dd62e8641a2",
+    "companyId": "cmp_064",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:52:07.563+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_2b8e55628f2ffb31",
+    "companyId": "cmp_008",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:52:07.563+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_f15d76ad79afae84",
+    "companyId": "cmp_027",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:50:40.392+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_6223343ebcec966c",
+    "companyId": "cmp_023",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:50:40.392+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_533634662c25b464",
+    "companyId": "cmp_032",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:50:40.392+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_a3e8f7927ec666bf",
+    "companyId": "cmp_022",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:50:40.392+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_d568d6cb7d9a55d4",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:50:40.392+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_b537017ced0963e0",
+    "companyId": "cmp_033",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:49:45.269+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_27c56e6e0a828806",
+    "companyId": "cmp_031",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:49:45.269+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_d443c886ae35afe4",
+    "companyId": "cmp_028",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:49:45.269+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_36b8172d5cc53456",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:49:45.269+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_5e8d651e1f39ab2e",
+    "companyId": "cmp_034",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:49:45.269+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_697c1e7b5123b847",
+    "companyId": "cmp_062",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:17:01.734+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_db620e5fe86df063",
+    "companyId": "cmp_051",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:17:01.734+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_74409426149a91d5",
+    "companyId": "cmp_037",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:17:01.734+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_e23fcf6dd315e026",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:17:01.734+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_51364301a864b1a6",
+    "companyId": "cmp_055",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:17:01.734+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_7c771675ccea17c1",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.987+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_7e09e77c0ddf14c6",
+    "companyId": "cmp_036",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.987+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_d07ccc17c1639303",
+    "companyId": "cmp_050",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.987+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_2bacbf66b5afdfe4",
+    "companyId": "cmp_052",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.987+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_3b4d281e5717929e",
+    "companyId": "cmp_012",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.987+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_77004d43846607e5",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.518+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_2060cfc9102ece76",
+    "companyId": "cmp_033",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.518+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_ffcf1b404defb10e",
+    "companyId": "cmp_026",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.518+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_f168917fec76a6af",
+    "companyId": "cmp_061",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.518+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_9d570d2b990ccab7",
+    "companyId": "cmp_051",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:16:00.518+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_b88500af78552830",
+    "companyId": "cmp_050",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:14:03.492+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_780236faafdcc2e9",
+    "companyId": "cmp_062",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:14:03.492+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_60c9a28b35536a24",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:14:03.492+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_86dbeb0fcc35b8eb",
+    "companyId": "cmp_055",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:14:03.492+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_c794c40ddccaed4a",
+    "companyId": "cmp_052",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:14:03.492+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_f7f468fa4e1efed3",
+    "companyId": "cmp_034",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:39.058+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_3c62d1ea18f3a2da",
+    "companyId": "cmp_037",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:39.058+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_26e552ccd09d83d2",
+    "companyId": "cmp_031",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:39.058+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_31a1d9169d5f0f18",
+    "companyId": "cmp_028",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:39.058+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_4f6f3994185a5237",
+    "companyId": "cmp_023",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:39.058+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_bae19fbebcfb853b",
+    "companyId": "cmp_008",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:19.819+00:00",
+    "position": 0
+  },
+  {
+    "id": "exposure_9e8e89644db44471",
+    "companyId": "cmp_022",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:19.819+00:00",
+    "position": 2
+  },
+  {
+    "id": "exposure_e1d17b21ad45200d",
+    "companyId": "cmp_027",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:19.819+00:00",
+    "position": 3
+  },
+  {
+    "id": "exposure_ed62b68a550192b2",
+    "companyId": "cmp_032",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:19.819+00:00",
+    "position": 4
+  },
+  {
+    "id": "exposure_97dd51505e4b5701",
+    "companyId": "cmp_021",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T02:12:19.819+00:00",
+    "position": 1
+  },
+  {
+    "id": "exposure_b5ec06236629646f",
+    "companyId": "cmp_027",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:32.649Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_62f35f76d132ac1d",
+    "companyId": "cmp_028",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:32.649Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_395cf35b34ae81a9",
+    "companyId": "cmp_032",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:32.649Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_5a1083c87d1cd8f0",
+    "companyId": "cmp_033",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:32.649Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_09acdf8d261fc97a",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T04:10:32.649Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_c3e27a1075b32a23",
+    "companyId": "cmp_021",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:17:35.611Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_6f1149a8a28d8dcb",
+    "companyId": "cmp_022",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:17:35.611Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_160b5f2fa1da8e46",
+    "companyId": "cmp_034",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:17:35.611Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_65942d7be72b9bdc",
+    "companyId": "cmp_031",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:17:35.611Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_bd6816ef4ea8016f",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:17:35.611Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_90bb44b2add2a10d",
+    "companyId": "cmp_023",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:22:27.589Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_8d2e5c8bd0bcaade",
+    "companyId": "cmp_037",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:22:27.589Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_2e8d99108224db5c",
+    "companyId": "cmp_018",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:22:27.589Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_a800318f7eabe6e2",
+    "companyId": "cmp_019",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:22:27.589Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_4340904e9587491a",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:22:27.589Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_5af21edf21a65706",
+    "companyId": "cmp_040",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:23:14.911Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_03f43062ddb9527e",
+    "companyId": "cmp_041",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:23:14.911Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_07fb3fb0f35b089c",
+    "companyId": "cmp_043",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:23:14.911Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_6b1dff834a0c8b7e",
+    "companyId": "cmp_044",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:23:14.911Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_c4b10b7a655380a6",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:23:14.911Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_7ce12f738a4c58d0",
+    "companyId": "cmp_049",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:36:20.358Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_6283a58b6acb3a15",
+    "companyId": "cmp_053",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:36:20.358Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_b45f3360b0323726",
+    "companyId": "cmp_054",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:36:20.358Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_916d35d0a6418ecc",
+    "companyId": "cmp_015",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:36:20.358Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_5ec2df2d93819412",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T13:36:20.358Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_f14e63c0f1e34dde",
+    "companyId": "cmp_058",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:00:16.227Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_d6755a507a8334e8",
+    "companyId": "cmp_059",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:00:16.227Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_9c0600d2d3cb385c",
+    "companyId": "cmp_060",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:00:16.227Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_4bbac5a001a2b0b2",
+    "companyId": "cmp_064",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:00:16.227Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_006d97c8333ab049",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:00:16.227Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_84a0f62dfa1e5bc4",
+    "companyId": "cmp_065",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:03:13.432Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_fc401e8f1c77aeed",
+    "companyId": "cmp_061",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:03:13.432Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_aaf8dd5dd5e5d201",
+    "companyId": "cmp_012",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:03:13.432Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_c3d1b2f6ba7e86b6",
+    "companyId": "cmp_026",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:03:13.432Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_9f0eacb304d843b1",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:03:13.432Z",
+    "position": 4
+  },
+  {
+    "id": "exposure_ed56784f7cc99266",
+    "companyId": "cmp_036",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:14:15.534Z",
+    "position": 0
+  },
+  {
+    "id": "exposure_9a320482acf542de",
+    "companyId": "cmp_007",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:14:15.534Z",
+    "position": 1
+  },
+  {
+    "id": "exposure_d6e3bcd4c128da5b",
+    "companyId": "cmp_009",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:14:15.534Z",
+    "position": 2
+  },
+  {
+    "id": "exposure_490b50d6c05a6a9d",
+    "companyId": "cmp_025",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:14:15.534Z",
+    "position": 3
+  },
+  {
+    "id": "exposure_3a1f05711b1ba6e4",
+    "companyId": "cmp_056",
+    "surface": "companies_to_know",
+    "shownAt": "2026-05-04T14:14:15.534Z",
+    "position": 4
+  }
+]

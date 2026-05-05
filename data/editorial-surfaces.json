@@ -1,0 +1,652 @@
+[
+  {
+    "id": "surface_6ccc6b9939bc4e91",
+    "surface": "companies_to_know",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "companies_to_know_item_d1de15f447d448c1",
+        "title": "Empromptu",
+        "body": "Testing infrastructure for autonomous agents",
+        "companyId": "cmp_036",
+        "category": "Agent Infrastructure",
+        "label": "Infra signal",
+        "supportingCompanyIds": [
+          "cmp_036"
+        ],
+        "supportingEventIds": [
+          "event_3b604a87a3f29de8"
+        ],
+        "score": 0.867
+      },
+      {
+        "id": "companies_to_know_item_9bad8ea1ca429b43",
+        "title": "Norm Ai",
+        "body": "Turning policies into operational AI agents",
+        "companyId": "cmp_007",
+        "category": "Legal & Compliance AI",
+        "label": "Featured",
+        "supportingCompanyIds": [
+          "cmp_007"
+        ],
+        "supportingEventIds": [
+          "event_0b1c4a67fcef39dc"
+        ],
+        "score": 0.865
+      },
+      {
+        "id": "companies_to_know_item_23ec6b21bc39089b",
+        "title": "Soxton",
+        "body": "Turning policies into operational AI agents",
+        "companyId": "cmp_009",
+        "category": "Legal & Compliance AI",
+        "label": "Workflow signal",
+        "supportingCompanyIds": [
+          "cmp_009"
+        ],
+        "supportingEventIds": [
+          "event_0199a6501091d7fd"
+        ],
+        "score": 0.865
+      },
+      {
+        "id": "companies_to_know_item_335cc069247234c4",
+        "title": "Granted",
+        "body": "Automating clinical admin work for health plans",
+        "companyId": "cmp_025",
+        "category": "Health & Clinical AI",
+        "label": "Workflow signal",
+        "supportingCompanyIds": [
+          "cmp_025"
+        ],
+        "supportingEventIds": [
+          "event_ec5f020aeae271af"
+        ],
+        "score": 0.865
+      },
+      {
+        "id": "companies_to_know_item_14421e0f35d4614f",
+        "title": "Vellum",
+        "body": "Production tooling for LLM applications",
+        "companyId": "cmp_056",
+        "category": "Model Tools & Dev Platform",
+        "label": "Infra signal",
+        "supportingCompanyIds": [
+          "cmp_056"
+        ],
+        "supportingEventIds": [
+          "event_ec0e547cda13b01b"
+        ],
+        "score": 0.816
+      }
+    ],
+    "sourceEventIds": [
+      "event_3b604a87a3f29de8",
+      "event_0b1c4a67fcef39dc",
+      "event_0199a6501091d7fd",
+      "event_ec5f020aeae271af",
+      "event_ec0e547cda13b01b"
+    ],
+    "sourceCompanyIds": [
+      "cmp_036",
+      "cmp_007",
+      "cmp_009",
+      "cmp_025",
+      "cmp_056"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "002063a1d2351e6df353853274cfa3754547c321728250c262c48afd7ea91483"
+  },
+  {
+    "id": "surface_1cb0341517fec466",
+    "surface": "latest_signals",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "signal_item_326ae5e01a587fbe",
+        "title": "Polimorphic added to AI Atlas",
+        "body": "Polimorphic joined the map in Enterprise GTM & RevOps AI. AI workflows for local government services",
+        "companyId": "cmp_060",
+        "category": "Enterprise GTM & RevOps AI",
+        "label": "Recently added",
+        "supportingEventIds": [
+          "event_e3632b9d6ae57641"
+        ],
+        "supportingCompanyIds": [
+          "cmp_060"
+        ],
+        "score": 0.888,
+        "sourceName": "AI Atlas curation",
+        "sourceUrl": "https://www.polimorphic.com",
+        "occurredAt": "2026-05-04T01:45:00+00:00"
+      },
+      {
+        "id": "signal_item_321b54d34ea66e25",
+        "title": "Foresight added to AI Atlas",
+        "body": "Foresight joined the map in Data & Memory Layer. AI data infrastructure for private markets",
+        "companyId": "cmp_059",
+        "category": "Data & Memory Layer",
+        "label": "Recently added",
+        "supportingEventIds": [
+          "event_75494ea3597e24d0"
+        ],
+        "supportingCompanyIds": [
+          "cmp_059"
+        ],
+        "score": 0.888,
+        "sourceName": "AI Atlas curation",
+        "sourceUrl": "https://www.foresight.ai",
+        "occurredAt": "2026-05-04T01:45:00+00:00"
+      },
+      {
+        "id": "signal_item_a7a8239f413f329e",
+        "title": "Meridian added to AI Atlas",
+        "body": "Meridian joined the map in Fintech & Trading AI. Agentic spreadsheets for finance teams",
+        "companyId": "cmp_058",
+        "category": "Fintech & Trading AI",
+        "label": "Recently added",
+        "supportingEventIds": [
+          "event_f78cf0931fc5d2e8"
+        ],
+        "supportingCompanyIds": [
+          "cmp_058"
+        ],
+        "score": 0.888,
+        "sourceName": "AI Atlas curation",
+        "sourceUrl": "https://www.meridian.ai",
+        "occurredAt": "2026-05-04T01:45:00+00:00"
+      },
+      {
+        "id": "signal_item_eb6ef72d7b25726a",
+        "title": "Vellum added to AI Atlas",
+        "body": "Vellum joined the map in Model Tools & Dev Platform. Production tooling for LLM applications",
+        "companyId": "cmp_056",
+        "category": "Model Tools & Dev Platform",
+        "label": "Recently added",
+        "supportingEventIds": [
+          "event_ec0e547cda13b01b"
+        ],
+        "supportingCompanyIds": [
+          "cmp_056"
+        ],
+        "score": 0.888,
+        "sourceName": "AI Atlas curation",
+        "sourceUrl": "https://www.vellum.ai",
+        "occurredAt": "2026-05-04T01:45:00+00:00"
+      },
+      {
+        "id": "signal_item_abb0ac6fefb92da7",
+        "title": "Thread AI added to AI Atlas",
+        "body": "Thread AI joined the map in Agent Infrastructure. Composable infrastructure for enterprise AI workflows",
+        "companyId": "cmp_055",
+        "category": "Agent Infrastructure",
+        "label": "Recently added",
+        "supportingEventIds": [
+          "event_6a5827f6ac2ac54a"
+        ],
+        "supportingCompanyIds": [
+          "cmp_055"
+        ],
+        "score": 0.888,
+        "sourceName": "AI Atlas curation",
+        "sourceUrl": "https://www.thread.ai",
+        "occurredAt": "2026-05-04T01:45:00+00:00"
+      }
+    ],
+    "sourceEventIds": [
+      "event_e3632b9d6ae57641",
+      "event_75494ea3597e24d0",
+      "event_f78cf0931fc5d2e8",
+      "event_ec0e547cda13b01b",
+      "event_6a5827f6ac2ac54a"
+    ],
+    "sourceCompanyIds": [
+      "cmp_060",
+      "cmp_059",
+      "cmp_058",
+      "cmp_056",
+      "cmp_055"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "6e8d285ef1cde3ec8f429d78b6c0a6d77cd19697c7b9251aefd7d61bfa51e14f"
+  },
+  {
+    "id": "surface_3852b6fb364c69b8",
+    "surface": "current_read",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "current_read_specific_fcb0bc481b4653a8",
+        "title": "Back-office AI is moving offline",
+        "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+        "label": "Workflow signal",
+        "supportingCompanyIds": [
+          "cmp_057",
+          "cmp_060",
+          "cmp_063"
+        ],
+        "supportingEventIds": [
+          "event_f1f0e40048ee4906",
+          "event_e3632b9d6ae57641",
+          "event_4d05d76aeeccc997"
+        ],
+        "score": 3
+      },
+      {
+        "id": "current_read_specific_a2b440012ea3f6f1",
+        "title": "Specific buyers still beat broad tools",
+        "body": "Polimorphic, Auctor, and DualEntry target buyers with defined budgets and painful implementation work, not broad AI tooling.",
+        "label": "Clear buyer pull",
+        "supportingCompanyIds": [
+          "cmp_060",
+          "cmp_064",
+          "cmp_065"
+        ],
+        "supportingEventIds": [
+          "event_e3632b9d6ae57641",
+          "event_063f36ff51c23d57",
+          "event_8889689911f216b0"
+        ],
+        "score": 3
+      },
+      {
+        "id": "current_read_specific_4636908e0f53c681",
+        "title": "Workflow-first beats chat-first",
+        "body": "Tapestry, FLORA, and Jimini Health wrap AI around repeated behavior: social graphs, creative production, and care delivery.",
+        "label": "Consumer signal",
+        "supportingCompanyIds": [
+          "cmp_050",
+          "cmp_054",
+          "cmp_062"
+        ],
+        "supportingEventIds": [
+          "event_bf8a63257416b264",
+          "event_01072859c2c9e7ee",
+          "event_f43f4c93860a4777"
+        ],
+        "score": 3
+      }
+    ],
+    "sourceEventIds": [
+      "event_f1f0e40048ee4906",
+      "event_e3632b9d6ae57641",
+      "event_4d05d76aeeccc997",
+      "event_063f36ff51c23d57",
+      "event_8889689911f216b0",
+      "event_bf8a63257416b264",
+      "event_01072859c2c9e7ee",
+      "event_f43f4c93860a4777"
+    ],
+    "sourceCompanyIds": [
+      "cmp_057",
+      "cmp_060",
+      "cmp_063",
+      "cmp_064",
+      "cmp_065",
+      "cmp_050",
+      "cmp_054",
+      "cmp_062"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82",
+      "snapshot_1424fc48bc73325a"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "816bcbda3834da942a39ed53900ebfba43a006cde74cbcf3003424a68cc3bd4e"
+  },
+  {
+    "id": "surface_5aa48a11226e7300",
+    "surface": "market_snapshot",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "market_snapshot_item_8516a4ff48fbb045",
+        "title": "Companies tracked",
+        "body": "66",
+        "label": "map"
+      },
+      {
+        "id": "market_snapshot_item_dcb1a2e4822f96c6",
+        "title": "Categories",
+        "body": "9",
+        "label": "grid"
+      },
+      {
+        "id": "market_snapshot_item_0efb433dce7da49e",
+        "title": "Recently added",
+        "body": "17",
+        "label": "pin"
+      },
+      {
+        "id": "market_snapshot_item_087fe60e2db72f4a",
+        "title": "Current themes",
+        "body": "3",
+        "label": "compass"
+      },
+      {
+        "id": "market_snapshot_item_369255a79eab1548",
+        "title": "Analyst read",
+        "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
+        "label": "Market read",
+        "supportingCompanyIds": [
+          "cmp_057",
+          "cmp_060",
+          "cmp_063"
+        ],
+        "supportingEventIds": [
+          "event_f1f0e40048ee4906",
+          "event_e3632b9d6ae57641",
+          "event_4d05d76aeeccc997"
+        ]
+      }
+    ],
+    "sourceEventIds": [
+      "event_01072859c2c9e7ee",
+      "event_0199a6501091d7fd",
+      "event_02b071874e18405f",
+      "event_063f36ff51c23d57",
+      "event_0937aadb1ebeebe9",
+      "event_0b1c4a67fcef39dc",
+      "event_0bb1e79fb9876f3c",
+      "event_1581c0188d5f46ac",
+      "event_1f5ee13f457e8fd1",
+      "event_23c8b3013aeaced2",
+      "event_2d7573a8bfc1ce24",
+      "event_307bd7db22ae5b2e",
+      "event_3444628b734b295f",
+      "event_36fd04f682dd0af0",
+      "event_3b604a87a3f29de8",
+      "event_3c0a0fe31c86e534",
+      "event_3d7eef76132eda1e",
+      "event_3e84c7c66f9517da",
+      "event_413006ddb8d85d91",
+      "event_41989cba229bfb41",
+      "event_4793de9b66e6212b",
+      "event_4816f78022bc6ac6",
+      "event_4971ffe85da8e60d",
+      "event_4c3ad455475ec79d",
+      "event_4d05d76aeeccc997",
+      "event_53429ce47498d72b",
+      "event_6185194c01ea77d2",
+      "event_62925682c9b713e8",
+      "event_630ef7ceffb11622",
+      "event_6486766ec84f16fa",
+      "event_6a5827f6ac2ac54a",
+      "event_6e95a19e70fc1c58",
+      "event_7501e73e52335b9c",
+      "event_75494ea3597e24d0",
+      "event_78c49aa9f1651219",
+      "event_85dc7095ff7dff21",
+      "event_87dadbd0bbf08697",
+      "event_8889689911f216b0",
+      "event_8ebff1e786e002a6",
+      "event_93335e0022145076",
+      "event_942ced6ef5872396",
+      "event_94af87ef8aec526c",
+      "event_b655db3630c305fa",
+      "event_b7e38c4d49237ebf",
+      "event_bdf42678533cf603",
+      "event_bf8a63257416b264",
+      "event_c38e8c36e157da60",
+      "event_c73b42c857862646",
+      "event_cc8afac760d780f1",
+      "event_ceb120a698c2a33a",
+      "event_d09c0a075c66693b",
+      "event_d391ec0596b4d3cd",
+      "event_d6e801c0620e8ed9",
+      "event_da4662b394eda570",
+      "event_df06af34e0468a4b",
+      "event_e3632b9d6ae57641",
+      "event_eba2601f02957712",
+      "event_ebf210f5f2f78889",
+      "event_ec0e547cda13b01b",
+      "event_ec5f020aeae271af",
+      "event_ec85279ff2874d0c",
+      "event_ef4f3831c7d58b7c",
+      "event_f1f0e40048ee4906",
+      "event_f43f4c93860a4777",
+      "event_f78cf0931fc5d2e8",
+      "event_f90ee3fe6f8f4eae",
+      "event_fe109e7a4d37729d"
+    ],
+    "sourceCompanyIds": [
+      "cmp_050",
+      "cmp_051",
+      "cmp_052",
+      "cmp_053",
+      "cmp_054",
+      "cmp_055",
+      "cmp_056",
+      "cmp_057",
+      "cmp_058",
+      "cmp_059",
+      "cmp_060",
+      "cmp_061",
+      "cmp_062",
+      "cmp_063",
+      "cmp_064",
+      "cmp_065",
+      "cmp_066"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "6e330b4f7c294f14152da1932a68bfd133de18fc2b58dfea9bc97ff23dfe222f"
+  },
+  {
+    "id": "surface_bcf36fb5163731e5",
+    "surface": "category_pulse",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "category_pulse_item_cc26d505365f1f40",
+        "title": "Fintech & Trading AI",
+        "body": "10 companies · finance workflows and analyst tools",
+        "category": "Fintech & Trading AI",
+        "label": "steady",
+        "supportingCompanyIds": [
+          "cmp_005",
+          "cmp_001",
+          "cmp_002",
+          "cmp_003",
+          "cmp_004"
+        ]
+      },
+      {
+        "id": "category_pulse_item_640f51b666d98c0d",
+        "title": "Health & Clinical AI",
+        "body": "9 companies · clinical operations and patient workflows",
+        "category": "Health & Clinical AI",
+        "label": "steady",
+        "supportingCompanyIds": [
+          "cmp_052",
+          "cmp_061",
+          "cmp_020",
+          "cmp_021",
+          "cmp_022"
+        ]
+      },
+      {
+        "id": "category_pulse_item_6b5e55b6f0ad44ac",
+        "title": "Enterprise GTM & RevOps AI",
+        "body": "9 companies · enterprise implementation and back-office workflows",
+        "category": "Enterprise GTM & RevOps AI",
+        "label": "steady",
+        "supportingCompanyIds": [
+          "cmp_038",
+          "cmp_039",
+          "cmp_040",
+          "cmp_041",
+          "cmp_042"
+        ]
+      },
+      {
+        "id": "category_pulse_item_ea8150bb11ece57f",
+        "title": "Media, Ads & Creative AI",
+        "body": "8 companies · creative production and brand intelligence",
+        "category": "Media, Ads & Creative AI",
+        "label": "steady",
+        "supportingCompanyIds": [
+          "cmp_013",
+          "cmp_014",
+          "cmp_016",
+          "cmp_017",
+          "cmp_018"
+        ]
+      }
+    ],
+    "sourceEventIds": [],
+    "sourceCompanyIds": [
+      "cmp_005",
+      "cmp_001",
+      "cmp_002",
+      "cmp_003",
+      "cmp_004",
+      "cmp_052",
+      "cmp_061",
+      "cmp_020",
+      "cmp_021",
+      "cmp_022",
+      "cmp_038",
+      "cmp_039",
+      "cmp_040",
+      "cmp_041",
+      "cmp_042",
+      "cmp_013",
+      "cmp_014",
+      "cmp_016",
+      "cmp_017",
+      "cmp_018"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "0ea9369c9621c627746b4a4f8b93eff4d3efc9193d255a38efc1d57a9190d6f7"
+  },
+  {
+    "id": "surface_3fb745226a011990",
+    "surface": "recently_added",
+    "generatedAt": "2026-05-04T14:14:15.534Z",
+    "expiresAt": "2026-05-06T14:14:15.534Z",
+    "items": [
+      {
+        "id": "recent_company_item_b515b5fa2879de05",
+        "title": "Bevel",
+        "body": "Added for its health AI focus and relevance to care delivery workflows.",
+        "companyId": "cmp_052",
+        "category": "Health & Clinical AI",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_052"
+        ],
+        "supportingEventIds": [
+          "event_1581c0188d5f46ac"
+        ]
+      },
+      {
+        "id": "recent_company_item_d89bf7fc04799c4a",
+        "title": "Vellum",
+        "body": "Added for its AI developer tooling angle and relevance to production teams.",
+        "companyId": "cmp_056",
+        "category": "Model Tools & Dev Platform",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_056"
+        ],
+        "supportingEventIds": [
+          "event_ec0e547cda13b01b"
+        ]
+      },
+      {
+        "id": "recent_company_item_a43b89adafb7c226",
+        "title": "Blossom Health",
+        "body": "Added for its health AI focus and relevance to care delivery workflows.",
+        "companyId": "cmp_061",
+        "category": "Health & Clinical AI",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_061"
+        ],
+        "supportingEventIds": [
+          "event_94af87ef8aec526c"
+        ]
+      },
+      {
+        "id": "recent_company_item_87611e79da0161e3",
+        "title": "Thread AI",
+        "body": "Added for its vertical operations focus and early-stage NYC market fit.",
+        "companyId": "cmp_055",
+        "category": "Agent Infrastructure",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_055"
+        ],
+        "supportingEventIds": [
+          "event_6a5827f6ac2ac54a"
+        ]
+      },
+      {
+        "id": "recent_company_item_a7005bd3a15a34fd",
+        "title": "Ohai.ai",
+        "body": "Added because it brings consumer AI into repeated household coordination workflows.",
+        "companyId": "cmp_051",
+        "category": "AI-Native Consumer & Social",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_051"
+        ],
+        "supportingEventIds": [
+          "event_b655db3630c305fa"
+        ]
+      },
+      {
+        "id": "recent_company_item_93132a08554ec452",
+        "title": "Tapestry",
+        "body": "Added because it expands the map's social graph infrastructure coverage.",
+        "companyId": "cmp_050",
+        "category": "AI-Native Consumer & Social",
+        "label": "Recently added",
+        "supportingCompanyIds": [
+          "cmp_050"
+        ],
+        "supportingEventIds": [
+          "event_bf8a63257416b264"
+        ]
+      }
+    ],
+    "sourceEventIds": [
+      "event_1581c0188d5f46ac",
+      "event_ec0e547cda13b01b",
+      "event_94af87ef8aec526c",
+      "event_6a5827f6ac2ac54a",
+      "event_b655db3630c305fa",
+      "event_bf8a63257416b264"
+    ],
+    "sourceCompanyIds": [
+      "cmp_052",
+      "cmp_056",
+      "cmp_061",
+      "cmp_055",
+      "cmp_051",
+      "cmp_050"
+    ],
+    "sourceSnapshotIds": [
+      "snapshot_7508c3b4ff52bd82"
+    ],
+    "promptVersion": "agentic-editorial-v2-specific-current-read",
+    "sourceHash": "44e1905371cd32b096d6e4d185eea26b808bc552ae10c69ce8838e0497cda5bf"
+  }
+]

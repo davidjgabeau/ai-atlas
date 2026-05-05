@@ -1,0 +1,168 @@
+[
+  {
+    "id": "news_4b7fc1577116413d",
+    "title": "Thoughtly Raises $5.5M to Close the Lead Coverage Gap with AI-Powered CRM Agents",
+    "summary": "Most revenue teams make contact with fewer than one in ten inbound leads before the opportunity goes cold - a gap that email drips and manual calling have consistently failed to c…",
+    "source_url": "https://www.alleywatch.com/2026/04/thoughtly-ai-voice-agents-crm-conversational-engagement-platform-revenue-team-automation-torrey-leonard/",
+    "source_name": "AlleyWatch",
+    "source_domain": "alleywatch.com",
+    "published_at": "2026-04-30T15:27:50.000Z",
+    "discovered_at": "2026-05-04T19:53:09.706Z",
+    "scope": "nyc",
+    "topic": "NYC early-stage AI",
+    "relevance_score": 1,
+    "status": "published",
+    "raw": {
+      "feed": "https://www.alleywatch.com/feed/",
+      "title": "Thoughtly Raises $5.5M to Close the Lead Coverage Gap with AI-Powered CRM Agents",
+      "link": "https://www.alleywatch.com/2026/04/thoughtly-ai-voice-agents-crm-conversational-engagement-platform-revenue-team-automation-torrey-leonard/",
+      "sourceName": "AlleyWatch",
+      "publishedAt": "2026-04-30T15:27:50.000Z",
+      "categories": [
+        "#NYCTech",
+        "AI",
+        "AlleyTalk",
+        "Angel/Seed",
+        "Breaking",
+        "Business",
+        "Exclusive",
+        "Funded in New York",
+        "Funded in the Alley",
+        "Funding",
+        "Funding News",
+        "Interviews",
+        "RFC-AW",
+        "Sales and Marketing",
+        "Startups",
+        "Afore Capital",
+        "Armory Square Ventures",
+        "Converge",
+        "Greycroft",
+        "K5 Global",
+        "nvp capital",
+        "Thoughtly",
+        "Torrey Leonard"
+      ]
+    },
+    "created_at": "2026-05-04T19:53:09.706Z",
+    "updated_at": "2026-05-04T19:53:09.706Z"
+  },
+  {
+    "id": "news_11caf4b494ef9bae",
+    "title": "‘This is fine’ creator says AI startup stole his art",
+    "summary": "The ad comes from Artisan, the AI startup behind billboards urging businesses to \"stop hiring humans.\"",
+    "source_url": "https://techcrunch.com/2026/05/03/this-is-fine-creator-says-ai-startup-stole-his-art/",
+    "source_name": "TechCrunch AI",
+    "source_domain": "techcrunch.com",
+    "published_at": "2026-05-03T20:16:51.000Z",
+    "discovered_at": "2026-05-04T19:53:09.708Z",
+    "scope": "broad",
+    "topic": "Broad early-stage AI",
+    "relevance_score": 0.76,
+    "status": "published",
+    "raw": {
+      "feed": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "title": "‘This is fine’ creator says AI startup stole his art",
+      "link": "https://techcrunch.com/2026/05/03/this-is-fine-creator-says-ai-startup-stole-his-art/",
+      "sourceName": "TechCrunch AI",
+      "publishedAt": "2026-05-03T20:16:51.000Z",
+      "categories": [
+        "Startups",
+        "AI",
+        "artisan",
+        "kc green"
+      ]
+    },
+    "created_at": "2026-05-04T19:53:09.708Z",
+    "updated_at": "2026-05-04T19:53:09.708Z"
+  },
+  {
+    "id": "news_ca24954f40bd125c",
+    "title": "NEA’s Tiffany Luck On How Startup Founders Can Build Moats In Vertical AI",
+    "summary": "We recently spoke with Tiffany Luck, a partner at New Enterprise Associates about the increasing relevance of vertical AI, how startups can carve out durable advantages in a world…",
+    "source_url": "https://news.crunchbase.com/venture/startups-buiding-moats-vertical-ai-luck-nea/",
+    "source_name": "Crunchbase News",
+    "source_domain": "news.crunchbase.com",
+    "published_at": "2026-04-28T11:00:22.000Z",
+    "discovered_at": "2026-05-04T19:53:09.708Z",
+    "scope": "broad",
+    "topic": "Broad early-stage AI",
+    "relevance_score": 0.76,
+    "image_url": "https://news.crunchbase.com/wp-content/uploads/AI_Brain.jpg",
+    "status": "published",
+    "raw": {
+      "feed": "https://news.crunchbase.com/feed/",
+      "title": "NEA’s Tiffany Luck On How Startup Founders Can Build Moats In Vertical AI",
+      "link": "https://news.crunchbase.com/venture/startups-buiding-moats-vertical-ai-luck-nea/",
+      "sourceName": "Crunchbase News",
+      "publishedAt": "2026-04-28T11:00:22.000Z",
+      "categories": [
+        "Artificial intelligence",
+        "Startups",
+        "Venture",
+        "AI",
+        "startups",
+        "venture"
+      ]
+    },
+    "created_at": "2026-05-04T19:53:09.708Z",
+    "updated_at": "2026-05-04T19:53:09.708Z"
+  },
+  {
+    "id": "news_1508253f01d13294",
+    "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+    "summary": "The artificial intelligence coding revolution comes with a catch: it&#x27;s expensive. Claude Code , Anthropic&#x27;s terminal-based AI agent that can write, debug, and deploy cod…",
+    "source_url": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+    "source_name": "VentureBeat AI",
+    "source_domain": "venturebeat.com",
+    "published_at": "2026-01-19T14:00:00.000Z",
+    "discovered_at": "2026-05-04T19:53:09.709Z",
+    "scope": "broad",
+    "topic": "Broad early-stage AI",
+    "relevance_score": 0.76,
+    "image_url": "https://images.ctfassets.net/jdtwqhzvc2n1/1U9H8GLIqoGqKpitVfgw3T/ba56292f99409eca709dac0b176ec245/nuneybits_Vector_art_of_white_goose_silhouette_flying_through_c_8100d5a7-9e36-4ed6-a188-016470e1d0e1.webp?w=300&q=30",
+    "status": "published",
+    "raw": {
+      "feed": "https://venturebeat.com/category/ai/feed/",
+      "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+      "link": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+      "sourceName": "VentureBeat AI",
+      "publishedAt": "2026-01-19T14:00:00.000Z",
+      "categories": [
+        "AI",
+        "Infrastructure"
+      ]
+    },
+    "created_at": "2026-05-04T19:53:09.709Z",
+    "updated_at": "2026-05-04T19:53:09.709Z"
+  },
+  {
+    "id": "news_3fb8a3f744d90e4d",
+    "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+    "summary": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company i…",
+    "source_url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+    "source_name": "VentureBeat AI",
+    "source_domain": "venturebeat.com",
+    "published_at": "2026-01-12T11:30:00.000Z",
+    "discovered_at": "2026-05-04T19:53:09.709Z",
+    "scope": "broad",
+    "topic": "Broad early-stage AI",
+    "relevance_score": 0.76,
+    "image_url": "https://images.ctfassets.net/jdtwqhzvc2n1/wHv1Wez7Ps9wYVYAo9fwT/14b41f606dbf1f5b17994be510407449/nuneybits_Hyper-realistic_image_of_a_retro_computer_with_a_glos_61ffb6e2-7c33-4d45-85f7-69c28693b3ec.webp?w=300&q=30",
+    "status": "published",
+    "raw": {
+      "feed": "https://venturebeat.com/category/ai/feed/",
+      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+      "link": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+      "sourceName": "VentureBeat AI",
+      "publishedAt": "2026-01-12T11:30:00.000Z",
+      "categories": [
+        "Technology",
+        "AI",
+        "Automation"
+      ]
+    },
+    "created_at": "2026-05-04T19:53:09.709Z",
+    "updated_at": "2026-05-04T19:53:09.709Z"
+  }
+]

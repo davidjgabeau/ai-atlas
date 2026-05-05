@@ -1,0 +1,510 @@
+[
+  {
+    "id": "agent_run_31f73cfb1757e8f0",
+    "job": "editorial",
+    "startedAt": "2026-05-04T14:14:14.923Z",
+    "finishedAt": "2026-05-04T14:14:15.539Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_07e10855265d7f8e",
+    "job": "editorial",
+    "startedAt": "2026-05-04T14:03:12.853Z",
+    "finishedAt": "2026-05-04T14:03:13.437Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6,
+      "qualityGateFailures": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_2b7897c7251b61c8",
+    "job": "editorial",
+    "startedAt": "2026-05-04T14:00:15.216Z",
+    "finishedAt": "2026-05-04T14:00:16.234Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_eed9fefc94486202",
+    "job": "editorial",
+    "startedAt": "2026-05-04T13:36:19.530Z",
+    "finishedAt": "2026-05-04T13:36:20.366Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6,
+      "qualityGateFailures": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_23498f1a9c553cc4",
+    "job": "editorial",
+    "startedAt": "2026-05-04T13:23:14.610Z",
+    "finishedAt": "2026-05-04T13:23:14.916Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_6164f01a02996c3a",
+    "job": "editorial",
+    "startedAt": "2026-05-04T13:22:26.984Z",
+    "finishedAt": "2026-05-04T13:22:27.595Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6,
+      "qualityGateFailures": 5
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_faab26378a90ab60",
+    "job": "editorial",
+    "startedAt": "2026-05-04T13:17:34.923Z",
+    "finishedAt": "2026-05-04T13:17:35.616Z",
+    "status": "partial",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 2
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY, SUPABASE_SECRET_KEY, or SUPABASE_AGENT_WRITE_SECRET is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_4cf63739c27c511b",
+    "job": "editorial",
+    "startedAt": "2026-05-04T04:10:32.069Z",
+    "finishedAt": "2026-05-04T04:10:33.555Z",
+    "status": "success",
+    "stats": {
+      "rawRecordsCreated": 0,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 7
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_b21ab253d94c60b5",
+    "job": "editorial",
+    "startedAt": "2026-05-04T04:10:19.034+00:00",
+    "finishedAt": "2026-05-04T04:10:20.667+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_f0dbfa23b754d8da",
+    "job": "discover",
+    "startedAt": "2026-05-04T04:07:57.987+00:00",
+    "finishedAt": "2026-05-04T04:07:59.586+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_8d4532923b75db9d",
+    "job": "editorial",
+    "startedAt": "2026-05-04T04:07:57.986+00:00",
+    "finishedAt": "2026-05-04T04:07:59.714+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_da6ef84ee91e5cdb",
+    "job": "refresh",
+    "startedAt": "2026-05-04T04:07:42.952+00:00",
+    "finishedAt": "2026-05-04T04:07:45.774+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 63,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 6,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_062778af659817b6",
+    "job": "refresh",
+    "startedAt": "2026-05-04T04:03:04.924+00:00",
+    "finishedAt": "2026-05-04T04:03:05.92+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 63,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_5378092a8e3bda4e",
+    "job": "editorial",
+    "startedAt": "2026-05-04T03:18:56.69+00:00",
+    "finishedAt": "2026-05-04T03:18:56.697+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 5,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_2c956d67e82723d6",
+    "job": "editorial",
+    "startedAt": "2026-05-04T03:18:30.695+00:00",
+    "finishedAt": "2026-05-04T03:18:30.702+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 3,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_7f1b049c90abeb1b",
+    "job": "editorial",
+    "startedAt": "2026-05-04T03:18:01.047+00:00",
+    "finishedAt": "2026-05-04T03:18:01.052+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 6,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_6f3ce887795ccf55",
+    "job": "editorial",
+    "startedAt": "2026-05-04T03:17:28.666+00:00",
+    "finishedAt": "2026-05-04T03:17:28.672+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_cfec0ab6a27623d1",
+    "job": "editorial",
+    "startedAt": "2026-05-04T03:00:47.225+00:00",
+    "finishedAt": "2026-05-04T03:00:47.23+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_169918edf5966d13",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:52:07.561+00:00",
+    "finishedAt": "2026-05-04T02:52:07.568+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_89a6aac1d6a8be19",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:50:40.39+00:00",
+    "finishedAt": "2026-05-04T02:50:40.396+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 6,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_6567a84be8c58115",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:49:45.268+00:00",
+    "finishedAt": "2026-05-04T02:49:45.273+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_69575db9251b8676",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:17:01.733+00:00",
+    "finishedAt": "2026-05-04T02:17:01.738+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_2bcf5f78b1cb1507",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:16:00.986+00:00",
+    "finishedAt": "2026-05-04T02:16:00.991+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 7,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_7db93895dd8ca629",
+    "job": "discover",
+    "startedAt": "2026-05-04T02:16:00.756+00:00",
+    "finishedAt": "2026-05-04T02:16:00.758+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_1aeab1075a5d15db",
+    "job": "refresh",
+    "startedAt": "2026-05-04T02:16:00.21+00:00",
+    "finishedAt": "2026-05-04T02:16:00.522+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 63,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 6,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_b9cb798bd1041225",
+    "job": "refresh",
+    "startedAt": "2026-05-04T02:14:02.565+00:00",
+    "finishedAt": "2026-05-04T02:14:03.495+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 18,
+      "eventsDeduped": 63,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 1,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_eaad4fd6ff7ec7d4",
+    "job": "editorial",
+    "startedAt": "2026-05-04T02:12:39.056+00:00",
+    "finishedAt": "2026-05-04T02:12:39.06+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 2,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  },
+  {
+    "id": "agent_run_8fa9b533f4137f31",
+    "job": "discover",
+    "startedAt": "2026-05-04T02:12:27.117+00:00",
+    "finishedAt": "2026-05-04T02:12:27.119+00:00",
+    "status": "success",
+    "stats": {
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 0
+    },
+    "errors": []
+  },
+  {
+    "id": "agent_run_f427c658efa22895",
+    "job": "refresh",
+    "startedAt": "2026-05-04T02:12:19.807+00:00",
+    "finishedAt": "2026-05-04T02:12:19.822+00:00",
+    "status": "partial",
+    "stats": {
+      "eventsCreated": 49,
+      "eventsDeduped": 49,
+      "rawRecordsCreated": 0,
+      "qualityGateFailures": 0,
+      "candidateUpdatesCreated": 0,
+      "editorialSurfacesGenerated": 6
+    },
+    "errors": [
+      "SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY is not configured."
+    ]
+  }
+]

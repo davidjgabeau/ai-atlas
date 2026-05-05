@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-05-02T19:50:01.298Z",
+  "sourceHash": "1fe2bffc",
+  "insights": [
+    {
+      "id": "category-momentum",
+      "title": "Finance AI is clustering",
+      "body": "Several companies are clustering around finance AI with clear buyer pain.",
+      "supportingCompanyIds": [
+        "cmp_001",
+        "cmp_002",
+        "cmp_003",
+        "cmp_004",
+        "cmp_005"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.306Z",
+      "sourceCompanyIds": [
+        "cmp_001",
+        "cmp_025",
+        "cmp_049",
+        "cmp_002",
+        "cmp_026",
+        "cmp_003",
+        "cmp_027",
+        "cmp_004",
+        "cmp_028",
+        "cmp_005",
+        "cmp_029",
+        "cmp_006",
+        "cmp_030",
+        "cmp_007",
+        "cmp_031"
+      ],
+      "sourceHash": "1fe2bffc"
+    },
+    {
+      "id": "buyer-momentum",
+      "title": "Regulated buyers show depth",
+      "body": "Recent additions suggest finance, legal, and health teams are pulling AI into review-heavy workflows.",
+      "supportingCompanyIds": [
+        "cmp_001",
+        "cmp_025",
+        "cmp_002",
+        "cmp_003",
+        "cmp_004"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.306Z",
+      "sourceCompanyIds": [
+        "cmp_001",
+        "cmp_025",
+        "cmp_049",
+        "cmp_002",
+        "cmp_026",
+        "cmp_003",
+        "cmp_027",
+        "cmp_004",
+        "cmp_028",
+        "cmp_005",
+        "cmp_029",
+        "cmp_006",
+        "cmp_030",
+        "cmp_007",
+        "cmp_031"
+      ],
+      "sourceHash": "1fe2bffc"
+    },
+    {
+      "id": "interface-pattern",
+      "title": "Workflows are the interface",
+      "body": "The map is showing products organized around repeat workflows rather than one-off generation.",
+      "supportingCompanyIds": [
+        "cmp_001",
+        "cmp_025",
+        "cmp_026",
+        "cmp_003",
+        "cmp_027"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.306Z",
+      "sourceCompanyIds": [
+        "cmp_001",
+        "cmp_025",
+        "cmp_049",
+        "cmp_002",
+        "cmp_026",
+        "cmp_003",
+        "cmp_027",
+        "cmp_004",
+        "cmp_028",
+        "cmp_005",
+        "cmp_029",
+        "cmp_006",
+        "cmp_030",
+        "cmp_007",
+        "cmp_031"
+      ],
+      "sourceHash": "1fe2bffc"
+    }
+  ]
+}

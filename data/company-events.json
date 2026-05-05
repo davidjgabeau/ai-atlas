@@ -1,0 +1,1349 @@
+[
+  {
+    "id": "event_e3632b9d6ae57641",
+    "companyId": "cmp_060",
+    "type": "new_company_added",
+    "title": "Polimorphic added to AI Atlas",
+    "summary": "Polimorphic joined the map in Enterprise GTM & RevOps AI. AI workflows for local government services",
+    "sourceUrl": "https://www.polimorphic.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "38ea30e34b05130c5b4be704792e57d5701d77e0d7c542723a2af043c01700d1"
+  },
+  {
+    "id": "event_75494ea3597e24d0",
+    "companyId": "cmp_059",
+    "type": "new_company_added",
+    "title": "Foresight added to AI Atlas",
+    "summary": "Foresight joined the map in Data & Memory Layer. AI data infrastructure for private markets",
+    "sourceUrl": "https://www.foresight.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "2ce212ec5948be8713d36c6d0550d6255a81a9bdb2787265e33ccb04347f6c1c"
+  },
+  {
+    "id": "event_f78cf0931fc5d2e8",
+    "companyId": "cmp_058",
+    "type": "new_company_added",
+    "title": "Meridian added to AI Atlas",
+    "summary": "Meridian joined the map in Fintech & Trading AI. Agentic spreadsheets for finance teams",
+    "sourceUrl": "https://www.meridian.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8f66bbb6f63618b530f31d842f2ae9c0435a54d4894780b5be1f3323e2d6bd67"
+  },
+  {
+    "id": "event_ec0e547cda13b01b",
+    "companyId": "cmp_056",
+    "type": "new_company_added",
+    "title": "Vellum added to AI Atlas",
+    "summary": "Vellum joined the map in Model Tools & Dev Platform. Production tooling for LLM applications",
+    "sourceUrl": "https://www.vellum.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "60cb63efbbb61225c13162e8dce0b035da5546dd82b5d03922b4048541cc8c4c"
+  },
+  {
+    "id": "event_6a5827f6ac2ac54a",
+    "companyId": "cmp_055",
+    "type": "new_company_added",
+    "title": "Thread AI added to AI Atlas",
+    "summary": "Thread AI joined the map in Agent Infrastructure. Composable infrastructure for enterprise AI workflows",
+    "sourceUrl": "https://www.thread.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "52c94771ddb138be2fa89d57be951da3f8ba402fa804cf6f092d19b7730e92fa"
+  },
+  {
+    "id": "event_eba2601f02957712",
+    "companyId": "cmp_008",
+    "type": "funding",
+    "title": "Manifest OS recorded Series A funding",
+    "summary": "Manifest OS has Series A funding of $60M led by Menlo Ventures and Kleiner Perkins.",
+    "sourceUrl": "https://www.manifestos.com",
+    "sourceName": "Company profile",
+    "occurredAt": "2026-04-01T04:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.95,
+    "noveltyScore": 0.7,
+    "relevanceScore": 1,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "round": "Series A",
+      "amount": "$60M",
+      "investorNames": [
+        "Menlo Ventures",
+        "Kleiner Perkins",
+        "First Round Capital",
+        "Quiet Capital"
+      ]
+    },
+    "contentHash": "01c85788b239798503435ee9fec1d555db94fb428f7c4ab348f5413a39c0fde2"
+  },
+  {
+    "id": "event_01072859c2c9e7ee",
+    "companyId": "cmp_054",
+    "type": "new_company_added",
+    "title": "FLORA added to AI Atlas",
+    "summary": "FLORA joined the map in Media, Ads & Creative AI. Collaborative workspace for AI creative production",
+    "sourceUrl": "https://flora.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "53a370d717256dfc3ee47df4da0559461a62954f595e9430b8053c65d36eec53"
+  },
+  {
+    "id": "event_f90ee3fe6f8f4eae",
+    "companyId": "cmp_053",
+    "type": "new_company_added",
+    "title": "Profound added to AI Atlas",
+    "summary": "Profound joined the map in Media, Ads & Creative AI. Brand visibility for AI search",
+    "sourceUrl": "https://www.tryprofound.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "25ac11046895a91ea9d573fa7b1ef8999600e691b0cdb1d17195dfa15f211fd1"
+  },
+  {
+    "id": "event_b655db3630c305fa",
+    "companyId": "cmp_051",
+    "type": "new_company_added",
+    "title": "Ohai.ai added to AI Atlas",
+    "summary": "Ohai.ai joined the map in AI-Native Consumer & Social. AI household coordination for busy families",
+    "sourceUrl": "https://www.ohai.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "a710c57ad7071cd8e40fbdab64e68ddb2a4d80a086a174d0f92b4de6d513bfa7"
+  },
+  {
+    "id": "event_4d05d76aeeccc997",
+    "companyId": "cmp_063",
+    "type": "new_company_added",
+    "title": "CVector added to AI Atlas",
+    "summary": "CVector joined the map in Enterprise GTM & RevOps AI. AI operating systems for industrial facilities",
+    "sourceUrl": "https://www.cvector.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "9012e978bd779ab5f7c508f91840d267105428cd1f23f6ce81ed2a4978732975"
+  },
+  {
+    "id": "event_bf8a63257416b264",
+    "companyId": "cmp_050",
+    "type": "new_company_added",
+    "title": "Tapestry added to AI Atlas",
+    "summary": "Tapestry joined the map in AI-Native Consumer & Social. Open social graph infrastructure for AI products",
+    "sourceUrl": "https://www.usetapestry.dev",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "4db67dc9c717606f6ee788d1cb803237c94ac2103054f0bb0bfbd59041c93d21"
+  },
+  {
+    "id": "event_f1f0e40048ee4906",
+    "companyId": "cmp_057",
+    "type": "new_company_added",
+    "title": "Anchr added to AI Atlas",
+    "summary": "Anchr joined the map in Enterprise GTM & RevOps AI. AI operations software for food distributors",
+    "sourceUrl": "https://anchr.tech",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "3163452ab49641c76d7c9b323f5a2182fa90468e2d39904ceae2f99abb35ddb3"
+  },
+  {
+    "id": "event_1581c0188d5f46ac",
+    "companyId": "cmp_052",
+    "type": "new_company_added",
+    "title": "Bevel added to AI Atlas",
+    "summary": "Bevel joined the map in Health & Clinical AI. AI health insights from wearable data",
+    "sourceUrl": "https://www.bevel.health",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "a80fa62744217425f656d880b767a1f4159b3cb3cd36085ced1d7d24937986d0"
+  },
+  {
+    "id": "event_6e95a19e70fc1c58",
+    "companyId": "cmp_066",
+    "type": "new_company_added",
+    "title": "Modus added to AI Atlas",
+    "summary": "Modus joined the map in Fintech & Trading AI. AI-native accounting and audit workflows",
+    "sourceUrl": "https://www.modusalliance.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8d08dd6e5036a547a1e3bea864f16fc65caf323e71b130c1f745010601de7243"
+  },
+  {
+    "id": "event_8889689911f216b0",
+    "companyId": "cmp_065",
+    "type": "new_company_added",
+    "title": "DualEntry added to AI Atlas",
+    "summary": "DualEntry joined the map in Fintech & Trading AI. AI-native ERP for finance teams",
+    "sourceUrl": "https://www.dualentry.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "ecdbb2350d802df7d58c2fb0213479c1c5e9f0db4e7e310a636a9179a15497d8"
+  },
+  {
+    "id": "event_063f36ff51c23d57",
+    "companyId": "cmp_064",
+    "type": "new_company_added",
+    "title": "Auctor added to AI Atlas",
+    "summary": "Auctor joined the map in Enterprise GTM & RevOps AI. AI automation for enterprise software implementations",
+    "sourceUrl": "https://www.getauctor.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "2018c00222d92446cacb3deaf25bec91eb19bffaeafda6775089b4f95ca90b27"
+  },
+  {
+    "id": "event_f43f4c93860a4777",
+    "companyId": "cmp_062",
+    "type": "new_company_added",
+    "title": "Jimini Health added to AI Atlas",
+    "summary": "Jimini Health joined the map in Health & Clinical AI. Patient-facing AI for mental health care",
+    "sourceUrl": "https://www.jiminihealth.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "3501ddd47044a1b4fa9638a0cd9b7a9978cb17bbc923674978f859f73f5deb26"
+  },
+  {
+    "id": "event_94af87ef8aec526c",
+    "companyId": "cmp_061",
+    "type": "new_company_added",
+    "title": "Blossom Health added to AI Atlas",
+    "summary": "Blossom Health joined the map in Health & Clinical AI. AI-supported workflows for psychiatry care",
+    "sourceUrl": "https://www.joinblossomhealth.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-05-04T01:45:00+00:00",
+    "discoveredAt": "2026-05-04T02:14:03.481+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "5c7ee57f1f16bcbca23afbb4259af26a03b55977a623d6dd0a4fc266e86c55dd"
+  },
+  {
+    "id": "event_da4662b394eda570",
+    "companyId": "cmp_020",
+    "type": "new_company_added",
+    "title": "Anterior added to AI Atlas",
+    "summary": "Anterior joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.anterior.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-13T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "169 Madison Ave, Suite 2408, New York, NY 10016"
+    },
+    "contentHash": "d03ab670ca031ffba0bfd6303ac680cbcad762a26c778dcbfeba8e82d49f7cca"
+  },
+  {
+    "id": "event_fe109e7a4d37729d",
+    "companyId": "cmp_021",
+    "type": "new_company_added",
+    "title": "Valerie Health added to AI Atlas",
+    "summary": "Valerie Health joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.valeriehealth.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-15T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "72d8e70ba6a6e336b822f666043d8e6cc8813b4a934e8a51354a0f36b590427b"
+  },
+  {
+    "id": "event_d09c0a075c66693b",
+    "companyId": "cmp_022",
+    "type": "new_company_added",
+    "title": "Clarion added to AI Atlas",
+    "summary": "Clarion joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.clarion.health",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-17T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "840886f8e87bf818830371b799e4405a8c9f1053528d4b6a52852a0700e819a5"
+  },
+  {
+    "id": "event_85dc7095ff7dff21",
+    "companyId": "cmp_023",
+    "type": "new_company_added",
+    "title": "Sohar Health added to AI Atlas",
+    "summary": "Sohar Health joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.soharhealth.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-19T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "2f21dd983212d903db44531500ed5a03bc3c5ee27a44eeb96638a67ef2f29081"
+  },
+  {
+    "id": "event_cc8afac760d780f1",
+    "companyId": "cmp_024",
+    "type": "new_company_added",
+    "title": "Camber added to AI Atlas",
+    "summary": "Camber joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.camber.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-21T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "194ae4d916a8325b4eed62191dfa9a8d1f74f3c99f8c95ffa331e1a8c988e043"
+  },
+  {
+    "id": "event_ec5f020aeae271af",
+    "companyId": "cmp_025",
+    "type": "new_company_added",
+    "title": "Granted added to AI Atlas",
+    "summary": "Granted joined the map in Health & Clinical AI. Automating clinical admin work for health plans",
+    "sourceUrl": "https://www.granted.health",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-23T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8bf85491947db19640b9b31d2485acae5f2a6285ad60a1f42be23541bbefe125"
+  },
+  {
+    "id": "event_3c0a0fe31c86e534",
+    "companyId": "cmp_026",
+    "type": "new_company_added",
+    "title": "Series added to AI Atlas",
+    "summary": "Series joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.series.so",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-25T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "362499e6f6283535a7e04d64fe909c9c45aced0d664d6088ad70b4d1a64cce01"
+  },
+  {
+    "id": "event_c73b42c857862646",
+    "companyId": "cmp_027",
+    "type": "new_company_added",
+    "title": "222 added to AI Atlas",
+    "summary": "222 joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.two-two-two.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-27T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "83615cccdb60eac0d7b3a674c7e0f11c1e46db72aa961cf47ffa07ef31dbcdb2"
+  },
+  {
+    "id": "event_2d7573a8bfc1ce24",
+    "companyId": "cmp_028",
+    "type": "new_company_added",
+    "title": "Cerca added to AI Atlas",
+    "summary": "Cerca joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.cerca.app",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-29T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "a50d99f4167d0ebc0987fd833bd47f50108cf51ba6df79e79657e0c37d0dacea"
+  },
+  {
+    "id": "event_87dadbd0bbf08697",
+    "companyId": "cmp_029",
+    "type": "new_company_added",
+    "title": "Remesh added to AI Atlas",
+    "summary": "Remesh joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.remesh.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-31T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "71ea13ab0d2ebcfb18b34749b29ced61c0749985c1e894c38080efc093684043"
+  },
+  {
+    "id": "event_78c49aa9f1651219",
+    "companyId": "cmp_030",
+    "type": "new_company_added",
+    "title": "Loyalist added to AI Atlas",
+    "summary": "Loyalist joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.loyalist.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-02T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "0fd5fd1c9625cfe3be4f173209241ac800de744eb0c6e8c58b70bf4909de9983"
+  },
+  {
+    "id": "event_4c3ad455475ec79d",
+    "companyId": "cmp_031",
+    "type": "new_company_added",
+    "title": "Nori added to AI Atlas",
+    "summary": "Nori joined the map in AI-Native Consumer & Social. Personal memory workflows for everyday users",
+    "sourceUrl": "https://www.nori.health",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-04T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "474b61ef1d676f6f55de8351b1d67c184c09e319f4625da8e4be0e44ebe83cda"
+  },
+  {
+    "id": "event_7501e73e52335b9c",
+    "companyId": "cmp_032",
+    "type": "new_company_added",
+    "title": "Emergence AI added to AI Atlas",
+    "summary": "Emergence AI joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.emergence.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-06T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "8 W 40th St, Floor 20, New York, NY 10018"
+    },
+    "contentHash": "eb764dcc053070574d08f70949db83a32f4a245deba4d093b3cf6d8b1bcc6b61"
+  },
+  {
+    "id": "event_d391ec0596b4d3cd",
+    "companyId": "cmp_033",
+    "type": "new_company_added",
+    "title": "Channel3 added to AI Atlas",
+    "summary": "Channel3 joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.trychannel3.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-08T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "84ae5ccd6a698407e33e5853ca7b39768b758b670d4468a0efdcacd2a0c8b578"
+  },
+  {
+    "id": "event_942ced6ef5872396",
+    "companyId": "cmp_034",
+    "type": "new_company_added",
+    "title": "Amika added to AI Atlas",
+    "summary": "Amika joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.amika.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-10T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "7e7fd33835a4f5023bd07d19abfd3616aecc7d30f79b297f007c754b00a70e7d"
+  },
+  {
+    "id": "event_4816f78022bc6ac6",
+    "companyId": "cmp_035",
+    "type": "new_company_added",
+    "title": "Kay.ai added to AI Atlas",
+    "summary": "Kay.ai joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.kay.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-12T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "a4ed01400929f55bb09172df0f848595e55f9b5493ec4f2d4bf37c2733bf0686"
+  },
+  {
+    "id": "event_3b604a87a3f29de8",
+    "companyId": "cmp_036",
+    "type": "new_company_added",
+    "title": "Empromptu added to AI Atlas",
+    "summary": "Empromptu joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.empromptu.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-14T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "c50cabf58d5eb2fe5622a59d2c27625e2cf0cce1695f5c7e53bc6f3b0f26194b"
+  },
+  {
+    "id": "event_ebf210f5f2f78889",
+    "companyId": "cmp_037",
+    "type": "new_company_added",
+    "title": "Vortexify AI added to AI Atlas",
+    "summary": "Vortexify AI joined the map in Agent Infrastructure. Testing infrastructure for autonomous agents",
+    "sourceUrl": "https://www.vortexify.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-16T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "1d0c8eaa65d1025b5775583a9a32182f2a15484e157e920535ccb1600f3e9503"
+  },
+  {
+    "id": "event_36fd04f682dd0af0",
+    "companyId": "cmp_038",
+    "type": "new_company_added",
+    "title": "Kalepa added to AI Atlas",
+    "summary": "Kalepa joined the map in Enterprise GTM & RevOps AI. Sales workflows for revenue teams",
+    "sourceUrl": "https://www.kalepa.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-18T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "920 Broadway, New York, NY 10010"
+    },
+    "contentHash": "9e40d17a15882bd48894d38322a692bc89013151e77e4df65778099fb5d6fac6"
+  },
+  {
+    "id": "event_630ef7ceffb11622",
+    "companyId": "cmp_039",
+    "type": "new_company_added",
+    "title": "Slang.ai added to AI Atlas",
+    "summary": "Slang.ai joined the map in Enterprise GTM & RevOps AI. Sales workflows for revenue teams",
+    "sourceUrl": "https://www.slang.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-20T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "0e58fa2df7cd761daefabcc586e22a3339d2740f54574bb79573f69af9049735"
+  },
+  {
+    "id": "event_6486766ec84f16fa",
+    "companyId": "cmp_040",
+    "type": "new_company_added",
+    "title": "Concourse added to AI Atlas",
+    "summary": "Concourse joined the map in Enterprise GTM & RevOps AI. Sales workflows for revenue teams",
+    "sourceUrl": "https://www.concourse.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-22T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "5d1a1d3d1e43278455977185f334439ff9dc9ef662ffc21f2f08d36979e28e48"
+  },
+  {
+    "id": "event_df06af34e0468a4b",
+    "companyId": "cmp_041",
+    "type": "new_company_added",
+    "title": "RowFlow added to AI Atlas",
+    "summary": "RowFlow joined the map in Enterprise GTM & RevOps AI. Sales workflows for revenue teams",
+    "sourceUrl": "https://www.rowflow.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-24T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "6143f8747e55196c299c815f615f68b9f3290f70547ee8019f554387d142cebb"
+  },
+  {
+    "id": "event_bdf42678533cf603",
+    "companyId": "cmp_001",
+    "type": "new_company_added",
+    "title": "Hebbia added to AI Atlas",
+    "summary": "Hebbia joined the map in Fintech & Trading AI. Research workflows for financial teams",
+    "sourceUrl": "https://www.hebbia.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-05T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "110 Greene St, Suite 1200, New York, NY 10012"
+    },
+    "contentHash": "26d857ee5ad3734e782ed75b2273827842da18bac7b9fc548eb8d2335a476adc"
+  },
+  {
+    "id": "event_413006ddb8d85d91",
+    "companyId": "cmp_042",
+    "type": "new_company_added",
+    "title": "Tofu added to AI Atlas",
+    "summary": "Tofu joined the map in Enterprise GTM & RevOps AI. Sales workflows for revenue teams",
+    "sourceUrl": "https://www.tofuhq.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-26T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "cfdb0f638222adf7333e664b831669188fd697e4307f4d906bb0924d6f2882e3"
+  },
+  {
+    "id": "event_02b071874e18405f",
+    "companyId": "cmp_043",
+    "type": "new_company_added",
+    "title": "Standard Signal added to AI Atlas",
+    "summary": "Standard Signal joined the map in Fintech & Trading AI. Research workflows for financial teams",
+    "sourceUrl": "https://www.standardsignal.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-28T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "e68d8f82c1a7614a3f1b4343ad3505eebf7663a1de0fb6434cb58f9ded80c9c1"
+  },
+  {
+    "id": "event_3e84c7c66f9517da",
+    "companyId": "cmp_044",
+    "type": "new_company_added",
+    "title": "Carbon Arc added to AI Atlas",
+    "summary": "Carbon Arc joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.carbonarc.co",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-01-30T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "557660f5957e95ea9ee4d0c2fd7bcc8c808c8508e8b16fed843a686a03a99112"
+  },
+  {
+    "id": "event_4793de9b66e6212b",
+    "companyId": "cmp_045",
+    "type": "new_company_added",
+    "title": "Wallaroo added to AI Atlas",
+    "summary": "Wallaroo joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.wallaroo.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-02-01T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "7ca369efa482e83a601783d02fccd8f4419f0d5f8cab44e8ac2b6a71236760b7"
+  },
+  {
+    "id": "event_41989cba229bfb41",
+    "companyId": "cmp_046",
+    "type": "new_company_added",
+    "title": "Canoe Intelligence added to AI Atlas",
+    "summary": "Canoe Intelligence joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.canoeintelligence.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-02-03T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "432b9f8932a7e2e88d55004582f32231acd5dbb20762318b7e94ca70458525a4"
+  },
+  {
+    "id": "event_53429ce47498d72b",
+    "companyId": "cmp_047",
+    "type": "new_company_added",
+    "title": "Hyperscience added to AI Atlas",
+    "summary": "Hyperscience joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.hyperscience.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-02-05T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "285 Fulton Street, 88th Floor (One World Trade Center), New York, NY 10007"
+    },
+    "contentHash": "90efb604e9e7de27ca0508440037f0eb5dc4c0fdc0d2fe3c721e77b0b0405840"
+  },
+  {
+    "id": "event_ceb120a698c2a33a",
+    "companyId": "cmp_048",
+    "type": "new_company_added",
+    "title": "Datagrid added to AI Atlas",
+    "summary": "Datagrid joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.datagrid.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-02-07T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8f2263998786ee5fc1e465802ce4eaf3b7f474ccdeaff9769166000a9a623a1a"
+  },
+  {
+    "id": "event_4971ffe85da8e60d",
+    "companyId": "cmp_002",
+    "type": "new_company_added",
+    "title": "Bayesline added to AI Atlas",
+    "summary": "Bayesline joined the map in Fintech & Trading AI. Custom risk analytics for investment teams",
+    "sourceUrl": "https://bayesline.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-07T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "c5ec4889679480ee07b223e1fd72316692c7fc9151b06550d7e981472c39900d"
+  },
+  {
+    "id": "event_62925682c9b713e8",
+    "companyId": "cmp_049",
+    "type": "new_company_added",
+    "title": "Aspect added to AI Atlas",
+    "summary": "Aspect joined the map in Data & Memory Layer. Turning messy documents into structured context",
+    "sourceUrl": "https://www.aspect.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2026-02-09T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8aa97e26fec40510ef048153c859d20a3aa44e27848b1774199743c1572b2245"
+  },
+  {
+    "id": "event_6185194c01ea77d2",
+    "companyId": "cmp_003",
+    "type": "new_company_added",
+    "title": "Brightwave added to AI Atlas",
+    "summary": "Brightwave joined the map in Fintech & Trading AI. Research workflows for financial teams",
+    "sourceUrl": "https://www.brightwave.io",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-09T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "43bde84d5420f6182f60da03b4336b909068ea6177f65435b6e6383e52e06940"
+  },
+  {
+    "id": "event_3d7eef76132eda1e",
+    "companyId": "cmp_004",
+    "type": "new_company_added",
+    "title": "Maybern added to AI Atlas",
+    "summary": "Maybern joined the map in Fintech & Trading AI. Fund operations workflows for private markets",
+    "sourceUrl": "https://www.maybern.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-11T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "aba66def64087edb60fcf2d81bd3714bf00d5aaf5cbc2b9c282c7558ab549040"
+  },
+  {
+    "id": "event_d6e801c0620e8ed9",
+    "companyId": "cmp_005",
+    "type": "new_company_added",
+    "title": "Tabs added to AI Atlas",
+    "summary": "Tabs joined the map in Fintech & Trading AI. Contract-to-cash workflows for finance teams",
+    "sourceUrl": "https://www.tabs.inc",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-13T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "835dc2c24538880b941638a138e31462f6ccb23f41c99f0a024881d961000c23"
+  },
+  {
+    "id": "event_23c8b3013aeaced2",
+    "companyId": "cmp_006",
+    "type": "new_company_added",
+    "title": "Trata added to AI Atlas",
+    "summary": "Trata joined the map in Fintech & Trading AI. Research workflows for financial teams",
+    "sourceUrl": "https://www.trytrata.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-15T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "6fc6a838b92a014803dbe83f0d93657bf02609f99a410a36fc5b4c777acd96f5"
+  },
+  {
+    "id": "event_0b1c4a67fcef39dc",
+    "companyId": "cmp_007",
+    "type": "new_company_added",
+    "title": "Norm Ai added to AI Atlas",
+    "summary": "Norm Ai joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.norm.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-17T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "7 World Trade Center, 39th Floor, New York, NY 10007"
+    },
+    "contentHash": "c8608fa479170a465f4be4f531ed6999c1a840bd88238e77e0b2110c2dcdd51f"
+  },
+  {
+    "id": "event_1f5ee13f457e8fd1",
+    "companyId": "cmp_008",
+    "type": "new_company_added",
+    "title": "Manifest OS added to AI Atlas",
+    "summary": "Manifest OS joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.manifestlaw.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-19T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "333 Park Avenue South, Suite 3C, New York, NY 10010"
+    },
+    "contentHash": "d8518754292974d9b05ea65d56aaf58baeda2ddb515525fb281815b36becbbb3"
+  },
+  {
+    "id": "event_0199a6501091d7fd",
+    "companyId": "cmp_009",
+    "type": "new_company_added",
+    "title": "Soxton added to AI Atlas",
+    "summary": "Soxton joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.soxton.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-21T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "6751f432b82a6602686d01e2a19895ac48d8be30117869cb3d1e329b5616c1cc"
+  },
+  {
+    "id": "event_ec85279ff2874d0c",
+    "companyId": "cmp_010",
+    "type": "new_company_added",
+    "title": "Bretton AI added to AI Atlas",
+    "summary": "Bretton AI joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.bretton.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-23T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "7123785b2282eb08d96041d656ebbc183cb67bad07a1b12122dc9d8024df8f12"
+  },
+  {
+    "id": "event_8ebff1e786e002a6",
+    "companyId": "cmp_011",
+    "type": "new_company_added",
+    "title": "Alkymi added to AI Atlas",
+    "summary": "Alkymi joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.alkymi.io",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-25T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "867562157237096b869a1057599ea5edfce07f06d5c0f064665ae7cc7548d9a0"
+  },
+  {
+    "id": "event_0bb1e79fb9876f3c",
+    "companyId": "cmp_012",
+    "type": "new_company_added",
+    "title": "ZeroDrift added to AI Atlas",
+    "summary": "ZeroDrift joined the map in Legal & Compliance AI. Turning policies into operational AI agents",
+    "sourceUrl": "https://www.zerodrift.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-27T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "5a33777e67b54a88b41a5051ffe4c45ee8d6d0718f4fbb57afe15a3729cc9934"
+  },
+  {
+    "id": "event_b7e38c4d49237ebf",
+    "companyId": "cmp_013",
+    "type": "new_company_added",
+    "title": "Mirage (formerly Captions) added to AI Atlas",
+    "summary": "Mirage (formerly Captions) joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.captions.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-11-29T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "d8ad8bacaa2d1fd660985838ccefebf210a73dc47006954887ca6901b5a249f7"
+  },
+  {
+    "id": "event_c38e8c36e157da60",
+    "companyId": "cmp_014",
+    "type": "new_company_added",
+    "title": "Agentio added to AI Atlas",
+    "summary": "Agentio joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.agentio.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-01T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "295 Fifth Ave, 11th Floor, New York, NY 10016"
+    },
+    "contentHash": "a35b382df75f1b91da0b9a7214e4537a38fa676974c860c8f24cc2b0e40c0b81"
+  },
+  {
+    "id": "event_ef4f3831c7d58b7c",
+    "companyId": "cmp_015",
+    "type": "new_company_added",
+    "title": "Aaru added to AI Atlas",
+    "summary": "Aaru joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.aaru.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-03T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "52613075dd36b98965084871c449421b74fb137cc47d6f76f3e32afb61df6cd3"
+  },
+  {
+    "id": "event_93335e0022145076",
+    "companyId": "cmp_016",
+    "type": "new_company_added",
+    "title": "Icon added to AI Atlas",
+    "summary": "Icon joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.icon.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-05T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.85,
+    "finalScore": 0.85,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "8711c99d609ba4dc2d1ef6f272dc7ce88a7249005a53782b97290934720db583"
+  },
+  {
+    "id": "event_307bd7db22ae5b2e",
+    "companyId": "cmp_017",
+    "type": "new_company_added",
+    "title": "Tildei added to AI Atlas",
+    "summary": "Tildei joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.tildei.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-07T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 0.95,
+    "finalScore": 0.875,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "7fe52836a3a119e56b4d0118dba6ffebfc63426dc6077f0d702a875b2efd971b"
+  },
+  {
+    "id": "event_0937aadb1ebeebe9",
+    "companyId": "cmp_018",
+    "type": "new_company_added",
+    "title": "Stewdio added to AI Atlas",
+    "summary": "Stewdio joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.stewdio.com",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-09T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "edfb32016a3e696cd4d33e5975673dcf827139b1ac85dd7dada4050700157eaf"
+  },
+  {
+    "id": "event_3444628b734b295f",
+    "companyId": "cmp_019",
+    "type": "new_company_added",
+    "title": "Absurd added to AI Atlas",
+    "summary": "Absurd joined the map in Media, Ads & Creative AI. Consumer video creation with real distribution",
+    "sourceUrl": "https://www.absurd.ai",
+    "sourceName": "AI Atlas curation",
+    "occurredAt": "2025-12-11T14:00:00+00:00",
+    "discoveredAt": "2026-05-04T02:12:19.812+00:00",
+    "confidence": "high",
+    "importanceScore": 0.72,
+    "noveltyScore": 1,
+    "relevanceScore": 1,
+    "finalScore": 0.888,
+    "extractedFacts": {
+      "location": "New York, NY"
+    },
+    "contentHash": "6c6bbe2f9fffbff97830f991943cd4d145fec89dc31ed6afd51508462b889905"
+  }
+]

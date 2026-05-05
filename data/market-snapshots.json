@@ -1,0 +1,271 @@
+[
+  {
+    "id": "snapshot_7508c3b4ff52bd82",
+    "generatedAt": "2026-05-04T14:14:15.533Z",
+    "companyCount": 66,
+    "categoryCounts": {
+      "Fintech & Trading AI": 10,
+      "Media, Ads & Creative AI": 8,
+      "Health & Clinical AI": 9,
+      "Model Tools & Dev Platform": 1,
+      "Legal & Compliance AI": 6,
+      "AI-Native Consumer & Social": 8,
+      "Agent Infrastructure": 7,
+      "Enterprise GTM & RevOps AI": 9,
+      "Data & Memory Layer": 8
+    },
+    "stageCounts": {
+      "Unknown": 27,
+      "Series A": 14,
+      "Seed / Series A": 2,
+      "Pre-seed": 5,
+      "Seed": 18
+    },
+    "recentCompanyIds": [
+      "cmp_050",
+      "cmp_051",
+      "cmp_052",
+      "cmp_053",
+      "cmp_054",
+      "cmp_055",
+      "cmp_056",
+      "cmp_057",
+      "cmp_058",
+      "cmp_059",
+      "cmp_060",
+      "cmp_061",
+      "cmp_062",
+      "cmp_063",
+      "cmp_064",
+      "cmp_065",
+      "cmp_066"
+    ],
+    "recentEventIds": [
+      "event_01072859c2c9e7ee",
+      "event_0199a6501091d7fd",
+      "event_02b071874e18405f",
+      "event_063f36ff51c23d57",
+      "event_0937aadb1ebeebe9",
+      "event_0b1c4a67fcef39dc",
+      "event_0bb1e79fb9876f3c",
+      "event_1581c0188d5f46ac",
+      "event_1f5ee13f457e8fd1",
+      "event_23c8b3013aeaced2",
+      "event_2d7573a8bfc1ce24",
+      "event_307bd7db22ae5b2e",
+      "event_3444628b734b295f",
+      "event_36fd04f682dd0af0",
+      "event_3b604a87a3f29de8",
+      "event_3c0a0fe31c86e534",
+      "event_3d7eef76132eda1e",
+      "event_3e84c7c66f9517da",
+      "event_413006ddb8d85d91",
+      "event_41989cba229bfb41",
+      "event_4793de9b66e6212b",
+      "event_4816f78022bc6ac6",
+      "event_4971ffe85da8e60d",
+      "event_4c3ad455475ec79d",
+      "event_4d05d76aeeccc997",
+      "event_53429ce47498d72b",
+      "event_6185194c01ea77d2",
+      "event_62925682c9b713e8",
+      "event_630ef7ceffb11622",
+      "event_6486766ec84f16fa",
+      "event_6a5827f6ac2ac54a",
+      "event_6e95a19e70fc1c58",
+      "event_7501e73e52335b9c",
+      "event_75494ea3597e24d0",
+      "event_78c49aa9f1651219",
+      "event_85dc7095ff7dff21",
+      "event_87dadbd0bbf08697",
+      "event_8889689911f216b0",
+      "event_8ebff1e786e002a6",
+      "event_93335e0022145076",
+      "event_942ced6ef5872396",
+      "event_94af87ef8aec526c",
+      "event_b655db3630c305fa",
+      "event_b7e38c4d49237ebf",
+      "event_bdf42678533cf603",
+      "event_bf8a63257416b264",
+      "event_c38e8c36e157da60",
+      "event_c73b42c857862646",
+      "event_cc8afac760d780f1",
+      "event_ceb120a698c2a33a",
+      "event_d09c0a075c66693b",
+      "event_d391ec0596b4d3cd",
+      "event_d6e801c0620e8ed9",
+      "event_da4662b394eda570",
+      "event_df06af34e0468a4b",
+      "event_e3632b9d6ae57641",
+      "event_eba2601f02957712",
+      "event_ebf210f5f2f78889",
+      "event_ec0e547cda13b01b",
+      "event_ec5f020aeae271af",
+      "event_ec85279ff2874d0c",
+      "event_ef4f3831c7d58b7c",
+      "event_f1f0e40048ee4906",
+      "event_f43f4c93860a4777",
+      "event_f78cf0931fc5d2e8",
+      "event_f90ee3fe6f8f4eae",
+      "event_fe109e7a4d37729d"
+    ],
+    "topCategories": [
+      {
+        "category": "Fintech & Trading AI",
+        "count": 10,
+        "delta": 0
+      },
+      {
+        "category": "Health & Clinical AI",
+        "count": 9,
+        "delta": 0
+      },
+      {
+        "category": "Enterprise GTM & RevOps AI",
+        "count": 9,
+        "delta": 0
+      },
+      {
+        "category": "Media, Ads & Creative AI",
+        "count": 8,
+        "delta": 0
+      },
+      {
+        "category": "AI-Native Consumer & Social",
+        "count": 8,
+        "delta": 0
+      },
+      {
+        "category": "Data & Memory Layer",
+        "count": 8,
+        "delta": 0
+      }
+    ],
+    "topSignals": [
+      {
+        "type": "new_company_added",
+        "count": 66,
+        "delta": 0
+      },
+      {
+        "type": "funding",
+        "count": 1,
+        "delta": 0
+      }
+    ],
+    "sourceHash": "d83d12043c2dcee5488f21b8d3ba6906d9311abcdebf30cb8f189ba498b93ea9"
+  },
+  {
+    "id": "snapshot_7c3727be07de1267",
+    "generatedAt": "2026-05-04T02:12:39.057+00:00",
+    "companyCount": 49,
+    "categoryCounts": {
+      "Data & Memory Layer": 6,
+      "Agent Infrastructure": 6,
+      "Fintech & Trading AI": 7,
+      "Health & Clinical AI": 6,
+      "Legal & Compliance AI": 6,
+      "Media, Ads & Creative AI": 7,
+      "Enterprise GTM & RevOps AI": 5,
+      "AI-Native Consumer & Social": 6
+    },
+    "stageCounts": {
+      "Seed": 14,
+      "Unknown": 27,
+      "Pre-seed": 3,
+      "Series A": 5
+    },
+    "recentCompanyIds": [],
+    "recentEventIds": [
+      "event_0199a6501091d7fd",
+      "event_02b071874e18405f",
+      "event_0937aadb1ebeebe9",
+      "event_0b1c4a67fcef39dc",
+      "event_0bb1e79fb9876f3c",
+      "event_1f5ee13f457e8fd1",
+      "event_23c8b3013aeaced2",
+      "event_2d7573a8bfc1ce24",
+      "event_307bd7db22ae5b2e",
+      "event_3444628b734b295f",
+      "event_36fd04f682dd0af0",
+      "event_3b604a87a3f29de8",
+      "event_3c0a0fe31c86e534",
+      "event_3d7eef76132eda1e",
+      "event_3e84c7c66f9517da",
+      "event_413006ddb8d85d91",
+      "event_41989cba229bfb41",
+      "event_4793de9b66e6212b",
+      "event_4816f78022bc6ac6",
+      "event_4971ffe85da8e60d",
+      "event_4c3ad455475ec79d",
+      "event_53429ce47498d72b",
+      "event_6185194c01ea77d2",
+      "event_62925682c9b713e8",
+      "event_630ef7ceffb11622",
+      "event_6486766ec84f16fa",
+      "event_7501e73e52335b9c",
+      "event_78c49aa9f1651219",
+      "event_85dc7095ff7dff21",
+      "event_87dadbd0bbf08697",
+      "event_8ebff1e786e002a6",
+      "event_93335e0022145076",
+      "event_942ced6ef5872396",
+      "event_b7e38c4d49237ebf",
+      "event_bdf42678533cf603",
+      "event_c38e8c36e157da60",
+      "event_c73b42c857862646",
+      "event_cc8afac760d780f1",
+      "event_ceb120a698c2a33a",
+      "event_d09c0a075c66693b",
+      "event_d391ec0596b4d3cd",
+      "event_d6e801c0620e8ed9",
+      "event_da4662b394eda570",
+      "event_df06af34e0468a4b",
+      "event_ebf210f5f2f78889",
+      "event_ec5f020aeae271af",
+      "event_ec85279ff2874d0c",
+      "event_ef4f3831c7d58b7c",
+      "event_fe109e7a4d37729d"
+    ],
+    "topCategories": [
+      {
+        "count": 7,
+        "delta": 0,
+        "category": "Fintech & Trading AI"
+      },
+      {
+        "count": 7,
+        "delta": 0,
+        "category": "Media, Ads & Creative AI"
+      },
+      {
+        "count": 6,
+        "delta": 0,
+        "category": "Data & Memory Layer"
+      },
+      {
+        "count": 6,
+        "delta": 0,
+        "category": "Agent Infrastructure"
+      },
+      {
+        "count": 6,
+        "delta": 0,
+        "category": "AI-Native Consumer & Social"
+      },
+      {
+        "count": 6,
+        "delta": 0,
+        "category": "Health & Clinical AI"
+      }
+    ],
+    "topSignals": [
+      {
+        "type": "new_company_added",
+        "count": 49,
+        "delta": 0
+      }
+    ],
+    "sourceHash": "9fa690e3c6cd2ee9c406651e489f75393248626ebfc10d5b1c59c169b18a4008"
+  }
+]

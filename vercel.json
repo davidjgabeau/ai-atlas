@@ -1,0 +1,38 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "crons": [
+    {
+      "path": "/api/cron/sync-company-posts",
+      "schedule": "17 14 * * *"
+    },
+    {
+      "path": "/api/cron/agent-refresh",
+      "schedule": "17 15 * * *"
+    },
+    {
+      "path": "/api/cron/agent-discover",
+      "schedule": "42 16 * * *"
+    },
+    {
+      "path": "/api/cron/agent-editorial",
+      "schedule": "9 11 * * *"
+    },
+    {
+      "path": "/api/cron/refresh-company-logos",
+      "schedule": "31 12 * * *"
+    },
+    {
+      "path": "/api/cron/refresh-company-jobs",
+      "schedule": "47 12 * * *"
+    },
+    {
+      "path": "/api/cron/refresh-news",
+      "schedule": "23 13 * * *"
+    },
+    {
+      "path": "/api/cron/refresh-company-profile-briefs",
+      "schedule": "53 13 * * *"
+    }
+  ]
+}

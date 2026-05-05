@@ -1,0 +1,1026 @@
+{
+  "generatedAt": "2026-05-02T19:50:01.298Z",
+  "companies": {
+    "cmp_001": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Worth watching",
+      "signalReason": "Fintech & Trading AI company is worth watching based on editorial review.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "growth",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "5f691d3e"
+    },
+    "cmp_002": {
+      "hook": "Custom risk analytics for investment teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "86e33516"
+    },
+    "cmp_003": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "c8adf6f1"
+    },
+    "cmp_004": {
+      "hook": "Fund operations workflows for private markets",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "growth",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.303Z",
+      "sourceHash": "d46d331a"
+    },
+    "cmp_005": {
+      "hook": "Contract-to-cash workflows for finance teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "b7055af2"
+    },
+    "cmp_006": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "41585f21"
+    },
+    "cmp_007": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Worth watching",
+      "signalReason": "Legal & Compliance AI company is worth watching based on editorial review.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "growth",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "52dbd17e"
+    },
+    "cmp_008": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Worth watching",
+      "signalReason": "Legal & Compliance AI company is worth watching based on editorial review.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "series a",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "86e81518"
+    },
+    "cmp_009": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "early stage",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "7c5a275a"
+    },
+    "cmp_010": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "series b",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "a4346e96"
+    },
+    "cmp_011": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "early stage",
+        "agent",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "9babe02b"
+    },
+    "cmp_012": {
+      "hook": "Turning policies into operational AI agents",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "legal",
+        "compliance",
+        "pre-seed",
+        "agent",
+        "workflow",
+        "health"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "workflow automation",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "e1c80266"
+    },
+    "cmp_013": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Worth watching",
+      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "keywords": [
+        "media,",
+        "creative",
+        "growth",
+        "agent",
+        "workflow",
+        "consumer"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "70826d32"
+    },
+    "cmp_014": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Worth watching",
+      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "keywords": [
+        "media,",
+        "creative",
+        "series b",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "530d9e6d"
+    },
+    "cmp_015": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Worth watching",
+      "signalReason": "Media, Ads & Creative AI company is worth watching based on editorial review.",
+      "keywords": [
+        "media,",
+        "creative",
+        "series a",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "da5ff555"
+    },
+    "cmp_016": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "early stage",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "ed274845"
+    },
+    "cmp_017": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "early stage",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "e9eb4a2a"
+    },
+    "cmp_018": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "seed",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "c0b9d9f1"
+    },
+    "cmp_019": {
+      "hook": "Consumer video creation with real distribution",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "media,",
+        "creative",
+        "seed",
+        "agent",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "creative workflow",
+        "interface pattern",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "b3ddf648"
+    },
+    "cmp_020": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Worth watching",
+      "signalReason": "Health & Clinical AI company is worth watching based on editorial review.",
+      "keywords": [
+        "health",
+        "clinical",
+        "growth",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "d579afd8"
+    },
+    "cmp_021": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "series a",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "a52296f2"
+    },
+    "cmp_022": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "seed",
+        "agent",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.304Z",
+      "sourceHash": "cee90432"
+    },
+    "cmp_023": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "seed",
+        "workflow",
+        "revenue",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "bb73b7f9"
+    },
+    "cmp_024": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "series b",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b1f5ba33"
+    },
+    "cmp_025": {
+      "hook": "Automating clinical admin work for health plans",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "health",
+        "clinical",
+        "early stage",
+        "agent",
+        "workflow",
+        "consumer"
+      ],
+      "trendDimensions": [
+        "clinical operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2e28c9b1"
+    },
+    "cmp_026": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Worth watching",
+      "signalReason": "AI-Native Consumer & Social company is worth watching based on editorial review.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "pre-seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "c382d66d"
+    },
+    "cmp_027": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "0c2fcf37"
+    },
+    "cmp_028": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "fc550601"
+    },
+    "cmp_029": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "early stage",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "c6f4f70f"
+    },
+    "cmp_030": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "early stage",
+        "workflow",
+        "memory"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2da556d7"
+    },
+    "cmp_031": {
+      "hook": "Personal memory workflows for everyday users",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing product where AI shapes the core experience.",
+      "keywords": [
+        "ai-native",
+        "consumer",
+        "social",
+        "seed",
+        "workflow",
+        "health"
+      ],
+      "trendDimensions": [
+        "consumer interface",
+        "memory behavior",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "344b2696"
+    },
+    "cmp_032": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Worth watching",
+      "signalReason": "Agent Infrastructure company is worth watching based on editorial review.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "series a",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "4d348b77"
+    },
+    "cmp_033": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "2cbac075"
+    },
+    "cmp_034": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "d5d07a7b"
+    },
+    "cmp_035": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "early stage",
+        "workflow",
+        "documents"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "af6fb21a"
+    },
+    "cmp_036": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "pre-seed",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "f21509b6"
+    },
+    "cmp_037": {
+      "hook": "Testing infrastructure for autonomous agents",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "agent",
+        "infrastructure",
+        "seed",
+        "workflow",
+        "operations"
+      ],
+      "trendDimensions": [
+        "agent infrastructure",
+        "workflow reliability",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "5127a706"
+    },
+    "cmp_038": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "865db615"
+    },
+    "cmp_039": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "695d797e"
+    },
+    "cmp_040": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "28eaec63"
+    },
+    "cmp_041": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "899c2070"
+    },
+    "cmp_042": {
+      "hook": "Sales workflows for revenue teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "enterprise",
+        "revops",
+        "early stage",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "enterprise operations",
+        "workflow automation",
+        "agentic workflows"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "56dc3706"
+    },
+    "cmp_043": {
+      "hook": "Research workflows for financial teams",
+      "signalLabel": "Workflow signal",
+      "signalReason": "Built around a concrete workflow or durable product surface.",
+      "keywords": [
+        "fintech",
+        "trading",
+        "seed",
+        "agent",
+        "research",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "regulated buyers",
+        "research workflows",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b5294ee7"
+    },
+    "cmp_044": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "series a"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "bf2ba5f9"
+    },
+    "cmp_045": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "b2291817"
+    },
+    "cmp_046": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "981ca476"
+    },
+    "cmp_047": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage",
+        "workflow",
+        "documents"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "agentic workflows",
+        "context layer"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "69006afb"
+    },
+    "cmp_048": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "early stage",
+        "agent",
+        "workflow"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "agentic workflows",
+        "context layer",
+        "regulated adoption"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "a9b27f75"
+    },
+    "cmp_049": {
+      "hook": "Turning messy documents into structured context",
+      "signalLabel": "Infra signal",
+      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "keywords": [
+        "data",
+        "memory",
+        "layer",
+        "seed"
+      ],
+      "trendDimensions": [
+        "data infrastructure",
+        "retrieval context",
+        "context layer",
+        "consumer behavior"
+      ],
+      "generatedAt": "2026-05-02T19:50:01.305Z",
+      "sourceHash": "1139a5e8"
+    }
+  }
+}
