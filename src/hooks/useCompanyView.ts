@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { recordSampledCompanyView } from "@/lib/metrics/companyViewClient";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
 
 export function useCompanyView(companyId: string, initialViews: number) {
@@ -20,24 +21,13 @@ export function useCompanyView(companyId: string, initialViews: number) {
     recordingRef.current = true;
 
     try {
-      const response = await fetch(
-        `/api/companies/${encodeURIComponent(companyId)}/view`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ currentViews: viewsRef.current }),
-          keepalive: true,
-        },
+      const nextViews = await recordSampledCompanyView(
+        companyId,
+        viewsRef.current,
       );
-
-      if (!response.ok) return;
-
-      const data = (await response.json()) as { views?: number };
-      if (typeof data.views === "number") {
-        setViews(normalizeViews(data.views));
+      if (typeof nextViews === "number") {
+        setViews(normalizeViews(nextViews));
       }
-    } catch (error) {
-      console.warn("Company view count failed:", error);
     } finally {
       recordingRef.current = false;
     }

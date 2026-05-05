@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Eye } from "lucide-react";
 
+import { recordSampledCompanyView } from "@/lib/metrics/companyViewClient";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
 import { cn } from "@/lib/utils";
 
@@ -56,26 +57,12 @@ export function CompanyViewCount({
 
       recordedRef.current = true;
 
-      try {
-        const response = await fetch(
-          `/api/companies/${encodeURIComponent(companyId)}/view`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ currentViews: viewsRef.current }),
-            keepalive: true,
-          },
-        );
-
-        if (!response.ok) return;
-
-        const data = (await response.json()) as { views?: number };
-        if (!cancelled && typeof data.views === "number") {
-          setDisplayViews(normalizeViews(data.views));
-        }
-      } catch (error) {
-        recordedRef.current = false;
-        console.warn("Company view impression failed:", error);
+      const nextViews = await recordSampledCompanyView(
+        companyId,
+        viewsRef.current,
+      );
+      if (!cancelled && typeof nextViews === "number") {
+        setDisplayViews(normalizeViews(nextViews));
       }
     };
 
