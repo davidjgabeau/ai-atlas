@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ExternalLink, LogOut, Menu } from "lucide-react";
+import { ArrowRight, ExternalLink, LogOut, Mail, Menu } from "lucide-react";
 
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { Button } from "@/components/ui/button";
 import { useLocalProfile } from "@/hooks/use-local-profile";
+import { contactMailtoHref } from "@/lib/contact";
 import {
   Sheet,
   SheetClose,
@@ -98,6 +99,15 @@ export function MobileNavMenu({ className }: { className?: string }) {
             >
               Profile
             </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <a
+              href={contactMailtoHref}
+              className="mt-3 flex items-center justify-center gap-2 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] px-4 py-3 text-sm font-semibold text-[#181818] transition hover:bg-[rgb(17_17_17_/_0.035)]"
+            >
+              Contact
+              <Mail className="size-4 text-[#9B948A]" />
+            </a>
           </SheetClose>
           <SheetClose asChild>
             <a

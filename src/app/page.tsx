@@ -32,6 +32,7 @@ import {
   getLatestSurface,
   getStoredAgentHomepageData,
 } from "@/lib/agent/homepageData";
+import { contactMailtoHref } from "@/lib/contact";
 import {
   createShareMetadata,
   getShareImageUrl,
@@ -339,6 +340,9 @@ function SiteFooter() {
           <Link href="/feed" className="hover:text-[#181818]">
             Newsfeed
           </Link>
+          <a href={contactMailtoHref} className="hover:text-[#181818]">
+            Contact
+          </a>
           <Link href="/submit" className="hover:text-[#181818]">
             Submit
           </Link>

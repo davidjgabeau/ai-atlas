@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { isAdminEnabled } from "@/lib/admin";
+import { contactMailtoHref } from "@/lib/contact";
 
 export function SiteFooter() {
   const showAdmin = isAdminEnabled();
@@ -24,6 +25,9 @@ export function SiteFooter() {
           <Link href="/jobs" className="hover:text-[#9A3D2B]">
             Jobs
           </Link>
+          <a href={contactMailtoHref} className="hover:text-[#9A3D2B]">
+            Contact
+          </a>
           <Link href="/submit" className="hover:text-[#9A3D2B]">
             Submit
           </Link>
