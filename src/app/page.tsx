@@ -241,7 +241,7 @@ function SiteNav() {
         <GlobalSearch
           id="home-search"
           className="ml-7 hidden w-[300px] shrink-0 md:block xl:w-[410px]"
-          inputClassName="h-11 w-full rounded-lg border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-3 text-[15px] text-[#181818] outline-none transition placeholder:text-[#7A746C] focus:border-[#BDAF9E] focus:ring-0"
+          inputClassName="h-11 w-full rounded-lg border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-3 text-[15px] text-[#181818] outline-none transition placeholder:text-[#7A746C] focus:border-[#BDAF9E] focus:ring-0 focus-visible:border-[#9A3D2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
         />
 
         <nav
@@ -273,7 +273,7 @@ function SiteNav() {
       <GlobalSearch
         id="home-search-mobile"
         className="mx-5 mb-0 mt-5 md:hidden"
-        inputClassName="h-14 w-full rounded-[14px] border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-4 text-[15px] text-[#181818] outline-none transition placeholder:text-[#8C857C] focus:border-[#BDAF9E] focus:ring-0"
+        inputClassName="h-14 w-full rounded-[14px] border border-[#D8CFC1] bg-[#FBFAF7] pl-10 pr-4 text-[15px] text-[#181818] outline-none transition placeholder:text-[#8C857C] focus:border-[#BDAF9E] focus:ring-0 focus-visible:border-[#9A3D2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
         iconClassName="left-4 size-[18px] text-[#6F675E]"
       />
     </header>

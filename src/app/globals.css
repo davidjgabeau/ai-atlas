@@ -597,6 +597,17 @@
     box-shadow: none !important;
   }
 
+  .app-primary-button:focus-visible {
+    outline: 2px solid var(--app-accent) !important;
+    outline-offset: 3px !important;
+    box-shadow: none !important;
+  }
+
+  [data-slot="input"]:focus-visible {
+    outline: 2px solid var(--app-accent) !important;
+    outline-offset: 2px !important;
+  }
+
   .app-card-border {
     border: 1px solid var(--app-border);
     background-color: rgb(251 250 247 / 58%) !important;

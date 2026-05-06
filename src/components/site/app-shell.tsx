@@ -79,7 +79,7 @@ function PublicationHeader({
           value={search}
           onValueChange={onSearchChange}
           className="hidden min-w-[260px] flex-1 md:block lg:max-w-[420px]"
-          inputClassName="h-10 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-sm text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+          inputClassName="h-10 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-sm text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0 focus-visible:border-[#9A3D2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
         />
 
         <nav aria-label="Primary" className="ml-auto hidden items-center gap-3 lg:flex">
@@ -116,7 +116,7 @@ function PublicationHeader({
         value={search}
         onValueChange={onSearchChange}
         className="mx-5 my-4 md:hidden"
-        inputClassName="h-12 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-[16px] text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0"
+        inputClassName="h-12 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-[16px] text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0 focus-visible:border-[#9A3D2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
       />
     </header>
   );

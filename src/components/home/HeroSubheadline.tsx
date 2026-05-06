@@ -22,6 +22,9 @@ export function HeroSubheadline({ count }: HeroSubheadlineProps) {
     const duration = 900;
     let frameId = 0;
     let startTime = 0;
+    const completionTimeoutId = window.setTimeout(() => {
+      setDisplayCount(count);
+    }, duration + 120);
 
     function animate(timestamp: number) {
       if (!startTime) startTime = timestamp;
@@ -41,7 +44,10 @@ export function HeroSubheadline({ count }: HeroSubheadlineProps) {
 
     frameId = window.requestAnimationFrame(animate);
 
-    return () => window.cancelAnimationFrame(frameId);
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.clearTimeout(completionTimeoutId);
+    };
   }, [count]);
 
   return (

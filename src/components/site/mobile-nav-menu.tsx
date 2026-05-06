@@ -85,9 +85,9 @@ export function MobileNavMenu({ className }: { className?: string }) {
           <SheetClose asChild>
             <Link
               href="/submit"
-              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-[#111111] px-4 text-sm font-semibold text-[#F8F6F1] transition hover:bg-[#2A2926]"
+              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-[#111111] px-4 text-sm font-semibold text-[#F8F6F1] transition hover:bg-[#2A2926] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
             >
-              Submit startup
+              Submit Startup
               <ArrowRight className="size-4" />
             </Link>
           </SheetClose>
