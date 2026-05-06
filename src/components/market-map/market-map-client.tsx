@@ -270,7 +270,7 @@ export function MarketMapClient({
           />
 
           <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(430px,0.8fr)] xl:items-start">
-            <section className="order-2 min-w-0 space-y-6 xl:order-1">
+            <section className="order-1 min-w-0 space-y-6 xl:order-1">
               <MapInsights
                 companies={filteredCompanies}
                 locations={filteredLocations}
@@ -293,7 +293,7 @@ export function MarketMapClient({
               />
             </section>
 
-            <aside className="order-1 space-y-4 xl:sticky xl:top-24 xl:order-2">
+            <aside className="order-2 space-y-4 xl:sticky xl:top-24 xl:order-2">
               <section className="overflow-hidden rounded-md border border-[#E7E1D8] bg-[#081523]">
                 <div className="flex flex-col gap-3 border-b border-white/10 bg-[#081523] px-4 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">

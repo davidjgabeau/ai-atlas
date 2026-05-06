@@ -107,7 +107,7 @@ function PublicationHeader({
         </div>
 
         <Button asChild className="hidden app-primary-button lg:inline-flex">
-          <Link href="/submit">Submit</Link>
+          <Link href="/submit">Submit Startup</Link>
         </Button>
       </div>
 

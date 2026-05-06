@@ -297,14 +297,24 @@ export function GoogleStartupMap({
   const mapRef = useRef<HTMLDivElement>(null);
   const markersRef = useRef<GoogleMarker[]>([]);
   const infoWindowRef = useRef<GoogleInfoWindow | null>(null);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
   const [status, setStatus] = useState<
     "idle" | "loading" | "ready" | "missing-key" | "error"
-  >(() => (apiKey ? "loading" : "missing-key"));
+  >(() => (apiKey ? "idle" : "missing-key"));
 
   const pins = useMemo(() => buildCompanyMapLocations(companies), [companies]);
 
+  function loadInteractiveMap() {
+    setStatus("loading");
+    setShouldLoadMap(true);
+  }
+
   useEffect(() => {
     if (!apiKey) {
+      return;
+    }
+
+    if (!shouldLoadMap) {
       return;
     }
 
@@ -390,12 +400,17 @@ export function GoogleStartupMap({
       infoWindowRef.current?.close();
       infoWindowRef.current = null;
     };
-  }, [apiKey, mapId, onSelectCompany, pins]);
+  }, [apiKey, mapId, onSelectCompany, pins, shouldLoadMap]);
 
   return (
     <div className="relative min-h-[320px] overflow-hidden bg-[#081523] sm:min-h-[420px]">
-      {apiKey ? (
+      {apiKey && shouldLoadMap ? (
         <div ref={mapRef} className="absolute inset-0" />
+      ) : apiKey ? (
+        <StaticMapPreview
+          pins={pins}
+          onLoadMap={loadInteractiveMap}
+        />
       ) : (
         <GoogleEmbedFallback />
       )}
@@ -410,6 +425,89 @@ export function GoogleStartupMap({
       {status === "error" ? <MapErrorNotice /> : null}
     </div>
   );
+}
+
+function StaticMapPreview({
+  pins,
+  onLoadMap,
+}: {
+  pins: CompanyMapLocation[];
+  onLoadMap: () => void;
+}) {
+  return (
+    <div className="absolute inset-0 overflow-hidden bg-[#081523] text-white">
+      <div className="absolute inset-0 opacity-35" aria-hidden="true">
+        <div className="absolute left-[7%] top-[18%] h-px w-[86%] bg-white/20" />
+        <div className="absolute left-[11%] top-[32%] h-px w-[78%] bg-white/15" />
+        <div className="absolute left-[16%] top-[48%] h-px w-[72%] bg-white/15" />
+        <div className="absolute left-[8%] top-[66%] h-px w-[84%] bg-white/15" />
+        <div className="absolute left-[22%] top-[8%] h-[84%] w-px bg-white/12" />
+        <div className="absolute left-[42%] top-[6%] h-[88%] w-px bg-white/12" />
+        <div className="absolute left-[62%] top-[10%] h-[82%] w-px bg-white/12" />
+        <div className="absolute left-[78%] top-[14%] h-[72%] w-px bg-white/12" />
+      </div>
+
+      <div className="absolute inset-x-[14%] top-[18%] h-[58%] rounded-[48%] border border-white/10" />
+      <div className="absolute inset-x-[20%] top-[24%] h-[44%] rounded-[48%] border border-white/10" />
+
+      <div className="absolute inset-0" aria-hidden="true">
+        {pins.slice(0, 56).map((pin) => {
+          const position = getPreviewDotPosition(pin.position);
+          const color = categoryColors[pin.company.category] ?? "#2D6BFF";
+
+          return (
+            <span
+              key={pin.company.id}
+              className="absolute rounded-full border border-[#FBFAF7]/90"
+              style={{
+                backgroundColor: color,
+                height: pin.company.is_breakout ? 12 : 9,
+                left: `${position.x}%`,
+                opacity: pin.confidence === "confirmed" ? 0.95 : 0.7,
+                top: `${position.y}%`,
+                transform: "translate(-50%, -50%)",
+                width: pin.company.is_breakout ? 12 : 9,
+              }}
+            />
+          );
+        })}
+      </div>
+
+      <div className="absolute inset-0 grid place-items-center bg-[#081523]/30 px-6 text-center">
+        <div className="max-w-[280px]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-white/55">
+            Interactive NYC map
+          </p>
+          <p className="mt-2 text-sm leading-6 text-white/75">
+            Load Google Maps when you want to inspect company locations.
+          </p>
+          <button
+            type="button"
+            onClick={onLoadMap}
+            className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-white px-4 text-sm font-semibold text-[#081523] transition hover:bg-[#F8F6F1]"
+          >
+            Load interactive map
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function getPreviewDotPosition(position: LatLngLiteral) {
+  const minLng = -74.08;
+  const maxLng = -73.75;
+  const minLat = 40.55;
+  const maxLat = 40.92;
+
+  return {
+    x: clamp(((position.lng - minLng) / (maxLng - minLng)) * 100, 8, 92),
+    y: clamp(((maxLat - position.lat) / (maxLat - minLat)) * 100, 10, 88),
+  };
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
 }
 
 export function buildCompanyMapLocations(

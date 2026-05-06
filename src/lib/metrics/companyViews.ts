@@ -5,7 +5,10 @@ import {
   runWithNextCacheFallback,
   safeRevalidateTag,
 } from "@/lib/cache/runtime-cache";
-import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
+import {
+  createSupabasePrivilegedClient,
+  hasSupabasePrivilegedCredentials,
+} from "@/lib/supabase/privileged";
 import type { CompanyMetrics } from "@/types/market";
 
 type CompanyViewMetricRow = {
@@ -73,7 +76,7 @@ export async function incrementCompanyViews(
   const viewedAt = new Date().toISOString();
   const supabase = createSupabasePrivilegedClient();
 
-  if (!supabase) {
+  if (!supabase || !hasSupabasePrivilegedCredentials()) {
     return incrementMemoryMetric(companyId, baselineViews, viewedAt);
   }
 
@@ -140,7 +143,7 @@ async function incrementCompanyViewsWithUpsert(
   const viewedAt = new Date().toISOString();
   const supabase = createSupabasePrivilegedClient();
 
-  if (!supabase) {
+  if (!supabase || !hasSupabasePrivilegedCredentials()) {
     return incrementMemoryMetric(companyId, baselineViews, viewedAt);
   }
 
