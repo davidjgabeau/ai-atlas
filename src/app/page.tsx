@@ -233,7 +233,7 @@ function SiteNav() {
       <div className="editorial-container flex items-center gap-3 pt-5 sm:gap-5 md:h-[76px] md:pt-0">
         <Link href="/" className="flex shrink-0 items-center gap-2.5 md:gap-3" aria-label="AI Atlas NYC home">
           <AtlasAvatarMark size="sm" className="size-10 md:size-7" />
-          <span className="font-heading text-[24px] font-medium tracking-[-0.025em] text-[#181818] md:text-[24px]">
+          <span className="siteWordmark text-[24px] md:text-[24px]">
             AI Atlas NYC
           </span>
         </Link>
@@ -312,7 +312,7 @@ function SiteFooter() {
         <div>
           <div className="flex items-center gap-3">
             <AtlasAvatarMark size="sm" />
-            <p className="font-heading text-[18px] font-medium tracking-[-0.025em] text-[#181818]">
+            <p className="siteWordmark text-[18px]">
               AI Atlas NYC
             </p>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { Inter, Libre_Franklin, Newsreader } from "next/font/google";
 import { Suspense } from "react";
 
 import { RouteTransitionFeedback } from "@/components/site/route-transition-feedback";
@@ -17,6 +17,13 @@ import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const libreFranklin = Libre_Franklin({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -127,7 +134,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${inter.variable} ${libreFranklin.variable} ${newsreader.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--app-bg)] text-[#181818]">
         <Suspense fallback={null}>

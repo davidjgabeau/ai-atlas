@@ -68,7 +68,7 @@ function PublicationHeader({
         <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="AI Atlas NYC home">
           <AtlasAvatarMark size="sm" />
           <span className="leading-tight">
-            <span className="block font-heading text-[18px] font-medium tracking-[-0.025em] text-[#181818]">
+            <span className="siteWordmark block text-[18px]">
               AI Atlas NYC
             </span>
           </span>

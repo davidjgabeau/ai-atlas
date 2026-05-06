@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-body);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-heading: var(--font-display);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -145,7 +145,7 @@
     background-image: url("/textures/noise.png");
     background-repeat: repeat;
     background-size: 200px 200px;
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.6;
@@ -183,18 +183,20 @@
     letter-spacing: -0.025em;
   }
   h3 {
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.3;
+    font-weight: 700;
+    line-height: 1.18;
     letter-spacing: -0.01em;
   }
   p {
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     max-width: 680px;
     color: var(--app-body);
   }
   label,
   caption {
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     font-size: 11px;
     font-weight: 650;
     line-height: 1;
@@ -211,7 +213,7 @@
   }
   .small,
   p.small {
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.5;
@@ -306,6 +308,75 @@
     font-weight: 650;
     line-height: 1;
     color: #5F5A52;
+  }
+
+  h1.font-heading,
+  h2.font-heading,
+  .editorial-section-title {
+    color: #070707;
+    font-weight: 700;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1.font-heading {
+    line-height: 0.86;
+  }
+
+  h2.font-heading,
+  .editorial-section-title {
+    line-height: 0.92;
+  }
+
+  @media (min-width: 1024px) {
+    h2.home-section-label {
+      color: #070707;
+      font-weight: 700;
+      font-feature-settings: "kern" 1, "liga" 1;
+      letter-spacing: 0;
+      line-height: 0.92;
+      text-rendering: optimizeLegibility;
+    }
+  }
+
+  .siteWordmark {
+    color: #070707;
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 700;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0;
+    line-height: 0.86;
+    text-rendering: optimizeLegibility;
+  }
+
+  .homeHeroHeadline {
+    max-width: 430px;
+    color: #070707;
+    font-family: var(--font-display), Georgia, serif;
+    font-size: clamp(70px, 6vw, 92px);
+    font-weight: 700;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0;
+    line-height: 0.78;
+    text-rendering: optimizeLegibility;
+  }
+
+  .homeHeroHeadline span:nth-child(2),
+  .homeHeroHeadline span:nth-child(3) {
+    margin-top: -0.025em;
+  }
+
+  .homeHeroHeadline span:nth-child(4) {
+    margin-top: -0.04em;
+    padding-left: 0.07em;
+  }
+
+  .homeHeroHeadlineMobile {
+    width: calc(100vw - 40px);
+    max-width: 460px;
+    font-size: clamp(53px, 16vw, 78px);
+    line-height: 0.8;
   }
 
   .metadata-changing {
@@ -404,7 +475,7 @@
   }
 
   .editorial-label {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-body), var(--font-inter), system-ui, sans-serif;
     font-size: 11px;
     font-weight: 650;
     line-height: 1;

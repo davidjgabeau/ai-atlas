@@ -50,7 +50,7 @@ export function MobileNavMenu({ className }: { className?: string }) {
         className="!w-[min(88vw,360px)] !max-w-[min(88vw,360px)] border-[#E7E1D8] bg-[#F8F6F1] p-0 shadow-none lg:hidden"
       >
         <div className="border-b border-[#E7E1D8] px-5 py-5">
-          <SheetTitle className="font-heading text-2xl font-medium tracking-[-0.02em] text-[#181818]">
+          <SheetTitle className="siteWordmark text-2xl">
             AI Atlas NYC
           </SheetTitle>
           <SheetDescription className="mt-1 text-sm leading-6 text-[#66625C]">

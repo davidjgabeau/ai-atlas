@@ -11,7 +11,7 @@ export function LogoMark() {
     >
       <AtlasAvatarMark size="sm" />
       <div className="leading-tight">
-        <div className="text-sm font-semibold tracking-tight text-[#181818]">
+        <div className="siteWordmark text-[18px]">
           AI Atlas NYC
         </div>
       </div>
