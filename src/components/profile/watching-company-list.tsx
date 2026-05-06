@@ -60,7 +60,7 @@ export function WatchingCompanyList({
                 <div className="min-w-0">
                   <Link
                     href={`/companies/${company.slug}`}
-                    className="text-base font-semibold tracking-tight text-[#181818] hover:text-[#9A3D2B]"
+                    className="text-base font-semibold tracking-[0] text-[#181818] hover:text-[#9A3D2B]"
                   >
                     {company.name}
                   </Link>

@@ -301,7 +301,7 @@ export function MarketMapClient({
                       <MapPinned className="size-4" />
                     </span>
                     <div>
-                      <h2 className="text-sm font-semibold tracking-tight">
+                      <h2 className="text-sm font-semibold tracking-[0]">
                         Interactive map
                       </h2>
                       <p className="text-sm text-white/65">
@@ -363,7 +363,7 @@ function MapTitleRow({
     <section className="border-b border-[#E7E1D8] pb-5">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="font-heading text-[clamp(42px,5vw,68px)] font-medium leading-[0.95] tracking-[-0.035em] text-[#181818]">
+          <h1 className="font-heading text-[clamp(42px,5vw,68px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
             NYC AI Map
           </h1>
           <p className="mt-3 text-base font-medium text-[#5F5A52]">
@@ -551,7 +551,7 @@ function MapInsights({
     <section className="border-y border-[#E7E1D8] py-5">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-[#181818]">
+          <h2 className="font-heading text-2xl font-medium tracking-[0] text-[#181818]">
             Map Insights
           </h2>
           <p className="mt-1 text-sm text-[#7A746C]">
@@ -623,7 +623,7 @@ function InsightItem({
       <p className="text-[10.5px] font-semibold uppercase leading-tight tracking-[0.08em] text-[#9A3D2B]">
         {label}
       </p>
-      <p className="mt-3 line-clamp-2 font-heading text-[22px] font-medium leading-[1.02] tracking-[-0.025em] text-[#181818]">
+      <p className="mt-3 line-clamp-2 font-heading text-[22px] font-medium leading-[1.02] tracking-[0] text-[#181818]">
         {value}
       </p>
       <p className="mt-2 line-clamp-2 text-xs leading-[1.45] text-[#7A746C]">
@@ -648,7 +648,7 @@ function NeighborhoodClusters({
     <section className="border-y border-[#E7E1D8] py-5">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-[#181818]">
+          <h2 className="font-heading text-2xl font-medium tracking-[0] text-[#181818]">
             Neighborhood clusters
           </h2>
           <p className="mt-1 text-sm text-[#7A746C]">
@@ -720,7 +720,7 @@ function MapDotKey({ locations }: { locations: CompanyMapLocation[] }) {
           <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
             Map key
           </p>
-          <h3 className="mt-1 font-heading text-xl font-medium tracking-[-0.02em] text-[#181818]">
+          <h3 className="mt-1 font-heading text-xl font-medium tracking-[0] text-[#181818]">
             Dots show companies
           </h3>
         </div>
@@ -783,7 +783,7 @@ function SelectedCompanyDrawer() {
       <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
         Selected company drawer
       </p>
-      <h2 className="mt-2 font-heading text-2xl font-medium tracking-[-0.02em] text-[#181818]">
+      <h2 className="mt-2 font-heading text-2xl font-medium tracking-[0] text-[#181818]">
         Select a company
       </h2>
       <p className="mt-2 text-sm leading-6 text-[#5F5A52]">
@@ -856,7 +856,7 @@ function CompanyTable({
     <section className="overflow-hidden border-y border-[#E7E1D8] bg-[var(--app-surface)]">
       <div className="flex flex-col gap-2 border-b border-[#E7E1D8] px-4 py-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-heading text-2xl font-medium tracking-[-0.02em] text-[#181818]">
+          <h2 className="font-heading text-2xl font-medium tracking-[0] text-[#181818]">
             Company list
           </h2>
           <p className="mt-1 text-sm text-[#7A746C]">
@@ -906,7 +906,7 @@ function CompanyTable({
                 />
                 <div className="min-w-0">
                   <div className="flex min-w-0 items-center gap-2">
-                    <p className="min-w-0 truncate text-sm font-semibold tracking-tight text-[#181818]">
+                    <p className="min-w-0 truncate text-sm font-semibold tracking-[0] text-[#181818]">
                       {company.name}
                     </p>
                     {company.is_breakout ? (
@@ -1139,7 +1139,7 @@ function CompanyInspector({
             className="size-14 text-base"
           />
           <div className="min-w-0 flex-1">
-            <h2 className="text-2xl font-semibold leading-tight tracking-tight text-[#181818]">
+            <h2 className="text-2xl font-semibold leading-tight tracking-[0] text-[#181818]">
               {company.name}
             </h2>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -1306,7 +1306,7 @@ function InspectorSection({
   return (
     <section className="border-b border-[#E7E1D8] pb-7 last:border-b-0">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <h3 className="text-sm font-semibold tracking-tight text-[#181818]">
+        <h3 className="text-sm font-semibold tracking-[0] text-[#181818]">
           {title}
         </h3>
         {action}

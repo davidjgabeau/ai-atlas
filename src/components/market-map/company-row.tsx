@@ -28,7 +28,7 @@ export function CompanyRow({ company }: { company: Company }) {
         />
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <p className="truncate font-semibold tracking-tight text-[#181818]">
+            <p className="text-company-name truncate text-[16px]">
               {company.name}
             </p>
             {company.is_breakout ? (
@@ -36,7 +36,7 @@ export function CompanyRow({ company }: { company: Company }) {
             ) : null}
             <ArrowUpRight className="size-3.5 text-[#9B948A]" />
           </div>
-          <p className="mt-1 line-clamp-2 text-sm leading-6 text-[#5F5A52] md:line-clamp-1">
+          <p className="text-body mt-1 line-clamp-2 text-sm leading-6 md:line-clamp-1">
             {company.short_description}
           </p>
         </div>
@@ -48,7 +48,7 @@ export function CompanyRow({ company }: { company: Company }) {
           views={company.metrics?.views ?? 0}
         />
       </div>
-      <p className="text-sm text-[#5F5A52]">{company.stage}</p>
+      <p className="text-meta text-sm">{company.stage}</p>
       <div>
         <UsageBadge value={getCompanySignalLabel(company)} />
       </div>

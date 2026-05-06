@@ -19,7 +19,7 @@ export function CurrentRead({
         <div className="lg:col-span-4">
           <p className="editorial-label">Market memo</p>
           <h2 className="mt-3 editorial-section-title">Current Read</h2>
-          <p className="mt-2 text-sm leading-[1.5] text-[#5F5A52]">
+          <p className="text-body mt-2 text-sm">
             Three notes from the full early-stage NYC AI map and latest additions.
           </p>
           <Link
@@ -38,17 +38,17 @@ export function CurrentRead({
                   key={insight.id}
                   className="grid gap-3 py-4 md:grid-cols-[48px_minmax(0,1fr)]"
                 >
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                  <span className="text-label text-[11px] text-[#9A3D2B]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="font-sans text-[17px] font-semibold tracking-[-0.01em] text-[#181818]">
+                    <h3 className="text-company-name text-[17px] leading-[1.25]">
                       <LinkedCompanyText
                         text={getCurrentReadDisplayTitle(insight)}
                         companies={companiesById}
                       />
                     </h3>
-                    <p className="mt-2 text-sm leading-[1.6] text-[#66625C]">
+                    <p className="text-body mt-2 text-sm">
                       <LinkedCompanyText
                         text={insight.body}
                         companies={companiesById}
@@ -59,10 +59,10 @@ export function CurrentRead({
               ))
             ) : (
               <div className="py-5">
-                <p className="text-sm font-semibold text-[#181818]">
+                <p className="text-company-hook text-sm">
                   Fresh reads will appear after companies are added.
                 </p>
-                <p className="mt-2 text-sm leading-[1.6] text-[#66625C]">
+                <p className="text-body mt-2 text-sm">
                   Publish company notes to build the next market memo.
                 </p>
               </div>

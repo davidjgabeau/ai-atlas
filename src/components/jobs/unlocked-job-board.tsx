@@ -175,7 +175,7 @@ export function UnlockedJobBoard({ jobs, error }: UnlockedJobBoardProps) {
             </div>
           ) : (
             <div className="mt-6 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-6">
-              <p className="font-heading text-[30px] font-medium tracking-[-0.025em] text-[#181818]">
+              <p className="font-heading text-[30px] font-medium tracking-[0] text-[#181818]">
                 No roles match those filters.
               </p>
               <p className="mt-3 max-w-[620px] text-sm leading-[1.7] text-[#5F5A52]">
@@ -192,7 +192,7 @@ export function UnlockedJobBoard({ jobs, error }: UnlockedJobBoardProps) {
           )
         ) : (
           <div className="mt-6 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-6">
-            <p className="font-heading text-[30px] font-medium tracking-[-0.025em] text-[#181818]">
+            <p className="font-heading text-[30px] font-medium tracking-[0] text-[#181818]">
               No open roles found yet.
             </p>
             <p className="mt-3 max-w-[620px] text-sm leading-[1.7] text-[#5F5A52]">
@@ -283,7 +283,7 @@ function JobRow({ job, index }: { job: CompanyJobWithCompany; index: number }) {
       )}
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <h3 className="font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+          <h3 className="font-sans text-[18px] font-semibold leading-[1.2] tracking-[0] text-[#181818]">
             {job.title}
           </h3>
           <ExternalLink className="size-3.5 text-[#9A3D2B] opacity-0 transition group-hover:opacity-100" />

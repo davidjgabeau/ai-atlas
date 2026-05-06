@@ -42,7 +42,7 @@ export function NewsBriefModal({
               </span>
               <p className="editorial-label">News brief</p>
             </div>
-            <h2 className="mt-3 font-heading text-[clamp(28px,3vw,40px)] font-medium leading-[1] tracking-[-0.035em] text-[#181818]">
+            <h2 className="mt-3 font-heading text-[clamp(28px,3vw,40px)] font-medium leading-[1] tracking-[0] text-[#181818]">
               News Brief
             </h2>
             <p className="mt-2 max-w-[560px] text-sm leading-[1.5] text-[#5F5A52]">
@@ -74,7 +74,7 @@ export function NewsBriefModal({
             <DialogContent className="max-h-[86vh] overflow-y-auto rounded-md border border-[#E7E1D8] bg-[#F8F6F1] p-0 sm:max-w-[760px]">
               <DialogHeader className="border-b border-[#E7E1D8] px-5 py-5">
                 <p className="editorial-label">News brief</p>
-                <DialogTitle className="font-heading text-[34px] font-medium leading-[1] tracking-[-0.035em] text-[#181818]">
+                <DialogTitle className="font-heading text-[34px] font-medium leading-[1] tracking-[0] text-[#181818]">
                   News Brief
                 </DialogTitle>
                 <DialogDescription className="max-w-[560px] text-sm leading-[1.6] text-[#5F5A52]">

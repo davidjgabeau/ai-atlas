@@ -55,7 +55,7 @@ export default async function CategoriesPage() {
               <p className="editorial-label">
                 NYC AI categories
               </p>
-              <h1 className="mt-5 max-w-[760px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+              <h1 className="mt-5 max-w-[760px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
                 Explore the NYC AI scene by category.
               </h1>
               <p className="mt-5 max-w-[640px] text-[18px] leading-[1.55] text-[#5F5A52]">
@@ -96,7 +96,7 @@ export default async function CategoriesPage() {
                         labeled
                       />
                       <div>
-                        <h2 className="text-[24px] font-medium leading-[1.05] tracking-[-0.025em] text-[#181818]">
+                        <h2 className="text-[24px] font-medium leading-[1.05] tracking-[0] text-[#181818]">
                           {category.name}
                         </h2>
                         <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">

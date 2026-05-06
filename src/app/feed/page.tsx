@@ -86,7 +86,7 @@ export default async function FeedPage({
                 <p className="editorial-label">Newsfeed</p>
               </div>
 
-              <h1 className="mt-5 max-w-[820px] font-heading text-[clamp(44px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.045em] text-[#111111]">
+              <h1 className="mt-5 max-w-[820px] font-heading text-[clamp(44px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#111111]">
                 <span className="block">Early-Stage NYC AI News</span>
                 <span className="block">and Company Posts</span>
               </h1>
@@ -209,7 +209,7 @@ function FeedSection({
           <p className="editorial-label">{eyebrow}</p>
           <h2
             id={`${id}-title`}
-            className="mt-2 font-heading text-[clamp(28px,3vw,38px)] font-medium leading-[1] tracking-[-0.035em] text-[#181818]"
+            className="mt-2 font-heading text-[clamp(28px,3vw,38px)] font-medium leading-[1] tracking-[0] text-[#181818]"
           >
             {title}
           </h2>
@@ -247,7 +247,7 @@ function NewsLinkRow({
               {item.source_name || item.source_domain}
             </span>
           </div>
-          <h3 className="mt-2 font-heading text-[20px] font-medium leading-[1.1] tracking-[-0.025em] text-[#181818] md:text-[21px]">
+          <h3 className="mt-2 font-heading text-[20px] font-medium leading-[1.1] tracking-[0] text-[#181818] md:text-[21px]">
             <a
               href={item.source_url}
               target="_blank"
@@ -307,12 +307,12 @@ function CompanyPostRow({
             {company ? (
               <Link
                 href={`/companies/${company.slug}`}
-                className="font-heading text-[18px] font-medium leading-none tracking-[-0.02em] text-[#181818] transition hover:text-[#9A3D2B]"
+                className="font-heading text-[18px] font-medium leading-none tracking-[0] text-[#181818] transition hover:text-[#9A3D2B]"
               >
                 {company.name}
               </Link>
             ) : (
-              <span className="font-heading text-[18px] font-medium leading-none tracking-[-0.02em] text-[#181818]">
+              <span className="font-heading text-[18px] font-medium leading-none tracking-[0] text-[#181818]">
                 {post.author_name || `@${post.author_handle}`}
               </span>
             )}
@@ -364,7 +364,7 @@ function CompanyPostRow({
 
 function SourceTile({ item }: { item: NewsItem }) {
   return (
-    <span className="rowSprite grid size-14 place-items-center rounded-[10px] border border-[#D8CFC1] bg-[#FBFAF7] text-center font-heading text-[20px] font-semibold leading-none tracking-[-0.03em] text-[#A64032] md:size-16 md:text-[22px]">
+    <span className="rowSprite grid size-14 place-items-center rounded-[10px] border border-[#D8CFC1] bg-[#FBFAF7] text-center font-heading text-[20px] font-semibold leading-none tracking-[0] text-[#A64032] md:size-16 md:text-[22px]">
       {getSourceInitials(item)}
     </span>
   );
@@ -551,7 +551,7 @@ function getSourceInitials(item: NewsItem) {
 function EmptyNewsState() {
   return (
     <div className="rounded-[10px] border border-[#E7E1D8] bg-[#FBFAF7] p-6">
-      <p className="font-heading text-[28px] font-medium tracking-[-0.025em] text-[#181818]">
+      <p className="font-heading text-[28px] font-medium tracking-[0] text-[#181818]">
         The Newsfeed is ready.
       </p>
       <p className="mt-3 max-w-[620px] text-sm leading-[1.7] text-[#5F5A52]">
@@ -565,7 +565,7 @@ function EmptyCompanyPostState() {
   return (
     <div className="rounded-[10px] border border-[#E7E1D8] bg-[#FBFAF7] p-6">
       <p className="editorial-label">Company posts</p>
-      <p className="mt-3 font-heading text-[28px] font-medium tracking-[-0.025em] text-[#181818]">
+      <p className="mt-3 font-heading text-[28px] font-medium tracking-[0] text-[#181818]">
         Company posts are coming next.
       </p>
       <p className="mt-3 max-w-[620px] text-sm leading-[1.7] text-[#5F5A52]">

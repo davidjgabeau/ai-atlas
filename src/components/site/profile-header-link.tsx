@@ -39,7 +39,7 @@ export function ProfileHeaderLink({
         <span className="block max-w-28 truncate text-sm font-medium text-[#181818]">
           {label}
         </span>
-        <span className="block max-w-28 truncate text-xs text-[#7A746C]">
+        <span className="text-meta block max-w-28 truncate text-xs">
           {detail}
         </span>
       </span>

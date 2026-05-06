@@ -23,7 +23,7 @@ export default function SubmitCompanyPage() {
           <p className="text-xs font-medium uppercase tracking-[0.01em] text-[#7A746C]">
             Founder signal
           </p>
-          <h1 className="mt-3 max-w-[680px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+          <h1 className="mt-3 max-w-[680px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
             Submit your NYC AI startup.
           </h1>
           <p className="mt-5 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">

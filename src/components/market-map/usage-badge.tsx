@@ -30,7 +30,7 @@ export function UsageBadge({
     <Badge
       variant="outline"
       className={cn(
-        "max-w-full shrink rounded-md border-0 px-2 py-1 text-xs font-medium ring-1",
+        "text-label max-w-full shrink rounded-md border-0 px-2 py-1 text-[10.5px] ring-1",
         signalClasses[signalLabel],
         className,
       )}

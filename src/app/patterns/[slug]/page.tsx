@@ -110,7 +110,7 @@ export default async function PatternDetailPage({
             </Link>
           </Button>
           <p className="editorial-label">Pattern</p>
-          <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+          <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
             {pattern.title}
           </h1>
           <p className="mt-6 max-w-[780px] text-[18px] leading-[1.6] text-[#5F5A52]">
@@ -155,7 +155,7 @@ export default async function PatternDetailPage({
                     />
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="truncate text-lg font-semibold tracking-tight text-[#181818]">
+                        <h3 className="truncate text-lg font-semibold tracking-[0] text-[#181818]">
                           {company.name}
                         </h3>
                         <ArrowRight className="size-3.5 shrink-0 text-[#9A3D2B] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />

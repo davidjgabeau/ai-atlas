@@ -111,7 +111,7 @@ export default async function CategoryPage({
               <p className="live-count-pill px-3 py-1.5 text-xs">
                 {companies.length} NYC startups to know
               </p>
-              <h1 className="mt-4 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+              <h1 className="mt-4 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
                 {category.name}
               </h1>
               <p className="mt-5 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">
@@ -133,7 +133,7 @@ export default async function CategoryPage({
       <section>
         <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#181818] md:text-[1.75rem]">
+            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[0] text-[#181818] md:text-[1.75rem]">
               Startups to know in {category.name}
             </h2>
             <Button asChild className="app-primary-button">

@@ -61,7 +61,7 @@ export default async function JobsPage() {
               </span>
               <p className="editorial-label">Jobs</p>
             </div>
-            <h1 className="font-heading text-[clamp(36px,10.5vw,46px)] font-medium leading-[0.97] tracking-[-0.035em] text-[#181818] sm:text-[clamp(40px,5vw,64px)]">
+            <h1 className="font-heading text-[clamp(36px,10.5vw,46px)] font-medium leading-[0.97] tracking-[0] text-[#181818] sm:text-[clamp(40px,5vw,64px)]">
               Roles at Early-Stage NYC AI Companies
             </h1>
             <p className="max-w-[640px] text-[16px] leading-[1.45] text-[#5F5A52] sm:text-[18px] sm:leading-[1.55]">

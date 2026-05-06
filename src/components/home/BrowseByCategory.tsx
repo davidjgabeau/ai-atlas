@@ -18,7 +18,7 @@ export function BrowseByCategory({
           <div>
             <p className="editorial-label">Market sections</p>
             <h2 className="mt-3 editorial-section-title">Browse by Category</h2>
-            <p className="mt-2 max-w-[680px] text-sm leading-[1.5] text-[#5F5A52]">
+            <p className="text-body mt-2 max-w-[680px] text-sm">
               Explore early-stage NYC AI by buyer, workflow, and product surface.
             </p>
           </div>
@@ -40,14 +40,14 @@ export function BrowseByCategory({
             >
               <div>
                 <CategoryPixelIcon category={category.name} size="md" labeled />
-                <h3 className="mt-3 font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+                <h3 className="text-company-name mt-3 text-[18px] leading-[1.2]">
                   {category.name}
                 </h3>
-                <p className="mt-2 line-clamp-2 text-sm leading-[1.45] text-[#66625C]">
+                <p className="text-body mt-2 line-clamp-2 text-sm">
                   {category.description}
                 </p>
               </div>
-              <div className="mt-4 flex items-center justify-between text-sm font-medium text-[#5F5A52]">
+              <div className="text-meta mt-4 flex items-center justify-between text-sm">
                 <span>{formatCategoryCount(counts[category.name] ?? 0)}</span>
                 <ArrowRight className="size-3.5 text-[#9A3D2B] transition group-hover:translate-x-0.5" />
               </div>

@@ -85,7 +85,7 @@ export function HomeMomentumTabs({ groups }: { groups: MomentumGroups }) {
     <div className="rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
       <div className="flex items-center justify-between px-5 py-4">
         <div>
-          <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+          <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
             Companies with Signal
           </h2>
           <p className="mt-1 text-sm text-[#5F5A52]">{activeDescription}</p>

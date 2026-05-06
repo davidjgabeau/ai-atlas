@@ -162,7 +162,7 @@ export default async function CompanyProfilePage({
                   className="ml-1 text-xs text-[#66625C]"
                 />
               </div>
-              <h1 className="mt-4 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+              <h1 className="mt-4 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
                 {company.name}
               </h1>
               <p className="mt-5 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">
@@ -235,7 +235,7 @@ export default async function CompanyProfilePage({
                     className="size-12 text-sm"
                   />
                   <div className="min-w-0">
-                    <p className="font-semibold tracking-tight text-[#181818]">
+                    <p className="font-semibold tracking-[0] text-[#181818]">
                       {company.name}
                     </p>
                     <p className="mt-1 text-sm leading-6 text-[#5F5A52]">
@@ -408,7 +408,7 @@ export default async function CompanyProfilePage({
       {companyPatterns.length > 0 ? (
         <section className="border-t border-[#E7E1D8] bg-section">
           <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#181818] md:text-[1.75rem]">
+            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[0] text-[#181818] md:text-[1.75rem]">
               Patterns this company appears in
             </h2>
             <div className="mt-5 flex flex-wrap gap-2">
@@ -428,7 +428,7 @@ export default async function CompanyProfilePage({
       {relatedCompanies.length > 0 ? (
         <section className="border-t border-[#E7E1D8] bg-[var(--app-surface)]">
           <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#181818] md:text-[1.75rem]">
+            <h2 className="font-heading text-[1.5rem] font-semibold leading-[1.2] tracking-[0] text-[#181818] md:text-[1.75rem]">
               Related NYC startups
             </h2>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -456,7 +456,7 @@ function PanelSection({
   return (
     <section className="border-b border-[#E7E1D8] p-5">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 className="text-sm font-semibold tracking-tight text-[#181818]">
+        <h2 className="text-sm font-semibold tracking-[0] text-[#181818]">
           {title}
         </h2>
         {action}
@@ -495,7 +495,7 @@ function ProfileSection({
       id={id}
       className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border"
     >
-      <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+      <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
         {title}
       </h2>
       <p className="mt-3 text-base leading-8 text-[#5F5A52]">
@@ -516,7 +516,7 @@ function ProfileSection({
 function FoundersSection({ founders }: { founders: Company["founders"] }) {
   return (
     <section className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border">
-      <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+      <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
         Founders
       </h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -537,7 +537,7 @@ function FoundersSection({ founders }: { founders: Company["founders"] }) {
 function FoundationUsageSection({ company }: { company: Company }) {
   return (
     <section className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border">
-      <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+      <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
         Foundation model usage
       </h2>
       <div className="mt-3">

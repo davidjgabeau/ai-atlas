@@ -32,7 +32,7 @@ export function CategoryGrid({ companies }: { companies: Company[] }) {
               </div>
             </div>
             <div className="mt-5">
-              <h3 className="text-base font-semibold tracking-tight text-[#181818]">
+              <h3 className="text-base font-semibold tracking-[0] text-[#181818]">
                 {category.name}
               </h3>
               <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#5F5A52]">

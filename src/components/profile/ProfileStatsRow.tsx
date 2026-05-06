@@ -33,7 +33,7 @@ export function ProfileStatsRow({
               key={stat.label}
               className="px-4 py-4 sm:px-5 [&:not(:first-child)]:border-t [&:not(:first-child)]:border-[#E7E1D8] sm:[&:not(:first-child)]:border-l sm:[&:not(:first-child)]:border-t-0"
             >
-              <dt className="text-xs font-medium text-[#66625C]">
+              <dt className="text-label text-[10.5px] text-[#66625C]">
                 {stat.label}
               </dt>
               <dd className="mt-1 text-sm font-semibold text-[#111111]">

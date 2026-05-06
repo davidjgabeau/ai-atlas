@@ -9,7 +9,7 @@ type HeroMetadataLineProps = {
 export function HeroMetadataLine({ updatedLabel }: HeroMetadataLineProps) {
   return (
     <>
-      <p className="hero-metadata-line mt-5 flex items-center gap-x-1.5 text-[10.75px] font-medium leading-none text-[#5F5A52] max-[380px]:text-[10px] lg:hidden">
+      <p className="text-meta hero-metadata-line mt-5 flex items-center gap-x-1.5 text-[10.75px] leading-none max-[380px]:text-[10px] lg:hidden">
         <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap">
           <Hand className="hidden size-3.5 min-[430px]:inline" aria-hidden="true" />
           Curated by hand
@@ -34,7 +34,7 @@ export function HeroMetadataLine({ updatedLabel }: HeroMetadataLineProps) {
         ) : null}
       </p>
 
-      <div className="hero-metadata-stack mt-8 hidden space-y-3 text-[15px] font-medium leading-[1.45] text-[#5F5A52] lg:block">
+      <div className="text-meta hero-metadata-stack mt-8 hidden space-y-3 text-[15px] leading-[1.45] lg:block">
         <p className="inline-flex items-center gap-2">
           <Hand className="size-4 text-[#5F5A52]" aria-hidden="true" />
           Curated by hand. Updated agentically.

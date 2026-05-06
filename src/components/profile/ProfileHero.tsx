@@ -43,19 +43,19 @@ export function ProfileHero({
         <div className="flex min-w-0 flex-col gap-5 sm:flex-row sm:items-center">
           <Avatar avatarId={avatarId} size="lg" className="size-[72px]" />
           <div className="min-w-0">
-            <p className="text-xs font-medium uppercase tracking-[0.01em] text-[#9A3D2B]">
+            <p className="text-label text-[#9A3D2B]">
               Profile
             </p>
-            <h1 className="mt-2 max-w-[720px] font-heading text-[clamp(42px,5vw,72px)] font-medium leading-[0.92] text-[#111111]">
+            <h1 className="text-display mt-2 max-w-[720px] text-[clamp(42px,5vw,70px)] text-[#111111]">
               {name}
             </h1>
             <p className="mt-2 text-sm font-medium text-[#9A3D2B]">
               @{handle}
             </p>
-            <p className="mt-4 max-w-[680px] text-base leading-7 text-[#66625C]">
+            <p className="text-body mt-4 max-w-[680px] text-base leading-7">
               {bio}
             </p>
-            <p className="mt-3 text-sm text-[#66625C]">
+            <p className="text-meta mt-3 text-sm">
               {watchingCount} saved {watchingCount === 1 ? "company" : "companies"}
             </p>
           </div>

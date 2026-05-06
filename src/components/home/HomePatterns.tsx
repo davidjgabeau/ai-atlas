@@ -13,7 +13,7 @@ export function HomePatterns() {
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
               <Sparkles className="size-4 text-[#9A3D2B]" aria-hidden="true" />
-              <h2 className="font-heading text-[25px] font-medium leading-none tracking-[-0.025em] text-[#181818]">
+              <h2 className="text-section-title text-[26px] leading-none">
                 Patterns
               </h2>
             </div>
@@ -35,17 +35,17 @@ export function HomePatterns() {
               className="group py-4 transition hover:bg-[rgb(17_17_17_/_0.025)] lg:px-10 lg:py-0 first:lg:pl-0 last:lg:pr-0"
             >
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                <span className="text-label text-[11px] text-[#9A3D2B]">
                   Pattern
                 </span>
-                <span className="text-xs font-medium text-[#7A746C]">
+                <span className="text-meta text-xs">
                   {pattern.companies.length} companies
                 </span>
               </div>
-              <h3 className="mt-2 font-heading text-[20px] font-medium leading-[1.1] tracking-[-0.025em] text-[#181818] transition group-hover:text-[#9A3D2B]">
+              <h3 className="text-company-name mt-2 text-[20px] leading-[1.18] transition group-hover:text-[#9A3D2B]">
                 {pattern.title}
               </h3>
-              <p className="mt-2 line-clamp-3 text-sm leading-[1.5] text-[#66625C] lg:line-clamp-2">
+              <p className="text-body mt-2 line-clamp-3 text-sm lg:line-clamp-2">
                 {pattern.framing}
               </p>
             </Link>

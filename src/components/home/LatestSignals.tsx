@@ -25,7 +25,7 @@ export function LatestSignals({
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3">
               <Sparkles className="size-4 text-[#9A3D2B]" aria-hidden="true" />
-              <h2 className="font-heading text-[25px] font-medium leading-none tracking-[-0.025em] text-[#181818]">
+              <h2 className="text-section-title text-[26px] leading-none">
                 Latest Signals
               </h2>
             </div>
@@ -54,15 +54,15 @@ export function LatestSignals({
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     {item.label ? (
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                      <span className="text-label text-[11px] text-[#9A3D2B]">
                         {normalizeSignalLabel(item.label, company)}
                       </span>
                     ) : null}
-                    <span className="text-xs font-medium text-[#7A746C]">
+                    <span className="text-meta text-xs">
                       {formatSignalDate(item.occurredAt)}
                     </span>
                   </div>
-                  <h3 className="mt-2 font-heading text-[18px] font-medium leading-[1.18] tracking-[-0.02em] text-[#181818]">
+                  <h3 className="text-company-name mt-2 text-[18px] leading-[1.22]">
                     <Link
                       href={company ? `/companies/${company.slug}` : "/companies"}
                       className="hover:text-[#9A3D2B]"
@@ -71,7 +71,7 @@ export function LatestSignals({
                     </Link>
                   </h3>
                   {item.body ? (
-                    <p className="mt-3 line-clamp-3 text-sm leading-[1.55] text-[#66625C]">
+                    <p className="text-body mt-3 line-clamp-3 text-sm">
                       <LinkedCompanyText
                         text={item.body}
                         companies={companiesById}

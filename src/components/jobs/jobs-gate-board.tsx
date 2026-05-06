@@ -298,7 +298,7 @@ export function JobsGateBoard({
                     <LockKeyhole className="size-4" />
                   </span>
                   <div className="min-w-0">
-                    <p className="font-heading text-[24px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181818]">
+                    <p className="font-heading text-[24px] font-medium leading-[1.05] tracking-[0] text-[#181818]">
                       Sign in to unlock job links
                     </p>
                     <p className="mt-1 text-sm leading-6 text-[#5F5A52]">
@@ -427,7 +427,7 @@ function LockedJobPreviewRow({
         </span>
       )}
       <div className="min-w-0">
-        <h3 className="font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+        <h3 className="font-sans text-[18px] font-semibold leading-[1.2] tracking-[0] text-[#181818]">
           {job.title}
         </h3>
         <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#66625C]">
@@ -484,7 +484,7 @@ function LockedProofStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="px-2 py-2 text-center sm:px-4 sm:py-3">
       <dt className="editorial-label text-[10px]">{label}</dt>
-      <dd className="mt-1 font-heading text-[clamp(18px,5vw,24px)] font-medium leading-none tracking-[-0.025em] text-[#181818]">
+      <dd className="mt-1 font-heading text-[clamp(18px,5vw,24px)] font-medium leading-none tracking-[0] text-[#181818]">
         {value}
       </dd>
     </div>

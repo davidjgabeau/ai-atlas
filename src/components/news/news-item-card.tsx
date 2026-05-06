@@ -31,8 +31,8 @@ export function NewsItemCard({
           <span
             className={
               compact
-                ? "mt-1 line-clamp-2 block font-sans text-[16px] font-semibold leading-[1.3] tracking-[-0.01em] text-[#181818]"
-                : "mt-1 line-clamp-2 block font-sans text-[18px] font-semibold leading-[1.25] tracking-[-0.01em] text-[#181818]"
+                ? "mt-1 line-clamp-2 block font-sans text-[16px] font-semibold leading-[1.3] tracking-[0] text-[#181818]"
+                : "mt-1 line-clamp-2 block font-sans text-[18px] font-semibold leading-[1.25] tracking-[0] text-[#181818]"
             }
           >
             <a href={item.source_url} target="_blank" rel="noreferrer" className="hover:text-[#9A3D2B]">
@@ -89,7 +89,7 @@ export function NewsItemRow({
             {item.source_name || item.source_domain}
           </span>
         </span>
-        <span className="mt-1 line-clamp-2 block font-sans text-[17px] font-semibold leading-[1.25] tracking-[-0.01em] text-[#181818]">
+        <span className="mt-1 line-clamp-2 block font-sans text-[17px] font-semibold leading-[1.25] tracking-[0] text-[#181818]">
           <a href={item.source_url} target="_blank" rel="noreferrer" className="hover:text-[#9A3D2B]">
             {item.title}
           </a>

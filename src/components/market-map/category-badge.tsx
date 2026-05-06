@@ -14,7 +14,7 @@ export function CategoryBadge({
     <Badge
       variant="outline"
       className={cn(
-        "max-w-full shrink justify-start rounded-md border border-[#E7E1D8] bg-transparent px-2 py-1 text-xs font-medium text-[#5F5A52]",
+        "text-meta max-w-full shrink justify-start rounded-md border border-[#E7E1D8] bg-transparent px-2 py-1 text-xs",
         className,
       )}
     >

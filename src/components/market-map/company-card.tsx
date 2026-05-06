@@ -38,15 +38,15 @@ export function CompanyCard({
           <div className="min-w-0 flex-1">
             <Link
               href={`/companies/${company.slug}`}
-              className="group inline-flex max-w-full items-center gap-1 text-base font-semibold tracking-tight text-[#181818]"
+              className="text-company-name group inline-flex max-w-full items-center gap-1 text-base"
             >
               <span className="min-w-0 truncate">{company.name}</span>
               <ArrowUpRight className="app-arrow size-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />
             </Link>
-            <p className="mt-1 line-clamp-1 text-sm font-semibold leading-6 text-[#181818]">
+            <p className="text-company-hook mt-1 line-clamp-1 text-sm leading-6">
               {company.generated.hook}
             </p>
-            <p className="mt-1 line-clamp-2 text-sm leading-6 text-[#5F5A52]">
+            <p className="text-body mt-1 line-clamp-2 text-sm leading-6">
               {company.short_description}
             </p>
           </div>
@@ -70,7 +70,7 @@ export function CompanyCard({
         </div>
         <div className="mt-4 flex min-w-0 flex-wrap items-center gap-2">
           <CategoryBadge category={company.category} className="max-w-full" />
-          <span className="rounded-md bg-[rgb(248_246_241_/_0.80)] px-2 py-1 text-xs font-medium text-[#5F5A52] ring-1 ring-[#E7E1D8]">
+          <span className="text-meta rounded-md bg-[rgb(248_246_241_/_0.80)] px-2 py-1 text-xs ring-1 ring-[#E7E1D8]">
             {company.stage}
           </span>
           <UsageBadge value={getCompanySignalLabel(company)} />
@@ -86,7 +86,7 @@ export function CompanyCard({
             compact ? "pt-3" : "border-t border-[#E7E1D8] pt-5",
           )}
         >
-          <p className="mb-1 text-xs font-medium uppercase tracking-[0.01em] text-[#9B948A]">
+          <p className="text-label mb-1 text-[10.5px] text-[#9B948A]">
             Recent Activity
           </p>
           <RecentActivity

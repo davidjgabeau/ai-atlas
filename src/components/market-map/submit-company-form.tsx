@@ -52,7 +52,7 @@ export function SubmitCompanyForm({
         <div className="flex items-start gap-3">
           <CheckCircle2 className="mt-1 size-5 text-emerald-600" />
           <div>
-            <h2 className="text-lg font-semibold tracking-tight text-[#181818]">
+            <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
               Submission received
             </h2>
             <p className="mt-2 text-sm leading-6 text-[#5F5A52]">

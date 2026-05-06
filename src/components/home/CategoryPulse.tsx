@@ -15,11 +15,11 @@ export function CategoryPulse({ items }: { items: CategoryPulseItem[] }) {
     <section aria-labelledby="category-pulse">
       <h2
         id="category-pulse"
-        className="font-heading text-[25px] font-medium leading-[1.05] tracking-[-0.025em] text-[#181818] lg:text-[30px]"
+        className="text-section-title text-[26px] lg:text-[30px]"
       >
         Category Pulse
       </h2>
-      <p className="mt-2 text-sm leading-[1.45] text-[#5F5A52] lg:hidden">
+      <p className="text-body mt-2 text-sm lg:hidden">
         Where early-stage NYC AI companies are clustering.
       </p>
 
@@ -32,10 +32,10 @@ export function CategoryPulse({ items }: { items: CategoryPulseItem[] }) {
           >
             <CategoryPixelIcon category={item.category} size="sm" labeled />
             <div className="min-w-0">
-              <h3 className="font-sans text-[14px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+              <h3 className="text-company-hook text-[14px] leading-[1.25]">
                 {item.category}
               </h3>
-              <p className="mt-1 text-xs leading-[1.35] text-[#66625C]">
+              <p className="text-meta mt-1 text-xs leading-[1.35]">
                 {formatCompanyCount(item.count)} · {formatPulsePhrase(item)}
               </p>
             </div>

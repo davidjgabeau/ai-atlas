@@ -63,12 +63,12 @@ export function MarketSnapshot({
         <PixelSiteIcon name="skyline" size="sm" />
         <h2
           id="market-snapshot"
-          className="font-heading text-[25px] font-medium leading-[1.05] tracking-[-0.025em] text-[#181818] lg:text-[32px]"
+          className="text-section-title text-[26px] lg:text-[32px]"
         >
           Market Snapshot
         </h2>
       </div>
-      <p className="mt-2 text-sm leading-[1.45] text-[#5F5A52]">
+      <p className="text-body mt-2 text-sm">
         Series A and earlier, focused on New York.
       </p>
 
@@ -87,12 +87,12 @@ export function MarketSnapshot({
             >
               <span className="sr-only">View {stat.label}</span>
             </Link>
-            <dt className="relative flex items-center gap-2 pr-5 text-[11px] font-semibold uppercase leading-[1.15] tracking-[0.08em] text-[#4F4A43] transition group-hover/snapshot-stat:text-[#9A3D2B]">
+            <dt className="text-label relative flex items-center gap-2 pr-5 leading-[1.15] text-[#4F4A43] transition group-hover/snapshot-stat:text-[#9A3D2B]">
               <PixelSiteIcon name={stat.icon} size="xs" />
               <span>{stat.label}</span>
               <ArrowRight className="absolute right-0 size-3 text-[#9A3D2B] opacity-0 transition group-hover/snapshot-stat:translate-x-0.5 group-hover/snapshot-stat:opacity-100" />
             </dt>
-            <dd className="relative mt-4 font-heading text-[36px] font-medium leading-none tracking-[-0.04em] text-[#111111]">
+            <dd className="text-stat-number relative mt-4 text-[36px]">
               {stat.value}
             </dd>
           </div>
@@ -100,10 +100,10 @@ export function MarketSnapshot({
       </dl>
 
       <div className="mt-5 border-b border-[#E7E1D8] pb-5">
-        <p className="text-[11px] font-semibold uppercase leading-none tracking-[0.08em] text-[#9A3D2B]">
+        <p className="text-label text-[#9A3D2B]">
           Editor&apos;s Note
         </p>
-        <p className="mt-3 line-clamp-5 text-[15px] leading-[1.45] text-[#181818]">
+        <p className="mt-3 line-clamp-5 text-[15px] leading-[1.5] text-[#181818]">
           <LinkedCompanyText
             text={analystRead}
             companies={companiesById}
@@ -119,7 +119,7 @@ export function MarketSnapshot({
             <ArrowRight className="size-3.5" />
           </Link>
           {analystReadUpdatedAt ? (
-            <p className="ml-auto text-right text-[11px] font-medium uppercase tracking-[0.08em] text-[#8A8177]">
+            <p className="text-label ml-auto text-right text-[10.5px] text-[#8A8177]">
               Updated {formatRelativeUpdate(analystReadUpdatedAt)}
             </p>
           ) : null}

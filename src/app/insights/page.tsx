@@ -59,7 +59,7 @@ export default async function InsightsPage() {
             <p className="editorial-label">
               NYC AI Signals
             </p>
-            <h1 className="mt-5 max-w-[760px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+            <h1 className="mt-5 max-w-[760px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
               Which Early-Stage NYC AI Startups Show the Clearest Signal Right Now
             </h1>
             <p className="mt-5 max-w-[640px] text-[18px] leading-[1.55] text-[#5F5A52]">
@@ -166,7 +166,7 @@ function InsightColumn({
       <div className="border-b border-[#E7E1D8] p-5">
         <div className="flex items-center gap-2">
           <Sparkles className={`size-4 ${accent}`} />
-          <h2 className="text-[24px] font-medium tracking-[-0.02em] text-[#181818]">
+          <h2 className="text-[24px] font-medium tracking-[0] text-[#181818]">
             {title}
           </h2>
         </div>

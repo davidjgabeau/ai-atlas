@@ -42,7 +42,7 @@ export default function PatternsPage() {
       <section className="hero">
         <div className="editorial-container py-12">
           <p className="editorial-label">Pattern recognition</p>
-          <h1 className="mt-5 max-w-[840px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+          <h1 className="mt-5 max-w-[840px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
             Patterns across the NYC AI map
           </h1>
           <p className="mt-5 max-w-[700px] text-[18px] leading-[1.55] text-[#5F5A52]">
@@ -71,7 +71,7 @@ export default function PatternsPage() {
                 className="group rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-6 transition hover:bg-[rgb(154_61_43_/_0.045)]"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <h2 className="font-heading text-[26px] font-medium leading-[1.05] tracking-[-0.025em] text-[#181818]">
+                  <h2 className="font-heading text-[26px] font-medium leading-[1.05] tracking-[0] text-[#181818]">
                     {pattern.title}
                   </h2>
                   <ArrowRight className="mt-1 size-4 shrink-0 text-[#9A3D2B] transition group-hover:translate-x-0.5" />

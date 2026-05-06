@@ -19,7 +19,7 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
           <div>
             <p className="editorial-label">New entries</p>
             <h2 className="mt-3 editorial-section-title">Recently Added</h2>
-            <p className="mt-2 text-sm leading-[1.5] text-[#5F5A52]">
+            <p className="text-body mt-2 text-sm">
               New entries and meaningful updates from the early-stage NYC AI map.
             </p>
           </div>
@@ -50,20 +50,20 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
                   className="rowSprite size-10 text-xs"
                 />
                 <div className="min-w-0">
-                  <h3 className="truncate font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+                  <h3 className="text-company-name truncate text-[18px] leading-[1.2]">
                     {company.name}
                   </h3>
-                  <p className="mt-1 line-clamp-1 text-[15px] font-semibold leading-[1.35] text-[#181818]">
+                  <p className="text-company-hook mt-1 line-clamp-1 text-[15px]">
                     {getCompanyHook(company)}
                   </p>
-                  <p className="mt-1 line-clamp-2 text-[13.5px] leading-[1.45] text-[#66625C]">
+                  <p className="text-body mt-1 line-clamp-2 text-[13.5px] leading-[1.45]">
                     {getCompanyInclusionReason(company)}
                   </p>
                 </div>
-                <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs font-medium text-[#66625C] md:justify-end md:text-right">
+                <div className="text-meta flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs md:justify-end md:text-right">
                   {annotation ? (
                     <>
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+                      <span className="text-label text-[11px] text-[#9A3D2B]">
                         {annotation}
                       </span>
                       <span aria-hidden="true">·</span>

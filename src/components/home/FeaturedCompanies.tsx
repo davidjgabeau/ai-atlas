@@ -19,7 +19,7 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
           <div>
             <p className="editorial-label">Editorial picks</p>
             <h2 className="mt-3 editorial-section-title">Featured Companies</h2>
-            <p className="mt-2 max-w-[680px] text-sm leading-[1.5] text-[#5F5A52]">
+            <p className="text-body mt-2 max-w-[680px] text-sm">
               A curated set of early-stage NYC AI companies with strong products,
               clear buyers, or category momentum.
             </p>
@@ -53,24 +53,24 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="truncate font-sans text-[18px] font-semibold leading-[1.2] tracking-[-0.01em] text-[#181818]">
+                    <h3 className="text-company-name truncate text-[18px] leading-[1.2]">
                       {company.name}
                     </h3>
                     {showLabel ? (
-                      <span className="shrink-0 text-[11px] font-semibold uppercase leading-none tracking-[0.08em] text-[#9A3D2B]">
+                      <span className="text-label shrink-0 text-[11px] text-[#9A3D2B]">
                         {label}
                       </span>
                     ) : null}
                   </div>
-                  <p className="mt-2 line-clamp-1 text-[15px] font-semibold leading-[1.35] text-[#181818]">
+                  <p className="text-company-hook mt-2 line-clamp-1 text-[15px]">
                     {getCompanyHook(company)}
                   </p>
-                  <p className="mt-2 line-clamp-2 text-sm leading-[1.55] text-[#66625C]">
+                  <p className="text-body mt-2 line-clamp-2 text-sm">
                     {company.short_description}
                   </p>
 
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <p className="flex min-w-0 items-center gap-1.5 text-xs font-medium text-[#66625C]">
+                    <p className="text-meta flex min-w-0 items-center gap-1.5 text-xs">
                       <CategoryPixelIcon category={company.category} size="xs" />
                       <span className="truncate">{company.category}</span>
                       <span aria-hidden="true">·</span>

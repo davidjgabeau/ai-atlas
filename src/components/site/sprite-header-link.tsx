@@ -36,7 +36,7 @@ export function SpriteHeaderLink({
         size="sm"
         className="transition group-hover:scale-[1.04]"
       />
-      <span className="text-[10px] font-semibold leading-none tracking-[0.02em]">
+      <span className="text-label text-[10px] text-current">
         {label.toLowerCase()}
       </span>
     </Link>

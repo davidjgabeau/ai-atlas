@@ -149,7 +149,7 @@ export function PublicProfileClient({
           <p className="mt-6 text-xs font-medium uppercase tracking-[0.01em] text-[#9A3D2B]">
             Profile
           </p>
-          <h1 className="mt-3 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+          <h1 className="mt-3 font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
             @{normalizedHandle} is not published yet.
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-base leading-[1.6] text-[#5F5A52]">
@@ -178,7 +178,7 @@ export function PublicProfileClient({
             <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center">
               <Avatar avatarId={publicProfile.avatarId} size="lg" />
               <div>
-                <h1 className="font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[-0.04em] text-[#181818]">
+                <h1 className="font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
                   {publicProfile.name}
                 </h1>
                 <p className="mt-1 text-sm font-medium text-[#9A3D2B]">
@@ -219,7 +219,7 @@ export function PublicProfileClient({
               <p className="text-xs font-medium uppercase tracking-[0.01em] text-[#9A3D2B]">
                 Saved Companies
               </p>
-              <h2 className="mt-2 font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[#181818]">
+              <h2 className="mt-2 font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[0] text-[#181818]">
                 Companies on this radar
               </h2>
             </div>

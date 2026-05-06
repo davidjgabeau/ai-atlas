@@ -14,11 +14,11 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2 className="mt-3 font-heading text-[30px] font-medium leading-[1.05] tracking-[-0.025em] text-[#181818] md:text-[38px]">
+      <h2 className="text-section-title mt-3 md:text-[38px]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">
+        <p className="text-body mt-3 max-w-[680px] text-base">
           {description}
         </p>
       ) : null}

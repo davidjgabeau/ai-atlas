@@ -547,7 +547,7 @@ function ProfileAccessGate({
                 <Avatar avatarId={avatarId} size="lg" className="size-[72px]" />
                 <div>
                   <p className="editorial-label">Profile</p>
-                  <h1 className="mt-2 font-heading text-[clamp(40px,5vw,68px)] font-medium leading-none tracking-[-0.035em] text-[#181818]">
+                  <h1 className="mt-2 font-heading text-[clamp(40px,5vw,68px)] font-medium leading-none tracking-[0] text-[#181818]">
                     Your AI Atlas profile
                   </h1>
                   <p className="mt-3 text-base text-[#66625C]">
@@ -603,7 +603,7 @@ function ProfileAccessGate({
               <div className="mx-auto grid size-12 place-items-center rounded-md border border-[#E7E1D8] bg-[#F8F6F1] text-[#9A3D2B]">
                 <LockKeyhole className="size-5" />
               </div>
-              <h2 className="mt-4 font-heading text-[clamp(31px,9vw,38px)] font-medium leading-[1] tracking-[-0.03em] text-[#181818] sm:text-[clamp(32px,5vw,42px)]">
+              <h2 className="mt-4 font-heading text-[clamp(31px,9vw,38px)] font-medium leading-[1] tracking-[0] text-[#181818] sm:text-[clamp(32px,5vw,42px)]">
                 Create a profile to start scouting
               </h2>
               <p className="mt-4 text-[15px] leading-6 text-[#5F5A52] sm:text-sm">
@@ -630,7 +630,7 @@ function ProfileGateStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="px-4 py-3 text-center">
       <dt className="editorial-label text-[10px]">{label}</dt>
-      <dd className="mt-1 font-heading text-[24px] font-medium leading-none tracking-[-0.025em] text-[#181818]">
+      <dd className="mt-1 font-heading text-[24px] font-medium leading-none tracking-[0] text-[#181818]">
         {value}
       </dd>
     </div>
