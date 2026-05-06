@@ -225,6 +225,39 @@ export function MarketMapClient({
     closeCompanyDrawer();
   }
 
+  function renderFilterRow(className: string) {
+    return (
+      <div className={className}>
+        <MapFilterRow
+          category={category}
+          stage={stage}
+          neighborhood={activeNeighborhood}
+          stages={stages}
+          neighborhoods={neighborhoods}
+          usageProfiles={usageProfiles}
+          hasFilters={hasFilters}
+          onCategoryChange={(value) => {
+            setCategory(value);
+            closeCompanyDrawer();
+          }}
+          onStageChange={(value) => {
+            setStage(value);
+            closeCompanyDrawer();
+          }}
+          onNeighborhoodChange={(value) => {
+            setNeighborhood(value);
+            closeCompanyDrawer();
+          }}
+          onUsageProfilesChange={(nextProfiles) => {
+            setUsageProfiles(nextProfiles);
+            closeCompanyDrawer();
+          }}
+          onReset={resetView}
+        />
+      </div>
+    );
+  }
+
   return (
     <AppShell
       search={search}
@@ -242,40 +275,42 @@ export function MarketMapClient({
             updatedAt={latestUpdatedAt}
           />
 
-          <MapFilterRow
-            category={category}
-            stage={stage}
-            neighborhood={activeNeighborhood}
-            stages={stages}
-            neighborhoods={neighborhoods}
-            usageProfiles={usageProfiles}
-            hasFilters={hasFilters}
-            onCategoryChange={(value) => {
-              setCategory(value);
-              closeCompanyDrawer();
-            }}
-            onStageChange={(value) => {
-              setStage(value);
-              closeCompanyDrawer();
-            }}
-            onNeighborhoodChange={(value) => {
-              setNeighborhood(value);
-              closeCompanyDrawer();
-            }}
-            onUsageProfilesChange={(nextProfiles) => {
-              setUsageProfiles(nextProfiles);
-              closeCompanyDrawer();
-            }}
-            onReset={resetView}
-          />
+          {renderFilterRow("hidden xl:block")}
 
           <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(430px,0.8fr)] xl:items-start">
-            <section className="order-1 min-w-0 space-y-6 xl:order-1">
+            <section className="order-1 min-w-0 xl:order-1">
               <MapInsights
                 companies={filteredCompanies}
                 locations={filteredLocations}
               />
+            </section>
 
+            <aside className="order-2 space-y-4 xl:sticky xl:top-24 xl:order-2 xl:row-span-2">
+              <InteractiveMapPanel
+                companies={filteredCompanies}
+                onSelectCompany={selectCompany}
+              />
+              <MapDotKey
+                locations={filteredLocations}
+                className="hidden xl:block"
+              />
+
+              <div className="hidden xl:block">
+                {selectedCompany ? (
+                  <CompanyInspector
+                    company={selectedCompany}
+                    onClose={closeCompanyDrawer}
+                  />
+                ) : (
+                  <SelectedCompanyDrawer />
+                )}
+              </div>
+            </aside>
+
+            {renderFilterRow("order-3 xl:hidden")}
+
+            <section className="order-4 min-w-0 space-y-6 xl:order-3">
+              <MapDotKey locations={filteredLocations} className="xl:hidden" />
               <NeighborhoodClusters
                 locations={filteredLocations}
                 activeNeighborhood={activeNeighborhood}
@@ -292,46 +327,6 @@ export function MarketMapClient({
                 onSelect={selectCompany}
               />
             </section>
-
-            <aside className="order-2 space-y-4 xl:sticky xl:top-24 xl:order-2">
-              <section className="overflow-hidden rounded-md border border-[#E7E1D8] bg-[#081523]">
-                <div className="flex flex-col gap-3 border-b border-white/10 bg-[#081523] px-4 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="grid size-9 place-items-center rounded-md bg-white/10 ring-1 ring-white/15">
-                      <MapPinned className="size-4" />
-                    </span>
-                    <div>
-                      <h2 className="text-sm font-semibold tracking-[0]">
-                        Interactive map
-                      </h2>
-                      <p className="text-sm text-white/65">
-                        {formatMappedCompanies(filteredCompanies.length)} in view
-                      </p>
-                    </div>
-                  </div>
-                  <span className="w-fit rounded-md bg-white/10 px-2.5 py-1 text-xs font-medium uppercase tracking-[0.08em] text-white/75 ring-1 ring-white/15">
-                    Google Maps
-                  </span>
-                </div>
-                <GoogleStartupMap
-                  companies={filteredCompanies}
-                  onSelectCompany={selectCompany}
-                />
-              </section>
-
-              <MapDotKey locations={filteredLocations} />
-
-              <div className="hidden xl:block">
-                {selectedCompany ? (
-                  <CompanyInspector
-                    company={selectedCompany}
-                    onClose={closeCompanyDrawer}
-                  />
-                ) : (
-                  <SelectedCompanyDrawer />
-                )}
-              </div>
-            </aside>
           </div>
         </div>
 
@@ -709,12 +704,55 @@ function NeighborhoodClusters({
   );
 }
 
-function MapDotKey({ locations }: { locations: CompanyMapLocation[] }) {
+function InteractiveMapPanel({
+  companies,
+  onSelectCompany,
+}: {
+  companies: Company[];
+  onSelectCompany: (slug: string) => void;
+}) {
+  return (
+    <section className="overflow-hidden rounded-md border border-[#E7E1D8] bg-[#081523]">
+      <div className="flex flex-col gap-3 border-b border-white/10 bg-[#081523] px-4 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <span className="grid size-9 place-items-center rounded-md bg-white/10 ring-1 ring-white/15">
+            <MapPinned className="size-4" />
+          </span>
+          <div>
+            <h2 className="text-sm font-semibold tracking-[0]">
+              Interactive map
+            </h2>
+            <p className="text-sm text-white/65">
+              {formatMappedCompanies(companies.length)} in view
+            </p>
+          </div>
+        </div>
+        <span className="w-fit rounded-md bg-white/10 px-2.5 py-1 text-xs font-medium uppercase tracking-[0.08em] text-white/75 ring-1 ring-white/15">
+          Google Maps
+        </span>
+      </div>
+      <GoogleStartupMap companies={companies} onSelectCompany={onSelectCompany} />
+    </section>
+  );
+}
+
+function MapDotKey({
+  locations,
+  className,
+}: {
+  locations: CompanyMapLocation[];
+  className?: string;
+}) {
   const categoryRows = getCategoryDotRows(locations).slice(0, 5);
   const clusters = getNeighborhoodClusters(locations).slice(0, 5);
 
   return (
-    <section className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-4">
+    <section
+      className={cn(
+        "rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-4",
+        className,
+      )}
+    >
       <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
