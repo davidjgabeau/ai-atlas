@@ -5,19 +5,23 @@ import { notFound } from "next/navigation";
 
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { CompanyCard } from "@/components/market-map/company-card";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
 import {
   categoryMeta,
   getCategoryBySlug,
 } from "@/data/market";
-import { formatCompanyCount } from "@/lib/companies/formatCompanyCount";
 import {
+  absoluteUrl,
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
-  truncateMeta,
 } from "@/lib/seo/shareMetadata";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+  companyCollectionItems,
+} from "@/lib/seo/schema";
 import { getCompaniesByCategoryFromData } from "@/lib/supabase/market-data";
 
 export const dynamic = "force-dynamic";
@@ -36,20 +40,17 @@ export async function generateMetadata({
 
   if (!category) {
     return createShareMetadata({
-      title: "Category | AI Atlas NYC",
-      description: `Browse AI Atlas categories and companies. ${shareCta}.`,
+      title: "NYC AI Startup Categories",
+      description:
+        "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
       path: `/categories/${slug}`,
       image: getShareImageUrl({ page: "categories" }),
     });
   }
 
-  const companies = await getCompaniesByCategoryFromData(category.name);
-
   return createShareMetadata({
-    title: `${category.name} | AI Atlas NYC`,
-    description: truncateMeta(
-      `${formatCompanyCount(companies.length)} in ${category.name}. ${category.description} ${shareCta}.`,
-    ),
+    title: `${category.name} NYC AI Startups`,
+    description: `Explore early-stage NYC AI startups in ${category.name}.`,
     path: `/categories/${category.slug}`,
     image: getShareImageUrl({ category: category.slug }),
     type: "article",
@@ -71,7 +72,26 @@ export default async function CategoryPage({
   const companies = await getCompaniesByCategoryFromData(category.name);
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: `${category.name} NYC AI Startups`,
+            description: `Explore early-stage NYC AI startups in ${category.name}.`,
+            url: absoluteUrl(`/categories/${category.slug}`),
+            items: companyCollectionItems(companies),
+          }),
+          breadcrumbSchema([
+            { name: "AI Atlas NYC", url: absoluteUrl("/") },
+            { name: "Categories", url: absoluteUrl("/categories") },
+            {
+              name: category.name,
+              url: absoluteUrl(`/categories/${category.slug}`),
+            },
+          ]),
+        ]}
+      />
+      <PublicShell>
       <section className="hero">
         <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <Button asChild variant="ghost" size="sm" className="mb-8">
@@ -130,6 +150,7 @@ export default async function CategoryPage({
           </div>
         </div>
       </section>
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }

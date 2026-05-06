@@ -9,11 +9,17 @@ import {
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = createShareMetadata({
-  title: "Current Read | AI Atlas NYC",
-  description: `Short editorial notes from the full early-stage NYC AI map and latest additions. ${shareCta}.`,
-  path: "/highlights",
-  image: getShareImageUrl({ page: "insights" }),
-});
+export const metadata: Metadata = {
+  ...createShareMetadata({
+    title: "Current Read",
+    description: `Short editorial notes from the full early-stage NYC AI map and latest additions. ${shareCta}.`,
+    path: "/highlights",
+    image: getShareImageUrl({ page: "insights" }),
+  }),
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default InsightsPage;

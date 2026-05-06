@@ -1,25 +1,22 @@
 import type { Metadata } from "next";
 
 import { MarketMapClient } from "@/components/market-map/market-map-client";
-import { getCompanyStats } from "@/lib/companies/getCompanyStats";
-import { formatAiStartupCount } from "@/lib/companies/formatCompanyCount";
+import { JsonLd } from "@/components/seo/JsonLd";
 import {
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
-  truncateMeta,
 } from "@/lib/seo/shareMetadata";
+import {
+  collectionPageSchema,
+  companyCollectionItems,
+} from "@/lib/seo/schema";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const companies = await getPublishedCompanies();
-  const stats = getCompanyStats(companies);
-
   return createShareMetadata({
-    title: "Early-Stage NYC AI Companies to Know | AI Atlas NYC",
-    description: truncateMeta(
-      `${formatAiStartupCount(stats.totalCompanies)} across consumer, healthcare, infrastructure, and more. ${shareCta}.`,
-    ),
+    title: "NYC AI Startup Map",
+    description:
+      "Browse early-stage NYC AI startups by category, stage, buyer, workflow, and product surface.",
     path: "/companies",
     image: getShareImageUrl({ page: "companies" }),
   });
@@ -34,5 +31,18 @@ export default async function CompaniesPage({
   const initialSearch = params?.q ?? params?.search ?? "";
   const companies = await getPublishedCompanies();
 
-  return <MarketMapClient companies={companies} initialSearch={initialSearch} />;
+  return (
+    <>
+      <JsonLd
+        data={collectionPageSchema({
+          name: "NYC AI Startup Map",
+          description:
+            "Browse early-stage NYC AI startups by category, stage, buyer, workflow, and product surface.",
+          url: "https://aiatlas.nyc/companies",
+          items: companyCollectionItems(companies),
+        })}
+      />
+      <MarketMapClient companies={companies} initialSearch={initialSearch} />
+    </>
+  );
 }

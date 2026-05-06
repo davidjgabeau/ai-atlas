@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { CompanyLogo } from "@/components/market-map/company-logo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,11 +14,13 @@ import {
 } from "@/data/patterns";
 import { getConsumptionProfileLabel } from "@/lib/model-usage/consumptionProfile";
 import {
+  absoluteUrl,
   createShareMetadata,
   getShareImageUrl,
   shareCta,
   truncateMeta,
 } from "@/lib/seo/shareMetadata";
+import { articleSchema, breadcrumbSchema } from "@/lib/seo/schema";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import type { Company } from "@/types/market";
 
@@ -37,7 +40,7 @@ export async function generateMetadata({
 
   if (!pattern) {
     return createShareMetadata({
-      title: "Pattern | AI Atlas NYC",
+      title: "Pattern",
       description: `Recurring shapes across early-stage NYC AI startups. ${shareCta}.`,
       path: `/patterns/${slug}`,
       image: getShareImageUrl({ page: "insights" }),
@@ -45,7 +48,7 @@ export async function generateMetadata({
   }
 
   return createShareMetadata({
-    title: `${pattern.title} | AI Atlas NYC`,
+    title: pattern.title,
     description: truncateMeta(`${pattern.framing} ${shareCta}.`),
     path: `/patterns/${pattern.slug}`,
     image: getShareImageUrl({ page: "insights" }),
@@ -78,7 +81,26 @@ export default async function PatternDetailPage({
     );
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={[
+          articleSchema({
+            title: pattern.title,
+            description: pattern.framing,
+            url: absoluteUrl(`/patterns/${pattern.slug}`),
+            dateModified: pattern.updated_at,
+          }),
+          breadcrumbSchema([
+            { name: "AI Atlas NYC", url: absoluteUrl("/") },
+            { name: "Patterns", url: absoluteUrl("/patterns") },
+            {
+              name: pattern.title,
+              url: absoluteUrl(`/patterns/${pattern.slug}`),
+            },
+          ]),
+        ]}
+      />
+      <PublicShell>
       <section className="hero">
         <div className="editorial-container py-12">
           <Button asChild variant="ghost" size="sm" className="mb-8">
@@ -153,6 +175,7 @@ export default async function PatternDetailPage({
           )}
         </div>
       </section>
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }

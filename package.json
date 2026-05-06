@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "seo:audit": "tsx scripts/seo-audit.ts",
     "generate:editorial": "tsx scripts/generate-editorial.ts",
     "generate:supabase-seed": "tsx scripts/generate-supabase-seed.ts",
     "agent:refresh": "tsx scripts/refresh-known-companies.ts",

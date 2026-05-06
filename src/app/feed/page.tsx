@@ -4,15 +4,20 @@ import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
 
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import { CompanyLogo } from "@/components/market-map/company-logo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { PublicShell } from "@/components/site/public-shell";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import { getNewsItems } from "@/lib/news/news-store";
 import {
+  absoluteUrl,
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
 } from "@/lib/seo/shareMetadata";
+import {
+  collectionPageSchema,
+  feedCollectionItems,
+} from "@/lib/seo/schema";
 import {
   getCompanySocialFeed,
   type CompanySocialPostWithCompany,
@@ -26,9 +31,10 @@ const NEWS_PREVIEW_LIMIT = 5;
 const POSTS_PREVIEW_LIMIT = 5;
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Newsfeed | AI Atlas NYC",
-  description: `Early-stage NYC AI news links and official posts from companies in the AI Atlas map. ${shareCta}.`,
-  path: "/feed",
+  title: "Early-Stage NYC AI News and Company Posts",
+  description:
+    "Early-stage NYC AI news links, broader context, and official posts from mapped companies.",
+  path: "/newsfeed",
   image: getShareImageUrl({ page: "feed" }),
 });
 
@@ -55,7 +61,20 @@ export default async function FeedPage({
     : posts.slice(0, POSTS_PREVIEW_LIMIT);
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={collectionPageSchema({
+          name: "Early-Stage NYC AI News and Company Posts",
+          description:
+            "Early-stage NYC AI news links, broader context, and official posts from mapped companies.",
+          url: absoluteUrl("/newsfeed"),
+          items: feedCollectionItems({
+            newsItems,
+            socialPosts: posts,
+          }),
+        })}
+      />
+      <PublicShell>
       <section className="border-b border-[#E7E1D8] bg-section">
         <div className="editorial-container !max-w-[1360px] py-10 md:py-12 lg:py-16">
           <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.62fr)] lg:gap-14">
@@ -161,7 +180,8 @@ export default async function FeedPage({
           </div>
         </div>
       </section>
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }
 

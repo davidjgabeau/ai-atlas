@@ -10,6 +10,7 @@ import { HomePatterns } from "@/components/home/HomePatterns";
 import { LatestSignals } from "@/components/home/LatestSignals";
 import { NewsBriefModal } from "@/components/home/NewsBriefModal";
 import { RecentlyAdded } from "@/components/home/RecentlyAdded";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { AtlasAvatarMark } from "@/components/site/atlas-avatar-mark";
 import { GlobalSearch } from "@/components/site/global-search";
 import { MobileNavMenu } from "@/components/site/mobile-nav-menu";
@@ -26,7 +27,6 @@ import {
   getCategoryCounts,
 } from "@/data/market";
 import { getCompanyStats } from "@/lib/companies/getCompanyStats";
-import { formatAiStartupCount } from "@/lib/companies/formatCompanyCount";
 import {
   getLatestSnapshot,
   getLatestSurface,
@@ -35,9 +35,8 @@ import {
 import {
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
-  truncateMeta,
 } from "@/lib/seo/shareMetadata";
+import { organizationSchema, websiteSchema } from "@/lib/seo/schema";
 import { getNewsItems } from "@/lib/news/news-store";
 import {
   getCompanySignalLabel,
@@ -51,14 +50,11 @@ import type { Category, Company, MarketInsight } from "@/types/market";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const publishedCompanies = await getPublishedCompanies();
-  const stats = getCompanyStats(publishedCompanies);
-
   return createShareMetadata({
-    title: "AI Atlas NYC | Early-Stage NYC AI Companies to Know",
-    description: truncateMeta(
-      `${formatAiStartupCount(stats.totalCompanies)} across consumer, healthcare, infrastructure, and more. ${shareCta}.`,
-    ),
+    title: "Early-Stage NYC AI Startups",
+    description:
+      "Explore early-stage NYC AI startups across consumer, healthcare, infrastructure, and more. AI Atlas NYC tracks New York AI companies from pre-seed through Series A.",
+    path: "/",
     image: getShareImageUrl({ page: "home" }),
   });
 }
@@ -192,36 +188,42 @@ export default async function Home() {
         : latestUpdatedAt;
 
   return (
-    <div className="min-h-screen bg-transparent text-[#181818]">
-      <SiteNav />
+    <>
+      <JsonLd data={[websiteSchema(), organizationSchema()]} />
+      <div className="min-h-screen bg-transparent text-[#181818]">
+        <SiteNav />
 
-      <main>
-        <HomeFrontPage
-          companiesToKnow={surfaceCompaniesToKnow}
-          categoryPulse={surfaceCategoryPulseItems}
-          stats={stats}
-          currentThemeCount={marketSnapshotCounts.currentThemeCount}
-          analystRead={analystRead}
-          analystReadUpdatedAt={analystReadUpdatedAt}
-          companiesById={companiesById}
-          snapshotOverrides={marketSnapshotCounts}
-          latestUpdatedAt={latestUpdatedAt}
-        />
-        <HomePatterns />
-        <RecentlyAdded companies={surfaceRecentlyAdded} />
-        <CurrentRead insights={surfaceCurrentRead} companiesById={companiesById} />
-        <LatestSignals
-          items={displayedLatestSignals}
-          companiesById={companiesById}
-        />
-        <FeaturedCompanies companies={featuredHomepageCompanies} />
-        <BrowseByCategory categories={categoryMeta} counts={categoryCounts} />
-        <NewsBriefModal items={newsItems} companies={linkableCompanies} />
-        <SubmitCompanyCTA />
-      </main>
+        <main>
+          <HomeFrontPage
+            companiesToKnow={surfaceCompaniesToKnow}
+            categoryPulse={surfaceCategoryPulseItems}
+            stats={stats}
+            currentThemeCount={marketSnapshotCounts.currentThemeCount}
+            analystRead={analystRead}
+            analystReadUpdatedAt={analystReadUpdatedAt}
+            companiesById={companiesById}
+            snapshotOverrides={marketSnapshotCounts}
+            latestUpdatedAt={latestUpdatedAt}
+          />
+          <HomePatterns />
+          <RecentlyAdded companies={surfaceRecentlyAdded} />
+          <CurrentRead
+            insights={surfaceCurrentRead}
+            companiesById={companiesById}
+          />
+          <LatestSignals
+            items={displayedLatestSignals}
+            companiesById={companiesById}
+          />
+          <FeaturedCompanies companies={featuredHomepageCompanies} />
+          <BrowseByCategory categories={categoryMeta} counts={categoryCounts} />
+          <NewsBriefModal items={newsItems} companies={linkableCompanies} />
+          <SubmitCompanyCTA />
+        </main>
 
-      <SiteFooter />
-    </div>
+        <SiteFooter />
+      </div>
+    </>
   );
 }
 

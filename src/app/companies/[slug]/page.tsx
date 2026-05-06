@@ -13,6 +13,7 @@ import { CompanyLogo } from "@/components/market-map/company-logo";
 import { RecentActivity } from "@/components/market-map/recent-activity";
 import { UsageBadge } from "@/components/market-map/usage-badge";
 import { SaveCompanyButton } from "@/components/profile/save-company-button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { CompanySocialPostCard } from "@/components/social/company-social-post-card";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
@@ -30,11 +31,16 @@ import {
 } from "@/lib/intro-request";
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
 import {
+  absoluteUrl,
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
   truncateMeta,
 } from "@/lib/seo/shareMetadata";
+import {
+  breadcrumbSchema,
+  companyOrganizationSchema,
+  getCompanyDescription,
+} from "@/lib/seo/schema";
 import {
   getCompanyBySlugFromData,
   getPublishedCompanies,
@@ -59,7 +65,7 @@ export async function generateMetadata({
 
   if (!company) {
     return createShareMetadata({
-      title: "Company profile | AI Atlas NYC",
+      title: "Company profile",
       description:
         "Explore companies, categories, signals, jobs, and market notes from AI Atlas NYC.",
       path: `/companies/${slug}`,
@@ -67,10 +73,12 @@ export async function generateMetadata({
     });
   }
 
+  const baseDescription = getCompanyDescription(company);
+
   return createShareMetadata({
-    title: `${company.name} | AI Atlas NYC`,
+    title: `${company.name} | Early-Stage NYC AI Startup`,
     description: truncateMeta(
-      `${company.generated?.hook || company.one_line_thesis || company.short_description} ${company.category}. ${shareCta}.`,
+      `${baseDescription} ${company.name} is listed in AI Atlas NYC as a ${company.stage} company in ${company.category}.`,
     ),
     path: `/companies/${company.slug}`,
     image: getShareImageUrl({ company: company.slug }),
@@ -111,7 +119,21 @@ export default async function CompanyProfilePage({
   });
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={[
+          companyOrganizationSchema(company),
+          breadcrumbSchema([
+            { name: "AI Atlas NYC", url: absoluteUrl("/") },
+            { name: "Companies", url: absoluteUrl("/companies") },
+            {
+              name: company.name,
+              url: absoluteUrl(`/companies/${company.slug}`),
+            },
+          ]),
+        ]}
+      />
+      <PublicShell>
       <section className="hero">
         <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <Button asChild variant="ghost" size="sm" className="mb-8">
@@ -417,7 +439,8 @@ export default async function CompanyProfilePage({
           </div>
         </section>
       ) : null}
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }
 

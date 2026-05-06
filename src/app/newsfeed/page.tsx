@@ -1,12 +1,16 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
 
-export default async function NewsfeedAliasPage({
-  searchParams,
-}: {
-  searchParams?: Promise<{ view?: string }>;
-}) {
-  const params = await searchParams;
-  const view = params?.view ? `?view=${encodeURIComponent(params.view)}` : "";
+import FeedPage from "@/app/feed/page";
+import { createShareMetadata, getShareImageUrl } from "@/lib/seo/shareMetadata";
 
-  redirect(`/feed${view}`);
-}
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = createShareMetadata({
+  title: "Early-Stage NYC AI News and Company Posts",
+  description:
+    "Early-stage NYC AI news links, broader context, and official posts from mapped companies.",
+  path: "/newsfeed",
+  image: getShareImageUrl({ page: "feed" }),
+});
+
+export default FeedPage;

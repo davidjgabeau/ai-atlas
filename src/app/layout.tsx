@@ -4,11 +4,13 @@ import { Suspense } from "react";
 
 import { RouteTransitionFeedback } from "@/components/site/route-transition-feedback";
 import { CursorCompanion } from "@/components/ui/CursorCompanion";
+import { SEO_DEFAULTS } from "@/lib/seo/config";
 import {
-  createShareMetadata,
+  absoluteUrl,
   getShareImageUrl,
   getSiteUrl,
   shareCta,
+  xAccountHandle,
 } from "@/lib/seo/shareMetadata";
 
 import "./globals.css";
@@ -30,12 +32,50 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
-  ...createShareMetadata({
-    title: "AI Atlas NYC",
-    description:
-      "A curated map of early-stage NYC AI startups from pre-seed through Series A. Explore companies, categories, signals, jobs, and market notes.",
-    image: getShareImageUrl({ page: "home" }),
-  }),
+  title: {
+    default: SEO_DEFAULTS.defaultTitle,
+    template: SEO_DEFAULTS.titleTemplate,
+  },
+  description: SEO_DEFAULTS.description,
+  keywords: [...SEO_DEFAULTS.keywords],
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    title: SEO_DEFAULTS.defaultTitle,
+    description: SEO_DEFAULTS.description,
+    url: absoluteUrl("/"),
+    siteName: SEO_DEFAULTS.siteName,
+    type: "website",
+    images: [
+      {
+        url: getShareImageUrl({ page: "home" }),
+        width: 1200,
+        height: 630,
+        alt: "AI Atlas NYC preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: xAccountHandle,
+    creator: xAccountHandle,
+    title: SEO_DEFAULTS.defaultTitle,
+    description: SEO_DEFAULTS.description,
+    images: [getShareImageUrl({ page: "home" })],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: getSearchVerificationMetadata(),
   applicationName: "AI Atlas NYC",
   appleWebApp: {
     title: "AI Atlas NYC",
@@ -66,6 +106,18 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+function getSearchVerificationMetadata(): Metadata["verification"] {
+  const google = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
+  if (!google && !bing) return undefined;
+
+  return {
+    ...(google ? { google } : {}),
+    ...(bing ? { other: { "msvalidate.01": bing } } : {}),
+  };
+}
 
 export default function RootLayout({
   children,

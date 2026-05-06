@@ -12,7 +12,6 @@ import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
 } from "@/lib/seo/shareMetadata";
 import {
   type CompanyJobStats,
@@ -26,8 +25,9 @@ import type { CompanyJobWithCompany } from "@/types/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Jobs | AI Atlas NYC",
-  description: `Open roles at early-stage NYC AI companies in the AI Atlas map. ${shareCta}.`,
+  title: "NYC AI Startup Jobs",
+  description:
+    "Explore jobs and hiring activity from early-stage AI startups in New York.",
   path: "/jobs",
   image: getShareImageUrl({ page: "jobs" }),
 });

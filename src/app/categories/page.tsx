@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { CompanyCard } from "@/components/market-map/company-card";
 import { SectionHeading } from "@/components/market-map/section-heading";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,15 +15,19 @@ import {
 import {
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
 } from "@/lib/seo/shareMetadata";
+import {
+  categoryCollectionItems,
+  collectionPageSchema,
+} from "@/lib/seo/schema";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Categories | AI Atlas NYC",
-  description: `Browse the AI Atlas map by category, from finance and legal to consumer, infrastructure, health, creative, and data. ${shareCta}.`,
+  title: "NYC AI Startup Categories",
+  description:
+    "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
   path: "/categories",
   image: getShareImageUrl({ page: "categories" }),
 });
@@ -32,7 +37,17 @@ export default async function CategoriesPage() {
   const counts = getCategoryCounts(companies);
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={collectionPageSchema({
+          name: "NYC AI Startup Categories",
+          description:
+            "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
+          url: "https://aiatlas.nyc/categories",
+          items: categoryCollectionItems(),
+        })}
+      />
+      <PublicShell>
       <section className="hero">
         <div className="editorial-container py-12">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -130,6 +145,7 @@ export default async function CategoriesPage() {
           </div>
         </div>
       </section>
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }

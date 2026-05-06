@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { AdminAccessPanel } from "@/components/market-map/admin-access-panel";
 import { AdminConsole } from "@/components/market-map/admin-console";
 import { PublicShell } from "@/components/site/public-shell";
@@ -14,6 +16,14 @@ import {
 } from "@/lib/supabase/market-data";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Curation Studio",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function AdminPage() {
   const adminEmail = getAdminEmails()[0] ?? "davidgabeau92@gmail.com";

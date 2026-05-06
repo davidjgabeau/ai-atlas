@@ -9,7 +9,7 @@ import {
 } from "@/lib/seo/shareMetadata";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Submit a startup | AI Atlas NYC",
+  title: "Submit a startup",
   description: `Submit an early-stage company building AI in New York. ${shareCta}.`,
   path: "/submit",
   image: getShareImageUrl({ page: "submit" }),

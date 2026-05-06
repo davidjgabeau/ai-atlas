@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
-export const siteName = "AI Atlas NYC";
+import { SEO_DEFAULTS, getConfiguredSiteUrl } from "@/lib/seo/config";
+
+export const siteName = SEO_DEFAULTS.siteName;
 export const shareCta = "NYC AI, mapped by hand";
 export const xAccountHandle = "@AiAtlasNYC";
 
 export function getSiteUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://aiatlas.nyc";
+  return getConfiguredSiteUrl();
 }
 
 export function absoluteUrl(path: string) {
@@ -37,24 +39,27 @@ export function createShareMetadata({
   path = "/",
   image,
   type = "website",
+  absoluteTitle = false,
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string;
   type?: "website" | "article";
+  absoluteTitle?: boolean;
 }): Metadata {
   const imageUrl = image ?? getShareImageUrl();
   const canonicalUrl = absoluteUrl(path);
+  const socialTitle = getSocialTitle(title);
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title,
+      title: socialTitle,
       description,
       url: canonicalUrl,
       siteName,
@@ -72,9 +77,13 @@ export function createShareMetadata({
       card: "summary_large_image",
       site: xAccountHandle,
       creator: xAccountHandle,
-      title,
+      title: socialTitle,
       description,
       images: [imageUrl],
     },
   };
+}
+
+export function getSocialTitle(title: string) {
+  return title.includes(siteName) ? title : `${title} | ${siteName}`;
 }

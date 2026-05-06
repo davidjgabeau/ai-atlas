@@ -2,18 +2,24 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
 import { patterns } from "@/data/patterns";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
+  absoluteUrl,
   createShareMetadata,
   getShareImageUrl,
-  shareCta,
 } from "@/lib/seo/shareMetadata";
+import {
+  collectionPageSchema,
+  patternCollectionItems,
+} from "@/lib/seo/schema";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Patterns across the NYC AI map | AI Atlas NYC",
-  description: `Recurring shapes across early-stage NYC AI startups. ${shareCta}.`,
+  title: "NYC AI Startup Patterns",
+  description:
+    "Read market patterns and thesis notes from the early-stage NYC AI map, covering companies, categories, buyers, workflows, and emerging product surfaces.",
   path: "/patterns",
   image: getShareImageUrl({ page: "insights" }),
 });
@@ -22,7 +28,17 @@ export default function PatternsPage() {
   const latestUpdatedAt = getLatestPatternUpdatedAt();
 
   return (
-    <PublicShell>
+    <>
+      <JsonLd
+        data={collectionPageSchema({
+          name: "NYC AI Startup Patterns",
+          description:
+            "Read market patterns and thesis notes from the early-stage NYC AI map, covering companies, categories, buyers, workflows, and emerging product surfaces.",
+          url: absoluteUrl("/patterns"),
+          items: patternCollectionItems(patterns),
+        })}
+      />
+      <PublicShell>
       <section className="hero">
         <div className="editorial-container py-12">
           <p className="editorial-label">Pattern recognition</p>
@@ -76,7 +92,8 @@ export default function PatternsPage() {
           </div>
         </div>
       </section>
-    </PublicShell>
+      </PublicShell>
+    </>
   );
 }
 
