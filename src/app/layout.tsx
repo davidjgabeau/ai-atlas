@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Libre_Franklin, Newsreader } from "next/font/google";
+import { Cormorant_Garamond, Inter, Libre_Franklin } from "next/font/google";
 import { Suspense } from "react";
 
 import { RouteTransitionFeedback } from "@/components/site/route-transition-feedback";
@@ -29,10 +29,10 @@ const libreFranklin = Libre_Franklin({
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -134,7 +134,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${libreFranklin.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${inter.variable} ${libreFranklin.variable} ${cormorantGaramond.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-[var(--app-bg)] text-[#181818]">
         <Suspense fallback={null}>

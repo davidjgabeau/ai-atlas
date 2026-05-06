@@ -313,10 +313,10 @@
   .siteWordmark {
     color: #070707;
     font-family: var(--font-display), Georgia, serif;
-    font-weight: 600;
+    font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
-    line-height: 0.92;
+    line-height: 0.95;
     text-rendering: optimizeLegibility;
   }
 
@@ -324,29 +324,29 @@
     max-width: 360px;
     color: #070707;
     font-family: var(--font-display), Georgia, serif;
-    font-size: clamp(60px, 5.2vw, 76px);
-    font-weight: 600;
+    font-size: clamp(64px, 5.45vw, 80px);
+    font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
-    line-height: 0.9;
+    line-height: 0.82;
     text-rendering: optimizeLegibility;
   }
 
   .homeHeroHeadline span:nth-child(2),
   .homeHeroHeadline span:nth-child(3) {
-    margin-top: -0.01em;
+    margin-top: -0.015em;
   }
 
   .homeHeroHeadline span:nth-child(4) {
-    margin-top: -0.015em;
+    margin-top: -0.02em;
     padding-left: 0;
   }
 
   .homeHeroHeadlineMobile {
     width: calc(100vw - 40px);
     max-width: 460px;
-    font-size: clamp(44px, 12.5vw, 58px);
-    line-height: 0.9;
+    font-size: clamp(48px, 14vw, 64px);
+    line-height: 0.84;
   }
 
   .metadata-changing {
