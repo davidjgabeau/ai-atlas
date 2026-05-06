@@ -51,7 +51,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
-    title: "Early-Stage NYC AI Startups",
+    title: "Early NYC AI Companies to Know",
     description:
       "Explore early-stage NYC AI startups across consumer, healthcare, infrastructure, and more. AI Atlas NYC tracks New York AI companies from pre-seed through Series A.",
     path: "/",

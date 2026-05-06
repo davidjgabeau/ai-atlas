@@ -49,14 +49,16 @@ export function HomeFrontPage({
             </div>
 
             <h1 className="mt-8 hidden max-w-[390px] font-heading text-[clamp(60px,5.2vw,76px)] font-medium leading-[0.93] tracking-[-0.045em] text-[#111111] lg:block">
-              <span className="block">Early-Stage</span>
+              <span className="block">Early</span>
               <span className="block">NYC AI</span>
               <span className="block">Companies</span>
               <span className="block">to Know</span>
             </h1>
             <h1 className="w-[calc(100vw-40px)] max-w-[460px] font-heading text-[clamp(38px,10.9vw,54px)] font-medium leading-[0.96] tracking-[-0.045em] text-[#121212] lg:hidden">
-              <span className="block whitespace-nowrap">Early-Stage NYC AI</span>
-              <span className="block whitespace-nowrap">Companies to Know</span>
+              <span className="block whitespace-nowrap">Early</span>
+              <span className="block whitespace-nowrap">NYC AI</span>
+              <span className="block whitespace-nowrap">Companies</span>
+              <span className="block whitespace-nowrap">to Know</span>
             </h1>
             <HeroSubheadline count={stats.totalCompanies} />
             <HeroMetadataLine updatedLabel={updatedLabel} />
