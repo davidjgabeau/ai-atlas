@@ -60,10 +60,10 @@ export function CurrentRead({
             ) : (
               <div className="py-5">
                 <p className="text-company-hook text-sm">
-                  Fresh reads will appear after companies are added.
+                  No market memo yet.
                 </p>
                 <p className="text-body mt-2 text-sm">
-                  Publish company notes to build the next market memo.
+                  Add recent company notes to build the next read.
                 </p>
               </div>
             )}

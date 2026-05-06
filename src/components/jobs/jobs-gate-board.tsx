@@ -299,7 +299,7 @@ export function JobsGateBoard({
                   </span>
                   <div className="min-w-0">
                     <p className="font-heading text-[24px] font-medium leading-[1.05] tracking-[0] text-[#181818]">
-                      Sign in to unlock job links
+                      Sign in to view job links
                     </p>
                     <p className="mt-1 text-sm leading-6 text-[#5F5A52]">
                       Create a free AI Atlas profile to open Apply links and

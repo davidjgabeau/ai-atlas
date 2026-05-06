@@ -12,9 +12,16 @@ type CompanyHookInput = Omit<Company, "generated"> & {
 
 const bannedPhrases = [
   "ai-powered platform",
+  "cutting-edge",
+  "disrupting",
+  "heat index",
+  "heating up",
+  "high model usage potential",
+  "leverage",
   "revolutionizing",
   "transforming",
-  "cutting-edge",
+  "unlock",
+  "workflow depth",
 ];
 
 const categoryTrendDimensions: Record<Company["category"], string[]> = {
@@ -300,7 +307,7 @@ function inferSignalReason(
   }
 
   if (signalLabel === "Infra signal") {
-    return "Infrastructure or data layer company with model workflow leverage.";
+    return "Infrastructure or data layer company with model-heavy workflow demand.";
   }
 
   if (signalLabel === "Consumer signal") {

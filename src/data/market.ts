@@ -92,7 +92,7 @@ export const categoryMeta: CategoryMeta[] = [
     name: "Enterprise GTM & RevOps AI",
     slug: "enterprise-gtm-revops-ai",
     description: "AI products for sales, support, revenue operations, insurance distribution, customer communication, and go-to-market workflows.",
-    thesis: "Enterprise GTM AI works when models create measurable pipeline, faster service, cleaner revenue operations, or better customer conversion."
+    thesis: "Enterprise GTM AI works when models create measurable sales coverage, faster service, cleaner revenue operations, or better customer conversion."
   },
   {
     name: "Data & Memory Layer",
@@ -109,7 +109,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "George Sivulka",
     email: "george@hebbia.com",
     signal_label: "Featured",
-    description: "Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting. Its Matrix product lets asset managers, investment banks, and private equity firms run multi-step analyses across millions of documents with cited, auditable answers. Customers include Charlesbank, Oak Hill Advisors, and major Wall Street institutions.",
+    description: "Hebbia is a research and reasoning platform built for finance, law, and consulting. Its Matrix product lets asset managers, investment banks, and private equity firms run multi-step analyses across millions of documents with cited, auditable answers. Customers include Charlesbank, Oak Hill Advisors, and major Wall Street institutions.",
     category: "Fintech & Trading AI"
   },
   {
@@ -244,7 +244,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Kennan Davison",
     email: "kennan@icon.com",
     signal_label: "Clear buyer pull",
-    description: "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands. Strategic angel funding from Founders Fund, an OpenAI exec, and NFL star Saquon Barkley; reportedly 2,200+ paying brands within months of launch.",
+    description: "Icon bills itself as the \"AI Admaker,\" a SaaS product that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands. Strategic angel funding from Founders Fund, an OpenAI exec, and NFL star Saquon Barkley; reportedly 2,200+ paying brands within months of launch.",
     category: "Media, Ads & Creative AI"
   },
   {
@@ -388,7 +388,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Satya Nitta",
     email: "satya@emergence.ai",
     signal_label: "Featured",
-    description: "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows. Its CRAFT self-serve platform gives business users no-code control over data-pipeline agents that interoperate with LangChain and Autogen. Raised a $97.2M Series A led by Learn Capital.",
+    description: "Emergence AI's 'Agents Creating Agents' framework chains and deploys swarms of autonomous agents that spin up new agents on the fly to orchestrate complex enterprise workflows. Its CRAFT self-serve platform gives business users no-code control over data-flow agents that interoperate with LangChain and Autogen. Raised a $97.2M Series A led by Learn Capital.",
     category: "Agent Infrastructure"
   },
   {
@@ -442,7 +442,7 @@ const sourceCompanies: SourceRecord[] = [
     founder_name: "Paul Monasterio",
     email: "paul@kalepa.com",
     signal_label: "Clear buyer pull",
-    description: "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook. NYC-based and backed by leading insurance and tech investors.",
+    description: "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, using machine learning to score and price commercial risks that have traditionally been managed manually in Outlook. NYC-based and backed by leading insurance and tech investors.",
     category: "Enterprise GTM & RevOps AI"
   },
   {
@@ -1163,7 +1163,7 @@ function getRecentActivity(record: SourceRecord) {
   const founder = description.match(/Founded by\s+([^.;]+)/i);
   if (founder) return `Founded by ${founder[1].trim()}`;
 
-  return "Added to NYC AI tracker";
+  return `${record.category} company in the NYC map`;
 }
 
 function getRecentActivityDate(index: number) {
@@ -1250,7 +1250,7 @@ export const companies: Company[] = sourceCompanies.map((record, index) => {
     id,
     name: record.company_name,
     slug: slugify(record.company_name),
-    logo_url: `/logos/${slugify(record.company_name)}.svg`,
+    logo_url: "",
     website_url: record.website,
     x_handle: "",
     x_user_id: "",

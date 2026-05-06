@@ -22,7 +22,7 @@ export function ProfileWatchingPanel({
     <section className="rounded-md border border-[#E7E1D8] bg-[#FBFAF7]">
       <div className="border-b border-[#E7E1D8] px-5 py-4">
         <h2 className="font-heading text-[1.45rem] font-semibold leading-tight text-[#111111]">
-          Saved Companies
+          Saved companies
         </h2>
       </div>
 

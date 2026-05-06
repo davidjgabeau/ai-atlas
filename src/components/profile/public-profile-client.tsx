@@ -217,7 +217,7 @@ export function PublicProfileClient({
           <div className="mb-6 flex items-end justify-between gap-4">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.01em] text-[#9A3D2B]">
-                Saved Companies
+                Saved companies
               </p>
               <h2 className="mt-2 font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[0] text-[#181818]">
                 Companies on this radar

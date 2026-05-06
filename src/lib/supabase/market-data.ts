@@ -260,6 +260,7 @@ export function normalizeCompany(row: CompanyRow): Company {
     recent_activity_text: normalizeRecentActivityText(
       safeString(row.recent_activity_text, ""),
       fundingAmount,
+      normalizeCategory(row.category),
     ),
     recent_activity_date: safeString(row.recent_activity_date, now),
     is_featured: Boolean(row.is_featured),
@@ -436,7 +437,7 @@ function createFallbackGenerated(row: CompanyRow): GeneratedCompanyFields {
   return {
     hook: description.replace(/\s+/g, " ").replace(/\.$/, "").slice(0, 72),
     signalLabel: "Recently added",
-    signalReason: "Generated editorial fields are missing in Supabase.",
+    signalReason: "Profile details are still being reviewed.",
     keywords: [],
     trendDimensions: [],
     generatedAt: "",
@@ -494,9 +495,21 @@ function normalizeProfileBriefs(value: unknown): CompanyProfileBriefs | undefine
   };
 }
 
-function normalizeRecentActivityText(value: string, fundingAmount: string) {
+function normalizeRecentActivityText(
+  value: string,
+  fundingAmount: string,
+  category?: string,
+) {
   const activity = formatFundingText(normalizeCopyArtifacts(value));
   if (!activity) return "";
+
+  if (
+    /^(?:added to (?:nyc ai tracker|ai atlas)|joined the map)\.?$/i.test(activity)
+  ) {
+    return category
+      ? `${category} company in the NYC map`
+      : "Company profile reviewed";
+  }
 
   if (
     /^raised\s+\$[0-9]+(?:\.[0-9]+)?$/i.test(activity) &&
@@ -554,6 +567,12 @@ function normalizeCopyArtifacts(value: string, companyName = "") {
     .replace(/&amp;/g, "&")
     .replace(/\bAI-powered AI\b/gi, "AI")
     .replace(/\bAI-driven AI\b/gi, "AI")
+    .replace(/^AI-powered\s+/i, "AI ")
+    .replace(/\bclear workflow leverage\b/gi, "clear workflow demand")
+    .replace(/\bmodel workflow leverage\b/gi, "model-heavy workflow demand")
+    .replace(/\bleveraging\b/gi, "using")
+    .replace(/\bleverage\b/gi, "use")
+    .replace(/\bdata-pipeline\b/gi, "data-flow")
     .replace(/\binterface-users\b/gi, "interface; users")
     .replace(/\bbusinesses-handling\b/gi, "businesses, handling")
     .replace(/\bclinics-scheduling\b/gi, "clinics, scheduling")

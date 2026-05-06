@@ -692,7 +692,7 @@
     "cmp_033": {
       "hook": "Product catalog infrastructure for agentic commerce",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -710,7 +710,7 @@
     "cmp_034": {
       "hook": "Cloud sandboxes for AI coding agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -728,7 +728,7 @@
     "cmp_035": {
       "hook": "Document context layer for enterprise agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -748,7 +748,7 @@
     "cmp_036": {
       "hook": "Chat-driven enterprise app creation",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -766,7 +766,7 @@
     "cmp_037": {
       "hook": "Supply chain agents for operational planning",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -909,7 +909,7 @@
     "cmp_044": {
       "hook": "Licensed data marketplace for AI builders",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -927,7 +927,7 @@
     "cmp_045": {
       "hook": "Model deployment infrastructure for enterprises",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -963,7 +963,7 @@
     "cmp_047": {
       "hook": "Turning messy documents into structured context",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -984,7 +984,7 @@
     "cmp_048": {
       "hook": "Enterprise context layer for business data",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1006,7 +1006,7 @@
     "cmp_049": {
       "hook": "Multimodal data extraction for visual datasets",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with model workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with model-heavy workflow demand.",
       "keywords": [
         "data",
         "memory",

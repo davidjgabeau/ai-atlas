@@ -109,8 +109,8 @@
     "items": [
       {
         "id": "signal_item_326ae5e01a587fbe",
-        "title": "Polimorphic added to AI Atlas",
-        "body": "Polimorphic joined the map in Enterprise GTM & RevOps AI. AI workflows for local government services",
+        "title": "Local government AI moves into resident services",
+        "body": "Polimorphic brings Enterprise GTM & RevOps AI into resident and municipal service workflows.",
         "companyId": "cmp_060",
         "category": "Enterprise GTM & RevOps AI",
         "label": "Recently added",
@@ -127,8 +127,8 @@
       },
       {
         "id": "signal_item_321b54d34ea66e25",
-        "title": "Foresight added to AI Atlas",
-        "body": "Foresight joined the map in Data & Memory Layer. AI data infrastructure for private markets",
+        "title": "Private-market data gets a sharper AI layer",
+        "body": "Foresight broadens the Data & Memory Layer around private-market investing and research infrastructure.",
         "companyId": "cmp_059",
         "category": "Data & Memory Layer",
         "label": "Recently added",
@@ -145,8 +145,8 @@
       },
       {
         "id": "signal_item_a7a8239f413f329e",
-        "title": "Meridian added to AI Atlas",
-        "body": "Meridian joined the map in Fintech & Trading AI. Agentic spreadsheets for finance teams",
+        "title": "Finance spreadsheets become the workflow surface",
+        "body": "Meridian points Fintech & Trading AI toward spreadsheet-native financial modeling and analysis work.",
         "companyId": "cmp_058",
         "category": "Fintech & Trading AI",
         "label": "Recently added",
@@ -163,8 +163,8 @@
       },
       {
         "id": "signal_item_eb6ef72d7b25726a",
-        "title": "Vellum added to AI Atlas",
-        "body": "Vellum joined the map in Model Tools & Dev Platform. Production tooling for LLM applications",
+        "title": "LLM production tooling stays central",
+        "body": "Vellum keeps Model Tools & Dev Platform focused on production workflows for teams shipping LLM applications.",
         "companyId": "cmp_056",
         "category": "Model Tools & Dev Platform",
         "label": "Recently added",
@@ -181,8 +181,8 @@
       },
       {
         "id": "signal_item_abb0ac6fefb92da7",
-        "title": "Thread AI added to AI Atlas",
-        "body": "Thread AI joined the map in Agent Infrastructure. Composable infrastructure for enterprise AI workflows",
+        "title": "Enterprise AI infrastructure gets more composable",
+        "body": "Thread AI adds Agent Infrastructure context around composable systems for enterprise AI workflows.",
         "companyId": "cmp_055",
         "category": "Agent Infrastructure",
         "label": "Recently added",
@@ -335,9 +335,9 @@
       },
       {
         "id": "market_snapshot_item_369255a79eab1548",
-        "title": "Analyst read",
+        "title": "Editor's note",
         "body": "Anchr, Polimorphic, and CVector show AI moving into food distribution, government services, and industrial facilities, where workflows are specific and budgeted.",
-        "label": "Market read",
+        "label": "Editor's note",
         "supportingCompanyIds": [
           "cmp_057",
           "cmp_060",
@@ -545,7 +545,7 @@
       {
         "id": "recent_company_item_b515b5fa2879de05",
         "title": "Bevel",
-        "body": "Added for its health AI focus and relevance to care delivery workflows.",
+        "body": "Added: strengthens the consumer health and care data layer.",
         "companyId": "cmp_052",
         "category": "Health & Clinical AI",
         "label": "Recently added",
@@ -559,7 +559,7 @@
       {
         "id": "recent_company_item_d89bf7fc04799c4a",
         "title": "Vellum",
-        "body": "Added for its AI developer tooling angle and relevance to production teams.",
+        "body": "Added: rounds out production tooling for LLM applications.",
         "companyId": "cmp_056",
         "category": "Model Tools & Dev Platform",
         "label": "Recently added",
@@ -573,7 +573,7 @@
       {
         "id": "recent_company_item_a43b89adafb7c226",
         "title": "Blossom Health",
-        "body": "Added for its health AI focus and relevance to care delivery workflows.",
+        "body": "Added: strengthens the clinical operations cluster.",
         "companyId": "cmp_061",
         "category": "Health & Clinical AI",
         "label": "Recently added",
@@ -587,7 +587,7 @@
       {
         "id": "recent_company_item_87611e79da0161e3",
         "title": "Thread AI",
-        "body": "Added for its vertical operations focus and early-stage NYC market fit.",
+        "body": "Added: rounds out agent infrastructure coverage.",
         "companyId": "cmp_055",
         "category": "Agent Infrastructure",
         "label": "Recently added",
@@ -601,7 +601,7 @@
       {
         "id": "recent_company_item_a7005bd3a15a34fd",
         "title": "Ohai.ai",
-        "body": "Added because it brings consumer AI into repeated household coordination workflows.",
+        "body": "Added: broadens consumer AI coverage around household coordination.",
         "companyId": "cmp_051",
         "category": "AI-Native Consumer & Social",
         "label": "Recently added",
@@ -615,7 +615,7 @@
       {
         "id": "recent_company_item_93132a08554ec452",
         "title": "Tapestry",
-        "body": "Added because it expands the map's social graph infrastructure coverage.",
+        "body": "Added: expands the map's social graph layer.",
         "companyId": "cmp_050",
         "category": "AI-Native Consumer & Social",
         "label": "Recently added",

@@ -98,7 +98,7 @@ export const patterns: Pattern[] = [
       {
         company_slug: "emergence-ai",
         one_liner:
-          "Emergence AI fits because its agents coordinate other agents across enterprise workflows and data pipelines.",
+          "Emergence AI fits because its agents coordinate other agents across enterprise workflows and data flows.",
       },
       {
         company_slug: "wallaroo",
@@ -109,7 +109,7 @@ export const patterns: Pattern[] = [
   },
   {
     slug: "realtime-voice-back-office",
-    title: "Real-time voice is unlocking back-office workflows in healthcare and hospitality.",
+    title: "Real-time voice is moving into back-office workflows in healthcare and hospitality.",
     framing:
       "Voice is strongest where the phone is still the interface for the business. Healthcare offices, restaurants, and service operators need fast answers, scheduling, routing, and follow-up without adding staff. The pattern is less about synthetic voices as a novelty and more about taking repetitive phone work off overloaded teams.",
     related_consumption_profile: "realtime_voice",

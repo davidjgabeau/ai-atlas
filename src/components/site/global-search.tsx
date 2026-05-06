@@ -264,7 +264,14 @@ export function GlobalSearch({
                     Searching...
                   </>
                 ) : (
-                  <>No matches yet. Press Enter to search the full map.</>
+                  <span>
+                    <span className="block font-medium text-[#181818]">
+                      No matching companies yet.
+                    </span>
+                    <span className="block">
+                      Try a company, founder, category, or market.
+                    </span>
+                  </span>
                 )}
               </div>
             )}

@@ -90,7 +90,10 @@ export default async function Home() {
     name,
     slug,
   }));
-  const stats = getCompanyStats(publishedCompanies);
+  const stats = {
+    ...getCompanyStats(publishedCompanies),
+    totalCategories: categoryMeta.length,
+  };
   const categoryCounts = getCategoryCounts(publishedCompanies);
   const recentCompanies = [...publishedCompanies]
     .sort((a, b) => getCompanySortDate(b) - getCompanySortDate(a))
@@ -173,8 +176,8 @@ export default async function Home() {
     marketSnapshotSurface?.items,
     storedSnapshot,
   );
-  const analystReadItem = marketSnapshotSurface?.items.find(
-    (item) => item.title === "Analyst read",
+  const analystReadItem = marketSnapshotSurface?.items.find((item) =>
+    ["Editor's note", "Editor’s note", "Analyst read"].includes(item.title),
   );
   const analystRead =
     analystReadItem?.body ??

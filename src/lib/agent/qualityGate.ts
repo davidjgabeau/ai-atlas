@@ -8,7 +8,9 @@ const bannedPhrases = [
   "game-changing",
   "disrupting",
   "ai-powered innovation",
+  "heat index",
   "heating up",
+  "high model usage potential",
   "exploding",
 ];
 
@@ -38,6 +40,8 @@ export const bannedUserFacingPhrases = [
   "high potential",
   "promising",
   "model-usage potential",
+  "high model usage potential",
+  "heat index",
   "gains density",
   "remains clearer",
   "workflow depth",

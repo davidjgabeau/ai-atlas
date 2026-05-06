@@ -33,64 +33,75 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
         </div>
 
         <div className="mt-6 divide-y divide-[#E7E1D8] border-y border-[#E7E1D8]">
-          {companies.slice(0, 6).map((company, index) => {
-            const annotation = getRecentAnnotation(company);
+          {companies.length === 0 ? (
+            <div className="py-5">
+              <p className="text-company-hook text-sm">
+                No recent additions yet.
+              </p>
+              <p className="text-body mt-2 text-sm">
+                New company notes will appear here once the map has enough recent data.
+              </p>
+            </div>
+          ) : (
+            companies.slice(0, 6).map((company, index) => {
+              const annotation = getRecentAnnotation(company);
 
-            return (
-              <Link
-                key={company.id}
-                href={`/companies/${company.slug}`}
-                className="companyRow group grid gap-3 py-4 transition hover:bg-[rgb(17_17_17_/_0.025)] md:grid-cols-[44px_minmax(0,1fr)_220px] md:items-start"
-                style={{ animationDelay: `${index * 40}ms` }}
-              >
-                <CompanyLogo
-                  company={company}
-                  name={company.name}
-                  category={company.category}
-                  className="rowSprite size-10 text-xs"
-                />
-                <div className="min-w-0">
-                  <h3 className="text-company-name truncate text-[18px] leading-[1.2]">
-                    {company.name}
-                  </h3>
-                  <p className="text-company-hook mt-1 line-clamp-1 text-[15px]">
-                    {getCompanyHook(company)}
-                  </p>
-                  <p className="text-body mt-1 line-clamp-2 text-[13.5px] leading-[1.45]">
-                    {getCompanyInclusionReason(company)}
-                  </p>
-                </div>
-                <div className="text-meta flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs md:justify-end md:text-right">
-                  {annotation ? (
-                    <>
-                      <span className="text-label text-[11px] text-[#9A3D2B]">
-                        {annotation}
-                      </span>
-                      <span aria-hidden="true">·</span>
-                    </>
-                  ) : null}
-                  <CompanyViewCount
-                    companyId={company.id}
-                    views={company.metrics?.views ?? 0}
-                    className="md:justify-end"
+              return (
+                <Link
+                  key={company.id}
+                  href={`/companies/${company.slug}`}
+                  className="companyRow group grid gap-3 py-4 transition hover:bg-[rgb(17_17_17_/_0.025)] md:grid-cols-[44px_minmax(0,1fr)_220px] md:items-start"
+                  style={{ animationDelay: `${index * 40}ms` }}
+                >
+                  <CompanyLogo
+                    company={company}
+                    name={company.name}
+                    category={company.category}
+                    className="rowSprite size-10 text-xs"
                   />
-                  <span aria-hidden="true">·</span>
-                  <CategoryPixelIcon category={company.category} size="xs" />
-                  <span className="truncate">{company.category}</span>
-                  {company.stage ? (
-                    <>
-                      <span aria-hidden="true">·</span>
-                      <span className="whitespace-nowrap">{company.stage}</span>
-                    </>
-                  ) : null}
-                  <span aria-hidden="true">·</span>
-                  <span>
-                    {formatMonthYear(company.created_at || company.updated_at)}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+                  <div className="min-w-0">
+                    <h3 className="text-company-name truncate text-[18px] leading-[1.2]">
+                      {company.name}
+                    </h3>
+                    <p className="text-company-hook mt-1 line-clamp-1 text-[15px]">
+                      {getCompanyHook(company)}
+                    </p>
+                    <p className="text-body mt-1 line-clamp-2 text-[13.5px] leading-[1.45]">
+                      {getCompanyInclusionReason(company)}
+                    </p>
+                  </div>
+                  <div className="text-meta flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs md:justify-end md:text-right">
+                    {annotation ? (
+                      <>
+                        <span className="text-label text-[11px] text-[#9A3D2B]">
+                          {annotation}
+                        </span>
+                        <span aria-hidden="true">·</span>
+                      </>
+                    ) : null}
+                    <CompanyViewCount
+                      companyId={company.id}
+                      views={company.metrics?.views ?? 0}
+                      className="md:justify-end"
+                    />
+                    <span aria-hidden="true">·</span>
+                    <CategoryPixelIcon category={company.category} size="xs" />
+                    <span className="truncate">{company.category}</span>
+                    {company.stage ? (
+                      <>
+                        <span aria-hidden="true">·</span>
+                        <span className="whitespace-nowrap">{company.stage}</span>
+                      </>
+                    ) : null}
+                    <span aria-hidden="true">·</span>
+                    <span>
+                      {formatMonthYear(company.created_at || company.updated_at)}
+                    </span>
+                  </div>
+                </Link>
+              );
+            })
+          )}
         </div>
       </div>
     </section>

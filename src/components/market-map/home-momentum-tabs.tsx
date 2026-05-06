@@ -99,7 +99,7 @@ export function HomeMomentumTabs({ groups }: { groups: MomentumGroups }) {
       </div>
       <div
         role="tablist"
-        aria-label="Startup heat views"
+        aria-label="Startup signal views"
         className="flex gap-6 overflow-x-auto border-b border-[#E7E1D8] px-5 text-sm font-medium text-[#7A746C]"
       >
         {momentumTabs.map((tab, index) => {

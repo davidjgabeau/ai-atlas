@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "data:validate": "tsx scripts/validate-data-quality.ts",
     "seo:audit": "tsx scripts/seo-audit.ts",
     "generate:editorial": "tsx scripts/generate-editorial.ts",
     "generate:supabase-seed": "tsx scripts/generate-supabase-seed.ts",

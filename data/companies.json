@@ -109,7 +109,7 @@
     "generated": {
       "hook": "Production tooling for LLM applications",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "LLM Development",
         "Evaluation",
@@ -237,7 +237,7 @@
     "generated": {
       "hook": "Composable infrastructure for enterprise AI workflows",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "Agent Infrastructure",
         "Enterprise AI",
@@ -370,7 +370,7 @@
     "generated": {
       "hook": "Open social graph infrastructure for AI products",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "Open Social Graph",
         "Agent Infrastructure",
@@ -1109,7 +1109,7 @@
     "generated": {
       "hook": "AI operating systems for industrial facilities",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "Industrial AI",
         "Operations",
@@ -1142,11 +1142,7 @@
     "category": "Data & Memory Layer",
     "description": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data.",
     "oneSentenceDescription": "Aspect's visual understanding engine processes dense multimodal datasets, providing tools for segmentation, QC, and structured-schema extraction over images, video, and other non-text data.",
-    "founders": [
-      {
-        "name": "Aspect Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -1174,7 +1170,7 @@
     "generated": {
       "hook": "Multimodal data extraction for visual datasets",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1208,11 +1204,7 @@
     "category": "Data & Memory Layer",
     "description": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations.",
     "oneSentenceDescription": "Datagrid is building enterprise AI agents that connect, normalize, and reason over fragmented business data, providing a unified context layer for AI-driven workflows in sales, finance, and operations.",
-    "founders": [
-      {
-        "name": "Datagrid Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Undisclosed"
     ],
@@ -1243,7 +1235,7 @@
     "generated": {
       "hook": "Enterprise context layer for business data",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1314,7 +1306,7 @@
     "generated": {
       "hook": "Turning messy documents into structured context",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1445,7 +1437,7 @@
     "generated": {
       "hook": "Model deployment infrastructure for enterprises",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1478,11 +1470,7 @@
     "category": "Data & Memory Layer",
     "description": "Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions.",
     "oneSentenceDescription": "Carbon Arc operates an AI-ready data marketplace, giving companies the licensed data resources they need to train more effective AI models and make better decisions.",
-    "founders": [
-      {
-        "name": "Carbon Arc Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Undisclosed"
     ],
@@ -1509,7 +1497,7 @@
     "generated": {
       "hook": "Licensed data marketplace for AI builders",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "data",
         "memory",
@@ -1542,11 +1530,7 @@
     "category": "Fintech & Trading AI",
     "description": "Standard Signal is the first hedge fund that researches and executes trades purely with AI.",
     "oneSentenceDescription": "Standard Signal is the first hedge fund that researches and executes trades purely with AI.",
-    "founders": [
-      {
-        "name": "Standard Signal Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -1682,11 +1666,7 @@
     "category": "Enterprise GTM & RevOps AI",
     "description": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation.",
     "oneSentenceDescription": "RowFlow replaces clunky web forms with natural conversations over text, Slack, or chat, automatically converting any existing form into an AI-powered conversation.",
-    "founders": [
-      {
-        "name": "RowFlow Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -1752,11 +1732,7 @@
     "category": "Enterprise GTM & RevOps AI",
     "description": "Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis.",
     "oneSentenceDescription": "Concourse builds AI agents for corporate finance teams, working alongside finance staff to automate the most manual and time-consuming day-to-day operations like reconciliations, reporting, and variance analysis.",
-    "founders": [
-      {
-        "name": "Concourse Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -1888,8 +1864,8 @@
     "locationConfidence": "high",
     "stage": "Unknown",
     "category": "Enterprise GTM & RevOps AI",
-    "description": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
-    "oneSentenceDescription": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, leveraging machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
+    "description": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, using machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
+    "oneSentenceDescription": "Kalepa is reimagining the trillion-dollar commercial insurance industry with AI-driven underwriting, using machine learning to score and price commercial risks that have traditionally been managed manually in Outlook.",
     "founders": [
       {
         "name": "Paul Monasterio"
@@ -1958,11 +1934,7 @@
     "category": "Agent Infrastructure",
     "description": "Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes.",
     "oneSentenceDescription": "Vortexify AI is a platform for building fully operational AI workflows tailored to supply chain operations, deploying specialized AI bots that analyze millions of data rows and orchestrate complex, long-horizon processes.",
-    "founders": [
-      {
-        "name": "Vortexify Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -1990,7 +1962,7 @@
     "generated": {
       "hook": "Supply chain agents for operational planning",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -2024,11 +1996,7 @@
     "category": "Agent Infrastructure",
     "description": "Empromptu helps enterprises build AI apps through chat, turning plain-language requests into working internal tools.",
     "oneSentenceDescription": "Empromptu helps enterprises build AI apps through chat, turning plain-language requests into working internal tools.",
-    "founders": [
-      {
-        "name": "Empromptu Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Undisclosed"
     ],
@@ -2055,7 +2023,7 @@
     "generated": {
       "hook": "Chat-driven enterprise app creation",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -2121,7 +2089,7 @@
     "generated": {
       "hook": "Document context layer for enterprise agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -2156,11 +2124,7 @@
     "category": "Agent Infrastructure",
     "description": "A software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
     "oneSentenceDescription": "Amika is infrastructure to build a software factory: sandboxed AI coding agents in the cloud accessible via web UI, CLI, Slack, or API.",
-    "founders": [
-      {
-        "name": "Amika Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -2187,7 +2151,7 @@
     "generated": {
       "hook": "Cloud sandboxes for AI coding agents",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -2251,7 +2215,7 @@
     "generated": {
       "hook": "Product catalog infrastructure for agentic commerce",
       "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow leverage.",
+      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
       "keywords": [
         "agent",
         "infrastructure",
@@ -2348,11 +2312,7 @@
     "category": "AI-Native Consumer & Social",
     "description": "Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan.",
     "oneSentenceDescription": "Nori is a concierge-level AI health coach that aggregates Apple Health, medical records, wearables, and other personal health data into a personalized daily plan.",
-    "founders": [
-      {
-        "name": "Nori Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -2420,11 +2380,7 @@
     "category": "AI-Native Consumer & Social",
     "description": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar.",
     "oneSentenceDescription": "Loyalist is building an AI-powered revenue engine for restaurants and hospitality operators, partnering with 1,000+ restaurants ranging from Major Food Group and Le Bernardin to neighborhood spots like Jeju Noodle Bar.",
-    "founders": [
-      {
-        "name": "Loyalist Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Lerer Hippeau / Bling Capital"
     ],
@@ -2780,11 +2736,7 @@
     "category": "Health & Clinical AI",
     "description": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care.",
     "oneSentenceDescription": "Granted provides AI-native healthcare solutions with autonomous, end-to-end agentic systems that reason over insurance and billing workflows for navigating health benefits, disputing denials, and helping consumers access care.",
-    "founders": [
-      {
-        "name": "Granted Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Undisclosed"
     ],
@@ -2852,11 +2804,7 @@
     "category": "Health & Clinical AI",
     "description": "Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
     "oneSentenceDescription": "Camber is a healthtech startup transforming healthcare payments by reducing administrative burden on clinics and families.",
-    "founders": [
-      {
-        "name": "Camber Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Andreessen Horowitz"
     ],
@@ -2920,11 +2868,7 @@
     "category": "Health & Clinical AI",
     "description": "Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy.",
     "oneSentenceDescription": "Sohar Health is an AI-driven front-end revenue cycle management solution that automates insurance verification for healthcare providers with 95% automation, 6-second median latency, and 99% eligibility accuracy.",
-    "founders": [
-      {
-        "name": "Sohar Health Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Kindred Capital"
     ],
@@ -3196,11 +3140,7 @@
     "category": "Media, Ads & Creative AI",
     "description": "Absurd makes AI brand and performance ads at scale.",
     "oneSentenceDescription": "Absurd makes AI brand and performance ads at scale.",
-    "founders": [
-      {
-        "name": "Absurd Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -3268,11 +3208,7 @@
     "category": "Media, Ads & Creative AI",
     "description": "Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place.",
     "oneSentenceDescription": "Stewdio is a collaborative platform for creative teams to use the latest image and video generation models in one place.",
-    "founders": [
-      {
-        "name": "Stewdio Team"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Y Combinator"
     ],
@@ -3340,11 +3276,7 @@
     "category": "Media, Ads & Creative AI",
     "description": "Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth.",
     "oneSentenceDescription": "Tildei uses AI agents to activate brands across multiple channels, engaging customers directly to provide recommendations, collect reviews, and drive growth.",
-    "founders": [
-      {
-        "name": "Tildei Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Undisclosed"
     ],
@@ -3410,8 +3342,8 @@
     "locationConfidence": "medium",
     "stage": "Unknown",
     "category": "Media, Ads & Creative AI",
-    "description": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
-    "oneSentenceDescription": "Icon bills itself as the 'AI Admaker'-a high-leverage SaaS that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
+    "description": "Icon bills itself as the \"AI Admaker,\" a SaaS product that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
+    "oneSentenceDescription": "Icon bills itself as the \"AI Admaker,\" a SaaS product that plans, generates, and A/B-tests thousands of ads end-to-end for DTC brands.",
     "founders": [
       {
         "name": "Kennan Davison"
@@ -3696,11 +3628,7 @@
     "category": "Legal & Compliance AI",
     "description": "AI-driven compliance enforcement platform that helps regulated companies monitor and enforce policy adherence in real time.",
     "oneSentenceDescription": "ZeroDrift is an AI-driven compliance enforcement platform that helps regulated companies monitor and enforce policy adherence in real time.",
-    "founders": [
-      {
-        "name": "ZeroDrift Founders"
-      }
-    ],
+    "founders": [],
     "investors": [
       "Andreessen Horowitz"
     ],
@@ -4477,8 +4405,8 @@
     "locationConfidence": "high",
     "stage": "Unknown",
     "category": "Fintech & Trading AI",
-    "description": "AI-powered research and reasoning platform built for finance, law, and consulting.",
-    "oneSentenceDescription": "Hebbia is an AI-powered research and reasoning platform built for finance, law, and consulting.",
+    "description": "Research and reasoning platform built for finance, law, and consulting.",
+    "oneSentenceDescription": "Hebbia is a research and reasoning platform built for finance, law, and consulting.",
     "founders": [
       {
         "name": "George Sivulka"
