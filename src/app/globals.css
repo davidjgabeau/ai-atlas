@@ -332,29 +332,29 @@
     max-width: 360px;
     color: #070707;
     font-family: var(--font-display);
-    font-size: clamp(62px, 5.35vw, 78px);
+    font-size: clamp(60px, 5.2vw, 76px);
     font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
-    line-height: 0.86;
+    line-height: 0.9;
     text-rendering: optimizeLegibility;
   }
 
   .homeHeroHeadline span:nth-child(2),
   .homeHeroHeadline span:nth-child(3) {
-    margin-top: -0.005em;
+    margin-top: 0;
   }
 
   .homeHeroHeadline span:nth-child(4) {
-    margin-top: -0.01em;
+    margin-top: 0;
     padding-left: 0;
   }
 
   .homeHeroHeadlineMobile {
     width: calc(100vw - 40px);
     max-width: 460px;
-    font-size: clamp(46px, 13.5vw, 62px);
-    line-height: 0.9;
+    font-size: clamp(45px, 13.2vw, 60px);
+    line-height: 0.92;
   }
 
   .metadata-changing {
@@ -468,9 +468,9 @@
 
   .editorial-section-title {
     font-family: var(--font-display);
-    font-size: clamp(28px, 2.4vw, 36px);
+    font-size: clamp(27px, 2.25vw, 34px);
     font-weight: 500;
-    line-height: 1.08;
+    line-height: 1.12;
     letter-spacing: 0;
     color: var(--app-heading);
   }
@@ -487,36 +487,36 @@
     font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
-    line-height: 0.9;
+    line-height: 0.94;
     text-rendering: optimizeLegibility;
   }
 
   .text-section-title {
     font-family: var(--font-display);
-    font-size: clamp(28px, 2.4vw, 36px);
+    font-size: clamp(27px, 2.25vw, 34px);
     font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
-    line-height: 1.08;
+    line-height: 1.12;
     color: var(--app-heading);
     text-rendering: optimizeLegibility;
   }
 
   .text-company-name {
     font-family: var(--font-body);
-    font-size: 21px;
-    font-weight: 650;
+    font-size: 20px;
+    font-weight: 600;
     letter-spacing: 0;
-    line-height: 1.16;
+    line-height: 1.18;
     color: #181818;
   }
 
   .text-company-hook {
     font-family: var(--font-body);
-    font-size: 15.5px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     letter-spacing: 0;
-    line-height: 1.35;
+    line-height: 1.4;
     color: #181818;
   }
 
@@ -532,17 +532,17 @@
   .text-meta {
     font-family: var(--font-body);
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 450;
     letter-spacing: 0;
     line-height: 1.35;
-    color: #66625C;
+    color: #746D64;
   }
 
   .text-label {
     font-family: var(--font-body);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -569,9 +569,9 @@
   @media (min-width: 1024px) {
     .home-section-heading {
       font-family: var(--font-display);
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 500;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: 0;
       text-transform: none;
       color: #111111;

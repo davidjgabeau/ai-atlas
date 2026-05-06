@@ -60,7 +60,7 @@ export function CompaniesToKnow({ companies }: { companies: Company[] }) {
               />
               <div className="min-w-0">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-company-name truncate lg:text-[22px]">
+                  <h3 className="text-company-name truncate lg:text-[20px]">
                     {company.name}
                   </h3>
                   {showLabel ? (
@@ -110,7 +110,7 @@ function isHighSignalLabel(label: string) {
 function CompanyStatusPill({ label }: { label: string }) {
   return (
     <span
-      className={`text-label shrink-0 rounded-full border px-2 py-1.5 text-[10px] lg:rounded-md lg:px-2 lg:py-1 lg:text-[10.5px] ${
+      className={`text-label shrink-0 rounded-md border px-2 py-1.5 text-[10px] lg:px-2 lg:py-1 lg:text-[10.5px] ${
         isHighSignalLabel(label)
           ? "border-[#D9B7AA] text-[#9A2F20]"
           : "border-[rgb(49_71_94_/_0.25)] text-[var(--app-secondary-accent)]"
