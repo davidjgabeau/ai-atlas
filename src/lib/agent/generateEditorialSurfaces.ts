@@ -444,27 +444,27 @@ function createDeterministicLatestSignalBody(
 
   if (event.type === "customer_signal" || event.type === "traction_signal") {
     return truncateSignalBody(
-      `${company.name} is showing buyer pull around ${lowerFirst(description)}, with ${lowerFirst(eventSummary)}.`,
+      `Shows buyer pull around ${lowerFirst(description)}, with ${lowerFirst(eventSummary)}.`,
     );
   }
   if (event.type === "product_launch") {
     return truncateSignalBody(
-      `${company.name} is turning ${lowerFirst(description)} into a sharper product wedge for ${categoryBuyerPhrase(company.category)}.`,
+      `Turns ${lowerFirst(description)} into a sharper product wedge for ${categoryBuyerPhrase(company.category)}.`,
     );
   }
   if (event.type === "funding") {
     return truncateSignalBody(
-      `${company.name}'s financing signal puts more attention on ${lowerFirst(description)}.`,
+      `Financing puts more attention on ${lowerFirst(description)}.`,
     );
   }
   if (event.type === "hiring_signal") {
     return truncateSignalBody(
-      `${company.name}'s hiring points to execution around ${lowerFirst(description)}.`,
+      `Hiring points to execution around ${lowerFirst(description)}.`,
     );
   }
 
   return truncateSignalBody(
-    `${company.name} adds a specific angle to ${categoryBuyerPhrase(company.category)}: ${lowerFirst(description)}.`,
+    `Adds a specific angle for ${categoryBuyerPhrase(company.category)}: ${lowerFirst(description)}.`,
   );
 }
 
@@ -535,6 +535,7 @@ function sentenceFragment(value: string) {
 }
 
 function lowerFirst(value: string) {
+  if (/^AI\b/.test(value)) return value;
   return value.charAt(0).toLowerCase() + value.slice(1);
 }
 

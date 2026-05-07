@@ -353,7 +353,7 @@
   .homeHeroHeadlineMobile {
     width: calc(100vw - 40px);
     max-width: 460px;
-    font-size: clamp(45px, 13.2vw, 60px);
+    font-size: clamp(40px, 11.8vw, 54px);
     line-height: 0.92;
   }
 

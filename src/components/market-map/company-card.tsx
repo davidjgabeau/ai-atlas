@@ -38,9 +38,9 @@ export function CompanyCard({
           <div className="min-w-0 flex-1">
             <Link
               href={`/companies/${company.slug}`}
-              className="text-company-name group inline-flex max-w-full items-center gap-1 text-base"
+              className="text-company-name group grid max-w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-1 text-base"
             >
-              <span className="min-w-0 truncate">{company.name}</span>
+              <span className="min-w-0 line-clamp-2">{company.name}</span>
               <ArrowUpRight className="app-arrow size-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />
             </Link>
             <p className="text-company-hook mt-1 line-clamp-1 text-sm leading-6">

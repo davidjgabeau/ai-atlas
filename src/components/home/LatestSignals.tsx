@@ -48,6 +48,7 @@ export function LatestSignals({
               const company = item.companyId
                 ? companiesById.get(item.companyId)
                 : undefined;
+              const body = getDisplaySignalBody(item.body, company?.name);
 
               return (
                 <article
@@ -74,10 +75,10 @@ export function LatestSignals({
                         {item.title}
                       </Link>
                     </h3>
-                    {item.body ? (
+                    {body ? (
                       <p className="text-body mt-3 line-clamp-3 text-sm">
                         <LinkedCompanyText
-                          text={item.body}
+                          text={body}
                           companies={companiesById}
                         />
                       </p>
@@ -100,4 +101,28 @@ function formatSignalDate(value?: string) {
   if (Number.isNaN(date.getTime())) return "Recent";
 
   return formatRelativeUpdate(date);
+}
+
+function getDisplaySignalBody(body: string | undefined, companyName?: string) {
+  const clean = body?.replace(/\s+/g, " ").trim();
+  if (!clean || !companyName) return clean ?? "";
+
+  const escapedName = escapeRegExp(companyName);
+  const leadingNamePattern = new RegExp(
+    `^${escapedName}(?:'s)?\\s+(?:is\\s+|keeps\\s+|brings\\s+|broadens\\s+|adds\\s+|points\\s+to\\s+|gives\\s+|turns\\s+|shows\\s+)?`,
+    "i",
+  );
+  const withoutLeadingName = clean.replace(leadingNamePattern, "");
+  if (withoutLeadingName === clean) return clean;
+
+  return capitalizeFirst(withoutLeadingName);
+}
+
+function capitalizeFirst(value: string) {
+  if (/^AI\b/.test(value)) return value;
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 import { CategoryPulse, type CategoryPulseItem } from "@/components/home/CategoryPulse";
 import { CompaniesToKnow } from "@/components/home/CompaniesToKnow";
-import { HeroMetadataLine } from "@/components/home/HeroMetadataLine";
 import { HeroSubheadline } from "@/components/home/HeroSubheadline";
 import { MarketSnapshot } from "@/components/home/MarketSnapshot";
-import type { MarketSnapshotOverrides } from "@/components/home/MarketSnapshot";
+import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { Button } from "@/components/ui/button";
 import type { CompanyStats } from "@/lib/companies/getCompanyStats";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
@@ -17,10 +16,6 @@ type HomeFrontPageProps = {
   categoryPulse: CategoryPulseItem[];
   stats: CompanyStats;
   currentThemeCount: number;
-  analystRead: string;
-  analystReadUpdatedAt?: string;
-  companiesById: Map<string, Company>;
-  snapshotOverrides?: MarketSnapshotOverrides;
   latestUpdatedAt?: string;
 };
 
@@ -29,10 +24,6 @@ export function HomeFrontPage({
   categoryPulse,
   stats,
   currentThemeCount,
-  analystRead,
-  analystReadUpdatedAt,
-  companiesById,
-  snapshotOverrides,
   latestUpdatedAt,
 }: HomeFrontPageProps) {
   const updateTime = latestUpdatedAt ?? stats.lastUpdatedAt;
@@ -61,7 +52,14 @@ export function HomeFrontPage({
               <span className="block whitespace-nowrap">to Know</span>
             </h1>
             <HeroSubheadline count={stats.totalCompanies} />
-            <HeroMetadataLine updatedLabel={updatedLabel} />
+            <HeroStatsRow stats={stats} updatedLabel={updatedLabel} />
+            <Link
+              href="#current-read"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
+            >
+              Read the memo
+              <ArrowRight className="size-3.5" />
+            </Link>
 
             <div className="mt-6 flex flex-col items-stretch gap-5 lg:mt-8 lg:max-w-[300px] lg:gap-3">
               <Button asChild className="h-[58px] w-full gap-3 rounded-[12px] px-[18px] text-[16px] app-primary-button lg:h-[50px] lg:rounded-lg lg:text-[15px]">
@@ -70,43 +68,6 @@ export function HomeFrontPage({
                   <ArrowRight className="size-5 lg:size-4" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="hidden h-[46px] w-full rounded-lg border-[#D8CFC1] bg-transparent px-[18px] text-[15px] font-semibold text-[#181818] shadow-none hover:bg-[rgb(17_17_17_/_0.025)] lg:inline-flex"
-              >
-                <Link href="#current-read">Read the memo</Link>
-              </Button>
-              <Link
-                href="https://x.com/AiAtlasNYC"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 hidden items-center gap-1.5 text-sm font-medium text-[#5F5A52] transition hover:text-[#181818] lg:inline-flex"
-              >
-                Follow on X
-                <ExternalLink className="size-3.5 text-[#5F5A52]" />
-              </Link>
-              <div className="hero-secondary-actions lg:hidden">
-                <Link
-                  href="#current-read"
-                  className="group inline-flex items-center gap-1.5 transition hover:text-[#181818]"
-                >
-                  Read the memo
-                  <ArrowRight className="size-3.5 text-[var(--app-secondary-accent)] transition group-hover:translate-x-0.5" />
-                </Link>
-                <span aria-hidden="true" className="text-[#CFC7BC]">
-                  /
-                </span>
-                <Link
-                  href="https://x.com/AiAtlasNYC"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex items-center gap-1.5 transition hover:text-[#181818]"
-                >
-                  Follow on X
-                  <ExternalLink className="size-3.5 text-[var(--app-secondary-accent)] transition group-hover:translate-x-0.5" />
-                </Link>
-              </div>
             </div>
           </div>
 
@@ -116,15 +77,66 @@ export function HomeFrontPage({
             <MarketSnapshot
               stats={stats}
               currentThemeCount={currentThemeCount}
-              analystRead={analystRead}
-              analystReadUpdatedAt={analystReadUpdatedAt}
-              companiesById={companiesById}
-              overrides={snapshotOverrides}
             />
             <CategoryPulse items={categoryPulse} />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroStatsRow({
+  stats,
+  updatedLabel,
+}: {
+  stats: CompanyStats;
+  updatedLabel?: string;
+}) {
+  const items = [
+    {
+      icon: "map",
+      label: "Companies tracked",
+      value: stats.totalCompanies,
+      href: "/companies",
+    },
+    {
+      icon: "grid",
+      label: "Categories",
+      value: stats.totalCategories,
+      href: "/categories",
+    },
+    {
+      icon: "pin",
+      label: "Updated",
+      value: updatedLabel ?? "Recent",
+      href: "/feed",
+    },
+  ] as const;
+
+  return (
+    <dl className="mt-5 grid grid-cols-3 divide-x divide-[#E7E1D8] border-y border-[#E7E1D8] lg:max-w-[360px]">
+      {items.map((item) => (
+        <Link
+          key={item.label}
+          href={item.href}
+          className="group min-w-0 px-3 py-3 transition hover:bg-[rgb(17_17_17_/_0.025)]"
+        >
+          <dt className="text-label flex items-center gap-1.5 text-[9.5px] leading-[1.15] text-[#746D64] group-hover:text-[#9A3D2B]">
+            <PixelSiteIcon name={item.icon} size="xs" />
+            <span className="truncate">{item.label}</span>
+          </dt>
+          <dd
+            className={
+              item.label === "Updated"
+                ? "mt-2 truncate text-[13px] font-semibold leading-none tracking-[0] text-[#111111]"
+                : "mt-2 font-heading text-[23px] font-medium leading-none tracking-[0] text-[#111111]"
+            }
+          >
+            {item.value}
+          </dd>
+        </Link>
+      ))}
+    </dl>
   );
 }

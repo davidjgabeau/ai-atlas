@@ -252,6 +252,8 @@ function buildLatestSignalsPrompt({
       "Pick one company per item from candidates only.",
       "Use the exact companyId and at least one event id from that candidate.",
       "The body must explain why this signal matters, not merely restate that the company was added.",
+      "Never start the body with the company name.",
+      "Avoid repeating the company name in the body; the card title already names it.",
       "Each body must use a different sentence shape and must not share the same opening phrase.",
       "Prefer buyer/workflow/product implications over generic category summaries.",
       "Do not say Fresh addition, added to AI Atlas, joined the map, ecosystem, promising, high potential, or strong category fit.",
@@ -379,17 +381,16 @@ function extractOutputText(payload: Record<string, unknown>) {
 
 function isGoodLatestSignalBody(body: string, companyName: string) {
   const normalized = body.toLowerCase();
+  const normalizedCompanyName = companyName.toLowerCase();
   if (body.length < 55 || body.length > 220) return false;
   if (bannedLatestSignalPhrases.some((phrase) => normalized.includes(phrase))) {
     return false;
   }
   if (!/[.!?]$/.test(body)) return false;
+  if (normalized.includes(normalizedCompanyName)) return false;
 
-  return (
-    normalized.includes(companyName.toLowerCase()) ||
-    /\b(buyer|customer|team|workflow|operator|founder|platform|product|stack|market|category|infrastructure|data|clinical|finance|legal|consumer|social|security|research)\b/.test(
-      normalized,
-    )
+  return /\b(buyer|customer|team|workflow|operator|founder|platform|product|stack|market|category|infrastructure|data|clinical|finance|legal|consumer|social|security|research)\b/.test(
+    normalized,
   );
 }
 

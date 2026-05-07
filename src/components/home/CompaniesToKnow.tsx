@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 import { CompanyViewCount } from "@/components/company/CompanyViewCount";
 import { CompanyLogo } from "@/components/market-map/company-logo";
+import { UsageBadge } from "@/components/market-map/usage-badge";
 import { getCompanyHook, getHomeSignalLabel } from "@/components/home/home-utils";
 import type { Company } from "@/types/market";
 
@@ -64,7 +65,10 @@ export function CompaniesToKnow({ companies }: { companies: Company[] }) {
                     {company.name}
                   </h3>
                   {showLabel ? (
-                    <CompanyStatusPill label={label} />
+                    <UsageBadge
+                      value={label}
+                      className="shrink-0 rounded-md px-2 py-1 text-[10px] lg:text-[10.5px]"
+                    />
                   ) : null}
                 </div>
                 <p className="text-company-hook mt-2 line-clamp-2 lg:mt-1 lg:line-clamp-1">
@@ -98,26 +102,6 @@ export function CompaniesToKnow({ companies }: { companies: Company[] }) {
         <ArrowRight className="size-3.5" />
       </Link>
     </section>
-  );
-}
-
-function isHighSignalLabel(label: string) {
-  return ["featured", "breakout watch", "infra signal"].includes(
-    label.toLowerCase(),
-  );
-}
-
-function CompanyStatusPill({ label }: { label: string }) {
-  return (
-    <span
-      className={`text-label shrink-0 rounded-md border px-2 py-1.5 text-[10px] lg:px-2 lg:py-1 lg:text-[10.5px] ${
-        isHighSignalLabel(label)
-          ? "border-[#D9B7AA] text-[#9A2F20]"
-          : "border-[rgb(49_71_94_/_0.25)] text-[var(--app-secondary-accent)]"
-      }`}
-    >
-      {label}
-    </span>
   );
 }
 

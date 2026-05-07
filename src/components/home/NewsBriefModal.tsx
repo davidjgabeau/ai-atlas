@@ -5,6 +5,7 @@ import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
 
 import { NewsItemRow } from "@/components/news/news-item-card";
 import { Button } from "@/components/ui/button";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
   Dialog,
   DialogContent,
@@ -25,11 +26,11 @@ export function NewsBriefModal({
   items: NewsItem[];
   companies?: LinkableCompany[];
 }) {
-  if (items.length === 0) {
+  if (items.length < 5) {
     return null;
   }
 
-  const previewItems = items.slice(0, 3);
+  const previewItems = items.slice(0, 5);
 
   return (
     <section id="news-brief" className="border-b border-[#E7E1D8] bg-section">
@@ -48,6 +49,13 @@ export function NewsBriefModal({
             <p className="mt-2 max-w-[560px] text-sm leading-[1.5] text-[#5F5A52]">
               Early-stage NYC AI news links worth scanning.
             </p>
+            <Link
+              href="/feed"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
+            >
+              View all
+              <ArrowRight className="size-3.5" />
+            </Link>
             <div className="mt-4 flex flex-col gap-2 text-sm leading-[1.5] text-[#5F5A52] md:flex-row md:flex-wrap md:gap-x-4">
               {previewItems.map((item) => (
                 <a
@@ -57,6 +65,9 @@ export function NewsBriefModal({
                   rel="noreferrer"
                   className="group inline-flex max-w-[360px] items-center gap-1.5 hover:text-[#181818]"
                 >
+                  <span className="shrink-0 text-xs font-semibold text-[#9A3D2B]">
+                    {formatNewsBriefDate(item)}
+                  </span>
                   <span className="line-clamp-1">{item.title}</span>
                   <ExternalLink className="size-3 shrink-0 text-[#9A3D2B]" />
                 </a>
@@ -108,5 +119,11 @@ export function NewsBriefModal({
         </div>
       </div>
     </section>
+  );
+}
+
+function formatNewsBriefDate(item: NewsItem) {
+  return formatRelativeUpdate(
+    item.published_at ?? item.discovered_at ?? item.created_at,
   );
 }

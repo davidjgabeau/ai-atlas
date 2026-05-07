@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 import { BrowseByCategory } from "@/components/home/BrowseByCategory";
 import { CurrentRead } from "@/components/home/CurrentRead";
@@ -131,10 +131,6 @@ export default async function Home() {
   );
   const latestSignalsSurface = getLatestSurface(storedSurfaces, "latest_signals");
   const currentReadSurface = getLatestSurface(storedSurfaces, "current_read");
-  const marketSnapshotSurface = getLatestSurface(
-    storedSurfaces,
-    "market_snapshot",
-  );
   const categoryPulseSurface = getLatestSurface(storedSurfaces, "category_pulse");
   const recentlyAddedSurface = getLatestSurface(storedSurfaces, "recently_added");
   const surfaceCompaniesToKnow =
@@ -173,23 +169,7 @@ export default async function Home() {
     storedSnapshot?.generatedAt,
     ...storedSurfaces.map((surface) => surface.generatedAt),
   ]);
-  const marketSnapshotCounts = getMarketSnapshotCounts(
-    marketSnapshotSurface?.items,
-    storedSnapshot,
-  );
-  const analystReadItem = marketSnapshotSurface?.items.find((item) =>
-    ["Editor's note", "Editor’s note", "Analyst read"].includes(item.title),
-  );
-  const analystRead =
-    analystReadItem?.body ??
-    surfaceCurrentRead[0]?.body ??
-    "Recent early-stage additions skew toward practical AI: healthcare, finance, infrastructure, and operational workflows.";
-  const analystReadUpdatedAt =
-    analystReadItem?.body
-      ? marketSnapshotSurface?.generatedAt
-      : surfaceCurrentRead[0]?.body
-        ? currentReadSurface?.generatedAt
-        : latestUpdatedAt;
+  const marketSnapshotCounts = getMarketSnapshotCounts(storedSnapshot);
 
   return (
     <>
@@ -203,10 +183,6 @@ export default async function Home() {
             categoryPulse={surfaceCategoryPulseItems}
             stats={stats}
             currentThemeCount={marketSnapshotCounts.currentThemeCount}
-            analystRead={analystRead}
-            analystReadUpdatedAt={analystReadUpdatedAt}
-            companiesById={companiesById}
-            snapshotOverrides={marketSnapshotCounts}
             latestUpdatedAt={latestUpdatedAt}
           />
           <HomePatterns />
@@ -345,6 +321,15 @@ function SiteFooter() {
           </a>
           <Link href="/submit" className="hover:text-[#181818]">
             Submit
+          </Link>
+          <Link
+            href="https://x.com/AiAtlasNYC"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-[#181818]"
+          >
+            Follow on X
+            <ExternalLink className="size-3.5" />
           </Link>
         </nav>
       </div>
@@ -512,45 +497,10 @@ function getCategoryPulseFromSurface(items: EditorialItem[] | undefined) {
   return categoryItems.length > 0 ? categoryItems : null;
 }
 
-function getMarketSnapshotCounts(
-  items: EditorialItem[] | undefined,
-  snapshot: ReturnType<typeof getLatestSnapshot>,
-) {
-  const byTitle = new Map(items?.map((item) => [item.title, item.body]) ?? []);
-  const categoryCount = snapshot
-    ? Object.keys(snapshot.categoryCounts).length
-    : undefined;
-
+function getMarketSnapshotCounts(snapshot: ReturnType<typeof getLatestSnapshot>) {
   return {
-    totalCompanies:
-      numberFromText(getByTitle(byTitle, "Companies tracked", "companies tracked")) ??
-      snapshot?.companyCount,
-    totalCategories:
-      numberFromText(getByTitle(byTitle, "Categories", "categories")) ??
-      categoryCount,
-    recentlyAddedCount:
-      numberFromText(getByTitle(byTitle, "Recently added", "recent additions")) ??
-      snapshot?.recentCompanyIds.length,
-    currentThemeCount:
-      numberFromText(getByTitle(byTitle, "Current themes", "current themes")) ??
-      snapshot?.topSignals.length ??
-      3,
+    currentThemeCount: snapshot?.topSignals.length ?? 3,
   };
-}
-
-function getByTitle(items: Map<string, string | undefined>, ...titles: string[]) {
-  for (const title of titles) {
-    const value = items.get(title);
-    if (value !== undefined) return value;
-  }
-
-  return undefined;
-}
-
-function numberFromText(value: string | undefined) {
-  if (!value) return undefined;
-  const number = Number(value);
-  return Number.isFinite(number) ? number : undefined;
 }
 
 function createLatestSignalFallbackItems(companies: Company[]): EditorialItem[] {
@@ -580,11 +530,11 @@ function createFallbackSignalBody(company: Company, index: number) {
   );
   const buyer = getCategoryBuyerPhrase(company.category);
   const templates = [
-    `${company.name} is worth watching because ${lowerFirst(reason)}`,
-    `The signal is specific: ${company.name} gives ${buyer} a clearer AI-native wedge around ${lowerFirst(reason)}`,
-    `${company.name} broadens the map beyond generic tooling by focusing on ${lowerFirst(reason)}`,
-    `For ${buyer}, ${company.name} points to a sharper workflow: ${lowerFirst(reason)}`,
-    `${company.name} stands out where product focus and buyer pain meet: ${lowerFirst(reason)}`,
+    `Deepens ${company.category} coverage with ${lowerFirst(reason)}`,
+    `Gives ${buyer} a clearer AI-native wedge around ${lowerFirst(reason)}`,
+    `Broadens the map beyond generic tooling by focusing on ${lowerFirst(reason)}`,
+    `Points ${buyer} toward a sharper workflow: ${lowerFirst(reason)}`,
+    `Connects product focus with buyer pain around ${lowerFirst(reason)}`,
   ];
 
   return truncateSignalBody(templates[index % templates.length]);
@@ -639,6 +589,7 @@ function getCategoryBuyerPhrase(category: Category) {
 }
 
 function lowerFirst(value: string) {
+  if (/^AI\b/.test(value)) return value;
   return value.charAt(0).toLowerCase() + value.slice(1);
 }
 

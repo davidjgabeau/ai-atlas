@@ -271,7 +271,7 @@ function validatePatterns() {
 
 function validateNoHardcodedHomepageCount() {
   const files = collectFiles(["src/app", "src/components/home"]);
-  const countPattern = /\b(53|55|66)\s+(early-stage\s+)?AI\s+(companies|startups)\b/i;
+  const countPattern = /\b(?:4[0-9]|5[0-9]|6[0-9])\s+(early-stage\s+)?AI\s+(companies|startups)\b/i;
 
   for (const file of files) {
     const contents = readFileSync(path.join(repoRoot, file), "utf8");

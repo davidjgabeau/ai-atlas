@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Newsreader } from "next/font/google";
 import { Suspense } from "react";
 
+import { MobileBottomNav } from "@/components/site/mobile-bottom-nav";
 import { RouteTransitionFeedback } from "@/components/site/route-transition-feedback";
 import { CursorCompanion } from "@/components/ui/CursorCompanion";
 import { SEO_DEFAULTS } from "@/lib/seo/config";
@@ -128,11 +129,12 @@ export default function RootLayout({
       lang="en"
       className={`${geist.variable} ${newsreader.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-[var(--app-bg)] text-[#181818]">
+      <body className="min-h-full bg-[var(--app-bg)] pb-16 text-[#181818] md:pb-0">
         <Suspense fallback={null}>
           <RouteTransitionFeedback />
         </Suspense>
         {children}
+        <MobileBottomNav />
         <CursorCompanion />
       </body>
     </html>
