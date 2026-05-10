@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader2, Search } from "lucide-react";
+import { Loader2, Search, Sparkles } from "lucide-react";
 import {
   useEffect,
   useId,
@@ -14,6 +14,7 @@ import {
 
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import { Input } from "@/components/ui/input";
+import { isAskAtlasQuery } from "@/lib/ask-atlas/query";
 import { cn } from "@/lib/utils";
 import type { Category } from "@/types/market";
 
@@ -56,6 +57,7 @@ export function GlobalSearch({
   const [activeIndex, setActiveIndex] = useState(-1);
   const query = value ?? internalValue;
   const trimmedQuery = query.trim();
+  const askQuery = isAskAtlasQuery(trimmedQuery);
   const visibleResults = trimmedQuery ? results : [];
   const listboxId = `${inputId}-results`;
   const formRef = useRef<HTMLFormElement>(null);
@@ -138,6 +140,11 @@ export function GlobalSearch({
     }
 
     if (!trimmedQuery) return;
+
+    if (askQuery) {
+      navigateTo(`/ask?q=${encodeURIComponent(trimmedQuery)}`);
+      return;
+    }
 
     navigateTo(`/companies?q=${encodeURIComponent(trimmedQuery)}`);
   }
@@ -276,17 +283,41 @@ export function GlobalSearch({
               </div>
             )}
           </div>
-          <button
-            type="submit"
-            className="flex w-full items-center justify-between border-t border-[#E7E1D8] bg-[#F8F6F1] px-3 py-2 text-xs font-semibold text-[#5F5A52] transition hover:bg-[rgb(17_17_17_/_0.035)]"
-          >
-            <span>
-              Search all companies for <span aria-hidden="true">&quot;</span>
-              {trimmedQuery}
-              <span aria-hidden="true">&quot;</span>
-            </span>
-            <span aria-hidden="true">Enter</span>
-          </button>
+          <div className="border-t border-[#E7E1D8]">
+            {askQuery ? (
+              <button
+                type="button"
+                className="flex w-full items-center justify-between gap-3 bg-[#FFF8F5] px-3 py-2 text-left text-xs font-semibold text-[#9A3D2B] transition hover:bg-[rgb(154_61_43_/_0.08)]"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={() => {
+                  navigateTo(`/ask?q=${encodeURIComponent(trimmedQuery)}`);
+                }}
+              >
+                <span className="inline-flex min-w-0 items-center gap-2">
+                  <Sparkles className="size-3.5 shrink-0" />
+                  <span className="truncate">
+                    Ask Atlas about <span aria-hidden="true">&quot;</span>
+                    {trimmedQuery}
+                    <span aria-hidden="true">&quot;</span>
+                  </span>
+                </span>
+                <span aria-hidden="true" className="shrink-0">
+                  Enter
+                </span>
+              </button>
+            ) : null}
+            <button
+              type="submit"
+              className="flex w-full items-center justify-between bg-[#F8F6F1] px-3 py-2 text-xs font-semibold text-[#5F5A52] transition hover:bg-[rgb(17_17_17_/_0.035)]"
+            >
+              <span>
+                Search all companies for <span aria-hidden="true">&quot;</span>
+                {trimmedQuery}
+                <span aria-hidden="true">&quot;</span>
+              </span>
+              <span aria-hidden="true">{askQuery ? "Search" : "Enter"}</span>
+            </button>
+          </div>
         </div>
       ) : null}
     </form>

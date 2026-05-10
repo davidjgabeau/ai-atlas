@@ -17,6 +17,7 @@ SUPABASE_SECRET_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID=
 ANTHROPIC_API_KEY=
+ANTHROPIC_ASK_MODEL=
 X_CLIENT_ID=
 X_CLIENT_SECRET=
 X_ACCESS_TOKEN=
@@ -39,6 +40,9 @@ write submissions without exposing elevated privileges to the browser.
 
 Keep `SOCIAL_AUTO_POST=false` and `SOCIAL_ENGAGEMENT_ENABLED=false` for launch
 until the generated drafts in `/admin` look right.
+
+`ANTHROPIC_ASK_MODEL` is optional. If it is unset, Ask Atlas uses the editorial
+model setting and then the app default.
 
 ## Supabase Setup
 
