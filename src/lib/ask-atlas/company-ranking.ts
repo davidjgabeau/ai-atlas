@@ -5,6 +5,10 @@ import type { Company } from "@/types/market";
 
 const maxCards = 3;
 const minCards = 2;
+const ambiguousSingleWordCompanyNames = new Set([
+  // Avoid matching the company "Series" when Claude says "Series A".
+  "series",
+]);
 
 export function selectAskCompanyCards({
   answer,
@@ -19,7 +23,7 @@ export function selectAskCompanyCards({
   const answerText = normalizeText(answer);
 
   for (const company of companies) {
-    if (answerText.includes(normalizeText(company.name))) {
+    if (isCompanyReferenced(company, answerText)) {
       selected.set(company.id, company);
     }
   }
@@ -34,6 +38,20 @@ export function selectAskCompanyCards({
   return Array.from(selected.values())
     .slice(0, maxCards)
     .map(toAskCompanyCard);
+}
+
+function isCompanyReferenced(company: Company, normalizedAnswer: string) {
+  const normalizedName = normalizeText(company.name);
+  if (!normalizedName) return false;
+
+  if (ambiguousSingleWordCompanyNames.has(normalizedName)) {
+    return false;
+  }
+
+  return normalizedAnswer
+    .split(/\s+/)
+    .join(" ")
+    .includes(normalizedName);
 }
 
 function rankCompaniesForQuery(query: string, companies: Company[]) {
