@@ -24,6 +24,7 @@ const mobileNavItems = [
   { label: "Patterns", href: "/patterns", icon: "compass" as const },
   { label: "Newsfeed", href: "/feed", icon: "pin" as const },
   { label: "Jobs", href: "/jobs", icon: "skyline" as const },
+  { label: "Ask", href: "/ask", icon: "compass" as const },
 ];
 
 export function MobileNavMenu({ className }: { className?: string }) {

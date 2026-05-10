@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 
 import { AtlasAvatarMark } from "@/components/site/atlas-avatar-mark";
+import { AskHeaderLink } from "@/components/site/ask-header-link";
 import { GlobalSearch } from "@/components/site/global-search";
 import { MobileNavMenu } from "@/components/site/mobile-nav-menu";
 import { ProfileHeaderLink } from "@/components/site/profile-header-link";
@@ -99,6 +100,7 @@ function PublicationHeader({
               />
             );
           })}
+          <AskHeaderLink active={pathname === "/ask"} />
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 lg:ml-0">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AskHeaderLink } from "@/components/site/ask-header-link";
 import { LogoMark } from "@/components/site/logo-mark";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { ProfileHeaderLink } from "@/components/site/profile-header-link";
@@ -45,6 +46,7 @@ export function SiteHeader() {
               </Link>
             )
           ))}
+          <AskHeaderLink />
         </nav>
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild size="lg" className="app-primary-button">

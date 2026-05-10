@@ -12,6 +12,7 @@ import { NewsBriefModal } from "@/components/home/NewsBriefModal";
 import { RecentlyAdded } from "@/components/home/RecentlyAdded";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AtlasAvatarMark } from "@/components/site/atlas-avatar-mark";
+import { AskHeaderLink } from "@/components/site/ask-header-link";
 import { GlobalSearch } from "@/components/site/global-search";
 import { MobileNavMenu } from "@/components/site/mobile-nav-menu";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
@@ -237,6 +238,7 @@ function SiteNav() {
           <SpriteHeaderLink href="/patterns" icon="compass" label="Patterns" />
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
+          <AskHeaderLink className="h-11" />
           <ProfileHeaderLink compact className="px-1.5 py-1" />
           <Button asChild className="h-11 rounded-lg px-5 app-primary-button">
             <Link href="/submit">Submit Startup</Link>
