@@ -2,6 +2,10 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { selectAskCompanyCards } from "@/lib/ask-atlas/company-ranking";
 import { buildAskAtlasContext } from "@/lib/ask-atlas/context";
+import {
+  createEmbedCorsPreflightResponse,
+  getEmbedCorsResult,
+} from "@/lib/embed/cors";
 import type {
   AskAtlasMessage,
   AskAtlasStreamEvent,
@@ -16,6 +20,9 @@ const defaultAskModel = "claude-sonnet-4-6";
 const maxQueryLength = 700;
 const maxHistoryMessages = 4;
 const maxHistoryMessageLength = 900;
+const corsOptions = {
+  methods: ["POST", "OPTIONS"],
+};
 
 type AskAtlasRequestBody = {
   query?: unknown;
@@ -33,12 +40,27 @@ type AnthropicStreamEvent = {
   };
 };
 
+export function OPTIONS(request: NextRequest) {
+  return createEmbedCorsPreflightResponse(request, corsOptions);
+}
+
 export async function POST(request: NextRequest) {
+  const cors = getEmbedCorsResult(request, corsOptions);
+  if (!cors.allowed) {
+    return NextResponse.json(
+      { error: "This origin is not allowed to use Ask Atlas embeds." },
+      {
+        status: 403,
+        headers: cors.headers,
+      },
+    );
+  }
+
   const body = await readRequestBody(request);
   if (!body) {
     return NextResponse.json(
       { error: "Ask Atlas needs a question." },
-      { status: 400 },
+      { status: 400, headers: cors.headers },
     );
   }
 
@@ -46,20 +68,20 @@ export async function POST(request: NextRequest) {
   if (!query) {
     return NextResponse.json(
       { error: "Ask Atlas needs a question." },
-      { status: 400 },
+      { status: 400, headers: cors.headers },
     );
   }
 
   if (query.length > maxQueryLength) {
     return NextResponse.json(
       { error: "Ask Atlas questions must be under 700 characters." },
-      { status: 400 },
+      { status: 400, headers: cors.headers },
     );
   }
 
   const history = normalizeHistory(body.history);
 
-  return createAskStream(async (send) => {
+  return createAskStream(cors.headers, async (send) => {
     const context = await buildAskAtlasContext();
     const apiKey = process.env.ANTHROPIC_API_KEY;
     const model =
@@ -182,9 +204,13 @@ async function readRequestBody(
 }
 
 function createAskStream(
+  headers: Headers,
   write: (send: (event: AskAtlasStreamEvent) => void) => Promise<void>,
 ) {
   const encoder = new TextEncoder();
+  const responseHeaders = new Headers(headers);
+  responseHeaders.set("Content-Type", "application/x-ndjson; charset=utf-8");
+  responseHeaders.set("Cache-Control", "no-store, no-transform");
 
   return new Response(
     new ReadableStream<Uint8Array>({
@@ -208,10 +234,7 @@ function createAskStream(
       },
     }),
     {
-      headers: {
-        "Content-Type": "application/x-ndjson; charset=utf-8",
-        "Cache-Control": "no-store, no-transform",
-      },
+      headers: responseHeaders,
     },
   );
 }

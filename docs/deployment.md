@@ -18,6 +18,7 @@ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID=
 ANTHROPIC_API_KEY=
 ANTHROPIC_ASK_MODEL=
+AI_ATLAS_EMBED_ORIGINS=
 X_CLIENT_ID=
 X_CLIENT_SECRET=
 X_ACCESS_TOKEN=
@@ -43,6 +44,11 @@ until the generated drafts in `/admin` look right.
 
 `ANTHROPIC_ASK_MODEL` is optional. If it is unset, Ask Atlas uses the editorial
 model setting and then the app default.
+
+`AI_ATLAS_EMBED_ORIGINS` is optional. It controls which external websites can
+call the Ask Atlas stream from a browser. Use a comma-separated list of origins,
+for example `https://davidgabeau.com,https://www.davidgabeau.com`. The read-only
+embed data endpoint remains public.
 
 ## Supabase Setup
 

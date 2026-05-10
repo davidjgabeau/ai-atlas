@@ -44,6 +44,10 @@ The `/patterns` surface contains editorial market patterns drawn from the compan
 
 The `/feed` and `/newsfeed` surfaces bring together external news links and official company posts from mapped companies. The page is designed as a curated news front page for early-stage NYC AI, with source labels, timestamps, company attribution, and external-link affordances.
 
+### Ask And Embeds
+
+The `/ask` surface lets readers ask questions over the curated AI Atlas company, category, pattern, and signal data. External sites can also use the public embed API at `/api/embed/atlas` plus the guarded Ask stream at `/api/ask` to show the map and an Ask Atlas modal without exposing model provider keys. See [docs/embed-api.md](./docs/embed-api.md).
+
 ### Jobs And Highlights
 
 The jobs and highlights surfaces provide additional market context. Jobs help show where companies are hiring and what functions they are investing in. Highlights provide a saved or featured view of companies worth revisiting.
@@ -149,7 +153,12 @@ Admin and feature controls:
 ```bash
 AI_ATLAS_ADMIN_EMAILS=
 AI_ATLAS_ADMIN_ENABLED=
+AI_ATLAS_EMBED_ORIGINS=
 ```
+
+`AI_ATLAS_EMBED_ORIGINS` is optional and only affects browser access to the Ask
+Atlas streaming endpoint from external websites. Use comma-separated origins,
+such as `https://davidgabeau.com,https://www.davidgabeau.com`.
 
 For more deployment-specific notes, see [docs/deployment.md](./docs/deployment.md).
 
