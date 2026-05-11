@@ -16,17 +16,17 @@ import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { FoundationModelUsage } from "@/components/company/FoundationModelUsage";
 import { CompanyLogo } from "@/components/market-map/company-logo";
-import {
-  buildCompanyMapLocations,
-  categoryColors,
-  GoogleStartupMap,
-  type CompanyMapLocation,
-} from "@/components/market-map/google-startup-map";
+import { GoogleStartupMap } from "@/components/market-map/google-startup-map";
 import { RecentActivity } from "@/components/market-map/recent-activity";
 import { UsageBadge } from "@/components/market-map/usage-badge";
 import { SaveCompanyButton } from "@/components/profile/save-company-button";
 import { AppShell } from "@/components/site/app-shell";
 import { Button } from "@/components/ui/button";
+import {
+  buildCompanyMapLocations,
+  categoryColors,
+  type CompanyMapLocation,
+} from "@/lib/map-layout";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,

@@ -75,6 +75,12 @@ export async function GET(request: NextRequest) {
         mapUrl: absoluteUrl("/companies"),
         askUrl: absoluteUrl("/ask"),
       },
+      map: {
+        endpoint: absoluteUrl("/api/embed/map"),
+        coordinateSystem: "normalized-0-1",
+        description:
+          "Stable category and company coordinates for rendering the AI Atlas map in an external site.",
+      },
       stats: {
         totalCompanies: stats.totalCompanies,
         totalCategories: stats.totalCategories,

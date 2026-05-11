@@ -26,6 +26,11 @@ type AtlasEmbedResponse = {
     mapUrl: string;
     askUrl: string;
   };
+  map: {
+    endpoint: string;
+    coordinateSystem: "normalized-0-1";
+    description: string;
+  };
   stats: {
     totalCompanies: number;
     totalCategories: number;
@@ -107,6 +112,95 @@ type AtlasEmbedResponse = {
     };
   }>;
 };
+```
+
+### Map Layout
+
+```http
+GET https://aiatlas.nyc/api/embed/map
+```
+
+Use this when an external site needs to render the AI Atlas map itself. The
+endpoint returns the same deterministic layout used by the AI Atlas static map
+preview: company positions are projected into normalized `0-1` coordinates.
+
+```ts
+type AtlasMapEmbedResponse = {
+  version: 1;
+  generatedAt: string;
+  source: {
+    name: "AI Atlas NYC";
+    url: string;
+    mapUrl: string;
+  };
+  layout: {
+    type: "ai-atlas-nyc-normalized-map";
+    coordinateSystem: "normalized-0-1";
+    origin: "top-left";
+    xAxis: "west-to-east";
+    yAxis: "north-to-south";
+    bounds: {
+      minLng: number;
+      maxLng: number;
+      minLat: number;
+      maxLat: number;
+    };
+    note: string;
+  };
+  stats: {
+    totalCompanies: number;
+    totalCategories: number;
+    recentlyAddedCount: number;
+    lastUpdatedAt?: string;
+    lastUpdatedLabel: string;
+  };
+  categories: Array<{
+    name: string;
+    slug: string;
+    href: string;
+    color: string;
+    companyCount: number;
+    cx: number;
+    cy: number;
+    description: string;
+  }>;
+  companies: Array<{
+    id: string;
+    name: string;
+    slug: string;
+    href: string;
+    logoUrl: string;
+    websiteUrl: string;
+    category: string;
+    categorySlug: string;
+    stage: string;
+    hook: string;
+    signalLabel: string;
+    views: number;
+    isFeatured: boolean;
+    isBreakout: boolean;
+    color: string;
+    confidence: "confirmed" | "estimated";
+    neighborhood: string;
+    lat: number;
+    lng: number;
+    x: number;
+    y: number;
+    radius: number;
+  }>;
+};
+```
+
+For SVG or canvas rendering:
+
+```ts
+const map = await fetch("https://aiatlas.nyc/api/embed/map").then((res) =>
+  res.json(),
+);
+
+const x = company.x * width;
+const y = company.y * height;
+const radius = company.radius * Math.min(width, height);
 ```
 
 ### Ask Atlas Stream
