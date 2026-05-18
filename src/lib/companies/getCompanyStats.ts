@@ -1,4 +1,5 @@
 import type { Company } from "@/types/market";
+import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 
 export type CompanyStats = {
   totalCompanies: number;
@@ -7,8 +8,6 @@ export type CompanyStats = {
   lastUpdatedAt?: string;
 };
 
-const recentWindowMs = 30 * 24 * 60 * 60 * 1000;
-
 export function getCompanyStats(companies: Company[]): CompanyStats {
   const totalCompanies = companies.length;
   const totalCategories = new Set(
@@ -16,15 +15,9 @@ export function getCompanyStats(companies: Company[]): CompanyStats {
       .map((company) => company.category)
       .filter((category) => category.trim().length > 0),
   ).size;
-  const recentByCreatedAt = companies.filter((company) =>
-    isWithinRecentWindow(getCreatedAtValue(company)),
+  const recentlyAddedCount = companies.filter((company) =>
+    isRecentCompanyAddition(company),
   ).length;
-  const recentlyAddedCount =
-    recentByCreatedAt > 0
-      ? recentByCreatedAt
-      : companies.filter(
-          (company) => company.generated?.signalLabel === "Recently added",
-        ).length;
   const lastUpdatedAt = getLastUpdatedAt(companies);
 
   return {
@@ -33,15 +26,6 @@ export function getCompanyStats(companies: Company[]): CompanyStats {
     recentlyAddedCount,
     lastUpdatedAt,
   };
-}
-
-function isWithinRecentWindow(dateValue?: string) {
-  if (!dateValue) return false;
-
-  const time = new Date(dateValue).getTime();
-  if (Number.isNaN(time)) return false;
-
-  return Date.now() - time <= recentWindowMs;
 }
 
 function getCreatedAtValue(company: Company) {

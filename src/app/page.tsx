@@ -29,6 +29,11 @@ import {
 } from "@/data/market";
 import { getCompanyStats } from "@/lib/companies/getCompanyStats";
 import {
+  RECENT_ADDITION_WINDOW_MS,
+  getRecentCompanyAdditions,
+  isRecentCompanyAddition,
+} from "@/lib/companies/recentAdditions";
+import {
   getLatestSnapshot,
   getLatestSurface,
   getStoredAgentHomepageData,
@@ -46,7 +51,7 @@ import {
   normalizeSignalLabel,
 } from "@/lib/signals/companySignal";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
-import type { EditorialItem } from "@/types/agent";
+import type { EditorialItem, EditorialSurface } from "@/types/agent";
 import type { Category, Company, MarketInsight } from "@/types/market";
 
 export const dynamic = "force-dynamic";
@@ -97,6 +102,10 @@ export default async function Home() {
     totalCategories: categoryMeta.length,
   };
   const categoryCounts = getCategoryCounts(publishedCompanies);
+  const recentlyAddedCompanies = getRecentCompanyAdditions(
+    publishedCompanies,
+    6,
+  );
   const recentCompanies = [...publishedCompanies]
     .sort((a, b) => getCompanySortDate(b) - getCompanySortDate(a))
     .slice(0, 6);
@@ -158,8 +167,8 @@ export default async function Home() {
   const surfaceCurrentRead =
     getCurrentReadFromSurface(currentReadSurface?.items) ?? [];
   const surfaceRecentlyAdded =
-    getRecentlyAddedCompaniesFromSurface(recentlyAddedSurface?.items, companiesById) ??
-    recentCompanies;
+    getRecentlyAddedCompaniesFromSurface(recentlyAddedSurface, companiesById) ??
+    recentlyAddedCompanies;
   const latestSignalItems = getSafeLatestSignalItems(latestSignalsSurface?.items);
   const displayedLatestSignals =
     latestSignalItems.length > 0
@@ -415,9 +424,12 @@ function getCompaniesFromSurface(
 }
 
 function getRecentlyAddedCompaniesFromSurface(
-  items: EditorialItem[] | undefined,
+  surface: EditorialSurface | undefined,
   companiesById: Map<string, Company>,
 ) {
+  if (!surface || !isFreshRecentAdditionsSurface(surface)) return null;
+
+  const items = surface.items;
   if (!items?.length) return null;
 
   const companies = items
@@ -444,9 +456,21 @@ function getRecentlyAddedCompaniesFromSurface(
           }
         : company;
     })
-    .filter((company): company is Company => Boolean(company));
+    .filter((company): company is Company => Boolean(company))
+    .filter((company) => isRecentCompanyAddition(company));
 
   return companies.length > 0 ? companies : null;
+}
+
+function isFreshRecentAdditionsSurface(surface: EditorialSurface) {
+  const generatedAt = getDateTime(surface.generatedAt);
+  const expiresAt = getDateTime(surface.expiresAt);
+  const now = Date.now();
+
+  if (!generatedAt) return false;
+  if (expiresAt && expiresAt < now) return false;
+
+  return now - generatedAt <= RECENT_ADDITION_WINDOW_MS;
 }
 
 function getCurrentReadFromSurface(

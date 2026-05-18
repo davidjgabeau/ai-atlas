@@ -9,6 +9,7 @@ import {
   formatMonthYear,
   getCompanyHook,
 } from "@/components/home/home-utils";
+import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 import type { Company } from "@/types/market";
 
 export function RecentlyAdded({ companies }: { companies: Company[] }) {
@@ -20,7 +21,7 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
             <p className="editorial-label">New entries</p>
             <h2 className="mt-3 editorial-section-title">Recently Added</h2>
             <p className="text-body mt-2 text-sm">
-              New entries and meaningful updates from the early-stage NYC AI map.
+              New entries from the early-stage NYC AI map.
             </p>
           </div>
           <Link
@@ -108,27 +109,8 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
   );
 }
 
-const recentAnnotationWindowMs = 14 * 24 * 60 * 60 * 1000;
-
 function getRecentAnnotation(company: Company) {
-  const createdAt = getDateTime(company.created_at);
-  const updatedAt = getDateTime(company.updated_at);
-
-  if (isRecent(createdAt)) return "New";
-  if (isRecent(updatedAt) && (!createdAt || !isRecent(createdAt))) return "Updated";
+  if (isRecentCompanyAddition(company)) return "New";
 
   return null;
-}
-
-function isRecent(time: number) {
-  const diff = Date.now() - time;
-
-  return time > 0 && diff >= 0 && diff <= recentAnnotationWindowMs;
-}
-
-function getDateTime(value?: string) {
-  if (!value) return 0;
-
-  const time = new Date(value).getTime();
-  return Number.isNaN(time) ? 0 : time;
 }

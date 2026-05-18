@@ -5,6 +5,7 @@ import {
   getStoredAgentHomepageData,
 } from "@/lib/agent/homepageData";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
+import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import type { AskAtlasCompanyCard } from "@/types/ask-atlas";
@@ -62,8 +63,6 @@ export type AskAtlasContext = {
   companies: Company[];
 };
 
-const recentCompanyLimit = 8;
-
 export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
   const [companies, homepageData] = await Promise.all([
     getPublishedCompanies(),
@@ -72,12 +71,6 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
   const companiesById = new Map(companies.map((company) => [company.id, company]));
   const companiesBySlug = new Map(
     companies.map((company) => [company.slug, company]),
-  );
-  const recentCompanyIds = new Set(
-    [...companies]
-      .sort((a, b) => getCompanySortTime(b) - getCompanySortTime(a))
-      .slice(0, recentCompanyLimit)
-      .map((company) => company.id),
   );
   const latestSignals = getLatestSurface(
     homepageData.editorialSurfaces,
@@ -131,8 +124,7 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
         signalReason: company.generated.signalReason,
         viewCount: company.metrics?.views ?? 0,
         viewCountLabel: formatViewCount(company.metrics?.views ?? 0),
-        recentlyAdded:
-          recentCompanyIds.has(company.id) || Boolean(company.inclusionReason),
+        recentlyAdded: isRecentCompanyAddition(company),
         recentActivity: company.recent_activity_text,
         recentActivityDate: company.recent_activity_date,
         fundingRound: company.funding_round,
@@ -158,17 +150,4 @@ export function toAskCompanyCard(company: Company): AskAtlasCompanyCard {
     signalLabel: getCompanySignalLabel(company),
     views: company.metrics?.views ?? 0,
   };
-}
-
-function getCompanySortTime(company: Company) {
-  return Math.max(
-    getTime(company.updated_at),
-    getTime(company.created_at),
-    getTime(company.recent_activity_date),
-  );
-}
-
-function getTime(value: string) {
-  const time = new Date(value).getTime();
-  return Number.isNaN(time) ? 0 : time;
 }

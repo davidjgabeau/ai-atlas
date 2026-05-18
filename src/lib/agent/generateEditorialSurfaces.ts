@@ -14,6 +14,10 @@ import { generateCurrentReadWithAnthropic } from "./generateCurrentReadWithAnthr
 import { generateLatestSignalsWithAnthropic } from "./generateLatestSignalsWithAnthropic";
 import { hasBannedUserFacingPhrase, qualityGateCurrentRead } from "./qualityGate";
 import { normalizeSignalLabel } from "../signals/companySignal";
+import {
+  getAddedTime,
+  isRecentCompanyAddition,
+} from "../companies/recentAdditions";
 
 const promptVersion = "agentic-editorial-v3-llm-signals";
 const surfaceTtlDays = 2;
@@ -193,7 +197,8 @@ export async function generateEditorialSurfaces({
   );
 
   const recentlyAddedItems = companies
-    .sort((a, b) => getTime(b.createdAt || b.updatedAt) - getTime(a.createdAt || a.updatedAt))
+    .filter((company) => isRecentCompanyAddition(company))
+    .sort((a, b) => getAddedTime(b) - getAddedTime(a))
     .slice(0, 6)
     .map((company) => {
       const supportingEvents = events
