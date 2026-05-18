@@ -150,6 +150,12 @@ export function GlobalSearch({
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitSearch();
+      return;
+    }
+
     if (event.key === "ArrowDown" && visibleResults.length > 0) {
       event.preventDefault();
       setOpen(true);
