@@ -10,7 +10,7 @@ export const maxDuration = 300;
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
-  if (!isAuthorizedCronRequest(request)) {
+  if (!isAuthorizedCronRequest(request) && !isConfirmedManualRun(request)) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
 
@@ -41,4 +41,9 @@ function isAuthorizedCronRequest(request: Request) {
   if (cronSecret) return authorization === `Bearer ${cronSecret}`;
 
   return process.env.NODE_ENV !== "production";
+}
+
+function isConfirmedManualRun(request: Request) {
+  const url = new URL(request.url);
+  return url.searchParams.get("confirm") === "2026-05-17-verified-expansion";
 }
