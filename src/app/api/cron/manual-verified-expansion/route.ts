@@ -21,14 +21,17 @@ export async function GET(request: Request) {
     existingCompanies,
     autoApprove: true,
   });
-
-  return NextResponse.json({
+  const responsePayload = {
     ok: result.errors.length === 0,
     attempted: profiles.length,
     published: result.published,
     errors: result.errors,
     companies: profiles.map((profile) => profile.candidateCompanyName),
-  });
+  };
+
+  console.log("manual verified expansion", responsePayload);
+
+  return NextResponse.json(responsePayload);
 }
 
 function isAuthorizedCronRequest(request: Request) {
