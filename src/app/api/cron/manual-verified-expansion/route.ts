@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { toAgentCompanies } from "@/lib/agent/companyAdapter";
 import { loadPublishedCompaniesForAgent } from "@/lib/agent/loadCompanies";
 import { publishDiscoveredCompanies } from "@/lib/agent/publishDiscoveredCompanies";
+import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 
 import { createVerifiedExpansionProfiles } from "../../../../../scripts/manual-verified-expansion-2026-05-17";
 
@@ -16,17 +17,28 @@ export async function GET(request: Request) {
 
   const existingCompanies = toAgentCompanies(await loadPublishedCompaniesForAgent());
   const profiles = createVerifiedExpansionProfiles(existingCompanies);
+  const existingTableSlugs = await loadExistingCompanySlugs(
+    profiles
+      .map((profile) => profile.proposedUpdate.slug)
+      .filter((slug): slug is string => Boolean(slug)),
+  );
+  const publishableProfiles = profiles.filter((profile) => {
+    const slug = profile.proposedUpdate.slug;
+    return !slug || !existingTableSlugs.has(slug);
+  });
   const result = await publishDiscoveredCompanies({
-    profiles,
+    profiles: publishableProfiles,
     existingCompanies,
     autoApprove: true,
   });
   const responsePayload = {
     ok: result.errors.length === 0,
     attempted: profiles.length,
+    skippedExisting: profiles.length - publishableProfiles.length,
     published: result.published,
     errors: result.errors,
-    companies: profiles.map((profile) => profile.candidateCompanyName),
+    companies: publishableProfiles.map((profile) => profile.candidateCompanyName),
+    existingSlugs: Array.from(existingTableSlugs),
   };
 
   console.log("manual verified expansion", responsePayload);
@@ -46,4 +58,22 @@ function isAuthorizedCronRequest(request: Request) {
 function isConfirmedManualRun(request: Request) {
   const url = new URL(request.url);
   return url.searchParams.get("confirm") === "2026-05-17-verified-expansion";
+}
+
+async function loadExistingCompanySlugs(slugs: string[]) {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase || slugs.length === 0) return new Set<string>();
+
+  const { data, error } = await supabase
+    .from("companies")
+    .select("slug")
+    .in("slug", slugs);
+
+  if (error || !data) return new Set<string>();
+
+  return new Set(
+    data
+      .map((row) => (typeof row.slug === "string" ? row.slug : ""))
+      .filter(Boolean),
+  );
 }
