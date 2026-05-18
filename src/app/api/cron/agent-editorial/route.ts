@@ -13,6 +13,7 @@ export async function GET(request: Request) {
 
   const run = await runEditorialGeneration();
   revalidatePath("/");
+  revalidatePath("/patterns");
   return NextResponse.json({ ok: run.status !== "failed", run });
 }
 

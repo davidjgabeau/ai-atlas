@@ -5,6 +5,11 @@ import { ArrowRight, Clock3 } from "lucide-react";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
 import { patterns, type Pattern } from "@/data/patterns";
+import {
+  getLatestSnapshot,
+  getLatestSurface,
+  getStoredAgentHomepageData,
+} from "@/lib/agent/homepageData";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
   absoluteUrl,
@@ -27,6 +32,8 @@ export const metadata: Metadata = createShareMetadata({
   path: "/patterns",
   image: getShareImageUrl({ page: "insights" }),
 });
+
+export const dynamic = "force-dynamic";
 
 type PatternStats = {
   patternCount: number;
@@ -54,8 +61,17 @@ type PatternKind =
   | "healthcare"
   | "default";
 
-export default function PatternsPage() {
-  const latestUpdatedAt = getLatestPatternUpdatedAt();
+export default async function PatternsPage() {
+  const storedAgentData = await getStoredAgentHomepageData();
+  const latestUpdatedAt = getLatestPatternUpdatedAt([
+    getLatestSurface(storedAgentData.editorialSurfaces, "current_read")
+      ?.generatedAt,
+    getLatestSurface(storedAgentData.editorialSurfaces, "market_snapshot")
+      ?.generatedAt,
+    getLatestSurface(storedAgentData.editorialSurfaces, "category_pulse")
+      ?.generatedAt,
+    getLatestSnapshot(storedAgentData.marketSnapshots)?.generatedAt,
+  ]);
   const themeRows = getThemeDistributionRows(patterns);
   const stats: PatternStats = {
     patternCount: patterns.length,
@@ -629,11 +645,13 @@ function PatternStatMark({ kind }: { kind: PatternStatMarkKind }) {
   );
 }
 
-function getLatestPatternUpdatedAt() {
-  const latest = patterns.reduce((max, pattern) => {
-    const time = new Date(pattern.updated_at).getTime();
-    return Number.isNaN(time) ? max : Math.max(max, time);
-  }, 0);
+function getLatestPatternUpdatedAt(dailyUpdateDates: Array<string | undefined> = []) {
+  const latest = [...patterns.map((pattern) => pattern.updated_at), ...dailyUpdateDates]
+    .filter((value): value is string => Boolean(value))
+    .reduce((max, value) => {
+      const time = new Date(value).getTime();
+      return Number.isNaN(time) ? max : Math.max(max, time);
+    }, 0);
 
   return latest > 0 ? new Date(latest).toISOString() : undefined;
 }
