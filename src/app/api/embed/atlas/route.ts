@@ -8,6 +8,10 @@ import {
 } from "@/lib/agent/homepageData";
 import { getCompanyStats } from "@/lib/companies/getCompanyStats";
 import {
+  getRecentCompanyAdditions,
+  isRecentCompanyAddition,
+} from "@/lib/companies/recentAdditions";
+import {
   createEmbedCorsPreflightResponse,
   getEmbedCorsResult,
 } from "@/lib/embed/cors";
@@ -29,7 +33,11 @@ const corsOptions = {
 };
 
 const maxCompanies = 100;
+const collectionLimit = 6;
 const representativeCompanyLimit = 2;
+const companySortOptions = ["newest", "featured"] as const;
+
+type CompanySortOption = (typeof companySortOptions)[number];
 
 export function OPTIONS(request: NextRequest) {
   return createEmbedCorsPreflightResponse(request, corsOptions);
@@ -57,9 +65,19 @@ export async function GET(request: NextRequest) {
     companies.map((company) => [company.slug, company]),
   );
   const companyLimit = getCompanyLimit(request);
+  const companySort = getCompanySort(request);
   const latestSignals = getLatestSurface(
     homepageData.editorialSurfaces,
     "latest_signals",
+  );
+  const newestCompanies = sortCompaniesByMapFreshness(companies);
+  const newCompanyCollection = newestCompanies
+    .filter((company) => getMapFreshnessRank(company) > 0)
+    .slice(0, collectionLimit);
+  const featuredCompanies = sortCompaniesForEmbed(companies);
+  const recentCompanies = getRecentCompanyAdditions(
+    companies,
+    collectionLimit,
   );
 
   const headers = new Headers(cors.headers);
@@ -84,6 +102,7 @@ export async function GET(request: NextRequest) {
       stats: {
         totalCompanies: stats.totalCompanies,
         totalCategories: stats.totalCategories,
+        newCompanyCount: newCompanyCollection.length,
         recentlyAddedCount: stats.recentlyAddedCount,
         lastUpdatedAt: stats.lastUpdatedAt,
         lastUpdatedLabel: stats.lastUpdatedAt
@@ -106,6 +125,14 @@ export async function GET(request: NextRequest) {
           "Which NYC AI companies are useful for healthcare operations?",
           "Where is consumer AI showing up in the map?",
         ],
+      },
+      collections: {
+        defaultCompanySort: companySort,
+        newCompanies: newCompanyCollection.map(toEmbedCompany),
+        featuredCompanies: featuredCompanies
+          .slice(0, collectionLimit)
+          .map(toEmbedCompany),
+        recentCompanies: recentCompanies.map(toEmbedCompany),
       },
       categories: categoryMeta.map((category) => {
         const categoryCompanies = sortCompaniesForEmbed(
@@ -130,7 +157,7 @@ export async function GET(request: NextRequest) {
             })),
         };
       }),
-      companies: sortCompaniesForEmbed(companies)
+      companies: sortCompaniesByRequest(companies, companySort)
         .slice(0, companyLimit)
         .map(toEmbedCompany),
       patterns: patterns.slice(0, 6).map((pattern) => ({
@@ -206,8 +233,41 @@ function toEmbedCompany(company: Company) {
       name: founder.name,
       title: founder.title,
     })),
+    createdAt: company.created_at,
     updatedAt: company.updated_at,
   };
+}
+
+function sortCompaniesByRequest(
+  companies: Company[],
+  companySort: CompanySortOption,
+) {
+  if (companySort === "featured") return sortCompaniesForEmbed(companies);
+
+  return sortCompaniesByMapFreshness(companies);
+}
+
+function sortCompaniesByMapFreshness(companies: Company[]) {
+  return [...companies].sort((a, b) => {
+    const freshnessDelta = getMapFreshnessRank(b) - getMapFreshnessRank(a);
+    if (freshnessDelta !== 0) return freshnessDelta;
+
+    const addedDelta = getDateTime(b.created_at) - getDateTime(a.created_at);
+    if (addedDelta !== 0) return addedDelta;
+
+    return sortCompaniesForEmbed([a, b])[0]?.id === a.id ? -1 : 1;
+  });
+}
+
+function getMapFreshnessRank(company: Company) {
+  if (isRecentCompanyAddition(company)) return 2;
+  if (hasStableSemanticCompanyId(company)) return 1;
+
+  return 0;
+}
+
+function hasStableSemanticCompanyId(company: Company) {
+  return !/^cmp_\d+$/.test(company.id);
 }
 
 function sortCompaniesForEmbed(companies: Company[]) {
@@ -238,6 +298,22 @@ function getCompanyLimit(request: NextRequest) {
   if (Number.isNaN(parsed)) return maxCompanies;
 
   return Math.max(1, Math.min(parsed, maxCompanies));
+}
+
+function getCompanySort(request: NextRequest): CompanySortOption {
+  const rawValue = request.nextUrl.searchParams.get("companySort");
+  if (companySortOptions.some((option) => option === rawValue)) {
+    return rawValue as CompanySortOption;
+  }
+
+  return "newest";
+}
+
+function getDateTime(dateValue?: string) {
+  if (!dateValue) return 0;
+
+  const time = new Date(dateValue).getTime();
+  return Number.isNaN(time) ? 0 : time;
 }
 
 function absoluteUrl(path: string) {

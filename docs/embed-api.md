@@ -12,7 +12,12 @@ or exposing model provider keys.
 GET https://aiatlas.nyc/api/embed/atlas
 GET https://aiatlas.nyc/api/embed/atlas?limit=12
 GET https://aiatlas.nyc/api/embed/atlas?limit=all
+GET https://aiatlas.nyc/api/embed/atlas?limit=6&companySort=featured
 ```
+
+By default, `companies` is ordered by newest map entries first using AI Atlas'
+curated map-entry freshness, not raw database insertion order. Use
+`companySort=featured` for the older featured-first sample list.
 
 The response is public, read-only JSON:
 
@@ -34,6 +39,7 @@ type AtlasEmbedResponse = {
   stats: {
     totalCompanies: number;
     totalCategories: number;
+    newCompanyCount: number;
     recentlyAddedCount: number;
     lastUpdatedAt?: string;
     lastUpdatedLabel: string;
@@ -50,6 +56,15 @@ type AtlasEmbedResponse = {
     events: Array<"delta" | "companies" | "error" | "done">;
     exampleQuestions: string[];
   };
+  collections: {
+    defaultCompanySort: "newest" | "featured";
+    // newest entries in the map, using curated map-entry freshness
+    newCompanies: AtlasEmbedCompany[];
+    // high-signal/featured companies for compact showcase widgets
+    featuredCompanies: AtlasEmbedCompany[];
+    // only companies created inside the current recent-addition window
+    recentCompanies: AtlasEmbedCompany[];
+  };
   categories: Array<{
     name: string;
     slug: string;
@@ -65,27 +80,7 @@ type AtlasEmbedResponse = {
       signalLabel: string;
     }>;
   }>;
-  companies: Array<{
-    id: string;
-    name: string;
-    slug: string;
-    href: string;
-    logoUrl: string;
-    websiteUrl: string;
-    xHandle: string;
-    officeAddress: string;
-    category: string;
-    stage: string;
-    hook: string;
-    description: string;
-    thesis: string;
-    signalLabel: string;
-    views: number;
-    isFeatured: boolean;
-    isBreakout: boolean;
-    founders: Array<{ name: string; title: string }>;
-    updatedAt: string;
-  }>;
+  companies: AtlasEmbedCompany[];
   patterns: Array<{
     slug: string;
     title: string;
@@ -111,6 +106,29 @@ type AtlasEmbedResponse = {
       href: string;
     };
   }>;
+};
+
+type AtlasEmbedCompany = {
+  id: string;
+  name: string;
+  slug: string;
+  href: string;
+  logoUrl: string;
+  websiteUrl: string;
+  xHandle: string;
+  officeAddress: string;
+  category: string;
+  stage: string;
+  hook: string;
+  description: string;
+  thesis: string;
+  signalLabel: string;
+  views: number;
+  isFeatured: boolean;
+  isBreakout: boolean;
+  founders: Array<{ name: string; title: string }>;
+  createdAt: string;
+  updatedAt: string;
 };
 ```
 
@@ -298,11 +316,15 @@ const atlas = await fetch("https://aiatlas.nyc/api/embed/atlas?limit=6").then(
   (response) => response.json(),
 );
 
+const companiesToShow = atlas.collections.newCompanies.length
+  ? atlas.collections.newCompanies.slice(0, 3)
+  : atlas.companies.slice(0, 3);
+
 document.querySelector("#ai-atlas-map").innerHTML = `
   <p>${atlas.stats.totalCompanies} companies · ${atlas.stats.totalCategories} categories · Updated ${atlas.stats.lastUpdatedLabel}</p>
   <button id="ask-atlas-open">Ask Atlas</button>
   <ul>
-    ${atlas.companies
+    ${companiesToShow
       .map(
         (company) => `
           <li>
