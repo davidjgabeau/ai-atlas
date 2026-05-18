@@ -15,10 +15,6 @@
       "schedule": "42 16 * * *"
     },
     {
-      "path": "/api/cron/manual-verified-expansion",
-      "schedule": "0 0 1 1 *"
-    },
-    {
       "path": "/api/cron/agent-editorial",
       "schedule": "9 11 * * *"
     },
