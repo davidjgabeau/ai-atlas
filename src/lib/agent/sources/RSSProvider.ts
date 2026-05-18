@@ -10,6 +10,21 @@ type DiscoveryFeed = {
 
 const defaultDiscoveryFeeds: DiscoveryFeed[] = [
   {
+    name: "AlleyWatch",
+    url: "https://www.alleywatch.com/feed/",
+    sourceType: "press",
+  },
+  {
+    name: "AlleyWatch Startups",
+    url: "https://www.alleywatch.com/category/startups/feed/",
+    sourceType: "press",
+  },
+  {
+    name: "Tech:NYC News",
+    url: "https://www.blog.technyc.org/news?format=rss",
+    sourceType: "press",
+  },
+  {
     name: "TechCrunch Startups",
     url: "https://techcrunch.com/startups/feed/",
     sourceType: "press",

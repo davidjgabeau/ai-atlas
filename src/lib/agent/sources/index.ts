@@ -1,3 +1,4 @@
+import { CuratedPageProvider } from "./CuratedPageProvider";
 import { LinkedInProvider } from "./LinkedInProvider";
 import { ManualInboxProvider } from "./ManualInboxProvider";
 import { RSSProvider } from "./RSSProvider";
@@ -10,6 +11,7 @@ export function createSourceProviders(): SourceProvider[] {
   return [
     new ManualInboxProvider(),
     new WebsiteProvider(),
+    new CuratedPageProvider(),
     new RSSProvider(),
     new SearchProvider(),
     new XProvider(),

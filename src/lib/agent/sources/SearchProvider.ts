@@ -3,6 +3,18 @@ import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
 
 const candidateQueries = [
+  '"New York" "AI" "seed" "AlleyWatch"',
+  '"NYC" "AI" "Series A" startup',
+  '"New York-based" "AI startup" "seed"',
+  '"Brooklyn-based" "AI startup" "seed"',
+  '"New York" "AI agents" "Series A"',
+  '"New York" "agentic AI" "seed"',
+  '"NYC" "generative AI" "pre-seed"',
+  '"New York" "legal AI" "seed"',
+  '"New York" "healthcare AI" "Series A"',
+  '"New York" "fintech AI" "seed"',
+  '"New York" "cybersecurity AI" "seed"',
+  '"New York" "AI infrastructure" "Series A"',
   '"New York AI startup" funding seed',
   '"NYC AI startup" "Series A"',
   '"New York" "AI" "seed round"',
@@ -23,6 +35,10 @@ type WordPressSearchResult = {
 };
 
 const defaultSearchSources: SearchSource[] = [
+  {
+    name: "AlleyWatch",
+    endpoint: "https://www.alleywatch.com/wp-json/wp/v2/search",
+  },
   {
     name: "TechCrunch",
     endpoint: "https://techcrunch.com/wp-json/wp/v2/search",
@@ -113,7 +129,12 @@ function getSearchQueries() {
     .map((query) => query.trim())
     .filter(Boolean);
 
-  return (configured.length > 0 ? configured : candidateQueries).slice(0, 4);
+  return (configured.length > 0 ? configured : candidateQueries).slice(0, getSearchQueryLimit());
+}
+
+function getSearchQueryLimit() {
+  const value = Number(process.env.DISCOVERY_QUERY_LIMIT ?? 12);
+  return Number.isFinite(value) ? Math.max(1, Math.min(24, value)) : 12;
 }
 
 function getResultsPerQueryLimit() {
