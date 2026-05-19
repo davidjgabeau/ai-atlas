@@ -10,6 +10,8 @@ export type XAuthHealth = {
   canRead: boolean;
   canWrite: boolean;
   reason: string;
+  writeReason?: string;
+  refreshed?: boolean;
   user?: {
     id: string;
     username: string;
@@ -32,6 +34,27 @@ type XTweetResponse = {
   };
 };
 
+type XTokenResponse = {
+  access_token?: string;
+  refresh_token?: string;
+  expires_in?: number;
+  scope?: string;
+  token_type?: string;
+};
+
+type XTokenRefreshResult =
+  | {
+      ok: true;
+      accessToken: string;
+      refreshToken: string;
+      expiresAt: number;
+      scope?: string;
+    }
+  | {
+      ok: false;
+      reason: string;
+    };
+
 type XTimelineResponse = {
   data?: Array<{
     id: string;
@@ -40,6 +63,8 @@ type XTimelineResponse = {
     public_metrics?: Record<string, number>;
   }>;
 };
+
+let refreshedTokenCache: Extract<XTokenRefreshResult, { ok: true }> | null = null;
 
 export async function getXAuthHealth(
   config: SocialAutomationConfig = getSocialAutomationConfig(),
@@ -53,29 +78,34 @@ export async function getXAuthHealth(
     };
   }
 
-  if (!config.xAccessToken && !config.xBearerToken) {
+  if (!config.xAccessToken && !config.xBearerToken && !canRefreshXAccessToken(config)) {
     return {
       ok: false,
       canRead: false,
       canWrite: false,
-      reason: "X_ACCESS_TOKEN or X_BEARER_TOKEN is not configured.",
+      reason:
+        "X_ACCESS_TOKEN, X_BEARER_TOKEN, or X_REFRESH_TOKEN is not configured.",
     };
   }
 
-  if (config.xAccessToken) {
-    const userContextHealth = await checkUserContextAccess(config.xAccessToken);
-    if (userContextHealth.ok) {
-      return {
-        ...userContextHealth,
-        canWrite: true,
-        reason: "X OAuth user-context access token is valid for account actions.",
-      };
-    }
-
-    if (!config.xBearerToken) return userContextHealth;
+  const userContextHealth = await ensureUserContextAccess(config);
+  if (userContextHealth.ok) {
+    return {
+      ...userContextHealth,
+      canWrite: true,
+      reason: userContextHealth.refreshed
+        ? "X OAuth user-context access token was refreshed and is valid for account actions."
+        : "X OAuth user-context access token is valid for account actions.",
+    };
   }
 
-  return checkReadAccess(config);
+  if (!config.xBearerToken) return userContextHealth;
+
+  const readHealth = await checkReadAccess(config);
+  return {
+    ...readHealth,
+    writeReason: userContextHealth.reason,
+  };
 }
 
 export async function createPost({
@@ -98,10 +128,47 @@ export async function createPost({
   }
 
   if (!config.xAccessToken) {
-    throw new Error("X_ACCESS_TOKEN is required to publish.");
+    const health = await ensureUserContextAccess(config);
+    if (!health.canWrite) {
+      throw new Error(health.reason);
+    }
   }
 
-  const response = await fetch(`${xApiBaseUrl}/tweets`, {
+  let response = await createPostRequest({ text, quoteTweetId, replyToTweetId, config });
+
+  if (!response.ok && isRefreshableAuthFailure(response.status)) {
+    const refresh = await refreshXAccessToken(config);
+    if (refresh.ok) {
+      response = await createPostRequest({ text, quoteTweetId, replyToTweetId, config });
+    }
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `X publish failed: ${response.status} ${await summarizeResponse(response)}`,
+    );
+  }
+
+  const payload = (await response.json()) as XTweetResponse;
+  if (!payload.data?.id) {
+    throw new Error("X publish returned no tweet id.");
+  }
+
+  return payload.data;
+}
+
+function createPostRequest({
+  text,
+  quoteTweetId,
+  replyToTweetId,
+  config,
+}: {
+  text: string;
+  quoteTweetId?: string;
+  replyToTweetId?: string;
+  config: SocialAutomationConfig;
+}) {
+  return fetch(`${xApiBaseUrl}/tweets`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${config.xAccessToken}`,
@@ -116,19 +183,6 @@ export async function createPost({
     }),
     cache: "no-store",
   });
-
-  if (!response.ok) {
-    throw new Error(
-      `X publish failed: ${response.status} ${await summarizeResponse(response)}`,
-    );
-  }
-
-  const payload = (await response.json()) as XTweetResponse;
-  if (!payload.data?.id) {
-    throw new Error("X publish returned no tweet id.");
-  }
-
-  return payload.data;
 }
 
 export const publishTweet = createPost;
@@ -365,6 +419,136 @@ async function checkUserContextAccess(token: string): Promise<XAuthHealth> {
   }
 }
 
+async function ensureUserContextAccess(
+  config: SocialAutomationConfig,
+): Promise<XAuthHealth> {
+  applyCachedXAccessToken(config);
+
+  const tokenHealth = config.xAccessToken
+    ? await checkUserContextAccess(config.xAccessToken)
+    : null;
+
+  if (tokenHealth?.ok) return tokenHealth;
+
+  if (!canRefreshXAccessToken(config)) {
+    return (
+      tokenHealth ?? {
+        ok: false,
+        canRead: false,
+        canWrite: false,
+        reason: "X_ACCESS_TOKEN or X_REFRESH_TOKEN is required for account actions.",
+      }
+    );
+  }
+
+  const refresh = await refreshXAccessToken(config);
+  if (!refresh.ok) {
+    return {
+      ok: false,
+      canRead: false,
+      canWrite: false,
+      reason: tokenHealth
+        ? `${tokenHealth.reason} Refresh attempt failed: ${refresh.reason}`
+        : refresh.reason,
+    };
+  }
+
+  const refreshedHealth = await checkUserContextAccess(refresh.accessToken);
+  return refreshedHealth.ok
+    ? {
+        ...refreshedHealth,
+        refreshed: true,
+        reason:
+          "X OAuth user-context access token was refreshed and is valid for account actions.",
+      }
+    : {
+        ...refreshedHealth,
+        reason: `X refreshed access token failed validation: ${refreshedHealth.reason}`,
+      };
+}
+
+function applyCachedXAccessToken(config: SocialAutomationConfig) {
+  if (!refreshedTokenCache) return;
+  if (Date.now() > refreshedTokenCache.expiresAt - 60_000) {
+    refreshedTokenCache = null;
+    return;
+  }
+
+  config.xAccessToken = refreshedTokenCache.accessToken;
+  config.xRefreshToken = refreshedTokenCache.refreshToken;
+}
+
+function canRefreshXAccessToken(config: SocialAutomationConfig) {
+  return Boolean(config.xRefreshToken && config.xClientId);
+}
+
+async function refreshXAccessToken(
+  config: SocialAutomationConfig,
+): Promise<XTokenRefreshResult> {
+  if (!config.xRefreshToken) {
+    return { ok: false, reason: "X_REFRESH_TOKEN is not configured." };
+  }
+
+  if (!config.xClientId) {
+    return { ok: false, reason: "X_CLIENT_ID is not configured." };
+  }
+
+  const body = new URLSearchParams({
+    grant_type: "refresh_token",
+    refresh_token: config.xRefreshToken,
+    client_id: config.xClientId,
+  });
+  const headers: Record<string, string> = {
+    "Content-Type": "application/x-www-form-urlencoded",
+  };
+
+  if (config.xClientSecret) {
+    headers.Authorization = `Basic ${Buffer.from(
+      `${config.xClientId}:${config.xClientSecret}`,
+    ).toString("base64")}`;
+  }
+
+  const response = await fetch(`${xApiBaseUrl}/oauth2/token`, {
+    method: "POST",
+    headers,
+    body,
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    return {
+      ok: false,
+      reason: `X token refresh failed: ${response.status} ${await summarizeResponse(response)}`,
+    };
+  }
+
+  const payload = (await response.json()) as XTokenResponse;
+  if (!payload.access_token) {
+    return {
+      ok: false,
+      reason: "X token refresh returned no access token.",
+    };
+  }
+
+  const expiresInSeconds =
+    typeof payload.expires_in === "number" && Number.isFinite(payload.expires_in)
+      ? payload.expires_in
+      : 2 * 60 * 60;
+  const result = {
+    ok: true as const,
+    accessToken: payload.access_token,
+    refreshToken: payload.refresh_token || config.xRefreshToken,
+    expiresAt: Date.now() + expiresInSeconds * 1000,
+    scope: payload.scope,
+  };
+
+  refreshedTokenCache = result;
+  config.xAccessToken = result.accessToken;
+  config.xRefreshToken = result.refreshToken;
+
+  return result;
+}
+
 async function checkReadAccess(config: SocialAutomationConfig): Promise<XAuthHealth> {
   try {
     const response = await fetch(
@@ -415,6 +599,10 @@ async function checkReadAccess(config: SocialAutomationConfig): Promise<XAuthHea
 
 function getErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
+}
+
+function isRefreshableAuthFailure(status: number) {
+  return status === 401 || status === 403;
 }
 
 function normalizeHandle(value: string) {
