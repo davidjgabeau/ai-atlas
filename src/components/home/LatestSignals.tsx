@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
+import { CompanyLogo } from "@/components/market-map/company-logo";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import { normalizeSignalLabel } from "@/lib/signals/companySignal";
 import type { EditorialItem } from "@/types/agent";
@@ -57,15 +58,25 @@ export function LatestSignals({
                   style={{ animationDelay: `${index * 40}ms` }}
                 >
                   <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {item.label ? (
-                        <span className="text-label text-[11px] text-[#9A3D2B]">
-                          {normalizeSignalLabel(item.label, company)}
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex min-w-0 flex-wrap items-center gap-2">
+                        {item.label ? (
+                          <span className="text-label text-[11px] text-[#9A3D2B]">
+                            {normalizeSignalLabel(item.label, company)}
+                          </span>
+                        ) : null}
+                        <span className="text-meta text-xs">
+                          {formatSignalDate(item.occurredAt)}
                         </span>
+                      </div>
+                      {company ? (
+                        <CompanyLogo
+                          company={company}
+                          name={company.name}
+                          category={company.category}
+                          className="size-8 rounded-[7px] border-[#DDD4C8] bg-[#FBFAF7] opacity-85 ring-2 ring-[#F8F6F1] transition group-hover:opacity-100 group-hover:ring-[#EFE7DC]"
+                        />
                       ) : null}
-                      <span className="text-meta text-xs">
-                        {formatSignalDate(item.occurredAt)}
-                      </span>
                     </div>
                     <h3 className="text-company-name mt-2 text-[18px] leading-[1.22]">
                       <Link
