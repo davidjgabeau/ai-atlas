@@ -40,7 +40,7 @@
     },
     {
       "path": "/api/cron/social-dispatch",
-      "schedule": "37 14 * * *"
+      "schedule": "*/30 * * * *"
     },
     {
       "path": "/api/cron/social-engagement",
