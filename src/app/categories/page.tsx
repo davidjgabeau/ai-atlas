@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { CompanyLogo } from "@/components/market-map/company-logo";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PublicShell } from "@/components/site/public-shell";
@@ -233,9 +234,12 @@ function MobileCategoryEntry({ entry }: { entry: CategoryDirectoryEntry }) {
           {entry.description}
         </p>
         {entry.representatives.length > 0 ? (
-          <p className="mt-2 truncate text-[13px] leading-[1.4] text-[#746D64]">
-            {entry.representatives.map((company) => company.name).join(" · ")}
-          </p>
+          <div className="mt-2 flex min-w-0 items-center gap-2">
+            <RepresentativeLogoStack companies={entry.representatives} />
+            <p className="min-w-0 truncate text-[13px] leading-[1.4] text-[#746D64]">
+              {entry.representatives.map((company) => company.name).join(" · ")}
+            </p>
+          </div>
         ) : null}
       </div>
 
@@ -253,13 +257,46 @@ function RepresentativeCompanies({ companies }: { companies: Company[] }) {
   return (
     <div className="space-y-3 border-l border-[#E7E1D8] pl-6 text-[13px] leading-[1.45] text-[#5F5A52]">
       {companies.map((company) => (
-        <p key={company.id} className="line-clamp-2">
-          <span className="font-semibold text-[#111111]">{company.name}</span>
-          <span className="text-[#9A3D2B]"> · </span>
-          {getRepresentativeHook(company)}
-        </p>
+        <div key={company.id} className="grid grid-cols-[28px_minmax(0,1fr)] gap-2.5">
+          <span aria-hidden="true" className="pt-0.5">
+            <CompanyLogo
+              company={company}
+              name={company.name}
+              category={company.category}
+              className="size-7 rounded-[7px] border-[#DDD4C8] bg-[#FBFAF7] opacity-85 ring-2 ring-[#F8F6F1] transition group-hover:opacity-100 group-hover:ring-[#EFE7DC]"
+            />
+          </span>
+          <p className="line-clamp-2 min-w-0">
+            <span className="font-semibold text-[#111111]">
+              {company.name}
+            </span>
+            <span className="text-[#9A3D2B]"> · </span>
+            {getRepresentativeHook(company)}
+          </p>
+        </div>
       ))}
     </div>
+  );
+}
+
+function RepresentativeLogoStack({ companies }: { companies: Company[] }) {
+  if (companies.length === 0) return null;
+
+  return (
+    <span
+      aria-hidden="true"
+      className="flex shrink-0 items-center -space-x-1.5"
+    >
+      {companies.slice(0, 2).map((company) => (
+        <CompanyLogo
+          key={company.id}
+          company={company}
+          name={company.name}
+          category={company.category}
+          className="size-6 rounded-[6px] border-[#DDD4C8] bg-[#FBFAF7] opacity-85 ring-2 ring-[#F8F6F1]"
+        />
+      ))}
+    </span>
   );
 }
 
