@@ -195,7 +195,7 @@ export default async function Home() {
             currentThemeCount={marketSnapshotCounts.currentThemeCount}
             latestUpdatedAt={latestUpdatedAt}
           />
-          <HomePatterns />
+          <HomePatterns companies={publishedCompanies} />
           <RecentlyAdded companies={surfaceRecentlyAdded} />
           <CurrentRead
             insights={surfaceCurrentRead}
