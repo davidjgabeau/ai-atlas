@@ -2,6 +2,10 @@ import {
   getSocialAutomationConfig,
   type SocialAutomationConfig,
 } from "@/lib/social-automation/config";
+import {
+  loadStoredXTokens,
+  saveStoredXTokens,
+} from "@/lib/social-automation/x-token-store";
 
 const xApiBaseUrl = "https://api.x.com/2";
 
@@ -126,6 +130,9 @@ export async function createPost({
   if (!config.autoPost) {
     throw new Error("SOCIAL_AUTO_POST is false.");
   }
+
+  await applyStoredXTokens(config);
+  applyCachedXAccessToken(config);
 
   if (!config.xAccessToken) {
     const health = await ensureUserContextAccess(config);
@@ -422,6 +429,7 @@ async function checkUserContextAccess(token: string): Promise<XAuthHealth> {
 async function ensureUserContextAccess(
   config: SocialAutomationConfig,
 ): Promise<XAuthHealth> {
+  await applyStoredXTokens(config);
   applyCachedXAccessToken(config);
 
   const tokenHealth = config.xAccessToken
@@ -545,6 +553,10 @@ async function refreshXAccessToken(
   refreshedTokenCache = result;
   config.xAccessToken = result.accessToken;
   config.xRefreshToken = result.refreshToken;
+  await saveStoredXTokens({
+    accessToken: result.accessToken,
+    refreshToken: result.refreshToken,
+  });
 
   return result;
 }
@@ -603,6 +615,12 @@ function getErrorMessage(error: unknown) {
 
 function isRefreshableAuthFailure(status: number) {
   return status === 401 || status === 403;
+}
+
+async function applyStoredXTokens(config: SocialAutomationConfig) {
+  const storedTokens = await loadStoredXTokens();
+  if (storedTokens.accessToken) config.xAccessToken = storedTokens.accessToken;
+  if (storedTokens.refreshToken) config.xRefreshToken = storedTokens.refreshToken;
 }
 
 function normalizeHandle(value: string) {
