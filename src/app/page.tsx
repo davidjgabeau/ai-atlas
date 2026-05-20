@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
     title: "Early NYC AI Companies to Know",
     description:
-      "Explore early-stage NYC AI startups across consumer, healthcare, infrastructure, and more. AI Atlas NYC tracks New York AI companies from pre-seed through Series A.",
+      "Explore early-stage NYC AI companies for founders, seed investors, VCs, operators, and analysts. AI Atlas NYC tracks New York AI startups from pre-seed through Series A.",
     path: "/",
     image: getShareImageUrl({ page: "home" }),
   });

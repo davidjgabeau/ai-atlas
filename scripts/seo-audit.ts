@@ -6,6 +6,7 @@ import path from "node:path";
 import sitemap from "../src/app/sitemap";
 import { categoryMeta } from "../src/data/market";
 import { patterns } from "../src/data/patterns";
+import { buildLlmsTxt } from "../src/lib/seo/llms";
 import { getPublishedCompanies } from "../src/lib/supabase/market-data";
 
 type Check = {
@@ -28,6 +29,11 @@ async function main() {
 
   addCheck("sitemap route exists", fileExists("src/app/sitemap.ts"));
   addCheck("robots route exists", fileExists("src/app/robots.ts"));
+  addCheck("llms.txt route exists", fileExists("src/app/llms.txt/route.ts"));
+  addCheck(
+    "llms-full.txt route exists",
+    fileExists("src/app/llms-full.txt/route.ts"),
+  );
   addCheck(
     "sitemap generated entries",
     sitemapUrls.length > 0,
@@ -40,7 +46,9 @@ async function main() {
     "/categories",
     "/patterns",
     "/newsfeed",
+    "/ask",
     "/jobs",
+    "/insights",
   ];
 
   for (const route of requiredRoutes) {
@@ -67,6 +75,25 @@ async function main() {
       sitemapUrls.every((url) => !url.includes(route)),
     );
   }
+
+  const robotsSource = readSource("src/app/robots.ts");
+  addCheck(
+    "robots references public LLM discovery files",
+    robotsSource.includes("/llms.txt") &&
+      robotsSource.includes("/llms-full.txt"),
+  );
+  addCheck(
+    "robots includes AI search crawler rules",
+    ["OAI-SearchBot", "ChatGPT-User", "Claude-SearchBot", "Claude-User"].every(
+      (crawler) => robotsSource.includes(crawler),
+    ),
+  );
+  addCheck(
+    "robots keeps private and API surfaces blocked",
+    ["/api", "/admin", "/auth", "/private"].every((route) =>
+      robotsSource.includes(route),
+    ),
+  );
 
   addCheck(
     "company slugs are unique",
@@ -141,6 +168,7 @@ async function main() {
   const appSource = [
     "src/app/layout.tsx",
     "src/app/page.tsx",
+    "src/app/ask/page.tsx",
     "src/app/companies/page.tsx",
     "src/app/categories/page.tsx",
     "src/app/categories/[slug]/page.tsx",
@@ -149,6 +177,7 @@ async function main() {
     "src/app/newsfeed/page.tsx",
     "src/app/jobs/page.tsx",
     "src/app/companies/[slug]/page.tsx",
+    "src/lib/seo/schema.ts",
   ]
     .map(readSource)
     .join("\n");
@@ -156,6 +185,24 @@ async function main() {
   addCheck(
     "metadata avoids hardcoded stale company counts",
     !/\b\d+\+?\s+(companies|startups)\b/i.test(appSource),
+  );
+
+  addCheck(
+    "site search schema points to public results",
+    appSource.includes('absoluteUrl("/companies")') &&
+      !appSource.includes('absoluteUrl("/api/search")'),
+  );
+
+  const llmsText = buildLlmsTxt(companies);
+  addCheck(
+    "llms.txt names founder and investor audience",
+    /\b(founders?|VCs?|investors?|analysts?)\b/i.test(llmsText),
+  );
+  addCheck(
+    "llms.txt links core discovery routes",
+    ["/companies", "/categories", "/patterns", "/newsfeed", "/ask"].every(
+      (route) => llmsText.includes(`${siteUrl}${route}`),
+    ),
   );
 
   const failed = checks.filter((check) => !check.ok);

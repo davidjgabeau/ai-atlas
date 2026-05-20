@@ -94,7 +94,7 @@ export default async function JobsPage() {
 }
 
 function isJobsGateCrawler(userAgent: string) {
-  return /Googlebot|Bingbot|Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot/i.test(
+  return /Googlebot|Bingbot|Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|OAI-SearchBot|ChatGPT-User|GPTBot|ClaudeBot|Claude-SearchBot|Claude-User|PerplexityBot|Perplexity-User|Applebot/i.test(
     userAgent,
   );
 }

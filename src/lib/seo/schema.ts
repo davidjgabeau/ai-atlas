@@ -10,12 +10,24 @@ export function websiteSchema(): JsonLdNode {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
     name: SEO_DEFAULTS.siteName,
     url: absoluteUrl("/"),
     description: SEO_DEFAULTS.description,
+    inLanguage: "en-US",
+    about: [
+      "early-stage AI startups",
+      "New York City technology companies",
+      "venture capital market maps",
+      "founder research",
+    ],
+    audience: {
+      "@type": "Audience",
+      audienceType: "Founders, seed investors, VCs, operators, recruiters, and analysts",
+    },
     potentialAction: {
       "@type": "SearchAction",
-      target: `${absoluteUrl("/api/search")}?q={search_term_string}`,
+      target: `${absoluteUrl("/companies")}?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -25,6 +37,7 @@ export function organizationSchema(): JsonLdNode {
   return compactSchema({
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": absoluteUrl("/#organization"),
     name: SEO_DEFAULTS.siteName,
     url: absoluteUrl("/"),
     logo: absoluteUrl("/icons/globe.png"),
@@ -43,10 +56,24 @@ export function companyOrganizationSchema(company: Company): JsonLdNode {
   return compactSchema({
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": absoluteUrl(`/companies/${company.slug}#organization`),
     name: company.name,
     url: company.website_url || absoluteUrl(`/companies/${company.slug}`),
     description,
     sameAs,
+    founder: company.founders?.map((founder) =>
+      compactSchema({
+        "@type": "Person",
+        name: founder.name,
+        jobTitle: founder.title,
+      }),
+    ),
+    knowsAbout: [
+      company.category,
+      company.stage,
+      "artificial intelligence",
+      "New York City startups",
+    ],
     location: company.office_address
       ? {
           "@type": "Place",
@@ -78,6 +105,19 @@ export function collectionPageSchema({
     name,
     description,
     url,
+    inLanguage: "en-US",
+    isPartOf: {
+      "@id": absoluteUrl("/#website"),
+    },
+    audience: {
+      "@type": "Audience",
+      audienceType: "Founders, seed investors, VCs, operators, recruiters, and analysts",
+    },
+    about: [
+      "early-stage AI companies",
+      "New York City startups",
+      "AI market map",
+    ],
     mainEntity: {
       "@type": "ItemList",
       itemListElement: items.map((item, index) =>
@@ -156,6 +196,7 @@ export function articleSchema({
     description,
     url,
     image: getShareImageUrl({ page: "insights" }),
+    inLanguage: "en-US",
     dateModified,
     author: {
       "@type": "Organization",

@@ -5,12 +5,16 @@ export const SEO_DEFAULTS = {
   defaultTitle: "AI Atlas NYC | Early-Stage NYC AI Startup Market Map",
   titleTemplate: "%s | AI Atlas NYC",
   description:
-    "AI Atlas NYC is a curated market map of early-stage AI startups in New York, from pre-seed through Series A. Curated by hand. Updated agentically.",
+    "AI Atlas NYC is a curated market map of early-stage AI startups in New York for founders, seed investors, operators, and analysts, from pre-seed through Series A.",
   keywords: [
     "NYC AI startups",
     "New York AI startups",
     "early-stage AI startups",
+    "early-stage AI companies",
     "AI startup market map",
+    "AI companies for VCs",
+    "NYC AI companies for founders",
+    "seed stage AI companies",
     "NYC startup map",
     "AI companies in New York",
     "Series A AI startups",
