@@ -77,6 +77,7 @@ export async function loadAgentDataForPipelineFromSupabase(): Promise<Partial<Ag
       supabase
         .from("raw_source_records")
         .select("*")
+        .neq("id", "x-oauth-token-store")
         .order("discovered_at", { ascending: false })
         .limit(1000),
       supabase
