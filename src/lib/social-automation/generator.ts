@@ -6,6 +6,10 @@ import {
 import { checkSocialPostSafety } from "@/lib/social-automation/safety";
 import { collectSocialPostCandidates } from "@/lib/social-automation/sources";
 import {
+  getPreviewSafeAtlasUrl,
+  prepareSocialTextForPublish,
+} from "@/lib/social-automation/preview-url";
+import {
   getExistingSocialSourceHashes,
   getRecentSocialPostsForGeneration,
   saveDispatchLog,
@@ -316,11 +320,13 @@ function withPrimaryUrl(text: string, primaryUrl: string | undefined) {
   const normalizedText = text.replace(/\s+/g, " ").trim();
   if (!primaryUrl) return normalizedText;
 
+  const previewUrl = getPreviewSafeAtlasUrl(primaryUrl) || primaryUrl;
   const withoutUrls = normalizedText
     .replace(/https?:\/\/\S+/gi, "")
+    .replace(/\b(?:www\.)?aiatlas\.nyc\/\S+/gi, "")
     .replace(/\s+/g, " ")
     .trim();
-  const maxBodyLength = Math.max(40, 280 - primaryUrl.length - 2);
+  const maxBodyLength = Math.max(40, 280 - previewUrl.length - 2);
   const body =
     withoutUrls.length <= maxBodyLength
       ? withoutUrls
@@ -329,7 +335,7 @@ function withPrimaryUrl(text: string, primaryUrl: string | undefined) {
           .replace(/\s+\S*$/, "")
           .trim()}...`;
 
-  return `${body}\n\n${primaryUrl}`;
+  return prepareSocialTextForPublish(`${body}\n\n${previewUrl}`);
 }
 
 function candidateToRaw(candidate: SocialPostCandidate) {

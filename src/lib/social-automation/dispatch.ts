@@ -13,6 +13,7 @@ import {
   saveDispatchLog,
   saveSocialRun,
 } from "@/lib/social-automation/store";
+import { prepareSocialTextForPublish } from "@/lib/social-automation/preview-url";
 import { createPost, getXAuthHealth } from "@/lib/social-automation/x-client";
 import type { AtlasSocialPost } from "@/types/social";
 
@@ -58,8 +59,9 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
   }
 
   try {
+    const postText = prepareSocialTextForPublish(claimedPost.post_text);
     const published = await createPost({
-      text: claimedPost.post_text,
+      text: postText,
       config,
     });
     const username = health.user?.username || "aiatlas";
@@ -168,8 +170,9 @@ export async function publishSocialPostNow(
   }
 
   try {
+    const postText = prepareSocialTextForPublish(claimedPost.post_text);
     const published = await createPost({
-      text: claimedPost.post_text,
+      text: postText,
       config,
     });
     const username = health.user?.username || config.xAccountUsername;
