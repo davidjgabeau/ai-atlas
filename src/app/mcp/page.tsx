@@ -116,7 +116,7 @@ export default function McpPage() {
       <PublicShell>
         <section className="border-b border-[#E7E1D8] bg-section">
           <div className="editorial-container !max-w-[1180px] py-10 md:py-14 lg:py-16">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.45fr)] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="grid size-7 place-items-center rounded-md border border-[#E7E1D8] bg-[#FBFAF7] text-[#9A3D2B]">
@@ -124,7 +124,7 @@ export default function McpPage() {
                   </span>
                   <p className="editorial-label">MCP Server</p>
                 </div>
-                <h1 className="mt-5 max-w-[820px] font-heading text-[clamp(46px,7vw,78px)] font-medium leading-[0.94] tracking-[0] text-[#111111]">
+                <h1 className="mt-5 max-w-[780px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[1] tracking-[0] text-[#111111]">
                   Use AI Atlas NYC inside your AI assistant.
                 </h1>
                 <p className="mt-5 max-w-[700px] text-[17px] leading-[1.6] text-[#5F5A52] md:text-[19px]">
@@ -148,10 +148,10 @@ export default function McpPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 divide-x divide-[#E7E1D8] rounded-[14px] border border-[#E7E1D8] bg-[rgb(251_250_247_/_0.65)]">
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                 <McpStat label="Mode" value="Read-only" />
                 <McpStat label="Scope" value="Public" />
-                <McpStat label="Tools" value="7" />
+                <McpStat label="Tools" value="7 tools" />
               </div>
             </div>
           </div>
@@ -292,11 +292,11 @@ export default function McpPage() {
 
 function McpStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="p-4 md:p-5">
+    <div className="rounded-md border border-[#E7E1D8] bg-[rgb(251_250_247_/_0.72)] p-4">
       <p className="text-[10px] font-semibold uppercase tracking-[0.09em] text-[#9A3D2B]">
         {label}
       </p>
-      <p className="mt-2 break-words font-heading text-[28px] font-medium leading-none text-[#111111] md:text-[34px]">
+      <p className="mt-2 whitespace-nowrap font-heading text-[26px] font-medium leading-none text-[#111111] md:text-[30px]">
         {value}
       </p>
     </div>
