@@ -25,16 +25,16 @@ export function getSocialAutomationConfig(): SocialAutomationConfig {
     autoPost: process.env.SOCIAL_AUTO_POST === "true",
     engagementEnabled: process.env.SOCIAL_ENGAGEMENT_ENABLED === "true",
     killSwitch: process.env.SOCIAL_KILL_SWITCH === "true",
-    dailyPostLimit: getIntegerEnv("SOCIAL_DAILY_POST_LIMIT", 12, 1, 50),
+    dailyPostLimit: getIntegerEnv("SOCIAL_DAILY_POST_LIMIT", 24, 24, 50),
     minMinutesBetweenPosts: getIntegerEnv(
       "SOCIAL_MIN_MINUTES_BETWEEN_POSTS",
-      25,
-      1,
-      24 * 60,
+      60,
+      60,
+      60,
     ),
-    maxPostsPerHour: getIntegerEnv("SOCIAL_MAX_POSTS_PER_HOUR", 3, 1, 12),
+    maxPostsPerHour: getIntegerEnv("SOCIAL_MAX_POSTS_PER_HOUR", 1, 1, 1),
     timezone: process.env.SOCIAL_TIMEZONE || "America/New_York",
-    generationBatchSize: getIntegerEnv("SOCIAL_GENERATION_BATCH_SIZE", 6, 1, 12),
+    generationBatchSize: getIntegerEnv("SOCIAL_GENERATION_BATCH_SIZE", 12, 6, 12),
     anthropicApiKey: process.env.ANTHROPIC_API_KEY ?? "",
     anthropicModel:
       process.env.ANTHROPIC_SOCIAL_MODEL ??

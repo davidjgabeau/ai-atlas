@@ -142,6 +142,7 @@ function buildWriterPrompt(candidate: SocialPostCandidate) {
       "Stay under 260 characters when possible, never over 280.",
       "End with primaryUrl exactly as supplied when primaryUrl is present.",
       "Do not include any other URL when primaryUrl is present.",
+      "Tag the company when its verifiedXHandle is supplied in allowedHandles.",
       "Tag a company only if its verifiedXHandle is supplied in allowedHandles.",
       "Never invent handles.",
       "Do not claim funding, customers, hiring, location, or traction unless supplied.",

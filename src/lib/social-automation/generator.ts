@@ -20,7 +20,7 @@ import {
   socialPromptVersion,
   writeSocialDraftWithClaude,
 } from "@/lib/social-automation/writer";
-import type { SocialPostCandidate } from "@/types/social";
+import type { SocialCompany, SocialPostCandidate } from "@/types/social";
 
 export type GenerateSocialDraftsResult = {
   ok: boolean;
@@ -83,11 +83,15 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
   const recentPosts = await getRecentSocialPostsForGeneration();
   const freshCandidates = candidates
     .filter((candidate) => !existingHashes.has(candidate.sourceHash))
-    .slice(0, config.generationBatchSize);
+    .sort((left, right) => right.score - left.score);
+  const selectedCandidates = selectDiverseCandidates(
+    freshCandidates,
+    config.generationBatchSize,
+  );
   const rows: Array<Record<string, unknown>> = [];
-  let skipped = candidates.length - freshCandidates.length;
+  let skipped = candidates.length - selectedCandidates.length;
 
-  for (const [index, candidate] of freshCandidates.entries()) {
+  for (const [index, candidate] of selectedCandidates.entries()) {
     const candidateSkipReason = getCandidateSkipReason(candidate, recentPosts);
     if (candidateSkipReason) {
       skipped += 1;
@@ -115,7 +119,10 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       continue;
     }
 
-    const postText = withPrimaryUrl(draft.text, candidate.primaryUrl);
+    const postText = withPrimaryUrl(
+      ensureVerifiedHandleTag(draft.text, candidate.companies),
+      candidate.primaryUrl,
+    );
     const safety = checkSocialPostSafety({
       text: postText,
       companies: candidate.companies,
@@ -200,6 +207,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       ...getSocialConfigSnapshot(config),
       candidatesFound: candidates.length,
       freshCandidates: freshCandidates.length,
+      selectedCandidates: selectedCandidates.length,
       draftsCreated,
       skipped,
       rowsPersisted: persisted.count,
@@ -215,6 +223,39 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
     skipped,
     errors,
   };
+}
+
+function selectDiverseCandidates(candidates: SocialPostCandidate[], limit: number) {
+  const buckets = new Map<SocialPostCandidate["sourceKind"], SocialPostCandidate[]>();
+  for (const candidate of candidates) {
+    const bucket = buckets.get(candidate.sourceKind) ?? [];
+    bucket.push(candidate);
+    buckets.set(candidate.sourceKind, bucket);
+  }
+
+  const kindOrder: SocialPostCandidate["sourceKind"][] = [
+    "company_update",
+    "job_alert",
+    "company_news",
+    "current_read",
+    "category_movement",
+    "evergreen_spotlight",
+  ];
+  const selected: SocialPostCandidate[] = [];
+
+  while (selected.length < limit) {
+    const before = selected.length;
+    for (const kind of kindOrder) {
+      const next = buckets.get(kind)?.shift();
+      if (!next) continue;
+      selected.push(next);
+      if (selected.length >= limit) break;
+    }
+
+    if (selected.length === before) break;
+  }
+
+  return selected;
 }
 
 function createSkippedRow(
@@ -312,8 +353,38 @@ function getCandidateSkipReason(
 
 function getScheduledFor(index: number, minMinutesBetweenPosts: number) {
   return new Date(
-    Date.now() + (index + 1) * minMinutesBetweenPosts * 60_000,
+    Date.now() + index * minMinutesBetweenPosts * 60_000,
   ).toISOString();
+}
+
+function ensureVerifiedHandleTag(text: string, companies: SocialCompany[]) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  const lower = clean.toLowerCase();
+  const taggableCompanies = companies.filter((item) => {
+    const handle = normalizeHandle(item.x_handle);
+    return handle && !lower.includes(`@${handle}`);
+  });
+  const company = taggableCompanies.find((item) =>
+    lower.includes(item.name.toLowerCase()),
+  );
+
+  if (!company) {
+    const firstHandle = normalizeHandle(taggableCompanies[0]?.x_handle ?? "");
+    if (!firstHandle || clean.length + firstHandle.length + 2 > 260) return clean;
+    return `${clean} @${firstHandle}`;
+  }
+
+  const handle = normalizeHandle(company.x_handle);
+  const escapedName = company.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const namePattern = new RegExp(`\\b${escapedName}\\b`, "i");
+  const withNameAndHandle = clean.replace(namePattern, `${company.name} (@${handle})`);
+  if (withNameAndHandle.length <= 260) return withNameAndHandle;
+
+  return clean.replace(namePattern, `@${handle}`);
+}
+
+function normalizeHandle(value: string) {
+  return value.replace(/^@/, "").trim().toLowerCase();
 }
 
 function withPrimaryUrl(text: string, primaryUrl: string | undefined) {
@@ -346,8 +417,8 @@ function candidateToRaw(candidate: SocialPostCandidate) {
     companies: candidate.companies.map((company) => ({
       id: company.id,
       name: company.name,
-        slug: company.slug,
-        xHandle: company.x_handle,
+      slug: company.slug,
+      xHandle: company.x_handle,
     })),
     score: candidate.score,
     primaryUrl: candidate.primaryUrl,

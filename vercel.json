@@ -36,15 +36,15 @@
     },
     {
       "path": "/api/cron/social-generate",
-      "schedule": "7 14 * * *"
+      "schedule": "7 * * * *"
     },
     {
       "path": "/api/cron/social-dispatch",
-      "schedule": "37 14 * * *"
+      "schedule": "17 * * * *"
     },
     {
       "path": "/api/cron/social-engagement",
-      "schedule": "51 14 * * *"
+      "schedule": "51 */2 * * *"
     },
     {
       "path": "/api/cron/social-handles-verify",
