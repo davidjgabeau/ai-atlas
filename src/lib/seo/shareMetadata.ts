@@ -15,7 +15,8 @@ export function absoluteUrl(path: string) {
 }
 
 export function getShareImageUrl(params?: Record<string, string | number | undefined>) {
-  const url = new URL("/api/og", getSiteUrl());
+  const url = new URL("/og", getSiteUrl());
+  url.searchParams.set("v", "2");
 
   for (const [key, value] of Object.entries(params ?? {})) {
     if (value !== undefined && value !== "") {
