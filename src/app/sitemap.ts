@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     route("/newsfeed", latestNewsfeedDate, "daily", 0.8),
     route("/jobs", latestCompanyDate, "daily", 0.75),
     route("/insights", latestCompanyDate, "weekly", 0.65),
+    route("/mcp", homeLastModified, "weekly", 0.7),
   ];
 
   const categoryRoutes: MetadataRoute.Sitemap = categoryMeta.map((category) => {

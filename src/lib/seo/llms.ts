@@ -28,6 +28,7 @@ export function buildLlmsTxt(companies: Company[]) {
     `- Newsfeed: ${absoluteUrl("/newsfeed")} - curated news links and official posts from mapped companies.`,
     `- Jobs: ${absoluteUrl("/jobs")} - roles at early-stage NYC AI companies.`,
     `- Ask Atlas: ${absoluteUrl("/ask")} - natural-language questions over the AI Atlas market map.`,
+    `- MCP server: ${absoluteUrl("/mcp")} - read-only structured access for MCP-compatible AI assistants.`,
     `- Full LLM inventory: ${absoluteUrl("/llms-full.txt")}`,
     "",
     "## Category Index",
@@ -47,6 +48,7 @@ export function buildLlmsTxt(companies: Company[]) {
     "- AI Atlas NYC is narrow by design: early-stage, AI-focused, New York City startup ecosystem.",
     "- Company pages should not be treated as funding, customer, or traction claims unless the profile explicitly states and sources those details.",
     "- Public pages are designed for citation and search discovery; admin, auth, and API routes are intentionally not crawlable.",
+    "- The MCP server exposes public published market-map data only. It does not expose admin, auth, submission, raw source, automation, or secret data.",
     "",
   ]
     .filter(Boolean)
@@ -62,6 +64,15 @@ export function buildLlmsFullTxt(companies: Company[]) {
     `Canonical site: ${absoluteUrl("/")}`,
     `Scope: ${stats.totalCompanies} published early-stage NYC AI companies.`,
     `Audience: ${audience}`,
+    `MCP server: ${absoluteUrl("/mcp")}`,
+    "",
+    "## Structured Access",
+    [
+      `URL: ${absoluteUrl("/mcp")}`,
+      "Purpose: read-only structured access for MCP-compatible AI assistants.",
+      "Tools: search_companies, get_company, list_categories, get_category, list_patterns, get_pattern, search_jobs.",
+      "Boundary: public/published AI Atlas data only. No admin, auth, submissions, raw sources, automation data, or secrets.",
+    ].join("\n"),
     "",
     "## Companies",
     ...companies.map((company) =>

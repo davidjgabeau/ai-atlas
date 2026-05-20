@@ -25,6 +25,9 @@ export function SiteFooter() {
           <Link href="/jobs" className="hover:text-[#9A3D2B]">
             Jobs
           </Link>
+          <Link href="/mcp" className="hover:text-[#9A3D2B]">
+            MCP
+          </Link>
           <a href={contactMailtoHref} className="hover:text-[#9A3D2B]">
             Contact
           </a>

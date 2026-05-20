@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import { AskAtlasClient } from "@/components/ask/ask-atlas-client";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { PublicShell } from "@/components/site/public-shell";
+import { Button } from "@/components/ui/button";
 import { categoryMeta } from "@/data/market";
 import { patterns } from "@/data/patterns";
 import {
@@ -88,6 +91,29 @@ export default async function AskPage({
         <section className="bg-section">
           <div className="editorial-container !max-w-[1180px] py-8 md:py-10 lg:py-12">
             <AskAtlasClient initialQuery={initialQuery} examples={examples} />
+          </div>
+        </section>
+
+        <section className="border-t border-[#E7E1D8] bg-[var(--app-surface)]">
+          <div className="editorial-container !max-w-[1180px] py-8 md:py-10">
+            <div className="flex flex-col gap-4 rounded-md bg-[#FBFAF7] p-5 app-card-border md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="editorial-label">Structured access</p>
+                <h2 className="mt-2 text-xl font-semibold tracking-[0] text-[#111111]">
+                  Use the public map inside your own AI assistant.
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5F5A52]">
+                  AI Atlas also ships a read-only MCP server for Claude, Codex,
+                  and other MCP-compatible tools.
+                </p>
+              </div>
+              <Button asChild variant="outline" className="shrink-0">
+                <Link href="/mcp">
+                  View MCP setup
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
       </PublicShell>

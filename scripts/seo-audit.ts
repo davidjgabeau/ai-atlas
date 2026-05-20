@@ -49,6 +49,7 @@ async function main() {
     "/ask",
     "/jobs",
     "/insights",
+    "/mcp",
   ];
 
   for (const route of requiredRoutes) {
@@ -148,6 +149,7 @@ async function main() {
     ["newsfeed metadata", "src/app/newsfeed/page.tsx"],
     ["feed canonical metadata", "src/app/feed/page.tsx"],
     ["jobs metadata", "src/app/jobs/page.tsx"],
+    ["mcp metadata", "src/app/mcp/page.tsx"],
     ["company metadata", "src/app/companies/[slug]/page.tsx"],
     ["category metadata", "src/app/categories/[slug]/page.tsx"],
     ["profile metadata", "src/app/profiles/[handle]/page.tsx"],
@@ -176,6 +178,7 @@ async function main() {
     "src/app/feed/page.tsx",
     "src/app/newsfeed/page.tsx",
     "src/app/jobs/page.tsx",
+    "src/app/mcp/page.tsx",
     "src/app/companies/[slug]/page.tsx",
     "src/lib/seo/schema.ts",
   ]
@@ -200,7 +203,7 @@ async function main() {
   );
   addCheck(
     "llms.txt links core discovery routes",
-    ["/companies", "/categories", "/patterns", "/newsfeed", "/ask"].every(
+    ["/companies", "/categories", "/patterns", "/newsfeed", "/ask", "/mcp"].every(
       (route) => llmsText.includes(`${siteUrl}${route}`),
     ),
   );
