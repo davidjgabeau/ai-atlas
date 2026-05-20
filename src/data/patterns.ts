@@ -28,7 +28,8 @@ function definePattern(pattern: Omit<Pattern, "framing">): Pattern {
 export const patterns: Pattern[] = [
   definePattern({
     slug: "vertical-ai-skipped-saas",
-    title: "Food, government, and insurance teams are replacing phone work.",
+    title:
+      "AI is reaching teams that still run work by phone, text, and spreadsheets.",
     body: [
       "A group of NYC AI companies is selling to teams that still handle core work through calls, email, spreadsheets, and local know-how. The buyer is not a software admin; it is the person responsible for orders, permits, underwriting files, field operations, or customer follow-up.",
       "The work includes restaurant distributors taking orders by phone, local governments handling resident requests and permit backlogs, commercial insurers reviewing submission packets, and industrial teams tracking facility issues. This matters now because modern models can read messy messages and records well enough to help teams that never had clean software systems.",
@@ -61,7 +62,8 @@ export const patterns: Pattern[] = [
   }),
   definePattern({
     slug: "finance-teams-contested-buyer",
-    title: "Finance teams want AI inside research, billing, and accounting.",
+    title:
+      "Finance is crowded because the work is expensive, repetitive, and document-heavy.",
     body: [
       "The most crowded buyer in the map is the finance team: investors, revenue leaders, accounting teams, and fund operators. They all spend hours turning documents, contracts, invoices, spreadsheets, and market records into decisions.",
       "The examples range from analysts reviewing filings and transcripts, to finance teams reading contracts for invoices and revenue recognition, to accountants migrating ERP data, to funds organizing diligence work. It matters now because the data is already digital, the cost of mistakes is high, and teams will pay for faster answers they can check.",
@@ -94,7 +96,8 @@ export const patterns: Pattern[] = [
   }),
   definePattern({
     slug: "llm-tooling-build-vs-deploy",
-    title: "Engineering teams need tools for prompts after prototype.",
+    title:
+      "AI infrastructure is splitting between tools for building apps and tools for running them safely in production.",
     body: [
       "Engineering and product teams are moving from demos to production LLM features, and the work gets harder once users depend on the output. The buyer is the team shipping AI into an app, not the person casually testing a chatbot.",
       "The work includes testing prompts before release, tracking versions, running evals, giving coding agents safe cloud sandboxes, orchestrating multiple agents, and monitoring models in production. It matters now because failures are quieter than normal software bugs: the feature can still run while the answer gets worse.",
