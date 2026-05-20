@@ -247,6 +247,7 @@ function SiteNav() {
           <SpriteHeaderLink href="/patterns" icon="compass" label="Patterns" />
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
+          <SpriteHeaderLink href="/mcp" icon="bridgeMini" label="MCP" />
           <AskHeaderLink className="h-11" />
           <ProfileHeaderLink compact className="px-1.5 py-1" />
           <Button asChild className="h-11 rounded-lg px-5 app-primary-button">
@@ -326,6 +327,9 @@ function SiteFooter() {
           </Link>
           <Link href="/feed" className="hover:text-[#181818]">
             Newsfeed
+          </Link>
+          <Link href="/mcp" className="hover:text-[#181818]">
+            MCP
           </Link>
           <a href={contactMailtoHref} className="hover:text-[#181818]">
             Contact
