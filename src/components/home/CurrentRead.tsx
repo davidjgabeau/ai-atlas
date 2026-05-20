@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
+import { CompanyLogo } from "@/components/market-map/company-logo";
 import type { Company, MarketInsight } from "@/types/market";
 
 export function CurrentRead({
@@ -33,30 +34,42 @@ export function CurrentRead({
         <div className="lg:col-span-7 lg:col-start-6">
           <div className="divide-y divide-[#E7E1D8] border-y border-[#E7E1D8]">
             {currentInsights.length > 0 ? (
-              currentInsights.map((insight, index) => (
-                <div
-                  key={insight.id}
-                  className="grid gap-3 py-4 md:grid-cols-[48px_minmax(0,1fr)]"
-                >
-                  <span className="text-label text-[11px] text-[#9A3D2B]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="text-company-name text-[17px] leading-[1.25]">
-                      <LinkedCompanyText
-                        text={getCurrentReadDisplayTitle(insight)}
-                        companies={companiesById}
-                      />
-                    </h3>
-                    <p className="text-body mt-2 text-sm">
-                      <LinkedCompanyText
-                        text={insight.body}
-                        companies={companiesById}
-                      />
-                    </p>
+              currentInsights.map((insight, index) => {
+                const displayTitle = getCurrentReadDisplayTitle(insight);
+                const mentionedCompanies = getCurrentReadCompanies(
+                  insight,
+                  companiesById,
+                  displayTitle,
+                );
+
+                return (
+                  <div
+                    key={insight.id}
+                    className="grid gap-3 py-4 md:grid-cols-[48px_minmax(0,1fr)]"
+                  >
+                    <span className="text-label text-[11px] text-[#9A3D2B]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="text-company-name text-[17px] leading-[1.25]">
+                          <LinkedCompanyText
+                            text={displayTitle}
+                            companies={companiesById}
+                          />
+                        </h3>
+                        <CurrentReadLogoStack companies={mentionedCompanies} />
+                      </div>
+                      <p className="text-body mt-2 text-sm">
+                        <LinkedCompanyText
+                          text={insight.body}
+                          companies={companiesById}
+                        />
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="py-5">
                 <p className="text-company-hook text-sm">
@@ -101,6 +114,14 @@ const currentReadHeadlineOverrides = [
   },
 ] as const;
 
+const ambiguousCurrentReadLogoNames = new Set([
+  "aspect",
+  "granted",
+  "icon",
+  "series",
+  "tabs",
+]);
+
 function getCurrentReadDisplayTitle(insight: MarketInsight) {
   const normalizedTitle = insight.title.toLowerCase().replace(/\u2019/g, "'");
   const override = currentReadHeadlineOverrides.find(({ match }) =>
@@ -108,4 +129,75 @@ function getCurrentReadDisplayTitle(insight: MarketInsight) {
   );
 
   return override?.title ?? insight.title;
+}
+
+function CurrentReadLogoStack({ companies }: { companies: Company[] }) {
+  const visibleCompanies = companies.slice(0, 4);
+  if (visibleCompanies.length === 0) return null;
+
+  return (
+    <div className="shrink-0">
+      <span className="sr-only">
+        Companies mentioned: {visibleCompanies.map((company) => company.name).join(", ")}
+      </span>
+      <div aria-hidden="true" className="flex items-center -space-x-2">
+        {visibleCompanies.map((company) => (
+          <CompanyLogo
+            key={company.id}
+            company={company}
+            name={company.name}
+            category={company.category}
+            className="size-7 rounded-[7px] border-[#DDD4C8] bg-[#FBFAF7] opacity-85 ring-2 ring-[#F8F6F1] transition hover:opacity-100 hover:ring-[#EFE7DC] sm:size-8"
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function getCurrentReadCompanies(
+  insight: MarketInsight,
+  companiesById: Map<string, Company>,
+  displayTitle: string,
+) {
+  const selectedCompanies: Company[] = [];
+  const selectedIds = new Set<string>();
+
+  for (const companyId of insight.supportingCompanyIds) {
+    const company = companiesById.get(companyId);
+    if (!company || selectedIds.has(company.id)) continue;
+    selectedCompanies.push(company);
+    selectedIds.add(company.id);
+  }
+
+  const searchableText = `${displayTitle} ${insight.title} ${insight.body}`.toLowerCase();
+  const mentionedCompanies = Array.from(companiesById.values())
+    .filter((company) => !selectedIds.has(company.id))
+    .filter((company) => isCompanyMentioned(searchableText, company.name))
+    .sort((a, b) => b.name.length - a.name.length);
+
+  for (const company of mentionedCompanies) {
+    selectedCompanies.push(company);
+    selectedIds.add(company.id);
+  }
+
+  return selectedCompanies.slice(0, 4);
+}
+
+function isCompanyMentioned(text: string, name: string) {
+  const normalizedName = name.trim().toLowerCase();
+  if (!normalizedName) return false;
+  if (ambiguousCurrentReadLogoNames.has(normalizedName)) return false;
+
+  const index = text.indexOf(normalizedName);
+  if (index === -1) return false;
+
+  const before = index > 0 ? text[index - 1] : "";
+  const after = text[index + normalizedName.length] ?? "";
+
+  return isTextBoundary(before) && isTextBoundary(after);
+}
+
+function isTextBoundary(value: string) {
+  return !value || !/[a-z0-9]/i.test(value);
 }
