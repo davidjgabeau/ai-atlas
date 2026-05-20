@@ -14,6 +14,8 @@ import {
   saveSocialRun,
 } from "@/lib/social-automation/store";
 import { prepareSocialTextForPublish } from "@/lib/social-automation/preview-url";
+import { absoluteUrl } from "@/lib/seo/shareMetadata";
+import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import { createPost, getXAuthHealth } from "@/lib/social-automation/x-client";
 import type { AtlasSocialPost } from "@/types/social";
 
@@ -59,7 +61,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
   }
 
   try {
-    const postText = prepareSocialTextForPublish(claimedPost.post_text);
+    const postText = await preparePostTextForDispatch(claimedPost.post_text);
     const published = await createPost({
       text: postText,
       config,
@@ -170,7 +172,7 @@ export async function publishSocialPostNow(
   }
 
   try {
-    const postText = prepareSocialTextForPublish(claimedPost.post_text);
+    const postText = await preparePostTextForDispatch(claimedPost.post_text);
     const published = await createPost({
       text: postText,
       config,
@@ -243,6 +245,22 @@ export async function publishSocialPostNow(
       errors,
     };
   }
+}
+
+async function preparePostTextForDispatch(text: string) {
+  const companies = await getPublishedCompanies();
+  const publicCompanySlugs = new Set(companies.map((company) => company.slug));
+
+  return prepareSocialTextForPublish(
+    text.replace(
+      /https:\/\/aiatlas\.nyc\/companies\/([a-z0-9-]+)(?:\?[^ \n]*)?/gi,
+      (url, slug: string) => {
+        if (publicCompanySlugs.has(slug)) return url;
+
+        return absoluteUrl("/companies");
+      },
+    ),
+  );
 }
 
 async function getPacingDecision(config: ReturnType<typeof getSocialAutomationConfig>) {

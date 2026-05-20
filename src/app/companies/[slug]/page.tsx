@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, ExternalLink, Mail } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { CompanyProfileViewCounter } from "@/components/company/CompanyProfileViewCounter";
 import { CompanyViewCount } from "@/components/company/CompanyViewCount";
@@ -51,6 +51,10 @@ import type { Company } from "@/types/market";
 
 export const dynamic = "force-dynamic";
 
+const legacyCompanyRedirects: Record<string, string> = {
+  polimorphic: "/categories/enterprise-gtm-revops-ai",
+};
+
 export function generateStaticParams() {
   return marketMapCompanies.map((company) => ({ slug: company.slug }));
 }
@@ -98,6 +102,9 @@ export default async function CompanyProfilePage({
   ]);
 
   if (!company) {
+    const legacyRedirect = legacyCompanyRedirects[slug];
+    if (legacyRedirect) redirect(legacyRedirect);
+
     notFound();
   }
 

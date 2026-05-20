@@ -1,4 +1,5 @@
 import { createContentHash } from "@/lib/agent/hash";
+import { validateDiscoveredCompanyCandidate } from "@/lib/agent/companyCandidateValidation";
 import { getCategorySlug } from "@/data/market";
 import { absoluteUrl } from "@/lib/seo/shareMetadata";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
@@ -12,6 +13,9 @@ import type {
 
 type CompanyRow = Partial<SocialCompany> & {
   status?: string;
+  website_url?: string;
+  why_it_matters?: string;
+  funding_note?: string;
 };
 
 type EventRow = {
@@ -104,7 +108,7 @@ export async function collectSocialPostCandidates(limit: number) {
     await Promise.all([
       supabase
         .from("companies")
-        .select("id,name,slug,category,stage,short_description,one_line_thesis,recent_activity_text,recent_activity_date,x_handle,is_featured,is_breakout,updated_at")
+        .select("id,name,slug,category,stage,short_description,one_line_thesis,why_it_matters,funding_note,website_url,recent_activity_text,recent_activity_date,x_handle,is_featured,is_breakout,updated_at")
         .eq("status", "published")
         .order("updated_at", { ascending: false })
         .limit(500),
@@ -150,6 +154,7 @@ export async function collectSocialPostCandidates(limit: number) {
   ].filter((error): error is string => Boolean(error));
 
   const companies = ((companiesResult.data ?? []) as CompanyRow[])
+    .filter(isPublicSocialCompanyRow)
     .map(normalizeCompany)
     .filter((company): company is SocialCompany => Boolean(company));
   const companiesById = new Map(companies.map((company) => [company.id, company]));
@@ -556,6 +561,21 @@ function normalizeCompany(row: CompanyRow): SocialCompany | null {
     is_breakout: Boolean(row.is_breakout),
     updated_at: String(row.updated_at ?? ""),
   };
+}
+
+function isPublicSocialCompanyRow(row: CompanyRow) {
+  if (!row.id || !row.name || !row.slug) return false;
+
+  return validateDiscoveredCompanyCandidate({
+    name: row.name,
+    website: row.website_url,
+    sourceText: [
+      row.short_description,
+      row.one_line_thesis,
+      row.why_it_matters,
+      row.funding_note,
+    ].join("\n"),
+  }).ok;
 }
 
 function normalizeEvent(row: EventRow): CompanyEvent {
