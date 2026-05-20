@@ -12,7 +12,6 @@ import {
   patterns,
   type PatternCompany,
 } from "@/data/patterns";
-import { getConsumptionProfileLabel } from "@/lib/model-usage/consumptionProfile";
 import {
   absoluteUrl,
   createShareMetadata,
@@ -79,6 +78,7 @@ export default async function PatternDetailPage({
       (item): item is { relation: PatternCompany; company: Company } =>
         Boolean(item.company),
     );
+  const patternCategories = getPatternCategories(patternCompanies);
 
   return (
     <>
@@ -101,81 +101,118 @@ export default async function PatternDetailPage({
         ]}
       />
       <PublicShell>
-      <section className="hero">
-        <div className="editorial-container py-12">
-          <Button asChild variant="ghost" size="sm" className="mb-8">
-            <Link href="/patterns">
-              <ArrowLeft className="size-4" />
-              Back to patterns
-            </Link>
-          </Button>
-          <p className="editorial-label">Pattern</p>
-          <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
-            {pattern.title}
-          </h1>
-          <p className="mt-6 max-w-[780px] text-[18px] leading-[1.6] text-[#5F5A52]">
-            {pattern.framing}
-          </p>
-        </div>
-      </section>
+        <section className="hero">
+          <div className="editorial-container py-12">
+            <Button asChild variant="ghost" size="sm" className="mb-8">
+              <Link href="/patterns">
+                <ArrowLeft className="size-4" />
+                Back to patterns
+              </Link>
+            </Button>
 
-      <section className="bg-section">
-        <div className="editorial-container py-12">
-          <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
+              <div>
+                <p className="editorial-label">Pattern</p>
+                <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
+                  {pattern.title}
+                </h1>
+                <div className="mt-6 max-w-[780px] space-y-5 text-[18px] leading-[1.6] text-[#5F5A52]">
+                  {pattern.body.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+
+              <aside className="rounded-md border border-[#E7E1D8] bg-[rgb(251_250_247_/_0.72)] p-6 lg:self-start">
+                <p className="editorial-label">Pattern brief</p>
+                <dl className="mt-5 divide-y divide-[#E7E1D8] border-y border-[#E7E1D8] text-sm">
+                  <div className="flex items-start justify-between gap-4 py-4">
+                    <dt className="font-semibold text-[#5F5A52]">Companies</dt>
+                    <dd className="font-heading text-[24px] leading-none text-[#181818]">
+                      {patternCompanies.length}
+                    </dd>
+                  </div>
+                  <div className="py-4">
+                    <dt className="font-semibold text-[#5F5A52]">Categories</dt>
+                    <dd className="mt-2 leading-[1.55] text-[#181818]">
+                      {patternCategories.length > 0
+                        ? patternCategories.join(", ")
+                        : "Mapped companies"}
+                    </dd>
+                  </div>
+                </dl>
+                <a
+                  href="#companies-that-fit"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
+                >
+                  {pattern.cta}
+                  <ArrowRight className="size-4" />
+                </a>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section id="companies-that-fit" className="scroll-mt-24 bg-section">
+          <div className="editorial-container py-12">
+            <div className="mb-6">
               <p className="editorial-label">Companies</p>
               <h2 className="mt-3 editorial-section-title">
                 Companies that fit
               </h2>
-            </div>
-            {pattern.related_consumption_profile ? (
-              <p className="max-w-md text-sm leading-6 text-[#5F5A52]">
-                Pattern tends to drive heavy{" "}
-                {getConsumptionProfileLabel(
-                  pattern.related_consumption_profile,
-                ).toLowerCase()}{" "}
-                usage.
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5F5A52]">
+                The companies below show how the pattern appears in real buyer
+                work, from first contact through repeat operations.
               </p>
-            ) : null}
-          </div>
-
-          {patternCompanies.length > 0 ? (
-            <div className="grid gap-4 md:grid-cols-2">
-              {patternCompanies.map(({ relation, company }) => (
-                <Link
-                  key={relation.company_slug}
-                  href={`/companies/${company.slug}`}
-                  className="group rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-5 transition hover:bg-[rgb(154_61_43_/_0.045)]"
-                >
-                  <div className="flex items-start gap-3">
-                    <CompanyLogo
-                      company={company}
-                      name={company.name}
-                      category={company.category}
-                    />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="truncate text-lg font-semibold tracking-[0] text-[#181818]">
-                          {company.name}
-                        </h3>
-                        <ArrowRight className="size-3.5 shrink-0 text-[#9A3D2B] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
-                      </div>
-                      <p className="mt-2 text-sm leading-6 text-[#5F5A52]">
-                        {relation.one_liner}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ))}
             </div>
-          ) : (
-            <p className="rounded-md border border-dashed border-[#E7E1D8] p-6 text-sm text-[#5F5A52]">
-              Company links for this pattern will appear as the map syncs.
-            </p>
-          )}
-        </div>
-      </section>
+
+            {patternCompanies.length > 0 ? (
+              <div className="grid gap-4 md:grid-cols-2">
+                {patternCompanies.map(({ relation, company }) => (
+                  <Link
+                    key={relation.company_slug}
+                    href={`/companies/${company.slug}`}
+                    className="group rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-5 transition hover:bg-[rgb(154_61_43_/_0.045)]"
+                  >
+                    <div className="flex items-start gap-3">
+                      <CompanyLogo
+                        company={company}
+                        name={company.name}
+                        category={company.category}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="line-clamp-2 text-lg font-semibold tracking-[0] text-[#181818]">
+                            {company.name}
+                          </h3>
+                          <ArrowRight className="size-3.5 shrink-0 text-[#9A3D2B] opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
+                        </div>
+                        <p className="mt-2 text-sm leading-6 text-[#5F5A52]">
+                          {relation.one_liner}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p className="rounded-md border border-dashed border-[#E7E1D8] p-6 text-sm text-[#5F5A52]">
+                More company links will appear as the map expands.
+              </p>
+            )}
+          </div>
+        </section>
       </PublicShell>
     </>
+  );
+}
+
+function getPatternCategories(
+  patternCompanies: Array<{ relation: PatternCompany; company: Company }>,
+) {
+  return Array.from(
+    new Set(
+      patternCompanies.map(({ company }) => company.category).filter(Boolean),
+    ),
   );
 }

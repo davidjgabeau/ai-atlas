@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = createShareMetadata({
   title: "NYC AI Startup Patterns",
   description:
-    "Read market patterns and thesis notes from the early-stage NYC AI map, covering companies, categories, buyers, workflows, and emerging product surfaces.",
+    "Read concrete buyer-led patterns across the early-stage NYC AI map, with companies, use cases, and the work each group is solving.",
   path: "/patterns",
   image: getShareImageUrl({ page: "insights" }),
 });
@@ -86,7 +86,7 @@ export default async function PatternsPage() {
         data={collectionPageSchema({
           name: "NYC AI Startup Patterns",
           description:
-            "Read market patterns and thesis notes from the early-stage NYC AI map, covering companies, categories, buyers, workflows, and emerging product surfaces.",
+            "Read concrete buyer-led patterns across the early-stage NYC AI map, with companies, use cases, and the work each group is solving.",
           url: absoluteUrl("/patterns"),
           items: patternCollectionItems(patterns),
         })}
@@ -133,9 +133,8 @@ function PatternsPageHero({ stats }: { stats: PatternStats }) {
             Patterns Across The NYC AI Map
           </h1>
           <p className="mt-5 max-w-[690px] text-[17px] leading-[1.55] text-[#5F5A52] sm:text-[18px]">
-            Recurring shapes and signals across the early-stage NYC AI
-            landscape, where companies, buyers, and workflows are moving, and
-            why it matters.
+            Buyer-led notes on what NYC AI companies are doing, the work they
+            are taking on, and why founders and investors should care now.
           </p>
         </div>
         <PatternMapGarnish />
@@ -304,9 +303,9 @@ function PatternEditorNote({ className }: { className?: string }) {
     >
       <p className="editorial-label">Editor&apos;s Note</p>
       <p className="mt-4 text-[15px] leading-[1.65] text-[#3F3B36]">
-        These patterns are derived from signals across the early-stage NYC AI
-        map. They reflect where value is being created, where buyers are leaning
-        in, and where the highest-velocity bets are forming.
+        Each pattern starts with a buyer, a recurring job, and several companies
+        showing the same problem from different angles. The goal is to make the
+        map easier to read without asking you to inspect every company first.
       </p>
       <Link
         href="#pattern-library"
@@ -695,11 +694,11 @@ function getThemeDistributionRows(patternList: Pattern[]) {
 }
 
 function getPatternDek(pattern: Pattern) {
-  return shortenSentence(getSentences(pattern.framing)[0] ?? pattern.framing, 155);
+  return shortenSentence(pattern.body[0] ?? pattern.framing, 155);
 }
 
 function getPatternSupportingDetail(pattern: Pattern) {
-  const supportingSentence = getSentences(pattern.framing)[1];
+  const supportingSentence = pattern.body[1] ?? getSentences(pattern.framing)[1];
   return supportingSentence ? shortenSentence(supportingSentence, 135) : undefined;
 }
 
@@ -755,10 +754,10 @@ function getPatternTags(pattern: Pattern) {
     tags.add("Consumer");
   }
   if (/tooling|deploy|developer|model|infrastructure|eval/.test(text)) {
-    tags.add("Infrastructure");
+    tags.add("Developer Tools");
   }
   if (/workflow|workbench|process|review|operations/.test(text)) {
-    tags.add("Workflows");
+    tags.add("Repeat Work");
   }
 
   return Array.from(tags).slice(0, 3);
@@ -795,10 +794,10 @@ function getPatternKind(pattern: Pattern): PatternKind {
 
 const themeDisplayLabels: Partial<Record<ConsumptionProfile, string>> = {
   agentic_loops: "Automation & Operations",
-  batch_document_processing: "Document-Heavy Workflows",
+  batch_document_processing: "Document Work",
   realtime_voice: "Real-Time Voice",
-  code_generation: "Infrastructure & Tools",
-  embeddings_semantic_search: "Search & Memory",
+  code_generation: "Developer Tools",
+  embeddings_semantic_search: "Search & Evidence",
   consumer_inference: "Consumer & Productivity",
   multimodal_processing: "Multimodal Systems",
 };

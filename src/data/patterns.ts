@@ -9,6 +9,8 @@ export type Pattern = {
   slug: string;
   title: string;
   framing: string;
+  body: [string, string];
+  cta: string;
   companies: PatternCompany[];
   related_consumption_profile?: ConsumptionProfile;
   updated_at: string;
@@ -16,227 +18,255 @@ export type Pattern = {
 
 const updatedAt = "2026-05-05T14:00:00.000Z";
 
+function definePattern(pattern: Omit<Pattern, "framing">): Pattern {
+  return {
+    ...pattern,
+    framing: pattern.body.join(" "),
+  };
+}
+
 export const patterns: Pattern[] = [
-  {
+  definePattern({
     slug: "vertical-ai-skipped-saas",
-    title: "Vertical AI targets operators who skipped SaaS.",
-    framing:
-      "A useful slice of the map is moving away from software buyers who already have mature tooling and toward operators who still run through phones, spreadsheets, inboxes, and local process memory. The interesting companies are not selling generic copilots; they are rebuilding specific work in food distribution, government services, insurance, healthcare front offices, and supply chain operations where software adoption has historically lagged.",
+    title: "Food, government, and insurance teams are replacing phone work.",
+    body: [
+      "A group of NYC AI companies is selling to teams that still handle core work through calls, email, spreadsheets, and local know-how. The buyer is not a software admin; it is the person responsible for orders, permits, underwriting files, field operations, or customer follow-up.",
+      "The work includes restaurant distributors taking orders by phone, local governments handling resident requests and permit backlogs, commercial insurers reviewing submission packets, and industrial teams tracking facility issues. This matters now because modern models can read messy messages and records well enough to help teams that never had clean software systems.",
+    ],
+    cta: "Inspect the phone, permit, insurance, and field-ops examples",
     related_consumption_profile: "agentic_loops",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "anchr",
         one_liner:
-          "Anchr fits because food distributors still run critical ordering and inventory work through fragmented, offline processes.",
+          "Food distributors: phone orders, inventory questions, and customer follow-up.",
       },
       {
         company_slug: "cvector",
         one_liner:
-          "CVector pushes AI into industrial facilities where operational data and real-world constraints matter more than generic chat.",
+          "Industrial facilities: operating data, task handoffs, and field-team coordination.",
       },
       {
         company_slug: "polimorphic",
         one_liner:
-          "Polimorphic brings AI into local government services, a buyer segment with painful workflows and clear service expectations.",
+          "Local governments: resident requests, service questions, and permit-style backlogs.",
       },
       {
         company_slug: "kalepa",
         one_liner:
-          "Kalepa shows the same pattern in commercial insurance underwriting, where email-heavy judgment work still dominates.",
+          "Commercial insurance: underwriting packets, broker emails, and risk review.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "finance-teams-contested-buyer",
-    title: "Finance teams are the map's most contested buyer.",
-    framing:
-      "Finance remains the clearest buyer cluster because the work is high-value, document-heavy, and already budgeted. The range matters: some companies sell research copilots to investors, while others automate billing, accounting, fund operations, or trading decisions. That makes finance less like one category and more like the map's most competitive demand center for model-backed work.",
+    title: "Finance teams want AI inside research, billing, and accounting.",
+    body: [
+      "The most crowded buyer in the map is the finance team: investors, revenue leaders, accounting teams, and fund operators. They all spend hours turning documents, contracts, invoices, spreadsheets, and market records into decisions.",
+      "The examples range from analysts reviewing filings and transcripts, to finance teams reading contracts for invoices and revenue recognition, to accountants migrating ERP data, to funds organizing diligence work. It matters now because the data is already digital, the cost of mistakes is high, and teams will pay for faster answers they can check.",
+    ],
+    cta: "Compare the research, billing, and accounting companies",
     related_consumption_profile: "batch_document_processing",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "hebbia",
         one_liner:
-          "Hebbia fits the research end of the pattern, turning large document sets into cited investment and legal analysis.",
+          "Investment and legal analysts: cited answers across long document sets.",
       },
       {
         company_slug: "brightwave",
         one_liner:
-          "Brightwave turns filings, transcripts, and news into investment research for analysts and funds.",
+          "Investors: filings, transcripts, and news turned into research briefs.",
       },
       {
         company_slug: "tabs",
         one_liner:
-          "Tabs attacks finance operations directly through contract ingestion, invoicing, and revenue recognition.",
+          "Finance teams: contracts, invoices, and revenue recognition.",
       },
       {
         company_slug: "dualentry",
         one_liner:
-          "DualEntry shows the accounting side of the same buyer pull, using AI to modernize ERP and migration work.",
+          "Accounting teams: ERP migration, close work, and finance records.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "llm-tooling-build-vs-deploy",
-    title: "LLM tooling splits at the build-vs-deploy seam.",
-    framing:
-      "The tooling layer is separating into two jobs: helping teams build AI applications faster and helping them operate those systems once they leave prototype mode. That split shows up across evals, app scaffolding, model deployment, agent orchestration, and enterprise context layers. The strongest companies are clear about which side of the seam they own.",
+    title: "Engineering teams need tools for prompts after prototype.",
+    body: [
+      "Engineering and product teams are moving from demos to production LLM features, and the work gets harder once users depend on the output. The buyer is the team shipping AI into an app, not the person casually testing a chatbot.",
+      "The work includes testing prompts before release, tracking versions, running evals, giving coding agents safe cloud sandboxes, orchestrating multiple agents, and monitoring models in production. It matters now because failures are quieter than normal software bugs: the feature can still run while the answer gets worse.",
+    ],
+    cta: "See the eval, sandbox, agent, and model-ops companies",
     related_consumption_profile: "code_generation",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "vellum",
         one_liner:
-          "Vellum sits on the production side, helping teams evaluate, manage, and ship LLM applications reliably.",
+          "Product teams: prompt tests, evals, and release management for LLM apps.",
       },
       {
         company_slug: "amika",
         one_liner:
-          "Amika belongs on the build side, giving teams cloud sandboxes for coding agents and generated pull requests.",
+          "Engineering teams: cloud sandboxes for coding agents and generated pull requests.",
       },
       {
         company_slug: "emergence-ai",
         one_liner:
-          "Emergence AI fits because its agents coordinate other agents across enterprise workflows and data flows.",
+          "Enterprise teams: agents that coordinate work across apps and data.",
       },
       {
         company_slug: "wallaroo",
         one_liner:
-          "Wallaroo represents deployment infrastructure for teams trying to monitor and operate models in production.",
+          "Model teams: deployment, monitoring, and production operations.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "realtime-voice-back-office",
-    title: "Real-time voice is moving into back-office workflows in healthcare and hospitality.",
-    framing:
-      "Voice is strongest where the phone is still the interface for the business. Healthcare offices, restaurants, and service operators need fast answers, scheduling, routing, and follow-up without adding staff. The pattern is less about synthetic voices as a novelty and more about taking repetitive phone work off overloaded teams.",
+    title: "Front desks are handing routine calls to voice agents.",
+    body: [
+      "Voice products are strongest where the phone is still the front door for the business. The buyer is the restaurant manager, clinic administrator, or service operator who needs every call answered without adding another person to the desk.",
+      "The work includes taking reservations, answering store questions, scheduling medical visits, routing billing calls, checking prescription status, and turning intake conversations into structured records. It matters now because speech latency and reliability have improved enough for repetitive calls, while staffing pressure has not gone away.",
+    ],
+    cta: "Review the restaurant, healthcare, and intake examples",
     related_consumption_profile: "realtime_voice",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "slang-ai",
         one_liner:
-          "Slang.ai fits through restaurant and retail phone agents that handle reservations, appointments, and customer questions.",
+          "Restaurants and retail: reservations, appointments, and customer questions.",
       },
       {
         company_slug: "clarion",
         one_liner:
-          "Clarion brings voice agents to healthcare calls around scheduling, billing, and prescription workflows.",
+          "Healthcare offices: scheduling, billing calls, and prescription questions.",
       },
       {
         company_slug: "valerie-health",
         one_liner:
-          "Valerie Health points voice and communications automation at the independent doctor's office front desk.",
+          "Independent doctor's offices: front-desk calls and patient follow-up.",
       },
       {
         company_slug: "rowflow",
         one_liner:
-          "RowFlow fits the broader conversational intake shape by replacing static forms with structured conversations.",
+          "Service teams: intake conversations that become structured records.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "agentic-loops-legal-compliance",
-    title: "Agentic loops are reshaping high-stakes review work in legal and compliance.",
-    framing:
-      "Legal and compliance products are moving beyond single-pass drafting into repeat review loops: collect context, compare against rules, produce a decision, and leave an audit trail. The buyer is conservative, but the work is structured enough for agents when citations, policy grounding, and human oversight stay close to the product.",
+    title: "Legal and compliance teams are automating repeat reviews.",
+    body: [
+      "Legal, risk, and compliance teams are using AI where the same review happens again and again. The buyer needs a clear recommendation, citations, and a record of what was checked, not a loose draft.",
+      "The work includes KYC and sanctions investigations, AML case review, marketing and policy compliance checks, legal intake, contract review, billing review, and real-time policy monitoring. It matters now because the rules are written down, the evidence is spread across systems, and regulated teams need help without losing the audit trail.",
+    ],
+    cta: "Inspect the KYC, policy, legal intake, and monitoring examples",
     related_consumption_profile: "agentic_loops",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "norm-ai",
         one_liner:
-          "Norm Ai fits because it turns regulations and policies into agents that perform repeat compliance reviews.",
+          "Compliance teams: regulations and policies checked against repeat business decisions.",
       },
       {
         company_slug: "bretton-ai",
         one_liner:
-          "Bretton AI applies long-horizon agents to KYC, sanctions screening, and AML investigations.",
+          "Financial institutions: KYC, sanctions screening, and AML investigations.",
       },
       {
         company_slug: "manifest-os",
         one_liner:
-          "Manifest OS shows how AI-native legal services can be rebuilt around repeat intake, billing, and case workflows.",
+          "Legal teams: repeat intake, billing review, and case preparation.",
       },
       {
         company_slug: "zerodrift",
         one_liner:
-          "ZeroDrift fits through real-time policy monitoring and enforcement for regulated companies.",
+          "Regulated companies: policy monitoring and enforcement before issues spread.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "consumer-companion-personal-graph",
-    title: "Consumer companion apps are using personal-data graphs as the wedge.",
-    framing:
-      "The consumer side of the map is strongest when products remember enough context to become useful over time. Social graph, personal health data, relationship context, and household logistics all create a wedge for repeated use. The bet is that memory and graph structure matter more than a blank chat box.",
+    title: "Consumer apps are becoming useful by remembering context.",
+    body: [
+      "The strongest consumer companies in the map are not asking people to start from a blank chat box every day. They are building for users who want help with introductions, dating, plans, wellness, household logistics, and personal notes.",
+      "The work includes finding warm introductions inside iMessage, using friends-of-friends context in dating, turning social matching into real-world plans, remembering health signals, and organizing everyday notes. It matters now because personal context is the reason someone comes back; without memory, most consumer AI feels interchangeable.",
+    ],
+    cta: "Look at the social, wellness, and memory examples",
     related_consumption_profile: "consumer_inference",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "series",
         one_liner:
-          "Series uses iMessage and social context to make warm introductions feel native to existing behavior.",
+          "People making introductions: iMessage and social context for warm paths.",
       },
       {
         company_slug: "cerca",
         one_liner:
-          "Cerca fits by using friends-of-friends graph data to reduce stranger anxiety in dating.",
+          "Daters: friends-of-friends context to make meeting strangers feel safer.",
       },
       {
         company_slug: "222",
         one_liner:
-          "222 turns matching into real-world plans, making social context and logistics part of the product.",
+          "Social users: matching that turns into real-world plans.",
       },
       {
         company_slug: "tapestry",
         one_liner:
-          "Tapestry supplies social graph infrastructure for consumer and agentic products.",
+          "Product teams: social graph data for consumer and assistant-style products.",
       },
       {
         company_slug: "nori",
         one_liner:
-          "Nori uses personal health data and memory to make wellness guidance more continuous.",
+          "Wellness users: personal health context and memory over time.",
       },
     ],
-  },
-  {
+  }),
+  definePattern({
     slug: "nyc-fintech-rebuilding-analyst-workflows",
-    title: "NYC fintech is rebuilding analyst workflows with frontier models.",
-    framing:
-      "The finance companies that feel most native to New York are rebuilding the analyst's workbench: finding information, structuring evidence, running diligence, and turning messy records into a decision. The pattern is not simply faster search; it is AI becoming the connective tissue between documents, models, and human judgment.",
+    title: "Investors and analysts are getting AI for the whole research desk.",
+    body: [
+      "NYC's finance roots show up in companies building for analysts, hedge funds, and investment teams. The buyer needs sourced answers across filings, transcripts, news, expert calls, spreadsheets, and private-market records.",
+      "The work includes finding evidence across long documents, turning market news into research briefs, organizing analyst conversations, updating models, and supporting trade research. It matters now because the research pile keeps growing while investment teams still need answers they can defend in a meeting.",
+    ],
+    cta: "Study the document, expert-call, model, and trade-research examples",
     related_consumption_profile: "embeddings_semantic_search",
     updated_at: updatedAt,
     companies: [
       {
         company_slug: "hebbia",
         one_liner:
-          "Hebbia is the clearest example of financial research moving from search to multi-document reasoning.",
+          "Analysts: cited answers from large sets of financial and legal documents.",
       },
       {
         company_slug: "brightwave",
         one_liner:
-          "Brightwave fits by building analyst-grade research from filings, transcripts, and market news.",
+          "Investors: filings, transcripts, and market news turned into research.",
       },
       {
         company_slug: "standard-signal",
         one_liner:
-          "Standard Signal stretches the pattern into AI-native trade research and execution.",
+          "Traders: research and execution support for market decisions.",
       },
       {
         company_slug: "trata",
         one_liner:
-          "Trata turns buyside analyst conversations into a subscription research product for hedge funds.",
+          "Hedge funds: analyst conversations packaged as reusable research.",
       },
       {
         company_slug: "meridian",
         one_liner:
-          "Meridian fits the spreadsheet and modeling side of the analyst workflow.",
+          "Finance teams: spreadsheets and models for repeat analysis.",
       },
     ],
-  },
+  }),
 ];
 
 export function getPatternBySlug(slug: string) {
