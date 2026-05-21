@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, ExternalLink, Mail } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Clock3,
+  ExternalLink,
+  LockKeyhole,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import { notFound, redirect } from "next/navigation";
 
 import { CompanyProfileViewCounter } from "@/components/company/CompanyProfileViewCounter";
@@ -26,11 +36,17 @@ import {
 } from "@/data/market";
 import { getPatternsForCompanySlug } from "@/data/patterns";
 import { formatDate } from "@/lib/format";
+import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
 import {
   formatFundingBody,
   formatFundingHeadline,
   getFundingRows,
 } from "@/lib/funding";
+import {
+  getJobDepartmentLabel,
+  getJobListedAt,
+} from "@/lib/jobs/jobDisplay";
+import { getJobRoleSummary } from "@/lib/jobs/jobSummary";
 import {
   getDisplayUrl,
   getExternalUrl,
@@ -52,8 +68,12 @@ import {
   getCompanyBySlugFromData,
   getPublishedCompanies,
 } from "@/lib/supabase/market-data";
+import {
+  getCompanyJobsForViewer,
+  getPublicCompanyJobs,
+} from "@/lib/supabase/jobs";
 import { getCompanySocialFeed } from "@/lib/supabase/social-feed";
-import type { Company } from "@/types/market";
+import type { Company, CompanyJobWithCompany } from "@/types/market";
 
 export const dynamic = "force-dynamic";
 
@@ -102,9 +122,11 @@ export default async function CompanyProfilePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [company, companies] = await Promise.all([
+  const [company, companies, jobsForViewer, publicJobs] = await Promise.all([
     getCompanyBySlugFromData(slug),
     getPublishedCompanies(),
+    getCompanyJobsForViewer(),
+    getPublicCompanyJobs(),
   ]);
 
   if (!company) {
@@ -126,6 +148,12 @@ export default async function CompanyProfilePage({
   const companyPatterns = getPatternsForCompanySlug(company.slug);
   const nycFootprintRows = getNycFootprintRows(company);
   const aiLabFit = getAiLabFit(company);
+  const isSignedIn = jobsForViewer.isSignedIn;
+  const companyJobsSource =
+    isSignedIn && jobsForViewer.jobs.length > 0
+      ? jobsForViewer.jobs
+      : publicJobs;
+  const companyJobs = getJobsForCompany(companyJobsSource, company.id);
   const companyPosts = await getCompanySocialFeed({
     companyId: company.id,
     limit: 4,
@@ -261,6 +289,13 @@ export default async function CompanyProfilePage({
               companies={companies}
               excludeCompanyId={company.id}
             />
+            {companyJobs.length > 0 ? (
+              <CompanyJobsSection
+                company={company}
+                jobs={companyJobs}
+                isSignedIn={isSignedIn}
+              />
+            ) : null}
           </div>
           <aside className="hidden lg:sticky lg:top-20 lg:block lg:self-start">
             <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
@@ -630,6 +665,199 @@ function ProfileFactsSection({
       </dl>
     </section>
   );
+}
+
+function CompanyJobsSection({
+  company,
+  jobs,
+  isSignedIn,
+}: {
+  company: Company;
+  jobs: CompanyJobWithCompany[];
+  isSignedIn: boolean;
+}) {
+  const visibleJobs = jobs.slice(0, 5);
+  const latestSeenAt = getLatestJobDate(jobs);
+
+  return (
+    <section className="scroll-mt-28 overflow-hidden rounded-md bg-[var(--app-surface)] app-card-border">
+      <div className="border-b border-[#E7E1D8] p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="editorial-label">Hiring</p>
+            <h2 className="mt-3 text-lg font-semibold tracking-[0] text-[#181818]">
+              Open roles at {company.name}
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-[#5F5A52]">
+              {jobs.length} {jobs.length === 1 ? "role" : "roles"} from the
+              company&apos;s careers page.
+            </p>
+          </div>
+          {latestSeenAt ? (
+            <p className="text-sm font-medium text-[#66625C]">
+              Updated {formatRelativeUpdate(latestSeenAt)}
+            </p>
+          ) : null}
+        </div>
+      </div>
+      <div className="relative">
+        <div
+          className={
+            isSignedIn
+              ? "divide-y divide-[#E7E1D8]"
+              : "divide-y divide-[#E7E1D8] select-none opacity-45 blur-[1.5px]"
+          }
+        >
+          {visibleJobs.map((job, index) => (
+            <CompanyJobRow
+              key={job.id}
+              job={job}
+              index={index}
+              isSignedIn={isSignedIn}
+            />
+          ))}
+        </div>
+        {!isSignedIn ? (
+          <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 rounded-md border border-[#E7E1D8] bg-[rgb(251_250_247_/_0.96)] p-4 shadow-sm sm:inset-x-6">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex min-w-0 items-start gap-3">
+                <span className="grid size-10 shrink-0 place-items-center rounded-md border border-[#E7E1D8] bg-[#F8F6F1] text-[#9A3D2B]">
+                  <LockKeyhole className="size-4" />
+                </span>
+                <div>
+                  <p className="font-heading text-[24px] font-medium leading-[1.05] tracking-[0] text-[#181818]">
+                    Sign in to view job links
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-[#5F5A52]">
+                    Roles are visible for signal. Apply links open after sign-in.
+                  </p>
+                </div>
+              </div>
+              <Button asChild className="h-11 shrink-0 app-primary-button">
+                <Link href="/profile">
+                  Sign in
+                  <ArrowRight className="size-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        ) : null}
+      </div>
+      <div className="border-t border-[#E7E1D8] px-6 py-4">
+        <Link
+          href="/jobs"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
+        >
+          View full job board
+          <ArrowRight className="size-3.5" />
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function CompanyJobRow({
+  job,
+  index,
+  isSignedIn,
+}: {
+  job: CompanyJobWithCompany;
+  index: number;
+  isSignedIn: boolean;
+}) {
+  const department = getJobDepartmentLabel(job);
+  const listedAt = getJobListedAt(job);
+  const roleSummary = getJobRoleSummary(job);
+  const rowClassName =
+    "companyRow grid gap-3 px-6 py-4 transition md:grid-cols-[44px_minmax(0,1fr)_96px] md:items-start";
+  const rowContent = (
+    <>
+      <span className="rowSprite grid size-10 place-items-center rounded-md border border-[#E7E1D8] bg-[#F8F6F1] text-[#9A3D2B]">
+        <BriefcaseBusiness className="size-4" />
+      </span>
+      <div className="min-w-0">
+        <div className="flex flex-wrap items-center gap-2">
+          <h3 className="font-sans text-[18px] font-semibold leading-[1.2] tracking-[0] text-[#181818]">
+            {job.title}
+          </h3>
+          {isSignedIn ? (
+            <ExternalLink className="size-3.5 text-[#9A3D2B] opacity-0 transition group-hover:opacity-100" />
+          ) : null}
+        </div>
+        <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-[#66625C]">
+          <span>{department}</span>
+          {job.location ? (
+            <>
+              <span aria-hidden="true">·</span>
+              <span className="inline-flex items-center gap-1">
+                <MapPin className="size-3.5" />
+                {job.location}
+              </span>
+            </>
+          ) : null}
+          <span aria-hidden="true">·</span>
+          <span className="inline-flex items-center gap-1">
+            <Clock3 className="size-3.5" />
+            Listed {formatRelativeUpdate(listedAt)}
+          </span>
+        </div>
+        {roleSummary ? (
+          <p className="mt-3 max-w-[760px] text-sm leading-[1.55] text-[#5F5A52]">
+            {roleSummary}
+          </p>
+        ) : null}
+      </div>
+      <span className="hidden justify-self-end text-sm font-semibold text-[#9A3D2B] md:inline-flex md:items-center md:gap-1">
+        {isSignedIn ? "Apply" : "Locked"}
+        {isSignedIn ? <ArrowRight className="size-3.5" /> : null}
+      </span>
+    </>
+  );
+
+  if (isSignedIn) {
+    return (
+      <a
+        href={job.source_url}
+        target="_blank"
+        rel="noreferrer"
+        className={`${rowClassName} group hover:bg-[rgb(17_17_17_/_0.025)]`}
+        style={{ animationDelay: `${index * 40}ms` }}
+      >
+        {rowContent}
+      </a>
+    );
+  }
+
+  return (
+    <article
+      className={rowClassName}
+      style={{ animationDelay: `${index * 40}ms` }}
+    >
+      {rowContent}
+    </article>
+  );
+}
+
+function getJobsForCompany(
+  jobs: CompanyJobWithCompany[],
+  companyId: string,
+) {
+  return jobs
+    .filter((job) => job.company_id === companyId)
+    .sort(
+      (a, b) =>
+        new Date(getJobListedAt(b)).getTime() -
+        new Date(getJobListedAt(a)).getTime(),
+    );
+}
+
+function getLatestJobDate(jobs: CompanyJobWithCompany[]) {
+  const latestTime = jobs.reduce((latest, job) => {
+    const time = new Date(job.last_seen_at || getJobListedAt(job)).getTime();
+    return Number.isNaN(time) ? latest : Math.max(latest, time);
+  }, 0);
+
+  return latestTime > 0 ? new Date(latestTime).toISOString() : "";
 }
 
 function getWhatBuildingBody(company: Company) {

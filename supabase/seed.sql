@@ -66,7 +66,7 @@ insert into public.companies (
   'published',
   '2025-11-05T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"Research workflows for financial teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.169Z","sourceHash":"ef2cb783"}'::jsonb
+  '{"hook":"Research workflows for financial teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.344Z","sourceHash":"ef2cb783"}'::jsonb
 ),
 (
   'cmp_002',
@@ -100,7 +100,7 @@ insert into public.companies (
   'published',
   '2025-11-07T14:00:00.000Z',
   '2026-04-27T18:00:00.000Z',
-  '{"hook":"Custom risk analytics for hedge funds","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.170Z","sourceHash":"254fd82f"}'::jsonb
+  '{"hook":"Custom risk analytics for hedge funds","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.345Z","sourceHash":"254fd82f"}'::jsonb
 ),
 (
   'cmp_003',
@@ -134,7 +134,7 @@ insert into public.companies (
   'published',
   '2025-11-09T14:00:00.000Z',
   '2026-04-26T18:00:00.000Z',
-  '{"hook":"Investment research from filings and transcripts","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"5f285053"}'::jsonb
+  '{"hook":"Investment research from filings and transcripts","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"5f285053"}'::jsonb
 ),
 (
   'cmp_004',
@@ -168,7 +168,7 @@ insert into public.companies (
   'published',
   '2025-11-11T14:00:00.000Z',
   '2026-04-25T18:00:00.000Z',
-  '{"hook":"Private fund operations for investment firms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","growth","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"fce97cb5"}'::jsonb
+  '{"hook":"Private fund operations for investment firms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","growth","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"fce97cb5"}'::jsonb
 ),
 (
   'cmp_005',
@@ -202,7 +202,7 @@ insert into public.companies (
   'published',
   '2025-11-13T14:00:00.000Z',
   '2026-04-24T18:00:00.000Z',
-  '{"hook":"Contract-to-cash automation for finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"91087ea4"}'::jsonb
+  '{"hook":"Contract-to-cash automation for finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"91087ea4"}'::jsonb
 ),
 (
   'cmp_006',
@@ -236,7 +236,7 @@ insert into public.companies (
   'published',
   '2025-11-15T14:00:00.000Z',
   '2026-04-23T18:00:00.000Z',
-  '{"hook":"Hedge fund research from analyst agents","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"7c0afb7c"}'::jsonb
+  '{"hook":"Hedge fund research from analyst agents","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","early stage","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"7c0afb7c"}'::jsonb
 ),
 (
   'cmp_007',
@@ -270,7 +270,7 @@ insert into public.companies (
   'published',
   '2025-11-17T14:00:00.000Z',
   '2026-04-22T18:00:00.000Z',
-  '{"hook":"Regulatory AI agents for enterprises","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["legal","compliance","growth","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"45adcbfd"}'::jsonb
+  '{"hook":"Regulatory AI agents for enterprises","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["legal","compliance","growth","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"45adcbfd"}'::jsonb
 ),
 (
   'cmp_008',
@@ -304,7 +304,7 @@ insert into public.companies (
   'published',
   '2025-11-19T14:00:00.000Z',
   '2026-04-21T18:00:00.000Z',
-  '{"hook":"Infrastructure for AI-native legal services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series a","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.171Z","sourceHash":"193780ad"}'::jsonb
+  '{"hook":"Infrastructure for AI-native legal services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series a","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"193780ad"}'::jsonb
 ),
 (
   'cmp_009',
@@ -338,7 +338,7 @@ insert into public.companies (
   'published',
   '2025-11-21T14:00:00.000Z',
   '2026-04-20T18:00:00.000Z',
-  '{"hook":"Legal copilot for startup legal work","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"03cade1f"}'::jsonb
+  '{"hook":"Legal copilot for startup legal work","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.346Z","sourceHash":"03cade1f"}'::jsonb
 ),
 (
   'cmp_010',
@@ -372,7 +372,7 @@ insert into public.companies (
   'published',
   '2025-11-23T14:00:00.000Z',
   '2026-04-19T18:00:00.000Z',
-  '{"hook":"KYC and AML agents for financial teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series b","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"d19e1a1a"}'::jsonb
+  '{"hook":"KYC and AML agents for financial teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","series b","agent","workflow"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"d19e1a1a"}'::jsonb
 ),
 (
   'cmp_011',
@@ -406,7 +406,7 @@ insert into public.companies (
   'published',
   '2025-11-25T14:00:00.000Z',
   '2026-04-18T18:00:00.000Z',
-  '{"hook":"Document workflows for financial services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow","operations"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"9fd76ab8"}'::jsonb
+  '{"hook":"Document workflows for financial services","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","early stage","agent","workflow","operations"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"9fd76ab8"}'::jsonb
 ),
 (
   'cmp_012',
@@ -440,7 +440,7 @@ insert into public.companies (
   'published',
   '2025-11-27T14:00:00.000Z',
   '2026-04-17T18:00:00.000Z',
-  '{"hook":"Real-time policy enforcement for regulated teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","pre-seed","agent","workflow","health"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"6baa52b5"}'::jsonb
+  '{"hook":"Real-time policy enforcement for regulated teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["legal","compliance","pre-seed","agent","workflow","health"],"trendDimensions":["regulated buyers","workflow automation","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"6baa52b5"}'::jsonb
 ),
 (
   'cmp_013',
@@ -474,7 +474,7 @@ insert into public.companies (
   'published',
   '2025-11-29T14:00:00.000Z',
   '2026-04-16T18:00:00.000Z',
-  '{"hook":"AI video generation for creative teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","early stage","agent","workflow","consumer"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"d496ee64"}'::jsonb
+  '{"hook":"AI video generation for creative teams","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","early stage","agent","workflow","consumer"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"d496ee64"}'::jsonb
 ),
 (
   'cmp_014',
@@ -508,7 +508,7 @@ insert into public.companies (
   'published',
   '2025-12-01T14:00:00.000Z',
   '2026-04-15T18:00:00.000Z',
-  '{"hook":"Creator-led advertising automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","series b","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"68f64c19"}'::jsonb
+  '{"hook":"Creator-led advertising automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["media,","creative","series b","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"68f64c19"}'::jsonb
 ),
 (
   'cmp_015',
@@ -542,7 +542,7 @@ insert into public.companies (
   'published',
   '2025-12-03T14:00:00.000Z',
   '2026-04-14T18:00:00.000Z',
-  '{"hook":"Consumer video creation with real distribution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","series a","agent","research","workflow"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.172Z","sourceHash":"593aeada"}'::jsonb
+  '{"hook":"Consumer video creation with real distribution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","series a","agent","research","workflow"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"593aeada"}'::jsonb
 ),
 (
   'cmp_016',
@@ -576,7 +576,7 @@ insert into public.companies (
   'published',
   '2025-12-05T14:00:00.000Z',
   '2026-04-13T18:00:00.000Z',
-  '{"hook":"AI video ads with creative testing","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"6d412c64"}'::jsonb
+  '{"hook":"AI video ads with creative testing","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.347Z","sourceHash":"6d412c64"}'::jsonb
 ),
 (
   'cmp_017',
@@ -610,7 +610,7 @@ insert into public.companies (
   'published',
   '2025-12-07T14:00:00.000Z',
   '2026-04-12T18:00:00.000Z',
-  '{"hook":"Agentic brand conversations across channels","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"3933d0f7"}'::jsonb
+  '{"hook":"Agentic brand conversations across channels","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","early stage","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"3933d0f7"}'::jsonb
 ),
 (
   'cmp_018',
@@ -644,7 +644,7 @@ insert into public.companies (
   'published',
   '2025-12-09T14:00:00.000Z',
   '2026-04-11T18:00:00.000Z',
-  '{"hook":"Creative workspace for generative media","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"953b803e"}'::jsonb
+  '{"hook":"Creative workspace for generative media","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"953b803e"}'::jsonb
 ),
 (
   'cmp_019',
@@ -678,7 +678,7 @@ insert into public.companies (
   'published',
   '2025-12-11T14:00:00.000Z',
   '2026-04-10T18:00:00.000Z',
-  '{"hook":"AI brand ads for performance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"23dfcaac"}'::jsonb
+  '{"hook":"AI brand ads for performance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"23dfcaac"}'::jsonb
 ),
 (
   'cmp_020',
@@ -712,7 +712,7 @@ insert into public.companies (
   'published',
   '2025-12-13T14:00:00.000Z',
   '2026-04-09T18:00:00.000Z',
-  '{"hook":"Automating clinical admin work for health plans","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["health","clinical","growth","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"12123c03"}'::jsonb
+  '{"hook":"Automating clinical admin work for health plans","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["health","clinical","growth","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"12123c03"}'::jsonb
 ),
 (
   'cmp_021',
@@ -746,7 +746,7 @@ insert into public.companies (
   'published',
   '2025-12-15T14:00:00.000Z',
   '2026-04-08T18:00:00.000Z',
-  '{"hook":"Front-office AI for independent doctors","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series a","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.173Z","sourceHash":"11b91c5d"}'::jsonb
+  '{"hook":"Front-office AI for independent doctors","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series a","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"11b91c5d"}'::jsonb
 ),
 (
   'cmp_022',
@@ -780,7 +780,7 @@ insert into public.companies (
   'published',
   '2025-12-17T14:00:00.000Z',
   '2026-04-07T18:00:00.000Z',
-  '{"hook":"Voice agents for healthcare communications","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","agent","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"4bf78bf4"}'::jsonb
+  '{"hook":"Voice agents for healthcare communications","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","agent","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"4bf78bf4"}'::jsonb
 ),
 (
   'cmp_023',
@@ -814,7 +814,7 @@ insert into public.companies (
   'published',
   '2025-12-19T14:00:00.000Z',
   '2026-04-06T18:00:00.000Z',
-  '{"hook":"Eligibility automation for behavioral health","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","workflow","revenue","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"ed0a17f2"}'::jsonb
+  '{"hook":"Eligibility automation for behavioral health","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","seed","workflow","revenue","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.348Z","sourceHash":"ed0a17f2"}'::jsonb
 ),
 (
   'cmp_024',
@@ -848,7 +848,7 @@ insert into public.companies (
   'published',
   '2025-12-21T14:00:00.000Z',
   '2026-04-05T18:00:00.000Z',
-  '{"hook":"Healthcare payments operations for clinics","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series b","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"709a68bd"}'::jsonb
+  '{"hook":"Healthcare payments operations for clinics","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","series b","workflow","operations"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"709a68bd"}'::jsonb
 ),
 (
   'cmp_025',
@@ -882,7 +882,7 @@ insert into public.companies (
   'published',
   '2025-12-23T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"AI support for navigating health benefits","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","early stage","agent","workflow","consumer"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"7ccb0c6c"}'::jsonb
+  '{"hook":"AI support for navigating health benefits","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["health","clinical","early stage","agent","workflow","consumer"],"trendDimensions":["clinical operations","workflow automation","agentic workflows","regulated adoption","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"7ccb0c6c"}'::jsonb
 ),
 (
   'cmp_026',
@@ -916,7 +916,7 @@ insert into public.companies (
   'published',
   '2025-12-25T14:00:00.000Z',
   '2026-04-27T18:00:00.000Z',
-  '{"hook":"Warm introductions inside iMessage","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["ai-native","consumer","social","pre-seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"998f45f6"}'::jsonb
+  '{"hook":"Warm introductions inside iMessage","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["ai-native","consumer","social","pre-seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"998f45f6"}'::jsonb
 ),
 (
   'cmp_027',
@@ -950,7 +950,7 @@ insert into public.companies (
   'published',
   '2025-12-27T14:00:00.000Z',
   '2026-04-26T18:00:00.000Z',
-  '{"hook":"AI matching for in-person social plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"3416afd0"}'::jsonb
+  '{"hook":"AI matching for in-person social plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"3416afd0"}'::jsonb
 ),
 (
   'cmp_028',
@@ -984,7 +984,7 @@ insert into public.companies (
   'published',
   '2025-12-29T14:00:00.000Z',
   '2026-04-25T18:00:00.000Z',
-  '{"hook":"Social graph matching for Gen Z dating","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"f9639a7c"}'::jsonb
+  '{"hook":"Social graph matching for Gen Z dating","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"f9639a7c"}'::jsonb
 ),
 (
   'cmp_029',
@@ -1018,7 +1018,7 @@ insert into public.companies (
   'published',
   '2025-12-31T14:00:00.000Z',
   '2026-04-24T18:00:00.000Z',
-  '{"hook":"Real-time audience research with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","research","workflow"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"b1f9b5e0"}'::jsonb
+  '{"hook":"Real-time audience research with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","research","workflow"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"b1f9b5e0"}'::jsonb
 ),
 (
   'cmp_030',
@@ -1052,7 +1052,7 @@ insert into public.companies (
   'published',
   '2026-01-02T14:00:00.000Z',
   '2026-04-23T18:00:00.000Z',
-  '{"hook":"Restaurant revenue automation with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"b62f8a1d"}'::jsonb
+  '{"hook":"Restaurant revenue automation with AI","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","early stage","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"b62f8a1d"}'::jsonb
 ),
 (
   'cmp_031',
@@ -1086,7 +1086,7 @@ insert into public.companies (
   'published',
   '2026-01-04T14:00:00.000Z',
   '2026-04-22T18:00:00.000Z',
-  '{"hook":"Personal health memory for daily plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","health"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"1002485a"}'::jsonb
+  '{"hook":"Personal health memory for daily plans","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","seed","workflow","health"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"1002485a"}'::jsonb
 ),
 (
   'cmp_032',
@@ -1120,7 +1120,7 @@ insert into public.companies (
   'published',
   '2026-01-06T14:00:00.000Z',
   '2026-04-21T18:00:00.000Z',
-  '{"hook":"Agents that orchestrate enterprise workflows","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["agent","infrastructure","series a","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"b9b821a0"}'::jsonb
+  '{"hook":"Agents that orchestrate enterprise workflows","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["agent","infrastructure","series a","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"b9b821a0"}'::jsonb
 ),
 (
   'cmp_033',
@@ -1154,7 +1154,7 @@ insert into public.companies (
   'published',
   '2026-01-08T14:00:00.000Z',
   '2026-04-20T18:00:00.000Z',
-  '{"hook":"Product catalog infrastructure for agentic commerce","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.174Z","sourceHash":"cdbfb2d8"}'::jsonb
+  '{"hook":"Product catalog infrastructure for agentic commerce","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"cdbfb2d8"}'::jsonb
 ),
 (
   'cmp_034',
@@ -1188,7 +1188,7 @@ insert into public.companies (
   'published',
   '2026-01-10T14:00:00.000Z',
   '2026-04-19T18:00:00.000Z',
-  '{"hook":"Cloud sandboxes for AI coding agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"e6af3f2d"}'::jsonb
+  '{"hook":"Cloud sandboxes for AI coding agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.349Z","sourceHash":"e6af3f2d"}'::jsonb
 ),
 (
   'cmp_035',
@@ -1222,7 +1222,7 @@ insert into public.companies (
   'published',
   '2026-01-12T14:00:00.000Z',
   '2026-04-18T18:00:00.000Z',
-  '{"hook":"Document context layer for enterprise agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","early stage","workflow","documents"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"e9aefadb"}'::jsonb
+  '{"hook":"Document context layer for enterprise agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","early stage","workflow","documents"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"e9aefadb"}'::jsonb
 ),
 (
   'cmp_036',
@@ -1256,7 +1256,7 @@ insert into public.companies (
   'published',
   '2026-01-14T14:00:00.000Z',
   '2026-04-17T18:00:00.000Z',
-  '{"hook":"Chat-driven enterprise app creation","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","pre-seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"a1780a5f"}'::jsonb
+  '{"hook":"Chat-driven enterprise app creation","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","pre-seed","workflow"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"a1780a5f"}'::jsonb
 ),
 (
   'cmp_037',
@@ -1290,7 +1290,7 @@ insert into public.companies (
   'published',
   '2026-01-16T14:00:00.000Z',
   '2026-04-16T18:00:00.000Z',
-  '{"hook":"Supply chain agents for operational planning","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow","operations"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"5ef6f966"}'::jsonb
+  '{"hook":"Supply chain agents for operational planning","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow","operations"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"5ef6f966"}'::jsonb
 ),
 (
   'cmp_038',
@@ -1324,7 +1324,7 @@ insert into public.companies (
   'published',
   '2026-01-18T14:00:00.000Z',
   '2026-04-15T18:00:00.000Z',
-  '{"hook":"AI underwriting for commercial insurance","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"803a532b"}'::jsonb
+  '{"hook":"AI underwriting for commercial insurance","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"803a532b"}'::jsonb
 ),
 (
   'cmp_039',
@@ -1358,7 +1358,7 @@ insert into public.companies (
   'published',
   '2026-01-20T14:00:00.000Z',
   '2026-04-14T18:00:00.000Z',
-  '{"hook":"Voice agents for restaurant and retail calls","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"cd834930"}'::jsonb
+  '{"hook":"Voice agents for restaurant and retail calls","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"cd834930"}'::jsonb
 ),
 (
   'cmp_040',
@@ -1392,7 +1392,7 @@ insert into public.companies (
   'published',
   '2026-01-22T14:00:00.000Z',
   '2026-04-13T18:00:00.000Z',
-  '{"hook":"AI agents for corporate finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"e3f78818"}'::jsonb
+  '{"hook":"AI agents for corporate finance teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"e3f78818"}'::jsonb
 ),
 (
   'cmp_041',
@@ -1426,7 +1426,7 @@ insert into public.companies (
   'published',
   '2026-01-24T14:00:00.000Z',
   '2026-04-12T18:00:00.000Z',
-  '{"hook":"Conversational intake for business forms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"7252a901"}'::jsonb
+  '{"hook":"Conversational intake for business forms","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","seed","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"7252a901"}'::jsonb
 ),
 (
   'cmp_042',
@@ -1460,7 +1460,7 @@ insert into public.companies (
   'published',
   '2026-01-26T14:00:00.000Z',
   '2026-04-11T18:00:00.000Z',
-  '{"hook":"Sales workflows for revenue teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"300d36d9"}'::jsonb
+  '{"hook":"Sales workflows for revenue teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["enterprise","revops","early stage","agent","research","workflow"],"trendDimensions":["enterprise operations","workflow automation","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.350Z","sourceHash":"300d36d9"}'::jsonb
 ),
 (
   'cmp_043',
@@ -1494,7 +1494,7 @@ insert into public.companies (
   'published',
   '2026-01-28T14:00:00.000Z',
   '2026-04-10T18:00:00.000Z',
-  '{"hook":"AI-native trading research and execution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","seed","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.175Z","sourceHash":"6cc6661a"}'::jsonb
+  '{"hook":"AI-native trading research and execution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["fintech","trading","seed","agent","research","workflow"],"trendDimensions":["regulated buyers","research workflows","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"6cc6661a"}'::jsonb
 ),
 (
   'cmp_044',
@@ -1528,7 +1528,7 @@ insert into public.companies (
   'published',
   '2026-01-30T14:00:00.000Z',
   '2026-04-09T18:00:00.000Z',
-  '{"hook":"Licensed data marketplace for AI builders","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","series a"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"162082fa"}'::jsonb
+  '{"hook":"Licensed data marketplace for AI builders","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","series a"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"162082fa"}'::jsonb
 ),
 (
   'cmp_045',
@@ -1562,7 +1562,7 @@ insert into public.companies (
   'published',
   '2026-02-01T14:00:00.000Z',
   '2026-04-08T18:00:00.000Z',
-  '{"hook":"Model deployment infrastructure for enterprises","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"f44bcfad"}'::jsonb
+  '{"hook":"Model deployment infrastructure for enterprises","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"f44bcfad"}'::jsonb
 ),
 (
   'cmp_046',
@@ -1596,7 +1596,7 @@ insert into public.companies (
   'published',
   '2026-02-03T14:00:00.000Z',
   '2026-04-07T18:00:00.000Z',
-  '{"hook":"Alternative-investment data automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"8ed3bde6"}'::jsonb
+  '{"hook":"Alternative-investment data automation","signalLabel":"Featured","signalReason":"Manually selected as an editorial pick.","keywords":["data","memory","layer","early stage"],"trendDimensions":["data infrastructure","retrieval context","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"8ed3bde6"}'::jsonb
 ),
 (
   'cmp_047',
@@ -1630,7 +1630,7 @@ insert into public.companies (
   'published',
   '2026-02-05T14:00:00.000Z',
   '2026-04-06T18:00:00.000Z',
-  '{"hook":"Turning messy documents into structured context","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage","workflow","documents"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"cba6bb30"}'::jsonb
+  '{"hook":"Turning messy documents into structured context","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage","workflow","documents"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"cba6bb30"}'::jsonb
 ),
 (
   'cmp_048',
@@ -1664,7 +1664,7 @@ insert into public.companies (
   'published',
   '2026-02-07T14:00:00.000Z',
   '2026-04-05T18:00:00.000Z',
-  '{"hook":"Enterprise context layer for business data","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage","agent","workflow"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"f2b57226"}'::jsonb
+  '{"hook":"Enterprise context layer for business data","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","early stage","agent","workflow"],"trendDimensions":["data infrastructure","retrieval context","agentic workflows","context layer","regulated adoption"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"f2b57226"}'::jsonb
 ),
 (
   'cmp_049',
@@ -1698,7 +1698,7 @@ insert into public.companies (
   'published',
   '2026-02-09T14:00:00.000Z',
   '2026-04-28T18:00:00.000Z',
-  '{"hook":"Multimodal data extraction for visual datasets","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","seed"],"trendDimensions":["data infrastructure","retrieval context","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"08561896"}'::jsonb
+  '{"hook":"Multimodal data extraction for visual datasets","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["data","memory","layer","seed"],"trendDimensions":["data infrastructure","retrieval context","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"08561896"}'::jsonb
 ),
 (
   'cmp_050',
@@ -1732,7 +1732,7 @@ insert into public.companies (
   'published',
   '2026-02-11T14:00:00.000Z',
   '2026-04-27T18:00:00.000Z',
-  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"2db01b51"}'::jsonb
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"2db01b51"}'::jsonb
 ),
 (
   'cmp_051',
@@ -1766,7 +1766,7 @@ insert into public.companies (
   'published',
   '2026-02-13T14:00:00.000Z',
   '2026-04-26T18:00:00.000Z',
-  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"fca0239d"}'::jsonb
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","series a","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"fca0239d"}'::jsonb
 ),
 (
   'cmp_052',
@@ -1800,7 +1800,7 @@ insert into public.companies (
   'published',
   '2026-02-15T14:00:00.000Z',
   '2026-04-25T18:00:00.000Z',
-  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","pre-seed","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"494b40a0"}'::jsonb
+  '{"hook":"AI-native security operations for enterprise teams","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["cybersecurity","pre-seed","agent","workflow"],"trendDimensions":["security operations","agentic response","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"494b40a0"}'::jsonb
 ),
 (
   'cmp_053',
@@ -1834,7 +1834,7 @@ insert into public.companies (
   'published',
   '2026-02-17T14:00:00.000Z',
   '2026-04-24T18:00:00.000Z',
-  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"6dbf1fc5"}'::jsonb
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"6dbf1fc5"}'::jsonb
 ),
 (
   'cmp_054',
@@ -1868,7 +1868,7 @@ insert into public.companies (
   'published',
   '2026-02-19T14:00:00.000Z',
   '2026-04-23T18:00:00.000Z',
-  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"2cd0590c"}'::jsonb
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"2cd0590c"}'::jsonb
 ),
 (
   'cmp_055',
@@ -1902,7 +1902,7 @@ insert into public.companies (
   'published',
   '2026-02-21T14:00:00.000Z',
   '2026-04-22T18:00:00.000Z',
-  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"1e3a02aa"}'::jsonb
+  '{"hook":"Protein interaction maps for drug discovery","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["life","sciences","seed","research","workflow"],"trendDimensions":["biological modeling","research workflows","agentic workflows","context layer"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"1e3a02aa"}'::jsonb
 ),
 (
   'cmp_056',
@@ -1936,7 +1936,75 @@ insert into public.companies (
   'published',
   '2026-02-23T14:00:00.000Z',
   '2026-05-19T14:00:00.000Z',
-  '{"hook":"AI social simulation for fandom worlds","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","series a","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T05:53:27.176Z","sourceHash":"e6b34aa2"}'::jsonb
+  '{"hook":"AI social simulation for fandom worlds","signalLabel":"Consumer signal","signalReason":"Consumer-facing product where AI shapes the core experience.","keywords":["ai-native","consumer","social","series a","workflow","memory"],"trendDimensions":["consumer interface","memory behavior","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.351Z","sourceHash":"e6b34aa2"}'::jsonb
+),
+(
+  'cmp_057',
+  'Glif',
+  'glif',
+  '',
+  'https://glif.app',
+  'Fabian Stelzer; Jamie Wilkinson',
+  '228 Park Avenue South, New York, NY 10003',
+  'Seed',
+  '$17.5M',
+  'April 2026',
+  '$17.5M',
+  'Andreessen Horowitz / Union Square Ventures',
+  'Seed round announced alongside Glif V2.',
+  'Media, Ads & Creative AI',
+  'Seed',
+  'Glif is a creative super agent for generating images, videos, audio, social posts, ads, and other media from one chat interface.',
+  'Glif is a creative super agent for generating images, videos, audio, social posts, ads, and other media from one chat interface.',
+  'Glif is a creative super agent for generating images, videos, audio, social posts, ads, and other media from one chat interface. The New York company launched Glif V2 and raised a $17.5M seed round from Andreessen Horowitz and Union Square Ventures in April 2026 after millions of creators used its earlier AI workflow sandbox.',
+  'Generative and analytical AI for creative ideation, ad production, synthetic media, audience simulation, brand activation, and campaign optimization.',
+  'Strong fit for multimodal generation, campaign copy, image and video ideation, brand memory, structured creative variants, and agentic production workflows.',
+  '[{"name":"Fabian Stelzer","title":"Co-founder"},{"name":"Jamie Wilkinson","title":"Co-founder"}]'::jsonb,
+  '{consumer_inference,agentic_loops,multimodal_processing}',
+  'very_high',
+  'Glif puts inference inside repeated consumer behavior rather than a one-off prompt surface.',
+  'Raised $17.5M',
+  '2026-04-23T16:55:39.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-25T14:00:00.000Z',
+  '2026-04-23T16:55:39.000Z',
+  '{"hook":"Consumer video creation with real distribution","signalLabel":"Workflow signal","signalReason":"Product motion appears tied to a concrete workflow or interface.","keywords":["media,","creative","seed","agent","workflow","memory"],"trendDimensions":["creative workflow","interface pattern","agentic workflows","context layer","consumer behavior"],"generatedAt":"2026-05-21T15:31:00.352Z","sourceHash":"c80e7aa8"}'::jsonb
+),
+(
+  'cmp_058',
+  'General Intelligence Company',
+  'general-intelligence-company',
+  '',
+  'https://www.generalintelligencecompany.com',
+  'Andrew Pignanelli; Abhishyant Khare',
+  '245 Lexington Avenue, Floor 4, New York, NY 10016',
+  'Seed',
+  '$8.7M',
+  'December 2025',
+  '$8.7M',
+  'Union Square Ventures',
+  'Seed round announced December 8, 2025, with Acrew Capital, Compound, and other investors participating.',
+  'Agent Infrastructure',
+  'Seed',
+  'General Intelligence Company is an applied AI lab building Cofounder, a system of agents designed to automate business operations full-stack and enable one-person, agent-native companies.',
+  'General Intelligence Company is an applied AI lab building Cofounder, a system of agents designed to automate business operations full-stack and enable one-person, agent-native companies.',
+  'General Intelligence Company is an applied AI lab building Cofounder, a system of agents designed to automate business operations full-stack and enable one-person, agent-native companies. Founded in New York in 2025 by Andrew Pignanelli and Abhishyant Khare, the company raised an $8.7M seed round led by Union Square Ventures with Acrew Capital, Compound, and other investors participating.',
+  'Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.',
+  'Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.',
+  '[{"name":"Andrew Pignanelli","title":"Co-founder"},{"name":"Abhishyant Khare","title":"Co-founder"}]'::jsonb,
+  '{agentic_loops,code_generation}',
+  'high',
+  'General Intelligence Company supports engineering or LLM app work where generation, evaluation, and deployment loops can compound.',
+  'Raised $8.7M',
+  '2025-12-08T14:00:00.000Z',
+  false,
+  false,
+  'published',
+  '2026-02-27T14:00:00.000Z',
+  '2025-12-08T14:00:00.000Z',
+  '{"hook":"Testing infrastructure for autonomous agents","signalLabel":"Infra signal","signalReason":"Infrastructure or data layer company with model-heavy workflow demand.","keywords":["agent","infrastructure","seed","workflow","operations"],"trendDimensions":["agent infrastructure","workflow reliability","agentic workflows"],"generatedAt":"2026-05-21T15:31:00.352Z","sourceHash":"3c25deb4"}'::jsonb
 )
 on conflict (id) do update set
   name = excluded.name,

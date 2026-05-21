@@ -8,6 +8,21 @@ const companyLimitArg = process.argv.find((arg) =>
 const jobsPerCompanyArg = process.argv.find((arg) =>
   arg.startsWith("--jobs-per-company="),
 );
+const companySlugs = process.argv.flatMap((arg) => {
+  if (
+    !arg.startsWith("--company-slug=") &&
+    !arg.startsWith("--company-slugs=")
+  ) {
+    return [];
+  }
+
+  return arg
+    .split("=")[1]
+    .split(",")
+    .map((slug) => slug.trim())
+    .filter(Boolean);
+});
+const dryRun = process.argv.includes("--dry-run");
 
 refreshCompanyJobs({
   companyLimit: companyLimitArg
@@ -16,6 +31,8 @@ refreshCompanyJobs({
   jobsPerCompany: jobsPerCompanyArg
     ? Number(jobsPerCompanyArg.split("=")[1])
     : undefined,
+  companySlugs,
+  dryRun,
 })
   .then((result) => {
     console.log(JSON.stringify(result, null, 2));

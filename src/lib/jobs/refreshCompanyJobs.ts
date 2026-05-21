@@ -15,12 +15,16 @@ import {
   createSupabasePrivilegedClient,
   hasSupabasePrivilegedCredentials,
 } from "@/lib/supabase/privileged";
+import { companyToDatabasePayload } from "@/lib/admin-company-record";
+import { getPublishedCompanies } from "@/lib/supabase/market-data";
+import type { Company } from "@/types/market";
 
 type CompanyJobSyncRow = {
   id: string;
   name: string;
   slug: string;
   website_url: string;
+  updated_at: string;
 };
 
 type DiscoveredJob = {
@@ -56,30 +60,40 @@ type ExtractedJob = Omit<
 type RefreshCompanyJobsOptions = {
   companyLimit?: number;
   jobsPerCompany?: number;
+  companySlugs?: string[];
+  dryRun?: boolean;
 };
 
 export type RefreshCompanyJobsResult = {
   ok: boolean;
+  dryRun: boolean;
   companiesChecked: number;
+  companyRowsCreated: number;
   companiesWithJobs: number;
   jobsFound: number;
   jobsUpserted: number;
+  checkedCompanySlugs: string[];
   errors: Array<{ company: string; error: string }>;
 };
 
 export async function refreshCompanyJobs({
   companyLimit = 120,
   jobsPerCompany = 25,
+  companySlugs = [],
+  dryRun = false,
 }: RefreshCompanyJobsOptions = {}): Promise<RefreshCompanyJobsResult> {
   const supabase = createSupabasePrivilegedClient();
 
-  if (!supabase || !hasSupabasePrivilegedCredentials()) {
+  if (!dryRun && (!supabase || !hasSupabasePrivilegedCredentials())) {
     return {
       ok: false,
+      dryRun,
       companiesChecked: 0,
+      companyRowsCreated: 0,
       companiesWithJobs: 0,
       jobsFound: 0,
       jobsUpserted: 0,
+      checkedCompanySlugs: [],
       errors: [
         {
           company: "Supabase",
@@ -89,50 +103,59 @@ export async function refreshCompanyJobs({
       ],
     };
   }
+  const writeClient = dryRun ? null : supabase;
 
-  const { data, error } = await supabase
-    .from("companies")
-    .select("id,name,slug,website_url")
-    .eq("status", "published")
-    .neq("website_url", "")
-    .order("updated_at", { ascending: false })
-    .limit(companyLimit);
+  const companiesToSync = await getCompanyJobSyncRows({
+    companyLimit,
+    companySlugs,
+  });
+  const {
+    companies,
+    companyRowsCreated,
+    errors,
+  } = dryRun
+    ? {
+        companies: companiesToSync,
+        companyRowsCreated: 0,
+        errors: [] as RefreshCompanyJobsResult["errors"],
+      }
+    : await ensureCompanyRowsForJobSync(writeClient!, companiesToSync);
 
-  if (error || !data) {
+  if (companiesToSync.length > 0 && companies.length === 0) {
     return {
       ok: false,
+      dryRun,
       companiesChecked: 0,
+      companyRowsCreated,
       companiesWithJobs: 0,
       jobsFound: 0,
       jobsUpserted: 0,
-      errors: [
-        {
-          company: "Supabase",
-          error: error?.message ?? "Unable to load companies.",
-        },
-      ],
+      checkedCompanySlugs: [],
+      errors,
     };
   }
 
   let jobsFound = 0;
   let jobsUpserted = 0;
   let companiesWithJobs = 0;
-  const errors: RefreshCompanyJobsResult["errors"] = [];
 
-  for (const company of data as CompanyJobSyncRow[]) {
+  for (const company of companies) {
     try {
       const jobs = await discoverJobsForCompany(company, jobsPerCompany);
       jobsFound += jobs.length;
       if (jobs.length > 0) companiesWithJobs += 1;
 
       if (jobs.length === 0) continue;
+      if (dryRun) continue;
 
       const rows = jobs.map((job) => ({
         id: createJobId(job.company_id, job.source_url),
         ...job,
       }));
 
-      const { error: upsertError } = await supabase
+      if (!writeClient) continue;
+
+      const { error: upsertError } = await writeClient
         .from("company_jobs")
         .upsert(rows, { onConflict: "company_id,source_url" });
 
@@ -150,12 +173,180 @@ export async function refreshCompanyJobs({
 
   return {
     ok: errors.length === 0,
-    companiesChecked: data.length,
+    dryRun,
+    companiesChecked: companies.length,
+    companyRowsCreated,
     companiesWithJobs,
     jobsFound,
     jobsUpserted,
+    checkedCompanySlugs: companies.map((company) => company.slug),
     errors,
   };
+}
+
+async function getCompanyJobSyncRows({
+  companyLimit,
+  companySlugs,
+}: {
+  companyLimit: number;
+  companySlugs: string[];
+}) {
+  const slugFilter = new Set(companySlugs.map(normalizeSlugFilter).filter(Boolean));
+  const companies = await getPublishedCompanies();
+  const seenSlugs = new Set<string>();
+
+  return companies
+    .filter((company) => Boolean(normalizeUrl(company.website_url)))
+    .filter(
+      (company) =>
+        slugFilter.size === 0 || slugFilter.has(normalizeSlugFilter(company.slug)),
+    )
+    .sort(compareCompanySyncFreshness)
+    .filter((company) => {
+      const slug = normalizeSlugFilter(company.slug);
+      if (!slug || seenSlugs.has(slug)) return false;
+      seenSlugs.add(slug);
+      return true;
+    })
+    .slice(0, normalizeLimit(companyLimit))
+    .map(toCompanyJobSyncRow);
+}
+
+async function ensureCompanyRowsForJobSync(
+  supabase: NonNullable<ReturnType<typeof createSupabasePrivilegedClient>>,
+  companies: CompanyJobSyncRow[],
+): Promise<{
+  companies: CompanyJobSyncRow[];
+  companyRowsCreated: number;
+  errors: RefreshCompanyJobsResult["errors"];
+}> {
+  if (companies.length === 0) {
+    return { companies: [], companyRowsCreated: 0, errors: [] };
+  }
+
+  const slugs = companies.map((company) => company.slug);
+  const { data, error } = await supabase
+    .from("companies")
+    .select("id,slug")
+    .in("slug", slugs);
+
+  if (error || !data) {
+    return {
+      companies: [],
+      companyRowsCreated: 0,
+      errors: [
+        {
+          company: "Supabase",
+          error: error?.message ?? "Unable to verify companies for job sync.",
+        },
+      ],
+    };
+  }
+
+  const persistedIdsBySlug = new Map(
+    (data as Array<{ id?: string; slug?: string }>)
+      .filter((row) => row.id && row.slug)
+      .map((row) => [String(row.slug), String(row.id)]),
+  );
+  const missingCompanies = companies.filter(
+    (company) => !persistedIdsBySlug.has(company.slug),
+  );
+
+  if (missingCompanies.length === 0) {
+    return {
+      companies: companies.map((company) => ({
+        ...company,
+        id: persistedIdsBySlug.get(company.slug) ?? company.id,
+      })),
+      companyRowsCreated: 0,
+      errors: [],
+    };
+  }
+
+  const publishedCompaniesBySlug = new Map(
+    (await getPublishedCompanies()).map((company) => [company.slug, company]),
+  );
+  const rows = missingCompanies
+    .map((company) => publishedCompaniesBySlug.get(company.slug))
+    .filter((company): company is Company => Boolean(company))
+    .map(companyToDatabasePayload);
+
+  const { data: insertedRows, error: insertError } = await supabase
+    .from("companies")
+    .upsert(rows, { onConflict: "id" })
+    .select("id,slug");
+
+  if (insertError || !insertedRows) {
+    const missingSlugs = new Set(missingCompanies.map((company) => company.slug));
+
+    return {
+      companies: companies
+        .filter((company) => !missingSlugs.has(company.slug))
+        .map((company) => ({
+          ...company,
+          id: persistedIdsBySlug.get(company.slug) ?? company.id,
+        })),
+      companyRowsCreated: 0,
+      errors: [
+        {
+          company: "Supabase",
+          error:
+            insertError?.message ??
+            "Unable to create missing public companies for job sync.",
+        },
+      ],
+    };
+  }
+
+  for (const row of insertedRows as Array<{ id?: string; slug?: string }>) {
+    if (row.id && row.slug) persistedIdsBySlug.set(row.slug, row.id);
+  }
+
+  return {
+    companies: companies
+      .filter((company) => persistedIdsBySlug.has(company.slug))
+      .map((company) => ({
+        ...company,
+        id: persistedIdsBySlug.get(company.slug) ?? company.id,
+      })),
+    companyRowsCreated: insertedRows.length,
+    errors: [],
+  };
+}
+
+function toCompanyJobSyncRow(company: Company): CompanyJobSyncRow {
+  return {
+    id: company.id,
+    name: company.name,
+    slug: company.slug,
+    website_url: company.website_url,
+    updated_at: company.updated_at,
+  };
+}
+
+function compareCompanySyncFreshness(a: Company, b: Company) {
+  return getCompanySyncTime(b) - getCompanySyncTime(a);
+}
+
+function getCompanySyncTime(company: Company) {
+  return Math.max(
+    toTime(company.updated_at),
+    toTime(company.recent_activity_date),
+    toTime(company.created_at),
+  );
+}
+
+function toTime(value: string) {
+  const time = new Date(value).getTime();
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function normalizeLimit(value: number) {
+  return Math.min(Math.max(Math.floor(value) || 0, 1), 250);
+}
+
+function normalizeSlugFilter(value: string) {
+  return value.trim().toLowerCase();
 }
 
 async function discoverJobsForCompany(
@@ -182,6 +373,7 @@ async function discoverJobsForCompany(
     const candidates: ExtractedJob[] = [
       ...extractStructuredJobs(page.html, page.finalUrl),
       ...extractJobLinks(page.html, page.finalUrl),
+      ...(await extractAshbyJobsFromHtml(page.html)),
     ];
     const jobsToAdd: ExtractedJob[] = [];
 
@@ -222,6 +414,111 @@ function extractCareerLinks(html: string, baseUrl: string) {
   }
 
   return urls;
+}
+
+async function extractAshbyJobsFromHtml(html: string): Promise<ExtractedJob[]> {
+  const boardNames = extractAshbyJobBoardNames(html);
+  if (boardNames.length === 0) return [];
+
+  const jobs = (
+    await mapWithConcurrency(boardNames, 2, async (boardName) => {
+      try {
+        const response = await fetchWithTimeout(
+          `https://api.ashbyhq.com/posting-api/job-board/${encodeURIComponent(boardName)}`,
+          {
+            headers: {
+              "User-Agent": "AI Atlas NYC jobs refresh (+https://aiatlas.nyc)",
+              Accept: "application/json",
+            },
+          },
+          6000,
+        );
+        if (!response.ok) return [];
+
+        const payload = (await response.json()) as {
+          jobs?: Array<Record<string, unknown>>;
+        };
+
+        return (payload.jobs ?? [])
+          .filter((job) => job.isListed !== false)
+          .map((job) => toExtractedAshbyJob(job, boardName))
+          .filter((job): job is ExtractedJob => Boolean(job));
+      } catch {
+        return [];
+      }
+    })
+  ).flat();
+
+  return dedupeJobs(jobs);
+}
+
+function extractAshbyJobBoardNames(html: string) {
+  const normalizedHtml = decodeHtml(html)
+    .replace(/\\u002[fF]/g, "/")
+    .replace(/\\\//g, "/")
+    .replace(/\\"/g, '"');
+  const boards = new Set<string>();
+
+  for (const match of normalizedHtml.matchAll(
+    /https:\/\/jobs\.ashbyhq\.com\/([^/"\\?#\s]+)(?:\/[^"\\?#\s]+)?/gi,
+  )) {
+    const board = normalizeText(match[1] ?? "");
+    if (board) boards.add(board);
+  }
+
+  return [...boards].slice(0, 3);
+}
+
+function toExtractedAshbyJob(
+  job: Record<string, unknown>,
+  boardName: string,
+): ExtractedJob | null {
+  const title = cleanJobTitle(String(job.title ?? ""));
+  if (!looksLikeJobTitle(title)) return null;
+
+  const jobUrl =
+    normalizeUrl(String(job.jobUrl ?? "")) ||
+    `https://jobs.ashbyhq.com/${boardName}/${String(job.id ?? "")}`;
+  if (!jobUrl) return null;
+
+  const remotePolicy = normalizeText(
+    String(job.isRemote === true ? "Remote" : job.workplaceType ?? ""),
+  );
+
+  return {
+    title,
+    department: normalizeText(String(job.department ?? job.team ?? "")),
+    location: normalizeText(String(job.location ?? getAshbyAddressLocation(job))),
+    employment_type: normalizeText(String(job.employmentType ?? "")),
+    remote_policy: remotePolicy,
+    role_summary: cleanJobSummaryForDisplay(
+      String(job.descriptionHtml ?? job.description ?? ""),
+      title,
+    ),
+    source_url: jobUrl,
+    external_id: String(job.id ?? createJobId(title, jobUrl)),
+    posted_at: normalizeDate(String(job.publishedAt ?? "")),
+    extraction: "ashby-api",
+  };
+}
+
+function getAshbyAddressLocation(job: Record<string, unknown>) {
+  const address = job.address;
+  if (!address || typeof address !== "object") return "";
+
+  const postalAddress = (address as Record<string, unknown>).postalAddress;
+  if (!postalAddress || typeof postalAddress !== "object") return "";
+
+  const record = postalAddress as Record<string, unknown>;
+  return normalizeText(
+    [
+      record.addressLocality,
+      record.addressRegion,
+      record.addressCountry,
+    ]
+      .filter(Boolean)
+      .join(", "),
+  );
 }
 
 function extractStructuredJobs(html: string, baseUrl: string): ExtractedJob[] {

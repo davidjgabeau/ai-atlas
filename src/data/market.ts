@@ -615,6 +615,15 @@ const sourceCompanies: SourceRecord[] = [
     signal_label: "Funding signal",
     description: "Glif is a creative super agent for generating images, videos, audio, social posts, ads, and other media from one chat interface. The New York company launched Glif V2 and raised a $17.5M seed round from Andreessen Horowitz and Union Square Ventures in April 2026 after millions of creators used its earlier AI workflow sandbox.",
     category: "Media, Ads & Creative AI"
+  },
+  {
+    company_name: "General Intelligence Company",
+    website: "https://www.generalintelligencecompany.com",
+    founder_name: "Andrew Pignanelli; Abhishyant Khare",
+    email: "support@generalintelligencecompany.com",
+    signal_label: "Funding signal",
+    description: "General Intelligence Company is an applied AI lab building Cofounder, a system of agents designed to automate business operations full-stack and enable one-person, agent-native companies. Founded in New York in 2025 by Andrew Pignanelli and Abhishyant Khare, the company raised an $8.7M seed round led by Union Square Ventures with Acrew Capital, Compound, and other investors participating.",
+    category: "Agent Infrastructure"
   }
 ];
 
@@ -627,6 +636,7 @@ const companyAddressesByWebsite: Record<string, string> = {
   "https://www.anterior.com": "169 Madison Ave, Suite 2408, New York, NY 10016",
   "https://outputbio.com": "Union Square, New York, NY",
   "https://serinus.bio": "430 E 29th St, New York, NY 10016",
+  "https://www.generalintelligencecompany.com": "245 Lexington Avenue, Floor 4, New York, NY 10016",
   "https://www.statusai.com": "New York, NY",
   "https://glif.app": "228 Park Avenue South, New York, NY 10003",
   "https://www.emergence.ai": "8 W 40th St, Floor 20, New York, NY 10018",
@@ -762,6 +772,14 @@ const companyFundingByName: Record<string, CompanyFunding> = {
     total_raised: "Undisclosed",
     lead_investor: "Y Combinator",
     funding_note: "",
+  },
+  "General Intelligence Company": {
+    funding_round: "Seed",
+    funding_amount: "$8.7M",
+    funding_date: "December 2025",
+    total_raised: "$8.7M",
+    lead_investor: "Union Square Ventures",
+    funding_note: "Seed round announced December 8, 2025, with Acrew Capital, Compound, and other investors participating.",
   },
   "Status": {
     funding_round: "Seed + Series A",
@@ -1134,11 +1152,18 @@ const featuredNames = new Set([
 ]);
 
 const recentActivityDateByName: Record<string, string> = {
+  "General Intelligence Company": "2025-12-08T14:00:00.000Z",
   "Status": "2026-05-19T14:00:00.000Z",
   "Glif": "2026-04-23T16:55:39.000Z",
 };
 
 const companySourceUrlsByName: Record<string, string[]> = {
+  "General Intelligence Company": [
+    "https://www.generalintelligencecompany.com",
+    "https://www.generalintelligencecompany.com/about",
+    "https://traded.co/vc/deal/general-intelligence-company-raises-8-7-million-in-seed-funding-led-by-union-square-ventures",
+    "https://www.builtinnyc.com/company/general-intelligence-company-new-york/jobs",
+  ],
   "Status": [
     "https://www.statusai.com",
     "https://techcrunch.com/2026/05/19/gamified-social-media-network-status-announces-17m-funding-to-help-usher-in-new-era-of-social-networking/",
@@ -1259,6 +1284,10 @@ const verifiedFoundersByName: Record<string, Founder[]> = {
   "GhostEye": [
     { name: "Mohammad Eshan", title: "Founder & CEO" },
     { name: "Charles Antoine Malenfant", title: "Co-founder & CTO" },
+  ],
+  "General Intelligence Company": [
+    { name: "Andrew Pignanelli", title: "Co-founder" },
+    { name: "Abhishyant Khare", title: "Co-founder" },
   ],
   "Status": [
     { name: "Fai Nur", title: "Co-founder" },

@@ -98,11 +98,18 @@ async function getMarketCompanyRows(): Promise<CompanyRow[]> {
 }
 
 const localPublicCompanyOverlayIds: Record<string, string> = {
+  "general-intelligence-company": "cmp_general_intelligence_company",
   glif: "cmp_glif",
   status: "cmp_status",
 };
 
 const localPublicCompanyOverlaySourceUrls: Record<string, string[]> = {
+  "general-intelligence-company": [
+    "https://www.generalintelligencecompany.com",
+    "https://www.generalintelligencecompany.com/about",
+    "https://traded.co/vc/deal/general-intelligence-company-raises-8-7-million-in-seed-funding-led-by-union-square-ventures",
+    "https://www.builtinnyc.com/company/general-intelligence-company-new-york/jobs",
+  ],
   glif: [
     "https://glif.app",
     "https://a16z.com/announcement/investing-in-glif/",

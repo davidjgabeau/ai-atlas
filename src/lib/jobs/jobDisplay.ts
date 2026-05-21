@@ -7,8 +7,11 @@ const exactGenericTitles = new Set([
   "intern",
   "manager",
   "marketing",
+  "platform",
   "product",
   "scientist",
+  "solution",
+  "solutions",
 ]);
 
 export function cleanJobTitleForDisplay(value: string) {
@@ -124,7 +127,7 @@ export function looksLikeSpecificRoleTitle(value: string) {
   ) {
     return false;
   }
-  if (/\b(changelog|newsletter|platform|pricing|privacy|solutions?|terms)\b/i.test(title)) {
+  if (/\b(changelog|newsletter|pricing|privacy|terms)\b/i.test(title)) {
     return false;
   }
 
