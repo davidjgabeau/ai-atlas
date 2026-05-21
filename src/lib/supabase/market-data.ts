@@ -94,7 +94,50 @@ async function getMarketCompanyRows(): Promise<CompanyRow[]> {
     return localCompanies;
   }
 
-  return data as CompanyRow[];
+  return mergeLocalPublicCompanyOverlays(data as CompanyRow[]);
+}
+
+const localPublicCompanyOverlayIds: Record<string, string> = {
+  status: "cmp_status",
+};
+
+function mergeLocalPublicCompanyOverlays(rows: CompanyRow[]) {
+  const existingSlugs = new Set(
+    rows.map((row) => safeString(row.slug, "").toLowerCase()).filter(Boolean),
+  );
+  const existingIds = new Set(
+    rows.map((row) => safeString(row.id, "").toLowerCase()).filter(Boolean),
+  );
+  const additions = localCompanies
+    .filter((company) => company.slug in localPublicCompanyOverlayIds)
+    .filter((company) => !existingSlugs.has(company.slug.toLowerCase()))
+    .map((company) => {
+      const preferredId = localPublicCompanyOverlayIds[company.slug];
+      const id = existingIds.has(preferredId.toLowerCase())
+        ? `cmp_${company.slug}_overlay`
+        : preferredId;
+
+      existingIds.add(id.toLowerCase());
+
+      return {
+        ...company,
+        id,
+        discoveryReason: {
+          trigger: "manual",
+          sourceEventIds: [],
+          sourceUrls: [
+            company.website_url,
+            "https://techcrunch.com/2026/05/19/gamified-social-media-network-status-announces-17m-funding-to-help-usher-in-new-era-of-social-networking/",
+            "https://www.ycombinator.com/companies/status",
+          ],
+          confidence: "high",
+          notes:
+            "Curated public overlay for a newly added company until the production database has the row.",
+        },
+      } satisfies CompanyRow;
+    });
+
+  return [...rows, ...additions];
 }
 
 export async function getAdminMarketCompanies(): Promise<Company[]> {

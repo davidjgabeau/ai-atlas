@@ -597,6 +597,15 @@ const sourceCompanies: SourceRecord[] = [
     signal_label: "Workflow signal",
     description: "Serinus Biosciences uses a knowledge-primed AI engine to design cancer combination therapies by mapping how tumor cells evolve treatment resistance and identifying molecules that override resistance escape routes. The seed-stage New York company is based at 430 E 29th St.",
     category: "Life Sciences AI"
+  },
+  {
+    company_name: "Status",
+    website: "https://www.statusai.com",
+    founder_name: "Fai Nur; Amit Bhatnagar; Pritesh Kadiwala",
+    email: "team@statusai.com",
+    signal_label: "Funding signal",
+    description: "Status is an AI social simulation app where users create personas and step into interactive fandom worlds that play out through a familiar social-media interface. The New York company raised $17M in combined seed and Series A funding in May 2026 from Abstract, Union Square Ventures, Y Combinator, LightShed Partners, and other investors; YC lists it as W22 with more than 3 million users.",
+    category: "AI-Native Consumer & Social"
   }
 ];
 
@@ -609,6 +618,7 @@ const companyAddressesByWebsite: Record<string, string> = {
   "https://www.anterior.com": "169 Madison Ave, Suite 2408, New York, NY 10016",
   "https://outputbio.com": "Union Square, New York, NY",
   "https://serinus.bio": "430 E 29th St, New York, NY 10016",
+  "https://www.statusai.com": "New York, NY",
   "https://www.emergence.ai": "8 W 40th St, Floor 20, New York, NY 10018",
   "https://www.kalepa.com": "920 Broadway, New York, NY 10010",
   "https://www.hyperscience.com": "285 Fulton Street, 88th Floor (One World Trade Center), New York, NY 10007",
@@ -742,6 +752,14 @@ const companyFundingByName: Record<string, CompanyFunding> = {
     total_raised: "Undisclosed",
     lead_investor: "Y Combinator",
     funding_note: "",
+  },
+  "Status": {
+    funding_round: "Seed + Series A",
+    funding_amount: "$17M",
+    funding_date: "May 2026",
+    total_raised: "$17M",
+    lead_investor: "Abstract / General Catalyst / Union Square Ventures / Y Combinator / LightShed Partners",
+    funding_note: "Combined seed and Series A funding announced May 19, 2026.",
   },
   "Mirage (formerly Captions)": {
     funding_round: "Series B",
@@ -1097,6 +1115,10 @@ const featuredNames = new Set([
   "Canoe Intelligence"
 ]);
 
+const recentActivityDateByName: Record<string, string> = {
+  "Status": "2026-05-19T14:00:00.000Z",
+};
+
 function slugify(value: string) {
   return value
     .toLowerCase()
@@ -1204,6 +1226,11 @@ const verifiedFoundersByName: Record<string, Founder[]> = {
     { name: "Mohammad Eshan", title: "Founder & CEO" },
     { name: "Charles Antoine Malenfant", title: "Co-founder & CTO" },
   ],
+  "Status": [
+    { name: "Fai Nur", title: "Co-founder" },
+    { name: "Amit Bhatnagar", title: "Co-founder" },
+    { name: "Pritesh Kadiwala", title: "Co-founder" },
+  ],
 };
 
 function getFounders(record: SourceRecord): Founder[] {
@@ -1226,7 +1253,8 @@ function getFounders(record: SourceRecord): Founder[] {
 }
 
 export const companies: Company[] = sourceCompanies.map((record, index) => {
-  const activityDate = getRecentActivityDate(index);
+  const activityDate =
+    recentActivityDateByName[record.company_name] ?? getRecentActivityDate(index);
   const funding = companyFundingByName[record.company_name] ?? {
     funding_round: "",
     funding_amount: "",

@@ -60,6 +60,7 @@ const specificHooksBySlug: Record<string, string> = {
   nori: "Personal health memory for daily plans",
   loyalist: "Restaurant revenue automation with AI",
   remesh: "Real-time audience research with AI",
+  status: "AI social simulation for fandom worlds",
   cerca: "Social graph matching for Gen Z dating",
   "222": "AI matching for in-person social plans",
   series: "Warm introductions inside iMessage",

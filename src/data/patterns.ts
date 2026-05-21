@@ -221,6 +221,11 @@ export const patterns: Pattern[] = [
           "Social users: matching that turns into real-world plans.",
       },
       {
+        company_slug: "status",
+        one_liner:
+          "Fans and creators: personas and fandom worlds that play out as interactive social simulation.",
+      },
+      {
         company_slug: "tapestry",
         one_liner:
           "Product teams: social graph data for consumer and assistant-style products.",

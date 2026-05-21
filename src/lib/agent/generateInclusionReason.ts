@@ -165,6 +165,10 @@ function categorySpecificReason(company: CompanyLike) {
     return "Added: expands the map's social graph infrastructure layer.";
   }
 
+  if (/fandom|persona|roleplay|social simulation|interactive social/.test(text)) {
+    return "Added: shows consumer AI moving from chat into interactive social worlds.";
+  }
+
   if (/\baccounting\b|\baudit\b|\berp\b|\bspreadsheet\b|financial modeling/.test(text)) {
     return "Added: deepens AI-native finance and accounting coverage.";
   }
