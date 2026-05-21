@@ -367,23 +367,33 @@ function createCurrentReadCandidates(
       const firstItem = items[0];
       const title = stringValue(firstItem?.title) || "AI Atlas Current Read";
       const body = stringValue(firstItem?.body) || stringValue(firstItem?.summary);
-      const companyIds = arrayValue(surface.source_company_ids).slice(0, 3);
-      const mentionedCompanies = companies.filter((company) =>
-        companyIds.includes(company.id),
-      );
+      const companyIds = uniqueStrings([
+        ...arrayValue(firstItem?.supportingCompanyIds),
+        ...arrayValue(surface.source_company_ids),
+      ]).slice(0, 4);
+      const mentionedCompanies = orderCompaniesByText(
+        companies.filter((company) => companyIds.includes(company.id)),
+        `${title} ${body}`,
+      ).slice(0, 3);
 
       if (!body) return null;
-      const primaryUrl = absoluteUrl("/insights");
+      const primaryUrl = mentionedCompanies[0]
+        ? getCompanyProfileUrl(mentionedCompanies[0])
+        : absoluteUrl("/insights");
+      const sourceUrls = uniqueUrls([primaryUrl, absoluteUrl("/insights")]);
 
       return candidate({
         sourceKind: "current_read",
         title,
         facts: [body, "Current Read from AI Atlas NYC."],
         companies: mentionedCompanies,
-        sourceCompanyIds: companyIds,
+        sourceCompanyIds:
+          mentionedCompanies.length > 0
+            ? mentionedCompanies.map((company) => company.id)
+            : companyIds,
         sourceEventIds: arrayValue(surface.source_event_ids),
         sourceSnapshotIds: arrayValue(surface.source_snapshot_ids),
-        sourceUrls: [primaryUrl],
+        sourceUrls,
         primaryUrl,
         raw: {
           surface: surface.surface,
@@ -393,7 +403,7 @@ function createCurrentReadCandidates(
         score: scoreCandidate("current_read", {
           eventPriority: 3,
           companies: mentionedCompanies,
-          sourceUrls: [primaryUrl],
+          sourceUrls,
           hasEvent: arrayValue(surface.source_event_ids).length > 0,
         }),
       });
@@ -678,6 +688,26 @@ function normalizeHandle(value: unknown) {
   return typeof value === "string" ? value.replace(/^@/, "").trim() : "";
 }
 
+function orderCompaniesByText(companies: SocialCompany[], text: string) {
+  const normalizedText = text.toLowerCase();
+
+  return [...companies].sort((left, right) => {
+    return getCompanyMentionIndex(left, normalizedText) -
+      getCompanyMentionIndex(right, normalizedText);
+  });
+}
+
+function getCompanyMentionIndex(company: SocialCompany, normalizedText: string) {
+  const indexes = [
+    normalizedText.indexOf(company.name.toLowerCase()),
+    company.x_handle
+      ? normalizedText.indexOf(`@${normalizeHandle(company.x_handle).toLowerCase()}`)
+      : -1,
+  ].filter((index) => index >= 0);
+
+  return indexes.length > 0 ? Math.min(...indexes) : Number.MAX_SAFE_INTEGER;
+}
+
 function numberValue(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) ? value : 0;
 }
@@ -712,4 +742,8 @@ function getCategoryUrl(category: Category | string) {
 
 function uniqueUrls(urls: Array<string | undefined>) {
   return Array.from(new Set(urls.filter((url): url is string => Boolean(url))));
+}
+
+function uniqueStrings(values: Array<string | undefined>) {
+  return Array.from(new Set(values.filter((value): value is string => Boolean(value))));
 }

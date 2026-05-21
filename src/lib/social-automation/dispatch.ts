@@ -17,6 +17,7 @@ import { prepareSocialTextForPublish } from "@/lib/social-automation/preview-url
 import { absoluteUrl } from "@/lib/seo/shareMetadata";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import { createPost, getXAuthHealth } from "@/lib/social-automation/x-client";
+import type { Company } from "@/types/market";
 import type { AtlasSocialPost } from "@/types/social";
 
 export type DispatchSocialPostsResult = {
@@ -61,7 +62,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
   }
 
   try {
-    const postText = await preparePostTextForDispatch(claimedPost.post_text);
+    const postText = await preparePostTextForDispatch(claimedPost);
     const published = await createPost({
       text: postText,
       config,
@@ -172,7 +173,7 @@ export async function publishSocialPostNow(
   }
 
   try {
-    const postText = await preparePostTextForDispatch(claimedPost.post_text);
+    const postText = await preparePostTextForDispatch(claimedPost);
     const published = await createPost({
       text: postText,
       config,
@@ -247,13 +248,14 @@ export async function publishSocialPostNow(
   }
 }
 
-async function preparePostTextForDispatch(text: string) {
+async function preparePostTextForDispatch(post: AtlasSocialPost) {
   const companies = await getPublishedCompanies();
   const publicCompanySlugs = new Set(companies.map((company) => company.slug));
+  const correctedText = rewriteCurrentReadPreviewUrl(post, companies);
 
   return prepareSocialTextForPublish(
-    text.replace(
-      /https:\/\/aiatlas\.nyc\/companies\/([a-z0-9-]+)(?:\?[^ \n]*)?/gi,
+    correctedText.replace(
+      /https:\/\/(?:www\.)?aiatlas\.nyc\/companies\/([a-z0-9-]+)(?:\?[^ \n]*)?/gi,
       (url, slug: string) => {
         if (publicCompanySlugs.has(slug)) return url;
 
@@ -261,6 +263,58 @@ async function preparePostTextForDispatch(text: string) {
       },
     ),
   );
+}
+
+function rewriteCurrentReadPreviewUrl(post: AtlasSocialPost, companies: Company[]) {
+  if (post.source_kind !== "current_read") return post.post_text;
+  if (!/https:\/\/(?:www\.)?aiatlas\.nyc\/insights(?:\?[^ \n]*)?/i.test(post.post_text)) {
+    return post.post_text;
+  }
+
+  const primaryCompany = findCurrentReadPrimaryCompany(post, companies);
+  if (!primaryCompany) return post.post_text;
+
+  const profileUrl = absoluteUrl(`/companies/${primaryCompany.slug}`);
+  return post.post_text.replace(
+    /https:\/\/(?:www\.)?aiatlas\.nyc\/insights(?:\?[^ \n]*)?/gi,
+    profileUrl,
+  );
+}
+
+function findCurrentReadPrimaryCompany(
+  post: AtlasSocialPost,
+  companies: Company[],
+) {
+  const sourceCompanyIds = new Set(post.source_company_ids);
+  const sourceCompanies = companies.filter((company) =>
+    sourceCompanyIds.has(company.id),
+  );
+  const candidates = sourceCompanies.length > 0 ? sourceCompanies : companies;
+  const text = post.post_text.toLowerCase();
+  const directMatches = candidates
+    .map((company) => ({
+      company,
+      index: getCompanyMentionIndex(company, text),
+    }))
+    .filter((item) => item.index >= 0)
+    .sort((left, right) => left.index - right.index);
+
+  return directMatches[0]?.company ?? sourceCompanies[0];
+}
+
+function getCompanyMentionIndex(company: Company, normalizedText: string) {
+  const indexes = [
+    normalizedText.indexOf(company.name.toLowerCase()),
+    company.x_handle
+      ? normalizedText.indexOf(`@${normalizeHandle(company.x_handle).toLowerCase()}`)
+      : -1,
+  ].filter((index) => index >= 0);
+
+  return indexes.length > 0 ? Math.min(...indexes) : -1;
+}
+
+function normalizeHandle(value: string) {
+  return value.replace(/^@/, "").trim();
 }
 
 async function getPacingDecision(config: ReturnType<typeof getSocialAutomationConfig>) {
