@@ -64,6 +64,11 @@ const directFeeds: FeedSource[] = [
     defaultScope: "broad",
   },
   {
+    name: "TechCrunch Venture",
+    url: "https://techcrunch.com/category/venture/feed/",
+    defaultScope: "broad",
+  },
+  {
     name: "Crunchbase News",
     url: "https://news.crunchbase.com/feed/",
     defaultScope: "broad",
@@ -187,13 +192,13 @@ function shouldUseGdelt() {
 }
 
 function getItemsPerSourceLimit() {
-  const value = Number(process.env.NEWS_ITEMS_PER_SOURCE ?? 12);
-  return Number.isFinite(value) ? Math.max(1, Math.min(30, value)) : 12;
+  const value = readNumericEnv("NEWS_ITEMS_PER_SOURCE", 12);
+  return Math.max(1, Math.min(30, value));
 }
 
 function getMaxStoredItems() {
-  const value = Number(process.env.NEWS_MAX_STORED_ITEMS ?? 80);
-  return Number.isFinite(value) ? Math.max(20, Math.min(200, value)) : 80;
+  const value = readNumericEnv("NEWS_MAX_STORED_ITEMS", 80);
+  return Math.max(20, Math.min(200, value));
 }
 
 async function fetchText(url: string) {
@@ -366,11 +371,16 @@ function scoreNewsCandidate(
   scope: NewsScope;
   topic: string;
 } {
-  const hasAi = /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model|model)\b/i.test(text);
-  const hasEarlyStage = /\b(startup|seed|pre-seed|preseed|series a|early-stage|early stage|launch|launched)\b/i.test(text);
-  const hasFundingSignal = /\b(funding|raised|raises|venture)\b/i.test(text);
-  const hasLateStageSignal = /(series [bcdefgh]|growth-stage|growth stage|ipo|acquires|acquired|buys|unicorn|valuation|billion|\$[2-9]\d{2,}m|\$1[5-9]\d{1}m|\$[1-9](?:\.\d+)?b)/i.test(text);
-  const isInvestorStory = /\b(investor|investors|venture fund|fund manager|fundraising for its fund)\b/i.test(text);
+  const hasAi =
+    /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model|model)\b/i.test(text);
+  const hasEarlyStage =
+    /\b(startup|seed|pre-seed|preseed|series a|series b|early-stage|early stage|launch|launched)\b/i.test(text);
+  const hasFundingSignal = /\b(funding|financing|raised|raises|venture)\b/i.test(text);
+  const hasLateStageSignal =
+    /(series [bcdefgh]|growth-stage|growth stage|ipo|acquires|acquired|buys|unicorn|valuation|billion|\$[2-9]\d{2,}m|\$1[5-9]\d{1}m|\$[1-9](?:\.\d+)?b)/i.test(text);
+  const isInvestorStory =
+    /\b(venture fund|new fund|fund manager|fundraising for its fund|closed its fund|closes fund|launches fund|launched fund)\b/i.test(text) ||
+    /\b(ventures|capital|partners)\b.{0,80}\b(launches|launched|raises|raised|closed|closes)\b.{0,80}\bfund\b/i.test(text);
   const hasNyc = /\b(new york|nyc|manhattan|brooklyn|soho|flatiron|nomad|chelsea)\b/i.test(text);
   const prioritySource = /\b(techcrunch|venturebeat|crunchbase|bloomberg|wall street journal|wsj|alleywatch|axios|the information)\b/i.test(sourceName);
   const hasStage = hasEarlyStage || hasFundingSignal;
@@ -390,7 +400,10 @@ function scoreNewsCandidate(
       hasAi &&
       hasStage &&
       !isInvestorStory &&
-      !(hasLateStageSignal && !/\b(seed|pre-seed|preseed|series a)\b/i.test(text)) &&
+      !(
+        hasLateStageSignal &&
+        !/\b(seed|pre-seed|preseed|series a|series b)\b/i.test(text)
+      ) &&
       relevanceScore >= 0.62,
     relevanceScore: Number(relevanceScore.toFixed(2)),
     scope,
@@ -494,10 +507,25 @@ function stripHtml(value: string) {
 }
 
 function cleanText(value: string) {
-  return value
+  return decodeHtmlEntities(value)
     .replace(/<!\[CDATA\[|\]\]>/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function decodeHtmlEntities(value: string) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8216;/g, "'")
+    .replace(/&#8220;/g, "\"")
+    .replace(/&#8221;/g, "\"");
 }
 
 function cleanSourceUrl(value: string) {
@@ -553,6 +581,14 @@ function truncate(value: string, length: number) {
 function getTime(value: string) {
   const time = new Date(value).getTime();
   return Number.isNaN(time) ? 0 : time;
+}
+
+function readNumericEnv(name: string, fallback: number) {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
 }
 
 function sleep(ms: number) {

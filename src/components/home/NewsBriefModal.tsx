@@ -26,11 +26,13 @@ export function NewsBriefModal({
   items: NewsItem[];
   companies?: LinkableCompany[];
 }) {
-  if (items.length < 5) {
+  const relevantItems = getRelevantNewsBriefItems(items, companies ?? []);
+
+  if (relevantItems.length < 3) {
     return null;
   }
 
-  const previewItems = items.slice(0, 5);
+  const previewItems = relevantItems.slice(0, 5);
 
   return (
     <section id="news-brief" className="border-b border-[#E7E1D8] bg-section">
@@ -47,7 +49,7 @@ export function NewsBriefModal({
               News Brief
             </h2>
             <p className="mt-2 max-w-[560px] text-sm leading-[1.5] text-[#5F5A52]">
-              Early-stage NYC AI news links worth scanning.
+              NYC AI funding, launches, and mapped-company signals worth scanning.
             </p>
             <Link
               href="/feed"
@@ -89,12 +91,12 @@ export function NewsBriefModal({
                   News Brief
                 </DialogTitle>
                 <DialogDescription className="max-w-[560px] text-sm leading-[1.6] text-[#5F5A52]">
-                  Early-stage NYC AI news links worth scanning, with broader
-                  context labeled inside the feed when useful.
+                  News tied to mapped AI Atlas companies, NYC startup activity,
+                  funding, launches, hiring, and customer momentum.
                 </DialogDescription>
               </DialogHeader>
               <div className="divide-y divide-[#E7E1D8] px-5">
-                {items.slice(0, 8).map((item, index) => (
+                {relevantItems.slice(0, 8).map((item, index) => (
                   <NewsItemRow
                     key={item.id}
                     item={item}
@@ -126,4 +128,105 @@ function formatNewsBriefDate(item: NewsItem) {
   return formatRelativeUpdate(
     item.published_at ?? item.discovered_at ?? item.created_at,
   );
+}
+
+function getRelevantNewsBriefItems(
+  items: NewsItem[],
+  companies: LinkableCompany[],
+) {
+  return items
+    .map((item) => ({
+      item,
+      rank: getNewsBriefRank(item, companies),
+    }))
+    .filter(({ rank }) => rank.accepted)
+    .sort((left, right) => {
+      if (right.rank.score !== left.rank.score) {
+        return right.rank.score - left.rank.score;
+      }
+
+      return getNewsTime(right.item) - getNewsTime(left.item);
+    })
+    .map(({ item }) => item);
+}
+
+function getNewsBriefRank(item: NewsItem, companies: LinkableCompany[]) {
+  const rawText = [
+    item.title,
+    item.summary,
+    item.topic,
+    item.source_name,
+    item.source_domain,
+  ].join(" ");
+  const text = normalizeSearchText(rawText);
+  const matchedCompany = companies.some((company) =>
+    isCompanyMentioned(rawText, company.name),
+  );
+  const hasNyc =
+    item.scope === "nyc" ||
+    /\b(new york|nyc|manhattan|brooklyn|soho|flatiron|nomad|chelsea)\b/.test(text);
+  const hasAi =
+    matchedCompany ||
+    /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/.test(text);
+  const hasFunding =
+    /\b(funding|financing|raised|raises|seed|pre seed|preseed|series a|series b|yc|y combinator)\b/.test(text);
+  const hasProductSignal =
+    /\b(launch|launched|announces|announced|unveils|ships|released|customer|customers|hiring|hire|founder|founded|startup)\b/.test(text);
+  const hasCompanySignal = hasFunding || hasProductSignal || matchedCompany;
+  const investorFundStory =
+    /\b(venture fund|new fund|fund manager|fundraising for its fund|closed its fund|closes fund|launches fund|launched fund)\b/.test(text) ||
+    /\b(ventures|capital|partners)\b.{0,80}\b(launches|launched|raises|raised|closed|closes)\b.{0,80}\bfund\b/.test(text);
+  const broadWithoutAtlasTie = item.scope === "broad" && !matchedCompany && !hasNyc;
+  const accepted =
+    hasAi &&
+    hasCompanySignal &&
+    !investorFundStory &&
+    !broadWithoutAtlasTie;
+  const score =
+    (matchedCompany ? 60 : 0) +
+    (hasNyc ? 36 : 0) +
+    (hasFunding ? 24 : 0) +
+    (hasProductSignal ? 12 : 0) +
+    item.relevance_score * 10;
+
+  return {
+    accepted,
+    score,
+  };
+}
+
+function isCompanyMentioned(rawText: string, companyName: string) {
+  const normalizedName = normalizeSearchText(companyName);
+  if (normalizedName.length < 4) return false;
+  const normalizedText = normalizeSearchText(rawText);
+  const words = normalizedName.split(" ");
+
+  if (words.length === 1) {
+    return new RegExp(
+      `(^|[^A-Za-z0-9])${escapeRegExp(companyName)}([^A-Za-z0-9]|$)`,
+    ).test(rawText);
+  }
+
+  return normalizedText.includes(normalizedName);
+}
+
+function normalizeSearchText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&[#a-z0-9]+;/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getNewsTime(item: NewsItem) {
+  const time = new Date(
+    item.published_at ?? item.discovered_at ?? item.created_at,
+  ).getTime();
+
+  return Number.isNaN(time) ? 0 : time;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

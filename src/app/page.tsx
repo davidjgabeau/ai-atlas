@@ -83,7 +83,7 @@ const categoryPulsePhrases: Record<Category, string> = {
 export default async function Home() {
   const [marketCompanies, newsItems] = await Promise.all([
     getPublishedCompanies(),
-    getNewsItems({ limit: 8 }),
+    getNewsItems({ limit: 24 }),
   ]);
   const publishedCompanies = marketCompanies;
   const storedAgentData = await getStoredAgentHomepageData();
