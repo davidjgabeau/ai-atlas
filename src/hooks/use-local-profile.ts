@@ -686,23 +686,24 @@ export function useLocalProfile({
         authError: "",
       }));
 
-      const result = wasSaved
-        ? await supabase
-            .from("saved_companies")
-            .delete()
-            .match({ user_id: userId, company_id: companyId })
-        : await supabase
-            .from("saved_companies")
-            .upsert(
-              { user_id: userId, company_id: companyId },
-              { onConflict: "user_id,company_id" },
-            );
+      const response = await fetch("/api/profile/saved-companies", {
+        method: wasSaved ? "DELETE" : "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ companyId }),
+      });
+      const result = (await response.json().catch(() => null)) as {
+        error?: string;
+      } | null;
 
-      if (result.error) {
+      if (!response.ok) {
         setState((current) => ({
           ...current,
           watchingCompanyIds: state.watchingCompanyIds,
-          authError: getFriendlyError(result.error.message),
+          authError: getFriendlyError(
+            result?.error ?? "Company could not be saved.",
+          ),
         }));
         return wasSaved;
       }

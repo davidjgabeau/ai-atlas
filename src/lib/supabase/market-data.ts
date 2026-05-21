@@ -134,14 +134,23 @@ function mergeLocalPublicCompanyOverlays(rows: CompanyRow[]) {
   const existingIds = new Set(
     rows.map((row) => safeString(row.id, "").toLowerCase()).filter(Boolean),
   );
+  const existingRowsBySlug = new Map<string, string>();
+  for (const row of rows) {
+    const slug = safeString(row.slug, "").toLowerCase();
+    const id = safeString(row.id, "");
+    if (slug && id) existingRowsBySlug.set(slug, id);
+  }
   const additions = localCompanies
     .filter((company) => company.slug in localPublicCompanyOverlayIds)
     .filter((company) => !existingPublishedSlugs.has(company.slug.toLowerCase()))
     .map((company) => {
       const preferredId = localPublicCompanyOverlayIds[company.slug];
-      const id = existingIds.has(preferredId.toLowerCase())
-        ? `cmp_${company.slug}_overlay`
-        : preferredId;
+      const persistedSlugId = existingRowsBySlug.get(company.slug.toLowerCase());
+      const id =
+        persistedSlugId ??
+        (existingIds.has(preferredId.toLowerCase())
+          ? `cmp_${company.slug}_overlay`
+          : preferredId);
 
       existingIds.add(id.toLowerCase());
 
