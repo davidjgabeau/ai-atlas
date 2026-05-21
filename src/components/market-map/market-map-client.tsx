@@ -916,7 +916,7 @@ function CompanyTable({
         <span>Signal</span>
         <span />
       </div>
-      <div className="grid grid-cols-2 gap-2 p-2 lg:block lg:divide-y lg:divide-[#E7E1D8] lg:p-0">
+      <div className="grid min-w-0 grid-cols-2 gap-2 p-2 lg:block lg:divide-y lg:divide-[#E7E1D8] lg:p-0">
         {companies.map((company) => {
           const location = locationBySlug.get(company.slug);
 
@@ -933,7 +933,7 @@ function CompanyTable({
                 }
               }}
               className={cn(
-                "grid min-h-[212px] w-full gap-3 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.06)] lg:min-h-[86px] lg:rounded-none lg:border-0 lg:border-l-4 lg:border-l-transparent lg:bg-transparent lg:px-4 lg:py-4 lg:hover:border-l-[#E7E1D8] lg:grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] lg:items-center",
+                "grid min-h-[212px] min-w-0 w-full gap-3 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.06)] lg:min-h-[86px] lg:rounded-none lg:border-0 lg:border-l-4 lg:border-l-transparent lg:bg-transparent lg:px-4 lg:py-4 lg:hover:border-l-[#E7E1D8] lg:grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] lg:items-center",
                 selectedId === company.slug &&
                   "border-[#9A3D2B] bg-[rgb(154_61_43_/_0.06)] shadow-[inset_0_0_0_1px_rgba(154,61,43,0.14)] hover:bg-[rgb(154_61_43_/_0.06)] lg:border-l-[#9A3D2B]",
               )}
@@ -959,8 +959,8 @@ function CompanyTable({
                   </p>
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-2">
-                <CategoryBadge category={company.category} />
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
+                <CategoryBadge category={company.category} className="w-full lg:w-fit" />
                 <CompanyViewCount
                   companyId={company.id}
                   views={company.metrics?.views ?? 0}
@@ -980,7 +980,7 @@ function CompanyTable({
                 companyName={company.name}
                 size="sm"
                 stopPropagation
-                className="w-full justify-center whitespace-nowrap lg:w-auto lg:justify-self-end"
+                className="min-w-0 w-full justify-center whitespace-nowrap lg:w-auto lg:justify-self-end [&>span]:min-w-0 [&>span]:truncate"
               />
             </div>
           );
