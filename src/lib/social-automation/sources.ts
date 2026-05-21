@@ -247,6 +247,7 @@ function createJobCandidates(
     if (!company) continue;
     const profileUrl = getCompanyProfileUrl(company);
     const sourceUrls = uniqueUrls([job.source_url, profileUrl]);
+    const primaryUrl = job.source_url || profileUrl;
 
     seenCompanies.add(company.id);
     candidates.push(
@@ -262,8 +263,8 @@ function createJobCandidates(
         sourceCompanyIds: [company.id],
         sourceJobIds: [job.id],
         sourceUrls,
-        primaryUrl: profileUrl,
-        raw: { jobTitle: job.title, sourceName: job.source_name },
+        primaryUrl,
+        raw: { job, jobTitle: job.title, sourceName: job.source_name },
         score: scoreCandidate("job_alert", {
           eventPriority: 3,
           companies: [company],

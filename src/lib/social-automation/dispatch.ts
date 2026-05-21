@@ -268,7 +268,10 @@ async function preparePostForDispatch(
 ): Promise<PreparedSocialPost> {
   const companies = await getPublishedCompanies();
   const publicCompanySlugs = new Set(companies.map((company) => company.slug));
-  const correctedText = rewriteCurrentReadPreviewUrl(post, companies);
+  const correctedText = rewriteJobAlertPreviewUrl(
+    post,
+    rewriteCurrentReadPreviewUrl(post, companies),
+  );
 
   const text = prepareSocialTextForPublish(
     correctedText.replace(
@@ -317,6 +320,36 @@ function rewriteCurrentReadPreviewUrl(post: AtlasSocialPost, companies: Company[
     /https:\/\/(?:www\.)?aiatlas\.nyc\/insights(?:\?[^ \n]*)?/gi,
     profileUrl,
   );
+}
+
+function rewriteJobAlertPreviewUrl(post: AtlasSocialPost, text: string) {
+  if (post.source_kind !== "job_alert") return text;
+
+  const jobUrl = findFirstExternalJobUrl(post.source_urls);
+  if (!jobUrl) return text;
+
+  const atlasCompanyUrl =
+    /https:\/\/(?:www\.)?aiatlas\.nyc\/companies\/[a-z0-9-]+(?:\?[^ \n]*)?/gi;
+
+  if (atlasCompanyUrl.test(text)) {
+    atlasCompanyUrl.lastIndex = 0;
+    return text.replace(atlasCompanyUrl, jobUrl);
+  }
+
+  if (/https?:\/\/\S+/i.test(text)) return text;
+
+  return `${text.trim()}\n\n${jobUrl}`;
+}
+
+function findFirstExternalJobUrl(urls: string[]) {
+  return urls.find((url) => {
+    try {
+      const parsed = new URL(url);
+      return !/(^|\.)aiatlas\.nyc$/i.test(parsed.hostname);
+    } catch {
+      return false;
+    }
+  });
 }
 
 function findCurrentReadPrimaryCompany(
