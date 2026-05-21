@@ -10,7 +10,13 @@ export const dynamic = "force-dynamic";
 const xAuthorizeUrl = "https://x.com/i/oauth2/authorize";
 const oauthStateCookie = "ai_atlas_x_oauth_state";
 const oauthVerifierCookie = "ai_atlas_x_oauth_verifier";
-const scopes = ["tweet.read", "tweet.write", "users.read", "offline.access"];
+const scopes = [
+  "tweet.read",
+  "tweet.write",
+  "users.read",
+  "media.write",
+  "offline.access",
+];
 
 export async function GET(request: NextRequest) {
   const { errorResponse } = await requireAdminRequest();

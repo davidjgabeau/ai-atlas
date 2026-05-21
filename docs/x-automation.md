@@ -46,8 +46,10 @@ back to the editorial model env var and then the built-in Claude Sonnet default.
 1. Confirm the app is attached to the AI Atlas X account.
 2. Enable OAuth 2.0 user-context auth for the app.
 3. Set app permissions to read and write.
-4. Request scopes for `tweet.read`, `tweet.write`, `users.read`, `like.read`,
-   `like.write`, and `offline.access`.
+4. Request scopes for `tweet.read`, `tweet.write`, `users.read`, `media.write`,
+   `like.read`, `like.write`, and `offline.access`. `media.write` lets AI Atlas
+   attach its generated share image to posts instead of relying on X link-card
+   previews.
 5. Store the app client ID and client secret in the env vars above.
 6. Generate or complete the OAuth flow for the AI Atlas account, then store the
    user access token and refresh token.

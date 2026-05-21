@@ -38,6 +38,13 @@ type XTweetResponse = {
   };
 };
 
+type XMediaUploadResponse = {
+  data?: {
+    id?: string;
+    media_key?: string;
+  };
+};
+
 type XTokenResponse = {
   access_token?: string;
   refresh_token?: string;
@@ -116,11 +123,13 @@ export async function createPost({
   text,
   quoteTweetId,
   replyToTweetId,
+  mediaIds,
   config = getSocialAutomationConfig(),
 }: {
   text: string;
   quoteTweetId?: string;
   replyToTweetId?: string;
+  mediaIds?: string[];
   config?: SocialAutomationConfig;
 }) {
   if (config.killSwitch) {
@@ -141,12 +150,24 @@ export async function createPost({
     }
   }
 
-  let response = await createPostRequest({ text, quoteTweetId, replyToTweetId, config });
+  let response = await createPostRequest({
+    text,
+    quoteTweetId,
+    replyToTweetId,
+    mediaIds,
+    config,
+  });
 
   if (!response.ok && isRefreshableAuthFailure(response.status)) {
     const refresh = await refreshXAccessToken(config);
     if (refresh.ok) {
-      response = await createPostRequest({ text, quoteTweetId, replyToTweetId, config });
+      response = await createPostRequest({
+        text,
+        quoteTweetId,
+        replyToTweetId,
+        mediaIds,
+        config,
+      });
     }
   }
 
@@ -164,17 +185,74 @@ export async function createPost({
   return payload.data;
 }
 
+export async function uploadImageFromUrl({
+  imageUrl,
+  config = getSocialAutomationConfig(),
+}: {
+  imageUrl: string;
+  config?: SocialAutomationConfig;
+}) {
+  if (config.killSwitch) {
+    throw new Error("SOCIAL_KILL_SWITCH is enabled.");
+  }
+
+  if (!config.autoPost) {
+    throw new Error("SOCIAL_AUTO_POST is false.");
+  }
+
+  await applyStoredXTokens(config);
+  applyCachedXAccessToken(config);
+
+  if (!config.xAccessToken) {
+    const health = await ensureUserContextAccess(config);
+    if (!health.canWrite) {
+      throw new Error(health.reason);
+    }
+  }
+
+  const image = await fetchImageForUpload(imageUrl);
+  let response = await uploadImageRequest({ ...image, config });
+
+  if (!response.ok && isRefreshableAuthFailure(response.status)) {
+    const refresh = await refreshXAccessToken(config);
+    if (refresh.ok) {
+      response = await uploadImageRequest({ ...image, config });
+    }
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `X media upload failed: ${response.status} ${await summarizeResponse(response)}`,
+    );
+  }
+
+  const payload = (await response.json()) as XMediaUploadResponse;
+  const id = payload.data?.id;
+  if (!id) {
+    throw new Error("X media upload returned no media id.");
+  }
+
+  return {
+    id,
+    mediaKey: payload.data?.media_key,
+  };
+}
+
 function createPostRequest({
   text,
   quoteTweetId,
   replyToTweetId,
+  mediaIds,
   config,
 }: {
   text: string;
   quoteTweetId?: string;
   replyToTweetId?: string;
+  mediaIds?: string[];
   config: SocialAutomationConfig;
 }) {
+  const safeMediaIds = uniqueStrings(mediaIds ?? []).slice(0, 4);
+
   return fetch(`${xApiBaseUrl}/tweets`, {
     method: "POST",
     headers: {
@@ -187,12 +265,92 @@ function createPostRequest({
       ...(replyToTweetId
         ? { reply: { in_reply_to_tweet_id: replyToTweetId } }
         : {}),
+      ...(safeMediaIds.length > 0
+        ? { media: { media_ids: safeMediaIds } }
+        : {}),
     }),
     cache: "no-store",
   });
 }
 
 export const publishTweet = createPost;
+
+async function fetchImageForUpload(imageUrl: string) {
+  const response = await fetch(imageUrl, {
+    headers: {
+      accept: "image/png,image/jpeg,image/webp,image/*",
+      "user-agent": "AI Atlas NYC social automation (+https://aiatlas.nyc)",
+    },
+    cache: "no-store",
+    signal: AbortSignal.timeout(15_000),
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `Share image fetch failed: ${response.status} ${await summarizeResponse(response)}`,
+    );
+  }
+
+  const contentType = normalizeImageContentType(
+    response.headers.get("content-type"),
+  );
+  const bytes = Buffer.from(await response.arrayBuffer());
+  if (bytes.length === 0) {
+    throw new Error("Share image fetch returned an empty image.");
+  }
+
+  if (bytes.length > 5 * 1024 * 1024) {
+    throw new Error("Share image is larger than X's 5 MB image upload limit.");
+  }
+
+  return {
+    media: bytes.toString("base64"),
+    mediaType: contentType,
+  };
+}
+
+function uploadImageRequest({
+  media,
+  mediaType,
+  config,
+}: {
+  media: string;
+  mediaType: string;
+  config: SocialAutomationConfig;
+}) {
+  return fetch(`${xApiBaseUrl}/media/upload`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${config.xAccessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      media,
+      media_category: "tweet_image",
+      media_type: mediaType,
+      shared: false,
+    }),
+    cache: "no-store",
+  });
+}
+
+function normalizeImageContentType(value: string | null) {
+  const contentType = value?.split(";")[0]?.trim().toLowerCase() || "image/png";
+  if (
+    contentType === "image/png" ||
+    contentType === "image/jpeg" ||
+    contentType === "image/webp" ||
+    contentType === "image/gif"
+  ) {
+    return contentType;
+  }
+
+  throw new Error(`Share image returned unsupported content type: ${contentType}`);
+}
+
+function uniqueStrings(values: string[]) {
+  return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
+}
 
 export async function likePost({
   userId,

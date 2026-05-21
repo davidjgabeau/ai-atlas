@@ -14,9 +14,13 @@ import {
   saveSocialRun,
 } from "@/lib/social-automation/store";
 import { prepareSocialTextForPublish } from "@/lib/social-automation/preview-url";
-import { absoluteUrl } from "@/lib/seo/shareMetadata";
+import { absoluteUrl, getShareImageUrl } from "@/lib/seo/shareMetadata";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
-import { createPost, getXAuthHealth } from "@/lib/social-automation/x-client";
+import {
+  createPost,
+  getXAuthHealth,
+  uploadImageFromUrl,
+} from "@/lib/social-automation/x-client";
 import type { Company } from "@/types/market";
 import type { AtlasSocialPost } from "@/types/social";
 
@@ -62,9 +66,10 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
   }
 
   try {
-    const postText = await preparePostTextForDispatch(claimedPost);
+    const preparedPost = await preparePostForDispatch(claimedPost, config);
     const published = await createPost({
-      text: postText,
+      text: preparedPost.text,
+      mediaIds: preparedPost.mediaIds,
       config,
     });
     const username = health.user?.username || "aiatlas";
@@ -80,7 +85,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
       selectedEventId: claimedPost.source_event_ids[0],
       selectedPostId: claimedPost.id,
       decision: "published",
-      notes: [published.id],
+      notes: [published.id, ...preparedPost.mediaNotes],
     });
 
     await saveSocialRun({
@@ -92,6 +97,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
         published: 1,
         postId: claimedPost.id,
         externalPostId: published.id,
+        shareImageAttached: preparedPost.mediaIds.length > 0,
       },
       errors,
     });
@@ -173,9 +179,10 @@ export async function publishSocialPostNow(
   }
 
   try {
-    const postText = await preparePostTextForDispatch(claimedPost);
+    const preparedPost = await preparePostForDispatch(claimedPost, config);
     const published = await createPost({
-      text: postText,
+      text: preparedPost.text,
+      mediaIds: preparedPost.mediaIds,
       config,
     });
     const username = health.user?.username || config.xAccountUsername;
@@ -191,7 +198,7 @@ export async function publishSocialPostNow(
       selectedEventId: claimedPost.source_event_ids[0],
       selectedPostId: claimedPost.id,
       decision: "published_now",
-      notes: [published.id],
+      notes: [published.id, ...preparedPost.mediaNotes],
     });
 
     await saveSocialRun({
@@ -204,6 +211,7 @@ export async function publishSocialPostNow(
         postId: claimedPost.id,
         externalPostId: published.id,
         manual: true,
+        shareImageAttached: preparedPost.mediaIds.length > 0,
       },
       errors,
     });
@@ -248,12 +256,15 @@ export async function publishSocialPostNow(
   }
 }
 
-async function preparePostTextForDispatch(post: AtlasSocialPost) {
+async function preparePostForDispatch(
+  post: AtlasSocialPost,
+  config: ReturnType<typeof getSocialAutomationConfig>,
+) {
   const companies = await getPublishedCompanies();
   const publicCompanySlugs = new Set(companies.map((company) => company.slug));
   const correctedText = rewriteCurrentReadPreviewUrl(post, companies);
 
-  return prepareSocialTextForPublish(
+  const text = prepareSocialTextForPublish(
     correctedText.replace(
       /https:\/\/(?:www\.)?aiatlas\.nyc\/companies\/([a-z0-9-]+)(?:\?[^ \n]*)?/gi,
       (url, slug: string) => {
@@ -263,6 +274,27 @@ async function preparePostTextForDispatch(post: AtlasSocialPost) {
       },
     ),
   );
+  const imageUrl = getPostShareImageUrl(post, companies, text);
+  const mediaNotes = [`shareImage:${imageUrl}`];
+
+  try {
+    const media = await uploadImageFromUrl({ imageUrl, config });
+    mediaNotes.push(`mediaId:${media.id}`);
+
+    return {
+      text,
+      mediaIds: [media.id],
+      mediaNotes,
+    };
+  } catch (error) {
+    mediaNotes.push(`mediaUploadSkipped:${getErrorMessage(error)}`);
+
+    return {
+      text,
+      mediaIds: [],
+      mediaNotes,
+    };
+  }
 }
 
 function rewriteCurrentReadPreviewUrl(post: AtlasSocialPost, companies: Company[]) {
@@ -300,6 +332,79 @@ function findCurrentReadPrimaryCompany(
     .sort((left, right) => left.index - right.index);
 
   return directMatches[0]?.company ?? sourceCompanies[0];
+}
+
+function getPostShareImageUrl(
+  post: AtlasSocialPost,
+  companies: Company[],
+  preparedText: string,
+) {
+  const company = findPostPrimaryCompany(post, companies, preparedText);
+  if (company) return getShareImageUrl({ company: company.slug });
+
+  const atlasUrl = findFirstAtlasUrl([preparedText, ...post.source_urls]);
+  if (!atlasUrl) return getShareImageUrl({ page: "home" });
+
+  const companySlug = atlasUrl.pathname.match(/^\/companies\/([^/?#]+)/)?.[1];
+  if (companySlug) return getShareImageUrl({ company: companySlug });
+
+  const categorySlug = atlasUrl.pathname.match(/^\/categories\/([^/?#]+)/)?.[1];
+  if (categorySlug) return getShareImageUrl({ category: categorySlug });
+
+  return getShareImageUrl({ page: getSharePageForPath(atlasUrl.pathname) });
+}
+
+function findPostPrimaryCompany(
+  post: AtlasSocialPost,
+  companies: Company[],
+  preparedText: string,
+) {
+  const sourceCompanyIds = new Set(
+    [post.company_id, ...post.source_company_ids].filter(Boolean),
+  );
+  const sourceCompanies = companies.filter((company) =>
+    sourceCompanyIds.has(company.id),
+  );
+  const candidates = sourceCompanies.length > 0 ? sourceCompanies : companies;
+  const text = preparedText.toLowerCase();
+  const directMatches = candidates
+    .map((company) => ({
+      company,
+      index: getCompanyMentionIndex(company, text),
+    }))
+    .filter((item) => item.index >= 0)
+    .sort((left, right) => left.index - right.index);
+
+  return directMatches[0]?.company ?? sourceCompanies[0];
+}
+
+function findFirstAtlasUrl(values: string[]) {
+  for (const value of values) {
+    const matches = value.match(/https:\/\/(?:www\.)?aiatlas\.nyc\/?[^\s<>"')\]]*/gi);
+    for (const match of matches ?? []) {
+      try {
+        return new URL(match);
+      } catch {
+        continue;
+      }
+    }
+  }
+
+  return null;
+}
+
+function getSharePageForPath(pathname: string) {
+  if (pathname.startsWith("/jobs")) return "jobs";
+  if (pathname.startsWith("/feed") || pathname.startsWith("/newsfeed")) return "feed";
+  if (pathname.startsWith("/insights")) return "insights";
+  if (pathname.startsWith("/patterns")) return "insights";
+  if (pathname.startsWith("/submit")) return "submit";
+  if (pathname.startsWith("/mcp")) return "mcp";
+  if (pathname.startsWith("/ask")) return "ask";
+  if (pathname.startsWith("/companies")) return "companies";
+  if (pathname === "/" || pathname === "") return "home";
+
+  return "home";
 }
 
 function getCompanyMentionIndex(company: Company, normalizedText: string) {

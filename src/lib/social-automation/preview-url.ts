@@ -30,7 +30,7 @@ export function getPreviewSafeAtlasUrl(value: string) {
     const url = new URL(normalized);
     if (!aiAtlasHostnames.has(url.hostname)) return value;
 
-    url.searchParams.set("x", "1");
+    url.searchParams.set("x", "2");
     url.hash = "";
 
     return url.toString();

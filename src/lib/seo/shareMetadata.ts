@@ -70,6 +70,7 @@ export function createShareMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
+          type: "image/png",
           alt: `${title} preview`,
         },
       ],
@@ -80,7 +81,12 @@ export function createShareMetadata({
       creator: xAccountHandle,
       title: socialTitle,
       description,
-      images: [imageUrl],
+      images: [
+        {
+          url: imageUrl,
+          alt: `${title} preview`,
+        },
+      ],
     },
   };
 }

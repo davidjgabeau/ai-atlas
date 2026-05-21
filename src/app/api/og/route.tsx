@@ -110,6 +110,18 @@ export async function GET(request: Request) {
       meta: "Current read",
       spritePath: "/icons/skyline.png",
     },
+    ask: {
+      title: "Ask Atlas",
+      body: "Natural-language research over the public AI Atlas NYC market map.",
+      meta: "AI research surface",
+      spritePath: "/icons/bridge-mini.png",
+    },
+    mcp: {
+      title: "AI Atlas NYC MCP Server",
+      body: "Read-only structured access to public companies, categories, patterns, and jobs.",
+      meta: "MCP server",
+      spritePath: "/icons/bridge-mini.png",
+    },
     submit: {
       title: "Submit a startup.",
       body: "Add an early-stage company building AI in New York.",
