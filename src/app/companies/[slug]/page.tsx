@@ -26,7 +26,11 @@ import {
 } from "@/data/market";
 import { getPatternsForCompanySlug } from "@/data/patterns";
 import { formatDate } from "@/lib/format";
-import { formatFundingBody, getFundingRows } from "@/lib/funding";
+import {
+  formatFundingBody,
+  formatFundingHeadline,
+  getFundingRows,
+} from "@/lib/funding";
 import {
   getDisplayUrl,
   getExternalUrl,
@@ -188,6 +192,33 @@ export default async function CompanyProfilePage({
         </div>
       </section>
 
+      <section className="border-t border-[#E7E1D8] bg-section lg:hidden">
+        <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6">
+          <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
+            <div className="grid gap-2 border-b border-[#E7E1D8] p-4 sm:grid-cols-2">
+              <Button asChild size="sm" className="w-full app-primary-button">
+                <a href={introRequestHref}>
+                  Request intro
+                  <Mail className="size-3.5" />
+                </a>
+              </Button>
+              <Button asChild size="sm" variant="outline" className="w-full">
+                <a href={companyWebsiteUrl} target="_blank" rel="noreferrer">
+                  Visit website
+                  <ExternalLink className="size-3.5" />
+                </a>
+              </Button>
+            </div>
+            <PanelSection title="Startup snapshot">
+              <StartupSnapshotRows
+                company={company}
+                companyWebsiteUrl={companyWebsiteUrl}
+              />
+            </PanelSection>
+          </div>
+        </div>
+      </section>
+
       <section>
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
           <div className="space-y-8">
@@ -231,7 +262,7 @@ export default async function CompanyProfilePage({
               excludeCompanyId={company.id}
             />
           </div>
-          <aside className="lg:sticky lg:top-20 lg:self-start">
+          <aside className="hidden lg:sticky lg:top-20 lg:block lg:self-start">
             <div className="overflow-hidden rounded-md bg-[var(--app-surface)] shadow-sm app-card-border">
               <div className="border-b border-[#E7E1D8] bg-[rgb(154_61_43_/_0.06)] p-5">
                 <div className="flex items-start gap-3">
@@ -251,12 +282,44 @@ export default async function CompanyProfilePage({
                   </div>
                 </div>
               </div>
+              <PanelSection title="Startup snapshot">
+                <StartupSnapshotRows
+                  company={company}
+                  companyWebsiteUrl={companyWebsiteUrl}
+                />
+              </PanelSection>
+              <PanelSection title="Request intro">
+                <RequestIntroBlock
+                  company={company}
+                  introRequestHref={introRequestHref}
+                />
+              </PanelSection>
+              <div className="border-b border-[#E7E1D8] p-5">
+                <WebsiteButton companyWebsiteUrl={companyWebsiteUrl} />
+              </div>
+              <PanelSection title="Funding">
+                <FundingRows rows={fundingRows} />
+              </PanelSection>
               <PanelSection title="Recent Activity">
                 <RecentActivity
                   text={company.recent_activity_text}
                   date={company.recent_activity_date}
                 />
               </PanelSection>
+              <PanelSection
+                title="Signal"
+                action={<UsageBadge value={signalLabel} />}
+              >
+                <p className="text-sm leading-6 text-[#5F5A52]">
+                  Based on product wedge, buyer clarity, repeat workflow signal,
+                  and visible market momentum.
+                </p>
+              </PanelSection>
+              {hasFoundationModelUsage(company) ? (
+                <PanelSection title="Foundation model usage">
+                  <FoundationModelUsage company={company} compact />
+                </PanelSection>
+              ) : null}
               <PanelSection
                 title="Company posts"
                 action={
@@ -290,125 +353,6 @@ export default async function CompanyProfilePage({
                   )}
                 </div>
               </PanelSection>
-              <PanelSection
-                title="Signal"
-                action={<UsageBadge value={signalLabel} />}
-              >
-                <p className="text-sm leading-6 text-[#5F5A52]">
-                  Based on product wedge, buyer clarity, repeat workflow signal,
-                  and visible market momentum.
-                </p>
-              </PanelSection>
-              <PanelSection title="Funding">
-                {fundingRows.length > 0 ? (
-                  <dl className="grid gap-4 text-sm">
-                    {fundingRows.map(([label, value]) => (
-                      <SnapshotRow key={label} label={label} value={value} />
-                    ))}
-                  </dl>
-                ) : (
-                  <p className="text-sm leading-6 text-[#5F5A52]">
-                    Public funding details are not disclosed yet.
-                  </p>
-                )}
-              </PanelSection>
-              {hasFoundationModelUsage(company) ? (
-                <PanelSection title="Foundation model usage">
-                  <FoundationModelUsage company={company} compact />
-                </PanelSection>
-              ) : null}
-              <PanelSection title="Startup snapshot">
-                <dl className="grid gap-4 text-sm">
-                  <SnapshotRow label="Stage" value={company.stage} />
-                  <SnapshotRow label="Status" value={company.status} />
-                  <SnapshotRow
-                    label="Updated"
-                    value={formatDate(company.updated_at)}
-                  />
-                  <div className="flex items-start justify-between gap-4">
-                    <dt className="text-[#7A746C]">Views</dt>
-                    <dd className="text-right font-medium text-[#181818]">
-                      <CompanyViewCount
-                        views={company.metrics?.views ?? 0}
-                        showTextLabel
-                        className="justify-end"
-                      />
-                    </dd>
-                  </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <dt className="text-[#7A746C]">Category</dt>
-                    <dd>
-                      <Link
-                        href={`/categories/${getCategorySlug(company.category)}`}
-                        className="inline-flex items-center gap-1 text-right font-medium text-[#181818] hover:underline"
-                      >
-                        <CategoryBadge category={company.category} />
-                        <ArrowUpRight className="size-3.5" />
-                      </Link>
-                    </dd>
-                  </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <dt className="text-[#7A746C]">Website</dt>
-                    <dd>
-                      <a
-                        href={companyWebsiteUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-medium text-[#9A3D2B] hover:underline"
-                      >
-                        {getDisplayUrl(company.website_url)}
-                        <ExternalLink className="size-3.5" />
-                      </a>
-                    </dd>
-                  </div>
-                  {company.x_handle ? (
-                    <div className="flex items-start justify-between gap-4">
-                      <dt className="text-[#7A746C]">X</dt>
-                      <dd>
-                        <a
-                          href={`https://x.com/${company.x_handle}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1 font-medium text-[#9A3D2B] hover:underline"
-                        >
-                          @{company.x_handle}
-                          <ExternalLink className="size-3.5" />
-                        </a>
-                      </dd>
-                    </div>
-                  ) : null}
-                </dl>
-              </PanelSection>
-              <PanelSection title="Request intro">
-                <div className="flex items-center gap-3 rounded-md bg-[var(--app-surface)] p-3 app-card-border">
-                  <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgb(154_61_43_/_0.10)] text-[#9A3D2B] ring-1 ring-[#E7E1D8]">
-                    <Mail className="size-4" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-medium text-[#181818]">
-                      Want to connect with {company.name}?
-                    </p>
-                    <p className="mt-1 text-xs text-[#7A746C]">
-                      Send a quick intro request to AI Atlas and include any
-                      context that would make the connection useful.
-                    </p>
-                  </div>
-                  <Button asChild size="sm" className="app-primary-button">
-                    <a href={introRequestHref}>
-                      Request intro
-                      <Mail className="size-3.5" />
-                    </a>
-                  </Button>
-                </div>
-              </PanelSection>
-              <div className="p-5">
-                <Button asChild className="w-full app-primary-button">
-                  <a href={companyWebsiteUrl} target="_blank" rel="noreferrer">
-                    Visit website
-                    <ExternalLink className="size-4" />
-                  </a>
-                </Button>
-              </div>
             </div>
           </aside>
         </div>
@@ -450,6 +394,141 @@ export default async function CompanyProfilePage({
       ) : null}
       </PublicShell>
     </>
+  );
+}
+
+function StartupSnapshotRows({
+  company,
+  companyWebsiteUrl,
+}: {
+  company: Company;
+  companyWebsiteUrl: string;
+}) {
+  const fundingHeadline = formatFundingHeadline(company);
+
+  return (
+    <dl className="grid gap-4 text-sm">
+      <SnapshotRow label="Stage" value={company.stage} />
+      {fundingHeadline !== "Funding not disclosed" ? (
+        <SnapshotRow label="Funding" value={fundingHeadline} />
+      ) : null}
+      <SnapshotRow label="Status" value={company.status} />
+      <SnapshotRow label="Updated" value={formatDate(company.updated_at)} />
+      <div className="flex items-start justify-between gap-4">
+        <dt className="text-[#7A746C]">Views</dt>
+        <dd className="text-right font-medium text-[#181818]">
+          <CompanyViewCount
+            views={company.metrics?.views ?? 0}
+            showTextLabel
+            className="justify-end"
+          />
+        </dd>
+      </div>
+      <div className="flex items-start justify-between gap-4">
+        <dt className="text-[#7A746C]">Category</dt>
+        <dd>
+          <Link
+            href={`/categories/${getCategorySlug(company.category)}`}
+            className="inline-flex items-center gap-1 text-right font-medium text-[#181818] hover:underline"
+          >
+            <CategoryBadge category={company.category} />
+            <ArrowUpRight className="size-3.5" />
+          </Link>
+        </dd>
+      </div>
+      <div className="flex items-start justify-between gap-4">
+        <dt className="text-[#7A746C]">Website</dt>
+        <dd>
+          <a
+            href={companyWebsiteUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-[#9A3D2B] hover:underline"
+          >
+            {getDisplayUrl(company.website_url)}
+            <ExternalLink className="size-3.5" />
+          </a>
+        </dd>
+      </div>
+      {company.x_handle ? (
+        <div className="flex items-start justify-between gap-4">
+          <dt className="text-[#7A746C]">X</dt>
+          <dd>
+            <a
+              href={`https://x.com/${company.x_handle}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-[#9A3D2B] hover:underline"
+            >
+              @{company.x_handle}
+              <ExternalLink className="size-3.5" />
+            </a>
+          </dd>
+        </div>
+      ) : null}
+    </dl>
+  );
+}
+
+function RequestIntroBlock({
+  company,
+  introRequestHref,
+}: {
+  company: Company;
+  introRequestHref: string;
+}) {
+  return (
+    <div className="grid gap-4">
+      <div className="flex items-start gap-3">
+        <div className="grid size-10 shrink-0 place-items-center rounded-md bg-[rgb(154_61_43_/_0.10)] text-[#9A3D2B] ring-1 ring-[#E7E1D8]">
+          <Mail className="size-4" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-medium text-[#181818]">
+            Want to connect with {company.name}?
+          </p>
+          <p className="mt-1 text-xs leading-5 text-[#7A746C]">
+            Send a quick intro request to AI Atlas and include any context that
+            would make the connection useful.
+          </p>
+        </div>
+      </div>
+      <Button asChild size="sm" className="w-full app-primary-button">
+        <a href={introRequestHref}>
+          Request intro
+          <Mail className="size-3.5" />
+        </a>
+      </Button>
+    </div>
+  );
+}
+
+function WebsiteButton({ companyWebsiteUrl }: { companyWebsiteUrl: string }) {
+  return (
+    <Button asChild className="w-full app-primary-button">
+      <a href={companyWebsiteUrl} target="_blank" rel="noreferrer">
+        Visit website
+        <ExternalLink className="size-4" />
+      </a>
+    </Button>
+  );
+}
+
+function FundingRows({ rows }: { rows: ReturnType<typeof getFundingRows> }) {
+  if (rows.length === 0) {
+    return (
+      <p className="text-sm leading-6 text-[#5F5A52]">
+        Public funding details are not disclosed yet.
+      </p>
+    );
+  }
+
+  return (
+    <dl className="grid gap-4 text-sm">
+      {rows.map(([label, value]) => (
+        <SnapshotRow key={label} label={label} value={value} />
+      ))}
+    </dl>
   );
 }
 
