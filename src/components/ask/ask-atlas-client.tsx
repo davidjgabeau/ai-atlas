@@ -13,13 +13,16 @@ import {
 import {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
   type FormEvent,
 } from "react";
 
 import { CompanyLogo } from "@/components/market-map/company-logo";
+import {
+  StructuredAskAnswer,
+  type AskAtlasCompanyReference,
+} from "@/components/ask/structured-ask-answer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
@@ -34,11 +37,13 @@ const maxHistoryMessages = 4;
 type AskAtlasClientProps = {
   initialQuery?: string;
   examples: string[];
+  companyReferences: AskAtlasCompanyReference[];
 };
 
 export function AskAtlasClient({
   initialQuery = "",
   examples,
+  companyReferences,
 }: AskAtlasClientProps) {
   const [input, setInput] = useState(initialQuery);
   const [submittedQuery, setSubmittedQuery] = useState("");
@@ -52,7 +57,6 @@ export function AskAtlasClient({
   const autoRanRef = useRef(false);
   const cleanInput = input.trim();
   const canSubmit = Boolean(cleanInput) && !loading;
-  const answerBlocks = useMemo(() => splitAnswer(answer), [answer]);
 
   const runAsk = useCallback(async (query: string) => {
     abortRef.current?.abort();
@@ -245,12 +249,12 @@ export function AskAtlasClient({
         ) : null}
 
         <div className="mt-5">
-          {answerBlocks.length > 0 ? (
-            <div className="space-y-4 text-[16px] leading-7 text-[#33302C]">
-              {answerBlocks.map((block, index) => (
-                <p key={`${block}-${index}`}>{block}</p>
-              ))}
-            </div>
+          {answer.trim() ? (
+            <StructuredAskAnswer
+              answer={answer}
+              companyReferences={companyReferences}
+              suggestedCompanies={companies}
+            />
           ) : (
             <EmptyAskState loading={loading} />
           )}
@@ -374,11 +378,4 @@ function parseStreamEvent(value: string): AskAtlasStreamEvent | null {
   } catch {
     return null;
   }
-}
-
-function splitAnswer(value: string) {
-  return value
-    .split(/\n{2,}/)
-    .map((block) => block.trim())
-    .filter(Boolean);
 }

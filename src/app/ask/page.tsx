@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { PixelSiteIcon } from "@/components/site/pixel-site-icon";
 import { PublicShell } from "@/components/site/public-shell";
 import { Button } from "@/components/ui/button";
-import { categoryMeta } from "@/data/market";
+import { categoryMeta, getCategorySlug } from "@/data/market";
 import { patterns } from "@/data/patterns";
 import {
   absoluteUrl,
@@ -45,6 +45,12 @@ export default async function AskPage({
     getPublishedCompanies(),
   ]);
   const initialQuery = (params?.q ?? "").trim().slice(0, 700);
+  const companyReferences = companies.map((company) => ({
+    name: company.name,
+    slug: company.slug,
+    category: company.category,
+    categorySlug: getCategorySlug(company.category),
+  }));
 
   return (
     <>
@@ -90,7 +96,11 @@ export default async function AskPage({
 
         <section className="bg-section">
           <div className="editorial-container !max-w-[1180px] py-8 md:py-10 lg:py-12">
-            <AskAtlasClient initialQuery={initialQuery} examples={examples} />
+            <AskAtlasClient
+              initialQuery={initialQuery}
+              examples={examples}
+              companyReferences={companyReferences}
+            />
           </div>
         </section>
 
