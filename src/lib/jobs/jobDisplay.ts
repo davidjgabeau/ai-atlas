@@ -33,6 +33,8 @@ export function cleanJobTitleForDisplay(value: string) {
       .trim();
   }
 
+  title = cleanDuplicatedTitleParts(title);
+
   return title || "Open role";
 }
 
@@ -174,4 +176,61 @@ function normalizeDepartmentLabel(value: string) {
 
 function normalizeText(value: string) {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function cleanDuplicatedTitleParts(value: string) {
+  let title = value;
+
+  for (let index = 0; index < 4; index += 1) {
+    const nextTitle = stripTrailingJobMeta(collapseRepeatedLeadingPhrase(title));
+    if (nextTitle === title) return title;
+    title = nextTitle;
+  }
+
+  return title;
+}
+
+function collapseRepeatedLeadingPhrase(value: string) {
+  const tokens = value.split(/\s+/).filter(Boolean);
+
+  for (let size = Math.floor(tokens.length / 2); size >= 1; size -= 1) {
+    const first = tokens.slice(0, size);
+    const second = tokens.slice(size, size * 2);
+    if (!sameTokenSequence(first, second)) continue;
+
+    return [...first, ...tokens.slice(size * 2)].join(" ").trim();
+  }
+
+  return value;
+}
+
+function sameTokenSequence(left: string[], right: string[]) {
+  if (left.length === 0 || left.length !== right.length) return false;
+
+  return left.every(
+    (token, index) => normalizeTitleToken(token) === normalizeTitleToken(right[index]),
+  );
+}
+
+function normalizeTitleToken(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function stripTrailingJobMeta(value: string) {
+  let title = value;
+
+  for (let index = 0; index < 4; index += 1) {
+    const nextTitle = title
+      .replace(
+        /\s*(?:(?:-|\u2013|\u2014|[|,/])\s*)?\(?(?:brooklyn,\s*ny|hybrid|manhattan,\s*ny|new york,\s*ny|new york|nyc|on-?site|remote|san francisco,\s*ca|united states|usa|us)\)?$/i,
+        "",
+      )
+      .replace(/\s*(?:(?:-|\u2013|\u2014|[|,/])\s*)?(?:contract|full[-\s]?time|part[-\s]?time)$/i, "")
+      .trim();
+
+    if (nextTitle === title) return title;
+    title = nextTitle;
+  }
+
+  return title;
 }
