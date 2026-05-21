@@ -32,6 +32,12 @@ export type DispatchSocialPostsResult = {
   errors: string[];
 };
 
+type PreparedSocialPost = {
+  text: string;
+  mediaIds: string[];
+  mediaNotes: string[];
+};
+
 export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPostsResult> {
   const startedAt = new Date().toISOString();
   const config = getSocialAutomationConfig();
@@ -259,7 +265,7 @@ export async function publishSocialPostNow(
 async function preparePostForDispatch(
   post: AtlasSocialPost,
   config: ReturnType<typeof getSocialAutomationConfig>,
-) {
+): Promise<PreparedSocialPost> {
   const companies = await getPublishedCompanies();
   const publicCompanySlugs = new Set(companies.map((company) => company.slug));
   const correctedText = rewriteCurrentReadPreviewUrl(post, companies);

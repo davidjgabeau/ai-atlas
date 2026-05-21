@@ -191,7 +191,7 @@ export async function uploadImageFromUrl({
 }: {
   imageUrl: string;
   config?: SocialAutomationConfig;
-}) {
+}): Promise<{ id: string; mediaKey?: string }> {
   if (config.killSwitch) {
     throw new Error("SOCIAL_KILL_SWITCH is enabled.");
   }
