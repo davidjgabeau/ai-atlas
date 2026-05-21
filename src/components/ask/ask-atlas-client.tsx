@@ -25,7 +25,10 @@ import {
 } from "@/components/ask/structured-ask-answer";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { formatViewCount } from "@/lib/metrics/formatViewCount";
+import {
+  formatViewCount,
+  shouldShowViewCount,
+} from "@/lib/metrics/formatViewCount";
 import type {
   AskAtlasCompanyCard,
   AskAtlasMessage,
@@ -176,7 +179,7 @@ export function AskAtlasClient({
               placeholder={
                 hasAsked
                   ? "Ask a follow-up..."
-                  : "I'm a seed investor focused on infrastructure — what should I be watching?"
+                  : "I'm a seed investor focused on infrastructure. What should I be watching?"
               }
               className="mt-3 min-h-[132px] resize-none rounded-[12px] border-[#D8CFC1] bg-[#FBFAF7] px-4 py-4 text-[16px] leading-7 text-[#181818] shadow-none placeholder:text-[#8C857C] focus-visible:border-[#9A3D2B] focus-visible:ring-0"
             />
@@ -330,11 +333,15 @@ function AskCompanyCard({ company }: { company: AskAtlasCompanyCard }) {
           <span>{company.category}</span>
           <span aria-hidden="true">·</span>
           <span>{company.stage}</span>
-          <span aria-hidden="true">·</span>
-          <span className="inline-flex items-center gap-1">
-            <Eye className="size-3.5" />
-            {formatViewCount(company.views)}
-          </span>
+          {shouldShowViewCount(company.views) ? (
+            <>
+              <span aria-hidden="true">·</span>
+              <span className="inline-flex items-center gap-1">
+                <Eye className="size-3.5" />
+                {formatViewCount(company.views)}
+              </span>
+            </>
+          ) : null}
         </span>
       </span>
       <ArrowRight className="mt-1 size-4 text-[#9A3D2B] transition group-hover:translate-x-0.5" />

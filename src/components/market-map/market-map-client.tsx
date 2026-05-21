@@ -14,7 +14,10 @@ import {
 
 import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
-import { FoundationModelUsage } from "@/components/company/FoundationModelUsage";
+import {
+  FoundationModelUsage,
+  hasFoundationModelUsage,
+} from "@/components/company/FoundationModelUsage";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import { GoogleStartupMap } from "@/components/market-map/google-startup-map";
 import { RecentActivity } from "@/components/market-map/recent-activity";
@@ -1236,21 +1239,14 @@ function CompanyInspector({
       </div>
 
       <div className="space-y-7 px-7 py-6">
-        <InspectorSection title="Foundation model usage">
-          <FoundationModelUsage company={company} compact />
-        </InspectorSection>
-
-        <InspectorSection
-          title="Why people are saving it"
-          action={<UsageBadge value={signalLabel} />}
-        >
-          <p className="text-sm leading-6 text-[#5F5A52]">
-            {company.why_it_matters}
-          </p>
-          <p className="mt-3 text-xs leading-5 text-[#7A746C]">
-            {company.category} · {company.stage}
-          </p>
-        </InspectorSection>
+        {hasFoundationModelUsage(company) ? (
+          <InspectorSection
+            title="Foundation model usage"
+            action={<UsageBadge value={signalLabel} />}
+          >
+            <FoundationModelUsage company={company} compact />
+          </InspectorSection>
+        ) : null}
 
         <InspectorSection title="Startup Snapshot">
           <dl className="grid gap-4 text-sm">

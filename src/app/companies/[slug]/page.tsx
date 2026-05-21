@@ -5,7 +5,10 @@ import { notFound, redirect } from "next/navigation";
 
 import { CompanyProfileViewCounter } from "@/components/company/CompanyProfileViewCounter";
 import { CompanyViewCount } from "@/components/company/CompanyViewCount";
-import { FoundationModelUsage } from "@/components/company/FoundationModelUsage";
+import {
+  FoundationModelUsage,
+  hasFoundationModelUsage,
+} from "@/components/company/FoundationModelUsage";
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import { CategoryBadge } from "@/components/market-map/category-badge";
 import { CompanyCard } from "@/components/market-map/company-card";
@@ -46,7 +49,6 @@ import {
   getPublishedCompanies,
 } from "@/lib/supabase/market-data";
 import { getCompanySocialFeed } from "@/lib/supabase/social-feed";
-import { getCompanyProfileBriefs } from "@/lib/editorial/companyProfileBriefs";
 import type { Company } from "@/types/market";
 
 export const dynamic = "force-dynamic";
@@ -113,13 +115,13 @@ export default async function CompanyProfilePage({
       (item) => item.category === company.category && item.id !== company.id,
     )
     .slice(0, 3);
-  const footprintBody = `${company.name} is part of the New York City AI startup scene, with a profile focused on its market category, stage, and product signal.`;
   const fundingRows = getFundingRows(company);
   const companyWebsiteUrl = getExternalUrl(company.website_url);
   const introRequestHref = getIntroRequestMailto(company);
   const signalLabel = getCompanySignalLabel(company);
-  const profileBriefs = getCompanyProfileBriefs(company);
   const companyPatterns = getPatternsForCompanySlug(company.slug);
+  const nycFootprintRows = getNycFootprintRows(company);
+  const aiLabFit = getAiLabFit(company);
   const companyPosts = await getCompanySocialFeed({
     companyId: company.id,
     limit: 4,
@@ -190,39 +192,37 @@ export default async function CompanyProfilePage({
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
           <div className="space-y-8">
             <ProfileSection
-              title="Why people are saving it"
-              body={profileBriefs.whySaving}
-              companies={companies}
-              excludeCompanyId={company.id}
-            />
-            <ProfileSection
               title="What they're building"
-              body={profileBriefs.whatBuilding}
+              body={getWhatBuildingBody(company)}
               companies={companies}
               excludeCompanyId={company.id}
             />
             {company.founders.length > 0 ? (
               <FoundersSection founders={company.founders} />
             ) : null}
-            <FoundationUsageSection company={company} />
-            <ProfileSection
-              title="NYC footprint"
-              body={footprintBody}
-              companies={companies}
-              excludeCompanyId={company.id}
-            />
+            {hasFoundationModelUsage(company) ? (
+              <FoundationUsageSection company={company} />
+            ) : null}
+            {nycFootprintRows.length > 0 ? (
+              <ProfileFactsSection
+                title="NYC footprint"
+                rows={nycFootprintRows}
+              />
+            ) : null}
             <ProfileSection
               title="Funding"
               body={formatFundingBody(company)}
               companies={companies}
               excludeCompanyId={company.id}
             />
-            <ProfileSection
-              title="Platform / OpenAI fit"
-              body={company.openai_fit}
-              companies={companies}
-              excludeCompanyId={company.id}
-            />
+            {aiLabFit ? (
+              <ProfileSection
+                title="AI Lab Fit"
+                body={aiLabFit}
+                companies={companies}
+                excludeCompanyId={company.id}
+              />
+            ) : null}
             <ProfileSection
               id="notes"
               title="Notes"
@@ -312,9 +312,11 @@ export default async function CompanyProfilePage({
                   </p>
                 )}
               </PanelSection>
-              <PanelSection title="Foundation model usage">
-                <FoundationModelUsage company={company} compact />
-              </PanelSection>
+              {hasFoundationModelUsage(company) ? (
+                <PanelSection title="Foundation model usage">
+                  <FoundationModelUsage company={company} compact />
+                </PanelSection>
+              ) : null}
               <PanelSection title="Startup snapshot">
                 <dl className="grid gap-4 text-sm">
                   <SnapshotRow label="Stage" value={company.stage} />
@@ -518,6 +520,126 @@ function ProfileSection({
       </p>
     </section>
   );
+}
+
+function ProfileFactsSection({
+  title,
+  rows,
+}: {
+  title: string;
+  rows: Array<{ label: string; value: string }>;
+}) {
+  return (
+    <section className="scroll-mt-28 rounded-md bg-[var(--app-surface)] p-6 app-card-border">
+      <h2 className="text-lg font-semibold tracking-[0] text-[#181818]">
+        {title}
+      </h2>
+      <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+        {rows.map((row) => (
+          <div
+            key={row.label}
+            className="border-t border-[#E7E1D8] pt-4"
+          >
+            <dt className="text-xs font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
+              {row.label}
+            </dt>
+            <dd className="mt-1 text-base leading-7 text-[#5F5A52]">
+              {row.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
+function getWhatBuildingBody(company: Company) {
+  return dedupeProfileSentences(
+    [
+      company.one_line_thesis,
+      company.short_description !== company.one_line_thesis
+        ? company.short_description
+        : "",
+    ].join(" "),
+  );
+}
+
+function getNycFootprintRows(company: Company) {
+  const rows: Array<{ label: string; value: string }> = [];
+  const officeAddress = company.office_address?.trim();
+
+  if (officeAddress) {
+    rows.push({
+      label: officeAddress.toLowerCase() === "new york, ny"
+        ? "NYC location"
+        : "NYC office",
+      value: officeAddress,
+    });
+  }
+
+  const ecosystemTie = getLocalEcosystemTie(company);
+  if (ecosystemTie) {
+    rows.push({
+      label: "Local ecosystem ties",
+      value: ecosystemTie,
+    });
+  }
+
+  return rows;
+}
+
+function getLocalEcosystemTie(company: Company) {
+  const text = [
+    company.lead_investor,
+    company.funding_note,
+    company.short_description,
+    company.why_it_matters,
+  ].join(" ");
+
+  if (/union square ventures|\busv\b/i.test(text)) return "USV portfolio";
+  if (/cornell tech/i.test(text)) return "Cornell Tech connection";
+  if (/nyu/i.test(text)) return "NYU connection";
+  if (/columbia/i.test(text)) return "Columbia connection";
+
+  return "";
+}
+
+function getAiLabFit(company: Company) {
+  const fit = company.openai_fit
+    ?.replace(/\bOpenAI\b/g, "foundation model lab")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!fit || isGenericProfileCopy(fit, company)) return "";
+  return fit;
+}
+
+function isGenericProfileCopy(value: string, company: Company) {
+  const normalized = value.toLowerCase();
+  return (
+    normalized.includes("profile focused on its market category") ||
+    normalized === company.short_description.toLowerCase() ||
+    normalized === company.one_line_thesis.toLowerCase()
+  );
+}
+
+function dedupeProfileSentences(value: string) {
+  const sentences = value
+    .replace(/\s+/g, " ")
+    .split(/(?<=[.!?])\s+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+  const seen = new Set<string>();
+  const unique: string[] = [];
+
+  for (const sentence of sentences) {
+    const key = sentence.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    unique.push(sentence);
+  }
+
+  return unique.join(" ").trim();
 }
 
 function FoundersSection({ founders }: { founders: Company["founders"] }) {

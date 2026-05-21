@@ -484,8 +484,8 @@ function getCurrentReadFromSurface(
 
   return items.slice(0, 3).map((item) => ({
     id: item.id,
-    title: item.title,
-    body: item.body ?? "",
+    title: sanitizeHomepageEditorialCopy(item.title),
+    body: sanitizeHomepageEditorialCopy(item.body ?? ""),
     supportingCompanyIds: item.supportingCompanyIds ?? [],
     generatedAt: new Date().toISOString(),
     sourceCompanyIds: item.supportingCompanyIds ?? [],
@@ -628,6 +628,17 @@ function truncateSignalBody(value: string) {
   const punctuated = /[.!?]$/.test(clean) ? clean : `${clean}.`;
   if (punctuated.length <= 210) return punctuated;
   return `${punctuated.slice(0, 209).trim().replace(/[,;:]$/, "")}.`;
+}
+
+function sanitizeHomepageEditorialCopy(value: string) {
+  return value
+    .replace(/\u2014/g, ", ")
+    .replace(/\bpatient-\./gi, "patient-side.")
+    .replace(/\bpatient-\s*$/gi, "patient-side.")
+    .replace(/\s+([,.])/g, "$1")
+    .replace(/([,.])(?=\S)/g, "$1 ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function getSafeLatestSignalItems(items: EditorialItem[] | undefined) {

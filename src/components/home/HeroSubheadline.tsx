@@ -58,18 +58,12 @@ export function HeroSubheadline({ count }: HeroSubheadlineProps) {
       <span className="hero-count-ticket" aria-hidden="true">
         {displayCount}
       </span>{" "}
-      <span className="lg:hidden">
-        early-stage AI {count === 1 ? "company" : "companies"} across consumer,
-        healthcare, infrastructure, and more.
-      </span>
-      <span className="hidden lg:inline">
-        AI {count === 1 ? "startup" : "startups"} across consumer, healthcare,
-        infrastructure, and more.
-      </span>
+      early-stage AI {count === 1 ? "company" : "companies"} across consumer,
+      healthcare, infrastructure, and more.
     </p>
   );
 }
 
 function getTicketStartValue(count: number) {
-  return Math.max(0, count - 8);
+  return count;
 }

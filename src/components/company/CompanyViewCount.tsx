@@ -4,7 +4,11 @@ import { useEffect, useMemo, useRef } from "react";
 import { Eye } from "lucide-react";
 
 import { recordSampledCompanyView } from "@/lib/metrics/companyViewClient";
-import { formatViewCount } from "@/lib/metrics/formatViewCount";
+import {
+  formatViewCount,
+  formatViewCountLabel,
+  shouldShowViewCount,
+} from "@/lib/metrics/formatViewCount";
 import { cn } from "@/lib/utils";
 
 type CompanyViewCountProps = {
@@ -28,6 +32,10 @@ export function CompanyViewCount({
   const viewsRef = useRef(displayViews);
   const formattedViews = useMemo(
     () => formatViewCount(displayViews),
+    [displayViews],
+  );
+  const viewLabel = useMemo(
+    () => formatViewCountLabel(displayViews),
     [displayViews],
   );
 
@@ -81,9 +89,19 @@ export function CompanyViewCount({
     };
   }, [companyId, trackImpression]);
 
+  if (!shouldShowViewCount(displayViews)) {
+    return (
+      <span
+        aria-hidden="true"
+        ref={elementRef}
+        className="sr-only"
+      />
+    );
+  }
+
   return (
     <span
-      aria-label={`${formattedViews} views`}
+      aria-label={viewLabel}
       ref={elementRef}
       className={cn(
         "inline-flex items-center gap-1 text-[12px] font-medium leading-none text-[#66625C] transition group-hover:text-[#4F4A43]",
@@ -91,9 +109,9 @@ export function CompanyViewCount({
       )}
     >
       <Eye className="size-3.5 opacity-65" aria-hidden="true" />
-      <span>{formattedViews}</span>
+      <span>{showTextLabel ? viewLabel : formattedViews}</span>
       {showTextLabel ? (
-        <span aria-hidden="true">{displayViews === 1 ? "view" : "views"}</span>
+        null
       ) : (
         <span className="sr-only">views</span>
       )}

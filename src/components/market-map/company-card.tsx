@@ -23,6 +23,8 @@ export function CompanyCard({
   company: Company;
   compact?: boolean;
 }) {
+  const hook = compact ? getCompanyOwnSummary(company) : company.generated.hook;
+
   return (
     <Card
       style={categorySurfaceStyle(company.category)}
@@ -44,7 +46,7 @@ export function CompanyCard({
               <ArrowUpRight className="app-arrow size-3.5 shrink-0 opacity-0 transition group-hover:opacity-100" />
             </Link>
             <p className="text-company-hook mt-1 line-clamp-1 text-sm leading-6">
-              {company.generated.hook}
+              {hook}
             </p>
             <p className="text-body mt-1 line-clamp-2 text-sm leading-6">
               {company.short_description}
@@ -98,4 +100,12 @@ export function CompanyCard({
       </CardContent>
     </Card>
   );
+}
+
+function getCompanyOwnSummary(company: Company) {
+  return (
+    company.one_line_thesis ||
+    company.short_description ||
+    company.generated.hook
+  ).replace(/\s+/g, " ").trim();
 }

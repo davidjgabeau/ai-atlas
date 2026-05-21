@@ -11,11 +11,14 @@ export function RecentActivity({
   date: string;
   compact?: boolean;
 }) {
+  const activity = formatActivity(text, date);
+  const shouldClamp = compact && !/^raised\s+\$[0-9]/i.test(activity);
+
   return (
     <div className="flex items-start gap-2 text-sm text-[#5F5A52]">
       <Clock3 className="mt-0.5 size-3.5 shrink-0 text-[#9B948A]" />
-      <span className={compact ? "line-clamp-1" : undefined}>
-        {formatActivity(text, date)}
+      <span className={shouldClamp ? "line-clamp-1" : undefined}>
+        {activity}
       </span>
     </div>
   );
