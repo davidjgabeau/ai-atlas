@@ -3,6 +3,15 @@ import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
 
 const candidateQueries = [
+  '"New York" "AI" "raises" "Series A"',
+  '"NYC" "AI" "raises" "seed"',
+  '"New York" "consumer AI" "Series A"',
+  '"AI social" "New York" startup',
+  '"AI" "interactive entertainment" startup funding',
+  '"New York" "AI infrastructure" "Series B"',
+  '"New York" "AI inference" startup funding',
+  '"NYC" "AI infrastructure" "raises"',
+  '"New York" "GPU" "AI" startup funding',
   '"New York" "AI" "seed" "AlleyWatch"',
   '"NYC" "AI" "Series A" startup',
   '"New York-based" "AI startup" "seed"',
@@ -133,13 +142,13 @@ function getSearchQueries() {
 }
 
 function getSearchQueryLimit() {
-  const value = Number(process.env.DISCOVERY_QUERY_LIMIT ?? 12);
-  return Number.isFinite(value) ? Math.max(1, Math.min(24, value)) : 12;
+  const value = readNumericEnv("DISCOVERY_QUERY_LIMIT", 24);
+  return Math.max(1, Math.min(24, value));
 }
 
 function getResultsPerQueryLimit() {
-  const value = Number(process.env.DISCOVERY_RESULTS_PER_QUERY ?? 4);
-  return Number.isFinite(value) ? Math.max(1, Math.min(8, value)) : 4;
+  const value = readNumericEnv("DISCOVERY_RESULTS_PER_QUERY", 4);
+  return Math.max(1, Math.min(8, value));
 }
 
 async function fetchWordPressSearch(source: SearchSource, query: string) {
@@ -198,7 +207,7 @@ async function fetchArticleText(url: string) {
 function hasCandidateSearchSignal(text: string) {
   return (
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text) &&
-    /\b(startup|company|raised|funding|seed|pre-seed|preseed|series a|launches|launched|emerges|founded)\b/i.test(text)
+    /\b(startup|company|raised|raises|funding|financing|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text)
   );
 }
 
@@ -231,4 +240,12 @@ function decodeHtml(value: string) {
 
 function normalizeWhitespace(value: string) {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function readNumericEnv(name: string, fallback: number) {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
 }

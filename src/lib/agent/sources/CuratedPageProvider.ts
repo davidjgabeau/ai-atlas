@@ -115,8 +115,8 @@ function isLikelyCompanyHeading(value: string) {
 }
 
 function getCandidatesPerPageLimit() {
-  const value = Number(process.env.DISCOVERY_CURATED_PAGE_CANDIDATE_LIMIT ?? 60);
-  return Number.isFinite(value) ? Math.max(1, Math.min(100, value)) : 60;
+  const value = readNumericEnv("DISCOVERY_CURATED_PAGE_CANDIDATE_LIMIT", 60);
+  return Math.max(1, Math.min(100, value));
 }
 
 async function fetchText(url: string) {
@@ -166,4 +166,12 @@ function decodeHtml(value: string) {
 
 function normalizeWhitespace(value: string) {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function readNumericEnv(name: string, fallback: number) {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
 }

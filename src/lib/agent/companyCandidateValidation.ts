@@ -18,7 +18,7 @@ const articleShapePattern =
 const headlineVerbPattern =
   /\b(raises?|raised|secures?|secured|lands?|launches|launched|announces?|announced|rumored|reports?|reported|says|hits|returns?)\b/i;
 const fundStoryPattern =
-  /\b(vc mega-funds|mega-funds|venture fund|fundraising for its fund|raising billions|new fund|closed its fund|closes? fund|general catalyst|spark capital)\b/i;
+  /\b(vc mega-funds|mega-funds|venture fund|fundraising for its fund|raising billions|new fund|closed its fund|closes? fund)\b/i;
 const investorOrFundNamePattern =
   /\b(ventures|capital|partners|fund|funds|vc|accelerator|studio)\b/i;
 

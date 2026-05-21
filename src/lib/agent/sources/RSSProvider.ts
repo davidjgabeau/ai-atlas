@@ -30,6 +30,11 @@ const defaultDiscoveryFeeds: DiscoveryFeed[] = [
     sourceType: "press",
   },
   {
+    name: "TechCrunch Venture",
+    url: "https://techcrunch.com/category/venture/feed/",
+    sourceType: "press",
+  },
+  {
     name: "TechCrunch AI",
     url: "https://techcrunch.com/category/artificial-intelligence/feed/",
     sourceType: "press",
@@ -74,7 +79,7 @@ export class RSSProvider implements SourceProvider {
       if (!xml) continue;
 
       const items = parseFeedItems(xml, feed.url)
-        .filter(isRelevantDiscoveryItem)
+        .filter(isPotentialDiscoveryItem)
         .slice(0, getItemsPerFeedLimit());
 
       for (const item of items) {
@@ -131,8 +136,8 @@ function getDiscoveryFeeds() {
 }
 
 function getItemsPerFeedLimit() {
-  const value = Number(process.env.DISCOVERY_ITEMS_PER_FEED ?? 12);
-  return Number.isFinite(value) ? Math.max(1, Math.min(30, value)) : 12;
+  const value = readNumericEnv("DISCOVERY_ITEMS_PER_FEED", 12);
+  return Math.max(1, Math.min(30, value));
 }
 
 function parseFeedItems(xml: string, feedUrl: string) {
@@ -165,8 +170,15 @@ function parseFeedItems(xml: string, feedUrl: string) {
   });
 }
 
-function isRelevantDiscoveryItem(item: ReturnType<typeof parseFeedItems>[number]) {
+function isPotentialDiscoveryItem(item: ReturnType<typeof parseFeedItems>[number]) {
   const text = `${item.title} ${item.description}`;
+  const hasAiSignal =
+    /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text);
+  const hasFundingOrStartupSignal =
+    /\b(startup|company|raised|raises|funding|financing|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text);
+
+  if (hasAiSignal && hasFundingOrStartupSignal) return true;
+
   return hasDiscoverySignal(text);
 }
 
@@ -174,7 +186,7 @@ function hasDiscoverySignal(text: string) {
   return (
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text) &&
     /\b(new york|nyc|brooklyn|manhattan|soho|flatiron|nomad|chelsea)\b/i.test(text) &&
-    /\b(startup|company|raised|funding|seed|pre-seed|preseed|series a|launches|launched|emerges|founded)\b/i.test(text)
+    /\b(startup|company|raised|raises|funding|financing|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text)
   );
 }
 
@@ -247,4 +259,12 @@ function normalizeDate(value: string) {
   if (!value) return undefined;
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
+
+function readNumericEnv(name: string, fallback: number) {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
 }

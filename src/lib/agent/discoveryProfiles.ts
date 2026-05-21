@@ -38,6 +38,7 @@ type CandidateExtraction = {
   earlyStage?: boolean;
   confidence?: Confidence;
   reason?: string;
+  sourceUrls?: string[];
 };
 
 export type DiscoveredCandidateProfile = {
@@ -64,7 +65,10 @@ export async function extractCandidateProfiles({
   existingCompanies: AgentCompany[];
 }) {
   const profiles: DiscoveredCandidateProfile[] = [];
-  const limitedRecords = records.slice(0, getCandidateExtractionLimit());
+  const limitedRecords = prioritizeDiscoveryRecords(records).slice(
+    0,
+    getCandidateExtractionLimit(),
+  );
   const concurrency = getCandidateExtractionConcurrency();
 
   for (let index = 0; index < limitedRecords.length; index += concurrency) {
@@ -103,7 +107,10 @@ async function extractCandidateProfile(
   existingCompanies: AgentCompany[],
 ): Promise<DiscoveredCandidateProfile | null> {
   const anthropic = await extractWithAnthropic(record);
-  const extraction = anthropic ?? extractDeterministically(record);
+  const rawExtraction = anthropic ?? extractDeterministically(record);
+  const extraction = rawExtraction
+    ? await enrichCandidateExtraction(rawExtraction, record)
+    : null;
   if (!extraction?.companyName) return null;
 
   const candidateCompanyName = cleanCompanyName(extraction.companyName);
@@ -113,7 +120,10 @@ async function extractCandidateProfile(
 
   const category = normalizeCategory(extraction.category, record.text);
   const stage = normalizeStage(extraction.stage, record.text);
-  const sourceUrls = [record.url].filter(Boolean);
+  const sourceUrls = uniqueStrings([
+    record.url,
+    ...(extraction.sourceUrls ?? []),
+  ]);
   const candidateValidation = validateDiscoveredCompanyCandidate({
     name: candidateCompanyName,
     website: extraction.website,
@@ -179,6 +189,39 @@ async function extractCandidateProfile(
     reason: eligibility.reason,
     autoPublishEligible: eligibility.autoPublishEligible,
   };
+}
+
+function prioritizeDiscoveryRecords(records: RawSourceRecord[]) {
+  return [...records].sort((a, b) => scoreDiscoveryRecord(b) - scoreDiscoveryRecord(a));
+}
+
+function scoreDiscoveryRecord(record: RawSourceRecord) {
+  const title = record.title ?? "";
+  const text = `${title}\n${record.text}`;
+  let score = 0;
+
+  if (record.sourceType === "press") score += 20;
+  if (/\b(raised|raises|funding|financing|seed|series a|series b|pre-seed|preseed)\b/i.test(title)) {
+    score += 45;
+  } else if (/\b(raised|raises|funding|financing|seed|series a|series b|pre-seed|preseed)\b/i.test(text)) {
+    score += 30;
+  }
+  if (/\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning)\b/i.test(text)) {
+    score += 20;
+  }
+  if (/\b(new york|nyc|brooklyn|manhattan|soho|flatiron|nomad|chelsea)\b/i.test(text)) {
+    score += 10;
+  }
+  if (/curated source page/i.test(text)) score -= 35;
+
+  const publishedAt = record.publishedAt ? new Date(record.publishedAt) : null;
+  if (publishedAt && !Number.isNaN(publishedAt.getTime())) {
+    const ageDays = (Date.now() - publishedAt.getTime()) / 86_400_000;
+    if (ageDays <= 14) score += 20;
+    else if (ageDays <= 60) score += 10;
+  }
+
+  return score;
 }
 
 async function extractWithAnthropic(
@@ -292,6 +335,7 @@ async function extractWithAnthropic(
 
 function extractDeterministically(record: RawSourceRecord): CandidateExtraction | null {
   const text = `${record.title ?? ""} ${record.text}`;
+  const stage = normalizeStage(undefined, text);
   const companyName = cleanCompanyName(
     record.candidateCompanyName ??
       text.match(/^([A-Z][A-Za-z0-9 .&-]{1,48})\s+(?:raises|raised|secures|lands|launches|announces)/)?.[1] ??
@@ -310,14 +354,14 @@ function extractDeterministically(record: RawSourceRecord): CandidateExtraction 
     locationConfidence: /\b(headquartered|based in|new york-based|nyc-based)\b/i.test(text)
       ? "high"
       : "medium",
-    stage: normalizeStage(undefined, text),
+    stage,
     category: normalizeCategory(undefined, text),
     description: summarize(record.text, 360),
     oneSentenceDescription: summarize(record.text, 160),
     founders: extractNamesAfter(text, /founded by|co-founded by|founders? include/i),
     investors: extractNamesAfter(text, /led by|backed by|from investors including/i),
     funding: {
-      latestRound: normalizeStage(undefined, text),
+      latestRound: inferLatestFundingRound(text, stage),
       latestRoundAmount: text.match(/\$[\d,.]+(?:\s?(?:m|million|b|billion))?/i)?.[0],
       latestRoundDate: record.publishedAt,
       leadInvestors: extractNamesAfter(text, /led by|backed by/i),
@@ -329,6 +373,171 @@ function extractDeterministically(record: RawSourceRecord): CandidateExtraction 
     confidence: "medium",
     reason: "Deterministic extraction from press coverage.",
   };
+}
+
+async function enrichCandidateExtraction(
+  extraction: CandidateExtraction,
+  record: RawSourceRecord,
+): Promise<CandidateExtraction> {
+  const ycProfile = await fetchYCombinatorProfile(extraction, record);
+  if (!ycProfile) return extraction;
+
+  return {
+    ...extraction,
+    companyName: ycProfile.companyName ?? extraction.companyName,
+    website: extraction.website ?? ycProfile.website,
+    location: extraction.location ?? ycProfile.location,
+    locationConfidence:
+      ycProfile.locationConfidence === "high"
+        ? "high"
+        : extraction.locationConfidence ?? ycProfile.locationConfidence,
+    description: extraction.description ?? ycProfile.description,
+    oneSentenceDescription:
+      extraction.oneSentenceDescription ?? ycProfile.oneSentenceDescription,
+    nycBased:
+      extraction.nycBased || ycProfile.nycBased
+        ? true
+        : extraction.nycBased ?? ycProfile.nycBased,
+    confidence:
+      extraction.confidence === "high" || hasFundingSignal(record.text)
+        ? "high"
+        : ycProfile.confidence ?? extraction.confidence,
+    sourceUrls: uniqueStrings([
+      ...(extraction.sourceUrls ?? []),
+      ...(ycProfile.sourceUrls ?? []),
+    ]),
+    reason: uniqueStrings([extraction.reason, ycProfile.reason]).join(" "),
+  };
+}
+
+async function fetchYCombinatorProfile(
+  extraction: CandidateExtraction,
+  record: RawSourceRecord,
+): Promise<CandidateExtraction | null> {
+  const evidenceText = [
+    record.url,
+    record.title,
+    record.text,
+    extraction.reason,
+    ...(extraction.investors ?? []),
+    ...(extraction.funding?.leadInvestors ?? []),
+  ].join(" ");
+
+  if (!/\b(y combinator|yc-backed|yc\b|ycombinator\.com)\b/i.test(evidenceText)) {
+    return null;
+  }
+
+  const profileSlugs = getYCombinatorProfileSlugs(extraction.companyName);
+  for (const slug of profileSlugs) {
+    const url = `https://www.ycombinator.com/companies/${slug}`;
+    const html = await fetchProfileHtml(url);
+    if (!html) continue;
+
+    const profile = parseYCombinatorProfile(html, url, extraction.companyName);
+    if (profile) return profile;
+  }
+
+  return null;
+}
+
+function getYCombinatorProfileSlugs(companyName: string) {
+  const baseSlug = slugify(companyName);
+  const withoutAi = baseSlug.replace(/(?:-ai|ai)$/i, "");
+
+  return uniqueStrings([baseSlug, withoutAi]).filter(Boolean).slice(0, 3);
+}
+
+async function fetchProfileHtml(url: string) {
+  try {
+    const response = await fetch(url, {
+      headers: {
+        "user-agent": "AI Atlas NYC discovery refresh (+https://aiatlas.nyc)",
+        accept: "text/html",
+      },
+      cache: "no-store",
+      signal: AbortSignal.timeout(8_000),
+    });
+
+    if (!response.ok) return "";
+    return await response.text();
+  } catch {
+    return "";
+  }
+}
+
+function parseYCombinatorProfile(
+  html: string,
+  url: string,
+  candidateName: string,
+): CandidateExtraction | null {
+  const title = decodeHtml(
+    html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] ?? "",
+  );
+  const profileName = cleanCompanyName(
+    title
+      .replace(/\s*\|.*$/i, "")
+      .replace(/\s*:.*$/i, ""),
+  );
+
+  if (!profileName || !sameCompanyName(candidateName, profileName)) return null;
+
+  const text = stripHtml(html);
+  const metaDescription = decodeHtml(
+    html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i)?.[1] ??
+      html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)?.[1] ??
+      "",
+  );
+  const evidenceText = `${metaDescription} ${text}`;
+  const locationIsNewYork =
+    /\bLocation:\s*New York\b/i.test(evidenceText) ||
+    /\bbased in New York\b/i.test(evidenceText) ||
+    /\bNew York,\s*NY\b/i.test(evidenceText);
+  const website = extractExternalWebsite(html);
+  const description =
+    metaDescription ||
+    text.match(new RegExp(`${escapeRegExp(profileName)}\\s+([^\\n.]+\\.)`, "i"))?.[1]?.trim();
+
+  return {
+    companyName: profileName,
+    website,
+    location: locationIsNewYork ? "New York, NY" : undefined,
+    locationConfidence: locationIsNewYork ? "high" : undefined,
+    description,
+    oneSentenceDescription: description,
+    nycBased: locationIsNewYork ? true : undefined,
+    confidence: locationIsNewYork ? "high" : undefined,
+    reason: locationIsNewYork
+      ? "YC profile supports New York location."
+      : "YC profile found for candidate.",
+    sourceUrls: [url],
+  };
+}
+
+function extractExternalWebsite(html: string) {
+  const links = Array.from(
+    html.matchAll(/(?:href|content)=["'](https?:\/\/[^"']+)["']/gi),
+  )
+    .map((match) => decodeHtml(match[1] ?? ""))
+    .filter((url) => {
+      try {
+        const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+        return (
+          host !== "ycombinator.com" &&
+          !host.endsWith(".ycombinator.com") &&
+          host !== "startupschool.org" &&
+          !host.endsWith(".startupschool.org") &&
+          !host.includes("bookface") &&
+          !host.includes("amazonaws.com") &&
+          !host.includes("google") &&
+          !host.includes("gstatic") &&
+          !/\b(twitter|x|facebook|instagram|linkedin|youtube)\.com$/i.test(host)
+        );
+      } catch {
+        return false;
+      }
+    });
+
+  return links[0];
 }
 
 function getEligibility(
@@ -353,7 +562,7 @@ function getEligibility(
     proposedUpdate.oneSentenceDescription || proposedUpdate.description,
   );
   const confidence = normalizeConfidence(extraction.confidence);
-  const lateStage = /\b(series b|series c|series d|growth round|ipo|public company|acquired)\b/i.test(text);
+  const lateStage = /\b(series c|series d|series e|growth round|ipo|public company|acquired)\b/i.test(text);
   const cleanName = isCleanCandidateName(proposedUpdate.name);
   const hasWebsite = Boolean(proposedUpdate.website);
   const candidateValidation = validateDiscoveredCompanyCandidate({
@@ -439,7 +648,7 @@ function normalizeCategory(category: unknown, text: string) {
   }
 
   const lower = text.toLowerCase();
-  if (/cyber|security|soc|threat|vulnerab|phishing|pentest|exposure/.test(lower)) {
+  if (/\b(cyber|security|soc|threat|vulnerab|phishing|pentest|exposure)\b/.test(lower)) {
     return "Cybersecurity AI";
   }
   if (/life science|biotech|biology|biological|drug discovery|protein|molecule|therap/.test(lower)) {
@@ -454,11 +663,11 @@ function normalizeCategory(category: unknown, text: string) {
   if (/health|clinical|patient|care|provider|therapy|medical/.test(lower)) {
     return "Health & Clinical AI";
   }
+  if (/consumer|social media app|social network|social networking|family|personal assistant|companion|memory/.test(lower)) {
+    return "AI-Native Consumer & Social";
+  }
   if (/creative|media|video|advertis|brand|marketing|design/.test(lower)) {
     return "Media, Ads & Creative AI";
-  }
-  if (/consumer|social|family|personal assistant|companion|memory/.test(lower)) {
-    return "AI-Native Consumer & Social";
   }
   if (/agent infrastructure|agentic|orchestration|runtime|workflow infrastructure/.test(lower)) {
     return "Agent Infrastructure";
@@ -492,7 +701,8 @@ function normalizeFunding(
 
   return {
     totalRaised: funding?.totalRaised,
-    latestRound: funding?.latestRound ?? (stage !== "Unknown" ? stage : undefined),
+    latestRound:
+      funding?.latestRound ?? inferLatestFundingRound(record.text, stage),
     latestRoundAmount: amount,
     latestRoundDate: funding?.latestRoundDate ?? record.publishedAt,
     leadInvestors: funding?.leadInvestors,
@@ -507,6 +717,12 @@ function extractOutputText(payload: Record<string, unknown>) {
     if (typeof text === "string") return text;
   }
   return "";
+}
+
+function inferLatestFundingRound(text: string, stage: AgentCompanyStage) {
+  if (stage !== "Unknown") return stage;
+  if (/\bseries b\b/i.test(text)) return "Series B";
+  return undefined;
 }
 
 function extractNamesAfter(text: string, pattern: RegExp) {
@@ -533,10 +749,35 @@ function cleanCompanyName(value: string) {
 function isExistingCompany(name: string, companies: AgentCompany[]) {
   const slug = slugify(name);
   const normalizedName = name.toLowerCase();
-  return companies.some(
-    (company) =>
-      company.slug === slug || company.name.toLowerCase() === normalizedName,
+  return companies.some((company) =>
+    company.slug === slug ||
+    company.name.toLowerCase() === normalizedName ||
+    sameCompanyName(name, company.name),
   );
+}
+
+function sameCompanyName(left: string, right: string) {
+  const normalizedLeft = normalizeComparableCompanyName(left);
+  const normalizedRight = normalizeComparableCompanyName(right);
+
+  return (
+    normalizedLeft === normalizedRight ||
+    stripGenericAiSuffix(normalizedLeft) === normalizedRight ||
+    stripGenericAiSuffix(normalizedRight) === normalizedLeft
+  );
+}
+
+function normalizeComparableCompanyName(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/\binc\.?\b|\bcorp\.?\b|\bco\.?\b|\bcompany\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function stripGenericAiSuffix(value: string) {
+  return value.replace(/\s+ai$/i, "").trim();
 }
 
 function slugify(value: string) {
@@ -579,17 +820,60 @@ function uniqueStrings(values: Array<string | undefined>) {
   return Array.from(new Set(values.map((value) => value?.trim()).filter(Boolean))) as string[];
 }
 
+function stripHtml(html: string) {
+  return normalizeWhitespace(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
+      .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
+      .replace(/<[^>]+>/g, " "),
+  );
+}
+
+function decodeHtml(value: string) {
+  return stripHtml(value)
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&#8217;/g, "'")
+    .replace(/&#8216;/g, "'")
+    .replace(/&#8220;/g, "\"")
+    .replace(/&#8221;/g, "\"")
+    .trim();
+}
+
+function normalizeWhitespace(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function getCandidateExtractionLimit() {
-  const value = Number(process.env.DISCOVERY_CANDIDATE_LIMIT ?? 8);
-  return Number.isFinite(value) ? Math.max(1, Math.min(24, value)) : 8;
+  const value = readNumericEnv("DISCOVERY_CANDIDATE_LIMIT", 16);
+  return Math.max(1, Math.min(32, value));
 }
 
 function getCandidateExtractionConcurrency() {
-  const value = Number(process.env.DISCOVERY_EXTRACTION_CONCURRENCY ?? 3);
-  return Number.isFinite(value) ? Math.max(1, Math.min(5, value)) : 3;
+  const value = readNumericEnv("DISCOVERY_EXTRACTION_CONCURRENCY", 3);
+  return Math.max(1, Math.min(5, value));
 }
 
 function getAnthropicTimeoutMs() {
-  const value = Number(process.env.DISCOVERY_LLM_TIMEOUT_MS ?? 18_000);
-  return Number.isFinite(value) ? Math.max(5_000, Math.min(45_000, value)) : 18_000;
+  const value = readNumericEnv("DISCOVERY_LLM_TIMEOUT_MS", 18_000);
+  return Math.max(5_000, Math.min(45_000, value));
+}
+
+function readNumericEnv(name: string, fallback: number) {
+  const raw = process.env[name]?.trim();
+  if (!raw) return fallback;
+
+  const value = Number(raw);
+  return Number.isFinite(value) ? value : fallback;
 }
