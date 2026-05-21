@@ -3,7 +3,10 @@
 import { useId, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
-import { normalizeSignalLabel } from "@/lib/signals/companySignal";
+import {
+  getSignalDisplayLabel,
+  normalizeSignalLabel,
+} from "@/lib/signals/companySignal";
 import { cn } from "@/lib/utils";
 import type { GeneratedSignalLabel } from "@/types/market";
 
@@ -34,6 +37,7 @@ export function UsageBadge({
   className?: string;
 }) {
   const signalLabel = normalizeSignalLabel(label ?? value);
+  const displayLabel = getSignalDisplayLabel(signalLabel);
   const definition = signalDefinitions[signalLabel];
   const [open, setOpen] = useState(false);
   const definitionId = useId();
@@ -48,12 +52,12 @@ export function UsageBadge({
           className,
         )}
       >
-        <span className="min-w-0 truncate">{signalLabel}</span>
+        <span className="min-w-0 truncate">{displayLabel}</span>
         {definition ? (
           <span
             role="button"
             tabIndex={0}
-            aria-label={`What ${signalLabel} means`}
+            aria-label={`What ${displayLabel} means`}
             aria-expanded={open}
             aria-controls={definitionId}
             className="ml-1 inline-flex size-4 items-center justify-center rounded-full text-[11px] leading-none transition hover:bg-[rgb(17_17_17_/_0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#9A3D2B]"

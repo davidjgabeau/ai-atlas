@@ -83,6 +83,13 @@ export function getCompanySignalLabel(company: SignalCompany): GeneratedSignalLa
   return inferCompanySignalLabel(company);
 }
 
+export function getSignalDisplayLabel(
+  label: string | null | undefined,
+  company?: SignalCompany,
+) {
+  return normalizeSignalLabel(label, company).replace(/\s+signal$/i, "");
+}
+
 export function inferCompanySignalLabel(
   company: SignalCompany,
 ): GeneratedSignalLabel {

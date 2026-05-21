@@ -52,7 +52,10 @@ import {
   getExternalUrl,
   getIntroRequestMailto,
 } from "@/lib/intro-request";
-import { getCompanySignalLabel } from "@/lib/signals/companySignal";
+import {
+  getCompanySignalLabel,
+  getSignalDisplayLabel,
+} from "@/lib/signals/companySignal";
 import {
   absoluteUrl,
   createShareMetadata,
@@ -145,6 +148,7 @@ export default async function CompanyProfilePage({
   const companyWebsiteUrl = getExternalUrl(company.website_url);
   const introRequestHref = getIntroRequestMailto(company);
   const signalLabel = getCompanySignalLabel(company);
+  const displaySignalLabel = getSignalDisplayLabel(signalLabel);
   const companyPatterns = getPatternsForCompanySlug(company.slug);
   const nycFootprintRows = getNycFootprintRows(company);
   const aiLabFit = getAiLabFit(company);
@@ -285,7 +289,7 @@ export default async function CompanyProfilePage({
             <ProfileSection
               id="notes"
               title="Notes"
-              body={`${company.name} is tagged ${signalLabel.toLowerCase()} based on buyer clarity, repeat workflow signal, public activity, and fit with the AI Atlas map.`}
+              body={`${company.name} is tagged ${displaySignalLabel.toLowerCase()} based on buyer clarity, repeat workflow activity, public activity, and fit with the AI Atlas map.`}
               companies={companies}
               excludeCompanyId={company.id}
             />

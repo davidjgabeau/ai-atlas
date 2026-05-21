@@ -29,6 +29,7 @@ import {
   formatViewCount,
   shouldShowViewCount,
 } from "@/lib/metrics/formatViewCount";
+import { getSignalDisplayLabel } from "@/lib/signals/companySignal";
 import type {
   AskAtlasCompanyCard,
   AskAtlasMessage,
@@ -323,7 +324,7 @@ function AskCompanyCard({ company }: { company: AskAtlasCompanyCard }) {
             {company.name}
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[#9A3D2B]">
-            {company.signalLabel}
+            {getSignalDisplayLabel(company.signalLabel)}
           </span>
         </span>
         <span className="mt-1 line-clamp-2 block text-sm font-semibold leading-6 text-[#181818]">

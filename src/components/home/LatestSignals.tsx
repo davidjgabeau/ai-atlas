@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { LinkedCompanyText } from "@/components/company/linked-company-text";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
-import { normalizeSignalLabel } from "@/lib/signals/companySignal";
+import { getSignalDisplayLabel } from "@/lib/signals/companySignal";
 import type { EditorialItem } from "@/types/agent";
 import type { Company } from "@/types/market";
 
@@ -62,7 +62,7 @@ export function LatestSignals({
                       <div className="flex min-w-0 flex-wrap items-center gap-2">
                         {item.label ? (
                           <span className="text-label text-[11px] text-[#9A3D2B]">
-                            {normalizeSignalLabel(item.label, company)}
+                            {getSignalDisplayLabel(item.label, company)}
                           </span>
                         ) : null}
                         <span className="text-meta text-xs">

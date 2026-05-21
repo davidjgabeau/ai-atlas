@@ -5,6 +5,7 @@ import { CompanyViewCount } from "@/components/company/CompanyViewCount";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import { getCompanyHook, getHomeSignalLabel } from "@/components/home/home-utils";
+import { getSignalDisplayLabel } from "@/lib/signals/companySignal";
 import type { Company } from "@/types/market";
 
 export function FeaturedCompanies({ companies }: { companies: Company[] }) {
@@ -58,7 +59,7 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
                     </h3>
                     {showLabel ? (
                       <span className="text-label shrink-0 text-[11px] text-[#9A3D2B]">
-                        {label}
+                        {getSignalDisplayLabel(label, company)}
                       </span>
                     ) : null}
                   </div>

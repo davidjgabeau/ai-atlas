@@ -11,7 +11,10 @@ import {
   type CompanyMapLocation,
   type LatLngLiteral,
 } from "@/lib/map-layout";
-import { getCompanySignalLabel } from "@/lib/signals/companySignal";
+import {
+  getCompanySignalLabel,
+  getSignalDisplayLabel,
+} from "@/lib/signals/companySignal";
 import type { Company, ConsumptionIntensity } from "@/types/market";
 
 type MapStyle = {
@@ -432,7 +435,7 @@ function renderInfoWindow(pin: CompanyMapLocation) {
         ${escapeHtml(pin.company.category)}
       </div>
       <p style="font-size:13px; line-height:1.5; margin:0 0 10px; color:#475569;">${escapeHtml(pin.company.short_description)}</p>
-      <div style="font-size:12px; color:#64748b; margin-bottom:12px;">${escapeHtml(getCompanySignalLabel(pin.company))}</div>
+      <div style="font-size:12px; color:#64748b; margin-bottom:12px;">${escapeHtml(getSignalDisplayLabel(getCompanySignalLabel(pin.company)))}</div>
       <a href="${companyUrl}" style="display:inline-flex; align-items:center; color:#0f172a; font-size:13px; font-weight:700; text-decoration:none;">
         Open profile →
       </a>
