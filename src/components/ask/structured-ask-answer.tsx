@@ -305,7 +305,7 @@ function parseSectionHeading(
 
   const boldMatch = line.match(/^\*\*([^*]+?)\*\*(.*)$/);
   if (boldMatch && !isCompanyName(boldMatch[1], companies)) {
-    const remainder = boldMatch[2].replace(/^\s*[:\-–—]\s*/, "").trim();
+    const remainder = boldMatch[2].replace(/^\s*[:\-–\u2014]\s*/, "").trim();
     return {
       title: cleanMarkdownText(boldMatch[1]),
       description: cleanMarkdownText(remainder),
@@ -325,12 +325,12 @@ function parseTitleAndDescription(
     return {
       title: cleanMarkdownText(boldTitleMatch[1]),
       description: cleanMarkdownText(
-        boldTitleMatch[2].replace(/^\s*[:\-–—]\s*/, "").trim(),
+        boldTitleMatch[2].replace(/^\s*[:\-–\u2014]\s*/, "").trim(),
       ),
     };
   }
 
-  const separatorMatch = clean.match(/^(.{8,86}?)(?:\s*[:–—-]\s+)(.+)$/);
+  const separatorMatch = clean.match(/^(.{8,86}?)(?:\s*[:–\u2014-]\s+)(.+)$/);
   if (separatorMatch) {
     return {
       title: cleanMarkdownText(separatorMatch[1]),

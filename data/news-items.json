@@ -138,8 +138,8 @@
   },
   {
     "id": "news_3fb8a3f744d90e4d",
-    "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
-    "summary": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users — and according to company i…",
+    "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files, no coding required",
+    "summary": "Anthropic released Cowork on Monday, a new AI agent capability that extends the power of its wildly successful Claude Code tool to non-technical users, according to company i…",
     "source_url": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
     "source_name": "VentureBeat AI",
     "source_domain": "venturebeat.com",
@@ -152,7 +152,7 @@
     "status": "published",
     "raw": {
       "feed": "https://venturebeat.com/category/ai/feed/",
-      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+      "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files, no coding required",
       "link": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
       "sourceName": "VentureBeat AI",
       "publishedAt": "2026-01-12T11:30:00.000Z",

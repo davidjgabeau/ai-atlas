@@ -62,6 +62,7 @@ function main() {
   validateEditorialSurfaces(editorialSurfaces);
   validatePatterns();
   validateNoHardcodedHomepageCount();
+  validateRenderedContentPunctuation();
 
   const errors = issues.filter((issue) => issue.level === "error");
   const warnings = issues.filter((issue) => issue.level === "warning");
@@ -360,6 +361,29 @@ function scanCopy(
       addError(`${label} contains forbidden phrase "${phrase}".`);
     }
   }
+
+  if (value.includes("\u2014")) {
+    addError(`${label} contains an em dash.`);
+  }
+
+  if (/(?:^|[A-Za-z])(?:-|\u2014)\./.test(value)) {
+    addError(`${label} appears to contain a truncated sentence ending.`);
+  }
+}
+
+function validateRenderedContentPunctuation() {
+  const files = collectTextFiles(["src", "data", "docs"]);
+  const rootFiles = ["README.md"].filter((file) => fileExists(file));
+
+  for (const file of [...files, ...rootFiles]) {
+    const contents = readFileSync(path.join(repoRoot, file), "utf8");
+    if (contents.includes("\u2014")) {
+      addError(`${file} contains an em dash.`);
+    }
+    if (/(?:^|[A-Za-z])(?:-|\u2014)\./m.test(contents)) {
+      addError(`${file} appears to contain a truncated sentence ending.`);
+    }
+  }
 }
 
 function validateUnique(
@@ -395,6 +419,26 @@ function collectFiles(roots: string[]) {
     walk(root, files);
   }
   return files.filter((file) => /\.(tsx?|jsx?)$/.test(file));
+}
+
+function collectTextFiles(roots: string[]) {
+  const files: string[] = [];
+  for (const root of roots) {
+    if (fileExists(root)) walk(root, files);
+  }
+
+  return files.filter((file) =>
+    /\.(tsx?|jsx?|json|mdx?|css)$/.test(file),
+  );
+}
+
+function fileExists(relativePath: string) {
+  try {
+    statSync(path.join(repoRoot, relativePath));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function walk(relativePath: string, files: string[]) {

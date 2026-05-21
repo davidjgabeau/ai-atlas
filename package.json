@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint && npm run data:validate",
     "mcp:server": "tsx scripts/mcp-server.ts",
     "data:validate": "tsx scripts/validate-data-quality.ts",
     "seo:audit": "tsx scripts/seo-audit.ts",

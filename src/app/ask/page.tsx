@@ -19,7 +19,7 @@ import { getPublishedCompanies } from "@/lib/supabase/market-data";
 export const dynamic = "force-dynamic";
 
 const examples = [
-  "I'm a seed investor focused on infrastructure — what should I be watching?",
+  "I'm a seed investor focused on infrastructure. What should I be watching?",
   "If I'm building an AI sales tool, who am I competing with?",
   "What NYC AI startups are building in healthcare?",
   "Which companies here would make good Claude API customers?",

@@ -399,7 +399,7 @@ function enforceHookRules(value: string) {
     hook = hook.replace(new RegExp(phrase, "gi"), "").trim();
   }
 
-  hook = hook.replaceAll("—", "-").replace(/\s+/g, " ").trim();
+  hook = hook.replaceAll("\u2014", "-").replace(/\s+/g, " ").trim();
 
   if (hook.length <= 72) {
     return hook;
