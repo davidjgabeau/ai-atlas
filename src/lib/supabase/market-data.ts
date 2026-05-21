@@ -107,6 +107,7 @@ const localPublicCompanyOverlaySourceUrls: Record<string, string[]> = {
     "https://glif.app",
     "https://a16z.com/announcement/investing-in-glif/",
     "https://www.usv.com/writing/2026/04/glif/",
+    "https://www.linkedin.com/posts/traded-venture-capital_venturecapital-glif-jonathanschwartz-activity-7457159479407562752-HIab",
     "https://www.cbinsights.com/company/spellcasters",
   ],
   status: [
