@@ -8,15 +8,15 @@
     },
     {
       "path": "/api/cron/agent-refresh",
-      "schedule": "17 15 * * *"
+      "schedule": "7 4 * * *"
     },
     {
       "path": "/api/cron/agent-discover",
-      "schedule": "42 16 * * *"
+      "schedule": "37 4 * * *"
     },
     {
       "path": "/api/cron/agent-editorial",
-      "schedule": "9 11 * * *"
+      "schedule": "7 5 * * *"
     },
     {
       "path": "/api/cron/refresh-company-logos",
