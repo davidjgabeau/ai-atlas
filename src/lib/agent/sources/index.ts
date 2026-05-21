@@ -1,3 +1,4 @@
+import { A16zAnnouncementProvider } from "./A16zAnnouncementProvider";
 import { CuratedPageProvider } from "./CuratedPageProvider";
 import { LinkedInProvider } from "./LinkedInProvider";
 import { ManualInboxProvider } from "./ManualInboxProvider";
@@ -11,6 +12,7 @@ export function createSourceProviders(): SourceProvider[] {
   return [
     new ManualInboxProvider(),
     new WebsiteProvider(),
+    new A16zAnnouncementProvider(),
     new CuratedPageProvider(),
     new RSSProvider(),
     new SearchProvider(),

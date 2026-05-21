@@ -98,7 +98,22 @@ async function getMarketCompanyRows(): Promise<CompanyRow[]> {
 }
 
 const localPublicCompanyOverlayIds: Record<string, string> = {
+  glif: "cmp_glif",
   status: "cmp_status",
+};
+
+const localPublicCompanyOverlaySourceUrls: Record<string, string[]> = {
+  glif: [
+    "https://glif.app",
+    "https://a16z.com/announcement/investing-in-glif/",
+    "https://www.usv.com/writing/2026/04/glif/",
+    "https://www.cbinsights.com/company/spellcasters",
+  ],
+  status: [
+    "https://www.statusai.com",
+    "https://techcrunch.com/2026/05/19/gamified-social-media-network-status-announces-17m-funding-to-help-usher-in-new-era-of-social-networking/",
+    "https://www.ycombinator.com/companies/status",
+  ],
 };
 
 function mergeLocalPublicCompanyOverlays(rows: CompanyRow[]) {
@@ -125,11 +140,9 @@ function mergeLocalPublicCompanyOverlays(rows: CompanyRow[]) {
         discoveryReason: {
           trigger: "manual",
           sourceEventIds: [],
-          sourceUrls: [
+          sourceUrls: localPublicCompanyOverlaySourceUrls[company.slug] ?? [
             company.website_url,
-            "https://techcrunch.com/2026/05/19/gamified-social-media-network-status-announces-17m-funding-to-help-usher-in-new-era-of-social-networking/",
-            "https://www.ycombinator.com/companies/status",
-          ],
+          ].filter(Boolean),
           confidence: "high",
           notes:
             "Curated public overlay for a newly added company until the production database has the row.",

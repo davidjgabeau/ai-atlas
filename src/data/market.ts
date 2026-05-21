@@ -606,6 +606,15 @@ const sourceCompanies: SourceRecord[] = [
     signal_label: "Funding signal",
     description: "Status is an AI social simulation app where users create personas and step into interactive fandom worlds that play out through a familiar social-media interface. The New York company raised $17M in combined seed and Series A funding in May 2026 from Abstract, Union Square Ventures, Y Combinator, LightShed Partners, and other investors; YC lists it as W22 with more than 3 million users.",
     category: "AI-Native Consumer & Social"
+  },
+  {
+    company_name: "Glif",
+    website: "https://glif.app",
+    founder_name: "Fabian Stelzer; Jamie Wilkinson",
+    email: "contact@glif.xyz",
+    signal_label: "Funding signal",
+    description: "Glif is a creative super agent for generating images, videos, audio, social posts, ads, and other media from one chat interface. The New York company launched Glif V2 and raised a $17.5M seed round from Andreessen Horowitz and Union Square Ventures in April 2026 after millions of creators used its earlier AI workflow sandbox.",
+    category: "Media, Ads & Creative AI"
   }
 ];
 
@@ -619,6 +628,7 @@ const companyAddressesByWebsite: Record<string, string> = {
   "https://outputbio.com": "Union Square, New York, NY",
   "https://serinus.bio": "430 E 29th St, New York, NY 10016",
   "https://www.statusai.com": "New York, NY",
+  "https://glif.app": "228 Park Avenue South, New York, NY 10003",
   "https://www.emergence.ai": "8 W 40th St, Floor 20, New York, NY 10018",
   "https://www.kalepa.com": "920 Broadway, New York, NY 10010",
   "https://www.hyperscience.com": "285 Fulton Street, 88th Floor (One World Trade Center), New York, NY 10007",
@@ -760,6 +770,14 @@ const companyFundingByName: Record<string, CompanyFunding> = {
     total_raised: "$17M",
     lead_investor: "Abstract / General Catalyst / Union Square Ventures / Y Combinator / LightShed Partners",
     funding_note: "Combined seed and Series A funding announced May 19, 2026.",
+  },
+  "Glif": {
+    funding_round: "Seed",
+    funding_amount: "$17.5M",
+    funding_date: "April 2026",
+    total_raised: "$17.5M",
+    lead_investor: "Andreessen Horowitz / Union Square Ventures",
+    funding_note: "Seed round announced alongside Glif V2.",
   },
   "Mirage (formerly Captions)": {
     funding_round: "Series B",
@@ -1117,6 +1135,21 @@ const featuredNames = new Set([
 
 const recentActivityDateByName: Record<string, string> = {
   "Status": "2026-05-19T14:00:00.000Z",
+  "Glif": "2026-04-23T16:55:39.000Z",
+};
+
+const companySourceUrlsByName: Record<string, string[]> = {
+  "Status": [
+    "https://www.statusai.com",
+    "https://techcrunch.com/2026/05/19/gamified-social-media-network-status-announces-17m-funding-to-help-usher-in-new-era-of-social-networking/",
+    "https://www.ycombinator.com/companies/status",
+  ],
+  "Glif": [
+    "https://glif.app",
+    "https://a16z.com/announcement/investing-in-glif/",
+    "https://www.usv.com/writing/2026/04/glif/",
+    "https://www.cbinsights.com/company/spellcasters",
+  ],
 };
 
 function slugify(value: string) {
@@ -1231,6 +1264,10 @@ const verifiedFoundersByName: Record<string, Founder[]> = {
     { name: "Amit Bhatnagar", title: "Co-founder" },
     { name: "Pritesh Kadiwala", title: "Co-founder" },
   ],
+  "Glif": [
+    { name: "Fabian Stelzer", title: "Co-founder" },
+    { name: "Jamie Wilkinson", title: "Co-founder" },
+  ],
 };
 
 function getFounders(record: SourceRecord): Founder[] {
@@ -1309,7 +1346,7 @@ export const companies: Company[] = sourceCompanies.map((record, index) => {
     discoveryReason: {
       trigger: "profile_import",
       sourceEventIds: [],
-      sourceUrls: [record.website].filter(Boolean),
+      sourceUrls: companySourceUrlsByName[record.company_name] ?? [record.website].filter(Boolean),
       confidence: "medium",
       notes: "Imported from the static AI Atlas seed dataset.",
     },

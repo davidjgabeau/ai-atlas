@@ -173,7 +173,7 @@ async function extractCandidateProfile(
     },
   };
 
-  const eligibility = getEligibility(extraction, proposedUpdate, record.text);
+  const eligibility = getEligibility(extraction, proposedUpdate, record);
   if (!eligibility.shouldKeepForReview) return null;
 
   const confidence = eligibility.autoPublishEligible
@@ -543,8 +543,10 @@ function extractExternalWebsite(html: string) {
 function getEligibility(
   extraction: CandidateExtraction,
   proposedUpdate: Partial<AgentCompany>,
-  text: string,
+  record: RawSourceRecord,
 ) {
+  const text = record.text;
+  const sourceText = `${record.url} ${record.title ?? ""} ${record.text}`;
   const aiCore =
     extraction.aiCore ??
     /\b(ai|artificial intelligence|generative ai|llm|agentic|machine learning)\b/i.test(text);
@@ -562,9 +564,15 @@ function getEligibility(
     proposedUpdate.oneSentenceDescription || proposedUpdate.description,
   );
   const confidence = normalizeConfidence(extraction.confidence);
-  const lateStage = /\b(series c|series d|series e|growth round|ipo|public company|acquired)\b/i.test(text);
+  const lateStage =
+    /\b(series c|series d|series e|growth round|ipo|public company)\b/i.test(text) ||
+    candidateHasAcquisitionSignal(proposedUpdate.name, text);
   const cleanName = isCleanCandidateName(proposedUpdate.name);
   const hasWebsite = Boolean(proposedUpdate.website);
+  const priorityFundingReview =
+    !nycBased &&
+    hasFundingSignal(text) &&
+    /\b(a16z|andreessen horowitz|union square ventures|usv|y combinator|yc)\b/i.test(sourceText);
   const candidateValidation = validateDiscoveredCompanyCandidate({
     name: proposedUpdate.name,
     website: proposedUpdate.website,
@@ -595,7 +603,7 @@ function getEligibility(
       autoPublishEligible ||
       (
         aiCore &&
-        nycBased &&
+        (nycBased || priorityFundingReview) &&
         categoryFit &&
         cleanName &&
         candidateValidation.ok &&
@@ -625,6 +633,16 @@ function getEligibility(
           lateStage ? "late-stage language found" : "",
         ].filter(Boolean).join("; ") || "confidence below auto-publish threshold"}.`,
   };
+}
+
+function candidateHasAcquisitionSignal(name: unknown, text: string) {
+  if (typeof name !== "string" || !name.trim()) return false;
+
+  const escapedName = escapeRegExp(name.trim());
+  return new RegExp(
+    `\\b${escapedName}\\b.{0,160}\\b(acquired|acquisition)\\b|\\b(acquired|acquisition)\\b.{0,160}\\b${escapedName}\\b`,
+    "i",
+  ).test(text);
 }
 
 function isCleanCandidateName(name: unknown) {
