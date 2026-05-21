@@ -55,7 +55,7 @@ const MARKET_DATA_CACHE_SECONDS = 300;
 
 const getCachedMarketCompanyRows = unstable_cache(
   getMarketCompanyRows,
-  ["market-company-rows"],
+  ["market-company-rows", "public-overlays-2026-05-21"],
   {
     revalidate: MARKET_DATA_CACHE_SECONDS,
     tags: [MARKET_COMPANIES_CACHE_TAG],
