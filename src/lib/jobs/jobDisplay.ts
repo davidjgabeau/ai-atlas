@@ -106,7 +106,7 @@ export function isNonJobContentUrl(value: string) {
     const url = new URL(value);
     const path = url.pathname.toLowerCase();
 
-    return /\/(blog|changelog|customers?|enterprise-platform|events?|news|platform|pricing|privacy|resources?|solutions?|terms|use-cases?)(\/|$)/i.test(
+    return /\/(articles?|blogs?|blog-posts?|case-stud(?:y|ies)|changelog|customers?|customer-stories?|e-?books?|enterprise-platform|events?|guides?|news|newsroom|platform|press|pricing|privacy|resources?|solutions?|stories|terms|use-cases?|webinars?)(\/|$)/i.test(
       path,
     );
   } catch {
@@ -130,8 +130,25 @@ export function looksLikeSpecificRoleTitle(value: string) {
   if (/\b(changelog|newsletter|pricing|privacy|terms)\b/i.test(title)) {
     return false;
   }
+  if (looksLikeEditorialTitle(title)) return false;
 
-  return /\b(account|analyst|architect|chief of staff|designer|developer|director|engineer|founder|growth|head of|lead|manager|operations|partnerships|principal|product manager|recruiter|researcher|scientist|software|specialist|staff|success|talent)\b/i.test(
+  return /\b(account|analyst|architect|chief of staff|designer|developer|director|engineer|founder|growth|head of|lead|manager|operations|partnerships|principal|product manager|recruiter|researcher|scientist|software|specialist|talent)\b/i.test(
+    title,
+  );
+}
+
+export function looksLikeEditorialTitle(value: string) {
+  const title = cleanJobTitleForDisplay(value);
+
+  if (
+    /^(announcing|case study|ebook|guide|how|introducing|playbook|report|webinar|what|when|where|why)\b/i.test(
+      title,
+    )
+  ) {
+    return true;
+  }
+
+  return /\b(article|blog|case study|customer story|ebook|guide|newsletter|playbook|webinar|whitepaper)\b/i.test(
     title,
   );
 }
