@@ -125,15 +125,18 @@ const localPublicCompanyOverlaySourceUrls: Record<string, string[]> = {
 };
 
 function mergeLocalPublicCompanyOverlays(rows: CompanyRow[]) {
-  const existingSlugs = new Set(
-    rows.map((row) => safeString(row.slug, "").toLowerCase()).filter(Boolean),
+  const existingPublishedSlugs = new Set(
+    rows
+      .filter((row) => normalizeCompanyStatus(row.status) === "published")
+      .map((row) => safeString(row.slug, "").toLowerCase())
+      .filter(Boolean),
   );
   const existingIds = new Set(
     rows.map((row) => safeString(row.id, "").toLowerCase()).filter(Boolean),
   );
   const additions = localCompanies
     .filter((company) => company.slug in localPublicCompanyOverlayIds)
-    .filter((company) => !existingSlugs.has(company.slug.toLowerCase()))
+    .filter((company) => !existingPublishedSlugs.has(company.slug.toLowerCase()))
     .map((company) => {
       const preferredId = localPublicCompanyOverlayIds[company.slug];
       const id = existingIds.has(preferredId.toLowerCase())

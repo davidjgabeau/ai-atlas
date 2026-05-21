@@ -227,7 +227,7 @@ async function ensureCompanyRowsForJobSync(
   const slugs = companies.map((company) => company.slug);
   const { data, error } = await supabase
     .from("companies")
-    .select("id,slug")
+    .select("id,slug,status")
     .in("slug", slugs);
 
   if (error || !data) {
@@ -243,20 +243,23 @@ async function ensureCompanyRowsForJobSync(
     };
   }
 
-  const persistedIdsBySlug = new Map(
-    (data as Array<{ id?: string; slug?: string }>)
+  const persistedRowsBySlug = new Map(
+    (data as Array<{ id?: string; slug?: string; status?: string }>)
       .filter((row) => row.id && row.slug)
-      .map((row) => [String(row.slug), String(row.id)]),
+      .map((row) => [
+        String(row.slug),
+        { id: String(row.id), status: String(row.status ?? "") },
+      ]),
   );
-  const missingCompanies = companies.filter(
-    (company) => !persistedIdsBySlug.has(company.slug),
+  const companiesNeedingUpsert = companies.filter(
+    (company) => persistedRowsBySlug.get(company.slug)?.status !== "published",
   );
 
-  if (missingCompanies.length === 0) {
+  if (companiesNeedingUpsert.length === 0) {
     return {
       companies: companies.map((company) => ({
         ...company,
-        id: persistedIdsBySlug.get(company.slug) ?? company.id,
+        id: persistedRowsBySlug.get(company.slug)?.id ?? company.id,
       })),
       companyRowsCreated: 0,
       errors: [],
@@ -266,10 +269,18 @@ async function ensureCompanyRowsForJobSync(
   const publishedCompaniesBySlug = new Map(
     (await getPublishedCompanies()).map((company) => [company.slug, company]),
   );
-  const rows = missingCompanies
-    .map((company) => publishedCompaniesBySlug.get(company.slug))
-    .filter((company): company is Company => Boolean(company))
-    .map(companyToDatabasePayload);
+  const rows: Array<ReturnType<typeof companyToDatabasePayload>> = [];
+
+  for (const company of companiesNeedingUpsert) {
+    const publishedCompany = publishedCompaniesBySlug.get(company.slug);
+    if (!publishedCompany) continue;
+
+    const existingRow = persistedRowsBySlug.get(company.slug);
+    rows.push({
+      ...companyToDatabasePayload(publishedCompany),
+      id: existingRow?.id ?? publishedCompany.id,
+    });
+  }
 
   const { data: insertedRows, error: insertError } = await supabase
     .from("companies")
@@ -277,14 +288,16 @@ async function ensureCompanyRowsForJobSync(
     .select("id,slug");
 
   if (insertError || !insertedRows) {
-    const missingSlugs = new Set(missingCompanies.map((company) => company.slug));
+    const upsertSlugs = new Set(
+      companiesNeedingUpsert.map((company) => company.slug),
+    );
 
     return {
       companies: companies
-        .filter((company) => !missingSlugs.has(company.slug))
+        .filter((company) => !upsertSlugs.has(company.slug))
         .map((company) => ({
           ...company,
-          id: persistedIdsBySlug.get(company.slug) ?? company.id,
+          id: persistedRowsBySlug.get(company.slug)?.id ?? company.id,
         })),
       companyRowsCreated: 0,
       errors: [
@@ -299,15 +312,20 @@ async function ensureCompanyRowsForJobSync(
   }
 
   for (const row of insertedRows as Array<{ id?: string; slug?: string }>) {
-    if (row.id && row.slug) persistedIdsBySlug.set(row.slug, row.id);
+    if (row.id && row.slug) {
+      persistedRowsBySlug.set(row.slug, {
+        id: row.id,
+        status: "published",
+      });
+    }
   }
 
   return {
     companies: companies
-      .filter((company) => persistedIdsBySlug.has(company.slug))
+      .filter((company) => persistedRowsBySlug.has(company.slug))
       .map((company) => ({
         ...company,
-        id: persistedIdsBySlug.get(company.slug) ?? company.id,
+        id: persistedRowsBySlug.get(company.slug)?.id ?? company.id,
       })),
     companyRowsCreated: insertedRows.length,
     errors: [],
