@@ -290,6 +290,9 @@ export type ExtractedSignal = {
   summary: string;
 
   occurredAt?: string;
+  sourceUrl?: string;
+  sourceName?: string;
+  sourceRecordId?: string;
   confidence: Confidence;
 
   facts: {

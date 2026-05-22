@@ -259,6 +259,12 @@ function createCompaniesToKnow({
     .map((company) => {
       const companyEvents = eventsByCompany.get(company.id) ?? [];
       const recentEventScore = Math.max(0, ...companyEvents.map((event) => event.finalScore));
+      const fundingEventScore = Math.max(
+        0,
+        ...companyEvents
+          .filter((event) => event.type === "funding" && isWithinDays(event.occurredAt, new Date().toISOString(), 120))
+          .map((event) => event.finalScore),
+      );
       const profileCompleteness = getProfileCompleteness(company);
       const categoryPriority = getCategoryPriority(company);
       const noveltyToHomepage = Math.max(
@@ -267,11 +273,12 @@ function createCompaniesToKnow({
       );
       const stageFit = getStageFit(company);
       const score =
-        0.3 * recentEventScore +
-        0.25 * profileCompleteness +
-        0.2 * categoryPriority +
-        0.15 * noveltyToHomepage +
-        0.1 * stageFit;
+        0.25 * recentEventScore +
+        0.18 * fundingEventScore +
+        0.22 * profileCompleteness +
+        0.17 * categoryPriority +
+        0.12 * noveltyToHomepage +
+        0.06 * stageFit;
 
       return {
         company,
@@ -458,8 +465,16 @@ function createDeterministicLatestSignalBody(
     );
   }
   if (event.type === "funding") {
+    const round = event.extractedFacts.round;
+    const amount = event.extractedFacts.amount;
+    const investorText = event.extractedFacts.investorNames?.slice(0, 2).join(" and ");
+    const fundingLead = [
+      amount && round ? `${amount} ${round}` : amount || round || "Fresh funding",
+      investorText ? `from ${investorText}` : "",
+    ].filter(Boolean).join(" ");
+
     return truncateSignalBody(
-      `Financing puts more attention on ${lowerFirst(description)}.`,
+      `${fundingLead} backs ${lowerFirst(description)} for ${categoryBuyerPhrase(company.category)}.`,
     );
   }
   if (event.type === "hiring_signal") {

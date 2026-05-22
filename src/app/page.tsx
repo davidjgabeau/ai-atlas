@@ -89,6 +89,7 @@ export default async function Home() {
   const storedAgentData = await getStoredAgentHomepageData();
   const storedSurfaces = storedAgentData.editorialSurfaces;
   const storedSnapshot = getLatestSnapshot(storedAgentData.marketSnapshots);
+  const homepageSeed = createHomepageSeed();
   const companiesById = new Map(
     publishedCompanies.map((company) => [company.id, company]),
   );
@@ -109,6 +110,7 @@ export default async function Home() {
   const recentCompanies = [...publishedCompanies]
     .sort((a, b) => getCompanySortDate(b) - getCompanySortDate(a))
     .slice(0, 6);
+  const fundingSignalCompanies = getFundingSignalCompanies(publishedCompanies);
   const clearSignalCompanies = publishedCompanies.filter(
     (company) =>
       ["Clear buyer pull", "Workflow signal", "Funding signal"].includes(
@@ -143,9 +145,20 @@ export default async function Home() {
   const currentReadSurface = getLatestSurface(storedSurfaces, "current_read");
   const categoryPulseSurface = getLatestSurface(storedSurfaces, "category_pulse");
   const recentlyAddedSurface = getLatestSurface(storedSurfaces, "recently_added");
-  const surfaceCompaniesToKnow =
+  const surfaceCompaniesToKnowBase =
     getCompaniesFromSurface(companiesToKnowSurface?.items, companiesById) ??
     companiesToKnow;
+  const surfaceCompaniesToKnow = selectFreshHomepageCompanies(
+    [
+      ...fundingSignalCompanies,
+      ...recentCompanies,
+      ...surfaceCompaniesToKnowBase,
+      ...companiesToKnow,
+      ...featuredPublishedCompanies,
+    ],
+    homepageSeed,
+    5,
+  );
   const featuredHomepageCompanies = uniqueCompanies([
     ...davidFavoriteCompanies,
     ...featuredPublishedCompanies,
@@ -169,11 +182,20 @@ export default async function Home() {
   const surfaceRecentlyAdded =
     getRecentlyAddedCompaniesFromSurface(recentlyAddedSurface, companiesById) ??
     recentlyAddedCompanies;
-  const latestSignalItems = getSafeLatestSignalItems(latestSignalsSurface?.items);
+  const latestSignalItems = rotateEditorialItems(
+    getSafeLatestSignalItems(latestSignalsSurface?.items),
+    homepageSeed,
+  );
   const displayedLatestSignals =
     latestSignalItems.length > 0
       ? latestSignalItems
-      : createLatestSignalFallbackItems(surfaceRecentlyAdded);
+      : rotateEditorialItems(
+          createLatestSignalFallbackItems([
+            ...fundingSignalCompanies,
+            ...surfaceRecentlyAdded,
+          ]),
+          homepageSeed,
+        );
   const latestUpdatedAt = getLatestHomepageUpdatedAt([
     stats.lastUpdatedAt,
     storedSnapshot?.generatedAt,
@@ -400,6 +422,87 @@ function uniqueCompanies(companies: Company[]) {
     seen.add(company.id);
     return true;
   });
+}
+
+function createHomepageSeed() {
+  return `${Date.now()}:${Math.random()}`;
+}
+
+function selectFreshHomepageCompanies(
+  companies: Company[],
+  seed: string,
+  limit: number,
+) {
+  const selected: Company[] = [];
+  const categoryCounts = new Map<Category, number>();
+
+  for (const company of uniqueCompanies(companies).sort(
+    (a, b) => getHomepageFreshnessScore(b, seed) - getHomepageFreshnessScore(a, seed),
+  )) {
+    const categoryCount = categoryCounts.get(company.category) ?? 0;
+    if (categoryCount >= 2) continue;
+
+    selected.push(company);
+    categoryCounts.set(company.category, categoryCount + 1);
+    if (selected.length === limit) break;
+  }
+
+  return selected.length > 0 ? selected : uniqueCompanies(companies).slice(0, limit);
+}
+
+function getHomepageFreshnessScore(company: Company, seed: string) {
+  const priorityScore = Math.max(0, 8 - getSignalPriority(company)) / 8;
+  const sortDate = getCompanySortDate(company);
+  const daysOld = sortDate > 0 ? (Date.now() - sortDate) / 86_400_000 : 90;
+  const recencyScore = Math.max(0, 1 - Math.min(daysOld, 45) / 45);
+  const fundingScore = getFundingSignalCompanies([company]).length > 0 ? 1 : 0;
+  const recentAdditionScore = isRecentCompanyAddition(company) ? 1 : 0;
+  const varietyScore = seededUnit(`${seed}:${company.id}`);
+
+  return (
+    0.28 * priorityScore +
+    0.24 * recencyScore +
+    0.2 * fundingScore +
+    0.12 * recentAdditionScore +
+    0.16 * varietyScore
+  );
+}
+
+function getFundingSignalCompanies(companies: Company[]) {
+  return companies
+    .filter((company) => {
+      const signal = getCompanySignalLabel(company);
+      const text = [
+        signal,
+        company.funding_round,
+        company.funding_amount,
+        company.funding_date,
+        company.funding_note,
+        company.recent_activity_text,
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return /\bfunding\b|\bfinancing\b|\braised\b|\bseed\b|\bseries a\b|\bpre-seed\b/.test(text);
+    })
+    .sort((a, b) => getCompanySortDate(b) - getCompanySortDate(a));
+}
+
+function rotateEditorialItems<T extends { id: string }>(items: T[], seed: string) {
+  return [...items].sort(
+    (a, b) => seededUnit(`${seed}:${b.id}`) - seededUnit(`${seed}:${a.id}`),
+  );
+}
+
+function seededUnit(value: string) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return (hash >>> 0) / 4294967295;
 }
 
 function getCompaniesFromSurface(

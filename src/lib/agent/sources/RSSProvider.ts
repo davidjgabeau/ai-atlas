@@ -25,6 +25,11 @@ const defaultDiscoveryFeeds: DiscoveryFeed[] = [
     sourceType: "press",
   },
   {
+    name: "citybiz",
+    url: "https://www.citybiz.co/feed/",
+    sourceType: "press",
+  },
+  {
     name: "TechCrunch Startups",
     url: "https://techcrunch.com/startups/feed/",
     sourceType: "press",
@@ -73,6 +78,7 @@ export class RSSProvider implements SourceProvider {
   async discoverCandidates(): Promise<RawSourceRecord[]> {
     const feeds = getDiscoveryFeeds();
     const records: RawSourceRecord[] = [];
+    const seenUrls = new Set<string>();
 
     for (const feed of feeds) {
       const xml = await fetchText(feed.url);
@@ -83,6 +89,10 @@ export class RSSProvider implements SourceProvider {
         .slice(0, getItemsPerFeedLimit());
 
       for (const item of items) {
+        const itemUrl = item.link || feed.url;
+        if (seenUrls.has(itemUrl)) continue;
+        seenUrls.add(itemUrl);
+
         const article = item.link ? await fetchArticleText(item.link) : null;
         const text = normalizeWhitespace(
           [
@@ -94,7 +104,9 @@ export class RSSProvider implements SourceProvider {
             .join("\n\n"),
         ).slice(0, 18_000);
 
-        if (!hasDiscoverySignal(text)) continue;
+        if (!hasDiscoverySignal(text, { requireStrongLocation: !isLocalDiscoveryFeed(feed) })) {
+          continue;
+        }
 
         const contentHash = createContentHash({
           feed: feed.url,
@@ -106,7 +118,7 @@ export class RSSProvider implements SourceProvider {
         records.push({
           id: createId("raw", contentHash),
           sourceType: feed.sourceType,
-          url: item.link || feed.url,
+          url: itemUrl,
           title: item.title,
           text,
           author: item.author,
@@ -172,6 +184,8 @@ function parseFeedItems(xml: string, feedUrl: string) {
 
 function isPotentialDiscoveryItem(item: ReturnType<typeof parseFeedItems>[number]) {
   const text = `${item.title} ${item.description}`;
+  if (isInvestorOrAdviceArticle(text)) return false;
+
   const hasAiSignal =
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text);
   const hasFundingOrStartupSignal =
@@ -182,12 +196,32 @@ function isPotentialDiscoveryItem(item: ReturnType<typeof parseFeedItems>[number
   return hasDiscoverySignal(text);
 }
 
-function hasDiscoverySignal(text: string) {
+function isInvestorOrAdviceArticle(text: string) {
+  return (
+    /\b(how to raise|raise a seed round|top investors|venture fund|new fund|fund closes|fund launched|launched a \$?\d+.*fund|fund to invest|vc fund|investor advice)\b/i.test(text)
+    || /\b(ventures?|capital|partners)\b.*\bfund\b/i.test(text)
+    || /\bfund\s+[ivx]+\b/i.test(text)
+  );
+}
+
+function hasDiscoverySignal(
+  text: string,
+  options: { requireStrongLocation?: boolean } = {},
+) {
+  const locationText = options.requireStrongLocation ? text.slice(0, 3_500) : text.slice(0, 5_000);
+  const locationPattern = options.requireStrongLocation
+    ? /\b(new york-based|nyc-based|ny-based|brooklyn-based|manhattan-based|based in new york|headquartered in new york|founded in new york|new york city-based)\b/i
+    : /\b(new york|nyc|brooklyn|manhattan|soho|flatiron|nomad|chelsea)\b/i;
+
   return (
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text) &&
-    /\b(new york|nyc|brooklyn|manhattan|soho|flatiron|nomad|chelsea)\b/i.test(text) &&
+    locationPattern.test(locationText) &&
     /\b(startup|company|raised|raises|funding|financing|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text)
   );
+}
+
+function isLocalDiscoveryFeed(feed: DiscoveryFeed) {
+  return /\b(alleywatch|tech:nyc|citybiz|new york)\b/i.test(feed.name);
 }
 
 async function fetchArticleText(url: string) {
@@ -195,7 +229,7 @@ async function fetchArticleText(url: string) {
   if (!html) return null;
 
   const title = decodeXml(html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] ?? "");
-  const text = stripHtml(html);
+  const text = stripHtml(extractArticleHtml(html));
 
   return { title, text };
 }
@@ -232,6 +266,15 @@ function stripHtml(html: string) {
       .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
       .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
       .replace(/<[^>]+>/g, " "),
+  );
+}
+
+function extractArticleHtml(html: string) {
+  return (
+    html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] ??
+    html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] ??
+    html.match(/<div\b[^>]*(?:class|id)=["'][^"']*(?:article|post|entry-content|story)[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ??
+    html
   );
 }
 

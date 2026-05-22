@@ -50,6 +50,9 @@ function extractSignalsDeterministically(
           title: `${company.name} funding signal`,
           summary: summarize(text, 220),
           occurredAt: sourceDate,
+          sourceUrl: raw.url,
+          sourceName: getSourceName(raw),
+          sourceRecordId: raw.id,
           confidence: round || amount ? "high" : "medium",
           facts: {
             fundingAmount: amount,
@@ -84,6 +87,9 @@ function extractSignalsDeterministically(
         title: `${company.name} product update`,
         summary: summarize(text, 220),
         occurredAt: sourceDate,
+        sourceUrl: raw.url,
+        sourceName: getSourceName(raw),
+        sourceRecordId: raw.id,
         confidence: "medium",
         facts: {
           product: extractProductName(raw.title ?? text),
@@ -101,6 +107,9 @@ function extractSignalsDeterministically(
         title: `${company.name} traction signal`,
         summary: summarize(text, 220),
         occurredAt: sourceDate,
+        sourceUrl: raw.url,
+        sourceName: getSourceName(raw),
+        sourceRecordId: raw.id,
         confidence: hasNamedEntityAfter(text, /customers|used by|adopted by/i)
           ? "medium"
           : "low",
@@ -120,6 +129,9 @@ function extractSignalsDeterministically(
         title: `${company.name} partnership signal`,
         summary: summarize(text, 220),
         occurredAt: sourceDate,
+        sourceUrl: raw.url,
+        sourceName: getSourceName(raw),
+        sourceRecordId: raw.id,
         confidence: "medium",
         facts: {},
         shouldUpdateCompanyProfile: false,
@@ -135,6 +147,9 @@ function extractSignalsDeterministically(
         title: `${company.name} hiring signal`,
         summary: summarize(text, 220),
         occurredAt: sourceDate,
+        sourceUrl: raw.url,
+        sourceName: getSourceName(raw),
+        sourceRecordId: raw.id,
         confidence: "medium",
         facts: {
           jobs: extractJobs(text),
@@ -152,6 +167,9 @@ function extractSignalsDeterministically(
         title: `${company.name} founder signal`,
         summary: summarize(text, 220),
         occurredAt: sourceDate,
+        sourceUrl: raw.url,
+        sourceName: getSourceName(raw),
+        sourceRecordId: raw.id,
         confidence: "medium",
         facts: {},
         shouldUpdateCompanyProfile: false,
@@ -160,6 +178,14 @@ function extractSignalsDeterministically(
   }
 
   return signals;
+}
+
+function getSourceName(raw: RawSourceRecord) {
+  try {
+    return new URL(raw.url).hostname.replace(/^www\./, "");
+  } catch {
+    return raw.sourceType;
+  }
 }
 
 function findCompanies(

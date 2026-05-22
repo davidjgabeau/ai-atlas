@@ -3,8 +3,16 @@ import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
 
 const candidateQueries = [
+  '"New York" "AI" "raises" "$"',
+  '"NYC" "AI" "announces" "funding"',
+  '"New York-based" "AI" "raises"',
+  '"Brooklyn-based" "AI" "raises"',
+  '"New York" "agentic AI" "raises"',
   '"New York" "AI" "raises" "Series A"',
   '"NYC" "AI" "raises" "seed"',
+  '"New York" "AI" "seed funding"',
+  '"New York" "AI" "Series A funding"',
+  '"NYC" "AI startup" "funding round"',
   '"New York" "consumer AI" "Series A"',
   '"AI social" "New York" startup',
   '"AI" "interactive entertainment" startup funding',
@@ -56,6 +64,10 @@ const defaultSearchSources: SearchSource[] = [
     name: "Crunchbase News",
     endpoint: "https://news.crunchbase.com/wp-json/wp/v2/search",
   },
+  {
+    name: "FinSMEs",
+    endpoint: "https://www.finsmes.com/wp-json/wp/v2/search",
+  },
 ];
 
 export class SearchProvider implements SourceProvider {
@@ -78,9 +90,12 @@ export class SearchProvider implements SourceProvider {
 
         for (const result of results.slice(0, getResultsPerQueryLimit())) {
           if (!result.url || seenUrls.has(result.url)) continue;
+          if (!hasInvestmentAnnouncementTitle(result.title, result.url)) continue;
           seenUrls.add(result.url);
 
           const article = await fetchArticleText(result.url);
+          const publishedAt = article?.publishedAt ?? inferDateFromUrl(result.url);
+          if (publishedAt && !isWithinDays(publishedAt, 730)) continue;
           const text = normalizeWhitespace(
             [
               result.title,
@@ -107,6 +122,7 @@ export class SearchProvider implements SourceProvider {
             url: result.url,
             title: result.title || article?.title,
             text,
+            publishedAt,
             discoveredAt: new Date().toISOString(),
             contentHash,
           });
@@ -142,12 +158,12 @@ function getSearchQueries() {
 }
 
 function getSearchQueryLimit() {
-  const value = readNumericEnv("DISCOVERY_QUERY_LIMIT", 24);
+  const value = readNumericEnv("DISCOVERY_QUERY_LIMIT", 4);
   return Math.max(1, Math.min(24, value));
 }
 
 function getResultsPerQueryLimit() {
-  const value = readNumericEnv("DISCOVERY_RESULTS_PER_QUERY", 4);
+  const value = readNumericEnv("DISCOVERY_RESULTS_PER_QUERY", 5);
   return Math.max(1, Math.min(8, value));
 }
 
@@ -197,7 +213,8 @@ async function fetchArticleText(url: string) {
 
     return {
       title: decodeHtml(html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] ?? ""),
-      text: stripHtml(html),
+      text: stripHtml(extractArticleHtml(html)),
+      publishedAt: extractPublishedDate(html, url),
     };
   } catch {
     return null;
@@ -205,10 +222,27 @@ async function fetchArticleText(url: string) {
 }
 
 function hasCandidateSearchSignal(text: string) {
+  const openingText = text.slice(0, 4_000);
+
   return (
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model)\b/i.test(text) &&
-    /\b(startup|company|raised|raises|funding|financing|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text)
+    /\b(new york|nyc|brooklyn|manhattan|soho|flatiron|nomad|chelsea|new york-based|ny-based)\b/i.test(openingText) &&
+    /\b(startup|company|raised|raises|funding|financing|investment|invests|led by|seed|pre-seed|preseed|series a|series b|launches|launched|emerges|founded)\b/i.test(text)
   );
+}
+
+function hasInvestmentAnnouncementTitle(title: string, url: string) {
+  const text = `${title} ${url}`;
+  if (
+    /\b(how to raise|raise a seed round|top investors|venture fund|new fund|fund closes|fund launched|launched a \$?\d+.*fund|fund to invest|vc fund|investor advice)\b/i.test(text)
+    || /\b(ventures?|capital|partners)\b.*\bfund\b/i.test(text)
+    || /\bfund\s+[ivx]+\b/i.test(text)
+    || /\b(sector snapshot|daily funding report|largest .* funding rounds|globally raise|global startup)\b/i.test(text)
+  ) {
+    return false;
+  }
+
+  return /\b(raises?|raised|funding|financing|investment|seed|pre-seed|preseed|series a|series b|closes?|lands|backed by|\$\d)/i.test(title);
 }
 
 function stripHtml(html: string) {
@@ -219,6 +253,15 @@ function stripHtml(html: string) {
       .replace(/<nav[\s\S]*?<\/nav>/gi, " ")
       .replace(/<footer[\s\S]*?<\/footer>/gi, " ")
       .replace(/<[^>]+>/g, " "),
+  );
+}
+
+function extractArticleHtml(html: string) {
+  return (
+    html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] ??
+    html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] ??
+    html.match(/<div\b[^>]*(?:class|id)=["'][^"']*(?:article|post|entry-content|story)[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ??
+    html
   );
 }
 
@@ -248,4 +291,40 @@ function readNumericEnv(name: string, fallback: number) {
 
   const value = Number(raw);
   return Number.isFinite(value) ? value : fallback;
+}
+
+function extractPublishedDate(html: string, url: string) {
+  const candidates = [
+    html.match(/property=["']article:published_time["'][^>]*content=["']([^"']+)["']/i)?.[1],
+    html.match(/name=["']date["'][^>]*content=["']([^"']+)["']/i)?.[1],
+    html.match(/"datePublished"\s*:\s*"([^"]+)"/i)?.[1],
+    inferDateFromUrl(url),
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    const normalized = normalizeDate(candidate);
+    if (normalized) return normalized;
+  }
+
+  return undefined;
+}
+
+function inferDateFromUrl(url: string) {
+  const match = url.match(/\/(20\d{2})\/([01]\d)\//);
+  if (!match) return undefined;
+
+  return normalizeDate(`${match[1]}-${match[2]}-01T00:00:00.000Z`);
+}
+
+function normalizeDate(value?: string) {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+}
+
+function isWithinDays(value: string, days: number) {
+  const time = new Date(value).getTime();
+  if (Number.isNaN(time)) return false;
+
+  return Date.now() - time <= days * 86_400_000;
 }
