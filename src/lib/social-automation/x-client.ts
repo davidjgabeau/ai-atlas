@@ -89,6 +89,9 @@ export async function getXAuthHealth(
     };
   }
 
+  await applyStoredXTokens(config);
+  applyCachedXAccessToken(config);
+
   if (!config.xAccessToken && !config.xBearerToken && !canRefreshXAccessToken(config)) {
     return {
       ok: false,

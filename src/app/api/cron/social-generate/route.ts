@@ -6,15 +6,52 @@ export const maxDuration = 300;
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
+  const startedAt = Date.now();
   if (!isAuthorizedCronRequest(request)) {
+    console.warn(
+      JSON.stringify({
+        level: "warn",
+        route: "/api/cron/social-generate",
+        msg: "unauthorized",
+      }),
+    );
     return NextResponse.json(
       { ok: false, error: "Unauthorized cron request." },
       { status: 401 },
     );
   }
 
-  const result = await generateSocialDrafts();
-  return NextResponse.json(result);
+  try {
+    const result = await generateSocialDrafts();
+    console.log(
+      JSON.stringify({
+        level: "info",
+        route: "/api/cron/social-generate",
+        msg: "done",
+        status: result.status,
+        candidatesFound: result.candidatesFound,
+        draftsCreated: result.draftsCreated,
+        skipped: result.skipped,
+        errors: result.errors,
+        ms: Date.now() - startedAt,
+      }),
+    );
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        level: "error",
+        route: "/api/cron/social-generate",
+        msg: "failed",
+        error: error instanceof Error ? error.message : String(error),
+        ms: Date.now() - startedAt,
+      }),
+    );
+    return NextResponse.json(
+      { ok: false, error: "Social generation failed." },
+      { status: 500 },
+    );
+  }
 }
 
 function isAuthorizedCronRequest(request: Request) {
