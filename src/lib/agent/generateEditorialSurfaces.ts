@@ -472,9 +472,10 @@ function createDeterministicLatestSignalBody(
       amount && round ? `${amount} ${round}` : amount || round || "Fresh funding",
       investorText ? `from ${investorText}` : "",
     ].filter(Boolean).join(" ");
+    const fundingDescription = removeCompanyLead(company, description);
 
     return truncateSignalBody(
-      `${fundingLead} backs ${lowerFirst(description)} for ${categoryBuyerPhrase(company.category)}.`,
+      `${fundingLead} backs ${lowerFirst(fundingDescription)} for ${categoryBuyerPhrase(company.category)}.`,
     );
   }
   if (event.type === "hiring_signal") {
@@ -557,6 +558,16 @@ function sentenceFragment(value: string) {
 function lowerFirst(value: string) {
   if (/^AI\b/.test(value)) return value;
   return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function removeCompanyLead(company: AgentCompany, value: string) {
+  const escapedName = company.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const withoutName = value
+    .replace(new RegExp(`^${escapedName}\\s+(?:is|builds?|uses|provides|offers|helps|enables)\\s+`, "i"), "")
+    .replace(new RegExp(`^${escapedName}\\s+`, "i"), "")
+    .trim();
+
+  return withoutName || value;
 }
 
 function categoryBuyerPhrase(category: string) {
