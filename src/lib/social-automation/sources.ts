@@ -415,7 +415,7 @@ function createCurrentReadCandidates(
 function createEvergreenCandidates(companies: SocialCompany[]): SocialPostCandidate[] {
   return [...companies]
     .sort(compareEvergreenCompanies)
-    .slice(0, 8)
+    .slice(0, 80)
     .map((company) => {
       const profileUrl = getCompanyProfileUrl(company);
 
@@ -457,6 +457,7 @@ function candidate({
   raw = {},
   score,
 }: CandidateInput): SocialPostCandidate {
+  const recurrenceBucket = getSourceRecurrenceBucket(sourceKind);
   const sourceHash = createContentHash({
     sourceKind,
     sourceCompanyIds,
@@ -465,6 +466,7 @@ function candidate({
     sourceNewsIds,
     sourceSnapshotIds,
     title,
+    ...(recurrenceBucket ? { recurrenceBucket } : {}),
   });
 
   return {
@@ -487,6 +489,17 @@ function candidate({
     newsItem: raw.newsItem as NewsItem | undefined,
     snapshot: raw.snapshot as MarketSnapshot | undefined,
   };
+}
+
+function getSourceRecurrenceBucket(sourceKind: SocialPostCandidate["sourceKind"]) {
+  if (sourceKind !== "evergreen_spotlight") return "";
+
+  const now = new Date();
+  return [
+    now.getUTCFullYear(),
+    String(now.getUTCMonth() + 1).padStart(2, "0"),
+    String(now.getUTCDate()).padStart(2, "0"),
+  ].join("-");
 }
 
 function rankCandidates(candidates: SocialPostCandidate[]) {

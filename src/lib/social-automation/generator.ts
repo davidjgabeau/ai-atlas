@@ -73,7 +73,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
   }
 
   const { candidates, errors: sourceErrors } = await collectSocialPostCandidates(
-    config.generationBatchSize * 3,
+    Math.max(config.generationBatchSize * 10, 120),
   );
   errors.push(...sourceErrors);
 
@@ -86,12 +86,20 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
     .sort((left, right) => right.score - left.score);
   const selectedCandidates = selectDiverseCandidates(
     freshCandidates,
-    config.generationBatchSize,
+    Math.min(freshCandidates.length, config.generationBatchSize * 5),
   );
   const rows: Array<Record<string, unknown>> = [];
+  let reviewedCandidates = 0;
+  let scheduledDraftIndex = 0;
   let skipped = candidates.length - selectedCandidates.length;
 
-  for (const [index, candidate] of selectedCandidates.entries()) {
+  for (const candidate of selectedCandidates) {
+    if (rows.filter((row) => row.status !== "skipped").length >= config.generationBatchSize) {
+      skipped += selectedCandidates.length - reviewedCandidates;
+      break;
+    }
+
+    reviewedCandidates += 1;
     const candidateSkipReason = getCandidateSkipReason(candidate, recentPosts);
     if (candidateSkipReason) {
       skipped += 1;
@@ -157,7 +165,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       status: shouldSchedule ? "scheduled" : "draft",
       post_text: postText,
       scheduled_for: shouldSchedule
-        ? getScheduledFor(index, config.minMinutesBetweenPosts)
+        ? getScheduledFor(scheduledDraftIndex, config.minMinutesBetweenPosts)
         : null,
       company_id: candidate.sourceCompanyIds[0] ?? null,
       source_company_ids: candidate.sourceCompanyIds,
@@ -184,6 +192,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       ],
       raw: candidateToRaw(candidate),
     });
+    scheduledDraftIndex += 1;
   }
 
   const persisted = await upsertSocialPosts(rows);
@@ -208,6 +217,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       candidatesFound: candidates.length,
       freshCandidates: freshCandidates.length,
       selectedCandidates: selectedCandidates.length,
+      reviewedCandidates,
       draftsCreated,
       skipped,
       rowsPersisted: persisted.count,
