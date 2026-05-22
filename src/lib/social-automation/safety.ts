@@ -6,6 +6,15 @@ export type SocialSafetyResult = {
   taggedHandles: string[];
 };
 
+const repetitivePhrases = [
+  "puts more attention on",
+  "worth watching",
+  "worth a look",
+  "one to watch",
+  "this one's worth",
+  "the product shape",
+];
+
 const bannedPhrases = [
   "unlock",
   "leverage",
@@ -20,6 +29,7 @@ const bannedPhrases = [
   "gains density",
   "remains clearer",
   "database dump",
+  ...repetitivePhrases,
   "cron",
   "agent",
   "pipeline",
@@ -82,8 +92,9 @@ export function checkSocialPostSafety({
     }
   }
 
-  if (isTooSimilarToRecentPost(clean, recentTexts)) {
-    notes.push("Too similar to a recent social post.");
+  const repetitionIssue = getSocialTextRepetitionIssue(clean, recentTexts);
+  if (repetitionIssue) {
+    notes.push(repetitionIssue);
   }
 
   if (/\b(politics|war|lawsuit|scandal|layoff|layoffs)\b/i.test(clean)) {
@@ -97,7 +108,10 @@ export function checkSocialPostSafety({
   };
 }
 
-function isTooSimilarToRecentPost(text: string, recentTexts: string[]) {
+export function isSocialTextTooSimilarToRecentPost(
+  text: string,
+  recentTexts: string[],
+) {
   const normalized = normalizeForSimilarity(text);
   if (!normalized) return false;
 
@@ -106,14 +120,47 @@ function isTooSimilarToRecentPost(text: string, recentTexts: string[]) {
     if (!recent) return false;
     if (recent === normalized) return true;
     if (recent.includes(normalized) || normalized.includes(recent)) return true;
+    if (hasMatchingOpening(normalized, recent)) return true;
 
     const tokens = new Set(normalized.split(" ").filter((token) => token.length > 3));
     const recentTokens = new Set(recent.split(" ").filter((token) => token.length > 3));
     if (tokens.size === 0 || recentTokens.size === 0) return false;
     const overlap = [...tokens].filter((token) => recentTokens.has(token)).length;
 
-    return overlap / Math.max(tokens.size, recentTokens.size) > 0.78;
+    return (
+      overlap / Math.max(tokens.size, recentTokens.size) > 0.72 ||
+      overlap / Math.min(tokens.size, recentTokens.size) > 0.86
+    );
   });
+}
+
+export function getSocialTextRepetitionIssue(
+  text: string,
+  recentTexts: string[],
+) {
+  const lower = text.toLowerCase();
+  const repeatedPhrase = repetitivePhrases.find((phrase) => lower.includes(phrase));
+  if (repeatedPhrase) return `Contains repetitive social phrase: ${repeatedPhrase}.`;
+  if (isSocialTextTooSimilarToRecentPost(text, recentTexts)) {
+    return "Too similar to a recent social post.";
+  }
+
+  return "";
+}
+
+function hasMatchingOpening(left: string, right: string) {
+  const leftOpening = getOpeningSignature(left);
+  const rightOpening = getOpeningSignature(right);
+
+  return leftOpening.length > 0 && leftOpening === rightOpening;
+}
+
+function getOpeningSignature(value: string) {
+  return value
+    .split(" ")
+    .filter((token) => token.length > 2)
+    .slice(0, 4)
+    .join(" ");
 }
 
 function normalizeForSimilarity(value: string) {

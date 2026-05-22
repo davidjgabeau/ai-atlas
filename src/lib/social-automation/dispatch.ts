@@ -3,9 +3,10 @@ import {
   getSocialConfigSnapshot,
 } from "@/lib/social-automation/config";
 import {
+  cancelSocialPostForDispatch,
   claimSocialPostForPublishing,
   claimSocialPostNowForPublishing,
-  getDueScheduledPost,
+  getDueScheduledPosts,
   getRecentSocialPostsForPacing,
   getSocialPostById,
   markSocialPostFailed,
@@ -13,6 +14,7 @@ import {
   saveDispatchLog,
   saveSocialRun,
 } from "@/lib/social-automation/store";
+import { getSocialTextRepetitionIssue } from "@/lib/social-automation/safety";
 import { prepareSocialTextForPublish } from "@/lib/social-automation/preview-url";
 import { absoluteUrl, getShareImageUrl } from "@/lib/seo/shareMetadata";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
@@ -56,14 +58,38 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
     return saveSkippedDispatch(startedAt, health.reason);
   }
 
-  const pacing = await getPacingDecision(config);
+  const recentPublishedPosts = await getRecentSocialPostsForPacing();
+  const pacing = getPacingDecision(config, recentPublishedPosts);
   if (!pacing.allowed) {
     return saveSkippedDispatch(startedAt, pacing.reason);
   }
 
-  const duePost = await getDueScheduledPost();
-  if (!duePost) {
+  const duePosts = await getDueScheduledPosts(new Date(), 8);
+  if (duePosts.length === 0) {
     return saveSkippedDispatch(startedAt, "No scheduled posts are due.");
+  }
+
+  const recentTexts = recentPublishedPosts.map((post) => post.post_text);
+  let duePost: AtlasSocialPost | null = null;
+  for (const post of duePosts) {
+    const repetitionIssue = getSocialTextRepetitionIssue(post.post_text, recentTexts);
+    if (repetitionIssue) {
+      await cancelSocialPostForDispatch({
+        post,
+        reason: `Canceled before publishing: ${repetitionIssue}`,
+      });
+      continue;
+    }
+
+    duePost = post;
+    break;
+  }
+
+  if (!duePost) {
+    return saveSkippedDispatch(
+      startedAt,
+      "Due scheduled posts were too similar to recent posts.",
+    );
   }
 
   const claimedPost = await claimSocialPostForPublishing(duePost);
@@ -461,8 +487,10 @@ function normalizeHandle(value: string) {
   return value.replace(/^@/, "").trim();
 }
 
-async function getPacingDecision(config: ReturnType<typeof getSocialAutomationConfig>) {
-  const recentPosts = await getRecentSocialPostsForPacing();
+function getPacingDecision(
+  config: ReturnType<typeof getSocialAutomationConfig>,
+  recentPosts: AtlasSocialPost[],
+) {
   const now = Date.now();
   const postsToday = recentPosts.filter((post) =>
     isSameZonedDay(post.published_at, config.timezone),

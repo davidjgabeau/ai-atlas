@@ -90,6 +90,24 @@ export async function getDueScheduledPost(now = new Date()) {
   return normalizeSocialPost(data as SocialPostRow);
 }
 
+export async function getDueScheduledPosts(now = new Date(), limit = 5) {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) return [];
+
+  const { data, error } = await supabase
+    .from("atlas_social_posts")
+    .select("*")
+    .eq("status", "scheduled")
+    .lt("attempt_count", 3)
+    .lte("scheduled_for", now.toISOString())
+    .order("scheduled_for", { ascending: true })
+    .limit(limit);
+
+  if (error || !data) return [];
+
+  return (data as SocialPostRow[]).map(normalizeSocialPost);
+}
+
 export async function getSocialPostById(postId: string) {
   const supabase = createSupabasePrivilegedClient();
   if (!supabase) return null;
@@ -103,6 +121,20 @@ export async function getSocialPostById(postId: string) {
   if (error || !data) return null;
 
   return normalizeSocialPost(data as SocialPostRow);
+}
+
+export async function getPendingSocialPostCount() {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) return 0;
+
+  const { count, error } = await supabase
+    .from("atlas_social_posts")
+    .select("id", { count: "exact", head: true })
+    .in("status", ["draft", "queued", "scheduled", "publishing"]);
+
+  if (error) return 0;
+
+  return count ?? 0;
 }
 
 export async function claimSocialPostForPublishing(post: AtlasSocialPost) {
@@ -249,6 +281,47 @@ export async function markSocialPostSkipped({
     runType: "admin",
     selectedPostId: postId,
     decision: "skipped_post",
+    notes: [reason],
+  });
+
+  return normalizeSocialPost(data as SocialPostRow);
+}
+
+export async function cancelSocialPostForDispatch({
+  post,
+  reason,
+}: {
+  post: AtlasSocialPost;
+  reason: string;
+}) {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) return null;
+
+  const { data, error } = await supabase
+    .from("atlas_social_posts")
+    .update({
+      status: "canceled",
+      last_error: reason,
+      decision_log: [
+        ...post.decision_log,
+        {
+          at: new Date().toISOString(),
+          action: "dispatch_canceled",
+          reason,
+        },
+      ],
+    })
+    .eq("id", post.id)
+    .eq("status", "scheduled")
+    .select("*")
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  await saveDispatchLog({
+    runType: "dispatch",
+    selectedPostId: post.id,
+    decision: "canceled_repetitive_post",
     notes: [reason],
   });
 

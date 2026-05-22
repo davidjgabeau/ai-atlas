@@ -11,6 +11,7 @@ import {
 } from "@/lib/social-automation/preview-url";
 import {
   getExistingSocialSourceHashes,
+  getPendingSocialPostCount,
   getRecentSocialPostsForGeneration,
   saveDispatchLog,
   saveSocialRun,
@@ -72,6 +73,30 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
     };
   }
 
+  const pendingCount = await getPendingSocialPostCount();
+  const pendingThreshold = Math.max(6, Math.floor(config.generationBatchSize / 2));
+  if (pendingCount >= pendingThreshold) {
+    await saveSocialRun({
+      task: "generate",
+      startedAt,
+      status: "skipped",
+      stats: {
+        ...getSocialConfigSnapshot(config),
+        pendingCount,
+        pendingThreshold,
+      },
+      errors: ["Enough unpublished social posts are already queued."],
+    });
+    return {
+      ok: true,
+      status: "skipped",
+      candidatesFound: 0,
+      draftsCreated: 0,
+      skipped: 0,
+      errors: ["Enough unpublished social posts are already queued."],
+    };
+  }
+
   const { candidates, errors: sourceErrors } = await collectSocialPostCandidates(
     Math.max(config.generationBatchSize * 10, 120),
   );
@@ -89,6 +114,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
     Math.min(freshCandidates.length, config.generationBatchSize * 5),
   );
   const rows: Array<Record<string, unknown>> = [];
+  const recentTextsForSafety = recentPosts.map((post) => post.post_text);
   let reviewedCandidates = 0;
   let scheduledDraftIndex = 0;
   let skipped = candidates.length - selectedCandidates.length;
@@ -113,7 +139,11 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       continue;
     }
 
-    const draft = await writeSocialDraftWithClaude({ candidate, config });
+    const draft = await writeSocialDraftWithClaude({
+      candidate,
+      config,
+      recentTexts: recentTextsForSafety,
+    });
 
     if (draft.error || !draft.text) {
       skipped += 1;
@@ -135,7 +165,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       text: postText,
       companies: candidate.companies,
       sourceUrls: candidate.sourceUrls,
-      recentTexts: recentPosts.map((post) => post.post_text),
+      recentTexts: recentTextsForSafety,
     });
 
     if (!safety.passed) {
@@ -192,6 +222,7 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       ],
       raw: candidateToRaw(candidate),
     });
+    recentTextsForSafety.unshift(postText);
     scheduledDraftIndex += 1;
   }
 
@@ -252,13 +283,32 @@ function selectDiverseCandidates(candidates: SocialPostCandidate[], limit: numbe
     "evergreen_spotlight",
   ];
   const selected: SocialPostCandidate[] = [];
+  const sourceKindCounts = new Map<SocialPostCandidate["sourceKind"], number>();
+  const categoryCounts = new Map<string, number>();
+  const companyIds = new Set<string>();
 
   while (selected.length < limit) {
     const before = selected.length;
     for (const kind of kindOrder) {
-      const next = buckets.get(kind)?.shift();
+      const bucket = buckets.get(kind);
+      if (!bucket) continue;
+
+      let next = bucket.shift();
+      while (next && !canSelectCandidate(next, {
+        sourceKindCounts,
+        categoryCounts,
+        companyIds,
+      })) {
+        next = bucket.shift();
+      }
+
       if (!next) continue;
       selected.push(next);
+      sourceKindCounts.set(kind, (sourceKindCounts.get(kind) ?? 0) + 1);
+      for (const category of getCandidateCategories(next)) {
+        categoryCounts.set(category, (categoryCounts.get(category) ?? 0) + 1);
+      }
+      for (const companyId of next.sourceCompanyIds) companyIds.add(companyId);
       if (selected.length >= limit) break;
     }
 
@@ -266,6 +316,49 @@ function selectDiverseCandidates(candidates: SocialPostCandidate[], limit: numbe
   }
 
   return selected;
+}
+
+function canSelectCandidate(
+  candidate: SocialPostCandidate,
+  selected: {
+    sourceKindCounts: Map<SocialPostCandidate["sourceKind"], number>;
+    categoryCounts: Map<string, number>;
+    companyIds: Set<string>;
+  },
+) {
+  const sourceKindCap: Record<SocialPostCandidate["sourceKind"], number> = {
+    company_update: 4,
+    job_alert: 2,
+    company_news: 3,
+    current_read: 2,
+    category_movement: 2,
+    evergreen_spotlight: 4,
+  };
+  if (
+    (selected.sourceKindCounts.get(candidate.sourceKind) ?? 0) >=
+    sourceKindCap[candidate.sourceKind]
+  ) {
+    return false;
+  }
+
+  if (candidate.sourceCompanyIds.some((companyId) => selected.companyIds.has(companyId))) {
+    return false;
+  }
+
+  return getCandidateCategories(candidate).every(
+    (category) => (selected.categoryCounts.get(category) ?? 0) < 3,
+  );
+}
+
+function getCandidateCategories(candidate: SocialPostCandidate) {
+  return Array.from(
+    new Set(
+      [
+        typeof candidate.category === "string" ? candidate.category : "",
+        ...candidate.companies.map((company) => company.category),
+      ].filter(Boolean),
+    ),
+  );
 }
 
 function createSkippedRow(
