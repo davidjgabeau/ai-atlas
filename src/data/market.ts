@@ -1178,6 +1178,15 @@ const companySourceUrlsByName: Record<string, string[]> = {
   ],
 };
 
+const companyXHandlesByName: Record<string, string> = {
+  "General Intelligence Company": "intelligenceco",
+  "Status": "thestatusai",
+  "Glif": "heyglif",
+  "Proxima Bio": "proximabio",
+  "Output Biosciences": "OutputBio",
+  "GhostEye": "GhostEyeAI",
+};
+
 function slugify(value: string) {
   return value
     .toLowerCase()
@@ -1347,7 +1356,7 @@ export const companies: Company[] = sourceCompanies.map((record, index) => {
     slug: slugify(record.company_name),
     logo_url: "",
     website_url: record.website,
-    x_handle: "",
+    x_handle: companyXHandlesByName[record.company_name] ?? "",
     x_user_id: "",
     founder_name: record.founder_name,
     office_address: companyAddressesByWebsite[record.website] ?? "",

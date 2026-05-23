@@ -7,12 +7,14 @@ import {
   saveSocialRun,
   upsertSocialTarget,
 } from "@/lib/social-automation/store";
+import { getCompanyXHandle } from "@/lib/social/companyXHandles";
 import { verifyHandle } from "@/lib/social-automation/x-client";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 
 type CompanyHandleRow = {
   id: string;
   name: string;
+  slug: string;
   x_handle: string;
   website_url?: string;
 };
@@ -52,11 +54,10 @@ export async function verifySocialHandles(limit = 10) {
 
   const { data, error } = await supabase
     .from("companies")
-    .select("id,name,x_handle,website_url")
+    .select("id,name,slug,x_handle,website_url")
     .eq("status", "published")
-    .neq("x_handle", "")
     .order("x_last_synced_at", { ascending: true, nullsFirst: true })
-    .limit(Math.max(1, Math.min(limit, 25)));
+    .limit(200);
 
   if (error || !data) {
     return {
@@ -71,7 +72,18 @@ export async function verifySocialHandles(limit = 10) {
   let verified = 0;
   let failed = 0;
 
-  for (const company of data as CompanyHandleRow[]) {
+  const companiesToVerify = (data as CompanyHandleRow[])
+    .map((company) => ({
+      ...company,
+      x_handle: getCompanyXHandle({
+        slug: company.slug,
+        currentHandle: company.x_handle,
+      }),
+    }))
+    .filter((company) => company.x_handle)
+    .slice(0, Math.max(1, Math.min(limit, 25)));
+
+  for (const company of companiesToVerify) {
     const normalizedHandle = normalizeHandle(company.x_handle);
     if (!normalizedHandle) continue;
 
@@ -125,7 +137,7 @@ export async function verifySocialHandles(limit = 10) {
     status,
     stats: {
       ...getSocialConfigSnapshot(config),
-      checked: data.length,
+      checked: companiesToVerify.length,
       verified,
       failed,
     },

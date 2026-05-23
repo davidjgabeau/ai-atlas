@@ -2,6 +2,7 @@ import { createContentHash } from "@/lib/agent/hash";
 import { validateDiscoveredCompanyCandidate } from "@/lib/agent/companyCandidateValidation";
 import { getCategorySlug } from "@/data/market";
 import { absoluteUrl } from "@/lib/seo/shareMetadata";
+import { getCompanyXHandle } from "@/lib/social/companyXHandles";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 import type { CompanyEvent, MarketSnapshot } from "@/types/agent";
 import type { Category, NewsItem } from "@/types/market";
@@ -580,7 +581,10 @@ function normalizeCompany(row: CompanyRow): SocialCompany | null {
     one_line_thesis: String(row.one_line_thesis ?? ""),
     recent_activity_text: String(row.recent_activity_text ?? ""),
     recent_activity_date: String(row.recent_activity_date ?? ""),
-    x_handle: normalizeHandle(row.x_handle),
+    x_handle: getCompanyXHandle({
+      slug: String(row.slug),
+      currentHandle: row.x_handle,
+    }),
     is_featured: Boolean(row.is_featured),
     is_breakout: Boolean(row.is_breakout),
     updated_at: String(row.updated_at ?? ""),

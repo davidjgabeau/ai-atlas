@@ -22,6 +22,7 @@
     "social:generate": "tsx scripts/social-generate.ts",
     "social:dispatch": "tsx scripts/social-dispatch.ts",
     "social:engagement": "tsx scripts/social-engagement.ts",
+    "social:discover-handles": "tsx scripts/discover-company-x-handles.ts",
     "social:verify-handles": "tsx scripts/social-verify-handles.ts",
     "company-briefs:refresh": "tsx scripts/refresh-company-profile-briefs.ts",
     "seed:views": "tsx scripts/seed-company-view-counts.ts",

@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
+import { getCompanyXHandle } from "@/lib/social/companyXHandles";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 
 export const maxDuration = 60;
@@ -72,9 +73,8 @@ export async function GET(request: Request) {
     .from("companies")
     .select("id,name,slug,x_handle,x_user_id")
     .eq("status", "published")
-    .neq("x_handle", "")
     .order("x_last_synced_at", { ascending: true, nullsFirst: true })
-    .limit(getSyncCompanyLimit());
+    .limit(200);
 
   if (error || !companies) {
     return NextResponse.json(
@@ -87,7 +87,18 @@ export async function GET(request: Request) {
   const errors: Array<{ company: string; error: string }> = [];
   const syncedCompanySlugs = new Set<string>();
 
-  for (const company of companies as CompanySyncRow[]) {
+  const companiesToSync = (companies as CompanySyncRow[])
+    .map((company) => ({
+      ...company,
+      x_handle: getCompanyXHandle({
+        slug: company.slug,
+        currentHandle: company.x_handle,
+      }),
+    }))
+    .filter((company) => company.x_handle)
+    .slice(0, getSyncCompanyLimit());
+
+  for (const company of companiesToSync) {
     const handle = normalizeHandle(company.x_handle);
     if (!handle) continue;
 
@@ -152,7 +163,7 @@ export async function GET(request: Request) {
   return NextResponse.json({
     ok: errors.length === 0,
     synced: true,
-    companiesChecked: companies.length,
+    companiesChecked: companiesToSync.length,
     companiesSynced: syncedCompanySlugs.size,
     postsUpserted,
     errors,

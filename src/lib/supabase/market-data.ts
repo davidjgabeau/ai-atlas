@@ -17,6 +17,10 @@ import {
   getCompanyViewMetrics,
   normalizeCompanyMetric,
 } from "@/lib/metrics/companyViews";
+import {
+  getCompanyXHandle,
+  normalizeCompanyXHandle,
+} from "@/lib/social/companyXHandles";
 import { normalizeSignalLabel } from "@/lib/signals/companySignal";
 import { createSupabaseAuthServerClient } from "@/lib/supabase/auth-server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -274,6 +278,12 @@ export function normalizeCompany(row: CompanyRow): Company {
     safeString(row.one_line_thesis, ""),
     name,
   );
+  const slug = safeString(row.slug, id);
+  const xHandle = getCompanyXHandle({
+    slug,
+    currentHandle: row.x_handle,
+  });
+  const rawXHandle = normalizeCompanyXHandle(row.x_handle);
   const whyItMatters = normalizeCopyArtifacts(
     safeString(row.why_it_matters, ""),
     name,
@@ -292,11 +302,14 @@ export function normalizeCompany(row: CompanyRow): Company {
   const company: Company = {
     id,
     name,
-    slug: safeString(row.slug, id),
+    slug,
     logo_url: safeString(row.logo_url, ""),
     website_url: safeString(row.website_url, ""),
-    x_handle: normalizeSocialHandle(row.x_handle),
-    x_user_id: safeString(row.x_user_id, ""),
+    x_handle: xHandle,
+    x_user_id:
+      xHandle.toLowerCase() === rawXHandle.toLowerCase()
+        ? safeString(row.x_user_id, "")
+        : "",
     x_last_synced_at: row.x_last_synced_at
       ? safeString(row.x_last_synced_at, "")
       : undefined,
@@ -854,10 +867,4 @@ function normalizeSubmissionStatus(value: unknown): SubmissionStatus {
 
 function safeString(value: unknown, fallback: string) {
   return typeof value === "string" && value.length > 0 ? value : fallback;
-}
-
-function normalizeSocialHandle(value: unknown) {
-  if (typeof value !== "string") return "";
-
-  return value.replace(/^@/, "").trim();
 }
