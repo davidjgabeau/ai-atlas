@@ -332,7 +332,7 @@
     max-width: 360px;
     color: #070707;
     font-family: var(--font-display);
-    font-size: clamp(60px, 5.2vw, 76px);
+    font-size: clamp(57px, 4.94vw, 72.2px);
     font-weight: 500;
     font-feature-settings: "kern" 1, "liga" 1;
     letter-spacing: 0;
@@ -353,7 +353,7 @@
   .homeHeroHeadlineMobile {
     width: calc(100vw - 40px);
     max-width: 460px;
-    font-size: clamp(40px, 11.8vw, 54px);
+    font-size: clamp(38px, 11.21vw, 51.3px);
     line-height: 0.92;
   }
 
