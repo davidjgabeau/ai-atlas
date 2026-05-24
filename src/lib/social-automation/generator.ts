@@ -11,7 +11,7 @@ import {
 } from "@/lib/social-automation/preview-url";
 import {
   getExistingSocialSourceHashes,
-  getPendingSocialPostCount,
+  getPendingSocialPostCounts,
   getRecentSocialPostsForGeneration,
   saveDispatchLog,
   saveSocialRun,
@@ -73,19 +73,28 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
     };
   }
 
-  const pendingCount = await getPendingSocialPostCount();
-  const pendingThreshold = Math.max(6, Math.floor(config.generationBatchSize / 2));
-  if (pendingCount >= pendingThreshold) {
+  const pendingCounts = await getPendingSocialPostCounts();
+  const dispatchablePendingCount =
+    pendingCounts.queued + pendingCounts.scheduled + pendingCounts.publishing;
+  const dispatchablePendingThreshold = Math.max(
+    6,
+    Math.floor(config.generationBatchSize / 2),
+  );
+  const draftBacklogThreshold = Math.max(config.generationBatchSize * 4, 24);
+
+  if (dispatchablePendingCount >= dispatchablePendingThreshold) {
     await saveSocialRun({
       task: "generate",
       startedAt,
       status: "skipped",
       stats: {
         ...getSocialConfigSnapshot(config),
-        pendingCount,
-        pendingThreshold,
+        pendingCounts,
+        dispatchablePendingCount,
+        dispatchablePendingThreshold,
+        draftBacklogThreshold,
       },
-      errors: ["Enough unpublished social posts are already queued."],
+      errors: ["Enough scheduled social posts are already queued."],
     });
     return {
       ok: true,
@@ -93,7 +102,31 @@ export async function generateSocialDrafts(): Promise<GenerateSocialDraftsResult
       candidatesFound: 0,
       draftsCreated: 0,
       skipped: 0,
-      errors: ["Enough unpublished social posts are already queued."],
+      errors: ["Enough scheduled social posts are already queued."],
+    };
+  }
+
+  if (pendingCounts.draft >= draftBacklogThreshold) {
+    await saveSocialRun({
+      task: "generate",
+      startedAt,
+      status: "skipped",
+      stats: {
+        ...getSocialConfigSnapshot(config),
+        pendingCounts,
+        dispatchablePendingCount,
+        dispatchablePendingThreshold,
+        draftBacklogThreshold,
+      },
+      errors: ["Too many social drafts are already awaiting review."],
+    });
+    return {
+      ok: true,
+      status: "skipped",
+      candidatesFound: 0,
+      draftsCreated: 0,
+      skipped: 0,
+      errors: ["Too many social drafts are already awaiting review."],
     };
   }
 

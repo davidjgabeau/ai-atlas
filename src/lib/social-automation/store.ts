@@ -108,6 +108,96 @@ export async function getDueScheduledPosts(now = new Date(), limit = 5) {
   return (data as SocialPostRow[]).map(normalizeSocialPost);
 }
 
+export async function recoverMissedSocialPostsForDispatch({
+  sinceHours = 24,
+  limit = 24,
+  minMinutesBetweenPosts = 60,
+}: {
+  sinceHours?: number;
+  limit?: number;
+  minMinutesBetweenPosts?: number;
+}) {
+  const supabase = createSupabasePrivilegedClient();
+  if (!supabase) {
+    return {
+      recovered: 0,
+      postIds: [] as string[],
+    };
+  }
+
+  const now = Date.now();
+  const since = new Date(now - sinceHours * 60 * 60_000).toISOString();
+  const stalePublishingBefore = now - 10 * 60_000;
+
+  const { data, error } = await supabase
+    .from("atlas_social_posts")
+    .select("*")
+    .in("status", ["failed", "publishing"])
+    .lt("attempt_count", 3)
+    .gte("updated_at", since)
+    .order("updated_at", { ascending: true })
+    .limit(limit * 2);
+
+  if (error || !data) {
+    return {
+      recovered: 0,
+      postIds: [] as string[],
+    };
+  }
+
+  const candidates = (data as SocialPostRow[])
+    .map(normalizeSocialPost)
+    .filter((post) => {
+      if (post.safety_notes.length > 0) return false;
+      if (post.external_post_id || post.external_post_url) return false;
+
+      if (post.status === "publishing") {
+        const updatedAt = new Date(post.updated_at).getTime();
+        if (Number.isFinite(updatedAt) && updatedAt > stalePublishingBefore) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .slice(0, limit);
+
+  const postIds: string[] = [];
+  for (const [index, post] of candidates.entries()) {
+    const scheduledFor = new Date(
+      now + index * minMinutesBetweenPosts * 60_000,
+    ).toISOString();
+
+    const { data: updated, error: updateError } = await supabase
+      .from("atlas_social_posts")
+      .update({
+        status: "scheduled",
+        scheduled_for: scheduledFor,
+        last_error: "",
+        decision_log: [
+          ...post.decision_log,
+          {
+            at: new Date().toISOString(),
+            action: "recovered_for_dispatch",
+            previousStatus: post.status,
+            scheduledFor,
+          },
+        ],
+      })
+      .eq("id", post.id)
+      .eq("status", post.status)
+      .select("id")
+      .maybeSingle();
+
+    if (!updateError && updated) postIds.push(post.id);
+  }
+
+  return {
+    recovered: postIds.length,
+    postIds,
+  };
+}
+
 export async function getSocialPostById(postId: string) {
   const supabase = createSupabasePrivilegedClient();
   if (!supabase) return null;
@@ -123,18 +213,50 @@ export async function getSocialPostById(postId: string) {
   return normalizeSocialPost(data as SocialPostRow);
 }
 
-export async function getPendingSocialPostCount() {
+export async function getPendingSocialPostCounts() {
   const supabase = createSupabasePrivilegedClient();
-  if (!supabase) return 0;
+  if (!supabase) {
+    return {
+      draft: 0,
+      queued: 0,
+      scheduled: 0,
+      publishing: 0,
+      total: 0,
+    };
+  }
 
-  const { count, error } = await supabase
+  const { data, error } = await supabase
     .from("atlas_social_posts")
-    .select("id", { count: "exact", head: true })
+    .select("status")
     .in("status", ["draft", "queued", "scheduled", "publishing"]);
 
-  if (error) return 0;
+  if (error || !data) {
+    return {
+      draft: 0,
+      queued: 0,
+      scheduled: 0,
+      publishing: 0,
+      total: 0,
+    };
+  }
 
-  return count ?? 0;
+  const counts = {
+    draft: 0,
+    queued: 0,
+    scheduled: 0,
+    publishing: 0,
+    total: 0,
+  };
+
+  for (const row of data as Array<{ status?: string }>) {
+    if (row.status === "draft") counts.draft += 1;
+    if (row.status === "queued") counts.queued += 1;
+    if (row.status === "scheduled") counts.scheduled += 1;
+    if (row.status === "publishing") counts.publishing += 1;
+    counts.total += 1;
+  }
+
+  return counts;
 }
 
 export async function claimSocialPostForPublishing(post: AtlasSocialPost) {

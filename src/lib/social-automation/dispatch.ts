@@ -11,6 +11,7 @@ import {
   getSocialPostById,
   markSocialPostFailed,
   markSocialPostPublished,
+  recoverMissedSocialPostsForDispatch,
   saveDispatchLog,
   saveSocialRun,
 } from "@/lib/social-automation/store";
@@ -64,9 +65,17 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
     return saveSkippedDispatch(startedAt, pacing.reason);
   }
 
+  const recovery = await recoverMissedSocialPostsForDispatch({
+    sinceHours: 24,
+    limit: 24,
+    minMinutesBetweenPosts: config.minMinutesBetweenPosts,
+  });
+
   const duePosts = await getDueScheduledPosts(new Date(), 8);
   if (duePosts.length === 0) {
-    return saveSkippedDispatch(startedAt, "No scheduled posts are due.");
+    return saveSkippedDispatch(startedAt, "No scheduled posts are due.", undefined, {
+      recoveredMissedPosts: recovery.recovered,
+    });
   }
 
   const recentTexts = recentPublishedPosts.map((post) => post.post_text);
@@ -89,12 +98,23 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
     return saveSkippedDispatch(
       startedAt,
       "Due scheduled posts were too similar to recent posts.",
+      undefined,
+      {
+        recoveredMissedPosts: recovery.recovered,
+      },
     );
   }
 
   const claimedPost = await claimSocialPostForPublishing(duePost);
   if (!claimedPost) {
-    return saveSkippedDispatch(startedAt, "No post could be claimed for publishing.");
+    return saveSkippedDispatch(
+      startedAt,
+      "No post could be claimed for publishing.",
+      undefined,
+      {
+        recoveredMissedPosts: recovery.recovered,
+      },
+    );
   }
 
   try {
@@ -130,6 +150,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
         postId: claimedPost.id,
         externalPostId: published.id,
         shareImageAttached: preparedPost.mediaIds.length > 0,
+        recoveredMissedPosts: recovery.recovered,
       },
       errors,
     });
@@ -159,6 +180,7 @@ export async function dispatchScheduledSocialPosts(): Promise<DispatchSocialPost
         ...getSocialConfigSnapshot(config),
         published: 0,
         postId: claimedPost.id,
+        recoveredMissedPosts: recovery.recovered,
       },
       errors,
     });
@@ -528,6 +550,7 @@ async function saveSkippedDispatch(
   startedAt: string,
   reason: string,
   selectedPostId?: string,
+  extraStats: Record<string, unknown> = {},
 ) {
   const config = getSocialAutomationConfig();
   await saveDispatchLog({
@@ -540,7 +563,10 @@ async function saveSkippedDispatch(
     task: "dispatch",
     startedAt,
     status: "skipped",
-    stats: getSocialConfigSnapshot(config),
+    stats: {
+      ...getSocialConfigSnapshot(config),
+      ...extraStats,
+    },
     errors: [reason],
   });
 
