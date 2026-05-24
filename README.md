@@ -40,7 +40,7 @@ Each company page presents the available public record in an editorial profile f
 The `/categories` surface groups companies by the AI Atlas taxonomy. Category pages help readers understand which startups define each cluster and how the market is distributed across healthcare, infrastructure, finance, consumer, legal, cybersecurity, life sciences, and more.
 
 ### Patterns
-The `/patterns` surface contains editorial market patterns drawn from the company corpus — answering questions like "what behavior is repeating across different startups?" and "which clusters are pointing at the same buyer, workflow, or platform shift?"
+The `/patterns` surface contains editorial market patterns drawn from the company corpus, answering questions like "what behavior is repeating across different startups?" and "which clusters are pointing at the same buyer, workflow, or platform shift?"
 
 ### Newsfeed
 The `/feed` and `/newsfeed` surfaces bring together external news links and official company posts from mapped companies. Designed as a curated news front page for early-stage NYC AI, with source labels, timestamps, company attribution, and external-link affordances.
