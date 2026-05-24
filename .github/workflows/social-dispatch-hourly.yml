@@ -1,0 +1,19 @@
+name: Social dispatch hourly
+
+on:
+  schedule:
+    - cron: "37 * * * *"
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wake hourly social dispatch
+        run: |
+          curl --fail-with-body --show-error --silent \
+            --retry 2 \
+            --retry-delay 10 \
+            --header "x-ai-atlas-scheduler: github-actions" \
+            --header "user-agent: ai-atlas-social-hourly/1.0" \
+            "https://aiatlas.nyc/api/social/hourly/dispatch"

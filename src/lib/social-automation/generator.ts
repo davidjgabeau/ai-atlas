@@ -360,12 +360,12 @@ function canSelectCandidate(
   },
 ) {
   const sourceKindCap: Record<SocialPostCandidate["sourceKind"], number> = {
-    company_update: 4,
-    job_alert: 2,
-    company_news: 3,
-    current_read: 2,
-    category_movement: 2,
-    evergreen_spotlight: 4,
+    company_update: 7,
+    job_alert: 4,
+    company_news: 5,
+    current_read: 3,
+    category_movement: 3,
+    evergreen_spotlight: 6,
   };
   if (
     (selected.sourceKindCounts.get(candidate.sourceKind) ?? 0) >=

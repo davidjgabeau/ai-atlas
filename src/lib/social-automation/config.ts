@@ -34,7 +34,7 @@ export function getSocialAutomationConfig(): SocialAutomationConfig {
     ),
     maxPostsPerHour: getIntegerEnv("SOCIAL_MAX_POSTS_PER_HOUR", 1, 1, 1),
     timezone: process.env.SOCIAL_TIMEZONE || "America/New_York",
-    generationBatchSize: getIntegerEnv("SOCIAL_GENERATION_BATCH_SIZE", 12, 6, 12),
+    generationBatchSize: getIntegerEnv("SOCIAL_GENERATION_BATCH_SIZE", 24, 6, 24),
     anthropicApiKey: process.env.ANTHROPIC_API_KEY ?? "",
     anthropicModel:
       process.env.ANTHROPIC_SOCIAL_MODEL ??
