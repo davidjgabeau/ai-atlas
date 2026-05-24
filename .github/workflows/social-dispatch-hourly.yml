@@ -5,15 +5,29 @@ on:
     - cron: "37 * * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
+      - name: Mint scheduler identity token
+        id: identity
+        run: |
+          token_json=$(curl --fail-with-body --show-error --silent \
+            --header "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=aiatlas-social-hourly")
+          token=$(echo "$token_json" | jq -r '.value')
+          echo "::add-mask::$token"
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+
       - name: Wake hourly social dispatch
         run: |
           curl --fail-with-body --show-error --silent \
             --retry 2 \
             --retry-delay 10 \
-            --header "x-ai-atlas-scheduler: github-actions" \
+            --header "authorization: Bearer ${{ steps.identity.outputs.token }}" \
             --header "user-agent: ai-atlas-social-hourly/1.0" \
             "https://aiatlas.nyc/api/social/hourly/dispatch"
