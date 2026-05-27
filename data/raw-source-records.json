@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "id": "raw_72a5e5b452793af9",
+    "sourceType": "press",
+    "candidateCompanyName": "Tribal",
+    "url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
+    "title": "Tribal Raises $10M Seed to Bring Context-Aware AI Agents to Enterprise Systems",
+    "text": "https://gotribal.ai Tribal is a New York AI startup building context-aware AI agents for enterprise systems. Tribal announced a $10 million seed round led by Team8 on May 20, 2026. Its platform learns the metadata graph of enterprise systems and gives agents organizational context, impact analysis, governance, and production infrastructure for Salesforce, ServiceNow, SAP, NetSuite, and Workday.",
+    "publishedAt": "2026-05-20T14:00:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "74938082943019d2240eac859e3dc39610dcb873fc7685f3f51bc78cfb3c906d"
+  },
+  {
+    "id": "raw_574c390ec6c8fd4e",
+    "sourceType": "press",
+    "candidateCompanyName": "Datalinx AI",
+    "url": "https://www.globenewswire.com/news-release/2026/01/29/3228607/0/en/datalinx-ai-raises-4-2m-seed-round-to-solve-data-readiness-challenges-for-enterprise-marketing.html",
+    "title": "Datalinx AI Raises $4.2M Seed Round to Solve Data Readiness Challenges for Enterprise Marketing",
+    "text": "https://datalinx.ai Datalinx AI is based in NYC and Austin and describes itself as an AI data refinery that turns complex data into AI and application-ready assets. The company raised $4.2 million in Seed funding led by High Alpha, with co-investment from Databricks Ventures and Aperiam, to help enterprise marketing and data organizations make trusted data available for AI.",
+    "publishedAt": "2026-01-29T13:34:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "76c32d512fdd1ee0ed95f3d8a34385e01289335f5cf561c2592612e0e2fa01e7"
+  },
+  {
+    "id": "raw_1e18495f5a0475c6",
+    "sourceType": "press",
+    "candidateCompanyName": "Flock AI",
+    "url": "https://www.prnewswire.com/news-releases/flock-ai-raises-6m-to-scale-one-to-one-commerce-302679706.html",
+    "title": "Flock AI Raises $6M to Scale One-to-One Commerce",
+    "text": "https://flockshop.ai Flock AI is a New York AI-native visual commerce platform for fashion and retail. It uses generative AI to create customized on-brand model and product imagery at scale. Flock AI raised a $6 million Seed round led by Work-Bench, bringing total funding to $7.5 million.",
+    "publishedAt": "2026-02-05T14:00:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "4dbc05e234328ea0c74ab5085265d2f8e6ad74e0dcda24d0d77089f67935f78a"
+  },
+  {
+    "id": "raw_f3a38ba68a7cb901",
+    "sourceType": "press",
+    "candidateCompanyName": "Hamilton AI",
+    "url": "https://www.globenewswire.com/news-release/2026/03/19/3259301/0/en/Hamilton-AI-Raises-7-5M-Seed-Round-to-Build-the-Execution-Layer-for-Private-Aviation.html",
+    "title": "Hamilton AI Raises $7.5M Seed Round to Build the Execution Layer for Private Aviation",
+    "text": "https://www.hamilton.ai Hamilton AI is a New York AI workflow and execution platform for private aviation. It announced a $7.5 million Seed round led by TTV Capital with participation from Bling Capital, Cambrian Ventures, FJ Labs, Weekend Fund, Mintaka Ventures, Correlation VC, and HF0. Hamilton AI centralizes quoting, scheduling, operations, and compliance workflows for private aviation operators.",
+    "publishedAt": "2026-03-19T16:10:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "b86596fc4b752f75b12b610d29dc9c8e86391fb2d68021f3e06bf638bbe5aa53"
+  },
+  {
+    "id": "raw_647bda7c016860eb",
+    "sourceType": "press",
+    "candidateCompanyName": "Meet Caria",
+    "url": "https://www.globenewswire.com/news-release/2026/01/13/3218355/0/en/meet-caria-raises-1m-pre-seed-round-at-3m-valuation-led-by-anf-investment.html",
+    "title": "Meet Caria Raises $1M Pre-Seed Round at $3M Valuation Led by ANF Investment",
+    "text": "https://meetcaria.ai Meet Caria is a New York AI-native recruitment software company. It raised $1 million in Pre-seed funding led by ANF Investment. Caria is an AI-based recruitment platform that supports hiring workflows including job creation, candidate sourcing, interviewing, and candidate evaluation, and integrates with applicant tracking systems and enterprise HR tools.",
+    "publishedAt": "2026-01-13T23:33:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "29e2ca52e7972ddff96c4ebc779c213c7eb4141c6d640526cb48bfd258ee284f"
+  },
+  {
+    "id": "raw_558f25dd08ca802d",
+    "sourceType": "press",
+    "candidateCompanyName": "Stratum Biosciences",
+    "url": "https://www.prnewswire.com/news-releases/stratum-biosciences-secures-2m-seed-round-to-accelerate-ai-powered-skin-biology-discovery-and-expanded-rd-partnerships-302726796.html",
+    "title": "Stratum Biosciences Secures $2M Seed Round to Accelerate AI-Powered Skin Biology Discovery",
+    "text": "https://stratumbio.com Stratum Biosciences is a New York biotechnology company at the intersection of artificial intelligence and dermatology research. It raised a $2 million Seed round backed by Harvard Business School Alumni Angels of Greater New York and Skin Angels. Stratum's proprietary AI-powered skin biology discovery platform mines more than 200,000 real skin samples for novel insights and product development, and the company is based at JLabs@NYC in SoHo.",
+    "publishedAt": "2026-03-27T12:36:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "6de588bb6892cfa7e7152b0464d3d88e2bc9a0c9f75c5d25f8713d5307cc6b03"
+  },
+  {
+    "id": "raw_24ffab5952c5c77a",
+    "sourceType": "press",
+    "candidateCompanyName": "Century Health",
+    "url": "https://www.prnewswire.com/news-releases/century-health-raises-5m-seed-round-as-ai-powered-platform-achieves-97-accuracy-in-clinical-data-abstraction-302776170.html",
+    "title": "Century Health Raises $5M Seed Round as AI-Powered Platform Achieves 97% Accuracy in Clinical Data Abstraction",
+    "text": "https://www.century.health Century Health is a New York company applying AI to real-world clinical data for life sciences research. It raised an oversubscribed $5 million Seed round led by Origin Ventures, with participation from InnovateHealth Ventures, 25madison, Next Play Ventures, 2048 Ventures, Alumni Ventures, and strategic angels. Its CHARM model automates curation and enrichment of fragmented clinical data.",
+    "publishedAt": "2026-05-19T16:00:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "926b4d4ffc6092a4039c84a2a466b4870707d44e91532553e846cf88e2e65ed9"
+  },
+  {
+    "id": "raw_e6a9738546160e2d",
+    "sourceType": "press",
+    "candidateCompanyName": "Moda",
+    "url": "https://www.globenewswire.com/news-release/2026/03/24/3261496/0/en/moda-raises-7-5m-to-give-every-professional-a-design-agent.html",
+    "title": "Moda Raises $7.5M to Give Every Professional a Design Agent",
+    "text": "https://moda.app Moda is a New York AI design platform that gives every professional a brand-aligned design agent. It raised a $7.5 million Seed round led by General Catalyst, with participation from Pear VC, WndrCo, and operators from Dropbox, Stripe, Segment, Google, and Scale AI. Moda creates editable presentations, social posts, reports, ads, and documents on a collaborative canvas that learns a company's brand.",
+    "publishedAt": "2026-03-24T15:01:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "9a33906be1a02fd259730fd5a91c3e66d467670e6cdabbb0a07d987e5cc9238c"
+  },
+  {
+    "id": "raw_242be4fab9006b8a",
+    "sourceType": "press",
+    "candidateCompanyName": "Arbor",
+    "url": "https://www.prnewswire.com/news-releases/arbor-raises-6-3m-to-turn-frontline-voices-into-operational-intelligence-302677666.html",
+    "title": "Arbor Raises $6.3M to Turn Frontline Voices into Operational Intelligence",
+    "text": "https://www.findarbor.com Arbor is a New York AI research platform for enterprise operations. It raised $6.3 million in combined Seed and Pre-seed funding led by 645 Ventures with participation from Next Play Ventures, Chaac Ventures, Comma Capital, and angels. Arbor conducts AI-powered interviews with frontline employees and customers and turns conversations into operational intelligence for executives.",
+    "publishedAt": "2026-02-03T14:00:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "dbb5443ce840933482524f596a43101f5922bc1c808a054a41339fb232093ade"
+  },
+  {
+    "id": "raw_7aa74e59fe5a8746",
+    "sourceType": "press",
+    "candidateCompanyName": "DataMission.ai",
+    "url": "https://app.fundz.net/fundings/datamission-ai-funding-round-seed-f515ba",
+    "title": "DataMission.ai Raises $1M in Seed Funding",
+    "text": "https://datamission.ai DataMission.ai is a NYC-based provider of an AI operating platform for local governments. It raised $1 million in Seed funding led by Elephant Genius. DataMission.ai builds AI agents for municipal departments and helps cities improve planning, execution, and outcome measurement for mid-size municipalities.",
+    "publishedAt": "2026-05-13T12:00:00.000Z",
+    "discoveredAt": "2026-05-27T14:01:19.152Z",
+    "contentHash": "25fb03776cd83a3801dd4f00cc5be09ff7c575d34565d3e9d31b098072d450f0"
+  }
+]

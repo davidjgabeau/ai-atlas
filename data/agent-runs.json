@@ -1,5 +1,23 @@
 [
   {
+    "id": "agent_run_a1109585a796b6f2",
+    "job": "discover",
+    "startedAt": "2026-05-27T14:01:19.145Z",
+    "finishedAt": "2026-05-27T14:01:34.038Z",
+    "status": "success",
+    "stats": {
+      "rawRecordsCreated": 10,
+      "eventsCreated": 0,
+      "eventsDeduped": 0,
+      "candidateUpdatesCreated": 10,
+      "companiesPublished": 0,
+      "companiesArchived": 0,
+      "editorialSurfacesGenerated": 0,
+      "qualityGateFailures": 0
+    },
+    "errors": []
+  },
+  {
     "id": "agent_run_31f73cfb1757e8f0",
     "job": "editorial",
     "startedAt": "2026-05-04T14:14:14.923Z",

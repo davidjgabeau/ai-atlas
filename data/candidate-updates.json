@@ -1,1 +1,482 @@
-[]
+[
+  {
+    "id": "candidate_update_f9a8a94ac30410fc",
+    "candidateCompanyName": "Tribal",
+    "proposedUpdate": {
+      "name": "Tribal",
+      "slug": "tribal",
+      "website": "https://gotribal.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Agent Infrastructure",
+      "description": "Tribal builds context-aware AI agents for enterprise systems, learning metadata graphs and organizational context so agents can operate across Salesforce, ServiceNow, SAP, NetSuite, and Workday with governance and production controls.",
+      "oneSentenceDescription": "Context-aware AI agents that understand enterprise systems before generating and deploying workflow changes.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$10M",
+        "latestRoundDate": "2026-05-20T14:00:00.000Z",
+        "leadInvestors": [
+          "Team8"
+        ]
+      },
+      "tags": [
+        "Agent Infrastructure"
+      ],
+      "sourceUrls": [
+        "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.023Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_d0f4d8aee16ded99",
+    "candidateCompanyName": "Century Health",
+    "proposedUpdate": {
+      "name": "Century Health",
+      "slug": "century-health",
+      "website": "https://www.century.health/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Life Sciences AI",
+      "description": "Century Health applies AI to real-world clinical data, using its CHARM abstraction and retrieval model to automate data curation for life sciences research and evidence generation.",
+      "oneSentenceDescription": "AI-powered real-world clinical data curation for life sciences research.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$5M",
+        "latestRoundDate": "2026-05-19T16:00:00.000Z",
+        "leadInvestors": [
+          "Origin Ventures"
+        ]
+      },
+      "tags": [
+        "Life Sciences AI"
+      ],
+      "sourceUrls": [
+        "https://www.prnewswire.com/news-releases/century-health-raises-5m-seed-round-as-ai-powered-platform-achieves-97-accuracy-in-clinical-data-abstraction-302776170.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.025Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.prnewswire.com/news-releases/century-health-raises-5m-seed-round-as-ai-powered-platform-achieves-97-accuracy-in-clinical-data-abstraction-302776170.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.prnewswire.com/news-releases/century-health-raises-5m-seed-round-as-ai-powered-platform-achieves-97-accuracy-in-clinical-data-abstraction-302776170.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_a2a2879424edf0f9",
+    "candidateCompanyName": "DataMission.ai",
+    "proposedUpdate": {
+      "name": "DataMission.ai",
+      "slug": "datamission-ai",
+      "website": "https://datamission.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "high",
+      "stage": "Seed",
+      "category": "Enterprise GTM & RevOps AI",
+      "description": "DataMission.ai provides an AI operating platform for local governments, building AI agents that help municipal departments plan, execute, and measure outcomes for mid-size cities.",
+      "oneSentenceDescription": "AI agents and operating workflows for local government planning and execution.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$1M",
+        "latestRoundDate": "2026-05-13T12:00:00.000Z",
+        "leadInvestors": [
+          "Elephant Genius"
+        ]
+      },
+      "tags": [
+        "Enterprise GTM & RevOps AI"
+      ],
+      "sourceUrls": [
+        "https://app.fundz.net/fundings/datamission-ai-funding-round-seed-f515ba"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.026Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://app.fundz.net/fundings/datamission-ai-funding-round-seed-f515ba"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://app.fundz.net/fundings/datamission-ai-funding-round-seed-f515ba"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_4cad8ec59aedf739",
+    "candidateCompanyName": "Datalinx AI",
+    "proposedUpdate": {
+      "name": "Datalinx AI",
+      "slug": "datalinx-ai",
+      "website": "https://datalinx.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "high",
+      "stage": "Seed",
+      "category": "Data & Memory Layer",
+      "description": "Datalinx AI is an AI data refinery for enterprise marketing and data teams, turning complex datasets into trusted, AI-ready assets for model and application development.",
+      "oneSentenceDescription": "An AI data refinery that turns messy enterprise marketing data into trusted, application-ready assets.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$4.2M",
+        "latestRoundDate": "2026-01-29T13:34:00.000Z",
+        "leadInvestors": [
+          "High Alpha"
+        ]
+      },
+      "tags": [
+        "Data & Memory Layer"
+      ],
+      "sourceUrls": [
+        "https://www.globenewswire.com/news-release/2026/01/29/3228607/0/en/datalinx-ai-raises-4-2m-seed-round-to-solve-data-readiness-challenges-for-enterprise-marketing.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.026Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.globenewswire.com/news-release/2026/01/29/3228607/0/en/datalinx-ai-raises-4-2m-seed-round-to-solve-data-readiness-challenges-for-enterprise-marketing.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.globenewswire.com/news-release/2026/01/29/3228607/0/en/datalinx-ai-raises-4-2m-seed-round-to-solve-data-readiness-challenges-for-enterprise-marketing.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_efab9aa5b76b0eac",
+    "candidateCompanyName": "Flock AI",
+    "proposedUpdate": {
+      "name": "Flock AI",
+      "slug": "flock-ai",
+      "website": "https://flockshop.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Media, Ads & Creative AI",
+      "description": "Flock AI is an AI-native visual commerce platform for fashion and retail brands, using generative AI to create customized, on-brand model and product imagery at scale.",
+      "oneSentenceDescription": "Generative visual commerce tooling for personalized fashion and retail product imagery.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$6M",
+        "latestRoundDate": "2026-02-05T14:00:00.000Z",
+        "leadInvestors": [
+          "Work-Bench"
+        ]
+      },
+      "tags": [
+        "Media, Ads & Creative AI"
+      ],
+      "sourceUrls": [
+        "https://www.prnewswire.com/news-releases/flock-ai-raises-6m-to-scale-one-to-one-commerce-302679706.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.027Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.prnewswire.com/news-releases/flock-ai-raises-6m-to-scale-one-to-one-commerce-302679706.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.prnewswire.com/news-releases/flock-ai-raises-6m-to-scale-one-to-one-commerce-302679706.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_d6da4ee80ce154d3",
+    "candidateCompanyName": "Meet Caria",
+    "proposedUpdate": {
+      "name": "Meet Caria",
+      "slug": "meet-caria",
+      "website": "https://meetcaria.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Pre-seed",
+      "category": "Enterprise GTM & RevOps AI",
+      "description": "Meet Caria is an AI-native recruitment operating system that supports hiring workflows such as job creation, candidate sourcing, interviewing, candidate evaluation, and ATS integration.",
+      "oneSentenceDescription": "An AI-native recruitment operating system for sourcing, interviewing, and evaluating candidates.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Pre-seed",
+        "latestRoundAmount": "$1M",
+        "latestRoundDate": "2026-01-13T23:33:00.000Z",
+        "leadInvestors": [
+          "ANF Investment"
+        ]
+      },
+      "tags": [
+        "Enterprise GTM & RevOps AI"
+      ],
+      "sourceUrls": [
+        "https://www.globenewswire.com/news-release/2026/01/13/3218355/0/en/meet-caria-raises-1m-pre-seed-round-at-3m-valuation-led-by-anf-investment.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.028Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.globenewswire.com/news-release/2026/01/13/3218355/0/en/meet-caria-raises-1m-pre-seed-round-at-3m-valuation-led-by-anf-investment.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.globenewswire.com/news-release/2026/01/13/3218355/0/en/meet-caria-raises-1m-pre-seed-round-at-3m-valuation-led-by-anf-investment.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_2ee5fe4ef3ea09b8",
+    "candidateCompanyName": "Stratum Biosciences",
+    "proposedUpdate": {
+      "name": "Stratum Biosciences",
+      "slug": "stratum-biosciences",
+      "website": "https://stratumbio.com/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Life Sciences AI",
+      "description": "Stratum Biosciences applies AI to dermatology and skin biology research, mining real skin samples for insights that can translate into ingredient, formulation, and product development.",
+      "oneSentenceDescription": "AI-powered skin biology discovery for dermatology research and product development.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$2M",
+        "latestRoundDate": "2026-03-27T12:36:00.000Z",
+        "leadInvestors": [
+          "Harvard Business School Alumni Angels of Greater New York",
+          "Skin Angels"
+        ]
+      },
+      "tags": [
+        "Life Sciences AI"
+      ],
+      "sourceUrls": [
+        "https://www.prnewswire.com/news-releases/stratum-biosciences-secures-2m-seed-round-to-accelerate-ai-powered-skin-biology-discovery-and-expanded-rd-partnerships-302726796.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.029Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.prnewswire.com/news-releases/stratum-biosciences-secures-2m-seed-round-to-accelerate-ai-powered-skin-biology-discovery-and-expanded-rd-partnerships-302726796.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.prnewswire.com/news-releases/stratum-biosciences-secures-2m-seed-round-to-accelerate-ai-powered-skin-biology-discovery-and-expanded-rd-partnerships-302726796.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_adf5e2402f11c105",
+    "candidateCompanyName": "Moda",
+    "proposedUpdate": {
+      "name": "Moda",
+      "slug": "moda",
+      "website": "https://moda.app/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Media, Ads & Creative AI",
+      "description": "Moda gives professionals a brand-aligned AI design agent that creates editable presentations, social posts, reports, ads, and documents on a collaborative canvas that learns a company brand.",
+      "oneSentenceDescription": "A brand-aware AI design agent for editable presentations, social posts, ads, and documents.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$7.5M",
+        "latestRoundDate": "2026-03-24T15:01:00.000Z",
+        "leadInvestors": [
+          "General Catalyst"
+        ]
+      },
+      "tags": [
+        "Media, Ads & Creative AI"
+      ],
+      "sourceUrls": [
+        "https://www.globenewswire.com/news-release/2026/03/24/3261496/0/en/moda-raises-7-5m-to-give-every-professional-a-design-agent.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.029Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.globenewswire.com/news-release/2026/03/24/3261496/0/en/moda-raises-7-5m-to-give-every-professional-a-design-agent.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.globenewswire.com/news-release/2026/03/24/3261496/0/en/moda-raises-7-5m-to-give-every-professional-a-design-agent.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_d6e79936d149890a",
+    "candidateCompanyName": "Arbor",
+    "proposedUpdate": {
+      "name": "Arbor",
+      "slug": "arbor",
+      "website": "https://www.findarbor.com/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Pre-seed",
+      "category": "Enterprise GTM & RevOps AI",
+      "description": "Arbor is an AI research platform for enterprise operations, conducting AI-powered interviews with frontline employees and customers and turning those conversations into operational intelligence.",
+      "oneSentenceDescription": "AI-powered frontline research that turns employee and customer conversations into operational intelligence.",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed / Series A",
+        "latestRoundAmount": "$6.3M",
+        "latestRoundDate": "2026-02-03T14:00:00.000Z",
+        "leadInvestors": [
+          "645 Ventures"
+        ]
+      },
+      "tags": [
+        "Enterprise GTM & RevOps AI"
+      ],
+      "sourceUrls": [
+        "https://www.prnewswire.com/news-releases/arbor-raises-6-3m-to-turn-frontline-voices-into-operational-intelligence-302677666.html"
+      ],
+      "verifiedAt": "2026-05-27T14:01:34.029Z",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.prnewswire.com/news-releases/arbor-raises-6-3m-to-turn-frontline-voices-into-operational-intelligence-302677666.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      }
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.prnewswire.com/news-releases/arbor-raises-6-3m-to-turn-frontline-voices-into-operational-intelligence-302677666.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.032Z"
+  },
+  {
+    "id": "candidate_update_2ec0a3fe7f04a2bd",
+    "candidateCompanyName": "Hamilton AI",
+    "proposedUpdate": {
+      "name": "Hamilton AI",
+      "sourceUrls": [
+        "https://www.globenewswire.com/news-release/2026/03/19/3259301/0/en/Hamilton-AI-Raises-7-5M-Seed-Round-to-Build-the-Execution-Layer-for-Private-Aviation.html"
+      ],
+      "oneSentenceDescription": "AI workflow execution infrastructure for private aviation operators.",
+      "description": "Hamilton AI is an AI workflow and execution platform for private aviation operators, centralizing quoting, scheduling, operations, and compliance-sensitive workflows in a deterministic system.",
+      "discoveryReason": {
+        "trigger": "funding_signal",
+        "sourceEventIds": [],
+        "sourceUrls": [
+          "https://www.globenewswire.com/news-release/2026/03/19/3259301/0/en/Hamilton-AI-Raises-7-5M-Seed-Round-to-Build-the-Execution-Layer-for-Private-Aviation.html"
+        ],
+        "confidence": "medium",
+        "notes": "Manual refresh source supports NYC, AI-core product, and early-stage funding; needs editorial review before publish."
+      },
+      "slug": "hamilton-ai",
+      "website": "https://www.hamilton.ai/",
+      "location": "New York, NY",
+      "locationConfidence": "medium",
+      "stage": "Seed",
+      "category": "Enterprise GTM & RevOps AI",
+      "founders": [],
+      "investors": [],
+      "funding": {
+        "latestRound": "Seed",
+        "latestRoundAmount": "$7.5M",
+        "latestRoundDate": "2026-03-19T16:10:00.000Z",
+        "leadInvestors": [
+          "TTV Capital"
+        ]
+      },
+      "tags": [
+        "Enterprise GTM & RevOps AI"
+      ]
+    },
+    "reason": "Needs review: deterministic discovery source added during manual refresh.",
+    "sourceUrls": [
+      "https://www.globenewswire.com/news-release/2026/03/19/3259301/0/en/Hamilton-AI-Raises-7-5M-Seed-Round-to-Build-the-Execution-Layer-for-Private-Aviation.html"
+    ],
+    "confidence": "medium",
+    "status": "pending",
+    "createdAt": "2026-05-27T14:01:34.033Z"
+  }
+]
