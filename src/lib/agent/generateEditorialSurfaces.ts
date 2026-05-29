@@ -34,6 +34,7 @@ const categoryPhrases: Record<string, string> = {
   "Model Tools & Dev Platform": "evals and production tooling",
   "Enterprise GTM & RevOps AI": "enterprise implementation and back-office workflows",
   "Data & Memory Layer": "context, data, and memory systems",
+  "Personal AI": "personal AI assistants with memory and managed agency",
 };
 
 export async function generateEditorialSurfaces({

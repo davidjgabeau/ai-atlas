@@ -1,5 +1,6 @@
 import {
   Banknote,
+  Bot,
   BriefcaseBusiness,
   Dna,
   ShieldCheck,
@@ -124,6 +125,15 @@ export const categoryStyles: Record<Category, CategoryStyle> = {
     surfaceColor: "rgb(37 99 235 / 6%)",
     iconClassName: "bg-indigo-100 text-[#2563EB] ring-[#2563EB]/20",
     badgeClassName: "bg-indigo-50 text-[#2563EB] ring-[#2563EB]/20",
+    surfaceClassName: "app-card-border category-hover-card",
+  },
+  "Personal AI": {
+    icon: Bot,
+    avatarSrc: "/avatars/categories/personal-ai.png",
+    color: "#A855F7",
+    surfaceColor: "rgb(168 85 247 / 6%)",
+    iconClassName: "bg-purple-100 text-[#A855F7] ring-[#A855F7]/20",
+    badgeClassName: "bg-purple-50 text-[#A855F7] ring-[#A855F7]/20",
     surfaceClassName: "app-card-border category-hover-card",
   },
 };

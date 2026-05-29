@@ -58,6 +58,7 @@ function formatPulsePhrase(item: CategoryPulseItem) {
     "Fintech & Trading AI": "research and risk",
     "Agent Infrastructure": "runtime reliability",
     "Data & Memory Layer": "context layers",
+    "Personal AI": "personal assistants",
   };
 
   return phrases[item.category] ?? item.phrase;

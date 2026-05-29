@@ -99,6 +99,12 @@ export const categoryMeta: CategoryMeta[] = [
     slug: "data-memory-layer",
     description: "Data products, document intelligence, knowledge graphs, multimodal understanding, and memory layers for AI-native work.",
     thesis: "The AI application layer depends on better context, retrieval, structured data, and memory over messy enterprise information."
+  },
+  {
+    name: "Personal AI",
+    slug: "personal-ai",
+    description: "Personal AI assistants with persistent memory, managed credentials across consumer services, and user-controlled agency on behalf of an individual.",
+    thesis: "Personal AI matters when an assistant can hold long-term memory, act safely across the services someone already uses, and keep the user in clear control of what it does."
   }
 ];
 
@@ -1122,7 +1128,8 @@ const aiUsageProfiles: Record<Category, string> = {
   "Agent Infrastructure": "Infrastructure for long-running agents, workflow orchestration, browser automation, evaluation, permissions, and operational control planes.",
   "Model Tools & Dev Platform": "Developer and product workflows for building, evaluating, deploying, and operating LLM applications in production.",
   "Enterprise GTM & RevOps AI": "AI agents and workflow automation for sales, support, revenue operations, insurance workflows, customer qualification, and campaign execution.",
-  "Data & Memory Layer": "Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware."
+  "Data & Memory Layer": "Retrieval, structured extraction, knowledge graphs, document intelligence, multimodal understanding, and data infrastructure that make AI systems more context-aware.",
+  "Personal AI": "Personal AI assistants that combine persistent memory, managed credentials across consumer and productivity services, and user-controlled action-taking on behalf of an individual."
 };
 
 const openAiFits: Record<Category, string> = {
@@ -1136,7 +1143,8 @@ const openAiFits: Record<Category, string> = {
   "Agent Infrastructure": "Strong platform fit for tool-calling, evals, computer-use workflows, structured outputs, agent orchestration, and developer-facing reliability layers.",
   "Model Tools & Dev Platform": "Strong fit for evals, structured outputs, prompt/version management, model routing, observability, and production LLM app workflows.",
   "Enterprise GTM & RevOps AI": "Strong fit for sales and support agents, workflow automation, structured CRM outputs, call summarization, account research, and revenue operations copilots.",
-  "Data & Memory Layer": "Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications."
+  "Data & Memory Layer": "Strong fit for embeddings, retrieval, extraction, document intelligence, multimodal parsing, and persistent context layers for AI applications.",
+  "Personal AI": "Strong fit for memory-grounded conversation, tool-use across third-party services, structured action-taking, and guardrails that keep an individual user in control."
 };
 
 const featuredNames = new Set([

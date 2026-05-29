@@ -60,6 +60,8 @@ const shortCategoryDescriptions = {
     "AI for sales, marketing, customer success, and revenue ops.",
   "Data & Memory Layer":
     "Data infrastructure, memory, and context for AI systems.",
+  "Personal AI":
+    "Personal AI assistants with memory, agency, and user-controlled access to apps.",
 } satisfies Record<Category, string>;
 
 type CategoryDirectoryEntry = {

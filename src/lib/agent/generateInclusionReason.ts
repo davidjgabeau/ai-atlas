@@ -58,6 +58,7 @@ const categoryLabels: Record<string, string> = {
   "Model Tools & Dev Platform": "AI developer tools",
   "Enterprise GTM & Automation": "enterprise automation",
   "Enterprise GTM & RevOps AI": "enterprise automation",
+  "Personal AI": "personal AI",
 };
 
 export function generateInclusionReason({

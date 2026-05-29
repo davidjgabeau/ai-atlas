@@ -111,7 +111,10 @@ export function inferCompanySignalLabel(
     return "Infra signal";
   }
 
-  if (category === "AI-Native Consumer & Social") {
+  if (
+    category === "AI-Native Consumer & Social" ||
+    category === "Personal AI"
+  ) {
     return "Consumer signal";
   }
 

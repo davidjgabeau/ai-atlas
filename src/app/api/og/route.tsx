@@ -30,6 +30,7 @@ const categorySpritePaths: Record<Category, string> = {
   "Model Tools & Dev Platform": "/avatars/categories/model-tools-dev-platform.png",
   "Enterprise GTM & RevOps AI": "/avatars/categories/enterprise-gtm-revops-ai.png",
   "Data & Memory Layer": "/avatars/categories/data-memory-layer.png",
+  "Personal AI": "/avatars/categories/personal-ai.png",
 };
 
 export async function GET(request: Request) {
