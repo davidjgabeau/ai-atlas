@@ -76,9 +76,9 @@
     "location": "New York, NY",
     "locationConfidence": "high",
     "stage": "Series A",
-    "category": "Model Tools & Dev Platform",
-    "description": "Vellum helps teams build, evaluate, and ship reliable LLM applications.",
-    "oneSentenceDescription": "Vellum helps teams build, evaluate, and ship reliable LLM applications.",
+    "category": "Personal AI",
+    "description": "Vellum is a personal AI assistant that lives on your machine and in the cloud, with persistent memory, managed credentials across 50+ services, and a Guardian model that puts you in control of what your assistant can do.",
+    "oneSentenceDescription": "Vellum is a personal AI assistant with persistent memory, managed credentials across 50+ services, and a Guardian model that keeps you in control.",
     "founders": [
       {
         "name": "Akash Sharma"
@@ -96,40 +96,39 @@
       ]
     },
     "tags": [
-      "Model Tools & Dev Platform",
-      "Infra signal",
-      "LLM Development",
-      "Evaluation",
-      "Developer Tools",
-      "AI Infrastructure",
-      "Production AI",
-      "developer workflow",
-      "production AI"
+      "Personal AI",
+      "Consumer signal",
+      "AI Assistant",
+      "Persistent Memory",
+      "Managed Credentials",
+      "Guardian Model",
+      "personal AI",
+      "memory and agency"
     ],
     "generated": {
-      "hook": "Production tooling for LLM applications",
-      "signalLabel": "Infra signal",
-      "signalReason": "Infrastructure or data layer company with clear workflow demand.",
+      "hook": "Personal AI assistant with persistent memory and managed credentials",
+      "signalLabel": "Consumer signal",
+      "signalReason": "Consumer-facing personal AI with memory, credentials, and a Guardian model for user control.",
       "keywords": [
-        "LLM Development",
-        "Evaluation",
-        "Developer Tools",
-        "AI Infrastructure",
-        "Production AI"
+        "Personal AI",
+        "AI Assistant",
+        "Persistent Memory",
+        "Managed Credentials",
+        "Guardian Model"
       ],
       "trendDimensions": [
-        "developer workflow",
-        "production AI"
+        "personal AI",
+        "memory and agency"
       ],
-      "generatedAt": "2026-05-04T01:45:00.000Z",
-      "sourceHash": "manual-2026-05-04"
+      "generatedAt": "2026-05-29T22:00:00.000Z",
+      "sourceHash": "manual-2026-05-29"
     },
     "sourceUrls": [
       "https://www.vellum.ai"
     ],
-    "verifiedAt": "2026-05-04T13:15:00.841624+00:00",
+    "verifiedAt": "2026-05-29T22:00:00.000Z",
     "createdAt": "2026-05-04T01:45:00+00:00",
-    "updatedAt": "2026-05-04T13:15:00.841624+00:00"
+    "updatedAt": "2026-05-29T22:00:00.000Z"
   },
   {
     "id": "cmp_061",

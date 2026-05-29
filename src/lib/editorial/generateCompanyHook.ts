@@ -36,6 +36,7 @@ const categoryTrendDimensions: Record<Company["category"], string[]> = {
   "Model Tools & Dev Platform": ["developer workflow", "production AI"],
   "Enterprise GTM & RevOps AI": ["enterprise operations", "workflow automation"],
   "Data & Memory Layer": ["data infrastructure", "retrieval context"],
+  "Personal AI": ["personal AI", "memory and agency"],
 };
 
 const specificHooksBySlug: Record<string, string> = {

@@ -36,6 +36,7 @@ export const categoryColors: Record<Category, string> = {
   "Model Tools & Dev Platform": "#0f766e",
   "Enterprise GTM & RevOps AI": "#ea580c",
   "Data & Memory Layer": "#4f46e5",
+  "Personal AI": "#A855F7",
 };
 
 const categoryClusters: Record<
@@ -96,6 +97,11 @@ const categoryClusters: Record<
     { neighborhood: "Chelsea", position: { lat: 40.7465, lng: -74.0014 } },
     { neighborhood: "Union Square", position: { lat: 40.7359, lng: -73.9911 } },
     { neighborhood: "Williamsburg", position: { lat: 40.7081, lng: -73.9571 } },
+  ],
+  "Personal AI": [
+    { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
+    { neighborhood: "Williamsburg", position: { lat: 40.7081, lng: -73.9571 } },
+    { neighborhood: "DUMBO", position: { lat: 40.7033, lng: -73.9881 } },
   ],
 };
 

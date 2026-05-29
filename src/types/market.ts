@@ -10,6 +10,7 @@ export const categories = [
   "Model Tools & Dev Platform",
   "Enterprise GTM & RevOps AI",
   "Data & Memory Layer",
+  "Personal AI",
 ] as const;
 
 export const consumptionProfiles = [

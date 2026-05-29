@@ -78,6 +78,7 @@ const categoryPulsePhrases: Record<Category, string> = {
   "Model Tools & Dev Platform": "evals and app tooling",
   "Enterprise GTM & RevOps AI": "back-office workflows",
   "Data & Memory Layer": "context and retrieval layers",
+  "Personal AI": "personal assistants and memory",
 };
 
 export default async function Home() {

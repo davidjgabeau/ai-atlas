@@ -20,6 +20,7 @@ const categoryNames: Record<Company["category"], string> = {
   "Model Tools & Dev Platform": "Model tooling",
   "Enterprise GTM & RevOps AI": "GTM AI",
   "Data & Memory Layer": "Data layers",
+  "Personal AI": "Personal AI",
 };
 
 const categoryPhrases: Record<Company["category"], string> = {
@@ -34,6 +35,7 @@ const categoryPhrases: Record<Company["category"], string> = {
   "Model Tools & Dev Platform": "production AI tooling",
   "Enterprise GTM & RevOps AI": "revenue operations",
   "Data & Memory Layer": "data and memory layers",
+  "Personal AI": "personal AI assistants",
 };
 
 export function generateMarketInsights(companies: Company[]): MarketInsight[] {
