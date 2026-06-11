@@ -28,6 +28,7 @@ import { readAgentDataFiles, writeAgentDataFiles } from "./jsonStore";
 import { loadPublishedCompaniesForAgent } from "./loadCompanies";
 import { publishApprovedCandidateUpdates } from "./publishDiscoveredCompanies";
 import { scoreEvent } from "./scoreEvent";
+import { syncPublishedCompanyDownstream } from "./syncPublishedCompanyDownstream";
 import { createSourceProviders } from "./sources";
 import {
   loadAgentDataForPipelineFromSupabase,
@@ -212,17 +213,31 @@ export async function runDiscoverNewCandidates() {
     stats.companiesPublished = publishResult.published;
     errors.push(...publishResult.errors);
 
+    let downstreamEvents: CompanyEvent[] = [];
+    if (publishResult.publishedCompanies.length > 0) {
+      const downstreamResult = await syncPublishedCompanyDownstream(
+        publishResult.publishedCompanies,
+      );
+      downstreamEvents = downstreamResult.events;
+      errors.push(...downstreamResult.errors);
+    }
+
+    const nextCompanyEvents = dedupeEvents(files.companyEvents, downstreamEvents);
+
     await writeAndMirror({
       ...files,
       rawSourceRecords: [...files.rawSourceRecords, ...newRawRecords],
       candidateUpdates: nextCandidateUpdates,
+      companyEvents: nextCompanyEvents,
     });
 
     if (
       publishResult.published > 0 &&
       process.env.ENABLE_AUTO_PUBLISH !== "false"
     ) {
-      const editorialResult = await runEditorialGenerationInternal(errors);
+      const editorialResult = await runEditorialGenerationInternal(errors, {
+        companyEvents: nextCompanyEvents,
+      });
       stats.editorialSurfacesGenerated +=
         editorialResult.stats.editorialSurfacesGenerated;
       stats.qualityGateFailures += editorialResult.stats.qualityGateFailures;
@@ -274,15 +289,19 @@ export async function runAgentAll() {
   return run;
 }
 
-async function runEditorialGenerationInternal(errors: string[]) {
+async function runEditorialGenerationInternal(
+  errors: string[],
+  options: { companyEvents?: CompanyEvent[] } = {},
+) {
   const startedAt = new Date().toISOString();
   const files = await readAgentDataForPipeline();
   const liveCompanies = toAgentCompanies(await loadPublishedCompaniesForAgent());
   const companies = liveCompanies.length > 0 ? liveCompanies : files.companies;
+  const companyEvents = options.companyEvents ?? files.companyEvents;
   const previousSnapshot = files.marketSnapshots[0];
   const currentSnapshot = createMarketSnapshot(
     companies,
-    files.companyEvents,
+    companyEvents,
     previousSnapshot,
   );
   const {
@@ -293,7 +312,7 @@ async function runEditorialGenerationInternal(errors: string[]) {
     errors: generationErrors,
   } = await generateEditorialSurfaces({
     companies,
-    events: files.companyEvents,
+    events: companyEvents,
     currentSnapshot,
     previousSnapshots: files.marketSnapshots,
     priorSurfaces: files.editorialSurfaces,

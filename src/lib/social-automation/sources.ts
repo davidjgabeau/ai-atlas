@@ -1,6 +1,7 @@
 import { createContentHash } from "@/lib/agent/hash";
 import { validateDiscoveredCompanyCandidate } from "@/lib/agent/companyCandidateValidation";
 import { getCategorySlug } from "@/data/market";
+import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 import { absoluteUrl } from "@/lib/seo/shareMetadata";
 import { getCompanyXHandle } from "@/lib/social/companyXHandles";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
@@ -109,7 +110,7 @@ export async function collectSocialPostCandidates(limit: number) {
     await Promise.all([
       supabase
         .from("companies")
-        .select("id,name,slug,category,stage,short_description,one_line_thesis,why_it_matters,funding_note,website_url,recent_activity_text,recent_activity_date,x_handle,is_featured,is_breakout,updated_at")
+        .select("id,name,slug,category,stage,short_description,one_line_thesis,why_it_matters,funding_note,website_url,recent_activity_text,recent_activity_date,x_handle,is_featured,is_breakout,created_at,updated_at")
         .eq("status", "published")
         .order("updated_at", { ascending: false })
         .limit(500),
@@ -174,6 +175,7 @@ export async function collectSocialPostCandidates(limit: number) {
   return {
     candidates: rankCandidates([
       ...createCompanyUpdateCandidates(events, companiesById),
+      ...createRecentAdditionCandidates(companies),
       ...createJobCandidates(jobs, companiesById),
       ...createNewsCandidates(newsItems, companies),
       ...createCategoryMovementCandidates(snapshots, companies),
@@ -233,6 +235,38 @@ function createCompanyUpdateCandidates(
       });
     })
     .filter((item): item is SocialPostCandidate => Boolean(item));
+}
+
+function createRecentAdditionCandidates(
+  companies: SocialCompany[],
+): SocialPostCandidate[] {
+  return companies
+    .filter((company) => isRecentCompanyAddition(company))
+    .slice(0, 8)
+    .map((company) => {
+      const profileUrl = getCompanyProfileUrl(company);
+
+      return candidate({
+        sourceKind: "company_update",
+        title: `${company.name} joins AI Atlas NYC`,
+        facts: [
+          `${company.name} was recently added to the NYC AI map.`,
+          company.one_line_thesis || company.short_description,
+          `${company.name} is in ${company.category}.`,
+        ].filter(Boolean),
+        companies: [company],
+        sourceCompanyIds: [company.id],
+        sourceUrls: [profileUrl],
+        primaryUrl: profileUrl,
+        raw: { type: "new_company_added", createdAt: company.created_at },
+        score: scoreCandidate("company_update", {
+          eventPriority: 5,
+          companies: [company],
+          sourceUrls: [profileUrl],
+          hasEvent: true,
+        }),
+      });
+    });
 }
 
 function createJobCandidates(
@@ -587,6 +621,7 @@ function normalizeCompany(row: CompanyRow): SocialCompany | null {
     }),
     is_featured: Boolean(row.is_featured),
     is_breakout: Boolean(row.is_breakout),
+    created_at: String(row.created_at ?? row.updated_at ?? ""),
     updated_at: String(row.updated_at ?? ""),
   };
 }

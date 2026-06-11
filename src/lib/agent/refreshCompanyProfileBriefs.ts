@@ -21,6 +21,7 @@ import {
 type RefreshCompanyProfileBriefsOptions = {
   force?: boolean;
   limit?: number;
+  companySlugs?: string[];
   persistJson?: boolean;
 };
 
@@ -48,6 +49,7 @@ const briefsPath = path.join(
 export async function refreshCompanyProfileBriefs({
   force = false,
   limit = 60,
+  companySlugs = [],
   persistJson = process.env.NODE_ENV !== "production",
 }: RefreshCompanyProfileBriefsOptions = {}): Promise<RefreshCompanyProfileBriefsResult> {
   if (!isAnthropicCompanyBriefsEnabled()) {
@@ -68,7 +70,7 @@ export async function refreshCompanyProfileBriefs({
 
   const supabase = createSupabasePrivilegedClient();
   const canPersistSupabase = Boolean(supabase && hasSupabasePrivilegedCredentials());
-  const companies = await loadCompaniesForBriefs(limit, supabase);
+  const companies = await loadCompaniesForBriefs(limit, supabase, companySlugs);
   const currentFile = await readBriefsFile();
   const nextFile: CompanyProfileBriefsFile = {
     generatedAt: currentFile.generatedAt,
@@ -147,21 +149,32 @@ export async function refreshCompanyProfileBriefs({
 async function loadCompaniesForBriefs(
   limit: number,
   supabase: ReturnType<typeof createSupabasePrivilegedClient>,
+  companySlugs: string[] = [],
 ) {
   if (supabase) {
-    const { data, error } = await supabase
+    let query = supabase
       .from("companies")
       .select("*")
-      .eq("status", "published")
-      .order("updated_at", { ascending: false })
-      .limit(limit);
+      .eq("status", "published");
+
+    if (companySlugs.length > 0) {
+      query = query.in("slug", companySlugs);
+    } else {
+      query = query.order("updated_at", { ascending: false }).limit(limit);
+    }
+
+    const { data, error } = await query;
 
     if (!error && data) return data.map((row) => normalizeCompany(row));
   }
 
-  return localCompanies
-    .filter((company) => company.status === "published")
-    .slice(0, limit);
+  const published = localCompanies.filter((company) => company.status === "published");
+  if (companySlugs.length > 0) {
+    const slugSet = new Set(companySlugs);
+    return published.filter((company) => slugSet.has(company.slug));
+  }
+
+  return published.slice(0, limit);
 }
 
 async function readBriefsFile(): Promise<CompanyProfileBriefsFile> {

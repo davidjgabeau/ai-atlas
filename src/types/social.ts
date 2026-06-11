@@ -131,6 +131,7 @@ export type SocialCompany = Pick<
   | "x_handle"
   | "is_featured"
   | "is_breakout"
+  | "created_at"
   | "updated_at"
 >;
 

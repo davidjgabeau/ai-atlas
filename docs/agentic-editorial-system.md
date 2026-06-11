@@ -64,6 +64,15 @@ SUPABASE_SERVICE_ROLE_KEY=
 CRON_SECRET=
 ```
 
+When discovery auto-publishes new companies, the pipeline now immediately:
+
+1. Writes `new_company_added` events to `company_events`
+2. Refreshes jobs and profile briefs for the new slugs
+3. Generates social drafts when social automation is enabled
+4. Regenerates editorial surfaces with the updated event set
+
+Social generation also reads recent additions directly from `companies.created_at`, and social crons run twice daily after discovery.
+
 Without the service role key, local JSON generation still works and the app falls back safely, but Vercel serverless writes will not persist as the canonical editorial store.
 
 Social automation writes to `atlas_social_posts`, `atlas_social_runs`, and

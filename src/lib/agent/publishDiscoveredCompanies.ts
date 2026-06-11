@@ -20,6 +20,7 @@ import {
   validateDiscoveredCompanyCandidate,
 } from "./companyCandidateValidation";
 import type { DiscoveredCandidateProfile } from "./discoveryProfiles";
+import type { PublishedCompanyEventInput } from "./syncPublishedCompanyDownstream";
 
 export async function publishDiscoveredCompanies({
   profiles,
@@ -34,13 +35,14 @@ export async function publishDiscoveredCompanies({
     return profile.autoPublishEligible && isAutoApproveNewCompaniesEnabled();
   });
   if (eligibleProfiles.length === 0) {
-    return { published: 0, errors: [] as string[] };
+    return { published: 0, publishedCompanies: [], errors: [] as string[] };
   }
 
   const supabase = createSupabasePrivilegedClient();
   if (!supabase || !hasSupabasePrivilegedCredentials()) {
     return {
       published: 0,
+      publishedCompanies: [],
       errors: [
         "Auto-discovery found eligible companies, but Supabase privileged credentials are not configured.",
       ],
@@ -72,7 +74,7 @@ export async function publishDiscoveredCompanies({
   );
   const rows = enrichedRows.map(({ payload }) => payload);
 
-  if (rows.length === 0) return { published: 0, errors: [] as string[] };
+  if (rows.length === 0) return { published: 0, publishedCompanies: [], errors: [] as string[] };
 
   const { error } = await supabase.from("companies").insert(rows);
   if (error) {
@@ -83,12 +85,23 @@ export async function publishDiscoveredCompanies({
         .insert(compatibleRows);
 
       if (compatibleError) {
-        return { published: 0, errors: [compatibleError.message] };
+        return { published: 0, publishedCompanies: [], errors: [compatibleError.message] };
       }
     } else {
-      return { published: 0, errors: [error.message] };
+      return { published: 0, publishedCompanies: [], errors: [error.message] };
     }
   }
+
+  const profileBySlug = new Map(
+    eligibleProfiles.map((profile) => [
+      profile.proposedUpdate.slug ??
+        slugify(profile.candidateCompanyName),
+      profile,
+    ]),
+  );
+  const publishedCompanies = rows.map((row) =>
+    toPublishedCompanyEventInput(row, profileBySlug.get(row.slug)),
+  );
 
   await Promise.all(
     enrichedRows.map(({ payload, discovery }) =>
@@ -100,7 +113,7 @@ export async function publishDiscoveredCompanies({
   );
   await refreshCompanyLogos({ limit: rows.length, force: false }).catch(() => null);
 
-  return { published: rows.length, errors: [] as string[] };
+  return { published: rows.length, publishedCompanies, errors: [] as string[] };
 }
 
 export async function publishApprovedCandidateUpdates({
@@ -123,6 +136,30 @@ export async function publishApprovedCandidateUpdates({
     existingCompanies,
     autoApprove,
   });
+}
+
+function toPublishedCompanyEventInput(
+  row: ReturnType<typeof profileToCompanyRow>,
+  profile?: DiscoveredCandidateProfile,
+): PublishedCompanyEventInput {
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    category: row.category,
+    website: row.website_url || undefined,
+    location: row.office_address || undefined,
+    oneSentenceDescription: row.short_description || undefined,
+    description: row.why_it_matters || undefined,
+    sourceUrls:
+      profile?.sourceUrls ??
+      (row.website_url ? [row.website_url] : []),
+    createdAt: row.created_at,
+    generatedHook:
+      row.generated && typeof row.generated === "object"
+        ? String((row.generated as { hook?: unknown }).hook ?? "")
+        : undefined,
+  };
 }
 
 function isMissingDiscoveryColumnError(message: string) {

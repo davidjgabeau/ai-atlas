@@ -40,11 +40,19 @@
     },
     {
       "path": "/api/cron/social-generate",
-      "schedule": "7 14 * * *"
+      "schedule": "7 5 * * *"
+    },
+    {
+      "path": "/api/cron/social-generate",
+      "schedule": "7 17 * * *"
     },
     {
       "path": "/api/cron/social-dispatch",
-      "schedule": "37 14 * * *"
+      "schedule": "37 5 * * *"
+    },
+    {
+      "path": "/api/cron/social-dispatch",
+      "schedule": "37 17 * * *"
     },
     {
       "path": "/api/cron/social-engagement",
