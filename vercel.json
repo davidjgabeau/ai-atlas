@@ -15,6 +15,10 @@
       "schedule": "37 4 * * *"
     },
     {
+      "path": "/api/cron/agent-discover",
+      "schedule": "37 16 * * *"
+    },
+    {
       "path": "/api/cron/agent-editorial",
       "schedule": "7 5 * * *"
     },

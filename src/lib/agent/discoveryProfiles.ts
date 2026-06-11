@@ -11,6 +11,12 @@ import {
   looksLikeInvestorOrFund,
   validateDiscoveredCompanyCandidate,
 } from "./companyCandidateValidation";
+import {
+  extractCompanyWebsiteFromHtml,
+  inferCompanyNameFromRecord,
+  mentionsNewYork,
+  resolveCandidateWebsite,
+} from "./discoverySourceUtils";
 import { createId } from "./hash";
 
 type CandidateExtraction = {
@@ -133,10 +139,14 @@ async function extractCandidateProfile(
   });
   if (!candidateValidation.ok) return null;
 
+  const website =
+    normalizeWebsite(extraction.website) ??
+    normalizeWebsite(await resolveCandidateWebsite({ record, companyName: candidateCompanyName }));
+
   const proposedUpdate: Partial<AgentCompany> = {
     name: candidateCompanyName,
     slug: slugify(candidateCompanyName),
-    website: normalizeWebsite(extraction.website),
+    website,
     location: extraction.location || "New York, NY",
     locationConfidence: normalizeConfidence(extraction.locationConfidence),
     stage,
@@ -337,13 +347,15 @@ function extractDeterministically(record: RawSourceRecord): CandidateExtraction 
   const text = `${record.title ?? ""} ${record.text}`;
   const stage = normalizeStage(undefined, text);
   const companyName = cleanCompanyName(
-    record.candidateCompanyName ??
+    inferCompanyNameFromRecord(record) ??
       text.match(/^([A-Z][A-Za-z0-9 .&-]{1,48})\s+(?:raises|raised|secures|lands|launches|announces)/)?.[1] ??
       text.match(/\b([A-Z][A-Za-z0-9 .&-]{1,48})\s+(?:raised|raises|secured|launches|announced)\b/)?.[1] ??
       "",
   );
 
-  if (!companyName) return null;
+  if (!companyName || !validateDiscoveredCompanyCandidate({ name: companyName }).ok) {
+    return null;
+  }
 
   return {
     companyName,
@@ -380,34 +392,115 @@ async function enrichCandidateExtraction(
   record: RawSourceRecord,
 ): Promise<CandidateExtraction> {
   const ycProfile = await fetchYCombinatorProfile(extraction, record);
-  if (!ycProfile) return extraction;
-
-  return {
+  const announcementProfile = await fetchAnnouncementProfile(extraction, record);
+  const merged = {
     ...extraction,
-    companyName: ycProfile.companyName ?? extraction.companyName,
-    website: extraction.website ?? ycProfile.website,
-    location: extraction.location ?? ycProfile.location,
+    companyName:
+      ycProfile?.companyName ??
+      announcementProfile?.companyName ??
+      extraction.companyName,
+    website:
+      extraction.website ??
+      ycProfile?.website ??
+      announcementProfile?.website,
+    location:
+      extraction.location ??
+      ycProfile?.location ??
+      announcementProfile?.location,
     locationConfidence:
-      ycProfile.locationConfidence === "high"
+      ycProfile?.locationConfidence === "high" ||
+      announcementProfile?.locationConfidence === "high"
         ? "high"
-        : extraction.locationConfidence ?? ycProfile.locationConfidence,
-    description: extraction.description ?? ycProfile.description,
+        : extraction.locationConfidence ??
+          ycProfile?.locationConfidence ??
+          announcementProfile?.locationConfidence,
+    description:
+      extraction.description ??
+      ycProfile?.description ??
+      announcementProfile?.description,
     oneSentenceDescription:
-      extraction.oneSentenceDescription ?? ycProfile.oneSentenceDescription,
+      extraction.oneSentenceDescription ??
+      ycProfile?.oneSentenceDescription ??
+      announcementProfile?.oneSentenceDescription,
     nycBased:
-      extraction.nycBased || ycProfile.nycBased
+      extraction.nycBased ||
+      ycProfile?.nycBased ||
+      announcementProfile?.nycBased
         ? true
-        : extraction.nycBased ?? ycProfile.nycBased,
-    confidence:
-      extraction.confidence === "high" || hasFundingSignal(record.text)
-        ? "high"
-        : ycProfile.confidence ?? extraction.confidence,
+        : extraction.nycBased ??
+          ycProfile?.nycBased ??
+          announcementProfile?.nycBased,
     sourceUrls: uniqueStrings([
       ...(extraction.sourceUrls ?? []),
-      ...(ycProfile.sourceUrls ?? []),
+      ...(ycProfile?.sourceUrls ?? []),
+      ...(announcementProfile?.sourceUrls ?? []),
     ]),
-    reason: uniqueStrings([extraction.reason, ycProfile.reason]).join(" "),
+    reason: uniqueStrings([
+      extraction.reason,
+      ycProfile?.reason,
+      announcementProfile?.reason,
+    ]).join(" "),
   };
+
+  return {
+    ...merged,
+    confidence: resolveDiscoveryConfidence(merged, record),
+  };
+}
+
+async function fetchAnnouncementProfile(
+  extraction: CandidateExtraction,
+  record: RawSourceRecord,
+): Promise<CandidateExtraction | null> {
+  if (!/a16z\.com\/announcement\//i.test(record.url)) return null;
+
+  const html = await fetchProfileHtml(record.url);
+  if (!html) return null;
+
+  const companyName =
+    cleanCompanyName(extraction.companyName) ||
+    cleanCompanyName(inferCompanyNameFromRecord(record) ?? "");
+  if (!companyName) return null;
+
+  const text = stripHtml(html);
+  const website = extractCompanyWebsiteFromHtml(html, companyName);
+  const locationIsNewYork = mentionsNewYork(text);
+
+  return {
+    companyName,
+    website,
+    location: locationIsNewYork ? "New York, NY" : undefined,
+    locationConfidence: locationIsNewYork ? "high" : undefined,
+    nycBased: locationIsNewYork ? true : undefined,
+    sourceUrls: [record.url],
+    reason: locationIsNewYork
+      ? "Announcement page supports New York location."
+      : "Announcement page parsed for company website.",
+  };
+}
+
+function resolveDiscoveryConfidence(
+  extraction: CandidateExtraction,
+  record: RawSourceRecord,
+) {
+  if (extraction.confidence === "high" || hasFundingSignal(record.text)) {
+    return "high" as const;
+  }
+
+  if (
+    extraction.aiCore &&
+    extraction.nycBased &&
+    extraction.website &&
+    validateDiscoveredCompanyCandidate({
+      name: extraction.companyName,
+      website: extraction.website,
+      requireWebsite: true,
+    }).ok
+  ) {
+    return "high" as const;
+  }
+
+  return normalizeConfidence(extraction.confidence);
 }
 
 async function fetchYCombinatorProfile(
@@ -551,22 +644,25 @@ function getEligibility(
     extraction.aiCore ??
     /\b(ai|artificial intelligence|generative ai|llm|agentic|machine learning)\b/i.test(text);
   const nycBased =
-    extraction.nycBased ?? /\b(new york|nyc|brooklyn|manhattan)\b/i.test(text);
+    extraction.nycBased === true ||
+    mentionsNewYork(text) ||
+    mentionsNewYork(proposedUpdate.website ?? "");
+  const lateStage =
+    /\b(series c|series d|series e|growth round|ipo|public company)\b/i.test(text) ||
+    candidateHasAcquisitionSignal(proposedUpdate.name, text);
   const earlyStage =
-    extraction.earlyStage ??
+    extraction.earlyStage === true ||
     ["Pre-seed", "Seed", "Series A", "Seed / Series A"].includes(
       proposedUpdate.stage ?? "Unknown",
-    );
+    ) ||
+    (hasFundingSignal(text) && !lateStage);
   const categoryFit = Boolean(
     proposedUpdate.category && allowedCategories.has(proposedUpdate.category),
   );
   const enoughDescription = Boolean(
     proposedUpdate.oneSentenceDescription || proposedUpdate.description,
   );
-  const confidence = normalizeConfidence(extraction.confidence);
-  const lateStage =
-    /\b(series c|series d|series e|growth round|ipo|public company)\b/i.test(text) ||
-    candidateHasAcquisitionSignal(proposedUpdate.name, text);
+  const confidence = resolveDiscoveryConfidence(extraction, record);
   const cleanName = isCleanCandidateName(proposedUpdate.name);
   const hasWebsite = Boolean(proposedUpdate.website);
   const priorityFundingReview =
@@ -874,7 +970,7 @@ function escapeRegExp(value: string) {
 }
 
 function getCandidateExtractionLimit() {
-  const value = readNumericEnv("DISCOVERY_CANDIDATE_LIMIT", 16);
+  const value = readNumericEnv("DISCOVERY_CANDIDATE_LIMIT", 24);
   return Math.max(1, Math.min(32, value));
 }
 

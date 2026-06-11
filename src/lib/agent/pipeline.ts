@@ -8,13 +8,19 @@ import type {
   RawSourceRecord,
 } from "../../types/agent";
 import { auditAndArchiveIneligibleCompanies } from "./auditCompanyEligibility";
+import { isAutoApproveNewCompaniesEnabled } from "./autoApprove";
 import { toAgentCompanies } from "./companyAdapter";
+import { validateDiscoveredCompanyCandidate } from "./companyCandidateValidation";
 import { createMarketSnapshot } from "./createMarketSnapshot";
 import { dedupeEvents } from "./dedupeEvents";
 import {
   extractCandidateProfiles,
   profileToCandidateUpdate,
 } from "./discoveryProfiles";
+import {
+  inferCompanyNameFromRecord,
+  isCuratedPageDiscoveryRecord,
+} from "./discoverySourceUtils";
 import { extractSignals } from "./extractSignals";
 import { generateEditorialSurfaces } from "./generateEditorialSurfaces";
 import { createContentHash, createId } from "./hash";
@@ -186,7 +192,7 @@ export async function runDiscoverNewCandidates() {
               update.sourceUrls.includes(record.url),
             ),
         )
-        .map(createCandidateUpdateFromRaw)
+        .map((record) => createCandidateUpdateFromRaw(record, companies))
         .filter((update): update is CandidateUpdate => Boolean(update)),
     ];
     const nextCandidateUpdates = dedupeCandidateUpdates([
@@ -201,7 +207,7 @@ export async function runDiscoverNewCandidates() {
     const publishResult = await publishApprovedCandidateUpdates({
       candidateUpdates: nextCandidateUpdates,
       existingCompanies: companies,
-      autoApprove: process.env.AUTO_APPROVE_NEW_COMPANIES === "true",
+      autoApprove: isAutoApproveNewCompaniesEnabled(),
     });
     stats.companiesPublished = publishResult.published;
     errors.push(...publishResult.errors);
@@ -474,11 +480,22 @@ function createCandidateUpdatesFromSignals(signals: ExtractedSignal[]) {
     } satisfies CandidateUpdate));
 }
 
-function createCandidateUpdateFromRaw(record: RawSourceRecord): CandidateUpdate | null {
+function createCandidateUpdateFromRaw(
+  record: RawSourceRecord,
+  existingCompanies: AgentCompany[],
+): CandidateUpdate | null {
+  if (isCuratedPageDiscoveryRecord(record)) return null;
   if (!hasFallbackCandidateSignal(record)) return null;
 
-  const candidateCompanyName = record.candidateCompanyName ?? extractCandidateName(record);
-  if (!candidateCompanyName) return null;
+  const rawCandidateName =
+    record.candidateCompanyName ??
+    inferCompanyNameFromRecord(record) ??
+    extractCandidateName(record);
+  if (!rawCandidateName) return null;
+
+  const candidateCompanyName = cleanFallbackCandidateName(rawCandidateName);
+  if (isExistingFallbackCompany(candidateCompanyName, existingCompanies)) return null;
+  if (!validateDiscoveredCompanyCandidate({ name: candidateCompanyName }).ok) return null;
 
   return {
     id: createId("candidate_update", {
@@ -522,6 +539,30 @@ function extractCandidateName(record: RawSourceRecord) {
   const title = record.title ?? "";
   const match = title.match(/^([A-Z][A-Za-z0-9 .-]{1,42})\s+(raises|launches|announces|secures)/);
   return match?.[1]?.trim();
+}
+
+function cleanFallbackCandidateName(value: string) {
+  return value
+    .replace(/^the\s+/i, "")
+    .replace(/\s+(?:has|raised|raises|secured|secures|announced|launches).*$/i, "")
+    .replace(/["“”]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 80);
+}
+
+function isExistingFallbackCompany(name: string, companies: AgentCompany[]) {
+  const slug = name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  const normalizedName = name.toLowerCase();
+
+  return companies.some(
+    (company) =>
+      company.slug === slug || company.name.toLowerCase() === normalizedName,
+  );
 }
 
 function dedupeCandidateUpdates(updates: CandidateUpdate[]) {

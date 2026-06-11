@@ -1,4 +1,5 @@
 import { generateInclusionReason } from "@/lib/agent/generateInclusionReason";
+import { isAutoApproveNewCompaniesEnabled } from "@/lib/agent/autoApprove";
 import { createContentHash, createId } from "@/lib/agent/hash";
 import { refreshCompanyLogos } from "@/lib/logos/refreshCompanyLogos";
 import {
@@ -29,9 +30,9 @@ export async function publishDiscoveredCompanies({
   existingCompanies: AgentCompany[];
   autoApprove: boolean;
 }) {
-  const eligibleProfiles = profiles.filter(
-    (profile) => autoApprove && profile.autoPublishEligible,
-  );
+  const eligibleProfiles = profiles.filter((profile) => {
+    return profile.autoPublishEligible && isAutoApproveNewCompaniesEnabled();
+  });
   if (eligibleProfiles.length === 0) {
     return { published: 0, errors: [] as string[] };
   }

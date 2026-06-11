@@ -45,8 +45,8 @@ Example:
 
 `vercel.json` includes:
 
-- `/api/cron/agent-refresh` every 3 hours
-- `/api/cron/agent-discover` every 12 hours
+- `/api/cron/agent-refresh` once per day on Hobby (4:07 UTC)
+- `/api/cron/agent-discover` twice per day (4:37 and 16:37 UTC)
 - `/api/cron/agent-editorial` once per day
 - `/api/cron/social-generate` daily
 - `/api/cron/social-dispatch` daily

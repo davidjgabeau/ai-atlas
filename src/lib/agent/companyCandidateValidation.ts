@@ -113,7 +113,7 @@ export function isUsableCompanyWebsite(value: unknown) {
     return Boolean(
       host &&
         !publisherPattern.test(host) &&
-        !/\b(linkedin|twitter|x|facebook|instagram|youtube|medium|substack|crunchbase|techcrunch|venturebeat)\.com$/i.test(host),
+        !/\b(linkedin|twitter|x|facebook|instagram|youtube|medium|substack|crunchbase|techcrunch|venturebeat|alleywatch|builtinnyc)\.com$/i.test(host),
     );
   } catch {
     return false;

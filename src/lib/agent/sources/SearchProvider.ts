@@ -158,7 +158,7 @@ function getSearchQueries() {
 }
 
 function getSearchQueryLimit() {
-  const value = readNumericEnv("DISCOVERY_QUERY_LIMIT", 4);
+  const value = readNumericEnv("DISCOVERY_QUERY_LIMIT", 10);
   return Math.max(1, Math.min(24, value));
 }
 

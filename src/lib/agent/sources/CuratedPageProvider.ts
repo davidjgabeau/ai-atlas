@@ -8,13 +8,7 @@ type CuratedPage = {
   sourceType: RawSourceRecord["sourceType"];
 };
 
-const defaultCuratedPages: CuratedPage[] = [
-  {
-    name: "Built In NYC AI Companies",
-    url: "https://builtinnyc.com/articles/nyc-machine-learning-startups-artificial-intelligence",
-    sourceType: "search",
-  },
-];
+const defaultCuratedPages: CuratedPage[] = [];
 
 export class CuratedPageProvider implements SourceProvider {
   name = "curated-pages";
