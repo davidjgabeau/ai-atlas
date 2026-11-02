@@ -122,9 +122,9 @@ function HeroStatsRow({
           href={item.href}
           className="group min-w-0 px-3 py-3 transition hover:bg-[rgb(17_17_17_/_0.025)]"
         >
-          <dt className="text-label flex items-center gap-1.5 text-[9.5px] leading-[1.15] text-[#746D64] group-hover:text-[#9A3D2B]">
+          <dt className="text-label flex min-h-[22px] items-center gap-1.5 text-[9.5px] leading-[1.15] text-[#746D64] group-hover:text-[#9A3D2B]">
             <PixelSiteIcon name={item.icon} size="xs" />
-            <span className="truncate">{item.label}</span>
+            <span>{item.label}</span>
           </dt>
           <dd
             className={

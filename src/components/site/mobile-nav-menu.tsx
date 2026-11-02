@@ -40,7 +40,7 @@ export function MobileNavMenu({ className }: { className?: string }) {
           variant="outline"
           size="icon-lg"
           className={cn(
-            "border-[#E7E1D8] bg-[#FBFAF7] text-[#181818] shadow-none lg:hidden",
+            "border-[#E7E1D8] bg-[#FBFAF7] text-[#181818] shadow-none 2xl:hidden",
             className,
           )}
           aria-label="Open navigation menu"
@@ -50,7 +50,7 @@ export function MobileNavMenu({ className }: { className?: string }) {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="!w-[min(88vw,360px)] !max-w-[min(88vw,360px)] border-[#E7E1D8] bg-[#F8F6F1] p-0 shadow-none lg:hidden"
+        className="!w-[min(88vw,360px)] !max-w-[min(88vw,360px)] border-[#E7E1D8] bg-[#F8F6F1] p-0 shadow-none 2xl:hidden"
       >
         <div className="border-b border-[#E7E1D8] px-5 py-5">
           <SheetTitle className="siteWordmark text-2xl">

@@ -268,7 +268,7 @@ export function MarketMapClient({
 
           {renderFilterRow("hidden xl:block")}
 
-          <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(430px,0.8fr)] xl:items-start">
+          <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(430px,0.8fr)] xl:items-start">
             <section className="order-1 min-w-0 xl:order-1">
               <MapInsights
                 companies={filteredCompanies}
@@ -406,7 +406,7 @@ function MapFilterRow({
   onReset: () => void;
 }) {
   return (
-    <div className="mt-5 grid grid-cols-1 items-center gap-2.5 sm:grid-cols-[220px_170px_220px_220px_auto]">
+    <div className="mt-5 grid grid-cols-1 items-center gap-2.5 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
       <Select
         value={category}
         onValueChange={(value) => onCategoryChange(value as Category | "all")}
@@ -722,7 +722,7 @@ function InteractiveMapPanel({
             <MapPinned className="size-4" />
           </span>
           <div>
-            <h2 className="text-sm font-semibold tracking-[0]">
+            <h2 className="text-sm font-semibold tracking-[0] !text-white">
               Interactive map
             </h2>
             <p className="text-sm text-white/65">
@@ -908,15 +908,7 @@ function CompanyTable({
           {formatMappedCompanies(companies.length)}
         </p>
       </div>
-      <div className="hidden grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] border-b border-[#E7E1D8] bg-[rgb(154_61_43_/_0.06)] px-4 py-3 text-xs font-medium text-[#7A746C] lg:grid">
-        <span>Company</span>
-        <span>Category</span>
-        <span>Stage</span>
-        <span>Neighborhood</span>
-        <span>Signal</span>
-        <span />
-      </div>
-      <div className="grid min-w-0 grid-cols-2 gap-2 p-2 lg:block lg:divide-y lg:divide-[#E7E1D8] lg:p-0">
+      <div className="grid min-w-0 grid-cols-1 gap-3 p-3 sm:grid-cols-2">
         {companies.map((company) => {
           const location = locationBySlug.get(company.slug);
 
@@ -933,12 +925,12 @@ function CompanyTable({
                 }
               }}
               className={cn(
-                "grid min-h-[212px] min-w-0 w-full gap-3 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.06)] lg:min-h-[86px] lg:rounded-none lg:border-0 lg:border-l-4 lg:border-l-transparent lg:bg-transparent lg:px-4 lg:py-4 lg:hover:border-l-[#E7E1D8] lg:grid-cols-[minmax(240px,1.2fr)_minmax(150px,0.85fr)_96px_minmax(140px,0.85fr)_150px_132px] lg:items-center",
+                "grid grid-cols-[minmax(0,1fr)_auto] min-h-[212px] min-w-0 w-full gap-3 rounded-md border border-[#E7E1D8] bg-[#FBFAF7] p-3 text-left transition hover:bg-[rgb(154_61_43_/_0.06)]",
                 selectedId === company.slug &&
                   "border-[#9A3D2B] bg-[rgb(154_61_43_/_0.06)] shadow-[inset_0_0_0_1px_rgba(154,61,43,0.14)] hover:bg-[rgb(154_61_43_/_0.06)] lg:border-l-[#9A3D2B]",
               )}
             >
-              <div className="flex min-w-0 items-start gap-3">
+              <div className="col-span-2 flex min-w-0 items-start gap-3">
                 <CompanyLogo
                   company={company}
                   name={company.name}
@@ -959,8 +951,8 @@ function CompanyTable({
                   </p>
                 </div>
               </div>
-              <div className="flex min-w-0 flex-wrap items-center gap-2">
-                <CategoryBadge category={company.category} className="w-full lg:w-fit" />
+              <div className="col-span-2 flex min-w-0 flex-wrap items-center gap-2">
+                <CategoryBadge category={company.category} className="w-full" />
                 <CompanyViewCount
                   companyId={company.id}
                   views={company.metrics?.views ?? 0}
@@ -980,7 +972,7 @@ function CompanyTable({
                 companyName={company.name}
                 size="sm"
                 stopPropagation
-                className="min-w-0 w-full justify-center whitespace-nowrap lg:w-auto lg:justify-self-end [&>span]:min-w-0 [&>span]:truncate"
+                className="min-w-0 w-full justify-center whitespace-nowrap [&>span]:min-w-0 [&>span]:truncate"
               />
             </div>
           );

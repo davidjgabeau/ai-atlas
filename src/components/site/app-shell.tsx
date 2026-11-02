@@ -84,7 +84,7 @@ function PublicationHeader({
           inputClassName="h-10 rounded-md border-[#E7E1D8] bg-[#FBFAF7] pl-9 text-sm text-[#181818] shadow-none placeholder:text-[#9B948A] focus:border-[#CFC7BC] focus:ring-0 focus-visible:border-[#9A3D2B] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
         />
 
-        <nav aria-label="Primary" className="ml-auto hidden items-center gap-3 lg:flex">
+        <nav aria-label="Primary" className="ml-auto hidden items-center gap-3 2xl:flex">
           {navItems.map((item) => {
             const active =
               item.href === "/"
@@ -104,12 +104,12 @@ function PublicationHeader({
           <AskHeaderLink active={pathname === "/ask"} />
         </nav>
 
-        <div className="ml-auto flex shrink-0 items-center gap-2 lg:ml-0">
+        <div className="ml-auto flex shrink-0 items-center gap-2 2xl:ml-0">
           <ProfileHeaderLink className="inline-flex" compact />
           <MobileNavMenu />
         </div>
 
-        <Button asChild className="hidden app-primary-button lg:inline-flex">
+        <Button asChild className="hidden app-primary-button 2xl:inline-flex">
           <Link href="/submit">Submit Startup</Link>
         </Button>
       </div>

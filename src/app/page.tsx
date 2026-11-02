@@ -231,7 +231,7 @@ function SiteNav() {
 
         <nav
           aria-label="Primary"
-          className="ml-auto hidden items-center gap-3 lg:flex"
+          className="ml-auto hidden items-center gap-3 2xl:flex"
         >
           <SpriteHeaderLink
             href="/companies"
@@ -249,7 +249,7 @@ function SiteNav() {
             <Link href="/submit">Submit Startup</Link>
           </Button>
         </nav>
-        <div className="ml-auto flex shrink-0 items-center gap-3 lg:hidden">
+        <div className="ml-auto flex shrink-0 items-center gap-3 2xl:hidden">
           <ProfileHeaderLink
             className="inline-flex size-11 justify-center rounded-[13px] border border-[#D8CFC1] bg-[#FBFAF7] p-0 hover:bg-[rgb(17_17_17_/_0.025)]"
             compact
