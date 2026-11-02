@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
+import { applyVerifiedCompanyCorrections } from "@/data/company-corrections";
 
 import {
   companies as localCompanies,
@@ -271,6 +272,7 @@ export function isPublicCompany(company: Company) {
 }
 
 export function normalizeCompany(row: CompanyRow): Company {
+  row = applyVerifiedCompanyCorrections(row);
   const id = safeString(row.id, `cmp_${safeString(row.slug, "unknown")}`);
   const now = new Date().toISOString();
   const name = safeString(row.name, "Untitled Startup");
@@ -684,12 +686,9 @@ function sanitizeGeneratedFields(
   generated: GeneratedCompanyFields,
   company: Company,
 ): GeneratedCompanyFields {
-  const slugHook = specificHooksBySlug[company.slug];
-  const hook = slugHook
-    ? slugHook
-    : isGenericDuplicatedHook(generated.hook)
-      ? inferSpecificHook(company)
-      : normalizeHookCopy(generated.hook);
+  const hook = isGenericDuplicatedHook(generated.hook)
+    ? normalizeHookCopy(company.short_description)
+    : normalizeHookCopy(generated.hook);
 
   return {
     ...generated,
@@ -716,44 +715,6 @@ function sanitizeGeneratedFields(
 function isGenericDuplicatedHook(value: string) {
   const normalized = normalizeHookCopy(value).toLowerCase();
   return genericDuplicatedHooks.has(normalized);
-}
-
-function inferSpecificHook(company: Company) {
-  const text = [
-    company.short_description,
-    company.one_line_thesis,
-    company.why_it_matters,
-    company.ai_usage_profile,
-  ]
-    .join(" ")
-    .toLowerCase();
-
-  const slugHook = specificHooksBySlug[company.slug];
-  if (slugHook) return slugHook;
-
-  if (text.includes("supply chain")) {
-    return "Supply chain agents for operational planning";
-  }
-  if (text.includes("product catalog") || text.includes("shopping")) {
-    return "Product catalog infrastructure for agentic commerce";
-  }
-  if (text.includes("voice") && text.includes("phone")) {
-    return "Voice agents for restaurant and retail calls";
-  }
-  if (text.includes("hedge fund") || text.includes("trades")) {
-    return "AI-native trading research and execution";
-  }
-  if (text.includes("data marketplace")) {
-    return "Licensed data marketplace for AI builders";
-  }
-  if (text.includes("social-graph") || text.includes("dating")) {
-    return "Social graph matching for Gen Z dating";
-  }
-  if (text.includes("audience") && text.includes("conversations")) {
-    return "Real-time audience research with AI";
-  }
-
-  return normalizeHookCopy(company.one_line_thesis || company.short_description);
 }
 
 function dedupeSentences(value: string) {
@@ -787,6 +748,9 @@ function ensureSentence(value: string) {
 
 const genericDuplicatedHooks = new Set(
   [
+    "Creative workflows for brands and agencies",
+    "Patient workflows for healthcare operators",
+    "AI agents for business workflows",
     "Turning messy documents into structured context",
     "Research workflows for financial teams",
     "Sales workflows for revenue teams",
@@ -797,55 +761,6 @@ const genericDuplicatedHooks = new Set(
     "Turning policies into operational AI agents",
   ].map((hook) => hook.toLowerCase()),
 );
-
-const specificHooksBySlug: Record<string, string> = {
-  aspect: "Spreadsheets for investment workflows",
-  datagrid: "Document extraction for regulated teams",
-  "canoe-intelligence": "Alternative-investment data automation",
-  wallaroo: "Enterprise model deployment and monitoring",
-  "carbon-arc": "Licensed data marketplace for AI builders",
-  "standard-signal": "AI-native trading research and execution",
-  "manifest-os": "Infrastructure for AI-native legal services",
-  zerodrift: "Real-time policy enforcement for regulated teams",
-  trata: "Hedge fund research from analyst agents",
-  brightwave: "Investment research from filings and transcripts",
-  hebbia: "AI research workflows for financial documents",
-  rowflow: "Sales data workflows for GTM teams",
-  concourse: "AI agents for corporate finance teams",
-  "slang-ai": "Voice agents for restaurant and retail calls",
-  kalepa: "AI underwriting for commercial insurance",
-  "vortexify-ai": "Supply chain agents for operational planning",
-  empromptu: "Chat-driven enterprise app creation",
-  "kay-ai": "Document context layer for enterprise agents",
-  amika: "Cloud sandboxes for AI coding agents",
-  channel3: "Product catalog infrastructure for agentic commerce",
-  "emergence-ai": "Agents that orchestrate enterprise workflows",
-  nori: "Personal memory for everyday notes",
-  loyalist: "AI companion for friendship and support",
-  remesh: "Real-time audience research with AI",
-  cerca: "Social graph matching for Gen Z dating",
-  "222": "AI matching for in-person social plans",
-  series: "Warm introductions inside iMessage",
-  granted: "AI support for navigating government benefits",
-  camber: "Healthcare payments operations for clinics",
-  "sohar-health": "Eligibility automation for behavioral health",
-  clarion: "Voice agents for healthcare communications",
-  "valerie-health": "Front-office AI for independent doctors",
-  absurd: "AI brand ads for performance teams",
-  stewdio: "Creative workspace for generative media",
-  tildei: "Agentic brand conversations across channels",
-  icon: "AI video ads with real actors",
-  agentio: "Creator-led advertising automation",
-  mirage: "AI video generation for creative teams",
-  "mirage-formerly-captions": "AI video generation for creative teams",
-  alkymi: "Document workflows for financial services",
-  "bretton-ai": "KYC and AML agents for financial teams",
-  soxton: "Policy agents for compliance teams",
-  "norm-ai": "Regulatory AI agents for enterprises",
-  tabs: "Contract-to-cash automation for finance teams",
-  maybern: "Private fund operations for investment firms",
-  bayesline: "Custom risk analytics for hedge funds",
-};
 
 function normalizeCategory(value: unknown): Category {
   return categories.includes(value as Category)

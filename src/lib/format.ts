@@ -1,7 +1,6 @@
-const referenceNow = new Date("2026-04-28T18:00:00Z");
-
-export function formatRelativeDate(dateValue: string) {
+export function formatRelativeDate(dateValue: string, referenceNow = new Date()) {
   const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "Date unavailable";
   const diffMs = date.getTime() - referenceNow.getTime();
   const diffHours = Math.round(diffMs / (1000 * 60 * 60));
   const absHours = Math.abs(diffHours);
@@ -31,6 +30,7 @@ export function formatRelativeDate(dateValue: string) {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 }
 
@@ -39,9 +39,12 @@ export function formatActivity(activity: string, dateValue: string) {
 }
 
 export function formatDate(dateValue: string) {
-  return new Date(dateValue).toLocaleDateString("en", {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return "Date unavailable";
+  return date.toLocaleDateString("en", {
     month: "short",
     day: "numeric",
     year: "numeric",
+    timeZone: "UTC",
   });
 }

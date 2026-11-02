@@ -156,6 +156,8 @@ npm run build         # Production build
 npm run lint          # ESLint
 npm run data:validate # Validate company and category data
 npm run seo:audit     # SEO audit
+npm run check         # Regression tests, TypeScript, lint/data checks, production build
+npm run smoke:site -- https://aiatlas.nyc  # Read-only route/search checks; invalid form payload only
 ```
 
 Additional scripts handle data refreshes, logo updates, jobs, news, profile briefs, social content, and editorial surface generation. Review `package.json` before running scripts that call external services or write production data.
@@ -211,6 +213,9 @@ npm run data:validate
 ```
 
 For UI work, test affected pages in desktop and mobile viewports. The product is designed to feel editorial and consumer-grade.
+
+Freshness rules, safe ingestion, source corrections, and maintenance checks are
+documented in [docs/maintenance.md](./docs/maintenance.md).
 
 ---
 

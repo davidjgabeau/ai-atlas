@@ -1,5 +1,11 @@
 import type { Company } from "@/types/market";
 
+function formatFundingDate(value: string) {
+  if (!hasValue(value)) return "";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+}
+
 function hasValue(value: string) {
   const normalized = value.trim().toLowerCase();
   return normalized.length > 0 && normalized !== "undisclosed";
@@ -52,7 +58,7 @@ export function formatFundingHeadline(company: Company) {
     hasValue(company.funding_amount)
       ? formatFundingAmount(company.funding_amount)
       : "",
-    hasValue(company.funding_date) ? company.funding_date : "",
+    formatFundingDate(company.funding_date),
   ].filter(hasValue);
 
   return parts.length > 0 ? parts.join(" · ") : "Funding not disclosed";
@@ -83,7 +89,7 @@ export function getFundingRows(company: Company) {
   return [
     ["Latest round", company.funding_round],
     ["Round amount", formatFundingAmount(company.funding_amount)],
-    ["Round date", company.funding_date],
+    ["Round date", formatFundingDate(company.funding_date)],
     ["Total raised", formatFundingAmount(company.total_raised)],
     ["Lead investor", company.lead_investor],
   ].filter(([, value]) => hasValue(value));

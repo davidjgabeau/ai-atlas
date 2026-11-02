@@ -467,11 +467,9 @@ function GoogleEmbedFallback() {
 function MissingKeyNotice() {
   return (
     <div className="absolute left-5 top-5 max-w-sm rounded-md border border-[#E7E1D8]/20 bg-slate-950/85 p-4 text-white shadow-xl backdrop-blur">
-      <p className="text-sm font-semibold">Google Maps SDK needs an API key</p>
+      <p className="text-sm font-semibold">Interactive map unavailable</p>
       <p className="mt-2 text-xs leading-5 text-slate-200">
-        Add <code>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> to your local env and
-        restart the dev server. Until then, this uses a read-only Google Maps
-        embed instead of interactive company markers.
+        You can still browse, filter, and open every company in the directory below.
       </p>
     </div>
   );
@@ -482,8 +480,7 @@ function MapErrorNotice() {
     <div className="absolute left-5 top-5 max-w-sm rounded-md border border-[#E7E1D8]/20 bg-red-950/85 p-4 text-white shadow-xl backdrop-blur">
       <p className="text-sm font-semibold">Google Maps could not load</p>
       <p className="mt-2 text-xs leading-5 text-red-100">
-        Check that the browser key allows the Maps JavaScript API on this
-        domain.
+        Please try again later. Company search, filters, and profiles are still available below.
       </p>
     </div>
   );

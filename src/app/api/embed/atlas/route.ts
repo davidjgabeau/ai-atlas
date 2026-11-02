@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 import { categoryMeta } from "@/data/market";
+import { getRecentEditorialSignals } from "@/lib/editorial/recentSignals";
 import { patterns } from "@/data/patterns";
 import {
   getLatestSurface,
@@ -183,7 +184,7 @@ export async function GET(request: NextRequest) {
           ),
       })),
       latestSignals:
-        latestSignals?.items.slice(0, 6).map((item) => {
+        getRecentEditorialSignals(latestSignals?.items, new Set(companiesById.keys())).slice(0, 6).map((item) => {
           const company = item.companyId
             ? companiesById.get(item.companyId)
             : undefined;

@@ -1,6 +1,7 @@
 import type { AgentCompany, RawSourceRecord } from "../../../types/agent";
 import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
+import { forEachConcurrent } from "../concurrency";
 
 type DiscoveryFeed = {
   name: string;
@@ -80,15 +81,17 @@ export class RSSProvider implements SourceProvider {
     const records: RawSourceRecord[] = [];
     const seenUrls = new Set<string>();
 
-    for (const feed of feeds) {
+    const deadline = Date.now() + 45_000;
+    await forEachConcurrent(feeds, 4, async (feed) => {
       const xml = await fetchText(feed.url);
-      if (!xml) continue;
+      if (!xml) return;
 
       const items = parseFeedItems(xml, feed.url)
         .filter(isPotentialDiscoveryItem)
         .slice(0, getItemsPerFeedLimit());
 
       for (const item of items) {
+        if (Date.now() >= deadline) break;
         const itemUrl = item.link || feed.url;
         if (seenUrls.has(itemUrl)) continue;
         seenUrls.add(itemUrl);
@@ -127,7 +130,7 @@ export class RSSProvider implements SourceProvider {
           contentHash,
         });
       }
-    }
+    }, deadline);
 
     return records;
   }

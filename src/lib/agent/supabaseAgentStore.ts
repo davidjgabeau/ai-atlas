@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { fetchWithDatabaseDeadline } from "../supabase/fetch";
 
 import type {
   AgentDataFiles,
@@ -23,6 +24,7 @@ export async function loadAgentDataFromSupabase(): Promise<Partial<AgentDataFile
   if (!isSupabaseConfigured()) return {};
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+    global: { fetch: fetchWithDatabaseDeadline },
     auth: {
       persistSession: false,
     },
@@ -47,12 +49,10 @@ export async function loadAgentDataFromSupabase(): Promise<Partial<AgentDataFile
         .limit(50),
     ]);
 
-    if (surfaces.error || snapshots.error || events.error) return {};
-
     return {
-      editorialSurfaces: (surfaces.data ?? []).map(fromEditorialSurfaceRow),
-      marketSnapshots: (snapshots.data ?? []).map(fromMarketSnapshotRow),
-      companyEvents: (events.data ?? []).map(fromCompanyEventRow),
+      editorialSurfaces: surfaces.error ? undefined : (surfaces.data ?? []).map(fromEditorialSurfaceRow),
+      marketSnapshots: snapshots.error ? undefined : (snapshots.data ?? []).map(fromMarketSnapshotRow),
+      companyEvents: events.error ? undefined : (events.data ?? []).map(fromCompanyEventRow),
     };
   } catch {
     return {};
@@ -220,6 +220,7 @@ function createAgentWriteClient() {
 
   if (SUPABASE_SERVER_KEY) {
     return createClient(SUPABASE_URL, SUPABASE_SERVER_KEY, {
+      global: { fetch: fetchWithDatabaseDeadline },
       auth: {
         persistSession: false,
       },
@@ -233,6 +234,7 @@ function createAgentWriteClient() {
       persistSession: false,
     },
     global: {
+      fetch: fetchWithDatabaseDeadline,
       headers: {
         "x-ai-atlas-agent-secret": SUPABASE_AGENT_WRITE_SECRET,
       },

@@ -8,6 +8,7 @@ import type {
   RawSourceRecord,
 } from "../../types/agent";
 import { auditAndArchiveIneligibleCompanies } from "./auditCompanyEligibility";
+import { forEachConcurrent } from "./concurrency";
 import { isAutoApproveNewCompaniesEnabled } from "./autoApprove";
 import { toAgentCompanies } from "./companyAdapter";
 import { validateDiscoveredCompanyCandidate } from "./companyCandidateValidation";
@@ -64,8 +65,10 @@ export async function runRefreshKnownCompanies() {
     const nextRawRecords = [...files.rawSourceRecords];
     const extractedSignals: ExtractedSignal[] = [];
 
-    for (const company of companies) {
-      for (const provider of providers) {
+    const offset = Math.floor(Date.now() / 86_400_000) % Math.max(1, companies.length);
+    const rotatedCompanies = [...companies.slice(offset), ...companies.slice(0, offset)];
+    const sources = rotatedCompanies.flatMap((company) => providers.map((provider) => ({ company, provider })));
+    const refreshProgress = await forEachConcurrent(sources, 6, async ({ company, provider }) => {
         try {
           const records = await provider.fetchForCompany(company);
           for (const record of records) {
@@ -79,8 +82,8 @@ export async function runRefreshKnownCompanies() {
         } catch (error) {
           errors.push(`${provider.name}/${company.slug}: ${getErrorMessage(error)}`);
         }
-      }
-    }
+    }, Date.now() + 90_000);
+    if (refreshProgress.remaining > 0) errors.push(`Source budget reached; ${refreshProgress.remaining} checks deferred to the next run.`);
 
     const signalEvents = extractedSignals
       .filter((signal) => signal.possibleCompanyId && signal.confidence !== "low")
@@ -161,15 +164,14 @@ export async function runDiscoverNewCandidates() {
     const providers = createSourceProviders();
     const rawRecords: RawSourceRecord[] = [];
 
-    for (const provider of providers) {
-      if (!provider.discoverCandidates) continue;
-
+    await Promise.all(providers.map(async (provider) => {
+      if (!provider.discoverCandidates) return;
       try {
         rawRecords.push(...(await provider.discoverCandidates()));
       } catch (error) {
         errors.push(`${provider.name}/discover: ${getErrorMessage(error)}`);
       }
-    }
+    }));
 
     const existingHashes = new Set(
       files.rawSourceRecords.map((record) => record.contentHash),
@@ -224,12 +226,13 @@ export async function runDiscoverNewCandidates() {
 
     const nextCompanyEvents = dedupeEvents(files.companyEvents, downstreamEvents);
 
-    await writeAndMirror({
+    const saved = await writeAndMirror({
       ...files,
       rawSourceRecords: [...files.rawSourceRecords, ...newRawRecords],
       candidateUpdates: nextCandidateUpdates,
       companyEvents: nextCompanyEvents,
     });
+    if (!saved.ok) errors.push(...(saved.errors ?? []), ...(saved.reason ? [saved.reason] : []));
 
     if (
       publishResult.published > 0 &&

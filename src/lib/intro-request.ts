@@ -5,12 +5,11 @@ const PUBLIC_SITE_URL = "https://aiatlas.nyc";
 
 export function getExternalUrl(url: string) {
   const trimmedUrl = url.trim();
-
-  if (/^https?:\/\//i.test(trimmedUrl)) {
-    return trimmedUrl;
-  }
-
-  return `https://${trimmedUrl}`;
+  if (!trimmedUrl || (/^[a-z][a-z\d+.-]*:/i.test(trimmedUrl) && !/^https?:\/\//i.test(trimmedUrl))) return "";
+  try {
+    const parsed = new URL(/^https?:\/\//i.test(trimmedUrl) ? trimmedUrl : `https://${trimmedUrl}`);
+    return parsed.hostname.includes(".") ? parsed.href : "";
+  } catch { return ""; }
 }
 
 export function getDisplayUrl(url: string) {

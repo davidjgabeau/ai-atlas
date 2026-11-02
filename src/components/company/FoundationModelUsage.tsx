@@ -18,6 +18,8 @@ export function FoundationModelUsage({
   if (rows.length === 0) return null;
 
   return (
+    <div>
+    <p className="mb-4 text-xs leading-5 text-[#7A746C]">Editorial estimates from product descriptions. Model providers and actual usage are not confirmed.</p>
     <dl className={cn("grid gap-3", compact ? "text-sm" : "text-base")}>
       {rows.map((row) => (
         <div
@@ -41,6 +43,7 @@ export function FoundationModelUsage({
         </div>
       ))}
     </dl>
+    </div>
   );
 }
 
@@ -57,23 +60,23 @@ function getFoundationModelRows(company: Company) {
   const rows: Array<{ label: string; value: string }> = [];
 
   if (providers.length > 0) {
-    rows.push({ label: "Model providers", value: providers.join(", ") });
+    rows.push({ label: "Model mentions in profile", value: providers.join(", ") });
   }
 
   if (profiles.length > 0) {
     rows.push({
-      label: "Architecture pattern",
+      label: "Inferred architecture",
       value: profiles.join(", "),
     });
   }
 
   if (defensibility.length > 0) {
-    rows.push({ label: "Defensibility", value: defensibility.join(", ") });
+    rows.push({ label: "Potential advantages", value: defensibility.join(", ") });
   }
 
   if (company.consumption_intensity) {
     rows.push({
-      label: "Model demand",
+      label: "Estimated model demand",
       value: formatConsumptionIntensity(company.consumption_intensity),
     });
   }

@@ -5,7 +5,6 @@ import { CompanyViewCount } from "@/components/company/CompanyViewCount";
 import { CategoryPixelIcon } from "@/components/market-map/category-pixel-icon";
 import { CompanyLogo } from "@/components/market-map/company-logo";
 import {
-  getCompanyInclusionReason,
   formatMonthYear,
   getCompanyHook,
 } from "@/components/home/home-utils";
@@ -13,22 +12,23 @@ import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 import type { Company } from "@/types/market";
 
 export function RecentlyAdded({ companies }: { companies: Company[] }) {
+  if (companies.length === 0) return null;
   return (
     <section id="recently-added" className="border-b border-[#E7E1D8] bg-section">
       <div className="editorial-container py-10">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="editorial-label">New entries</p>
-            <h2 className="mt-3 editorial-section-title">Recently Added</h2>
+            <p className="editorial-label">The growing map</p>
+            <h2 className="mt-3 editorial-section-title">Latest Additions</h2>
             <p className="text-body mt-2 text-sm">
-              New entries from the early-stage NYC AI map.
+              The most recently added companies, with their original addition dates.
             </p>
           </div>
           <Link
             href="/companies?sort=recent"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B]"
           >
-            View recent additions
+            Browse by date added
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
@@ -67,9 +67,9 @@ export function RecentlyAdded({ companies }: { companies: Company[] }) {
                     <p className="text-company-hook mt-1 line-clamp-1 text-[15px]">
                       {getCompanyHook(company)}
                     </p>
-                    <p className="text-body mt-1 line-clamp-2 text-[13.5px] leading-[1.45]">
-                      {getCompanyInclusionReason(company)}
-                    </p>
+                    {getCompanyHook(company).replace(/\W/g, "").toLowerCase() !== company.short_description.replace(/\W/g, "").toLowerCase() ? <p className="text-body mt-1 line-clamp-2 text-[13.5px] leading-[1.45]">
+                      {company.short_description}
+                    </p> : null}
                   </div>
                   <div className="text-meta flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs md:justify-end md:text-right">
                     {annotation ? (

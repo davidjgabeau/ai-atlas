@@ -15,6 +15,7 @@ export function LatestSignals({
   items: EditorialItem[];
   companiesById: Map<string, Company>;
 }) {
+  if (items.length === 0) return null;
   return (
     <section id="latest-signals" className="border-b border-[#E7E1D8] bg-section">
       <div className="editorial-container pb-10 pt-0 lg:pb-12">

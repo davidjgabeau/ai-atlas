@@ -17,6 +17,7 @@ import type { Company } from "@/types/market";
 
 import {
   looksLikeInvestorOrFund,
+  hasPublishableDescription,
   validateDiscoveredCompanyCandidate,
 } from "./companyCandidateValidation";
 import type { DiscoveredCandidateProfile } from "./discoveryProfiles";
@@ -32,7 +33,9 @@ export async function publishDiscoveredCompanies({
   autoApprove: boolean;
 }) {
   const eligibleProfiles = profiles.filter((profile) => {
-    return profile.autoPublishEligible && isAutoApproveNewCompaniesEnabled();
+    return profile.autoPublishEligible && autoApprove && isAutoApproveNewCompaniesEnabled()
+      && ["Pre-seed", "Seed", "Series A", "Seed / Series A"].includes(profile.proposedUpdate.stage ?? "")
+      && (hasPublishableDescription(profile.proposedUpdate.oneSentenceDescription) || hasPublishableDescription(profile.proposedUpdate.description));
   });
   if (eligibleProfiles.length === 0) {
     return { published: 0, publishedCompanies: [], errors: [] as string[] };

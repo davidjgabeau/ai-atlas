@@ -354,11 +354,6 @@ export default async function CompanyProfilePage({
                   and visible market momentum.
                 </p>
               </PanelSection>
-              {hasFoundationModelUsage(company) ? (
-                <PanelSection title="Foundation model usage">
-                  <FoundationModelUsage company={company} compact />
-                </PanelSection>
-              ) : null}
               <PanelSection
                 title="Company posts"
                 action={
