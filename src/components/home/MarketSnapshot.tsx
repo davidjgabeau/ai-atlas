@@ -17,13 +17,13 @@ export function MarketSnapshot({
     {
       href: "/companies?sort=recent",
       icon: "pin",
-      label: "recent additions",
+      label: "added this week",
       value: stats.recentlyAddedCount,
     },
     {
       href: "/patterns",
       icon: "compass",
-      label: "current themes",
+      label: "market patterns",
       value: currentThemeCount,
     },
   ] as const;

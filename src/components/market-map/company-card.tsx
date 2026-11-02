@@ -48,9 +48,9 @@ export function CompanyCard({
             <p className="text-company-hook mt-1 line-clamp-1 text-sm leading-6">
               {hook}
             </p>
-            <p className="text-body mt-1 line-clamp-2 text-sm leading-6">
+            {hook.replace(/\W/g, "").toLowerCase() !== company.short_description.replace(/\W/g, "").toLowerCase() ? <p className="text-body mt-1 line-clamp-2 text-sm leading-6">
               {company.short_description}
-            </p>
+            </p> : null}
           </div>
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-2">

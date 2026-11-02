@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { fetchWithDatabaseDeadline } from "./fetch";
 
 import {
   SUPABASE_AGENT_WRITE_SECRET,
@@ -18,6 +19,7 @@ export function createSupabasePrivilegedClient() {
       persistSession: false,
     },
     global: {
+      fetch: fetchWithDatabaseDeadline,
       headers: SUPABASE_AGENT_WRITE_SECRET
         ? {
             "x-ai-atlas-agent-secret": SUPABASE_AGENT_WRITE_SECRET,

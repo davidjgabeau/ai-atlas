@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* Keep the shared variants without shipping the scaffolding CLI. */
+@import "../styles/shadcn-variants.css";
 
 @custom-variant dark (&:is(.dark *));
 

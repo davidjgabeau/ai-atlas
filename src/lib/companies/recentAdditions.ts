@@ -45,6 +45,14 @@ export function getAddedTime(company: AdditionDateShape) {
   return getDateTime(getCompanyAddedAt(company));
 }
 
+/** Latest is useful even when no company was added in the last seven days. */
+export function getLatestCompanyAdditions(companies: Company[], limit = 6, referenceTime = Date.now()) {
+  return [...companies]
+    .filter((company) => getAddedTime(company) > 0 && getAddedTime(company) <= referenceTime)
+    .sort((a, b) => getAddedTime(b) - getAddedTime(a) || a.name.localeCompare(b.name))
+    .slice(0, limit);
+}
+
 function getDateTime(dateValue?: string) {
   if (!dateValue) return 0;
 

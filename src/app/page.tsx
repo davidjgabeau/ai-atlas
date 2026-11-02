@@ -27,14 +27,14 @@ import {
   categoryMeta,
   getCategoryCounts,
 } from "@/data/market";
+import { patterns } from "@/data/patterns";
+import { getRecentEditorialSignals } from "@/lib/editorial/recentSignals";
 import { getCompanyStats } from "@/lib/companies/getCompanyStats";
 import {
-  RECENT_ADDITION_WINDOW_MS,
-  getRecentCompanyAdditions,
+  getLatestCompanyAdditions,
   isRecentCompanyAddition,
 } from "@/lib/companies/recentAdditions";
 import {
-  getLatestSnapshot,
   getLatestSurface,
   getStoredAgentHomepageData,
 } from "@/lib/agent/homepageData";
@@ -51,7 +51,7 @@ import {
   normalizeSignalLabel,
 } from "@/lib/signals/companySignal";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
-import type { EditorialItem, EditorialSurface } from "@/types/agent";
+import type { EditorialItem } from "@/types/agent";
 import type { Category, Company, MarketInsight } from "@/types/market";
 
 export const dynamic = "force-dynamic";
@@ -89,7 +89,6 @@ export default async function Home() {
   const publishedCompanies = marketCompanies;
   const storedAgentData = await getStoredAgentHomepageData();
   const storedSurfaces = storedAgentData.editorialSurfaces;
-  const storedSnapshot = getLatestSnapshot(storedAgentData.marketSnapshots);
   const homepageSeed = createHomepageSeed();
   const companiesById = new Map(
     publishedCompanies.map((company) => [company.id, company]),
@@ -104,7 +103,7 @@ export default async function Home() {
     totalCategories: categoryMeta.length,
   };
   const categoryCounts = getCategoryCounts(publishedCompanies);
-  const recentlyAddedCompanies = getRecentCompanyAdditions(
+  const recentlyAddedCompanies = getLatestCompanyAdditions(
     publishedCompanies,
     6,
   );
@@ -144,8 +143,6 @@ export default async function Home() {
   );
   const latestSignalsSurface = getLatestSurface(storedSurfaces, "latest_signals");
   const currentReadSurface = getLatestSurface(storedSurfaces, "current_read");
-  const categoryPulseSurface = getLatestSurface(storedSurfaces, "category_pulse");
-  const recentlyAddedSurface = getLatestSurface(storedSurfaces, "recently_added");
   const surfaceCompaniesToKnowBase =
     getCompaniesFromSurface(companiesToKnowSurface?.items, companiesById) ??
     companiesToKnow;
@@ -176,33 +173,8 @@ export default async function Home() {
     }))
     .sort((a, b) => b.count - a.count)
     .slice(0, 4);
-  const surfaceCategoryPulseItems =
-    getCategoryPulseFromSurface(categoryPulseSurface?.items) ?? categoryPulseItems;
-  const surfaceCurrentRead =
-    getCurrentReadFromSurface(currentReadSurface?.items) ?? [];
-  const surfaceRecentlyAdded =
-    getRecentlyAddedCompaniesFromSurface(recentlyAddedSurface, companiesById) ??
-    recentlyAddedCompanies;
-  const latestSignalItems = rotateEditorialItems(
-    getSafeLatestSignalItems(latestSignalsSurface?.items),
-    homepageSeed,
-  );
-  const displayedLatestSignals =
-    latestSignalItems.length > 0
-      ? latestSignalItems
-      : rotateEditorialItems(
-          createLatestSignalFallbackItems([
-            ...fundingSignalCompanies,
-            ...surfaceRecentlyAdded,
-          ]),
-          homepageSeed,
-        );
-  const latestUpdatedAt = getLatestHomepageUpdatedAt([
-    stats.lastUpdatedAt,
-    storedSnapshot?.generatedAt,
-    ...storedSurfaces.map((surface) => surface.generatedAt),
-  ]);
-  const marketSnapshotCounts = getMarketSnapshotCounts(storedSnapshot);
+  const surfaceCurrentRead = getCurrentReadFromSurface(currentReadSurface?.items) ?? [];
+  const displayedLatestSignals = getRecentEditorialSignals(latestSignalsSurface?.items, new Set(companiesById.keys()));
 
   return (
     <>
@@ -213,13 +185,13 @@ export default async function Home() {
         <main>
           <HomeFrontPage
             companiesToKnow={surfaceCompaniesToKnow}
-            categoryPulse={surfaceCategoryPulseItems}
+            categoryPulse={categoryPulseItems}
             stats={stats}
-            currentThemeCount={marketSnapshotCounts.currentThemeCount}
-            latestUpdatedAt={latestUpdatedAt}
+            currentThemeCount={patterns.length}
+            latestUpdatedAt={stats.lastUpdatedAt}
           />
           <HomePatterns companies={publishedCompanies} />
-          <RecentlyAdded companies={surfaceRecentlyAdded} />
+          <RecentlyAdded companies={recentlyAddedCompanies} />
           <CurrentRead
             insights={surfaceCurrentRead}
             companiesById={companiesById}
@@ -426,7 +398,7 @@ function uniqueCompanies(companies: Company[]) {
 }
 
 function createHomepageSeed() {
-  return `${Date.now()}:${Math.random()}`;
+  return new Date().toISOString().slice(0, 10);
 }
 
 function selectFreshHomepageCompanies(
@@ -490,12 +462,6 @@ function getFundingSignalCompanies(companies: Company[]) {
     .sort((a, b) => getCompanySortDate(b) - getCompanySortDate(a));
 }
 
-function rotateEditorialItems<T extends { id: string }>(items: T[], seed: string) {
-  return [...items].sort(
-    (a, b) => seededUnit(`${seed}:${b.id}`) - seededUnit(`${seed}:${a.id}`),
-  );
-}
-
 function seededUnit(value: string) {
   let hash = 2166136261;
   for (let index = 0; index < value.length; index += 1) {
@@ -531,56 +497,6 @@ function getCompaniesFromSurface(
   return companies.length > 0 ? companies : null;
 }
 
-function getRecentlyAddedCompaniesFromSurface(
-  surface: EditorialSurface | undefined,
-  companiesById: Map<string, Company>,
-) {
-  if (!surface || !isFreshRecentAdditionsSurface(surface)) return null;
-
-  const items = surface.items;
-  if (!items?.length) return null;
-
-  const companies = items
-    .map((item): Company | null => {
-      const company = item.companyId ? companiesById.get(item.companyId) : undefined;
-      if (!company) return null;
-      const inclusionReason = item.body
-        ? {
-            title: "Why it was added",
-            body: item.body,
-            generatedAt: new Date().toISOString(),
-            sourceEventIds: item.supportingEventIds ?? [],
-            sourceCompanyIds:
-              item.supportingCompanyIds && item.supportingCompanyIds.length > 0
-                ? item.supportingCompanyIds
-                : [company.id],
-          }
-        : company.inclusionReason;
-
-      return inclusionReason
-        ? {
-            ...company,
-            inclusionReason,
-          }
-        : company;
-    })
-    .filter((company): company is Company => Boolean(company))
-    .filter((company) => isRecentCompanyAddition(company));
-
-  return companies.length > 0 ? companies : null;
-}
-
-function isFreshRecentAdditionsSurface(surface: EditorialSurface) {
-  const generatedAt = getDateTime(surface.generatedAt);
-  const expiresAt = getDateTime(surface.expiresAt);
-  const now = Date.now();
-
-  if (!generatedAt) return false;
-  if (expiresAt && expiresAt < now) return false;
-
-  return now - generatedAt <= RECENT_ADDITION_WINDOW_MS;
-}
-
 function getCurrentReadFromSurface(
   items: EditorialItem[] | undefined,
 ): MarketInsight[] | null {
@@ -597,143 +513,6 @@ function getCurrentReadFromSurface(
   }));
 }
 
-function getCategoryPulseFromSurface(items: EditorialItem[] | undefined) {
-  if (!items?.length) return null;
-
-  const categoryItems = items
-    .map((item) => {
-      const category = categoryMeta.find((meta) => meta.name === item.category);
-      if (!category) return null;
-
-      const count = Number(item.body?.match(/^(\d+)/)?.[1] ?? 0);
-      const phrase =
-        item.body?.replace(/^\d+ companies? · /, "") ??
-        categoryPulsePhrases[category.name];
-
-      return {
-        category: category.name,
-        count,
-        href: `/categories/${category.slug}`,
-        phrase,
-      };
-    })
-    .filter(
-      (
-        item,
-      ): item is {
-        category: Category;
-        count: number;
-        href: string;
-        phrase: string;
-      } => Boolean(item),
-    );
-
-  return categoryItems.length > 0 ? categoryItems : null;
-}
-
-function getMarketSnapshotCounts(snapshot: ReturnType<typeof getLatestSnapshot>) {
-  return {
-    currentThemeCount: snapshot?.topSignals.length ?? 3,
-  };
-}
-
-function createLatestSignalFallbackItems(companies: Company[]): EditorialItem[] {
-  return companies.slice(0, 5).map((company, index) => {
-    const body = createFallbackSignalBody(company, index);
-
-    return {
-      id: `latest_signal_fallback_${company.id}`,
-      title: company.name,
-      body,
-      companyId: company.id,
-      category: company.category,
-      label: getCompanySignalLabel(company),
-      supportingCompanyIds: [company.id],
-      occurredAt: company.created_at || company.updated_at,
-      sourceName: company.category,
-    } satisfies EditorialItem;
-  });
-}
-
-function createFallbackSignalBody(company: Company, index: number) {
-  const reason = normalizeLatestSignalReason(
-    company.inclusionReason?.body?.trim() ||
-      company.generated?.hook?.trim() ||
-      company.one_line_thesis.trim() ||
-      company.short_description.trim(),
-  );
-  const buyer = getCategoryBuyerPhrase(company.category);
-  const templates = [
-    `Deepens ${company.category} coverage with ${lowerFirst(reason)}`,
-    `Gives ${buyer} a clearer AI-native wedge around ${lowerFirst(reason)}`,
-    `Broadens the map beyond generic tooling by focusing on ${lowerFirst(reason)}`,
-    `Points ${buyer} toward a sharper workflow: ${lowerFirst(reason)}`,
-    `Connects product focus with buyer pain around ${lowerFirst(reason)}`,
-  ];
-
-  return truncateSignalBody(templates[index % templates.length]);
-}
-
-const bannedUserFacingSignalTerms = [
-  "cron",
-  "pipeline",
-  "refresh",
-  "fallback",
-  "placeholder",
-  "todo",
-  "live signal",
-  "gathers more events",
-  "insufficient data",
-  "not enough data",
-  "discovered by the system",
-  "picked up",
-  "added to ai atlas",
-  "joined the map",
-  "category depth",
-  "deep category",
-  "strong category fit",
-  "high potential",
-  "promising",
-  "model-usage potential",
-];
-
-function normalizeLatestSignalReason(value: string) {
-  const cleaned = value
-    .replace(/^added\s*:\s*/i, "")
-    .replace(/^added\s+(because|for)\s+(it|its)\s+/i, "")
-    .replace(/^added\s+(because|for)\s+/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  if (!cleaned) return "new early-stage NYC AI company with a clear market fit.";
-
-  return cleaned;
-}
-
-function getCategoryBuyerPhrase(category: Category) {
-  if (category === "Fintech & Trading AI") return "finance teams";
-  if (category === "Legal & Compliance AI") return "regulated teams";
-  if (category === "Cybersecurity AI") return "security operators";
-  if (category === "Media, Ads & Creative AI") return "creative teams";
-  if (category === "Health & Clinical AI") return "care teams";
-  if (category === "Life Sciences AI") return "research teams";
-  if (category === "AI-Native Consumer & Social") return "consumer product builders";
-  if (category === "Enterprise GTM & RevOps AI") return "revenue teams";
-  return "technical teams";
-}
-
-function lowerFirst(value: string) {
-  if (/^AI\b/.test(value)) return value;
-  return value.charAt(0).toLowerCase() + value.slice(1);
-}
-
-function truncateSignalBody(value: string) {
-  const clean = value.replace(/\s+/g, " ").trim();
-  const punctuated = /[.!?]$/.test(clean) ? clean : `${clean}.`;
-  if (punctuated.length <= 210) return punctuated;
-  return `${punctuated.slice(0, 209).trim().replace(/[,;:]$/, "")}.`;
-}
-
 function sanitizeHomepageEditorialCopy(value: string) {
   return value
     .replace(/\u2014/g, ", ")
@@ -743,30 +522,6 @@ function sanitizeHomepageEditorialCopy(value: string) {
     .replace(/([,.])(?=\S)/g, "$1 ")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-function getSafeLatestSignalItems(items: EditorialItem[] | undefined) {
-  if (!items?.length) return [];
-
-  return items.filter((item) => {
-    const text = [
-      item.title,
-      item.body,
-      item.label,
-      item.sourceName,
-    ]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
-
-    return !bannedUserFacingSignalTerms.some((term) => text.includes(term));
-  });
-}
-
-function getLatestHomepageUpdatedAt(values: Array<string | undefined>) {
-  const latest = values.reduce((max, value) => Math.max(max, getDateTime(value)), 0);
-
-  return latest > 0 ? new Date(latest).toISOString() : undefined;
 }
 
 function toGeneratedSignalLabel(label: string | undefined, company: Company) {

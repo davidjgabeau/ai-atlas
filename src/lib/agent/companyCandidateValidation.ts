@@ -120,6 +120,13 @@ export function isUsableCompanyWebsite(value: unknown) {
   }
 }
 
+/** An article excerpt is evidence for review, never a finished company profile. */
+export function hasPublishableDescription(value: unknown) {
+  return typeof value === "string" && value.trim().length >= 35
+    && !/^(investing in|exclusive:|breaking:|read more|subscribe)/i.test(value.trim())
+    && !/company announcement|andreessen horowitz\s+\w+\s+a16z/i.test(value);
+}
+
 export function looksLikeInvestorOrFund(name: unknown, text: string) {
   const cleanName = typeof name === "string" ? name : "";
 

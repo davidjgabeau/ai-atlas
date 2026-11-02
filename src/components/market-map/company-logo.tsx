@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 
 import { categoryStyles } from "@/components/market-map/category-style";
-import { getCompanyLogoSource } from "@/lib/logos/companyLogoSource";
+import { getCompanyLogoSource, getDomainFromUrl, getFaviconSourceForDomain } from "@/lib/logos/companyLogoSource";
 import { cn } from "@/lib/utils";
 import type { Category, Company } from "@/types/market";
 
@@ -33,8 +33,12 @@ export function CompanyLogo({
       ),
     [company, logoUrl, websiteUrl],
   );
-  const [logoFailed, setLogoFailed] = useState(false);
-  const showCompanyLogo = Boolean(logoSource && !logoFailed);
+  const [failedSources, setFailedSources] = useState<string[]>([]);
+  const domain = getDomainFromUrl(company?.website_url ?? websiteUrl);
+  const candidates = [logoSource, domain ? getFaviconSourceForDomain(domain) : "", categoryStyle.avatarSrc];
+  const source = candidates.find((candidate) => candidate && !failedSources.includes(candidate));
+  const showCompanyLogo = source !== categoryStyle.avatarSrc;
+  const markFailed = (value: string) => setFailedSources((current) => current.includes(value) ? current : [...current, value]);
 
   return (
     <div
@@ -45,8 +49,9 @@ export function CompanyLogo({
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- company favicons come from arbitrary domains and fall back safely. */}
-      <img
-        src={showCompanyLogo ? logoSource : categoryStyle.avatarSrc}
+      {source ? <img
+        key={source}
+        src={source}
         alt=""
         width={96}
         height={96}
@@ -59,8 +64,11 @@ export function CompanyLogo({
             : "[image-rendering:pixelated]",
         )}
         draggable={false}
-        onError={() => setLogoFailed(true)}
-      />
+        ref={(image) => {
+          if (image?.complete && image.naturalWidth === 0) markFailed(source);
+        }}
+        onError={() => markFailed(source)}
+      /> : <span aria-hidden="true" className="font-semibold text-[#746D64]">{name.slice(0, 2).toUpperCase()}</span>}
     </div>
   );
 }

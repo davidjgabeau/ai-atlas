@@ -13,15 +13,16 @@ export function CurrentRead({
   companiesById: Map<string, Company>;
 }) {
   const currentInsights = insights.slice(0, 3);
+  if (currentInsights.length === 0) return null;
 
   return (
     <section id="current-read" className="border-b border-[#E7E1D8] bg-section">
       <div className="editorial-container grid gap-8 py-10 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="editorial-label">Market memo</p>
-          <h2 className="mt-3 editorial-section-title">Current Read</h2>
+          <h2 className="mt-3 editorial-section-title">Market Read</h2>
           <p className="text-body mt-2 text-sm">
-            Three notes from the full early-stage NYC AI map and latest additions.
+            Editorial notes on the buyers and workflows represented in the map.
           </p>
           <Link
             href="/patterns"

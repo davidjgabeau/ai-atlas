@@ -1,4 +1,5 @@
 import { categoryMeta } from "@/data/market";
+import { getRecentEditorialSignals } from "@/lib/editorial/recentSignals";
 import { patterns } from "@/data/patterns";
 import {
   getLatestSurface,
@@ -101,7 +102,7 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
           .filter((name): name is string => Boolean(name)),
       })),
       latestSignals:
-        latestSignals?.items.slice(0, 6).map((item) => ({
+        getRecentEditorialSignals(latestSignals?.items, new Set(companiesById.keys())).slice(0, 6).map((item) => ({
           title: item.title,
           body: item.body ?? "",
           label: item.label ?? "Signal",

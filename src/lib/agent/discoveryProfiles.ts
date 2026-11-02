@@ -9,6 +9,7 @@ import { categories } from "@/types/market";
 
 import {
   looksLikeInvestorOrFund,
+  hasPublishableDescription,
   validateDiscoveredCompanyCandidate,
 } from "./companyCandidateValidation";
 import {
@@ -648,19 +649,18 @@ function getEligibility(
     mentionsNewYork(text) ||
     mentionsNewYork(proposedUpdate.website ?? "");
   const lateStage =
-    /\b(series c|series d|series e|growth round|ipo|public company)\b/i.test(text) ||
+    /\b(series\s+[b-z]|growth round|ipo|public company)\b/i.test(text) ||
     candidateHasAcquisitionSignal(proposedUpdate.name, text);
   const earlyStage =
     extraction.earlyStage === true ||
     ["Pre-seed", "Seed", "Series A", "Seed / Series A"].includes(
       proposedUpdate.stage ?? "Unknown",
-    ) ||
-    (hasFundingSignal(text) && !lateStage);
+    );
   const categoryFit = Boolean(
     proposedUpdate.category && allowedCategories.has(proposedUpdate.category),
   );
   const enoughDescription = Boolean(
-    proposedUpdate.oneSentenceDescription || proposedUpdate.description,
+    hasPublishableDescription(proposedUpdate.oneSentenceDescription) || hasPublishableDescription(proposedUpdate.description),
   );
   const confidence = resolveDiscoveryConfidence(extraction, record);
   const cleanName = isCleanCandidateName(proposedUpdate.name);
@@ -970,7 +970,7 @@ function escapeRegExp(value: string) {
 }
 
 function getCandidateExtractionLimit() {
-  const value = readNumericEnv("DISCOVERY_CANDIDATE_LIMIT", 24);
+  const value = readNumericEnv("DISCOVERY_CANDIDATE_LIMIT", 12);
   return Math.max(1, Math.min(32, value));
 }
 

@@ -13,6 +13,7 @@ import type {
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+export const maxDuration = 60;
 
 const anthropicMessagesUrl = "https://api.anthropic.com/v1/messages";
 const anthropicVersion = "2023-06-01";
@@ -93,7 +94,7 @@ export async function POST(request: NextRequest) {
       send({
         type: "error",
         message:
-          "Ask Atlas needs Claude configured before it can answer. Showing relevant companies instead.",
+          "Answers are temporarily unavailable. You can still explore the matching companies below.",
       });
       send({
         type: "companies",
@@ -137,7 +138,7 @@ export async function POST(request: NextRequest) {
         send({
           type: "error",
           message:
-            "Ask Atlas could not reach Claude right now. Try again in a moment.",
+            "Ask Atlas could not answer right now. You can explore the matching companies below or try again.",
         });
         send({
           type: "companies",

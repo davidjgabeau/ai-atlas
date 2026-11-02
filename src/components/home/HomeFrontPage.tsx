@@ -108,9 +108,9 @@ function HeroStatsRow({
     },
     {
       icon: "pin",
-      label: "Updated",
-      value: updatedLabel ?? "Recent",
-      href: "/feed",
+      label: "Profiles synced",
+      value: updatedLabel ?? "Undated",
+      href: "/companies",
     },
   ] as const;
 
@@ -128,7 +128,7 @@ function HeroStatsRow({
           </dt>
           <dd
             className={
-              item.label === "Updated"
+              item.label === "Profiles synced"
                 ? "mt-2 truncate text-[13px] font-semibold leading-none tracking-[0] text-[#111111]"
                 : "mt-2 font-heading text-[23px] font-medium leading-none tracking-[0] text-[#111111]"
             }

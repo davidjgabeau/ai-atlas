@@ -1,6 +1,7 @@
 import type { AgentCompany, RawSourceRecord } from "../../../types/agent";
 import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
+import { forEachConcurrent } from "../concurrency";
 
 const candidateQueries = [
   '"New York" "AI" "raises" "$"',
@@ -84,11 +85,17 @@ export class SearchProvider implements SourceProvider {
     const records: RawSourceRecord[] = [];
     const seenUrls = new Set<string>();
 
-    for (const source of getSearchSources()) {
-      for (const query of getSearchQueries()) {
+    const deadline = Date.now() + 45_000;
+    // Rotate the query order daily so a slow source cannot starve later topics.
+    const queries = getSearchQueries();
+    const offset = (Math.floor(Date.now() / 86_400_000) * getSearchQueryLimit()) % queries.length;
+    const rotated = [...queries.slice(offset), ...queries.slice(0, offset)].slice(0, getSearchQueryLimit());
+    const searches = rotated.flatMap((query) => getSearchSources().map((source) => ({ source, query })));
+    await forEachConcurrent(searches, 4, async ({ source, query }) => {
         const results = await fetchWordPressSearch(source, query);
 
         for (const result of results.slice(0, getResultsPerQueryLimit())) {
+          if (Date.now() >= deadline) break;
           if (!result.url || seenUrls.has(result.url)) continue;
           if (!hasInvestmentAnnouncementTitle(result.title, result.url)) continue;
           seenUrls.add(result.url);
@@ -127,8 +134,7 @@ export class SearchProvider implements SourceProvider {
             contentHash,
           });
         }
-      }
-    }
+    }, deadline);
 
     return records;
   }
@@ -154,7 +160,7 @@ function getSearchQueries() {
     .map((query) => query.trim())
     .filter(Boolean);
 
-  return (configured.length > 0 ? configured : candidateQueries).slice(0, getSearchQueryLimit());
+  return (configured.length > 0 ? configured : candidateQueries).slice(0, 128);
 }
 
 function getSearchQueryLimit() {

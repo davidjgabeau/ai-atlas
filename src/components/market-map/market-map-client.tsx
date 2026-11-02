@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useMemo, useState } from "react";
+import { sortCompanies, type CompanySort } from "@/lib/companies/sort";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -70,33 +71,17 @@ import {
   type ConsumptionProfile,
 } from "@/types/market";
 
-const companyDetails: Record<
-  string,
-  {
-    teamSize: string;
-    founded: string;
-    hq: string;
-    techStack: string[];
-    lastContacted: string;
-  }
-> = {
-  texture: {
-    teamSize: "11-50",
-    founded: "2024",
-    hq: "New York, NY",
-    techStack: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
-    lastContacted: "Last contacted 6 days ago",
-  },
-};
-
 export function MarketMapClient({
   companies,
   initialSearch = "",
+  initialSort = "name",
 }: {
   companies: Company[];
   initialSearch?: string;
+  initialSort?: CompanySort;
 }) {
   const [search, setSearch] = useState(initialSearch);
+  const [sort, setSort] = useState<CompanySort>(initialSort);
   const [category, setCategory] = useState<Category | "all">("all");
   const [stage, setStage] = useState("all");
   const [neighborhood, setNeighborhood] = useState("all");
@@ -165,7 +150,7 @@ export function MarketMapClient({
   const filteredCompanies = useMemo(() => {
     const query = search.trim().toLowerCase();
 
-    return companies.filter((company) => {
+    return sortCompanies(companies.filter((company) => {
       const location = locationBySlug.get(company.slug);
 
       return (
@@ -179,7 +164,7 @@ export function MarketMapClient({
             company.consumption_profile.includes(profile),
           ))
       );
-    });
+    }), sort);
   }, [
     activeNeighborhood,
     category,
@@ -188,6 +173,7 @@ export function MarketMapClient({
     search,
     stage,
     usageProfiles,
+    sort,
   ]);
 
   const filteredLocations = useMemo(
@@ -276,6 +262,8 @@ export function MarketMapClient({
           <MapTitleRow
             totalCompanies={companies.length}
             updatedAt={latestUpdatedAt}
+            sort={sort}
+            onSortChange={setSort}
           />
 
           {renderFilterRow("hidden xl:block")}
@@ -353,9 +341,13 @@ export function MarketMapClient({
 function MapTitleRow({
   totalCompanies,
   updatedAt,
+  sort,
+  onSortChange,
 }: {
   totalCompanies: number;
   updatedAt?: string;
+  sort: CompanySort;
+  onSortChange: (sort: CompanySort) => void;
 }) {
   return (
     <section className="border-b border-[#E7E1D8] pb-5">
@@ -369,11 +361,18 @@ function MapTitleRow({
             {updatedAt ? (
               <>
                 <span aria-hidden="true"> · </span>
-                Updated {formatRelativeUpdate(updatedAt)}
+                Profiles synced {formatRelativeUpdate(updatedAt)}
               </>
             ) : null}
           </p>
         </div>
+        <label className="flex items-center gap-2 text-sm text-[#5F5A52]">
+          Sort
+          <select aria-label="Sort companies" value={sort} onChange={(event) => onSortChange(event.target.value as CompanySort)} className="rounded-md border border-[#D8CFC1] bg-[#FBFAF7] px-3 py-2 text-[#181818]">
+            <option value="name">Company name</option>
+            <option value="recent">Date added</option>
+          </select>
+        </label>
       </div>
     </section>
   );
@@ -650,7 +649,7 @@ function NeighborhoodClusters({
             Neighborhood clusters
           </h2>
           <p className="mt-1 text-sm text-[#7A746C]">
-            Company clusters across the city.
+            Clusters among the office locations currently on file.
           </p>
         </div>
         {activeNeighborhood !== "all" ? (
@@ -714,6 +713,7 @@ function InteractiveMapPanel({
   companies: Company[];
   onSelectCompany: (slug: string) => void;
 }) {
+  const officeCount = buildCompanyMapLocations(companies).length;
   return (
     <section className="overflow-hidden rounded-md border border-[#E7E1D8] bg-[#081523]">
       <div className="flex flex-col gap-3 border-b border-white/10 bg-[#081523] px-4 py-4 text-white sm:flex-row sm:items-center sm:justify-between">
@@ -726,7 +726,7 @@ function InteractiveMapPanel({
               Interactive map
             </h2>
             <p className="text-sm text-white/65">
-              {formatMappedCompanies(companies.length)} in view
+              {officeCount} office pins · {formatMappedCompanies(companies.length)} in the directory
             </p>
           </div>
         </div>
@@ -770,7 +770,7 @@ function MapDotKey({
         </p>
       </div>
       <p className="mt-2 text-sm leading-6 text-[#7A746C]">
-        Dot color follows category. Larger dots mark featured companies.
+        Pins show office locations on file. Companies without mapped offices remain in the list.
       </p>
 
       {categoryRows.length > 0 ? (
@@ -969,7 +969,7 @@ function CompanyTable({
               <span className="text-sm text-[#5F5A52]">{company.stage}</span>
               <div>
                 <p className="text-sm font-medium text-[#181818]">
-                  {location?.neighborhood ?? "New York"}
+                  {location?.neighborhood ?? "Not yet mapped"}
                 </p>
               </div>
               <div>
@@ -1148,15 +1148,6 @@ function CompanyInspector({
     );
   }
 
-  const detail =
-    companyDetails[company.slug] ??
-    ({
-      teamSize: company.stage === "Series A" ? "11-50" : "2-10",
-      founded: "2025",
-      hq: "New York, NY",
-      techStack: ["Next.js", "TypeScript", "OpenAI"],
-      lastContacted: "Last contacted 6 days ago",
-    } satisfies (typeof companyDetails)[string]);
   const companyWebsiteUrl = getExternalUrl(company.website_url);
   const introRequestHref = getIntroRequestMailto(company);
   const isDrawer = mode === "drawer";
@@ -1251,9 +1242,7 @@ function CompanyInspector({
         <InspectorSection title="Startup Snapshot">
           <dl className="grid gap-4 text-sm">
             <SnapshotRow label="Stage" value={company.stage} />
-            <SnapshotRow label="Team Size" value={detail.teamSize} />
-            <SnapshotRow label="Founded" value={detail.founded} />
-            <SnapshotRow label="NYC footprint" value={detail.hq} />
+            <SnapshotRow label="NYC footprint" value={company.office_address || "New York, NY"} />
             <div className="flex items-start justify-between gap-4">
               <dt className="text-[#7A746C]">Website</dt>
               <dd className="min-w-0 text-right">
@@ -1266,19 +1255,6 @@ function CompanyInspector({
                   {getDisplayUrl(company.website_url)}
                   <ExternalLink className="size-3.5" />
                 </a>
-              </dd>
-            </div>
-            <div className="flex items-start justify-between gap-4">
-              <dt className="text-[#7A746C]">Tech Stack</dt>
-              <dd className="flex max-w-56 flex-wrap justify-end gap-1.5">
-                {detail.techStack.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-md bg-[var(--app-surface)] px-2 py-1 text-xs text-[#5F5A52] ring-1 ring-[#E7E1D8]"
-                  >
-                    {item}
-                  </span>
-                ))}
               </dd>
             </div>
             <SnapshotRow label="Funding" value={formatFundingHeadline(company)} />

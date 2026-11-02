@@ -39,72 +39,6 @@ export const categoryColors: Record<Category, string> = {
   "Personal AI": "#A855F7",
 };
 
-const categoryClusters: Record<
-  Category,
-  Array<{ position: LatLngLiteral; neighborhood: string }>
-> = {
-  "Fintech & Trading AI": [
-    { neighborhood: "Financial District", position: { lat: 40.7075, lng: -74.0113 } },
-    { neighborhood: "Midtown", position: { lat: 40.7549, lng: -73.984 } },
-    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
-  ],
-  "Legal & Compliance AI": [
-    { neighborhood: "Tribeca", position: { lat: 40.7163, lng: -74.0086 } },
-    { neighborhood: "Grand Central", position: { lat: 40.7527, lng: -73.9772 } },
-    { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
-  ],
-  "Cybersecurity AI": [
-    { neighborhood: "Midtown", position: { lat: 40.7549, lng: -73.984 } },
-    { neighborhood: "Grand Central", position: { lat: 40.7527, lng: -73.9772 } },
-    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
-  ],
-  "Media, Ads & Creative AI": [
-    { neighborhood: "Chelsea", position: { lat: 40.7465, lng: -74.0014 } },
-    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
-    { neighborhood: "DUMBO", position: { lat: 40.7033, lng: -73.9881 } },
-  ],
-  "Health & Clinical AI": [
-    { neighborhood: "Upper East Side", position: { lat: 40.7736, lng: -73.9566 } },
-    { neighborhood: "Hudson Yards", position: { lat: 40.754, lng: -74.0022 } },
-    { neighborhood: "Lower Manhattan", position: { lat: 40.709, lng: -74.01 } },
-  ],
-  "Life Sciences AI": [
-    { neighborhood: "Kips Bay", position: { lat: 40.7391, lng: -73.9764 } },
-    { neighborhood: "Union Square", position: { lat: 40.7359, lng: -73.9911 } },
-    { neighborhood: "NoMad", position: { lat: 40.744, lng: -73.9884 } },
-  ],
-  "AI-Native Consumer & Social": [
-    { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
-    { neighborhood: "DUMBO", position: { lat: 40.7033, lng: -73.9881 } },
-    { neighborhood: "Williamsburg", position: { lat: 40.7081, lng: -73.9571 } },
-  ],
-  "Agent Infrastructure": [
-    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
-    { neighborhood: "Hudson Square", position: { lat: 40.726, lng: -74.0075 } },
-    { neighborhood: "Brooklyn Navy Yard", position: { lat: 40.7021, lng: -73.9707 } },
-  ],
-  "Model Tools & Dev Platform": [
-    { neighborhood: "Flatiron", position: { lat: 40.7411, lng: -73.9897 } },
-    { neighborhood: "NoHo", position: { lat: 40.7287, lng: -73.9926 } },
-    { neighborhood: "Union Square", position: { lat: 40.7359, lng: -73.9911 } },
-  ],
-  "Enterprise GTM & RevOps AI": [
-    { neighborhood: "Bryant Park", position: { lat: 40.7536, lng: -73.9832 } },
-    { neighborhood: "NoMad", position: { lat: 40.744, lng: -73.9884 } },
-    { neighborhood: "Lower East Side", position: { lat: 40.715, lng: -73.9843 } },
-  ],
-  "Data & Memory Layer": [
-    { neighborhood: "Chelsea", position: { lat: 40.7465, lng: -74.0014 } },
-    { neighborhood: "Union Square", position: { lat: 40.7359, lng: -73.9911 } },
-    { neighborhood: "Williamsburg", position: { lat: 40.7081, lng: -73.9571 } },
-  ],
-  "Personal AI": [
-    { neighborhood: "SoHo", position: { lat: 40.7243, lng: -74.0018 } },
-    { neighborhood: "Williamsburg", position: { lat: 40.7081, lng: -73.9571 } },
-    { neighborhood: "DUMBO", position: { lat: 40.7033, lng: -73.9881 } },
-  ],
-};
-
 const knownOfficeCoordinates: Record<
   string,
   { position: LatLngLiteral; neighborhood: string }
@@ -146,39 +80,10 @@ const knownOfficeCoordinates: Record<
 export function buildCompanyMapLocations(
   companies: Company[],
 ): CompanyMapLocation[] {
-  const categoryIndexes = new Map<Category, number>();
-
-  return companies.map((company) => {
-    const categoryIndex = categoryIndexes.get(company.category) ?? 0;
-    categoryIndexes.set(company.category, categoryIndex + 1);
-
-    const knownOffice = knownOfficeCoordinates[company.slug];
-    if (knownOffice) {
-      return {
-        company,
-        confidence: "confirmed",
-        neighborhood: knownOffice.neighborhood,
-        position: knownOffice.position,
-      };
-    }
-
-    const cluster =
-      categoryClusters[company.category] ??
-      categoryClusters["Fintech & Trading AI"];
-    const base = cluster[categoryIndex % cluster.length];
-    const ring = Math.floor(categoryIndex / cluster.length);
-    const latOffset = ((categoryIndex % 5) - 2) * 0.0018 + ring * 0.0008;
-    const lngOffset = ((categoryIndex % 7) - 3) * 0.0022 - ring * 0.0007;
-
-    return {
-      company,
-      confidence: company.office_address ? "confirmed" : "estimated",
-      neighborhood: base.neighborhood,
-      position: {
-        lat: base.position.lat + latOffset,
-        lng: base.position.lng + lngOffset,
-      },
-    };
+  return companies.flatMap((company): CompanyMapLocation[] => {
+    const office = knownOfficeCoordinates[company.slug];
+    if (!office || !company.office_address?.trim()) return [];
+    return [{ company, confidence: "confirmed", neighborhood: office.neighborhood, position: office.position }];
   });
 }
 

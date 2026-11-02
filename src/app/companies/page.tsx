@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function CompaniesPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ q?: string; search?: string }>;
+  searchParams?: Promise<{ q?: string; search?: string; sort?: string }>;
 }) {
   const params = await searchParams;
   const initialSearch = params?.q ?? params?.search ?? "";
@@ -42,7 +42,7 @@ export default async function CompaniesPage({
           items: companyCollectionItems(companies),
         })}
       />
-      <MarketMapClient companies={companies} initialSearch={initialSearch} />
+      <MarketMapClient companies={companies} initialSearch={initialSearch} initialSort={params?.sort === "recent" ? "recent" : "name"} />
     </>
   );
 }

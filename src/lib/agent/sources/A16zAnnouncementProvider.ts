@@ -1,6 +1,7 @@
 import type { AgentCompany, RawSourceRecord } from "../../../types/agent";
 import { createContentHash, createId } from "../hash";
 import type { SourceProvider } from "./SourceProvider";
+import { forEachConcurrent } from "../concurrency";
 
 type SitemapEntry = {
   url: string;
@@ -27,15 +28,15 @@ export class A16zAnnouncementProvider implements SourceProvider {
       .slice(0, getAnnouncementLimit());
     const records: RawSourceRecord[] = [];
 
-    for (const entry of entries) {
+    await forEachConcurrent(entries, 4, async (entry) => {
       const html = await fetchText(entry.url);
-      if (!html) continue;
+      if (!html) return;
 
       const pageTitle = decodeHtml(
         html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] ?? "",
       );
       const candidateCompanyName = getCandidateName(entry.url, pageTitle);
-      if (!candidateCompanyName) continue;
+      if (!candidateCompanyName) return;
 
       const articleText = extractArticleText(html);
       const text = normalizeWhitespace(
@@ -46,7 +47,7 @@ export class A16zAnnouncementProvider implements SourceProvider {
           articleText,
         ].join("\n\n"),
       ).slice(0, 18_000);
-      if (!hasPotentialAiFundingSignal(text)) continue;
+      if (!hasPotentialAiFundingSignal(text)) return;
 
       const contentHash = createContentHash({
         source: this.name,
@@ -66,7 +67,7 @@ export class A16zAnnouncementProvider implements SourceProvider {
         discoveredAt: new Date().toISOString(),
         contentHash,
       });
-    }
+    }, Date.now() + 45_000);
 
     return records;
   }
