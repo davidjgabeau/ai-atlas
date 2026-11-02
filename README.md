@@ -74,7 +74,7 @@ The editorial front page combines the hero, category snapshot, representative co
 
 ### Prerequisites
 
-- Node.js 20 or newer
+- Node.js 24 LTS
 - npm
 - A Supabase project for live database-backed behavior
 - A Google Maps API key for map rendering
