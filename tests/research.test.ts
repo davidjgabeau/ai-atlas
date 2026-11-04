@@ -10,6 +10,15 @@ import { companiesToCsv, csvCell, filterResearchCompanies, isDocumentedOffice } 
 import { isNavigableCompanyJob } from "../src/lib/jobs/jobDisplay";
 import type { AgentCompany, RawSourceRecord } from "../src/types/agent";
 import type { OfficeEvidence, ResearchCompany } from "../src/lib/research/types";
+import { hasCompanyNewsSubject } from "../src/lib/research/newsSubject";
+
+test("news attribution requires a company subject, not a generic word or former employee", () => {
+  assert.equal(hasCompanyNewsSubject("Jumbo Series A Rounds Hiding The Real Squeeze On Seed Startups", "Series"), false);
+  assert.equal(hasCompanyNewsSubject("Early Anthropic hire, former METR COO found a new company", "Anthropic"), false);
+  assert.equal(hasCompanyNewsSubject("OpenAI’s Alexander Embiricos is coming to a conference", "OpenAI"), false);
+  assert.equal(hasCompanyNewsSubject("Chamelio Raises $26M to Help Legal Teams", "Chamelio"), true);
+  assert.equal(hasCompanyNewsSubject("Series launches a new social app", "Series"), true);
+});
 
 test("all-stage normalization preserves mature rounds and lifecycle status", () => {
   for (const stage of ["Series B", "Series C", "Series D", "Series E", "Series H", "Public", "Acquired", "Growth"]) assert.equal(normalizeCompanyStage(stage), stage);

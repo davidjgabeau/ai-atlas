@@ -142,7 +142,6 @@ export default async function Home() {
     storedSurfaces,
     "companies_to_know",
   );
-  const latestSignalsSurface = getLatestSurface(storedSurfaces, "latest_signals");
   const currentReadSurface = getLatestSurface(storedSurfaces, "current_read");
   const surfaceCompaniesToKnowBase =
     getCompaniesFromSurface(companiesToKnowSurface?.items, companiesById) ??
@@ -182,7 +181,7 @@ export default async function Home() {
       label: signal.type === "funding" ? "Funding signal" : "Company update",
       sourceUrl: signal.source_url, sourceName: signal.source_name, occurredAt: signal.occurred_at }] : [];
   });
-  const displayedLatestSignals = getRecentEditorialSignals([...reviewedHomepageSignals, ...(latestSignalsSurface?.items ?? [])], new Set(companiesById.keys()));
+  const displayedLatestSignals = getRecentEditorialSignals(reviewedHomepageSignals, new Set(companiesById.keys()));
 
   return (
     <>

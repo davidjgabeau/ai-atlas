@@ -1924,5 +1924,34 @@
       "original_public_one_liner": "The generative computing paradigm needs a new creative interface.",
       "original_source_url": "https://florafauna.io/blog/the-creative-environment-for-the-generative-era"
     }
+  },
+  {
+    "slug": "chamelio",
+    "name": "Chamelio",
+    "website_url": "https://www.chamelio.ai/",
+    "category": "Legal & Compliance AI",
+    "stage": "Series A",
+    "short_description": "Chamelio turns contracts, playbooks, and company knowledge into a legal intelligence system, using AI agents to handle routine in-house legal work.",
+    "one_line_thesis": "AI legal operations grounded in company knowledge",
+    "funding_round": "Series A",
+    "funding_amount": "$26M",
+    "funding_date": "2026-09-22",
+    "lead_investor": "Entr\u00e9e Capital",
+    "nyc_presence": "unverified",
+    "source_urls": [
+      "https://www.chamelio.ai/",
+      "https://www.prnewswire.com/news-releases/chamelio-raises-26m-series-a-to-replace-legacy-clm-with-ai-native-in-house-legal-operations-302886011.html"
+    ],
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T07:03:07.799229+00:00",
+    "review_scope": "Product and Series A financing checked against company-issued sources. Exact NYC office has not been verified.",
+    "notes": "Company-issued September 22, 2026 release establishes $26M Series A led by Entr\u00e9e Capital, replacing the imported Seed stage. New York dateline is not treated as proof of an occupied office.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 25,
+      "original_source_url": "https://www.chamelio.ai/",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "review_status": "Source checked"
+    }
   }
 ]

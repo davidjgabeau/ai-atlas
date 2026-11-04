@@ -71,7 +71,10 @@ can be inferred from this curated sample.
 
 The existing refresh schedule now collects known-company sources four times a
 day with bounded work and a broader rotation. News and hiring keep their daily
-schedules. Undated website claims never become newly dated events. Hiring is
+schedules. Undated website claims never become newly dated events. Legacy inferred events
+are excluded from the reporting timeline and Ask/homepage signal summaries;
+those use reviewed announcements and source-dated news with an identifiable
+company subject. A generic word such as Series cannot attribute an article. Hiring is
 public without login, limited to openings seen within 14 days, and capped at
 1,000 records. Empty coverage is not evidence of no hiring. Company socials
 remain dependent on external API access. This release does not dispatch posts.

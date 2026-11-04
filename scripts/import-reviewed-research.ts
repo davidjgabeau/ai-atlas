@@ -22,7 +22,7 @@ async function main() {
   const stringFields = ["name", "website_url", "category", "stage", "short_description", "one_line_thesis", "funding_round", "funding_amount", "funding_date", "total_raised", "lead_investor"] as const;
   const plan: Array<{ slug: string; action: string; fields?: string[] }> = [];
   const records: Record<string, unknown>[] = [];
-  for (const review of reviews.filter((review) => !only || review.slug === only)) {
+  for (const review of reviews.filter((review) => !only || only.split(",").includes(review.slug))) {
     const r = review as unknown as Record<string, unknown>;
     if (!categories.includes(review.category as Company["category"])) throw new Error(`Unsupported category: ${review.slug}`);
     if (!/^https:\/\//.test(review.website_url)) throw new Error(`Missing canonical HTTPS site: ${review.slug}`);

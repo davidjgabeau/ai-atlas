@@ -5,16 +5,16 @@ import resources from "@/data/reporting/resources.json";
 import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import { getPublicCompanyJobs } from "@/lib/supabase/jobs";
 import { getNewsItems } from "@/lib/news/news-store";
-import { loadAgentDataFromSupabase } from "@/lib/agent/supabaseAgentStore";
 import { stageGroup } from "@/lib/company-stages";
 import { officeEvidence } from "./evidence";
+import { hasCompanyNewsSubject } from "./newsSubject";
 import type { ReportingResources, ResearchCompany, ResearchDataset, ResearchSignal } from "./types";
 
 type ReviewedCompany = { slug: string; source_urls: string[]; verified_at?: string; nyc_presence?: string; stage?: string; review_scope?: string };
 
 export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
-  const [companies, jobs, news, agent] = await Promise.all([
-    getPublishedCompanies(), getPublicCompanyJobs(), getNewsItems({ limit: 120 }), loadAgentDataFromSupabase(),
+  const [companies, jobs, news] = await Promise.all([
+    getPublishedCompanies(), getPublicCompanyJobs(), getNewsItems({ limit: 120 }),
   ]);
   const checked = new Map((reviewedCompanies as ReviewedCompany[]).map((c) => [c.slug, c]));
   const directory: ResearchCompany[] = companies.map((company) => {
@@ -36,20 +36,12 @@ export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
   const bySlug = new Map(companies.map((c) => [c.slug, c]));
-  const byId = new Map(companies.map((c) => [c.id, c]));
   const signals: ResearchSignal[] = (reviewedSignals as Array<Omit<ResearchSignal, "id" | "company_name" | "review">>)
     .filter((s) => bySlug.has(s.company_slug))
     .map((s) => ({ ...s, id: `reviewed:${s.company_slug}:${s.source_url}`, company_name: bySlug.get(s.company_slug)!.name, review: "Reviewed" }));
-  for (const event of agent.companyEvents ?? []) {
-    const company = byId.get(event.companyId);
-    if (!company || ["new_company_added", "website_change", "other"].includes(event.type) || !isHttp(event.sourceUrl)) continue;
-    signals.push({ id: event.id, company_slug: company.slug, company_name: company.name,
-      type: event.type, title: event.title, summary: event.summary, source_url: event.sourceUrl,
-      source_name: event.sourceName, occurred_at: event.occurredAt, review: "Collected" });
-  }
   for (const item of news) {
     // Whole company names, not category keywords, tie a news link to a profile.
-    const company = companies.find((c) => c.name.length >= 4 && new RegExp(`\\b${c.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(item.title));
+    const company = companies.find((c) => hasCompanyNewsSubject(item.title, c.name));
     if (!company || !item.published_at) continue;
     signals.push({ id: item.id, company_slug: company.slug, company_name: company.name,
       type: "news", title: item.title, summary: item.summary, source_url: item.source_url,

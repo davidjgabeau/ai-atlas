@@ -98,5 +98,15 @@
     "source_name": "Commercial Observer",
     "occurred_at": "2026-10-26",
     "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "chamelio",
+    "type": "funding",
+    "title": "Chamelio announces $26M Series A",
+    "summary": "Chamelio announced a $26 million Series A led by Entr\u00e9e Capital for its AI-native in-house legal operations platform. The event date is the company release, not later news coverage.",
+    "source_url": "https://www.prnewswire.com/news-releases/chamelio-raises-26m-series-a-to-replace-legacy-clm-with-ai-native-in-house-legal-operations-302886011.html",
+    "source_name": "Chamelio company release",
+    "occurred_at": "2026-09-22",
+    "verified_at": "2026-11-03"
   }
 ]
