@@ -1,0 +1,196 @@
+[
+  {
+    "slug": "absurd",
+    "reason": "Wrong canonical domain points to an Austin art site; matching YC AI film company now lists Los Angeles. Current NYC operations unresolved.",
+    "source_urls": [
+      "https://www.absurd.ai",
+      "https://www.ycombinator.com/companies/absurd"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "amelia",
+    "reason": "Acquired by SoundHound; do not present the acquired product brand as an independent company or duplicate its parent. Amelia 7 remains an operating AI product, but a currently occupied NYC office of this acquired brand was not established; legal-entity address alone is insufficient.",
+    "source_urls": [
+      "https://investors.soundhound.com/static-files/265b3ec8-c438-441e-96c0-4044d3654cdf",
+      "https://investors.soundhound.com/news-releases/news-release-details/soundhound-ai-named-leader-2026-gartnerr-magic-quadranttm"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "amika",
+    "reason": "AI developer product is active at amika.dev, but current NYC operations not established. Brooklyn haircare jobs are a namesake and must not be attributed.",
+    "source_urls": [
+      "https://www.amika.dev/changelog",
+      "https://loveamika.com/pages/careers"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "aspect",
+    "reason": "Canonical identity and current NYC AI operations unresolved; supplied website unavailable.",
+    "source_urls": [
+      "https://www.aspect.ai"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "bayesline",
+    "reason": "Current accessible primary website does not establish core AI product and current NYC operations sufficiently for strict inclusion.",
+    "source_urls": [
+      "https://bayesline.com",
+      "https://www.bfc.vc/portfolio"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "cerca",
+    "reason": "Canonical website and current NYC AI company identity could not be established.",
+    "source_urls": [
+      "https://www.cerca.app"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "ghosteye",
+    "reason": "Current domain presents AI search visibility software, inconsistent with imported cybersecurity identity; NYC operations unresolved.",
+    "source_urls": [
+      "https://ghosteye.ai/company/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "glif",
+    "reason": "Current AI product confirmed, but current company-owned sources reviewed do not establish NYC operations. NYC directory labels alone are insufficient.",
+    "source_urls": [
+      "https://glif.app",
+      "https://www.linkedin.com/company/heyglif/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "instabase",
+    "reason": "Official August 2026 announcement changes the company and product direction to SuperApp. NYC support is from legacy Instabase recruiting; current SuperApp NYC operations were not established. Hold the single entity pending new-brand NYC confirmation; never count Instabase and SuperApp separately.",
+    "source_urls": [
+      "https://superapp.chat/documents/superapp-announcement-aug-17-2026/",
+      "https://www.instabase.com/",
+      "https://www.instabase.com/careers"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "kasisto",
+    "reason": "Acquired into Backbase; kasisto.com redirects and the maintained evidence establishes a New York-based team joining the acquirer, not a distinct currently operating Kasisto company/office. Hold rather than counting an integrated historic brand.",
+    "source_urls": [
+      "https://www.backbase.com/press/backbase-acquires-kasisto-leading-the-industry-shift-to-agentic-banking",
+      "https://kasisto.com/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "loyalist",
+    "reason": "Imported domain unavailable and company/product namesake ambiguity unresolved. Magic product Loyalist and independent Loyalist must not be combined without primary identity proof.",
+    "source_urls": [
+      "https://www.loyalist.ai"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "mother-tech",
+    "reason": "Current parent company messaging describes a broad creative apps/games studio. Core-AI company scope is unresolved; the withdrawn Degen press release must not establish eligibility.",
+    "source_urls": [
+      "https://mother.tech/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "nori",
+    "reason": "Current canonical site is nori.ai, operated by Unison Labs. July 30, 2026 terms give a business/contact location in Irvington, outside NYC. No separate current NYC workplace was verified. Do not assign an NYC pin or infer closure.",
+    "source_urls": [
+      "https://www.nori.health",
+      "https://nori.ai/terms"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "ohai-ai",
+    "reason": "AI household product is active, but current NYC employment or office evidence was not verified. An old NYC event or a New York press dateline is insufficient physical-presence evidence; conflicting geography needs resolution before strict publication.",
+    "source_urls": [
+      "https://www.ohai.ai",
+      "https://www.ohai.ai/about-us/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "rowflow",
+    "reason": "Current rowflow.ai is explicitly under construction / coming soon. No current operating product, dated company activity, or current NYC hiring was verified. This is a hold, not a claim that the firm closed.",
+    "source_urls": [
+      "https://rowflow.ai/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "series",
+    "reason": "Current series.so yields a minimal first-AI-social-network title without enough operating detail. No current first-party NYC employment/office evidence or product activity beyond the brand page was established in this pass.",
+    "source_urls": [],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "serinus-biosciences",
+    "reason": "Current primary website is a bare new-website-coming-soon page. A business contact address and a recent provider backing classification do not independently establish current AI operations. Hold pending dated product, company, or hiring evidence.",
+    "source_urls": [],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "soxton",
+    "reason": "Legacy soxton.com is a sparse Google Site, not the described AI legal platform. Candidate soxton.ai markets lawyer-delivered legal services with AI-assisted drafting; domain/entity continuity, strict software-company fit, and current NYC presence require resolution. Do not silently substitute it.",
+    "source_urls": [
+      "https://www.soxton.com",
+      "https://www.soxton.ai/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "tapestry",
+    "reason": "Current primary homepage describes a Solana/social-graph API; clear core-AI product evidence is missing. A company-managed professional profile mentions AI companions/Zumi and NYC, but that does not resolve the mismatch with the current primary product. Hold for scope/identity review; do not call closed.",
+    "source_urls": [
+      "https://www.foresightventures.com/about",
+      "https://www.usetapestry.dev/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "tofu",
+    "reason": "Current first-party product is AI-native B2B marketing, but current NYC hiring or occupied office evidence was not verified. Do not infer NYC presence from serving NYC customers or a historical directory listing.",
+    "source_urls": [
+      "https://www.tofuhq.com"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "trata",
+    "reason": "Current trytrata.com redirects to trata.com, which markets a human buyside-conversation research library. The prior AI-agent-led research description is not established by current primary messaging. Core-AI fit and current NYC presence remain unresolved.",
+    "source_urls": [
+      "https://www.trytrata.com",
+      "https://www.trata.com/"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "valerie-health",
+    "reason": "Official current jobs board lists San Francisco and Chattanooga; no NYC role was found. Current company careers likewise emphasizes SF/remote positions. AI fit is clear; the NYC inclusion requires positive new evidence.",
+    "source_urls": [
+      "https://www.valeriehealth.com",
+      "https://api.ashbyhq.com/posting-api/job-board/valeriehealth"
+    ],
+    "checked_at": "2026-11-04"
+  },
+  {
+    "slug": "vortexify-ai",
+    "reason": "Current product uses AI coding agents to build custom operational software, but the original supply-chain-bot description is stale. No current first-party NYC location/hiring evidence was verified. Studio/services versus product-company scope also warrants review.",
+    "source_urls": [
+      "https://www.vortexify.ai"
+    ],
+    "checked_at": "2026-11-04"
+  }
+]

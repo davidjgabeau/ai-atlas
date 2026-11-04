@@ -35,6 +35,12 @@ type CompanyWithoutGenerated = Omit<Company, "generated">;
 
 export const categoryMeta: CategoryMeta[] = [
   {
+    name: "Industrial & Robotics AI",
+    slug: "industrial-robotics-ai",
+    description: "Robotics, autonomous materials labs, computer vision, and AI systems that operate in the physical world.",
+    thesis: "New York's industrial spaces support AI teams that connect model predictions to machines, experiments, and real-world operations."
+  },
+  {
     name: "Fintech & Trading AI",
     slug: "fintech-trading-ai",
     description: "AI-native research, risk, fund operations, compliance, and trading workflows built for New York's financial ecosystem.",
@@ -1118,6 +1124,7 @@ const companyFundingByName: Record<string, CompanyFunding> = {
 };
 
 const aiUsageProfiles: Record<Category, string> = {
+  "Industrial & Robotics AI": "Computer vision, robot control, experimental design, and model-based reasoning for physical operations. AI use varies by product and is an editorial category estimate.",
   "Fintech & Trading AI": "Model-heavy workflows for research synthesis, document analysis, financial analytics, extraction, and agent-assisted decisions across high-value finance work.",
   "Legal & Compliance AI": "LLM and agent workflows for policy interpretation, structured review, KYC/AML analysis, legal drafting, document extraction, and auditable compliance decisions.",
   "Cybersecurity AI": "Agentic analysis across security telemetry, exposure graphs, identity systems, human-layer risk, and response workflows.",
@@ -1133,6 +1140,7 @@ const aiUsageProfiles: Record<Category, string> = {
 };
 
 const openAiFits: Record<Category, string> = {
+  "Industrial & Robotics AI": "Potential fit for multimodal interpretation, task planning, technical documentation, and experiment analysis; physical control also relies on specialist models, sensors, and safety systems.",
   "Fintech & Trading AI": "Strong fit for reasoning models, embeddings, structured outputs, retrieval, document understanding, and agentic analysis across financial workflows.",
   "Legal & Compliance AI": "Strong fit for retrieval, citations, structured extraction, policy reasoning, human-in-the-loop review, and workflow agents with clear audit trails.",
   "Cybersecurity AI": "Strong fit for tool-calling agents, retrieval over telemetry, structured triage, adversarial reasoning, and response workflows.",

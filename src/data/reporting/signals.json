@@ -103,10 +103,280 @@
     "company_slug": "chamelio",
     "type": "funding",
     "title": "Chamelio announces $26M Series A",
-    "summary": "Chamelio announced a $26 million Series A led by Entr\u00e9e Capital for its AI-native in-house legal operations platform. The event date is the company release, not later news coverage.",
+    "summary": "Chamelio announced a $26 million Series A led by Entrée Capital for its AI-native in-house legal operations platform. The event date is the company release, not later news coverage.",
     "source_url": "https://www.prnewswire.com/news-releases/chamelio-raises-26m-series-a-to-replace-legacy-clm-with-ai-native-in-house-legal-operations-302886011.html",
     "source_name": "Chamelio company release",
     "occurred_at": "2026-09-22",
     "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "dataminr",
+    "type": "funding",
+    "title": "Dataminr announces Convertible financing and credit",
+    "summary": "$85M · Convertible financing and credit. See the original announcement for terms and context.",
+    "source_url": "https://www.dataminr.com/press/announcement/dataminr-secures-funding/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-03-19",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "asapp",
+    "type": "funding",
+    "title": "ASAPP announces Series C",
+    "summary": "$120M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://www.asapp.com/press/artificial-intelligence-platform-provider-asapp-raises-120-million-to-drive-greater-performance-of-customer-experience-cx-teams",
+    "source_name": "Company announcement",
+    "occurred_at": "2021-05-19",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "aily-labs",
+    "type": "funding",
+    "title": "Aily Labs announces Venture round",
+    "summary": "$80M · Venture round. See the original announcement for terms and context.",
+    "source_url": "https://www.ailylabs.com/news-and-insights/aily-labs-raises-80-million-to-scale-ai-that-drives-performance-across-fortune-500-companies",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-11-06",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "basis",
+    "type": "funding",
+    "title": "Basis announces Series B",
+    "summary": "$100M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.getbasis.ai/blogs/basis-raises-100m-series-b-led-by-accel-and-google-ventures",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-02-24",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "hume-ai",
+    "type": "funding",
+    "title": "Hume AI announces Series B",
+    "summary": "$50M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.hume.ai/blog/series-b-evi-announcement",
+    "source_name": "Company announcement",
+    "occurred_at": "2024-03-25",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "arthur",
+    "type": "funding",
+    "title": "Arthur announces Series B",
+    "summary": "$42M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.arthur.ai/blog/making-ai-work-for-even-more-people",
+    "source_name": "Company announcement",
+    "occurred_at": "2022-09-27",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "uniphore",
+    "type": "funding",
+    "title": "Uniphore announces Series F",
+    "summary": "$260M · Series F. See the original announcement for terms and context.",
+    "source_url": "https://www.uniphore.com/press-releases/nvidia-amd-snowflake-databricks-invest-in-uniphores-series-f/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-10-22",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "daloopa",
+    "type": "funding",
+    "title": "Daloopa announces Series C",
+    "summary": "$47M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://daloopa.com/blog/press-release/47-million-series-c",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-05-28",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "deepl",
+    "type": "funding",
+    "title": "DeepL announces Venture round",
+    "summary": "$300M · Venture round. See the original announcement for terms and context.",
+    "source_url": "https://www.deepl.com/en/press-release/deepl-announces-300-million-investment-at-2-billion-valuation-fueled-by-global-demand-for-ai-language-solutions",
+    "source_name": "Company announcement",
+    "occurred_at": "2024-05-22",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "writer",
+    "type": "funding",
+    "title": "WRITER announces Series C",
+    "summary": "$200M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://writer.com/blog/series-c-funding-writer-press-release/",
+    "source_name": "Company announcement",
+    "occurred_at": "2024-11-12",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "synthesia",
+    "type": "funding",
+    "title": "Synthesia announces Series E",
+    "summary": "$200M · Series E. See the original announcement for terms and context.",
+    "source_url": "https://www.synthesia.io/post/series-e-200-million-4-billion-valuation-future-work",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-01-26",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "datarails",
+    "type": "funding",
+    "title": "Datarails announces Series C",
+    "summary": "$70M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://www.datarails.com/datarails-raises-70m-series-c-ai-for-cfos/",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-01-21",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "aiera",
+    "type": "funding",
+    "title": "Aiera announces Series B",
+    "summary": "$25M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://aiera.com/newsroom/aiera-closes-series-b-funding-round-ten-of-wall-streets-largest-research-firms-joining-board/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-06-09",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "rillet",
+    "type": "funding",
+    "title": "Rillet announces Series C",
+    "summary": "$100M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://www.rillet.com/blog/rillet-raises-100m-series-c-at-1b-valuation-to-build-accounting-superintelligence",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-08-17",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "tabs",
+    "type": "funding",
+    "title": "Tabs announces Series B",
+    "summary": "$55M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.tabs.com/blog/tabs-raises-55M-series-b-to-launch-the-first-ai-agents-for-billing-and-collections",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-09-16",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "hyperscience",
+    "type": "funding",
+    "title": "Hyperscience announces Series E",
+    "summary": "$100M · Series E. See the original announcement for terms and context.",
+    "source_url": "https://www.hyperscience.ai/newsroom/hyperscience-secures-100-million-in-growth-equity-funding/",
+    "source_name": "Company announcement",
+    "occurred_at": "2021-12-22",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "cyera",
+    "type": "funding",
+    "title": "Cyera announces Series F",
+    "summary": "$400M · Series F. See the original announcement for terms and context.",
+    "source_url": "https://www.cyera.com/press-releases/cyera-raises-400m-to-meet-rapidly-growing-demand-for-ai-security-among-enterprises",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-01-08",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "siro",
+    "type": "funding",
+    "title": "Siro announces Series B",
+    "summary": "$50M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.siro.ai/insights/series-b",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-05-21",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "avoca",
+    "type": "funding",
+    "title": "Avoca announces Series B",
+    "summary": "Amount not recorded · Series B. See the original announcement for terms and context.",
+    "source_url": "https://www.avoca.ai/blog/avoca-raises-125m-series-b-1b-valuation",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-04-27",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "fyxer",
+    "type": "funding",
+    "title": "Fyxer announces Series B",
+    "summary": "$30M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://landing.fyxer.com/blog/series-b-statement",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-09-09",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "polyai",
+    "type": "funding",
+    "title": "PolyAI announces Series D",
+    "summary": "$86M · Series D. See the original announcement for terms and context.",
+    "source_url": "https://poly.ai/blog/polyai-raises-86-million-series-d",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-12-17",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "parloa",
+    "type": "funding",
+    "title": "Parloa announces Series D",
+    "summary": "$350M · Series D. See the original announcement for terms and context.",
+    "source_url": "https://www.parloa.com/parloa-in-the-press/parloa-valued-at-3-billion-with-350m-series-d/",
+    "source_name": "Company announcement",
+    "occurred_at": "2026-01-15",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "snorkel-ai",
+    "type": "funding",
+    "title": "Snorkel AI announces Series D",
+    "summary": "$100M · Series D. See the original announcement for terms and context.",
+    "source_url": "https://snorkel.ai/blog/building-the-ai-data-development-platform-for-specialized-ai/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-05-29",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "blackbird-ai",
+    "type": "funding",
+    "title": "Blackbird.AI announces Series B",
+    "summary": "$20M · Series B. See the original announcement for terms and context.",
+    "source_url": "https://blackbird.ai/in-the-news/blackbird-ai-raises-20-million-in-series-b-funding-to-empower-organizations-with-narrative-and-perception-risk-intelligence/",
+    "source_name": "Company announcement",
+    "occurred_at": "2023-06-15",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "quantexa",
+    "type": "funding",
+    "title": "Quantexa announces Series F",
+    "summary": "$175M · Series F. See the original announcement for terms and context.",
+    "source_url": "https://www.quantexa.com/press/quantexa-completes-usd-175-million-series-f-investment-round-led-by-teachers-venture-growth/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-03-05",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "canoe-intelligence",
+    "type": "funding",
+    "title": "Canoe Intelligence announces Series C",
+    "summary": "$36M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://canoeintelligence.com/canoe-intelligence-raises-36-million-series-c-funding-led-by-goldman-sachs-to-further-market-expansion/",
+    "source_name": "Company announcement",
+    "occurred_at": "2024-07-09",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "arize-ai",
+    "type": "funding",
+    "title": "Arize AI announces Series C",
+    "summary": "$70M · Series C. See the original announcement for terms and context.",
+    "source_url": "https://arize.com/press/",
+    "source_name": "Company announcement",
+    "occurred_at": "2025-02-20",
+    "verified_at": "2026-11-04"
   }
 ]

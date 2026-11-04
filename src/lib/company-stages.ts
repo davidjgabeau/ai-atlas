@@ -4,7 +4,7 @@ import type { AgentCompanyStage } from "../types/agent";
 export function normalizeCompanyStage(value: string): AgentCompanyStage {
   if (/\b(public|ipo|nasdaq|nyse)\b/i.test(value)) return "Public";
   if (/\b(acquired|acquisition)\b/i.test(value)) return "Acquired";
-  const rounds = [...value.matchAll(/\bseries\s+([a-j])(?:\d+)?\b/gi)]
+  const rounds = [...value.matchAll(/\bseries\s+([a-z])(?:\d+)?\b/gi)]
     .map((match) => match[1].toUpperCase()).sort();
   if (rounds.length) return `Series ${rounds.at(-1)}` as AgentCompanyStage;
   if (/\b(growth|late.stage)\b/i.test(value)) return "Growth";

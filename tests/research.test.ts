@@ -11,6 +11,10 @@ import { isNavigableCompanyJob } from "../src/lib/jobs/jobDisplay";
 import type { AgentCompany, RawSourceRecord } from "../src/types/agent";
 import type { OfficeEvidence, ResearchCompany } from "../src/lib/research/types";
 import { hasCompanyNewsSubject } from "../src/lib/research/newsSubject";
+import { buildResearchMapGroups, researchMapToGeoJson } from "../src/lib/research/map";
+import profiles from "../src/data/reporting/companies.json";
+import exclusions from "../src/data/reporting/exclusions.json";
+import { isExcludedFromPublicAtlas } from "../src/lib/research/scope";
 
 test("news attribution requires a company subject, not a generic word or former employee", () => {
   assert.equal(hasCompanyNewsSubject("Jumbo Series A Rounds Hiding The Real Squeeze On Seed Startups", "Series"), false);
@@ -21,7 +25,7 @@ test("news attribution requires a company subject, not a generic word or former 
 });
 
 test("all-stage normalization preserves mature rounds and lifecycle status", () => {
-  for (const stage of ["Series B", "Series C", "Series D", "Series E", "Series H", "Public", "Acquired", "Growth"]) assert.equal(normalizeCompanyStage(stage), stage);
+  for (const stage of ["Series B", "Series C", "Series D", "Series E", "Series H", "Series L", "Public", "Acquired", "Growth"]) assert.equal(normalizeCompanyStage(stage), stage);
   assert.equal(normalizeCompanyStage("Series D, previously Series A and Seed"), "Series D");
   assert.equal(stageGroup("Series E"), "Growth");
   assert.equal(stageGroup("Series A"), "Early");
@@ -85,13 +89,66 @@ test("CSV exports evidence and safely quotes formula-like and multiline text", (
 });
 
 test("Williamsburg counts include the neighborhood-only office and distinguish shared buildings", () => {
-  const summary = summarizeOfficeGeography(officeEvidence).find((g) => g.neighborhood === "Williamsburg");
-  assert.equal(summary?.company_count, 6);
-  assert.deepEqual(summary?.companies_without_public_street_address, ["sentience"]);
+  const originalSlugs = ["flora", "outtake", "topline-pro", "minerva-bi", "sentience"];
+  const summary = summarizeOfficeGeography(officeEvidence.filter((o) => originalSlugs.includes(o.company_slug))).find((g) => g.neighborhood === "Williamsburg");
+  assert.equal(summary?.company_count, 5);
+  assert.ok(summary?.companies_without_public_street_address.includes("sentience"));
   assert.equal(summary?.addresses.find((a) => a.address.startsWith("300 Kent"))?.company_slugs.length, 4);
+});
+
+test("map groups preserve shared tenants and a company's multiple offices, excluding invalid and historical records", () => {
+  const office = { company_slug: "a", address: "300 Kent Avenue, Brooklyn, NY", borough: "Brooklyn", neighborhood: "Williamsburg", location_type: "office", evidence_status: "verified", source_url: "https://example.com/offices", verified_at: "2026-11-03", latitude: 40.712, longitude: -73.968 } as OfficeEvidence;
+  const companies = [
+    { slug: "a", name: "A", offices: [office, { ...office }, { ...office, address: "25 Kent Avenue", latitude: 40.723 }] },
+    { slug: "b", name: "B", offices: [{ ...office, company_slug: "b", evidence_status: "reported" }] },
+    { slug: "historical", name: "Old", offices: [{ ...office, occupancy_status: "historical" }] },
+    { slug: "mail", name: "Mail", offices: [{ ...office, location_type: "mailing" }] },
+    { slug: "invalid", name: "Invalid", offices: [{ ...office, latitude: NaN }] },
+    { slug: "area", name: "Area only", offices: [{ ...office, address: "" }] },
+  ] as unknown as ResearchCompany[];
+  const groups = buildResearchMapGroups(companies);
+  assert.equal(groups.length, 2);
+  assert.equal(groups.reduce((n, g) => n + g.entries.length, 0), 3);
+  assert.deepEqual(groups.find((g) => g.latitude === 40.712)?.entries.map((e) => e.company.slug), ["a", "b"]);
+  const geojson = researchMapToGeoJson(groups);
+  assert.deepEqual(geojson.features[0].geometry.coordinates, [-73.968, 40.712]);
+  assert.equal(geojson.features[0].properties.source, office.source_url);
+});
+
+test("borough and neighborhood must match the same office, including on map exports", () => {
+  const offices = [
+    { borough: "Manhattan", neighborhood: "SoHo", address: "123 Broadway", latitude: 40.72, longitude: -74, location_type: "office", evidence_status: "verified", source_url: "https://example.com" },
+    { borough: "Brooklyn", neighborhood: "Williamsburg", address: "300 Kent Avenue", latitude: 40.712, longitude: -73.968, location_type: "office", evidence_status: "verified", source_url: "https://example.com" },
+  ];
+  const companies = [{ slug: "a", name: "A", founders: [], offices }] as unknown as ResearchCompany[];
+  assert.equal(filterResearchCompanies(companies, { borough: "Manhattan", neighborhood: "Williamsburg" }).length, 0);
+  const pins = buildResearchMapGroups(companies, { borough: "Brooklyn" });
+  assert.equal(pins.length, 1);
+  assert.equal(pins[0].entries[0].office.borough, "Brooklyn");
 });
 
 test("company portals and founder directories are not job vacancies", () => {
   for (const title of ["Immigration Manager Portal", "Founder Directory", "Find a Co-Founder", "Firm Partnerships", "Partnerships"]) assert.equal(isNavigableCompanyJob({ title, source_url: "https://example.com/portal" }), false);
   assert.equal(isNavigableCompanyJob({ title: "Founding Software Engineer", source_url: "https://jobs.ashbyhq.com/example/role" }), true);
+});
+
+test("published source registry has unique identities and no held companies", () => {
+  for (const field of ["slug", "name", "website_url"] as const) {
+    const values = profiles.map((profile) => field === "website_url" ? new URL(profile[field]).hostname.replace(/^www\./, "") : profile[field].toLowerCase());
+    assert.equal(new Set(values).size, values.length, `Duplicate ${field}`);
+  }
+  for (const entry of exclusions) {
+    assert.equal(isExcludedFromPublicAtlas(entry.slug), true);
+    assert.equal(profiles.some((profile) => profile.slug === entry.slug), false);
+  }
+  for (const office of officeEvidence.filter((o) => typeof o.latitude === "number")) {
+    assert.ok(office.address && office.geocode_source, `Missing coordinate provenance: ${office.company_slug}`);
+  }
+});
+
+test("finder handles reordered words, accents, and a company's former domain", () => {
+  const companies = [{ slug: "longitude-labs", name: "Longitude Labs", category: "Data & Memory Layer", description: "AI research", founders: ["Clément"], sources: ["https://www.meridian.ai"], website: "https://longitudelabs.com", offices: [] }] as unknown as ResearchCompany[];
+  assert.equal(filterResearchCompanies(companies, { query: "Clement Longitude" }).length, 1);
+  assert.equal(filterResearchCompanies(companies, { query: "meridian" }).length, 1);
+  assert.equal(filterResearchCompanies(companies, { query: "Longitude unrelated" }).length, 0);
 });

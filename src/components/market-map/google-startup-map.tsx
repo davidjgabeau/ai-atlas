@@ -29,13 +29,13 @@ type MapOptions = Record<string, unknown> & {
   styles?: MapStyle[];
 };
 
-type GoogleMap = {
+export type GoogleMap = {
   fitBounds(bounds: GoogleLatLngBounds, padding?: number): void;
   setCenter(center: LatLngLiteral): void;
   setZoom(zoom: number): void;
 };
 
-type GoogleMarker = {
+export type GoogleMarker = {
   addListener(eventName: string, handler: () => void): { remove(): void };
   setMap(map: GoogleMap | null): void;
 };
@@ -69,7 +69,7 @@ type MarkerOptions = {
   zIndex?: number;
 };
 
-type GoogleMaps = {
+export type GoogleMaps = {
   maps: {
     InfoWindow: new (options?: {
       content?: string;
@@ -222,7 +222,7 @@ export function GoogleStartupMap({
           gestureHandling: "cooperative",
           ...(mapId ? { mapId } : {}),
           mapTypeControl: false,
-          maxZoom: 15,
+          maxZoom: 19,
           minZoom: 10,
           rotateControl: false,
           scaleControl: true,
@@ -347,7 +347,7 @@ function StaticMapPreview({
 
           return (
             <span
-              key={pin.company.id}
+              key={`${pin.company.id}:${pin.position.lat}:${pin.position.lng}`}
               className="absolute rounded-full border border-[#FBFAF7]/90"
               style={{
                 backgroundColor: color,
@@ -384,7 +384,7 @@ function StaticMapPreview({
   );
 }
 
-function loadGoogleMaps(apiKey: string, mapId?: string) {
+export function loadGoogleMaps(apiKey: string, mapId?: string) {
   if (typeof window === "undefined") {
     return Promise.reject(new Error("Google Maps requires the browser."));
   }
@@ -442,6 +442,8 @@ function renderInfoWindow(pin: CompanyMapLocation) {
         ${escapeHtml(pin.company.category)}
       </div>
       <p style="font-size:13px; line-height:1.5; margin:0 0 10px; color:#475569;">${escapeHtml(pin.company.short_description)}</p>
+      <p style="font-size:12px; line-height:1.5; margin:0 0 8px; color:#475569;">${escapeHtml(pin.office.address || "")}${pin.office.occupancy_status === "announced" ? " · Announced lease; move-in not established" : ""}</p>
+      <a href="${escapeHtml(pin.office.source_url)}" target="_blank" rel="noreferrer" style="font-size:12px; color:#7E4935;">${pin.office.evidence_status === "verified" ? "Company source" : "Reported office"} ↗</a>
       <div style="font-size:12px; color:#64748b; margin-bottom:12px;">${escapeHtml(getSignalDisplayLabel(getCompanySignalLabel(pin.company)))}</div>
       <a href="${companyUrl}" style="display:inline-flex; align-items:center; color:#0f172a; font-size:13px; font-weight:700; text-decoration:none;">
         Open profile →

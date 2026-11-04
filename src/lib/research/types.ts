@@ -6,6 +6,7 @@ export type OfficeEvidence = {
   neighborhood?: string;
   location_type: "headquarters" | "office" | "mailing" | "unverified";
   evidence_status: "verified" | "reported" | "unverified";
+  occupancy_status?: "current" | "announced" | "historical" | "unknown";
   latitude?: number;
   longitude?: number;
   source_url: string;

@@ -38,6 +38,7 @@ export const metadata: Metadata = createShareMetadata({
 });
 
 const shortCategoryDescriptions = {
+  "Industrial & Robotics AI": "Robots, autonomous labs, and AI for physical operations.",
   "Fintech & Trading AI":
     "AI for markets, risk, capital, and financial operations.",
   "Legal & Compliance AI":

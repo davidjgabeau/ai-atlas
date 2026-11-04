@@ -1,5 +1,7 @@
 import { officeEvidence, isDocumentedOffice } from "./research/evidence";
 import type { Category, Company } from "@/types/market";
+import { hasOfficeCoordinates } from "./research/map";
+import type { OfficeEvidence } from "./research/types";
 
 export type LatLngLiteral = {
   lat: number;
@@ -11,6 +13,7 @@ export type CompanyMapLocation = {
   confidence: "confirmed" | "estimated";
   neighborhood: string;
   position: LatLngLiteral;
+  office: OfficeEvidence;
 };
 
 export type NormalizedMapPosition = {
@@ -26,6 +29,7 @@ export const mapLayoutBounds = {
 } as const;
 
 export const categoryColors: Record<Category, string> = {
+  "Industrial & Robotics AI": "#64764A",
   "Fintech & Trading AI": "#2563eb",
   "Legal & Compliance AI": "#7c3aed",
   "Cybersecurity AI": "#0f766e",
@@ -43,11 +47,14 @@ export const categoryColors: Record<Category, string> = {
 export function buildCompanyMapLocations(companies: Company[]): CompanyMapLocation[] {
   const locations: CompanyMapLocation[] = [];
   for (const company of companies) {
-    const office = officeEvidence.find((o) => o.company_slug === company.slug && isDocumentedOffice(o)
-      && typeof o.latitude === "number" && typeof o.longitude === "number");
-    if (!office || typeof office.latitude !== "number" || typeof office.longitude !== "number") continue;
-    locations.push({ company, confidence: office.evidence_status === "verified" ? "confirmed" : "estimated",
-      neighborhood: office.neighborhood || office.borough || "NYC", position: { lat: office.latitude, lng: office.longitude } });
+    const seen = new Set<string>();
+    for (const office of officeEvidence.filter((o) => o.company_slug === company.slug && isDocumentedOffice(o) && hasOfficeCoordinates(o))) {
+      const key = `${office.latitude!.toFixed(6)}:${office.longitude!.toFixed(6)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      locations.push({ company, office, confidence: office.evidence_status === "verified" ? "confirmed" : "estimated",
+        neighborhood: office.neighborhood || office.borough || "NYC", position: { lat: office.latitude!, lng: office.longitude! } });
+    }
   }
   return locations;
 }

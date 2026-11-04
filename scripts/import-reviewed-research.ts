@@ -4,6 +4,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import reviews from "../src/data/reporting/companies.json";
 import offices from "../src/data/reporting/offices.json";
+import exclusions from "../src/data/reporting/exclusions.json";
 import { companyToDatabasePayload } from "../src/lib/admin-company-record";
 import { createSupabasePrivilegedClient } from "../src/lib/supabase/privileged";
 import { categories, type Company } from "../src/types/market";
@@ -24,12 +25,16 @@ async function main() {
   const records: Record<string, unknown>[] = [];
   for (const review of reviews.filter((review) => !only || only.split(",").includes(review.slug))) {
     const r = review as unknown as Record<string, unknown>;
+    if ((exclusions as Array<{ slug: string }>).some((entry) => entry.slug === review.slug)) continue;
     if (!categories.includes(review.category as Company["category"])) throw new Error(`Unsupported category: ${review.slug}`);
     if (!/^https:\/\//.test(review.website_url)) throw new Error(`Missing canonical HTTPS site: ${review.slug}`);
     const previous = existing.find((row) => row.slug === review.slug || (r.previous_slug && row.slug === r.previous_slug));
     const id = previous?.id ?? `cmp_${createHash("sha256").update(review.slug).digest("hex").slice(0, 16)}`;
     const patch: Record<string, unknown> = { slug: review.slug };
     for (const field of stringFields) if (r[field] !== null && r[field] !== undefined) patch[field] = r[field];
+    // The source registry carries the canonical category. Older database CHECK
+    // constraints use an existing category until their schema is migrated.
+    if (typeof r.storage_category === "string") patch.category = r.storage_category;
     if (Array.isArray(r.founders)) { patch.founders = r.founders; patch.founder_name = (r.founders as Array<{ name: string }>).map((f) => f.name).join("; "); }
     const office = offices.find((o) => o.company_slug === review.slug && o.address && ["office", "headquarters"].includes(o.location_type));
     if (office?.address) patch.office_address = office.address;
@@ -56,13 +61,13 @@ async function main() {
       }
     }
   }
-  for (const slug of only ? [] : ["new-york-city-startups", "tabs-quickly"]) {
+  for (const slug of [...new Set(["new-york-city-startups", "tabs-quickly", ...(exclusions as Array<{ slug: string }>).map((entry) => entry.slug)])].filter((slug) => !only || only.split(",").includes(slug))) {
     const row = existing.find((row) => row.slug === slug);
     if (!row || row.status !== "published") continue;
-    plan.push({ slug, action: "hold article-fragment record for review" });
+    plan.push({ slug, action: "hold out-of-scope or unresolved record for review" });
     if (apply) {
-      const { error: holdError } = await supabase.from("companies").update({ status: "draft" }).eq("id", row.id).eq("updated_at", row.updated_at);
-      if (holdError) throw new Error(holdError.message);
+      const { data, error: holdError } = await supabase.from("companies").update({ status: "draft" }).eq("id", row.id).eq("updated_at", row.updated_at).select("id");
+      if (holdError || data?.length !== 1) throw new Error(holdError?.message || `${slug}: concurrent edit; hold stopped`);
     }
   }
   if (backupDir) await writeFile(path.join(backupDir, apply ? "reviewed-import-applied.json" : "reviewed-import-plan.json"), JSON.stringify(plan, null, 2));

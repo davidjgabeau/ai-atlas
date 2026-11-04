@@ -1,16 +1,21 @@
 import { getResearchDataset } from "@/lib/research/dataset";
 import { companiesToCsv, filterResearchCompanies } from "@/lib/research/evidence";
+import { buildResearchMapGroups, researchMapToGeoJson } from "@/lib/research/map";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const data = await getResearchDataset();
-  const companies = filterResearchCompanies(data.companies, {
+  const filters = {
     query: url.searchParams.get("q") ?? "", borough: url.searchParams.get("borough") ?? "",
     neighborhood: url.searchParams.get("neighborhood") ?? "", stage: url.searchParams.get("stage") ?? "",
     category: url.searchParams.get("category") ?? "", evidence: url.searchParams.get("evidence") ?? "",
     outside: url.searchParams.get("outside") === "1",
+  };
+  const companies = filterResearchCompanies(data.companies, filters);
+  if (url.searchParams.get("format") === "geojson") return Response.json(researchMapToGeoJson(buildResearchMapGroups(companies, filters)), {
+    headers: { "Content-Type": "application/geo+json", "Content-Disposition": 'attachment; filename="ai-atlas-nyc-offices.geojson"', "Cache-Control": "no-store" },
   });
   if (url.searchParams.get("format") === "csv") return new Response(`\uFEFF${companiesToCsv(companies)}`, {
     headers: { "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": 'attachment; filename="ai-atlas-nyc-research.csv"', "Cache-Control": "no-store" },

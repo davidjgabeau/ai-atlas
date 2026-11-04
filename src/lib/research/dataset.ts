@@ -6,7 +6,7 @@ import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import { getPublicCompanyJobs } from "@/lib/supabase/jobs";
 import { getNewsItems } from "@/lib/news/news-store";
 import { stageGroup } from "@/lib/company-stages";
-import { officeEvidence } from "./evidence";
+import { officeEvidence, isDocumentedOffice } from "./evidence";
 import { hasCompanyNewsSubject } from "./newsSubject";
 import type { ReportingResources, ResearchCompany, ResearchDataset, ResearchSignal } from "./types";
 
@@ -28,7 +28,7 @@ export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
       funding_round: company.funding_round, funding_amount: company.funding_amount,
       funding_date: company.funding_date, jobs: roles.length,
       jobs_checked_at: latest(roles.map((job) => job.last_seen_at)),
-      checked_at: review?.verified_at ?? null, presence: officeEvidence.some((o) => o.company_slug === company.slug && ["office", "headquarters"].includes(o.location_type) && ["verified", "reported"].includes(o.evidence_status)) ? (officeEvidence.some((o) => o.company_slug === company.slug && o.location_type === "headquarters") ? "headquarters" : "office") : review?.nyc_presence ?? "NYC basis in original profile; recheck for reporting",
+      checked_at: review?.verified_at ?? null, presence: officeEvidence.some((o) => o.company_slug === company.slug && isDocumentedOffice(o)) ? (officeEvidence.some((o) => o.company_slug === company.slug && isDocumentedOffice(o) && o.location_type === "headquarters") ? "headquarters" : "office") : review?.nyc_presence ?? "NYC basis in original profile; recheck for reporting",
       review_scope: review?.review_scope ?? (review ? "Company identity, product and linked public funding sources." : "Original profile has not had a source review in this research pass."),
       stage_reviewed: Boolean(review?.stage),
       sources: [...new Set([...(review?.source_urls ?? []), ...(company.discoveryReason?.sourceUrls ?? []), company.website_url])].filter(isHttp),

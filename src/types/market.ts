@@ -11,6 +11,7 @@ export const categories = [
   "Enterprise GTM & RevOps AI",
   "Data & Memory Layer",
   "Personal AI",
+  "Industrial & Robotics AI",
 ] as const;
 
 export const consumptionProfiles = [

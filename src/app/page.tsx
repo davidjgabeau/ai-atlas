@@ -68,6 +68,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const categoryPulsePhrases: Record<Category, string> = {
+  "Industrial & Robotics AI": "intelligence in the physical world",
   "Fintech & Trading AI": "research, risk, diligence",
   "Legal & Compliance AI": "regulated review workflows",
   "Cybersecurity AI": "security operations and exposure",

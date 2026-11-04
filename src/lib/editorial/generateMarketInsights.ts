@@ -9,6 +9,7 @@ type InsightDraft = {
 };
 
 const categoryNames: Record<Company["category"], string> = {
+  "Industrial & Robotics AI": "Industrial and robotics AI",
   "Fintech & Trading AI": "Finance AI",
   "Legal & Compliance AI": "Legal AI",
   "Cybersecurity AI": "Cybersecurity AI",
@@ -24,6 +25,7 @@ const categoryNames: Record<Company["category"], string> = {
 };
 
 const categoryPhrases: Record<Company["category"], string> = {
+  "Industrial & Robotics AI": "physical-world AI systems",
   "Fintech & Trading AI": "finance AI",
   "Legal & Compliance AI": "legal and compliance workflows",
   "Cybersecurity AI": "security operations",

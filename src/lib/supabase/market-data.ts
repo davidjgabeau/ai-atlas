@@ -1,4 +1,5 @@
 import { mergeReviewedCompanyRows } from "@/lib/research/companyRegistry";
+import { isExcludedFromPublicAtlas } from "@/lib/research/scope";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
 import { applyVerifiedCompanyCorrections } from "@/data/company-corrections";
@@ -259,6 +260,7 @@ export async function getCompaniesByCategoryFromData(category: Category) {
 export function isPublicCompany(company: Company) {
   return (
     company.status === "published" &&
+    !isExcludedFromPublicAtlas(company.slug) &&
     validateDiscoveredCompanyCandidate({
       name: company.name,
       website: company.website_url,
