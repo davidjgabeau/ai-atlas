@@ -26,6 +26,7 @@ export type ResearchCompany = {
   name: string;
   category: string;
   stage: string;
+  parent_company?: string;
   stage_group: string;
   description: string;
   website: string;

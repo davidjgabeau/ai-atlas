@@ -262,7 +262,7 @@ async function extractWithAnthropic(
               task:
                 "Extract one NYC AI company candidate at any stage from this article if present.",
               eligibleCategories: categories,
-              eligibleStages: ["Pre-seed", "Seed", "Series A", "Series B", "Series C", "Series D", "Series E", "Series F", "Series G", "Series H", "Series I", "Series J", "Growth", "Public", "Acquired", "Unknown"],
+              eligibleStages: ["Pre-seed", "Seed", ...Array.from({ length: 26 }, (_, index) => `Series ${String.fromCharCode(65 + index)}`), "Growth", "Public", "Acquired", "Unknown"],
               rules: [
                 "nycBased is true only if the source explicitly supports New York City, NYC, Brooklyn, Manhattan, or a NYC neighborhood.",
                 "aiCore is true only when AI, LLMs, agents, ML, generative AI, or model tooling is central to the product.",

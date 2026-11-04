@@ -10,7 +10,7 @@ import { officeEvidence, isDocumentedOffice } from "./evidence";
 import { hasCompanyNewsSubject } from "./newsSubject";
 import type { ReportingResources, ResearchCompany, ResearchDataset, ResearchSignal } from "./types";
 
-type ReviewedCompany = { slug: string; source_urls: string[]; verified_at?: string; nyc_presence?: string; stage?: string; review_scope?: string };
+type ReviewedCompany = { slug: string; source_urls: string[]; verified_at?: string; nyc_presence?: string; stage?: string; review_scope?: string; parent_company?: string };
 
 export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
   const [companies, jobs, news] = await Promise.all([
@@ -23,6 +23,7 @@ export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
     return {
       id: company.id, slug: company.slug, name: company.name, stage: company.stage,
       stage_group: stageGroup(company.stage), category: company.category,
+      ...(review?.parent_company ? { parent_company: review.parent_company } : {}),
       description: company.short_description, website: company.website_url,
       founders: company.founders.map((founder) => founder.name),
       funding_round: company.funding_round, funding_amount: company.funding_amount,

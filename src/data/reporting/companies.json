@@ -1787,7 +1787,8 @@
       "latest_signal_source_url": "https://prod.cursor.com/blog/joining-spacex"
     },
     "added_at": "2026-11-04T06:52:01.177017+00:00",
-    "publication_review": "publish"
+    "publication_review": "publish",
+    "parent_company": "SpaceX"
   },
   {
     "slug": "cvector",
@@ -7150,7 +7151,8 @@
       "primary_source_url": "https://wandb.ai/site/careers/"
     },
     "added_at": "2026-11-04T08:27:00.091218+00:00",
-    "publication_review": "publish"
+    "publication_review": "publish",
+    "parent_company": "CoreWeave"
   },
   {
     "slug": "workfusion",

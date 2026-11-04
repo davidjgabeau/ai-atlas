@@ -15,6 +15,7 @@ import { buildResearchMapGroups, researchMapToGeoJson } from "../src/lib/researc
 import profiles from "../src/data/reporting/companies.json";
 import exclusions from "../src/data/reporting/exclusions.json";
 import { isExcludedFromPublicAtlas } from "../src/lib/research/scope";
+import { isPublicCompany, normalizeCompany } from "../src/lib/supabase/market-data";
 
 test("news attribution requires a company subject, not a generic word or former employee", () => {
   assert.equal(hasCompanyNewsSubject("Jumbo Series A Rounds Hiding The Real Squeeze On Seed Startups", "Series"), false);
@@ -133,6 +134,7 @@ test("company portals and founder directories are not job vacancies", () => {
 });
 
 test("published source registry has unique identities and no held companies", () => {
+  for (const profile of profiles) assert.equal(isPublicCompany(normalizeCompany({ slug: profile.slug, status: "published" })), true, `Reviewed company suppressed by discovery heuristic: ${profile.slug}`);
   for (const field of ["slug", "name", "website_url"] as const) {
     const values = profiles.map((profile) => field === "website_url" ? new URL(profile[field]).hostname.replace(/^www\./, "") : profile[field].toLowerCase());
     assert.equal(new Set(values).size, values.length, `Duplicate ${field}`);
