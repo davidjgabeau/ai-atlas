@@ -1,6 +1,6 @@
 # Maintaining AI Atlas
 
-The core product is an editorial directory of NYC AI companies through Series A.
+The core product is an editorial directory of NYC AI companies at all stages.
 Company facts, original addition dates, source-backed updates, and editorial
 assessments must stay distinct.
 
@@ -42,8 +42,7 @@ eight-second deadline. A failed optional table does not discard other homepage d
 
 Discovery defaults to twelve extraction candidates. Auto-publication must honor
 the approval switch, require a known eligible stage and a usable profile
-description, and hold raw announcement excerpts for review. Series B and later
-are outside the directory's scope. Failed discovery persistence is reported in
+description, and hold raw announcement excerpts for review. All funding stages, public companies, and acquired businesses with documented NYC operations are in scope. Deterministic article extraction stays in review; company domains must come from linked evidence. Failed discovery persistence is reported in
 the run instead of appearing successful.
 
 Do not enable social posting or run social dispatch as a side effect of routine
@@ -52,3 +51,51 @@ site maintenance. Those actions require their own user authorization.
 Production credentials stay in Vercel. `.env.local` and `.vercel` are ignored.
 Submissions return success only after the database accepts them; unconfigured
 local environments return an explicit unavailable response.
+
+
+## All-stage reporting release (November 2026)
+
+The atlas now includes every funding stage, public companies, and acquired
+businesses with a documented NYC presence. Headquarters and local offices are
+distinct; historical acquired-company records retain their identity. Stage must
+not cause automatic archival or reduce signal relevance.
+
+`/research` and `/api/research` expose the public sourcebook. Reviewed facts live
+in `src/data/reporting/`. Identity/product-only reviews do not certify the old
+funding stage. Office evidence includes its source, original date where known,
+review date, and caveats. Mailing addresses and unverified leads are excluded
+from office counts and pins. Census coordinates are approximate street matches;
+they are not rooftop or unit coordinates. Shared addresses use one map marker
+that lists all associated companies. No citywide census or causal impact claim
+can be inferred from this curated sample.
+
+The existing refresh schedule now collects known-company sources four times a
+day with bounded work and a broader rotation. News and hiring keep their daily
+schedules. Undated website claims never become newly dated events. Legacy inferred events
+are excluded from the reporting timeline and Ask/homepage signal summaries;
+those use reviewed announcements and source-dated news with an identifiable
+company subject. A generic word such as Series cannot attribute an article. Hiring is
+public without login, limited to openings seen within 14 days, and capped at
+1,000 records. Empty coverage is not evidence of no hiring. Company socials
+remain dependent on external API access. This release does not dispatch posts.
+
+To inspect reviewed database changes, run:
+
+```sh
+npx tsx scripts/import-reviewed-research.ts --backup-dir=/absolute/backup/path
+```
+
+Applying requires `--apply`, write credentials, and a backup directory. Existing
+IDs and addition dates are preserved and updates check the prior row revision.
+Article-fragment records are held as drafts, not deleted.
+
+A deployment can explicitly select `ATLAS_IMPORT_REVIEWED=1` as a build-only
+variable to import after a successful build using server-side credentials.
+`ATLAS_REFRESH_SOURCES=1` additionally runs news, jobs, and known-company
+collection. These flags are one-time operator choices, not persistent settings.
+An optional `ATLAS_IMPORT_ONLY` restricts that operation to one reviewed slug.
+An explicit `publication_review: publish` records a new inclusion decision for a
+previously archived company; other draft/archive states are preserved.
+No unauthenticated write endpoint is added. Local reviewed-registry coverage
+remains usable if a database is unavailable; explicit database draft/archive
+decisions take precedence.

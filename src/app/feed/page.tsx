@@ -31,9 +31,9 @@ const NEWS_PREVIEW_LIMIT = 5;
 const POSTS_PREVIEW_LIMIT = 5;
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Early-Stage NYC AI News and Company Posts",
+  title: "NYC AI News and Company Posts",
   description:
-    "Early-stage NYC AI news links, broader context, and official posts from mapped companies.",
+    "NYC AI news links, broader context, and official posts from mapped companies.",
   path: "/newsfeed",
   image: getShareImageUrl({ page: "feed" }),
 });
@@ -64,9 +64,9 @@ export default async function FeedPage({
     <>
       <JsonLd
         data={collectionPageSchema({
-          name: "Early-Stage NYC AI News and Company Posts",
+          name: "NYC AI News and Company Posts",
           description:
-            "Early-stage NYC AI news links, broader context, and official posts from mapped companies.",
+            "NYC AI news links, broader context, and official posts from mapped companies.",
           url: absoluteUrl("/newsfeed"),
           items: feedCollectionItems({
             newsItems,
@@ -87,12 +87,12 @@ export default async function FeedPage({
               </div>
 
               <h1 className="mt-5 max-w-[820px] font-heading text-[clamp(44px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#111111]">
-                <span className="block">Early-Stage NYC AI News</span>
+                <span className="block">NYC AI News</span>
                 <span className="block">and Company Posts</span>
               </h1>
 
               <p className="mt-5 max-w-[560px] text-[17px] leading-[1.55] text-[#5F5A52] md:text-[18px]">
-                Early-stage NYC AI links, broader context, and official posts
+                NYC AI links, broader context, and official posts
                 from mapped companies.
               </p>
 
@@ -116,7 +116,7 @@ export default async function FeedPage({
             <FeedSection
               id="news-links"
               eyebrow="News links"
-              title="Early-Stage NYC AI Links to Scan"
+              title="NYC AI Links to Scan"
               href="/feed?view=all#news-links"
               linkLabel="View all"
             >
@@ -555,7 +555,7 @@ function EmptyNewsState() {
         The Newsfeed is ready.
       </p>
       <p className="mt-3 max-w-[620px] text-sm leading-[1.7] text-[#5F5A52]">
-        Fresh early-stage NYC AI links will appear here when they are ready.
+        Fresh NYC AI links will appear here when they are ready.
       </p>
     </div>
   );

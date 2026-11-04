@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = createShareMetadata({
   title: "NYC AI Startup Patterns",
   description:
-    "Read concrete buyer-led patterns across the early-stage NYC AI map, with companies, use cases, and the work each group is solving.",
+    "Read concrete buyer-led patterns across the NYC AI map, with companies, use cases, and the work each group is solving.",
   path: "/patterns",
   image: getShareImageUrl({ page: "insights" }),
 });
@@ -86,7 +86,7 @@ export default async function PatternsPage() {
         data={collectionPageSchema({
           name: "NYC AI Startup Patterns",
           description:
-            "Read concrete buyer-led patterns across the early-stage NYC AI map, with companies, use cases, and the work each group is solving.",
+            "Read concrete buyer-led patterns across the NYC AI map, with companies, use cases, and the work each group is solving.",
           url: absoluteUrl("/patterns"),
           items: patternCollectionItems(patterns),
         })}

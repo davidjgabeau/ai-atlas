@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   return createShareMetadata({
     title: `${name} on AI Atlas NYC`,
-    description: `View ${name}'s saved early-stage NYC AI companies and public profile on AI Atlas NYC.`,
+    description: `View ${name}'s saved NYC AI companies and public profile on AI Atlas NYC.`,
     path: `/profiles/${normalizedHandle}`,
     absoluteTitle: true,
   });

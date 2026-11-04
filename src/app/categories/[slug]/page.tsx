@@ -42,7 +42,7 @@ export async function generateMetadata({
     return createShareMetadata({
       title: "NYC AI Startup Categories",
       description:
-        "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
+        "Explore NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
       path: `/categories/${slug}`,
       image: getShareImageUrl({ page: "categories" }),
     });
@@ -50,7 +50,7 @@ export async function generateMetadata({
 
   return createShareMetadata({
     title: `${category.name} NYC AI Startups`,
-    description: `Explore early-stage NYC AI startups in ${category.name}.`,
+    description: `Explore NYC AI startups in ${category.name}.`,
     path: `/categories/${category.slug}`,
     image: getShareImageUrl({ category: category.slug }),
     type: "article",
@@ -77,7 +77,7 @@ export default async function CategoryPage({
         data={[
           collectionPageSchema({
             name: `${category.name} NYC AI Startups`,
-            description: `Explore early-stage NYC AI startups in ${category.name}.`,
+            description: `Explore NYC AI startups in ${category.name}.`,
             url: absoluteUrl(`/categories/${category.slug}`),
             items: companyCollectionItems(companies),
           }),

@@ -1,0 +1,1957 @@
+[
+  {
+    "slug": "hugging-face",
+    "name": "Hugging Face",
+    "website_url": "https://huggingface.co/",
+    "category": "Model Tools & Dev Platform",
+    "stage": "Series D",
+    "short_description": "Hugging Face helps developers discover, share, evaluate, and deploy AI models through an open community spanning models, datasets, applications, and libraries.",
+    "one_line_thesis": "The open collaboration hub for machine learning",
+    "founders": [
+      {
+        "name": "Cl\u00e9ment Delangue",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Julien Chaumond",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Thomas Wolf",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$235M",
+    "funding_date": "2023-08-24",
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://huggingface.co/",
+      "https://www.ibm.com/think/topics/hugging-face",
+      "https://www.ibm.com/think/news/french-ai-goes-west",
+      "https://newsroom.ibm.com/2023-08-24-IBM-to-Participate-in-235M-Series-D-Funding-Round-of-Hugging-Face",
+      "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "IBM, an investor and technology partner, explicitly identifies the headquarters as New York. NVIDIA announced an agreement to acquire Hugging Face on September 3, 2026; completion was not established. Retain the last verified funding stage, with the pending transaction visible.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 21,
+      "review_status": "Source checked",
+      "original_public_one_liner": "The platform where the machine learning community collaborates on models, datasets, and applications.",
+      "original_source_url": "https://huggingface.co/",
+      "primary_voice_route": "Creator or builder empowerment",
+      "latest_public_message_signal": "NVIDIA acquisition agreement announced September 3, 2026; open ecosystem commitment reaffirmed.",
+      "latest_signal_source_url": "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "runway",
+    "name": "Runway",
+    "website_url": "https://runway.com/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Series E",
+    "short_description": "Runway develops world models and creative AI tools that let artists and enterprises generate, edit, and simulate video, characters, and interactive environments.",
+    "one_line_thesis": "World simulation meets creative production",
+    "founders": [
+      {
+        "name": "Crist\u00f3bal Valenzuela",
+        "title": "Co-founder and co-CEO"
+      },
+      {
+        "name": "Anastasis Germanidis",
+        "title": "Co-founder and co-CEO"
+      },
+      {
+        "name": "Alejandro Matamala Ortiz",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series E",
+    "funding_amount": "$315M",
+    "funding_date": "2026-02-10",
+    "total_raised": null,
+    "lead_investor": "General Atlantic",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://runway.com/about",
+      "https://runway.com/news/runway-series-e-funding",
+      "https://salesforceventures.com/perspectives/welcome-runway/",
+      "https://tisch.nyu.edu/giving/the-tisch-gala/tisch-gala-2026/cristobal-valenzuela.html",
+      "https://modal.com/runtime/speakers"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current About page explicitly lists a New York office among several global offices; classified conservatively as office rather than inferring a current headquarters. Salesforce Ventures verifies all three founders. Product positioning now extends from creative video to world models.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "review_status": "Source checked",
+      "original_public_one_liner": "We are building AI to simulate the world through merging art and science.",
+      "original_source_url": "https://runway.com/about",
+      "primary_voice_route": "Technical doctrine",
+      "latest_public_message_signal": "Series E funds next-generation world models.",
+      "latest_signal_source_url": "https://runway.com/news/runway-series-e-funding"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "dataiku",
+    "name": "Dataiku",
+    "website_url": "https://www.dataiku.com/",
+    "category": "Model Tools & Dev Platform",
+    "stage": "Series F",
+    "short_description": "Dataiku brings data preparation, machine learning, generative AI, and governance into one collaborative platform so business and technical teams can build AI together.",
+    "one_line_thesis": "A shared platform for enterprise AI",
+    "founders": [
+      {
+        "name": "Florian Douetteau",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Cl\u00e9ment Stenac",
+        "title": "Co-founder and CTO"
+      },
+      {
+        "name": "Thomas Cabrol",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Marc Batty",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series F",
+    "funding_amount": "$200M",
+    "funding_date": "2022-12-13",
+    "total_raised": null,
+    "lead_investor": "Wellington Management",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.dataiku.com/blog/the-dataiku-story",
+      "https://www.dataiku.com/blog/dataiku-investors",
+      "https://www.globenewswire.com/news-release/2022/12/13/2572812/0/en/Dataiku-Announces-200-Million-Investment-Led-by-Wellington-Management.html",
+      "https://pages.dataiku.com/forbes-best-startup-employers",
+      "https://www.dataiku.com/succeed-nyc/agenda"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Company-authored release identifies New York headquarters; that explicit HQ evidence is from 2020. Current 2026 official event confirms CEO/CTO roles and ongoing NYC activity. The investor page still identifies the December 2022 Series F as its latest named round. Approximately $600M total primary funding at that announcement, distinct from secondary capital.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Since 2013, Dataiku has been the leader in democratizing data and empowering organization-wide collaboration.",
+      "original_source_url": "https://www.dataiku.com/blog/the-dataiku-story",
+      "primary_voice_route": "Creator or builder empowerment",
+      "latest_public_message_signal": "Current 2026 company messaging emphasizes AI success and agentic enterprise workflows.",
+      "latest_signal_source_url": "https://www.dataiku.com/succeed-nyc/agenda"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "alphasense",
+    "name": "AlphaSense",
+    "website_url": "https://www.alpha-sense.com/",
+    "category": "Fintech & Trading AI",
+    "stage": "Growth",
+    "short_description": "AlphaSense combines AI search and analysis with broker research, company disclosures, and expert insights to help business and investment teams make informed decisions.",
+    "one_line_thesis": "AI market intelligence grounded in premium content",
+    "founders": [
+      {
+        "name": "Jack Kokko",
+        "title": "Founder and CEO"
+      },
+      {
+        "name": "Raj Neervannan",
+        "title": "Co-founder and CTO"
+      }
+    ],
+    "funding_round": "Venture round",
+    "funding_amount": "$350M",
+    "funding_date": "2026-06-03",
+    "total_raised": null,
+    "lead_investor": "Vitruvian Partners; Accenture Ventures; J.P. Morgan Asset Management",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.alpha-sense.com/about/",
+      "https://www.alpha-sense.com/press/alphasense-expands-global-footprint-with-new-flagship-headquarters-in-new-york-city/",
+      "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "June 2026 official announcement identifies Hudson Yards as global headquarters and a $350M funding round. The latest announcement does not label a series letter, so stage is Growth and round is Venture round. It reports total funding well over $1B without an exact cumulative figure.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "We take decision makers from complexity to clarity",
+      "original_source_url": "https://www.alpha-sense.com/about/",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "Raised $350M and surpassed $600M ARR on June 3, 2026.",
+      "latest_signal_source_url": "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "hebbia",
+    "name": "Hebbia",
+    "website_url": "https://www.hebbia.com/",
+    "category": "Fintech & Trading AI",
+    "stage": "Series B",
+    "short_description": "Hebbia equips financial and legal teams with AI agents that analyze large document collections through transparent workflows, cited answers, and a spreadsheet interface.",
+    "one_line_thesis": "AI analysts that show their work",
+    "founders": [
+      {
+        "name": "George Sivulka",
+        "title": "Founder and CEO"
+      }
+    ],
+    "funding_round": "Series B",
+    "funding_amount": "$130M",
+    "funding_date": "2024-07-08",
+    "total_raised": null,
+    "lead_investor": "Andreessen Horowitz",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.hebbia.com/blog/hebbia-raises-usd130m-series-b",
+      "https://www.hebbia.com/careers",
+      "https://www.hebbia.com/privacy",
+      "https://www.hebbia.com/blog/acquiring-flashdocs-streamlining-financial-workflows-with-ai-slide-deck",
+      "https://www.hebbia.com/blog"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current careers page explicitly documents a Downtown NY office and NYC roles. Classified as office because a current official HQ label was not established. Series B is the latest first-party funding announcement found. Official blog identifies George Sivulka as founder and CEO. Reinstated for the all-stage atlas after a new inclusion review; its Series B stage is now in scope.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "We're building AI that stands up to the rigor of finance, with the best team to do it.",
+      "original_source_url": "https://www.hebbia.com/careers",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "October 2026 blog documents new integrations and Headless Hebbia API/MCP access.",
+      "latest_signal_source_url": "https://www.hebbia.com/blog"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00",
+    "publication_review": "publish"
+  },
+  {
+    "slug": "clay",
+    "name": "Clay",
+    "website_url": "https://www.clay.com/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Series D",
+    "short_description": "Clay combines company data, enrichment, intent signals, and AI agents into revenue workflows that help go-to-market teams research prospects and run personalized campaigns.",
+    "one_line_thesis": "A revenue engine that learns from outcomes",
+    "founders": [
+      {
+        "name": "Kareem Amin",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Varun Anand",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$115M",
+    "funding_date": "2026-09-09",
+    "total_raised": null,
+    "lead_investor": "Wellington Management",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.clay.com/press",
+      "https://www.clay.com/blog/series-d"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current official newsroom names Kareem Amin and Varun Anand as founders and lists NYC, SF, and London offices. Classified as office to avoid relying on inconsistent self-generated dossier pages for the HQ label. Series D is primary financing; employee tenders are excluded.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Companies build the revenue systems on Clay that help them grow to reach their full potential",
+      "original_source_url": "https://www.clay.com/press",
+      "primary_voice_route": "Creator or builder empowerment",
+      "latest_public_message_signal": "September 9, 2026 Series D describes a self-learning revenue engine.",
+      "latest_signal_source_url": "https://www.clay.com/blog/series-d"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "rogo",
+    "name": "Rogo",
+    "website_url": "https://rogo.com/",
+    "category": "Fintech & Trading AI",
+    "stage": "Series D",
+    "short_description": "Rogo builds AI analysts and financial agents that connect institutional data with banking and investment workflows, including research, diligence, models, and presentations.",
+    "one_line_thesis": "AI built for high finance",
+    "founders": [
+      {
+        "name": "Gabe Stengel",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "John Willett",
+        "title": "Co-founder and COO"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$160M",
+    "funding_date": "2026-04-29",
+    "total_raised": null,
+    "lead_investor": "Kleiner Perkins",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://rogo.com/",
+      "https://rogo.com/careers",
+      "https://rogo.com/blog/series-d",
+      "https://rogo.com/blog/scaling-rogo-to-build-the-future-of-investment-banking-our-75m-series-c-and-european-expansion",
+      "https://rogo.com/news/announcing-rogo-s-new-partnership-with-pitchbook"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current careers page explicitly lists New York among global offices with substantial NYC engineering, product, finance, and GTM hiring. Classified as office because the current official sources inspected did not explicitly label headquarters. January Series C has been superseded by April Series D. September strategic investment exists but the amount is not established here.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Rogo is the trusted AI partner helping the world's leading financial institutions increase efficiency and drive smarter decisions.",
+      "original_source_url": "https://rogo.com/",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "April 2026 Series D expands financial agents and embedded deployment teams.",
+      "latest_signal_source_url": "https://rogo.com/blog/series-d"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "tennr",
+    "name": "Tennr",
+    "website_url": "https://www.tennr.com/",
+    "category": "Health & Clinical AI",
+    "stage": "Series C",
+    "short_description": "Tennr uses purpose-built language models to process referral documents, verify coverage, and coordinate patient intake, helping providers resolve paperwork before care is delayed.",
+    "one_line_thesis": "Keep every patient moving through referral-based care",
+    "founders": [
+      {
+        "name": "Trey Holterman",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Diego Baugh",
+        "title": "Co-founder and CPO"
+      },
+      {
+        "name": "Tyler Johnson",
+        "title": "Co-founder and CTO"
+      }
+    ],
+    "funding_round": "Series C",
+    "funding_amount": "$101M",
+    "funding_date": "2025-06-18",
+    "total_raised": null,
+    "lead_investor": "IVP",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.tennr.com/",
+      "https://www.tennr.com/about",
+      "https://www.tennr.com/meridian",
+      "https://www.prnewswire.com/news-releases/healthcare-referrals-are-where-patients-get-lost-tennr-raises-101m-to-bring-the-visibility-our-system-desperately-needs-302485255.html"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official Meridian 2026 event page explicitly identifies Tennr headquarters at 345 Hudson Street, NYC. Company-authored PRNewswire release verifies the exact Series C date and amount; the current team page verifies the three founders.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Patient data that flows on autopilot",
+      "original_source_url": "https://www.tennr.com/",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "Current official site positions Tennr as patient orchestration across referral operations.",
+      "latest_signal_source_url": "https://www.tennr.com/"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "eliseai",
+    "name": "EliseAI",
+    "website_url": "https://eliseai.com/",
+    "category": "Health & Clinical AI",
+    "stage": "Series E",
+    "short_description": "EliseAI automates housing and healthcare operations with conversational agents that handle leasing, resident communications, scheduling, intake, and other workflows in one integrated system.",
+    "one_line_thesis": "AI operations for housing and healthcare",
+    "founders": [
+      {
+        "name": "Minna Song",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Tony Stoyanov",
+        "title": "Co-founder and CTO"
+      }
+    ],
+    "funding_round": "Series E",
+    "funding_amount": "$250M",
+    "funding_date": "2025-08-16",
+    "total_raised": null,
+    "lead_investor": "Andreessen Horowitz",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://eliseai.com/blog/eliseai-raises-250m-series-e",
+      "https://eliseai.com/blog/new-office-announcement",
+      "https://eliseai.com/blog/eliseai-world-leader-in-ai-enabled-solutions-for-housing-raises-75-million-series-d-round-valuing-company-in-excess-of-1-billion"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "January 20, 2026 press-release dateline explicitly establishes 401 Fifth Avenue as New York headquarters. The CMS also displays January 19, so use the release's dateline for that event. Category covers its healthcare vertical but the company also has a large housing business. Series E page displays August 16, 2025; preserve the displayed official date rather than substituting third-party coverage dates.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "EliseAI transforms complex healthcare and housing systems.",
+      "original_source_url": "https://eliseai.com/blog/new-office-announcement",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "January 2026 headquarters expansion documents commitment to NYC.",
+      "latest_signal_source_url": "https://eliseai.com/blog/new-office-announcement"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "modal",
+    "name": "Modal",
+    "website_url": "https://modal.com/",
+    "category": "Agent Infrastructure",
+    "stage": "Series D",
+    "short_description": "Modal provides serverless cloud infrastructure for AI, letting developers scale inference, training, and agent sandboxes through code without managing the underlying GPU infrastructure.",
+    "one_line_thesis": "Elastic compute built for AI developers",
+    "founders": [
+      {
+        "name": "Erik Bernhardsson",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Akshat Bubna",
+        "title": "Co-founder and CTO"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$750M",
+    "funding_date": "2026-10-14",
+    "total_raised": null,
+    "lead_investor": "Accel",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://modal.com/company",
+      "https://modal.com/blog/1-billion-annualized-run-rate-series-d",
+      "https://modal.com/blog/general-availability-and-series-a-press-release",
+      "https://modal.com/runtime/speakers"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official 2023 release explicitly identifies NYC headquarters; October 2026 post confirms a team spanning NY, SF, and Stockholm. October Series D supersedes May 2026 Series C. Exact cumulative funding is not stated in the latest announcement.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Making cloud development work like magic",
+      "original_source_url": "https://modal.com/company",
+      "primary_voice_route": "Technical doctrine",
+      "latest_public_message_signal": "October 14, 2026 Series D announcement describes inference, multi-node training, and sandboxes.",
+      "latest_signal_source_url": "https://modal.com/blog/1-billion-annualized-run-rate-series-d"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "pinecone",
+    "name": "Pinecone",
+    "website_url": "https://www.pinecone.io/",
+    "category": "Data & Memory Layer",
+    "stage": "Series B",
+    "short_description": "Pinecone supplies managed vector search and AI knowledge infrastructure, helping developers retrieve relevant context and build grounded applications without operating their own search systems.",
+    "one_line_thesis": "Knowledge and long-term memory for AI",
+    "founders": [
+      {
+        "name": "Edo Liberty",
+        "title": "Founder"
+      }
+    ],
+    "funding_round": "Series B",
+    "funding_amount": "$100M",
+    "funding_date": "2023-04-27",
+    "total_raised": null,
+    "lead_investor": "Andreessen Horowitz",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.pinecone.io/company/",
+      "https://www.pinecone.io/blog/series-b/",
+      "https://www.pinecone.io/newsroom/pinecone-raises-usd100m-in-series-b-funding-to-provide-long-term-memory-for-ai/",
+      "https://a16z.com/announcement/investing-in-pinecone/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current company page explicitly labels New York City HQ. That page lists Ash Ashutosh as current CEO, so founder Edo Liberty is not labeled current CEO. Footer says San Francisco but the explicit location heading says NYC HQ; retain this source conflict in audit notes.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Pinecone is the trusted AI knowledge company.",
+      "original_source_url": "https://www.pinecone.io/company/",
+      "primary_voice_route": "Technical doctrine",
+      "latest_public_message_signal": "Current company page expands positioning to Database, Nexus, and Marketplace.",
+      "latest_signal_source_url": "https://www.pinecone.io/company/"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "elevenlabs",
+    "name": "ElevenLabs",
+    "website_url": "https://elevenlabs.io/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Series D",
+    "short_description": "ElevenLabs develops audio foundation models and production platforms for speech, music, dubbing, and conversational agents, connecting voice research directly to creator and enterprise tools.",
+    "one_line_thesis": "An audio AI stack from models to agents",
+    "founders": [
+      {
+        "name": "Mati Staniszewski",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Piotr Dabkowski",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$500M",
+    "funding_date": "2026-02-04",
+    "total_raised": "$781M",
+    "lead_investor": "Sequoia Capital",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://elevenlabs.io/blog/series-d",
+      "https://elevenlabs.io/blog/tender-22bn",
+      "https://summit.elevenlabs.io/london",
+      "https://elevenlabs.io/de/careers/750a8325-7ce1-45ea-b0b1-61dab78a456e/it-support-engineer"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official hiring page explicitly describes an in-person New York office. The September 30, 2026 $300M employee tender is secondary liquidity, not new company funding; latest verified primary financing remains the February Series D. Total funding of $781M is explicitly stated at Series D.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Founded in 2022, ElevenLabs began by developing a truly human-like AI text to speech model.",
+      "original_source_url": "https://elevenlabs.io/blog/series-d",
+      "primary_voice_route": "Creator or builder empowerment",
+      "latest_public_message_signal": "September 2026 tender update emphasizes a full interaction platform and enterprise agents.",
+      "latest_signal_source_url": "https://elevenlabs.io/blog/tender-22bn"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "harvey",
+    "name": "Harvey",
+    "website_url": "https://www.harvey.ai/",
+    "category": "Legal & Compliance AI",
+    "stage": "Growth",
+    "short_description": "Harvey combines legal domain expertise, AI models, and an enterprise platform to help law firms and in-house teams research, draft, and execute complex legal work.",
+    "one_line_thesis": "AI infrastructure for the practice of law",
+    "founders": [
+      {
+        "name": "Winston Weinberg",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Gabe Pereyra",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Venture round",
+    "funding_amount": "$550M",
+    "funding_date": "2026-09-09",
+    "total_raised": null,
+    "lead_investor": "Diffusion; Lightspeed Venture Partners",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.harvey.ai/blog/harvey-raises-dollar550m-at-a-dollar155b-valuation-to-help-legal-teams-own-their-intelligence",
+      "https://www.harvey.ai/blog/agreements-make-history",
+      "https://www.harvey.ai/company/careers/9fe1324c-8eeb-4138-ab85-f4d75968e48a",
+      "https://www.harvey.ai/company/careers/5a1452ff-566c-4a80-905d-61281a02a40f"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official New York office-location job pages establish meaningful NYC presence. The September 2026 announcement identifies a $550M round but does not label its series; use Growth rather than importing a third-party letter. Founders are explicitly named in that announcement.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 25,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Agreements are the foundation of law.",
+      "original_source_url": "https://www.harvey.ai/blog/agreements-make-history",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "September 2026 capital supports customer-owned intelligence, open-weight legal models, and agents.",
+      "latest_signal_source_url": "https://www.harvey.ai/blog/harvey-raises-dollar550m-at-a-dollar155b-valuation-to-help-legal-teams-own-their-intelligence"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "decagon",
+    "name": "Decagon",
+    "website_url": "https://decagon.ai/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Series D",
+    "short_description": "Decagon lets customer experience teams deploy AI agents across voice, chat, email, and messaging, using configurable operating procedures to deliver personalized service.",
+    "one_line_thesis": "AI concierge service across customer channels",
+    "founders": [
+      {
+        "name": "Jesse Zhang",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Ashwin Sreenivas",
+        "title": "Co-founder and President"
+      }
+    ],
+    "funding_round": "Series D",
+    "funding_amount": "$250M",
+    "funding_date": "2026-01-27",
+    "total_raised": null,
+    "lead_investor": "Coatue Management; Index Ventures",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://decagon.ai/about",
+      "https://decagon.ai/blog/series-d-announcement",
+      "https://decagon.ai/blog/welcoming-our-nyc-office",
+      "https://decagon.ai/blog/templates"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official July 14, 2025 announcement establishes a New York office, with current careers page still listing NYC. January Series D is $250M; no need to infer totals from prior rounds.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Empower every brand to deliver concierge customer experiences",
+      "original_source_url": "https://decagon.ai/about",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "January 2026 Series D reiterates agent operating procedures and personalized concierge experiences.",
+      "latest_signal_source_url": "https://decagon.ai/blog/series-d-announcement"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "uipath",
+    "name": "UiPath",
+    "website_url": "https://www.uipath.com/",
+    "category": "Agent Infrastructure",
+    "stage": "Public",
+    "short_description": "UiPath orchestrates AI agents, software robots, and people across enterprise processes, combining automation development with governance and controls for production workflows.",
+    "one_line_thesis": "Orchestrate agents, robots, and people",
+    "founders": [
+      {
+        "name": "Daniel Dines",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Marius T\u00eerc\u0103",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": null,
+    "funding_amount": null,
+    "funding_date": null,
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm",
+      "https://www.uipath.com/hubfs/resources/documents/event_PDFs/Main-session-and-Breakout-1.pdf"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "2026 company 10-K explicitly identifies New York global headquarters and current agentic automation positioning. Listed on NYSE as PATH. Founder titles are kept historical and do not imply both currently hold operating roles. No private funding event is inserted for a public company.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 21,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Our platform empowers customers to combine automation, AI agents, and people",
+      "original_source_url": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "FY2026 10-K describes agentic automation, orchestration, governance, and interoperability.",
+      "latest_signal_source_url": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "vast-data",
+    "name": "VAST Data",
+    "website_url": "https://www.vastdata.com/",
+    "category": "Data & Memory Layer",
+    "stage": "Series F",
+    "short_description": "VAST Data unifies storage, databases, and real-time processing in an AI operating system designed to move data across model training, inference, and agent workloads.",
+    "one_line_thesis": "A unified data foundation for the AI stack",
+    "founders": [
+      {
+        "name": "Renen Hallak",
+        "title": "Founder and CEO"
+      },
+      {
+        "name": "Jeff Denworth",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Shachar Fienblit",
+        "title": "Co-founder and Chief Research and Development Officer"
+      },
+      {
+        "name": "Alon Horev",
+        "title": "Co-founder and CTO"
+      }
+    ],
+    "funding_round": "Series F",
+    "funding_amount": null,
+    "funding_date": "2026-04-22",
+    "total_raised": null,
+    "lead_investor": "Drive Capital; Access Industries",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.vastdata.com/about",
+      "https://www.vastdata.com/contact",
+      "https://www.vastdata.com/press-releases/vast-series-f-financing-at-30-billion-valuation"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current Contact page lists New York under Sales Locations; official Series F release calls VAST remote-first. Do not label it NYC HQ based solely on the press-release dateline. The Series F transaction was approximately $1B including both primary and secondary capital, so funding_amount is null rather than treating the entire transaction as primary fundraising. The press-release body is dated April 22, 2026 while CMS header shows April 21.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "VAST Data is building the AI Operating System, a global data platform that empowers intelligent agents to store, think, communicate, and act.",
+      "original_source_url": "https://www.vastdata.com/about",
+      "primary_voice_route": "Technical doctrine",
+      "latest_public_message_signal": "April 2026 Series F positions VAST as the AI Operating System company.",
+      "latest_signal_source_url": "https://www.vastdata.com/press-releases/vast-series-f-financing-at-30-billion-valuation"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "persado",
+    "name": "Persado",
+    "website_url": "https://www.persado.com/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Growth",
+    "short_description": "Persado generates and optimizes marketing language using response and transaction data, pairing personalized content with compliance controls for banks and other regulated businesses.",
+    "one_line_thesis": "Marketing language optimized for motivation and compliance",
+    "founders": [
+      {
+        "name": "Alex Vratskides",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Assaf Baciu",
+        "title": "Co-founder and President"
+      }
+    ],
+    "funding_round": null,
+    "funding_amount": null,
+    "funding_date": null,
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.persado.com/about",
+      "https://www.persado.com/company/press-releases/persado-hails-2023-the-year-of-motivation-copy"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Current About page explicitly lists New York headquarters, both founders, and AI agents combining marketing performance with compliance. A current first-party financing history was not established; mature company founded in 2012 is classified Growth and funding fields are left null.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Persado AI fuses Martech and Regtech in a single platform using AI agents that optimize marketing performance and compliance in real-time.",
+      "original_source_url": "https://www.persado.com/about",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "Current official positioning combines marketing AI and regulatory controls.",
+      "latest_signal_source_url": "https://www.persado.com/about"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "amelia",
+    "name": "Amelia",
+    "website_url": "https://amelia.ai/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Acquired",
+    "short_description": "Amelia developed enterprise conversational AI that automated customer service and internal support, deploying digital agents across finance, healthcare, insurance, and other complex industries.",
+    "one_line_thesis": "Enterprise conversational AI, acquired by SoundHound",
+    "founders": [
+      {
+        "name": "Chetan Dube",
+        "title": "Founder"
+      }
+    ],
+    "funding_round": null,
+    "funding_amount": null,
+    "funding_date": null,
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://investors.soundhound.com/news-releases/news-release-details/soundhound-ai-acquires-amelia-significantly-expanding-its-scale",
+      "https://investors.soundhound.com/static-files/265b3ec8-c438-441e-96c0-4044d3654cdf",
+      "https://www.prnewswire.com/apac/news-releases/its-a-three-peat-everest-group-names-amelia-a-leader-in-conversational-ai-three-years-in-a-row-301947307.html",
+      "https://www.soundhound.com/wp-content/uploads/2026/02/EULA-Customer-Terms-Conditions-FINAL.pdf",
+      "https://www.prnewswire.com/news-releases/amelia-announces-175-million-strategic-investment-from-buildgroup-and-monroe-capital-301764483.html"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Historic acquired-company profile: Amelia, formerly IPsoft, was headquartered in NYC before acquisition. SoundHound FY2025 10-K states completion on August 6, 2024; public announcement was August 8. Amelia.ai now redirects to SoundHound OASYS; do not substitute the acquirer product for Amelia historic blurb. Current SoundHound-hosted Amelia legal documents retain a NYC address. Company-authored March 7, 2023 announcement explicitly verifies founder Chetan Dube.",
+    "blurb_audit": {
+      "identity_status": "Acquired company \u2014 historic profile",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Amelia brings a strong legacy in enterprise AI along with customer service contracts from multinationals across finance, insurance, retail, and healthcare",
+      "original_source_url": "https://investors.soundhound.com/news-releases/news-release-details/soundhound-ai-acquires-amelia-significantly-expanding-its-scale",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "Amelia acquired by SoundHound in August 2024; historical company retained for ecosystem coverage.",
+      "latest_signal_source_url": "https://investors.soundhound.com/static-files/265b3ec8-c438-441e-96c0-4044d3654cdf"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "openai",
+    "name": "OpenAI",
+    "website_url": "https://openai.com/",
+    "category": "Model Tools & Dev Platform",
+    "stage": "Growth",
+    "short_description": "OpenAI researches and deploys advanced AI through ChatGPT, developer APIs, and Codex, connecting foundation models with consumer, enterprise, and software development workflows.",
+    "one_line_thesis": "Frontier models deployed through everyday products",
+    "founders": [
+      {
+        "name": "Sam Altman",
+        "title": "Founding co-chair"
+      },
+      {
+        "name": "Elon Musk",
+        "title": "Founding co-chair"
+      },
+      {
+        "name": "Greg Brockman",
+        "title": "Founding CTO"
+      },
+      {
+        "name": "Ilya Sutskever",
+        "title": "Founding research director"
+      },
+      {
+        "name": "Trevor Blackwell",
+        "title": "Founding member"
+      },
+      {
+        "name": "Vicki Cheung",
+        "title": "Founding member"
+      },
+      {
+        "name": "Andrej Karpathy",
+        "title": "Founding member"
+      },
+      {
+        "name": "Durk Kingma",
+        "title": "Founding member"
+      },
+      {
+        "name": "John Schulman",
+        "title": "Founding member"
+      },
+      {
+        "name": "Pamela Vagata",
+        "title": "Founding member"
+      },
+      {
+        "name": "Wojciech Zaremba",
+        "title": "Founding member"
+      }
+    ],
+    "funding_round": "Venture round",
+    "funding_amount": "$122B",
+    "funding_date": "2026-03-31",
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "https://openai.com/careers/manager-applied-ai-architect-san-francisco/",
+      "https://openai.com/index/introducing-openai/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official current hiring page explicitly says the role can be based in its New York office. March 31, 2026 announcement states $122B in committed capital; commitments are distinguished from cash proceeds. The company does not assign a series label. Founder roster and titles reproduce the 2015 announcement and do not imply current employment or leadership.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "review_status": "Source checked",
+      "original_public_one_liner": "OpenAI is becoming the core infrastructure for AI",
+      "original_source_url": "https://openai.com/index/accelerating-the-next-phase-ai/",
+      "primary_voice_route": "Mission-maximalist",
+      "latest_public_message_signal": "March 2026 announcement connects ChatGPT, APIs, Codex, enterprise adoption, and compute.",
+      "latest_signal_source_url": "https://openai.com/index/accelerating-the-next-phase-ai/"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "anthropic",
+    "name": "Anthropic",
+    "website_url": "https://www.anthropic.com/",
+    "category": "Model Tools & Dev Platform",
+    "stage": "Series H",
+    "short_description": "Anthropic develops Claude models, assistants, and coding tools, combining frontier AI research with an explicit focus on reliable, interpretable, and steerable systems.",
+    "one_line_thesis": "Claude and the science of reliable AI",
+    "founders": [
+      {
+        "name": "Dario Amodei",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Daniela Amodei",
+        "title": "Co-founder and President"
+      },
+      {
+        "name": "Tom Brown",
+        "title": "Co-founder and Chief Compute Officer"
+      },
+      {
+        "name": "Jack Clark",
+        "title": "Co-founder and Head of Public Benefit"
+      },
+      {
+        "name": "Jared Kaplan",
+        "title": "Co-founder and Chief Science Officer"
+      },
+      {
+        "name": "Sam McCandlish",
+        "title": "Co-founder and Chief Architect"
+      },
+      {
+        "name": "Chris Olah",
+        "title": "Co-founder and Interpretability Research Lead"
+      }
+    ],
+    "funding_round": "Series H",
+    "funding_amount": "$65B",
+    "funding_date": "2026-05-28",
+    "total_raised": null,
+    "lead_investor": "Altimeter Capital; Dragoneer; Greenoaks; Sequoia Capital",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.anthropic.com/company/leadership",
+      "https://www.anthropic.com/news/series-h",
+      "https://www.anthropic.com/news/new-offices-in-paris-and-munich-expand-european-presence",
+      "https://job-boards.greenhouse.io/anthropic/jobs/5383710008"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official global office announcement explicitly lists New York; current AV role requires work from the New York office. May 2026 Series H includes $15B of previously committed hyperscaler investments, so it must not be added indiscriminately to prior announced financing totals.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "review_status": "Source checked",
+      "original_public_one_liner": "As a public benefit corporation, Anthropic is dedicated to ensuring the world safely makes the transition through transformative AI.",
+      "original_source_url": "https://www.anthropic.com/company/leadership",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "latest_public_message_signal": "May 2026 Series H supports research, compute, and expanding Claude products.",
+      "latest_signal_source_url": "https://www.anthropic.com/news/series-h"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "glean",
+    "name": "Glean",
+    "website_url": "https://www.glean.com/",
+    "category": "Data & Memory Layer",
+    "stage": "Series F",
+    "short_description": "Glean connects enterprise information through search, a company knowledge graph, and permissions-aware AI assistants and agents that answer questions and act across workplace systems.",
+    "one_line_thesis": "Enterprise AI grounded in company context",
+    "founders": [
+      {
+        "name": "Arvind Jain",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "T.R. Vishwanath",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Piyush Prahladka",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Tony Gentilcore",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series F",
+    "funding_amount": "$150M",
+    "funding_date": "2025-06-10",
+    "total_raised": null,
+    "lead_investor": "Wellington Management",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.glean.com/blog/glean-series-f-announcement",
+      "https://www.glean.com/press/glean-introduces-third-generation-ai-assistant-new-enterprise-graph-to-enable-the-superintelligent-enterprise",
+      "https://jobs.generalcatalyst.com/companies/glean/jobs/58812540-corporate-sales-director",
+      "https://www.glean.com/careers"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "NYC office is explicit in company-authored hiring copy reproduced on investor General Catalyst's portfolio job board; the specific position is archived. This establishes documented NYC presence rather than HQ. Do not confuse Glean Work AI with similarly named NYC finance/data startups. Current official careers confirms the standard four-day office model but does not expose locations in static HTML.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Glean is the Work AI platform that connects and understands all your enterprise data",
+      "original_source_url": "https://www.glean.com/press/glean-introduces-third-generation-ai-assistant-new-enterprise-graph-to-enable-the-superintelligent-enterprise",
+      "primary_voice_route": "Technical doctrine",
+      "latest_public_message_signal": "Current official site broadens from search to enterprise context, assistants, and agent governance.",
+      "latest_signal_source_url": "https://www.glean.com/careers"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "sierra",
+    "name": "Sierra",
+    "website_url": "https://sierra.ai/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Growth",
+    "short_description": "Sierra builds customer-facing AI agents that resolve requests and complete transactions across voice and digital channels, with a platform spanning development, deployment, and improvement.",
+    "one_line_thesis": "AI agents accountable for customer outcomes",
+    "founders": [
+      {
+        "name": "Bret Taylor",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Clay Bavor",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Venture round",
+    "funding_amount": "$950M",
+    "funding_date": "2026-05-04",
+    "total_raised": null,
+    "lead_investor": "Tiger Global; GV",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://sierra.ai/uk/blog/sierra-expands-to-new-york",
+      "https://sierra.ai/uk/blog/theres-an-agent-for-that-and-it-runs-on-sierra",
+      "https://sierra.ai/es/blog/better-customer-experiences-built-on-sierra"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official May 7, 2025 post announces the New York office, with later company post confirming it among operating offices. The latest company funding announcement says it is raising $950M and does not give a series letter; Growth is used rather than a third-party Series E label. Localized official pages carry English article text and exact dates.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "There's an agent for that, and it's running on Sierra.",
+      "original_source_url": "https://sierra.ai/uk/blog/theres-an-agent-for-that-and-it-runs-on-sierra",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "May 2026 funding announcement emphasizes billions of customer interactions and an intelligence inflection.",
+      "latest_signal_source_url": "https://sierra.ai/es/blog/better-customer-experiences-built-on-sierra"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "cursor",
+    "name": "Cursor",
+    "website_url": "https://cursor.com/",
+    "category": "Model Tools & Dev Platform",
+    "stage": "Acquired",
+    "short_description": "Cursor builds an AI coding environment where developers delegate work to agents grounded in their codebase, combining model research with editing and software delivery tools.",
+    "one_line_thesis": "Codebase-aware agents for building software",
+    "founders": [
+      {
+        "name": "Michael Truell",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Sualeh Asif",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Aman Sanger",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Arvid Lunnemark",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": null,
+    "funding_amount": null,
+    "funding_date": null,
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://cursor.com/careers",
+      "https://prod.cursor.com/blog/joining-spacex",
+      "https://cursor.com/blog/topic/company",
+      "https://a16z.com/cursor-spacexai-the-fastest-iterating-team-wins/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Cursor's official August 14, 2026 post explicitly says SpaceX acquisition completed. Preserve Cursor identity as the acquired company; no stale private financing stage. Current official careers lists substantial NYC sales, engineering, deployment, product, and people roles. Founders verified by investor a16z.",
+    "blurb_audit": {
+      "identity_status": "Acquired company \u2014 current maintained brand",
+      "sourcing_mode": "Synthesized",
+      "word_count": 25,
+      "review_status": "Source checked",
+      "original_public_one_liner": "Cursor is an applied research team focused on building the future of software development.",
+      "original_source_url": "https://prod.cursor.com/",
+      "primary_voice_route": "Creator or builder empowerment",
+      "latest_public_message_signal": "August 14, 2026 official post announces completed acquisition by SpaceX.",
+      "latest_signal_source_url": "https://prod.cursor.com/blog/joining-spacex"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "nayya",
+    "name": "Nayya",
+    "website_url": "https://www.nayya.com/",
+    "category": "Health & Clinical AI",
+    "stage": "Series C",
+    "short_description": "Nayya connects health and financial benefits data to guide employee decisions, identify overlooked coverage, and help people take action on benefits throughout the year.",
+    "one_line_thesis": "AI guidance for employee health and wealth",
+    "founders": [
+      {
+        "name": "Sina Chehrazi",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Akash Magoon",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series C",
+    "funding_amount": "$55M",
+    "funding_date": "2022-03-02",
+    "total_raised": null,
+    "lead_investor": "ICONIQ Growth",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.nayya.com/about-us",
+      "https://www.nayya.com/blog/nayya-raises-55-million-doubling-its-valuation-seriesc",
+      "https://www.nayya.com/blog/nayya-forms-national-alliances-with-top-insurance-brokerage-firms-triples-growth-in-q1-2021",
+      "https://www.nayya.com/blog/nayya-acquires-northstar-and-unveils-first-of-its-kind-agentic-ai-health-and-wealth-benefits-solution",
+      "https://ventures.adp.com/portfolio/nayya/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official historic company boilerplate establishes NYC HQ and two founders. ADP Ventures' current portfolio labels Series C. Later strategic financing is documented but exact amount/date were not established here. Current About states $130M+ cumulative financing, so total_raised remains null rather than treating a lower bound as exact. March 2, 2022 dateline is the Series C announcement date; its migrated CMS header shows April 5.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 24,
+      "review_status": "Source checked",
+      "original_public_one_liner": "We exist to power human thriving.",
+      "original_source_url": "https://www.nayya.com/about-us",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "September 2025 Northstar acquisition announcement expands health/wealth benefits and introduces a SuperAgent.",
+      "latest_signal_source_url": "https://www.nayya.com/blog/nayya-acquires-northstar-and-unveils-first-of-its-kind-agentic-ai-health-and-wealth-benefits-solution"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "k-health",
+    "name": "K Health",
+    "website_url": "https://www.khealth.com/",
+    "category": "Health & Clinical AI",
+    "stage": "Growth",
+    "short_description": "K Health integrates AI patient intake, medical-record-based answers, and clinical orchestration into health systems, connecting digital engagement with licensed clinicians and longitudinal care.",
+    "one_line_thesis": "Clinical AI infrastructure connected to health systems",
+    "founders": [
+      {
+        "name": "Allon Bloch",
+        "title": "Co-founder and CEO"
+      },
+      {
+        "name": "Ran Shaul",
+        "title": "Co-founder and CPO"
+      }
+    ],
+    "funding_round": null,
+    "funding_amount": null,
+    "funding_date": null,
+    "total_raised": null,
+    "lead_investor": null,
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://www.khealth.com/",
+      "https://www.khealth.com/team",
+      "https://khealth.com/press",
+      "https://job-boards.greenhouse.io/khealthcareers",
+      "https://khealth.com/wp-content/uploads/2023/03/K-Visual-Analysis_February-2023.pdf"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Official company hiring boilerplate identifies NYC HQ; company-hosted material also explicitly states New York headquarters. Current site positions K Health as B2B health-system infrastructure and care, so do not use a stale direct-to-consumer app blurb. No exact latest first-party funding announcement or series label was established; Growth is used and funding fields are null. Founder array includes only people explicitly identified as co-founders on current official team page; it is not asserted exhaustive.",
+    "blurb_audit": {
+      "identity_status": "Current company",
+      "sourcing_mode": "Synthesized",
+      "word_count": 23,
+      "review_status": "Source checked",
+      "original_public_one_liner": "AI-Enabled Care, Built for Leading Health Systems",
+      "original_source_url": "https://www.khealth.com/",
+      "primary_voice_route": "Human outcome and belonging",
+      "latest_public_message_signal": "September 30, 2026 press index lists UVA Health virtual-primary-care expansion.",
+      "latest_signal_source_url": "https://khealth.com/press"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "outtake",
+    "name": "Outtake",
+    "website_url": "https://www.outtake.ai/",
+    "category": "Cybersecurity AI",
+    "stage": "Series B",
+    "short_description": "Outtake deploys autonomous agents to detect, investigate, and remove impersonation threats, linking fake domains, accounts, apps, and ads into coordinated campaigns.",
+    "one_line_thesis": "Autonomous agents defend digital trust across the public internet.",
+    "founders": [
+      {
+        "name": "Alex Dhillon",
+        "title": "Founder & CEO"
+      }
+    ],
+    "funding_round": "Series B",
+    "funding_amount": "$40M",
+    "funding_date": "2026-01-28",
+    "lead_investor": "ICONIQ",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.outtake.ai/",
+      "https://www.outtake.ai/our-mission",
+      "https://www.linkedin.com/posts/outtakeai_we-closed-a-40m-series-b-led-by-iconiq-last-activity-7433151947240538112-DKOZ",
+      "https://venturebeat.com/business/outtake-raises-40m-series-b-led-by-iconiq-to-build-the-unified-platform-for-digital-trust-in-the-ai-era",
+      "https://jobs.ashbyhq.com/outtake/cb6d184a-0b12-4e80-b216-58f3af9849aa"
+    ],
+    "notes": "Current independent company. Funding amount/round/lead confirmed by company's own LinkedIn; exact January 28, 2026 date by company Business Wire release syndicated on VentureBeat. Aggregate total funding varies among databases and is intentionally omitted. NYC office is in Williamsburg; headquarters status not required to establish presence. Founder uses Alex Dhillon on company site.",
+    "blurb_audit": {
+      "identity_status": "Current independent company",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "original_public_line": "Agentic Brand Protection, Executive Protection, and Narrative Intelligence.",
+      "original_source": "https://www.outtake.ai/",
+      "latest_signal": "2026 product copy describes millions of autonomous agents and campaign-level takedowns.",
+      "latest_source": "https://www.outtake.ai/",
+      "review_status": "Verified",
+      "word_count": 21
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "sentience",
+    "name": "Sentience",
+    "website_url": "https://sentience.com/",
+    "category": "AI-Native Consumer & Social",
+    "stage": "Seed",
+    "short_description": "Sentience builds personal AI models from memories, relationships, and decisions, helping founders and operators recall context and communicate in their own voice.",
+    "one_line_thesis": "A personal AI built around one person's memory and judgment.",
+    "founders": [
+      {
+        "name": "Sam Kececi",
+        "title": "Founder & CEO"
+      }
+    ],
+    "total_raised": "$6.5M",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://sentience.com/",
+      "https://sentience.com/careers",
+      "https://sentience.com/master-plan",
+      "https://baincapitalventures.com/insight/video-every-ai-feels-the-same-sentience-is-changing-that/",
+      "https://www.southparkcommons.com/companies/the-sentience-company"
+    ],
+    "notes": "Current independent company, also styled The Sentience Company / The Human Sentience Company. Seed classification is supported by investor Bain Capital Ventures' March 26, 2026 founder story, not inferred from total funding. Company careers says $6.5M raised to date but gives no round size/date or lead, so these are omitted. Current physical office verified in Williamsburg; exact street undisclosed. Mind emulation is long-term mission; blurb describes current personal-memory product.",
+    "blurb_audit": {
+      "identity_status": "Current independent company",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Human outcome and belonging",
+      "original_public_line": "Sentience multiplies founders, business owners, and executives to accomplish more.",
+      "original_source": "https://sentience.com/",
+      "latest_signal": "Homepage emphasizes a persistent personal model; master plan separates engineering features from consciousness research.",
+      "latest_source": "https://sentience.com/master-plan",
+      "review_status": "Verified",
+      "word_count": 22
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "topline-pro",
+    "name": "Topline Pro",
+    "website_url": "https://www.toplinepro.com/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Series B",
+    "short_description": "Topline Pro gives local service businesses an AI teammate for marketing, customer calls, quotes, and payments, helping tradespeople grow without becoming software experts.",
+    "one_line_thesis": "An AI back office for local service professionals.",
+    "founders": [
+      {
+        "name": "Nick Ornitz",
+        "title": "Co-founder & CEO"
+      },
+      {
+        "name": "Shannon Kay",
+        "title": "Co-founder & COO"
+      }
+    ],
+    "funding_round": "Series B",
+    "funding_amount": "$27M",
+    "funding_date": "2025-08-14",
+    "lead_investor": "Northzone",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.toplinepro.com/",
+      "https://www.toplinepro.com/our-story",
+      "https://www.toplinepro.com/contact",
+      "https://www.prnewswire.com/news-releases/topline-pro-announces-27m-to-transform-local-home-services-into-scalable-ai-driven-businesses-302530370.html",
+      "https://jobs.ashbyhq.com/topline-pro/0916634d-739b-431f-a93d-cff224f272d8/"
+    ],
+    "notes": "Current independent company; formerly ProPhone. First-party company story and company-issued press release verify Series B. Current leadership page verifies founder titles. Primary role states 300 Kent Avenue Brooklyn and onsite Monday\u2013Friday. Broader platform includes operations and invoicing as well as marketing, so taxonomy label is a practical existing-category fit.",
+    "blurb_audit": {
+      "identity_status": "Current independent company, formerly ProPhone",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Creator or builder empowerment",
+      "original_public_line": "Your own custom AI that powers every part of your business.",
+      "original_source": "https://www.toplinepro.com/",
+      "latest_signal": "Current Sidekick product covers calls, quotes, invoices, collections and customer communications.",
+      "latest_source": "https://www.toplinepro.com/",
+      "review_status": "Verified",
+      "word_count": 23
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "minerva-bi",
+    "name": "Minerva",
+    "website_url": "https://www.minerva.io/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Growth",
+    "short_description": "Minerva combines consumer context with AI data engineering and data science agents, helping marketers unify customer data, build campaigns, and measure results.",
+    "one_line_thesis": "Consumer context becomes an operating layer for marketing agents.",
+    "founders": [
+      {
+        "name": "Jackson Engles",
+        "title": "Co-founder & CEO"
+      },
+      {
+        "name": "Mathew Joseph",
+        "title": "Co-founder & CTO"
+      },
+      {
+        "name": "Daniel Saedi",
+        "title": "Co-founder"
+      }
+    ],
+    "total_raised": "$20M",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.minerva.io/",
+      "https://www.minerva.io/blog/introducing-minerva",
+      "https://www.minerva.io/blog/minerva-democratizing-data-with-openai",
+      "https://www.minerva.io/company",
+      "https://www.sec.gov/Archives/edgar/data/2036427/000203642725000003/xslFormDX08/primary_doc.xml",
+      "https://jobs.ashbyhq.com/minerva/735ef16e-ff0a-4387-a869-34c0adafded8",
+      "https://www.linkedin.com/in/daniel-saedi"
+    ],
+    "notes": "Legal entity Minerva BI, Inc.; slug must be minerva-bi. This is consumer marketing AI at minerva.io, not Minerva University, anti-fraud Minerva, or construction Minerva. June 9, 2026 company launch discloses $20M in funding from several investors without a round letter or designated lead; Growth is a broad supported label, not an inferred Series A. $20M is cumulative as of launch, not one financing. Mathew Joseph CTO title is on company's authored technical blog; Daniel cofounder identity is supported by founder letter (Daniel/MJ), own profile and SEC executive roster; CSO title not used without primary confirmation. New November 2026 financing lead surfaced in secondary indexing but was not primary-verified and is not added.",
+    "blurb_audit": {
+      "identity_status": "Current independent company; Minerva BI, Inc.",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Technical doctrine",
+      "original_public_line": "Minerva builds AI for marketing leaders.",
+      "original_source": "https://www.minerva.io/blog/introducing-minerva",
+      "latest_signal": "June 2026 public launch centers Agentic Data Engineer and Agentic Data Scientist built with OpenAI.",
+      "latest_source": "https://www.minerva.io/blog/minerva-democratizing-data-with-openai",
+      "review_status": "Verified",
+      "word_count": 22
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "altana",
+    "name": "Altana",
+    "website_url": "https://altana.ai/",
+    "category": "Legal & Compliance AI",
+    "stage": "Series C",
+    "short_description": "Altana connects businesses and governments through an AI product network, mapping value chains to automate trade compliance, customs brokerage, and supply-chain collaboration.",
+    "one_line_thesis": "A shared intelligence network for trusted global trade.",
+    "founders": [
+      {
+        "name": "Evan Smith",
+        "title": "Co-founder & CEO"
+      },
+      {
+        "name": "Peter Swartz",
+        "title": "Co-founder & Chief Science Officer"
+      },
+      {
+        "name": "Raphael Tehranian",
+        "title": "Co-founder & COO"
+      }
+    ],
+    "funding_round": "Series C",
+    "funding_amount": "$200M",
+    "funding_date": "2024-07-29",
+    "lead_investor": "US Innovative Technology Fund (USIT)",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://altana.ai/",
+      "https://altana.ai/leadership",
+      "https://altana.ai/resources/series-c-valuation",
+      "https://altana.ai/legal",
+      "https://trust.altana.ai/"
+    ],
+    "notes": "Current independent company; legal entity Altana Technologies, Inc. Company release verifies announced $200M Series C; later Form D or aggregator figures should not silently replace announced round amount. Aggregate funding omitted because databases disagree and primary release does not establish total. Current company trust center's July 15, 2026 ISO update explicitly names Brooklyn headquarters; current legal address 25 Kent Suite 501 aligns with reported Williamsburg HQ lease. Category reflects current trade-compliance/brokerage workflows while product spans supply-chain data and procurement.",
+    "blurb_audit": {
+      "identity_status": "Current independent company",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "original_public_line": "The AI network for trade",
+      "original_source": "https://altana.ai/",
+      "latest_signal": "Current homepage centers product passports, trade compliance, customs brokerage and public-private collaboration.",
+      "latest_source": "https://altana.ai/",
+      "review_status": "Verified",
+      "word_count": 22
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "opentrons",
+    "name": "Opentrons",
+    "website_url": "https://opentrons.com/",
+    "category": "Life Sciences AI",
+    "stage": "Series E",
+    "short_description": "Opentrons connects AI models to open laboratory robots, turning experiment design, execution, and structured results into a continuous learning loop for autonomous science.",
+    "one_line_thesis": "The physical execution layer for autonomous science.",
+    "founders": [
+      {
+        "name": "William Canine",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Chiu Chau",
+        "title": "Co-founder"
+      },
+      {
+        "name": "Nicholas Wagner",
+        "title": "Co-founder (former)"
+      }
+    ],
+    "funding_round": "Series E",
+    "funding_amount": "$40M",
+    "funding_date": "2026-10-29",
+    "lead_investor": "Avego",
+    "nyc_presence": "headquarters",
+    "source_urls": [
+      "https://opentrons.com/",
+      "https://opentrons.com/about/about-us",
+      "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+      "https://docs.opentrons.com/flex/support/",
+      "https://www.ycombinator.com/companies/opentrons"
+    ],
+    "notes": "Current independent company, Opentrons Labworks Inc. October 29, 2026 primary release verifies $40M Series E led by Avego and explicitly NYC headquarters. Current Flex docs resolve office at 45-18 Court Square West in Long Island City, Queens. AI is now core strategy: AI designs, runs and improves experiments on open robots; distinguish from pure software companies. Current CEO is James Atwood, not cofounder William Canine or former CEO Jon Brennan-Badal. YC lists all three founders; current company leadership identifies Canine and Chau as cofounders. Aggregate total funding omitted.",
+    "blurb_audit": {
+      "identity_status": "Current independent company",
+      "sourcing_mode": "Light edit",
+      "primary_voice_route": "Technical doctrine",
+      "original_public_line": "Its open, API-driven laboratory robots standardize biological experimentation, creating a continuous learning loop between AI models and the physical lab.",
+      "original_source": "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+      "latest_signal": "October 29, 2026 Series E explicitly standardizes AI-driven science on the robotics platform.",
+      "latest_source": "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+      "review_status": "Verified",
+      "word_count": 23
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "cubefabs",
+    "name": "CubeFabs",
+    "website_url": "https://cubefabs.com/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Unknown",
+    "short_description": "CubeFabs builds modular semiconductor factories with AI inspection and real-time process control, helping next-generation materials move from laboratory experiments to reliable production.",
+    "one_line_thesis": "AI controls the factory as new materials scale.",
+    "founders": [
+      {
+        "name": "Matthew Putman",
+        "title": "Founder & CEO"
+      }
+    ],
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://cubefabs.com/",
+      "https://cubefabs.com/overview",
+      "https://cubefabs.com/resources/nanotronics-is-now-cubefabs",
+      "https://cubefabs.com/team-member/matthew-putman",
+      "https://cubefabs.com/contact"
+    ],
+    "notes": "CubeFabs, formerly Nanotronics, applies AI to industrial operations. Its AI factory control is grouped with enterprise workflows; a dedicated industrial taxonomy is a future improvement. No latest funding round was established from current company sources.",
+    "blurb_audit": {
+      "identity_status": "Current CubeFabs brand, continuation of Nanotronics factories business; separate nSpec inspection successor",
+      "sourcing_mode": "Synthesized",
+      "primary_voice_route": "Technical doctrine",
+      "original_public_line": "CubeFabs enables manufacturers to bring next-generation materials to market with AI-driven precision.",
+      "original_source": "https://cubefabs.com/overview",
+      "latest_signal": "Brand transition focuses on modular Gallium Oxide semiconductor factories using AI inspection and process control.",
+      "latest_source": "https://cubefabs.com/resources/nanotronics-is-now-cubefabs",
+      "review_status": "Verified identity/product; category needs taxonomy repair",
+      "word_count": 22
+    },
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "pinegap",
+    "previous_slug": "new-york-and-bangalore-based-pinegap-ai",
+    "name": "Pinegap",
+    "website_url": "https://www.pinegap.ai/",
+    "category": "Fintech & Trading AI",
+    "stage": "Series A",
+    "short_description": "Pinegap helps equity analysts research companies, review earnings, and track investment theses through AI agents grounded in financial filings and research documents.",
+    "one_line_thesis": "AI research agents for institutional equity analysts",
+    "founders": [
+      {
+        "name": "Deepak Sharma",
+        "title": "Co-founder & CEO"
+      },
+      {
+        "name": "Ankit Varmani",
+        "title": "Co-founder"
+      }
+    ],
+    "funding_round": "Series A",
+    "funding_amount": "$8M",
+    "funding_date": "2026-08-05",
+    "lead_investor": "Stellaris Venture Partners",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.pinegap.ai/home",
+      "https://www.citybiz.co/article/885996/pinegap-ai-raises-8m-series-a-to-expand-ai-equity-research/",
+      "https://dealroom.co/news/143287-pinegap-raises-8m-series-a-more-than-triples-valuation-since-seed/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Corrected an article-fragment name and invented domain. Official product site establishes identity; the dated funding announcement and founder details are reported by citybiz and Dealroom. NYC and Bangalore operations reported; exact occupied NYC office not established. Funding announcement reported August 5; citybiz coverage followed August 7.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "original_public_one_liner": "AI-powered equity research platform for Wall Street to automates key parts of the analyst workflow",
+      "original_source_url": "https://www.pinegap.ai/home",
+      "primary_voice_route": "Technical doctrine",
+      "review_status": "Source checked"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "passionfroot",
+    "name": "Passionfroot",
+    "website_url": "https://www.passionfroot.me/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Series A",
+    "short_description": "Passionfroot helps B2B marketing teams discover creators, plan campaigns, manage payments, and measure results, with an AI agent coordinating creator-led growth.",
+    "one_line_thesis": "AI-assisted creator campaigns for B2B growth teams",
+    "funding_round": "Series A",
+    "funding_amount": "$15M",
+    "lead_investor": "Insight Partners",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.passionfroot.me/",
+      "https://www.linkedin.com/company/passionfrootme/",
+      "https://www.passionfroot.me/impressum"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Company and founder-authored LinkedIn posts describe a new SoHo office; street address remains unverified. German legal registration and older Berlin headquarters listings remain distinct from its current NYC operations.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 21,
+      "original_public_one_liner": "Built for modern GTM teams to plan, run, pay, and measure creator-led growth - end to end.",
+      "original_source_url": "https://www.passionfroot.me/",
+      "primary_voice_route": "Creator or builder empowerment",
+      "review_status": "Source checked"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "probook",
+    "name": "Probook",
+    "website_url": "https://www.probook.ai/",
+    "category": "Enterprise GTM & RevOps AI",
+    "stage": "Series A",
+    "short_description": "Probook automates technician dispatch, booking cleanup, and customer messages for home service businesses, coordinating daily work around each operator's scheduling needs.",
+    "one_line_thesis": "AI dispatching for home service teams",
+    "funding_round": "Series A",
+    "funding_amount": "$34M",
+    "funding_date": "2026-06-23",
+    "total_raised": "$40M",
+    "lead_investor": "Andreessen Horowitz",
+    "founders": [
+      {
+        "name": "George Eliadis",
+        "title": "Co-founder & CEO"
+      },
+      {
+        "name": "Lewis Zhang",
+        "title": "Co-founder & CTO"
+      },
+      {
+        "name": "Ben Cervantez",
+        "title": "Co-founder"
+      }
+    ],
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://www.probook.ai/",
+      "https://www.probook.ai/company",
+      "https://a16z.com/announcement/investing-in-probook/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Company source verifies product, founders, and New York team. Funding date and round are from the investor announcement.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 21,
+      "original_public_one_liner": "Dispatch makes or breaks the customer experience. Probook is the only AI built around it.",
+      "original_source_url": "https://www.probook.ai/",
+      "primary_voice_route": "Technical doctrine",
+      "review_status": "Source checked"
+    },
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "mega",
+    "name": "Mega",
+    "website_url": "https://www.gomega.ai/",
+    "short_description": "Mega runs SEO, paid advertising, and websites for small businesses through AI agents backed by human marketers who oversee strategy and execution.",
+    "one_line_thesis": "Small businesses can use an accountable AI growth team that executes marketing across search, advertising, websites, and lead conversion.",
+    "founders": [
+      "Lucas Pellan",
+      "Robert Schneidman"
+    ],
+    "source_urls": [
+      "https://www.gomega.ai/",
+      "https://www.gomega.ai/company"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; trust and institutional legitimacy route. Original homepage line: 'Our AI Agents work around the clock to generate more qualified leads for your business.' Current company page stresses human accountability and explicitly names both cofounders. Correct the legacy mega.ai domain: that site represents a different regulated-industry voice AI business. No performance statistic used. Blurb word count: 22; thesis word count: 19.",
+    "identity_status": "verified_canonical_domain_corrected",
+    "category": "Media, Ads & Creative AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "rebar",
+    "name": "Rebar",
+    "website_url": "https://www.withrebar.ai/",
+    "short_description": "Rebar helps commercial mechanical teams turn construction plans into takeoffs and bids, combining AI equipment counts, specification extraction, manufacturer pricing, and bid intelligence.",
+    "one_line_thesis": "Mechanical contractors and suppliers can connect plan analysis to quoting and bid management instead of moving project information through disconnected manual workflows.",
+    "founders": [
+      "Evan Brown",
+      "Andrew Schwartz"
+    ],
+    "source_urls": [
+      "https://www.withrebar.ai/",
+      "https://www.withrebar.ai/about"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; technical doctrine route. Original homepage line: 'The AI estimating platform for mechanical teams.' Current About page explicitly names CEO/cofounder Evan Brown and CPO/cofounder Andrew Schwartz and describes HVAC, plumbing, and electrical workflows. Correct rebar.ai to withrebar.ai; avoid importing claims from similarly named modeling companies. No unverified efficiency percentage used. Blurb word count: 23; thesis word count: 22.",
+    "identity_status": "verified_canonical_domain_corrected",
+    "category": "Enterprise GTM & RevOps AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "orion-security",
+    "name": "ORION Security",
+    "website_url": "https://www.orionsec.io/",
+    "short_description": "ORION Security uses AI agents to detect and prevent sensitive data leaks by understanding data movement and business context across enterprise systems.",
+    "one_line_thesis": "Data loss prevention can use contextual intelligence about how information moves, reducing dependence on security teams continually defining and tuning rules.",
+    "founders": [
+      "Nitay Milner",
+      "Jonathan Kreiner"
+    ],
+    "source_urls": [
+      "https://www.orionsec.io/",
+      "https://www.orionsec.io/blog/orion-security-selected-to-icons-sv101-batch-19",
+      "https://www.orionsec.io/blog/orion-closes-32-million-in-funding-building-dlp-beyond-policies"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; technical doctrine route. Original homepage line: 'Agentic DLP for Data in Motion.' September 30, 2026 official announcement describes contextual analysis across channels and explicitly names the two founders. Correct orionsecurity.com, which belongs to an unrelated physical-security business, to orionsec.io. Do not normalize Jonathan to Yonatan from secondary coverage. Blurb word count: 22; thesis word count: 21.",
+    "identity_status": "verified_canonical_domain_corrected",
+    "category": "Cybersecurity AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "mother-tech",
+    "name": "MOTHER.Tech",
+    "website_url": "https://mother.tech/",
+    "short_description": "MOTHER.Tech is a Brooklyn creative studio building apps, games, and utilities that combine art and technology around playful, participatory digital experiences.",
+    "one_line_thesis": "The studio builds consumer experiences around play and creative participation, with AI supporting new forms of interaction across games and apps.",
+    "founders": [
+      "Kelsey Falter",
+      "Raissa Chagas"
+    ],
+    "source_urls": [
+      "https://mother.tech/",
+      "https://www.linkedin.com/company/maatru",
+      "https://www.linkedin.com/posts/maatru_kelsey-falter-co-founder-ceo-at-mother-activity-7290862174728597504-m_h8",
+      "https://finance.yahoo.com/news/kill-mother-tech-launches-degen-214700133.html"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; creator or builder empowerment route. Original company headline: 'Mother sits at the intersection of art, tech & gaming.' Official company LinkedIn links mother.tech and independently identifies Kelsey Falter and Raissa Chagas as cofounders. Current site's metadata emphasizes games; maintained company About describes apps, games, and utilities. IMPORTANT: the issuer withdrew its May 7, 2026 Degen launch press release on July 9, saying it was issued in error and no replacement would be issued. Do not use that withdrawn release to assert current app availability, funding, or a third founder. Retain the broad studio identity; Degen remains visible in company social posts but needs product-level review. Blurb word count: 21; thesis word count: 21.",
+    "identity_status": "verified_company_identity_product_positioning_needs_review",
+    "category": "Media, Ads & Creative AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "flock-ai",
+    "name": "Lumesa AI",
+    "website_url": "https://www.lumesa.ai/",
+    "short_description": "Lumesa AI helps fashion and retail brands generate, personalize, test, and deploy product visuals while preserving each brand's visual identity across channels.",
+    "one_line_thesis": "Retail teams can turn brand-specific creative direction into repeatable product imagery, connecting visual production with testing and deployment.",
+    "founders": [
+      "Vita Mallela",
+      "Malavika Reddy"
+    ],
+    "source_urls": [
+      "https://www.flockshop.ai/",
+      "https://www.lumesa.ai/",
+      "https://www.lumesa.ai/about-us",
+      "https://www.lumesa.ai/post/flock-ai-rebrand-to-lumesa-ai-what-changed-and-what-stayed-the-same"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; technical doctrine route. Original current descriptor: 'Brand DNA platform for visual commerce.' Official October 5, 2026 post explicitly states Flock AI, Flockshop, and Flockshop AI are now Lumesa AI, with the same company and leadership. Old flockshop.ai redirects to lumesa.ai. About names Vita Mallela as founder/CEO and Malavika Reddy as cofounder/CTO. Preserve slug flock-ai and retain Flock AI as a former name for traceability; name update is supported. No conversion or cost claims used. Blurb word count: 22; thesis word count: 18.",
+    "identity_status": "verified_renamed_flock_ai_to_lumesa_ai",
+    "category": "Media, Ads & Creative AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "carbon-arc",
+    "name": "Carbon Arc",
+    "website_url": "https://www.carbonarc.co/",
+    "short_description": "Carbon Arc turns licensed external data into structured intelligence that businesses and AI systems can access on demand through an exchange with consumption-based pricing.",
+    "one_line_thesis": "External data can become an on-demand utility, with a common ontology connecting fragmented datasets to usable business and AI insights.",
+    "founders": [
+      "Kirk McKeown"
+    ],
+    "source_urls": [
+      "https://www.carbonarc.co/",
+      "https://www.carbonarc.co/press",
+      "https://www.carbonarc.co/documents/Carbon-Arc-White-Paper.pdf",
+      "https://www.linkedin.com/posts/carbonarc_carbonarc-ai-activity-7462566925529714689-7d8d",
+      "https://www.linkedin.com/posts/carbonarc_carbon-arc-launches-the-worlds-first-consumption-based-activity-7308634421153198081-uQ2V"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; technical doctrine route. Original current site title: 'The Infrastructure for the AI Economy.' Company-authored launch post describes licensed, structured transaction data on demand with consumption pricing; January 2026 company white paper details ontology, provenance, and usage-linked rights. Company-authored posts explicitly name Kirk McKeown as cofounder/CEO. Only this founder is verified here; do not treat the one-name list as an exhaustive founding roster. Replaces the clipped fragment 'better decisions.' No market-leading or funding claim used. Blurb word count: 24; thesis word count: 20.",
+    "identity_status": "verified_current_company_founder_roster_partial",
+    "category": "Data & Memory Layer",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "rowflow",
+    "name": "RowFlow",
+    "website_url": "https://rowflow.ai/",
+    "short_description": "RowFlow turns static forms into AI conversations over text, Slack, email, or embedded chat, following up automatically and returning structured data.",
+    "one_line_thesis": "Organizations can collect required information through guided conversations instead of making people complete static forms and manually chasing missing answers.",
+    "founders": [
+      "Alec Olesky",
+      "Jack Bubes"
+    ],
+    "source_urls": [
+      "https://rowflow.ai/",
+      "https://www.ycombinator.com/companies/rowflow"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; human outcome and belonging route. Original founder-maintained YC headline: 'Replacing forms with AI conversations.' YC names founders Alec Olesky and Jack Bubes, links rowflow.ai, and labels the company Active, Summer 2025, NYC. Direct site presently says 'Under construction' and 'Check back soon.' Treat that as a site condition, not proof of closure or current product availability. Copy is supported by the founders' maintained YC launch description; no response-rate or overhead percentage used. Blurb word count: 21; thesis word count: 20.",
+    "identity_status": "verified_identity_website_under_construction",
+    "category": "Enterprise GTM & RevOps AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "concourse",
+    "name": "Concourse",
+    "website_url": "https://www.concourse.ai/",
+    "short_description": "Concourse lets finance teams build and govern AI agents that work across financial systems, combining language models with deterministic calculations and audit trails.",
+    "one_line_thesis": "Finance teams can automate analysis and operational workflows across their existing stack while keeping calculations reproducible and actions reviewable.",
+    "founders": [
+      "Matthieu Hafemeister",
+      "Ted Michaels"
+    ],
+    "source_urls": [
+      "https://www.concourse.ai/",
+      "https://www.concourse.ai/about-us",
+      "https://www.concourse.ai/overview",
+      "https://www.ycombinator.com/companies/concourse/jobs"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; trust and institutional legitimacy route. Original homepage line: 'The AI agent platform for finance.' Official site describes deterministic calculations, financial-system connectivity, and agent governance; YC jobs profile names both founders and links concourse.ai. This matches the legacy finance description. Correct concourse.com, which currently redirects to a domain-sale landing page. Do not conflate this entity with public-sector software company Concourse at onconcourse.com or Concourse Labs. Blurb word count: 23; thesis word count: 19.",
+    "identity_status": "verified_canonical_domain_corrected",
+    "category": "Enterprise GTM & RevOps AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "slang-ai",
+    "name": "Slang AI",
+    "website_url": "https://www.slang.ai/",
+    "short_description": "Slang AI answers restaurant calls, books reservations, and routes guest requests through a customized voice host, helping staff stay present with diners.",
+    "one_line_thesis": "Restaurants can capture phone inquiries and reservations around the clock while allowing on-site teams to focus on hospitality.",
+    "founders": [
+      "Alex Sambvani",
+      "Gabriel Duncan"
+    ],
+    "source_urls": [
+      "https://www.slang.ai/",
+      "https://www.slang.ai/about",
+      "https://www.slang.ai/post/slang-ai-soc-2-compliance"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; human outcome and belonging route. Original homepage label: 'The AI Superhost for Restaurants.' About identifies Alex Sambvani as founder/CEO and says he co-founded with former Spotify colleague Gabe. Official authored article identifies Gabriel Duncan as cofounder/CTO, resolving the full name. Current copy emphasizes full-service restaurant hospitality, reservations, and customized call handling. Replaces the clipped 'Slang.' fragment. Blurb word count: 22; thesis word count: 18.",
+    "identity_status": "verified_current_company",
+    "category": "Enterprise GTM & RevOps AI",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "kay-ai",
+    "name": "Kay.ai",
+    "website_url": "https://kay.ai/",
+    "short_description": "Kay.ai automates insurance agency operations by following existing procedures across portals and management systems, handling renewals, certificates, policy checks, and other administrative work.",
+    "one_line_thesis": "Insurance teams can delegate routine operations to AI coworkers that use their existing tools and adapt to agency procedures without new integrations.",
+    "founders": [
+      "Vishal Rohra",
+      "Achyut Joshi"
+    ],
+    "source_urls": [
+      "https://kay.ai/",
+      "https://www.kay.ai/about-us",
+      "https://www.kay.ai/blog/raise"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; technical doctrine route. Original homepage line: 'Insurance operations, on autopilot.' Current site describes portal navigation, form completion, AMS updates, and asking humans when uncertain. The company's March 28, 2025 announcement explicitly identifies Vishal Rohra and Achyut Joshi as founders. Replaces the clipped 'Kay.' fragment. Position as insurance operations software; the legacy generic Agent Infrastructure classification may warrant a separate category review. Blurb word count: 23; thesis word count: 22.",
+    "identity_status": "verified_current_company",
+    "category": "Agent Infrastructure",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "brightwave",
+    "name": "Brightwave",
+    "website_url": "https://www.brightwave.io/",
+    "short_description": "Brightwave builds infrastructure for safely connecting AI agents to workplace systems, with a focus on compliance as agents move from conversation into operational work.",
+    "one_line_thesis": "Organizations can connect AI agents to the systems where work happens through infrastructure designed around safe deployment and compliance requirements.",
+    "founders": [
+      "Mike Conover",
+      "Brandon Kotara"
+    ],
+    "source_urls": [
+      "https://www.brightwave.io/",
+      "https://www.brightwave.io/about",
+      "https://www.brightwave.io/blog/brightwave-ai-based-financial-research-assistant-company-raises-6-million",
+      "https://www.tidebreak.io/"
+    ],
+    "verified_at": "2026-11-03",
+    "notes": "Synthesized; trust and institutional legitimacy route. Original current homepage line: 'An agent infrastructure company.' Homepage now says it builds a compliance-ready foundation connecting AI agents to work systems and links Tidebreak. Legacy financial research docs and About body remain live, so prefer the homepage for current positioning and flag stale subpages. June 11, 2024 company announcement verifies original cofounders Mike Conover and Brandon Kotara; current About lists Brandon Kotara as Founder & CEO. Retain Mike as historical cofounder, not current CEO. No primary announcement establishing a legal rename or full product succession was found; do not rename Brightwave to Tidebreak. Blurb word count: 24; thesis word count: 20.",
+    "identity_status": "verified_current_positioning_shift_historical_founders",
+    "category": "Agent Infrastructure",
+    "nyc_presence": "unverified",
+    "review_scope": "Company identity, product and named founders only. Existing funding stage and NYC presence need separate verification.",
+    "added_at": "2026-11-04T06:52:01.177017+00:00"
+  },
+  {
+    "slug": "flora",
+    "name": "FLORA",
+    "website_url": "https://flora.ai/",
+    "category": "Media, Ads & Creative AI",
+    "stage": "Series A",
+    "short_description": "FLORA connects generative image, video, and text models in a shared creative canvas, letting teams build reusable workflows with professional editing control.",
+    "one_line_thesis": "A shared creative canvas for generative production workflows",
+    "founders": [
+      {
+        "name": "Weber Wong",
+        "title": "Founder & CEO"
+      }
+    ],
+    "funding_round": "Series A",
+    "funding_amount": "$42M",
+    "funding_date": "2026-01-27",
+    "total_raised": "$52M",
+    "lead_investor": "Redpoint Ventures",
+    "nyc_presence": "office",
+    "source_urls": [
+      "https://flora.ai/",
+      "https://flora.ai/careers",
+      "https://florafauna.io/blog/the-creative-environment-for-the-generative-era",
+      "https://weberwong.cargo.site/flora"
+    ],
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T06:55:37.767735+00:00",
+    "notes": "Company funding post gives January 27, 2026 announcement date, correcting an imported January 1 default. Founder-authored page describes its node-based workflow system. Careers page confirms an in-person Refinery office.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 22,
+      "primary_voice_route": "Creator or builder empowerment",
+      "review_status": "Source checked",
+      "original_public_one_liner": "The generative computing paradigm needs a new creative interface.",
+      "original_source_url": "https://florafauna.io/blog/the-creative-environment-for-the-generative-era"
+    }
+  },
+  {
+    "slug": "chamelio",
+    "name": "Chamelio",
+    "website_url": "https://www.chamelio.ai/",
+    "category": "Legal & Compliance AI",
+    "stage": "Series A",
+    "short_description": "Chamelio turns contracts, playbooks, and company knowledge into a legal intelligence system, using AI agents to handle routine in-house legal work.",
+    "one_line_thesis": "AI legal operations grounded in company knowledge",
+    "funding_round": "Series A",
+    "funding_amount": "$26M",
+    "funding_date": "2026-09-22",
+    "lead_investor": "Entr\u00e9e Capital",
+    "nyc_presence": "unverified",
+    "source_urls": [
+      "https://www.chamelio.ai/",
+      "https://www.prnewswire.com/news-releases/chamelio-raises-26m-series-a-to-replace-legacy-clm-with-ai-native-in-house-legal-operations-302886011.html"
+    ],
+    "verified_at": "2026-11-03",
+    "added_at": "2026-11-04T07:03:07.799229+00:00",
+    "review_scope": "Product and Series A financing checked against company-issued sources. Exact NYC office has not been verified.",
+    "notes": "Company-issued September 22, 2026 release establishes $26M Series A led by Entr\u00e9e Capital, replacing the imported Seed stage. New York dateline is not treated as proof of an occupied office.",
+    "blurb_audit": {
+      "sourcing_mode": "Synthesized",
+      "word_count": 25,
+      "original_source_url": "https://www.chamelio.ai/",
+      "primary_voice_route": "Trust and institutional legitimacy",
+      "review_status": "Source checked"
+    }
+  }
+]

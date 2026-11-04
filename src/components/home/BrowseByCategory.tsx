@@ -19,7 +19,7 @@ export function BrowseByCategory({
             <p className="editorial-label">Market sections</p>
             <h2 className="mt-3 editorial-section-title">Browse by Category</h2>
             <p className="text-body mt-2 max-w-[680px] text-sm">
-              Explore early-stage NYC AI by buyer, workflow, and product surface.
+              Explore NYC AI by buyer, workflow, and product surface.
             </p>
           </div>
           <Link

@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
     title: "NYC AI Startup Map",
     description:
-      "Browse early-stage NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
+      "Browse NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
     path: "/companies",
     image: getShareImageUrl({ page: "companies" }),
   });
@@ -37,7 +37,7 @@ export default async function CompaniesPage({
         data={collectionPageSchema({
           name: "NYC AI Startup Map",
           description:
-            "Browse early-stage NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
+            "Browse NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
           url: "https://aiatlas.nyc/companies",
           items: companyCollectionItems(companies),
         })}

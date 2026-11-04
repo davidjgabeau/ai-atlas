@@ -139,21 +139,21 @@ export async function refreshCompanyJobs({
   let jobsUpserted = 0;
   let companiesWithJobs = 0;
 
-  for (const company of companies) {
+  await mapWithConcurrency(companies, 4, async (company) => {
     try {
       const jobs = await discoverJobsForCompany(company, jobsPerCompany);
       jobsFound += jobs.length;
       if (jobs.length > 0) companiesWithJobs += 1;
 
-      if (jobs.length === 0) continue;
-      if (dryRun) continue;
+      if (jobs.length === 0) return;
+      if (dryRun) return;
 
       const rows = jobs.map((job) => ({
         id: createJobId(job.company_id, job.source_url),
         ...job,
       }));
 
-      if (!writeClient) continue;
+      if (!writeClient) return;
 
       const { error: upsertError } = await writeClient
         .from("company_jobs")
@@ -169,7 +169,7 @@ export async function refreshCompanyJobs({
           jobError instanceof Error ? jobError.message : "Unknown job sync error.",
       });
     }
-  }
+  });
 
   return {
     ok: errors.length === 0,

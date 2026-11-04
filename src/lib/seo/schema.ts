@@ -16,7 +16,7 @@ export function websiteSchema(): JsonLdNode {
     description: SEO_DEFAULTS.description,
     inLanguage: "en-US",
     about: [
-      "early-stage AI startups",
+      "AI companies",
       "New York City technology companies",
       "venture capital market maps",
       "founder research",
@@ -114,7 +114,7 @@ export function collectionPageSchema({
       audienceType: "Founders, seed investors, VCs, operators, recruiters, and analysts",
     },
     about: [
-      "early-stage AI companies",
+      "AI companies",
       "New York City startups",
       "AI market map",
     ],

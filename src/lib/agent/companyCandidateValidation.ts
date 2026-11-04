@@ -45,6 +45,10 @@ export function validateDiscoveredCompanyCandidate({
     return { ok: false, reason: "candidate name length is outside company bounds" };
   }
 
+  if (/\b(?:new york city startups|startups?|companies|cohort|roundup)\b/i.test(cleanName) || /(?:-based|\bquickly\b)/i.test(cleanName)) {
+    return { ok: false, reason: "candidate name contains article framing" };
+  }
+
   if (words.length > 5) {
     return { ok: false, reason: "candidate name looks like an article headline" };
   }
@@ -111,7 +115,7 @@ export function isUsableCompanyWebsite(value: unknown) {
     const host = url.hostname.replace(/^www\./, "").toLowerCase();
 
     return Boolean(
-      host &&
+      ["https:", "http:"].includes(url.protocol) && host &&
         !publisherPattern.test(host) &&
         !/\b(linkedin|twitter|x|facebook|instagram|youtube|medium|substack|crunchbase|techcrunch|venturebeat|alleywatch|builtinnyc)\.com$/i.test(host),
     );
@@ -124,6 +128,8 @@ export function isUsableCompanyWebsite(value: unknown) {
 export function hasPublishableDescription(value: unknown) {
   return typeof value === "string" && value.trim().length >= 35
     && !/^(investing in|exclusive:|breaking:|read more|subscribe)/i.test(value.trim())
+    && !/(?:\.{3}|…|&#(?:x[0-9a-f]+|[0-9]+);)/i.test(value)
+    && !/^.{0,80}\b(?:raises|raised|secures|secured)\s+\$/i.test(value)
     && !/company announcement|andreessen horowitz\s+\w+\s+a16z/i.test(value);
 }
 

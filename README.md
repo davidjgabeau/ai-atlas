@@ -1,6 +1,6 @@
 # AI Atlas NYC
 
-**An open-source editorial market map for early-stage AI companies in New York City.**
+**An open-source editorial market map for AI companies in New York City.**
 
 AI Atlas NYC combines a curated company directory, category intelligence, market patterns, news links, company posts, jobs, and profile surfaces into a single product built for founders, investors, operators, and anyone tracking where NYC AI is forming.
 
@@ -18,7 +18,7 @@ New York has a dense early-stage AI market, but the useful context is scattered 
 
 The project is intentionally editorial and data-driven:
 
-- It focuses on Series A and earlier NYC AI companies
+- It covers NYC AI companies at all stages, with headquarters and office presence distinguished
 - It favors verified company facts over broad claims
 - It keeps category boundaries visible so readers can understand how the market is clustering
 - It presents short, decision-useful notes instead of generic startup-directory copy
@@ -43,7 +43,7 @@ The `/categories` surface groups companies by the AI Atlas taxonomy. Category pa
 The `/patterns` surface contains editorial market patterns drawn from the company corpus, answering questions like "what behavior is repeating across different startups?" and "which clusters are pointing at the same buyer, workflow, or platform shift?"
 
 ### Newsfeed
-The `/feed` and `/newsfeed` surfaces bring together external news links and official company posts from mapped companies. Designed as a curated news front page for early-stage NYC AI, with source labels, timestamps, company attribution, and external-link affordances.
+The `/feed` and `/newsfeed` surfaces bring together external news links and official company posts from mapped companies. Designed as a curated news front page for NYC AI, with source labels, timestamps, company attribution, and external-link affordances.
 
 ### Ask Atlas
 The `/ask` surface lets readers ask questions over the curated AI Atlas company, category, pattern, and signal data. External sites can embed the map and Ask Atlas modal via the public embed API at `/api/embed/atlas`. See [docs/embed-api.md](./docs/embed-api.md).

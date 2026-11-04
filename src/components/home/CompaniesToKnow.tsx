@@ -28,7 +28,7 @@ export function CompaniesToKnow({ companies }: { companies: Company[] }) {
             <span className="hidden lg:inline">Start Here</span>
           </h2>
           <p className="mt-2 hidden text-sm leading-[1.5] text-[#5F5A52] md:block">
-            A few early-stage NYC AI companies that explain where the map is moving.
+            A few NYC AI companies that explain where the map is moving.
           </p>
         </div>
         <Link

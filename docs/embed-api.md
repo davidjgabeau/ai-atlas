@@ -406,6 +406,6 @@ document
 
 Use simple language on the personal site:
 
-> AI Atlas NYC is my open-source market map of early-stage AI companies in New
+> AI Atlas NYC is my open-source market map of AI companies in New
 > York. Browse the live map, then ask Atlas what patterns, categories, or
 > companies are worth inspecting.

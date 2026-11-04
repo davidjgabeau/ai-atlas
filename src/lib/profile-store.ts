@@ -45,7 +45,7 @@ export function writeStoredProfile(input: UserProfileInput) {
     name: input.name.trim() || "NYC AI reader",
     bio:
       input.bio.trim() ||
-      "Saving early-stage NYC AI companies from pre-seed through Series A.",
+      "Saving NYC AI companies from seed to public companies.",
     avatarId,
     createdAt: existingProfile?.createdAt ?? now,
     updatedAt: now,

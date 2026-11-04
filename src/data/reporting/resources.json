@@ -1,0 +1,268 @@
+{
+  "resources": [
+    {
+      "id": "nyc-ai-jobs-2025",
+      "title": "This Report Was Not AI-Generated: The Impact of Artificial Intelligence on New York City Jobs",
+      "organization": "Office of the New York City Comptroller",
+      "url": "https://comptroller.nyc.gov/reports/this-report-was-not-ai-generated/",
+      "type": "report",
+      "topic": "Labor and displacement",
+      "description": "Connects Claude task-usage data with occupational classifications and the NYC area's job mix. Useful for choosing occupations and interviewing workers about how AI changes tasks, entry routes, workload, and pay.",
+      "coverage": "Published August 14, 2025; NYC and U.S. occupational comparisons, with New York metropolitan employment indicators.",
+      "caveat": "Claude conversations are a selected platform sample, not a representative census of workers or AI use. Task usage and occupational exposure do not measure layoffs, establish that AI caused job changes, or reveal racial differences without additional data.",
+      "published_at": "2025-08-14",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "bls-ny-metro-oews-2025",
+      "title": "Occupational Employment and Wages in New York\u2013Newark\u2013Jersey City \u2014 May 2025",
+      "organization": "U.S. Bureau of Labor Statistics",
+      "url": "https://www.bls.gov/regions/northeast/news-release/occupationalemploymentandwages_newyork.htm",
+      "type": "dataset",
+      "topic": "Labor and wages",
+      "description": "Official occupation-level employment and wage estimates, with links to detailed downloadable data. Establishes the scale and pay of occupations investigated in an AI story.",
+      "coverage": "May 2025 estimates for the New York\u2013Newark\u2013Jersey City, NY\u2013NJ metropolitan area; release June 5, 2026, reissued June 24, 2026.",
+      "caveat": "The metro includes counties outside the five boroughs. OEWS covers nonfarm wage and salary employment and excludes self-employed workers; it does not identify workers' race or ethnicity, AI adoption, or AI-caused displacement. Avoid interpreting simple annual differences as causal effects.",
+      "published_at": "2026-06-24",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "acs-2024-pums",
+      "title": "2024 American Community Survey 1-Year Public Use Microdata Sample",
+      "organization": "U.S. Census Bureau",
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums.html",
+      "type": "dataset",
+      "topic": "Demographics, occupations, and access",
+      "description": "Person- and household-level survey records support custom tabulations of occupation, earnings, race, Hispanic origin, education, nativity, disability, and household conditions. Can provide population denominators for reporting on unequal exposure to workplace change.",
+      "coverage": "2024 ACS 1-year vintage; nation, states, and Public Use Microdata Areas. Use a documented NYC PUMA selection and the matching vintage's geography definitions.",
+      "caveat": "Use person/household weights and replicate weights to estimate uncertainty. Small intersectional samples may be unstable; public microdata geography is coarser than a neighborhood. ACS has no direct measure of AI use or job loss caused by AI. Preserve separate race and Hispanic-origin definitions.",
+      "published_at": "2025-12-04",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "census-btos-ai",
+      "title": "Business Trends and Outlook Survey: AI use and AI supplement downloads",
+      "organization": "U.S. Census Bureau",
+      "url": "https://www.census.gov/hfp/btos/data_downloads",
+      "type": "dataset",
+      "topic": "AI adoption and work",
+      "description": "Downloadable business surveys distinguish reported AI adoption from modeled occupational exposure. The 2025\u201326 AI supplement examines business functions, tasks, operational changes, and employment responses.",
+      "coverage": "Ongoing national employer-business survey, excluding farms. Core tables include states and the 25 largest metros; the April 23, 2026 supplement release covers collection November 17, 2025\u2013February 8, 2026, with supplement geography varying by table.",
+      "caveat": "Business reports do not measure the experience of individual racial or ethnic groups. Check each table's geography and standard errors. AI question wording changed in November 2025, from producing goods/services to any business function, so apparent changes across the break are not clean trend estimates. Reported employment changes do not independently establish causation.",
+      "published_at": "2026-04-23",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "dcwp-aedt-faq",
+      "title": "Automated Employment Decision Tools: Frequently Asked Questions",
+      "organization": "NYC Department of Consumer and Worker Protection",
+      "url": "https://www.nyc.gov/site/dca/businesses/faq-automated-employment-decision-tools.page",
+      "type": "methodology",
+      "topic": "Automated hiring and audit rules",
+      "description": "Primary agency explanation of Local Law 144's scope, annual independent bias audits, public summaries, candidate notices, historical/test data, and complaint routing. Use it to frame document requests and assess what a posted audit actually covers.",
+      "coverage": "NYC hiring and promotion tools within the law's scope; enforcement began July 5, 2023. Live FAQ has no visible revision date.",
+      "caveat": "A rule requiring an audit is not evidence that employers complied, that every hiring tool is covered, or that a tool is nondiscriminatory. Audit ratios are limited by input data, covered categories, small-cell exclusions, and the specific tool/version. This is a reporting reference, not individualized legal advice.",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "osc-ll144-enforcement-2025",
+      "title": "Enforcement of Local Law 144 \u2014 Automated Employment Decision Tools",
+      "organization": "Office of the New York State Comptroller",
+      "url": "https://www.osc.ny.gov/state-agencies/audits/2025/12/02/enforcement-local-law-144-automated-employment-decision-tools",
+      "type": "report",
+      "topic": "Automated hiring and enforcement",
+      "description": "Official audit of DCWP's enforcement system. Auditors identified weaknesses in complaint routing, outreach, review procedures, and use of technical assistance; they found at least 17 instances of potential noncompliance in a review of the same 32 companies examined by DCWP.",
+      "coverage": "Issued December 2, 2025; audit scope July 2023\u2013June 2025.",
+      "caveat": "The reviewed companies are not a representative estimate of all NYC employers. Potential noncompliance is not a final violation finding or proof of discriminatory hiring, and the audit describes a historical period. Obtain agency responses and subsequent corrective-action records.",
+      "published_at": "2025-12-02",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "null-compliance-2024",
+      "title": "Null Compliance: NYC Local Law 144 and the Challenges of Algorithm Accountability",
+      "organization": "Research team led by Lucas Wright and collaborators, including Cornell University and Data & Society researchers",
+      "url": "https://arxiv.org/abs/2406.01399",
+      "type": "report",
+      "topic": "Automated hiring and transparency",
+      "description": "Research study of 155 student investigators searching 391 employers for audit reports and notices. Explains why failure to find a public artifact does not by itself establish noncompliance when whether a system is in scope is difficult to observe.",
+      "coverage": "2024 paper about NYC Local Law 144; sample emphasizes employers recruiting students and professional roles.",
+      "caveat": "The sample is not representative of NYC hiring. A timed website search cannot determine every employer's actual tool use, scope determination, or notices delivered after applying. Do not turn the study's small count of located audits into a citywide compliance rate.",
+      "published_at": "2024-06-03",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "nyc-algorithmic-tools-2025",
+      "title": "Agency Compliance Reporting of Algorithmic Tools \u2014 Calendar Year 2025",
+      "organization": "NYC Office of Technology and Innovation",
+      "url": "https://www.nyc.gov/assets/oti/downloads/pdf/reports/LL35%20Report%202025%20-%20Final%20-%202026-03-27.pdf",
+      "type": "report",
+      "topic": "Public services, housing, and agency AI",
+      "description": "City inventory of 86 reported tools across 19 agencies, with purpose, autonomy, frequency, data, and vendors. Concrete leads include ACS housing prioritization and child-welfare models and DSS systems. The report links its machine-readable NYC Open Data counterpart at https://data.cityofnewyork.us/d/jaw4-yuem.",
+      "coverage": "Calendar year 2025; version effective March 2026. City-agency reporting under Local Law 35.",
+      "caveat": "An agency-reported inventory documents disclosed uses, not independent validation, complete deployment discovery, racial impact, or current operation in every case. Counts change with reporting participation and definitions. Confirm tool version, decision authority, affected population, evaluations, and appeal routes with the agency.",
+      "published_at": "2026-03",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "poverty-lawgorithms-2020",
+      "title": "Poverty Lawgorithms: A Poverty Lawyer\u2019s Guide to Fighting Automated Decision-Making Harms on Low-Income Communities",
+      "organization": "Data & Society; Michele Gilman",
+      "url": "https://datasociety.net/research-library/poverty-lawgorithms-a-poverty-lawyers-guide-to-fighting-automated-decision-making-harms-on-low-income-communities/",
+      "type": "report",
+      "topic": "Public benefits, housing, education, and civil rights",
+      "description": "Foundational issue-spotting guide to automated decisions across public benefits, housing, education, workers' rights, consumer matters, family law, and immigrant surveillance. Useful for tracing a seemingly administrative problem to data sources, vendors, and decision systems.",
+      "coverage": "U.S. legal and institutional examples; published September 15, 2020. Relevant context rather than a NYC prevalence study.",
+      "caveat": "Predates current generative AI and many subsequent legal changes. Examples do not establish that a named NYC agency currently uses a particular system or that a particular decision is unlawful. Verify present policies and seek qualified legal interpretation for case-specific questions.",
+      "published_at": "2020-09-15",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "nychvs-2023",
+      "title": "2023 New York City Housing and Vacancy Survey public use files",
+      "organization": "NYC Department of Housing Preservation and Development / U.S. Census Bureau",
+      "url": "https://www.nyc.gov/site/hpd/about/research.page",
+      "type": "dataset",
+      "topic": "Housing, affordability, and displacement context",
+      "description": "Citywide housing microdata with occupied-unit, vacant-unit, all-unit, and person files, plus questionnaires, codebooks, weighting guidance, and variance instructions. Supports housing and rent-burden context by demographic groups.",
+      "coverage": "2023 NYC survey representing the city's housing stock and population; landing page also contains earlier survey cycles. The landing page has no visible publication date.",
+      "caveat": "This is housing context, not evidence of AI tenant screening or algorithm-caused displacement. Use the appropriate unit/person weights and variance methods, inspect disclosure limits and small cells, and document comparability before comparing survey cycles.",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "nyc-benefits-platform",
+      "title": "NYC Benefits Platform: Dataset and Screening API",
+      "organization": "NYC Mayor\u2019s Office for Economic Opportunity",
+      "url": "https://www.nyc.gov/site/opportunity/portfolio/nyc-screening-api.page",
+      "type": "dataset",
+      "topic": "Public benefits and digital access",
+      "description": "Official documentation links an open benefits/program directory and machine-readable rules used for preliminary benefits screening. Helps reporters distinguish rules-based eligibility screening from machine learning and identify programs, languages, criteria, and responsible agencies.",
+      "coverage": "NYC resources covering 100+ program descriptions and screening for 40+ federal, state, and city programs; screening API launched April 16, 2019 and criteria are maintained quarterly.",
+      "caveat": "A potential-eligibility result is not an award, denial, enrollment record, or final agency determination. This resource does not show racial differences in benefit access. The documented rules engine should not automatically be labeled generative AI or machine learning.",
+      "published_at": "2019-04-16",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "equitynyc-broadband",
+      "title": "Broadband Access \u2014 EquityNYC",
+      "organization": "NYC EquityNYC / Office of Technology and Innovation",
+      "url": "https://equity.nyc.gov/domains/empowered-residents-and-neighborhoods/broadband-access-wired-or-mobile-access",
+      "type": "dataset",
+      "topic": "Digital access and inequality",
+      "description": "Official indicator shows broadband access citywide and by borough, race/ethnicity, income, and age, with a map using 2020 PUMAs. Useful for locating communities where access conditions may constrain AI education or digital service use.",
+      "coverage": "Indicator years 2019\u20132024; page says data last updated October 9, 2026.",
+      "caveat": "The combined measure counts a wired or mobile connection; it should not be described as reliable home broadband, sufficient devices, affordable service, digital skills, or AI access. Check the underlying measure and reference year rather than treating the page-refresh date as the data year.",
+      "published_at": "2026-10-09",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "nycps-ai-guidance-2026",
+      "title": "Guidance on Artificial Intelligence and Screen Time",
+      "organization": "New York City Public Schools",
+      "url": "https://www.schools.nyc.gov/about-us/policies/guidance-on-artificial-intelligence",
+      "type": "methodology",
+      "topic": "Education, AI literacy, and student rights",
+      "description": "Current 2026\u201327 school-year policy explains grade-specific limits, approved high-school uses, student-data protections, educator responsibilities, and family feedback routes. Supplies a concrete policy baseline for asking schools how implementation differs.",
+      "coverage": "NYC public schools; 2026\u201327 school-year live guidance. The first iteration was announced March 24, 2026, but the live page reflects subsequent changes and has no visible revision date.",
+      "caveat": "Written policy is not proof of implementation, equitable access, learning outcomes, or reduced bias. Verify approved tools and exceptions locally, including disability and English-language-learner supports; interview students, families, and educators with appropriate consent.",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "ai-now-aia-2018",
+      "title": "Algorithmic Impact Assessments: A Practical Framework for Public Agency Accountability",
+      "organization": "AI Now Institute; Dillon Reisman, Jason Schultz, Kate Crawford, and Meredith Whittaker",
+      "url": "https://ainowinstitute.org/publications/algorithmic-impact-assessments-report-2",
+      "type": "methodology",
+      "topic": "Public accountability and reporting method",
+      "description": "Framework for examining government automated decision systems through disclosure, outside review, and participation by affected communities. Can structure interview questions about purpose, evidence, alternatives, oversight, and recourse.",
+      "coverage": "Public-agency governance framework published April 9, 2018; not an empirical NYC impact estimate.",
+      "caveat": "This is a proposed accountability framework, not current NYC law, a certification, or evidence that a system is fair. Use it as a reporting checklist and pair it with current rules, records, and affected people's experiences.",
+      "published_at": "2018-04-09",
+      "checked_at": "2026-11-04T06:40:04Z"
+    },
+    {
+      "id": "nyc-ai-enforcement-policy-2026",
+      "title": "DCWP, TLC, and CCHR Issue Enforcement Policy Statement on Artificial Intelligence",
+      "organization": "NYC Department of Consumer and Worker Protection, Commission on Human Rights, and Taxi and Limousine Commission",
+      "url": "https://www.nyc.gov/site/dca/news/067-26/dcwp-tlc-cchr-issue-enforcement-policy-on-artificial-intelligence",
+      "type": "methodology",
+      "topic": "Civil rights, housing, gig work, and consumers",
+      "description": "Primary announcement links the agencies' joint enforcement statement and identifies existing city protections relevant to AI in employment, housing, public spaces, consumer products, and app-based work. Useful for identifying the agency to question about a documented use or complaint.",
+      "coverage": "Issued October 1, 2026; laws enforced by the three NYC agencies.",
+      "caveat": "An enforcement policy is not a finding that a company discriminated, an impact evaluation, or proof of effective enforcement. Distinguish existing protections and agency interpretations from new legislation, complaint allegations, adjudicated violations, and individual legal advice.",
+      "published_at": "2026-10-01",
+      "checked_at": "2026-11-04T06:40:04Z"
+    }
+  ],
+  "experts": [
+    {
+      "name": "Julia Stoyanovich",
+      "role": "Professor; Associate Dean of AI Initiatives; Director, Center for Responsible AI",
+      "organization": "NYU Tandon School of Engineering",
+      "url": "https://engineering.nyu.edu/faculty/julia-stoyanovich",
+      "expertise": "Responsible AI, data management, algorithmic accountability, AI literacy, and NYC public-sector governance; served on the NYC Automated Decision Systems Task Force.",
+      "public_contact_url": "https://engineering.nyu.edu/faculty/julia-stoyanovich"
+    },
+    {
+      "name": "Aiha Nguyen",
+      "role": "Program Director, Labor Futures",
+      "organization": "Data & Society",
+      "url": "https://datasociety.net/team/aiha-nguyen/",
+      "expertise": "Worker surveillance, algorithmic management, service work, and generative AI's labor effects; leads research connecting technology, labor, and urban conditions.",
+      "public_contact_url": "https://datasociety.net/people/nguyen-aiha/?type=book"
+    },
+    {
+      "name": "Solon Barocas",
+      "role": "Senior Principal Researcher; Cornell Information Science adjunct faculty member",
+      "organization": "Microsoft Research New York City / Cornell University",
+      "url": "https://www.microsoft.com/en-us/research/people/solon/",
+      "expertise": "Fairness in machine learning, accountability in automated decisions, and privacy implications of inference. Useful for interpreting bias metrics and their limits; disclose his industry affiliation when relevant.",
+      "public_contact_url": "https://www.microsoft.com/en-us/research/people/solon/"
+    },
+    {
+      "name": "Michele Gilman",
+      "role": "Professor of Law; Director, Saul Ewing Civil Advocacy Clinic; Co-Director, Center on Applied Feminism",
+      "organization": "University of Baltimore School of Law",
+      "url": "https://www.ubalt.edu/directory/profile/mgilman",
+      "expertise": "Poverty, privacy, public benefits, automated decision systems, housing technology, and access to justice; author of Data & Society's Poverty Lawgorithms.",
+      "public_contact_url": "https://www.ubalt.edu/directory/profile/mgilman"
+    },
+    {
+      "name": "Ifeoma Ajunwa",
+      "role": "Asa Griggs Candler Professor of Law; Founding Director, AI and the Future of Work Program",
+      "organization": "Emory University School of Law",
+      "url": "https://law.emory.edu/faculty/faculty-profiles/ajunwa-profile.html",
+      "expertise": "Automated hiring and evaluation, worker surveillance, privacy, employment discrimination, and labor law; author of The Quantified Worker.",
+      "public_contact_url": "https://law.emory.edu/faculty/faculty-profiles/ajunwa-profile.html"
+    },
+    {
+      "name": "Stephen Farenga",
+      "role": "Professor, Urban Education; Professor of Science Education",
+      "organization": "CUNY Graduate Center / Queens College",
+      "url": "https://www.gc.cuny.edu/people/stephen-farenga",
+      "expertise": "Science learning, cognition, STEM instruction, and education policy; publicly discussed NYC's 2026 AI restrictions and students' learning needs.",
+      "public_contact_url": "https://www.gc.cuny.edu/people/stephen-farenga"
+    },
+    {
+      "name": "Amba Kak",
+      "role": "Co-Executive Director",
+      "organization": "AI Now Institute",
+      "url": "https://ainowinstitute.org/contributor/amba-kak",
+      "expertise": "Public-interest AI policy, regulatory accountability, and concentrated technology-industry power; brings experience advising governments, including NYC.",
+      "public_contact_url": "https://ainowinstitute.org/contact-us"
+    }
+  ],
+  "methodology_notes": [
+    "Use Black and brown as an editorial description only when its intended scope is explicit. Statistical sources use different race and ethnicity categories; report those actual definitions, keep Hispanic origin distinct where applicable, and avoid combining groups in ways that conceal differences.",
+    "No person's race, ethnicity, political views, or support for a position was inferred from their name, photograph, employer, or research topic. Expert entries describe publicly documented professional expertise only.",
+    "All contact links are public professional or institutional pages. No messages were sent, and no private screenshot contact information was used.",
+    "Separate deployment, exposure, adoption, outcomes, and causation. A tool inventory establishes a disclosed use; a task-exposure model estimates potential overlap; platform logs show selected usage; surveys record reports; none alone proves an AI-caused job loss or discriminatory outcome.",
+    "For a labor story, triangulate occupation and wage data, demographic denominators, employer records or worker testimony, and dated evidence of actual AI deployment. Record alternative explanations such as interest rates, sector cycles, staffing changes, and earlier automation.",
+    "Local Law 144 audit requirements are distinct from observed compliance, the scope of a particular tool, and substantive antidiscrimination obligations. Missing public records do not automatically prove noncompliance; a posted audit does not certify that a tool is fair.",
+    "For public-service systems, ask which decision the tool actually supports, who can override it, which data and labels were used, how errors are monitored, who can appeal, and whether outcome/error data are available by relevant demographic groups.",
+    "Use the same geography, occupation taxonomy, reference period, and population before joining sources. NYC's five boroughs, a New York metropolitan area, New York State, Census PUMAs, and service populations are not interchangeable.",
+    "Apply survey weights and appropriate variance estimates; publish denominators and uncertainty, suppress or combine unstable cells transparently, and avoid identifying individuals from small intersectional categories.",
+    "Publication dates, survey vintages, and refresh dates differ. Dates are included where verified; undated live pages are labeled in coverage rather than assigned an invented publication date. All resources were checked November 3, 2026 Pacific time (November 4 UTC).",
+    "Reports and policies supply leads and context, not legal advice. Verify current legal text and agency interpretation before publication, distinguish proposals from enacted rules, and describe allegations, potential violations, findings, and remedies accurately.",
+    "The pack is designed to guide reporting on impacts affecting Black, Latino, Asian, Indigenous, immigrant, low-income, and other New York communities without assuming those categories are interchangeable or that exposure translates uniformly into benefit or harm."
+  ]
+}

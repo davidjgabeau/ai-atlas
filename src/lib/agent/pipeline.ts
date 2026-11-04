@@ -65,7 +65,7 @@ export async function runRefreshKnownCompanies() {
     const nextRawRecords = [...files.rawSourceRecords];
     const extractedSignals: ExtractedSignal[] = [];
 
-    const offset = Math.floor(Date.now() / 86_400_000) % Math.max(1, companies.length);
+    const offset = (Math.floor(Date.now() / 21_600_000) * 37) % Math.max(1, companies.length);
     const rotatedCompanies = [...companies.slice(offset), ...companies.slice(0, offset)];
     const sources = rotatedCompanies.flatMap((company) => providers.map((provider) => ({ company, provider })));
     const refreshProgress = await forEachConcurrent(sources, 6, async ({ company, provider }) => {
@@ -437,7 +437,7 @@ function createCompanyFactEvents(
     const latestRound = company.funding?.latestRound;
     const fundingAmount = company.funding?.latestRoundAmount || extractAmount(company);
 
-    if (latestRound && fundingAmount && fundingAmount !== "N/A") {
+    if (latestRound && fundingAmount && fundingAmount !== "N/A" && company.funding?.latestRoundDate && Number.isFinite(Date.parse(company.funding.latestRoundDate))) {
       const fundingHash = createContentHash({
         companyId: company.id,
         type: "funding",
@@ -455,7 +455,7 @@ function createCompanyFactEvents(
           summary: `${company.name} has ${latestRound} funding${fundingAmount ? ` of ${fundingAmount}` : ""}${company.funding?.leadInvestors?.length ? ` led by ${company.funding.leadInvestors.slice(0, 2).join(" and ")}` : ""}.`,
           sourceUrl: company.website ?? `https://aiatlas.nyc/companies/${company.slug}`,
           sourceName: "Company profile",
-          occurredAt: parseDate(company.funding?.latestRoundDate, company.updatedAt),
+          occurredAt: company.funding!.latestRoundDate!,
           discoveredAt,
           confidence: "high",
           importanceScore: 0,
@@ -741,17 +741,6 @@ function summarize(text: string, maxLength: number) {
   const clean = text.replace(/\s+/g, " ").trim();
   if (clean.length <= maxLength) return clean;
   return `${clean.slice(0, maxLength - 1).trim()}…`;
-}
-
-function parseDate(value: string | undefined, fallback: string) {
-  if (!value) return fallback;
-  const parsed = new Date(value);
-  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
-
-  const withDay = new Date(`1 ${value}`);
-  if (!Number.isNaN(withDay.getTime())) return withDay.toISOString();
-
-  return fallback;
 }
 
 function getErrorMessage(error: unknown) {

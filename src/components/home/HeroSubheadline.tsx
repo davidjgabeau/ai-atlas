@@ -53,12 +53,12 @@ export function HeroSubheadline({ count }: HeroSubheadlineProps) {
   return (
     <p
       className="text-body mt-5 text-[18px] leading-[1.45] text-[#4F4A43] md:mt-5 md:text-[17px] md:leading-[1.5]"
-      aria-label={`${count} early-stage AI companies across consumer, healthcare, infrastructure, and more.`}
+      aria-label={`${count} AI companies across consumer, healthcare, infrastructure, and more.`}
     >
       <span className="hero-count-ticket" aria-hidden="true">
         {displayCount}
       </span>{" "}
-      early-stage AI {count === 1 ? "company" : "companies"} across consumer,
+      AI {count === 1 ? "company" : "companies"} across consumer,
       healthcare, infrastructure, and more.
     </p>
   );

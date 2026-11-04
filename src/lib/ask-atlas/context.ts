@@ -1,10 +1,9 @@
+import reviews from "@/data/reporting/companies.json";
+import reviewedSignals from "@/data/reporting/signals.json";
+import reportingResources from "@/data/reporting/resources.json";
+import { officeEvidence, summarizeOfficeGeography } from "@/lib/research/evidence";
 import { categoryMeta } from "@/data/market";
-import { getRecentEditorialSignals } from "@/lib/editorial/recentSignals";
 import { patterns } from "@/data/patterns";
-import {
-  getLatestSurface,
-  getStoredAgentHomepageData,
-} from "@/lib/agent/homepageData";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
 import { isRecentCompanyAddition } from "@/lib/companies/recentAdditions";
 import { getCompanySignalLabel } from "@/lib/signals/companySignal";
@@ -16,6 +15,7 @@ export type AskAtlasContext = {
   promptContext: {
     product: string;
     scope: string;
+    reporting: { methodology: string; officeGeography: ReturnType<typeof summarizeOfficeGeography>; signals: unknown[]; resources: unknown[]; experts: unknown[] };
     counts: {
       companies: number;
       categories: number;
@@ -59,31 +59,29 @@ export type AskAtlasContext = {
       fundingAmount: string;
       fundingDate: string;
       fundingNote: string;
+      founders: string[];
+      sourceUrls: string[];
+      sourceCheckedAt: string | null;
+      officeEvidence: unknown[];
     }>;
   };
   companies: Company[];
 };
 
 export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
-  const [companies, homepageData] = await Promise.all([
-    getPublishedCompanies(),
-    getStoredAgentHomepageData(),
-  ]);
-  const companiesById = new Map(companies.map((company) => [company.id, company]));
+  const companies = await getPublishedCompanies();
   const companiesBySlug = new Map(
     companies.map((company) => [company.slug, company]),
   );
-  const latestSignals = getLatestSurface(
-    homepageData.editorialSurfaces,
-    "latest_signals",
-  );
+
 
   return {
     companies,
     promptContext: {
       product: "AI Atlas NYC",
       scope:
-        "A curated map of early-stage New York City AI startups from pre-seed through Series A.",
+        "A curated map of New York City AI companies at every stage.",
+      reporting: { methodology: "Curated sample, not a citywide census. Office source checks do not independently confirm current occupancy. Mailing addresses and unverified locations do not establish offices. Distinguish event dates, source dates, and review dates. Use source links in reporting answers.", officeGeography: summarizeOfficeGeography(officeEvidence.filter((o) => companiesBySlug.has(o.company_slug))), signals: reviewedSignals, resources: reportingResources.resources, experts: reportingResources.experts },
       counts: {
         companies: companies.length,
         categories: categoryMeta.length,
@@ -101,16 +99,10 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
           .map((item) => companiesBySlug.get(item.company_slug)?.name)
           .filter((name): name is string => Boolean(name)),
       })),
-      latestSignals:
-        getRecentEditorialSignals(latestSignals?.items, new Set(companiesById.keys())).slice(0, 6).map((item) => ({
-          title: item.title,
-          body: item.body ?? "",
-          label: item.label ?? "Signal",
-          category: item.category,
-          company: item.companyId
-            ? companiesById.get(item.companyId)?.name
-            : undefined,
-        })) ?? [],
+      latestSignals: [...reviewedSignals].sort((a, b) => Date.parse(b.occurred_at) - Date.parse(a.occurred_at)).slice(0, 8).map((item) => ({
+        title: item.title, body: `${item.summary} Event date: ${item.occurred_at}. Source: ${item.source_url}`,
+        label: item.type, company: companiesBySlug.get(item.company_slug)?.name,
+      })),
       companies: companies.map((company) => ({
         id: company.id,
         name: company.name,
@@ -132,6 +124,10 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
         fundingAmount: company.funding_amount,
         fundingDate: company.funding_date,
         fundingNote: company.funding_note,
+        founders: company.founders.map((f) => f.name),
+        sourceUrls: reviews.find((r) => r.slug === company.slug)?.source_urls ?? company.discoveryReason?.sourceUrls ?? [],
+        sourceCheckedAt: reviews.find((r) => r.slug === company.slug)?.verified_at ?? null,
+        officeEvidence: officeEvidence.filter((o) => o.company_slug === company.slug),
       })),
     },
   };

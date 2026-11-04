@@ -12,6 +12,7 @@ export function revalidateMarketPages(companySlug?: string) {
 
   revalidatePath("/");
   revalidatePath("/companies");
+  revalidatePath("/research");
   revalidatePath("/categories");
   revalidatePath("/categories/[slug]", "page");
   revalidatePath("/insights");

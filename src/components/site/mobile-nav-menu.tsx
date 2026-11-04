@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 
 const mobileNavItems = [
   { label: "Map", href: "/companies", icon: "globe" as const },
+  { label: "Research", href: "/research", icon: "compass" as const },
   { label: "Categories", href: "/categories", icon: "grid" as const },
   { label: "Patterns", href: "/patterns", icon: "compass" as const },
   { label: "Newsfeed", href: "/feed", icon: "pin" as const },
@@ -90,7 +91,7 @@ export function MobileNavMenu({ className }: { className?: string }) {
               href="/submit"
               className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-[#111111] px-4 text-sm font-semibold text-[#F8F6F1] transition hover:bg-[#2A2926] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]"
             >
-              Submit Startup
+              Submit Company
               <ArrowRight className="size-4" />
             </Link>
           </SheetClose>

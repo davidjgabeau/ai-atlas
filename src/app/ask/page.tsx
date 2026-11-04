@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
     title: "Ask Atlas",
     description:
-      "Ask natural-language questions about early-stage NYC AI companies, categories, and market patterns for founder and VC research.",
+      "Ask natural-language questions about NYC AI companies, categories, and market patterns for founder and VC research.",
     path: "/ask",
     image: getShareImageUrl({ page: "ask" }),
   });
@@ -60,7 +60,7 @@ export default async function AskPage({
           "@type": "WebPage",
           name: "Ask Atlas",
           description:
-            "Ask natural-language questions about early-stage NYC AI companies, categories, and market patterns for founder and VC research.",
+            "Ask natural-language questions about NYC AI companies, categories, and market patterns for founder and VC research.",
           url: absoluteUrl("/ask"),
         }}
       />

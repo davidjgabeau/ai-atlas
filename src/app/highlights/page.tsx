@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   ...createShareMetadata({
     title: "Current Read",
-    description: `Short editorial notes from the full early-stage NYC AI map and latest additions. ${shareCta}.`,
+    description: `Short editorial notes from the full NYC AI map and latest additions. ${shareCta}.`,
     path: "/highlights",
     image: getShareImageUrl({ page: "insights" }),
   }),

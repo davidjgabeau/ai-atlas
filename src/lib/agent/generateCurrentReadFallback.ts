@@ -39,7 +39,7 @@ const workflowBySlug: Record<string, string> = {
   vellum: "LLM production tooling",
 };
 
-export const currentReadGeneratorPrompt = `You are writing a concise market memo for AI Atlas NYC, a map of early-stage NYC AI startups from pre-seed through Series A. The reader is either a curious person trying to understand early-stage NYC AI or a VC analyst scanning for signal. Do not write generic trend summaries. Make specific claims based on the companies provided. Each insight should teach the reader something they would not get from a category count. Mention concrete companies as evidence. Prefer contrasts, implications, and buyer/workflow specificity.
+export const currentReadGeneratorPrompt = `You are writing a concise market memo for AI Atlas NYC, a map of NYC AI startups from seed to public companies. The reader is either a curious person trying to understand NYC AI or a VC analyst scanning for signal. Do not write generic trend summaries. Make specific claims based on the companies provided. Each insight should teach the reader something they would not get from a category count. Mention concrete companies as evidence. Prefer contrasts, implications, and buyer/workflow specificity.
 
 Return JSON only as an object with an items array:
 {

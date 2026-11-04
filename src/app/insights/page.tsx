@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createShareMetadata({
   title: "Current Read",
-  description: `Short editorial notes from the full early-stage NYC AI map and latest additions. ${shareCta}.`,
+  description: `Short editorial notes from the full NYC AI map and latest additions. ${shareCta}.`,
   path: "/insights",
   image: getShareImageUrl({ page: "insights" }),
 });
@@ -60,7 +60,7 @@ export default async function InsightsPage() {
               NYC AI Signals
             </p>
             <h1 className="mt-5 max-w-[760px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
-              Which Early-Stage NYC AI Startups Show the Clearest Signal Right Now
+              Which NYC AI Startups Show the Clearest Signal Right Now
             </h1>
             <p className="mt-5 max-w-[640px] text-[18px] leading-[1.55] text-[#5F5A52]">
               Follow featured companies, recently active updates, and startups

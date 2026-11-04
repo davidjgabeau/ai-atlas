@@ -105,7 +105,7 @@ export async function writeSocialDraftWithClaude({
 
 function getSystemPrompt() {
   return [
-    "You write posts for AI Atlas NYC, a premium editorial market map for early-stage NYC AI startups.",
+    "You write posts for AI Atlas NYC, a premium editorial market map for NYC AI startups.",
     "Voice: fun, outgoing, celebratory of NYC tech, concise, specific, editorial, lightly opinionated, founder-friendly.",
     "Write like a sharp NYC tech editor, not a database bot.",
     "Every post should have a distinct sentence shape from the recent posts supplied by the user.",

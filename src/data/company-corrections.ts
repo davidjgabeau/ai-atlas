@@ -1,9 +1,20 @@
 import type { Company } from "@/types/market";
+import reviewedProfiles from "./reporting/companies.json";
+
+const reviewedFields = ["name", "website_url", "category", "stage", "short_description", "one_line_thesis", "founders", "funding_round", "funding_amount", "funding_date", "total_raised", "lead_investor"] as const;
 
 // Reviewed 2026-11-02. Narrow corrections to malformed imported public records.
 // Sources: https://www.probook.ai/ and https://www.probook.ai/company
 // https://a16z.com/announcement/investing-in-probook/ (June 23, 2026)
 export function applyVerifiedCompanyCorrections<T extends Partial<Company>>(row: T): T {
+  const review = reviewedProfiles.find((profile) => profile.slug === row.slug || (profile as Record<string, unknown>).previous_slug === row.slug);
+  if (review) {
+    const correction = Object.fromEntries(reviewedFields.flatMap((key) => {
+      const value = (review as Record<string, unknown>)[key];
+      return value !== undefined && value !== null ? [[key, value]] : [];
+    }));
+    row = { ...row, ...correction, slug: review.slug };
+  }
   if (row.slug !== "probook") return row;
   return {
     ...row,

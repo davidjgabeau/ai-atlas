@@ -726,7 +726,7 @@ function createMarketSnapshotItems(
       title: "Analyst read",
       body:
         currentRead[0]?.body ??
-        "Recent early-stage additions skew toward practical AI: healthcare, finance, infrastructure, and operational workflows.",
+        "Recent company additions skew toward practical AI: healthcare, finance, infrastructure, and operational workflows.",
       label: "Market read",
       supportingCompanyIds: currentRead[0]?.supportingCompanyIds,
       supportingEventIds: currentRead[0]?.supportingEventIds,

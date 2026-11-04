@@ -50,7 +50,7 @@ function formatInclusionReasonForDisplay(value: string) {
     .replace(/\s+\./g, ".")
     .trim();
 
-  if (!reason) return "Added: expands the early-stage NYC AI map.";
+  if (!reason) return "Added: expands the NYC AI map.";
 
   return `Added: ${reason.charAt(0).toLowerCase()}${reason.slice(1)}`;
 }

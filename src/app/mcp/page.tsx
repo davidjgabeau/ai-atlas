@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = createShareMetadata({
   title: "AI Atlas NYC MCP Server",
   description:
-    "Use AI Atlas NYC as a read-only MCP server for structured public data about early-stage NYC AI companies, categories, patterns, and public jobs.",
+    "Use AI Atlas NYC as a read-only MCP server for structured public data about NYC AI companies, categories, patterns, and public jobs.",
   path: "/mcp",
   image: getShareImageUrl({ page: "mcp" }),
 });
