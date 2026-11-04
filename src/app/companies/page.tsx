@@ -14,7 +14,7 @@ import { getPublishedCompanies } from "@/lib/supabase/market-data";
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
-    title: "NYC AI Startup Map",
+    title: "NYC AI Company Map",
     description:
       "Browse NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
     path: "/companies",
@@ -35,7 +35,7 @@ export default async function CompaniesPage({
     <>
       <JsonLd
         data={collectionPageSchema({
-          name: "NYC AI Startup Map",
+          name: "NYC AI Company Map",
           description:
             "Browse NYC AI companies for founders, seed investors, VCs, operators, and analysts by category, stage, buyer, workflow, and product surface.",
           url: "https://aiatlas.nyc/companies",

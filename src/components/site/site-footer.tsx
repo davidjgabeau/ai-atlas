@@ -10,7 +10,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-[#E7E1D8] bg-[var(--app-surface)]">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-[#7A746C] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-        <p>A curated view of NYC AI startups from seed to public companies.</p>
+        <p>A curated view of NYC AI companies from seed to public companies.</p>
         <div className="flex flex-wrap items-center gap-4">
           <Link
             href="/companies"

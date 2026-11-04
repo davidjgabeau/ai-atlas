@@ -378,5 +378,75 @@
     "source_name": "Company announcement",
     "occurred_at": "2025-02-20",
     "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "north-cloud",
+    "type": "funding",
+    "title": "North.cloud announces Series B",
+    "summary": "$60M · Series B. See the company announcement for terms and context.",
+    "source_url": "https://north.cloud/newsroom/north-series-b-release",
+    "source_name": "North.cloud",
+    "occurred_at": "2026-10-15",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "pathos-ai",
+    "type": "funding",
+    "title": "Pathos AI announces Series E",
+    "summary": "$237M · Series E. See the company announcement for terms and context.",
+    "source_url": "https://www.pathos.com/pathos-ai-secures-237-million-in-series-e-financing-to-scale-agentic-ai-drug-development-platform-and-advance-oncology-pipeline",
+    "source_name": "Pathos AI",
+    "occurred_at": "2026-10-23",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "qualitate",
+    "type": "funding",
+    "title": "Qualitate announces Series A",
+    "summary": "$25M · Series A. See the company announcement for terms and context.",
+    "source_url": "https://www.qualitate.io/news/qualitate-announces-25m-series-a",
+    "source_name": "Qualitate",
+    "occurred_at": "2026-10-20",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "destro-ai",
+    "type": "funding",
+    "title": "Destro AI announces Seed",
+    "summary": "$8M · Seed. See the company announcement for terms and context.",
+    "source_url": "https://www.destroai.com/newsroom/destro-raises-8m",
+    "source_name": "Destro AI",
+    "occurred_at": "2026-09-29",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "tangent-robotics",
+    "type": "funding",
+    "title": "Tangent Robotics announces Pre-seed",
+    "summary": "$4.5M · Pre-seed. See the company announcement for terms and context.",
+    "source_url": "https://www.tangentrobotics.ai/pre-seed-funding-round-led-by-fly-ventures-and-toyota-ventures/",
+    "source_name": "Tangent Robotics",
+    "occurred_at": "2026-09-30",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "cohere",
+    "type": "funding",
+    "title": "Cohere announces Series E (initial close)",
+    "summary": "Proceeds not established · Series E (initial close). Cohere describes an initial close; the CAD$7B target is not treated as confirmed proceeds.",
+    "source_url": "https://cohere.com/blog/who-gets-to-build-the-frontier-for-ai",
+    "source_name": "Cohere",
+    "occurred_at": "2026-10-29",
+    "verified_at": "2026-11-04"
+  },
+  {
+    "company_slug": "databricks",
+    "type": "office",
+    "title": "Databricks announces expansion of its New York R&D hub",
+    "summary": "Databricks says its R&D hub at 5 Bryant Park is already operating and announces plans to double the space. The expansion announcement does not establish occupancy of all planned floors.",
+    "source_url": "https://www.databricks.com/blog/databricks-doubling-down-new-york-city-premier-ai-talent-hub",
+    "source_name": "Databricks",
+    "occurred_at": "2026-10-19",
+    "verified_at": "2026-11-04"
   }
 ]

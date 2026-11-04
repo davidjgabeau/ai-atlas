@@ -108,7 +108,7 @@ export default function ResearchMap({ companies, filters, saved, onSave }: {
 
   return <section className="mt-5" aria-labelledby="office-map-title">
     <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-      <div><h2 id="office-map-title" className="font-heading text-2xl">The offices behind the companies</h2>
+      <div><h2 id="office-map-title" className="scroll-mt-40 font-heading text-2xl">The offices behind the companies</h2>
         <p className="mt-1 text-sm text-[#777166]" aria-live="polite">{mappedSlugs.size} companies plotted at {groups.length} map locations · {unmapped.length} without a pin in this view</p></div>
       <div className="flex gap-2"><button className={action} onClick={fitAll}><LocateFixed size={14} />Fit locations</button><button className={action} onClick={exportMap}><ArrowDownToLine size={14} />Export GeoJSON</button></div>
     </div>

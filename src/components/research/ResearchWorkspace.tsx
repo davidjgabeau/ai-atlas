@@ -100,7 +100,7 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
       <div className="flex flex-wrap gap-2 lg:justify-end">
         <button onClick={() => openMap()} className={secondary}><MapPin size={15} />Explore the office map</button>
         <button onClick={share} className={secondary}>{copied ? <Check size={15} /> : <Link2 size={15} />}{copied ? "Link copied" : shortlistOnly ? "Share filters" : "Share this view"}</button>
-        <button onClick={() => download("ai-atlas-nyc-research.csv", companiesToCsv(visible))} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#263C2E] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#3C5544]"><ArrowDownToLine size={15} />Export {visible.length} profiles</button>
+        <button onClick={() => download("ai-atlas-nyc-research.csv", companiesToCsv(visible))} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#263C2E] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#3C5544]"><ArrowDownToLine size={15} />Export {visible.length} {visible.length === 1 ? "profile" : "profiles"}</button>
       </div>
     </div>
 
@@ -108,7 +108,7 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
       {[{ n: data.companies.length.toLocaleString(), label: "NYC AI companies", note: "Active businesses, across stages" }, { n: mappedCount, label: "Companies on the map", note: "Sourced addresses, across stages" }, { n: outside.length, label: "Beyond Manhattan", note: "Companies with office evidence" }, { n: williamsburg.length, label: "Williamsburg companies", note: "Inspect sources and move dates" }].map((m) => <div key={m.label} className="bg-[#FCFBF7] p-5 sm:p-6"><p className="font-heading text-4xl tracking-tight text-[#263C2E]">{m.n}</p><p className="mt-2 text-sm font-semibold">{m.label}</p><p className="mt-1 text-xs leading-5 text-[#777166]">{m.note}</p></div>)}
     </div>
 
-    <nav id="research-sections" aria-label="Research sections" className="mt-9 flex scroll-mt-5 gap-6 overflow-x-auto border-b border-[#DAD5CC]">
+    <nav id="research-sections" aria-label="Research sections" className="mt-9 flex scroll-mt-40 gap-6 overflow-x-auto border-b border-[#DAD5CC]">
       {[["map", "Office map"], ["companies", "Company finder"], ["signals", "Signals & timeline"], ["resources", "People & public impact"]].map(([id, label]) => <button key={id} onClick={() => setTab(id)} aria-current={tab === id ? "page" : undefined} className={`shrink-0 border-b-2 pb-3 text-sm font-semibold ${tab === id ? "border-[#263C2E] text-[#263C2E]" : "border-transparent text-[#777166]"}`}>{label}</button>)}
     </nav>
 

@@ -1,6 +1,8 @@
 import type { CompanyJob } from "@/types/market";
 
 const exactGenericTitles = new Set([
+  "account",
+  "talent",
   "analyst",
   "developer",
   "engineer",
@@ -112,6 +114,7 @@ export function isNonJobContentUrl(value: string) {
   try {
     const url = new URL(value);
     const path = url.pathname.toLowerCase();
+    if (/^\/(talent|account|login|sign-in|sign-up|talent-pool)\/?$/i.test(path)) return true;
 
     return /\/(articles?|blogs?|blog-posts?|case-stud(?:y|ies)|changelog|customers?|customer-stories?|e-?books?|enterprise-platform|events?|guides?|news|newsroom|platform|press|pricing|privacy|resources?|solutions?|stories|terms|use-cases?|webinars?)(\/|$)/i.test(
       path,

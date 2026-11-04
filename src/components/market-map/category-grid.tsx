@@ -28,7 +28,7 @@ export function CategoryGrid({ companies }: { companies: Company[] }) {
             <div className="flex items-start justify-between gap-4">
               <CategoryPixelIcon category={category.name} size="lg" labeled />
               <div className="live-count-pill px-2.5 py-1 text-xs">
-                {counts[category.name]} startups to know
+                {counts[category.name]} companies to know
               </div>
             </div>
             <div className="mt-5">

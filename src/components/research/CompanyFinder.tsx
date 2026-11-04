@@ -41,9 +41,9 @@ export default function CompanyFinder({ companies, saved, onSave, shortlistOnly 
   }
 
   return <section className="mt-5" aria-labelledby="company-finder-title">
-    <div className="flex flex-wrap items-end justify-between gap-3"><div><h2 id="company-finder-title" className="font-heading text-2xl">Explore the companies</h2><p className="mt-1 text-sm leading-6 text-[#777166]">Active AI businesses with supported NYC presence. Open a company’s evidence to see sources and review dates.</p></div><p className="text-xs text-[#777166]">{shortlistOnly ? "Your saved profiles" : "All stages · A–Z"}</p></div>
-    <div ref={resultsRef} className="mt-4 scroll-mt-5">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[#777166]" aria-live="polite"><p>{`${total.toLocaleString()} matching companies`}</p><span>25 results per page</span></div>
+    <div className="flex flex-wrap items-end justify-between gap-3"><div><h2 id="company-finder-title" className="scroll-mt-40 font-heading text-2xl">Explore the companies</h2><p className="mt-1 text-sm leading-6 text-[#777166]">Active AI businesses with supported NYC presence. Open a company’s evidence to see sources and review dates.</p></div><p className="text-xs text-[#777166]">{shortlistOnly ? "Your saved profiles" : "All stages · A–Z"}</p></div>
+    <div ref={resultsRef} className="mt-4 scroll-mt-40">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[#777166]" aria-live="polite"><p>{`${total.toLocaleString()} matching ${total === 1 ? "company" : "companies"}`}</p><span>25 results per page</span></div>
       <div className="overflow-hidden rounded-xl border border-[#DCD7CE] bg-[#FCFBF7]">
         <div className="hidden grid-cols-[minmax(0,1fr)_200px_130px_100px] gap-4 border-b border-[#DCD7CE] bg-[#F0EEE6] px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-[#777166] lg:grid"><span>Company</span><span>Location evidence</span><span>Record status</span><span className="text-right">Details</span></div>
         <ul className="divide-y divide-[#E3DED4]">

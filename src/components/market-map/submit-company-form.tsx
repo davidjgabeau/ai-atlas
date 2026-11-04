@@ -41,7 +41,7 @@ export function SubmitCompanyForm({
   form,
   submitted,
   submitting,
-  submitLabel = "Submit startup",
+  submitLabel = "Submit company",
   onFieldChange,
   onReset,
   onSubmit,
@@ -56,7 +56,7 @@ export function SubmitCompanyForm({
               Submission received
             </h2>
             <p className="mt-2 text-sm leading-6 text-[#5F5A52]">
-              {form.company_name || "This company"} is now in the NYC startup
+              {form.company_name || "This company"} is now in the NYC company
               submission queue for editorial review.
             </p>
             <div className="mt-4 flex items-center gap-2">

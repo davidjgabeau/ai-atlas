@@ -129,7 +129,9 @@ test("borough and neighborhood must match the same office, including on map expo
 });
 
 test("company portals and founder directories are not job vacancies", () => {
-  for (const title of ["Immigration Manager Portal", "Founder Directory", "Find a Co-Founder", "Firm Partnerships", "Partnerships"]) assert.equal(isNavigableCompanyJob({ title, source_url: "https://example.com/portal" }), false);
+  for (const title of ["Talent", "ACCOUNT", "Immigration Manager Portal", "Founder Directory", "Find a Co-Founder", "Firm Partnerships", "Partnerships"]) assert.equal(isNavigableCompanyJob({ title, source_url: "https://example.com/portal" }), false);
+  assert.equal(isNavigableCompanyJob({ title: "Talent Acquisition Lead", source_url: "https://example.com/careers/talent-acquisition-lead" }), true);
+  assert.equal(isNavigableCompanyJob({ title: "Software Engineer", source_url: "https://example.com/talent" }), false);
   assert.equal(isNavigableCompanyJob({ title: "Founding Software Engineer", source_url: "https://jobs.ashbyhq.com/example/role" }), true);
 });
 

@@ -228,7 +228,7 @@ export function SubmitCompanyGate() {
         authBusy={authBusy}
         authError={authError}
         authMessage={authMessage}
-        description="Your startup draft is saved in this tab. Sign in or sign up with Google so the submission has a real AI Atlas account behind it."
+        description="Your company draft is saved in this tab. Sign in or sign up with Google so the submission has a real AI Atlas account behind it."
         open={authPromptOpen}
         signUpLabel="Sign up with Google"
         title="Sign in or sign up to submit"
@@ -307,7 +307,7 @@ function SubmissionContextCard({
       </span>
       <div>
         <p className="font-semibold text-[#181818]">
-          Fill out the startup first
+          Fill out the company first
         </p>
         <p className="mt-1 text-sm leading-6 text-[#5F5A52]">
           When you press submit, AI Atlas will ask for Google sign-in before
