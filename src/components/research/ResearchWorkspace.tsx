@@ -6,12 +6,13 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowDownToLine, ArrowUpRight, Bookmark, Check, Link2, MapPin, Search } from "lucide-react";
 import { buildResearchMapGroups } from "@/lib/research/map";
 import { normalizeCompanyStage } from "@/lib/company-stages";
-import { companiesToCsv, filterResearchCompanies, isDocumentedOffice } from "@/lib/research/evidence";
+import { companiesToCsv, filterResearchCompanies, isDocumentedOffice, nycBoroughs, summarizeCitywideCoverage } from "@/lib/research/evidence";
 import type { ResearchDataset } from "@/lib/research/types";
+import { CitywideComparison } from "./CitywideComparison";
 
 type Filters = { query: string; borough: string; neighborhood: string; stage: string; category: string; evidence: string; outside: boolean };
 const initial: Filters = { query: "", borough: "", neighborhood: "", stage: "", category: "", evidence: "", outside: false };
-const boroughs = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
+const boroughs = nycBoroughs;
 const control = "h-11 w-full rounded-lg border border-[#DAD5CC] bg-white px-3 text-sm text-[#282824] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]";
 const secondary = "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-[#DAD5CC] bg-white px-3 py-2 text-sm font-medium transition hover:bg-[#F1EEE7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A3D2B]";
 const CompanyFinder = dynamic(() => import("./CompanyFinder"), { loading: () => <p className="mt-6 text-sm text-[#777166]">Loading company finder...</p> });
@@ -44,7 +45,7 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       const p = new URLSearchParams(window.location.search);
-      if (["map", "companies", "signals", "resources"].includes(p.get("view") ?? "")) setTab(p.get("view")!);
+      if (["map", "comparison", "companies", "signals", "resources"].includes(p.get("view") ?? "")) setTab(p.get("view")!);
       if (["30", "90", "365", "all"].includes(p.get("days") ?? "")) setDays(p.get("days")!);
       setSignalType(p.get("signal_type") ?? "");
       setFilters({ query: p.get("q") ?? "", borough: p.get("borough") ?? "", neighborhood: p.get("neighborhood") ?? "", stage: p.get("stage") ?? "", category: p.get("category") ?? "", evidence: p.get("evidence") ?? "", outside: p.get("outside") === "1" });
@@ -66,9 +67,9 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
   const advancedLabel = filtersExpanded ? "" : "hidden lg:block";
   const matching = useMemo(() => filterResearchCompanies(data.companies, filters), [data.companies, filters]);
   const visible = shortlistOnly ? matching.filter((c) => saved.includes(c.slug)) : matching;
-  const documented = data.companies.filter((c) => c.offices.some(isDocumentedOffice));
-  const outside = documented.filter((c) => c.offices.some((o) => isDocumentedOffice(o) && o.borough !== "Manhattan"));
-  const williamsburg = documented.filter((c) => c.offices.some((o) => isDocumentedOffice(o) && o.neighborhood === "Williamsburg"));
+  const coverage = useMemo(() => summarizeCitywideCoverage(data.companies), [data.companies]);
+  const hasFilters = Object.values(filters).some(Boolean) || shortlistOnly;
+  const showsFilteredCompanies = tab !== "comparison" && tab !== "resources";
   const mappedCount = useMemo(() => new Set(buildResearchMapGroups(data.companies).flatMap((g) => g.entries.map((e) => e.company.slug))).size, [data.companies]);
   const categories = [...new Set(data.companies.map((c) => c.category))].sort();
   const neighborhoods = [...new Set(data.companies.flatMap((c) => c.offices.filter(isDocumentedOffice).filter((o) => !filters.borough || o.borough === filters.borough).map((o) => o.neighborhood).filter((n): n is string => Boolean(n))))].sort();
@@ -89,6 +90,10 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
     setTab("map"); setShortlistOnly(false);
     requestAnimationFrame(() => document.getElementById("research-sections")?.scrollIntoView({ block: "start" }));
   }
+  function openComparison() {
+    setFilters(initial); setShortlistOnly(false); setTab("comparison");
+    requestAnimationFrame(() => document.getElementById("research-sections")?.scrollIntoView({ block: "start" }));
+  }
 
   return <div className="mx-auto max-w-[1320px] px-4 pb-20 pt-10 sm:px-6 lg:px-10">
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[.14em] text-[#736E64]">
@@ -96,23 +101,29 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
     </div>
     <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_330px] lg:items-end">
       <div><h1 className="max-w-[800px] font-heading text-[clamp(40px,5.2vw,72px)] leading-[1.02] tracking-[-.035em] text-[#242720]">Find New York’s<br /><span className="text-[#79806C]">AI companies.</span></h1>
-        <p className="mt-5 max-w-[680px] text-base leading-7 text-[#625E55]">Explore companies at every stage. Search the wider company index, map documented offices, and open the original sources.</p></div>
+        <p className="mt-5 max-w-[680px] text-base leading-7 text-[#625E55]">Explore active AI businesses across New York City, at every stage. Compare documented office locations, map addresses, and open the original sources.</p></div>
       <div className="flex flex-wrap gap-2 lg:justify-end">
         <button onClick={() => openMap()} className={secondary}><MapPin size={15} />Explore the office map</button>
         <button onClick={share} className={secondary}>{copied ? <Check size={15} /> : <Link2 size={15} />}{copied ? "Link copied" : shortlistOnly ? "Share filters" : "Share this view"}</button>
-        <button onClick={() => download("ai-atlas-nyc-research.csv", companiesToCsv(visible))} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#263C2E] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#3C5544]"><ArrowDownToLine size={15} />Export {visible.length} {visible.length === 1 ? "profile" : "profiles"}</button>
+        {tab === "comparison" ? <a href="/api/research?format=comparison" className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#263C2E] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#3C5544]"><ArrowDownToLine size={15} />Export comparison CSV</a> : <button onClick={() => download("ai-atlas-nyc-research.csv", companiesToCsv(visible))} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#263C2E] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#3C5544]"><ArrowDownToLine size={15} />Export {visible.length} {visible.length === 1 ? "profile" : "profiles"}</button>}
       </div>
     </div>
 
-    <div className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#DCD7CE] bg-[#DCD7CE] lg:grid-cols-4">
-      {[{ n: data.companies.length.toLocaleString(), label: "NYC AI companies", note: "Active businesses, across stages" }, { n: mappedCount, label: "Companies on the map", note: "Sourced addresses, across stages" }, { n: outside.length, label: "Beyond Manhattan", note: "Companies with office evidence" }, { n: williamsburg.length, label: "Williamsburg companies", note: "Inspect sources and move dates" }].map((m) => <div key={m.label} className="bg-[#FCFBF7] p-5 sm:p-6"><p className="font-heading text-4xl tracking-tight text-[#263C2E]">{m.n}</p><p className="mt-2 text-sm font-semibold">{m.label}</p><p className="mt-1 text-xs leading-5 text-[#777166]">{m.note}</p></div>)}
+    {ready && hasFilters && showsFilteredCompanies && <section aria-label="Current filtered view" className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[#B7C5B3] bg-[#EAF0E5] p-4 sm:p-5">
+      <div><p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#52634B]">Your filtered view{shortlistOnly ? " · Shortlist" : ""}</p><p className="mt-1 text-lg font-semibold text-[#263C2E]">{visible.length} matching companies{filters.neighborhood ? ` in ${filters.neighborhood}` : filters.borough ? ` in ${filters.borough}` : ""}</p><p className="mt-1 text-sm text-[#625E55]">From {coverage.total_companies} company profiles across NYC. Location filters use documented office evidence.</p></div>
+      <div className="flex flex-wrap gap-2"><button className={secondary} onClick={() => { setFilters(initial); setShortlistOnly(false); }}>View all NYC</button><button className={secondary} onClick={openComparison}>Compare with NYC <ArrowUpRight size={14} /></button></div>
+    </section>}
+
+    <div className="mt-7 flex flex-wrap items-center justify-between gap-2"><p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#736E64]">Citywide directory coverage · totals across all views</p><button onClick={openComparison} className="inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-[#7E4935] underline underline-offset-4">Compare boroughs <ArrowUpRight size={14} /></button></div>
+    <div className="mt-2 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#DCD7CE] bg-[#DCD7CE] lg:grid-cols-4">
+      {[{ n: coverage.total_companies.toLocaleString(), label: "NYC company profiles", note: "Whole directory · all stages" }, { n: coverage.companies_with_borough, label: "Borough documented", note: `${coverage.companies_without_borough} more have no borough established` }, { n: mappedCount, label: "Companies on the map", note: "Sourced street addresses with coordinates" }, { n: coverage.williamsburg_companies, label: "In Williamsburg", note: `Included within ${coverage.boroughs.find((b) => b.borough === "Brooklyn")?.company_count ?? 0} Brooklyn companies` }].map((m) => <div key={m.label} className="bg-[#FCFBF7] p-5 sm:p-6"><p className="font-heading text-4xl tracking-tight text-[#263C2E]">{m.n}</p><p className="mt-2 text-sm font-semibold">{m.label}</p><p className="mt-1 text-xs leading-5 text-[#777166]">{m.note}</p></div>)}
     </div>
 
     <nav id="research-sections" aria-label="Research sections" className="mt-9 flex scroll-mt-40 gap-6 overflow-x-auto border-b border-[#DAD5CC]">
-      {[["map", "Office map"], ["companies", "Company finder"], ["signals", "Signals & timeline"], ["resources", "People & public impact"]].map(([id, label]) => <button key={id} onClick={() => setTab(id)} aria-current={tab === id ? "page" : undefined} className={`shrink-0 border-b-2 pb-3 text-sm font-semibold ${tab === id ? "border-[#263C2E] text-[#263C2E]" : "border-transparent text-[#777166]"}`}>{label}</button>)}
+      {[["map", "Office map"], ["comparison", "Citywide comparison"], ["companies", "Company finder"], ["signals", "Signals & timeline"], ["resources", "People & public impact"]].map(([id, label]) => <button key={id} onClick={() => id === "comparison" ? openComparison() : setTab(id)} aria-current={tab === id ? "page" : undefined} className={`shrink-0 border-b-2 pb-3 text-sm font-semibold ${tab === id ? "border-[#263C2E] text-[#263C2E]" : "border-transparent text-[#777166]"}`}>{label}</button>)}
     </nav>
 
-    {tab !== "resources" && <section aria-label="Filter companies" className="mt-5 rounded-xl border border-[#DCD7CE] bg-[#FCFBF7] p-4">
+    {showsFilteredCompanies && <section aria-label="Filter companies" className="mt-5 rounded-xl border border-[#DCD7CE] bg-[#FCFBF7] p-4">
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <label className="relative sm:col-span-2"><span className="sr-only">Search companies, founders, or places</span><Search size={16} className="absolute left-3 top-3.5 text-[#8A8479]" /><input value={filters.query} onChange={(e) => change("query", e.target.value)} className={`${control} pl-9`} placeholder="Company, founder, product, or place" /></label>
         <button type="button" onClick={() => setFiltersExpanded(!filtersExpanded)} aria-expanded={filtersExpanded} className={`${secondary} sm:col-span-2 lg:hidden`}>{filtersExpanded ? "Hide filters" : "Show filters"}{advancedFilterCount ? ` (${advancedFilterCount})` : ""}</button>
@@ -128,6 +139,8 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
 
     {tab === "map" && <ResearchMap companies={visible} filters={filters} saved={saved} onSave={toggle} />}
 
+    {tab === "comparison" && <CitywideComparison coverage={coverage} mappedCount={mappedCount} onBrowse={(next) => openMap({ ...initial, ...next })} />}
+
     {tab === "companies" && <CompanyFinder companies={visible} saved={saved} onSave={toggle} shortlistOnly={shortlistOnly} />}
 
     {tab === "signals" && <section className="mt-5">
@@ -141,24 +154,10 @@ export function ResearchWorkspace({ data }: { data: ResearchDataset }) {
       <div><h3 className="font-heading text-2xl">People and organizations to consult</h3><p className="mt-2 text-sm text-[#777166]">Public professional profiles selected for subject expertise. Listing is not an endorsement or an indication of availability.</p><div className="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">{data.resources.experts.map((e) => <article key={e.name} className="rounded-xl border border-[#DCD7CE] p-5"><a href={e.url} target="_blank" rel="noreferrer" className="font-semibold hover:text-[#9A3D2B]">{e.name} ↗</a><p className="mt-1 text-xs leading-5 text-[#777166]">{e.role} · {e.organization}</p><p className="mt-3 text-sm leading-6 text-[#625E55]">{e.expertise}</p>{e.public_contact_url && <a href={e.public_contact_url} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-semibold text-[#7E4935] underline underline-offset-4">Public professional contact</a>}</article>)}</div></div>
     </section>}
 
-    <div className="mt-7 grid gap-5 lg:grid-cols-[1.15fr_1fr]">
-      <section className="rounded-xl border border-[#DCD7CE] bg-[#EFEFE5] p-5 sm:p-6" aria-labelledby="borough-title">
-        <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#6C7563]">The geography question</p>
-        <h2 id="borough-title" className="mt-2 font-heading text-2xl">Beyond Manhattan</h2>
-        <div className="mt-4 space-y-2">{boroughs.map((b) => {
-          const count = documented.filter((c) => c.offices.some((o) => isDocumentedOffice(o) && o.borough === b)).length;
-          return <button key={b} onClick={() => { openMap({ ...initial, borough: b }); }} className="flex w-full items-center gap-3 rounded px-1 py-1 text-left text-sm hover:bg-white/60"><span className="w-24 shrink-0">{b}</span><span className="h-1.5 flex-1 overflow-hidden rounded bg-[#D8DDCF]"><span className="block h-full rounded bg-[#64775A]" style={{ width: `${documented.length ? count / documented.length * 100 : 0}%` }} /></span><strong className="w-6 text-right font-medium">{count}</strong></button>;
-        })}</div>
-        <p className="mt-3 text-xs leading-5 text-[#696C5E]">Counts show companies with documented offices in this atlas, not borough-wide totals. A zero means no evidence recorded in this sample. A company may appear in multiple boroughs.</p>
-      </section>
-      <section className="rounded-xl border border-[#DCD7CE] bg-[#FCFBF7] p-5 sm:p-6">
-        <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-[#8A6654]">An open reporting question</p>
-        <h2 className="mt-2 font-heading text-2xl">Is Williamsburg becoming an AI hub?</h2>
-        <p className="mt-3 text-sm leading-6 text-[#625E55]">This sourcebook has office evidence for <strong>{williamsburg.length} {williamsburg.length === 1 ? "company" : "companies"}</strong> in Williamsburg. Inspect the leases, careers pages, dates, and gaps before drawing a conclusion.</p>
-        <button className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#7E4935] underline decoration-[#C8AA98] underline-offset-4" onClick={() => { openMap({ ...initial, borough: "Brooklyn", neighborhood: "Williamsburg" }); }}>See the Williamsburg evidence <ArrowUpRight size={15} /></button>
-        <p className="mt-4 border-t border-[#E4DED1] pt-3 text-xs leading-5 text-[#777166]">To test “hub,” compare occupied space, employment, move dates, and a consistent citywide denominator. Mailing addresses and investor announcements alone do not establish an office.</p>
-      </section>
-    </div>
+    {tab !== "comparison" && <aside className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[#DCD7CE] bg-[#EFEFE5] p-5">
+      <div><h2 className="font-heading text-xl">How does Williamsburg compare?</h2><p className="mt-1 text-sm leading-6 text-[#625E55]">{coverage.williamsburg_companies} Williamsburg companies sit within Brooklyn’s {coverage.boroughs.find((b) => b.borough === "Brooklyn")?.company_count ?? 0} and the {coverage.total_companies}-company NYC directory. See all boroughs and the gaps in location evidence.</p></div>
+      <button onClick={openComparison} className={secondary}>Open citywide comparison <ArrowUpRight size={15} /></button>
+    </aside>}
 
     <section className="mt-10 border-t border-[#DAD5CC] pt-6" aria-labelledby="method-title">
       <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]"><div><h2 id="method-title" className="font-heading text-2xl">A sourcebook, with its limits visible.</h2><p className="mt-3 text-sm leading-6 text-[#777166]">This directory covers active AI businesses with supported NYC presence, across stages. Closed businesses, duplicate identities, and unresolved company leads are excluded. Street addresses and neighborhoods require separate evidence; an unknown address remains a research gap. Acquired businesses retain a listing only with a distinct active operating identity and NYC presence; their parent is named. Source dates and the scope of each profile review stay visible.</p><p className="mt-3 text-sm leading-6 text-[#777166]">“Verified” means a primary source supports the location, such as a company, landlord, government announcement, or issuer filing. “Reported” means a third party documented it. Neither independently confirms occupancy today. Announced locations are labeled separately, and historical offices are excluded from pins. No office pin is placed without coordinates for the recorded address.</p><p className="mt-3 text-sm leading-6 text-[#777166]">Company social posts depend on external API access and may be stale. Use the dated sources and employer links for reporting. All claims should be checked with the original source before publication.</p><div className="mt-4 flex flex-wrap gap-4 text-xs font-semibold text-[#7E4935]"><a className="underline underline-offset-4" href="/api/research">Structured JSON</a><a className="underline underline-offset-4" href="/api/research?format=csv">Full company CSV</a><a className="underline underline-offset-4" href="/api/research?format=geojson">Office map GeoJSON</a><Link className="underline underline-offset-4" href="/submit">Suggest a company or correction</Link></div></div><div className="rounded-xl border border-[#DCD7CE] bg-[#FCFBF7] p-5"><h3 className="text-sm font-semibold">Collection & source review</h3>{data.collection.map((c) => <div key={c.name} className="mt-4 border-t border-[#E8E3D9] pt-3"><p className="flex flex-wrap justify-between gap-2 text-xs font-semibold"><span>{c.name}</span><time>{date(c.latest)}</time></p><p className="mt-1 text-xs leading-5 text-[#777166]">{c.note}</p></div>)}</div></div>
