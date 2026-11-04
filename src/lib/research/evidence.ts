@@ -3,6 +3,7 @@ import type { OfficeEvidence, ResearchCompany } from "./types";
 import { normalizeCompanyStage } from "../company-stages";
 
 export const officeEvidence = offices as OfficeEvidence[];
+export const nycBoroughs = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"] as const;
 
 export function isDocumentedOffice(office: OfficeEvidence) {
   return office.location_type !== "mailing" && office.location_type !== "unverified"
@@ -19,6 +20,45 @@ export function officeMatchesFilters(office: OfficeEvidence, filters: OfficeFilt
     && (!filters.neighborhood || office.neighborhood === filters.neighborhood)
     && (!filters.outside || office.borough !== "Manhattan")
     && (!filters.evidence || filters.evidence === "documented" || office.evidence_status === filters.evidence);
+}
+
+/** Company counts, not office counts. Borough membership can overlap; unknowns stay in the denominator. */
+export function summarizeCitywideCoverage(companies: ResearchCompany[]) {
+  const unique = [...new Map(companies.map((company) => [company.slug, company])).values()];
+  const memberships = unique.map((company) => {
+    const offices = company.offices.filter((office) => isDocumentedOffice(office)
+      && nycBoroughs.some((borough) => borough === office.borough));
+    return {
+      boroughs: new Set(offices.map((office) => office.borough)),
+      williamsburg: offices.some((office) => office.borough === "Brooklyn" && office.neighborhood === "Williamsburg"),
+    };
+  });
+  return {
+    scope: "citywide_directory" as const,
+    total_companies: unique.length,
+    companies_with_borough: memberships.filter((company) => company.boroughs.size > 0).length,
+    companies_without_borough: memberships.filter((company) => company.boroughs.size === 0).length,
+    companies_in_multiple_boroughs: memberships.filter((company) => company.boroughs.size > 1).length,
+    boroughs: nycBoroughs.map((borough) => ({ borough, company_count: memberships.filter((company) => company.boroughs.has(borough)).length })),
+    williamsburg_companies: memberships.filter((company) => company.williamsburg).length,
+    brooklyn_elsewhere_companies: memberships.filter((company) => company.boroughs.has("Brooklyn") && !company.williamsburg).length,
+    outside_manhattan_companies: memberships.filter((company) => [...company.boroughs].some((borough) => borough !== "Manhattan")).length,
+  };
+}
+
+export type CitywideCoverage = ReturnType<typeof summarizeCitywideCoverage>;
+
+export function citywideComparisonToCsv(coverage: CitywideCoverage) {
+  const rows = [
+    ["Citywide directory", coverage.total_companies, "All company profiles; NYC presence supported, borough may be unknown"],
+    ["Borough documented", coverage.companies_with_borough, "Unique companies with documented office evidence in a named NYC borough"],
+    ["Borough not established", coverage.companies_without_borough, "Included in the citywide directory; no qualifying borough evidence"],
+    ...coverage.boroughs.map(({ borough, company_count }) => [borough, company_count, "Documented office evidence; a company can appear in multiple boroughs"]),
+    ["Williamsburg (within Brooklyn)", coverage.williamsburg_companies, "Subset of Brooklyn, not an additional borough or citywide total"],
+    ["Other Brooklyn (no Williamsburg evidence)", coverage.brooklyn_elsewhere_companies, "Brooklyn companies without documented Williamsburg office evidence"],
+    ["Multiple boroughs", coverage.companies_in_multiple_boroughs, "Already included in each applicable borough; counted once citywide"],
+  ];
+  return [["Coverage group", "Companies", "Counting rule"], ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n");
 }
 
 /** Counts refer to the documented sample, including offices with no public street address. */

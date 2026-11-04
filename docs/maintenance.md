@@ -100,6 +100,15 @@ No unauthenticated write endpoint is added. Local reviewed-registry coverage
 remains usable if a database is unavailable; explicit database draft/archive
 decisions take precedence.
 
+The research desk's `view=comparison` compares the whole citywide directory,
+independently of company filters. The shared coverage summary counts each
+company once citywide and once per documented borough. Companies without
+qualifying borough evidence stay in the citywide denominator; borough rows may
+overlap. Williamsburg is a subset of Brooklyn. `/api/research` returns that
+citywide `coverage` alongside the filtered `result_count`; `format=comparison`
+exports the same unfiltered counting rules and counts as CSV. These are curated
+coverage counts, not borough-wide business totals or a census of occupied space.
+
 ## Expanded office map and strict inclusion review (November 4, 2026)
 
 The research desk opens on the interactive office map. Company search, stage,

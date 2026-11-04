@@ -6,7 +6,7 @@ import { hasPublishableDescription, validateDiscoveredCompanyCandidate } from ".
 import { resolveCandidateWebsite } from "../src/lib/agent/discoverySourceUtils";
 import { extractCandidateProfiles } from "../src/lib/agent/discoveryProfiles";
 import { extractSignals } from "../src/lib/agent/extractSignals";
-import { companiesToCsv, csvCell, filterResearchCompanies, isDocumentedOffice, officeEvidence, summarizeOfficeGeography } from "../src/lib/research/evidence";
+import { citywideComparisonToCsv, companiesToCsv, csvCell, filterResearchCompanies, isDocumentedOffice, officeEvidence, summarizeCitywideCoverage, summarizeOfficeGeography } from "../src/lib/research/evidence";
 import { isNavigableCompanyJob } from "../src/lib/jobs/jobDisplay";
 import type { AgentCompany, RawSourceRecord } from "../src/types/agent";
 import type { OfficeEvidence, ResearchCompany } from "../src/lib/research/types";
@@ -95,6 +95,39 @@ test("Williamsburg counts include the neighborhood-only office and distinguish s
   assert.equal(summary?.company_count, 5);
   assert.ok(summary?.companies_without_public_street_address.includes("sentience"));
   assert.equal(summary?.addresses.find((a) => a.address.startsWith("300 Kent"))?.company_slugs.length, 4);
+});
+
+test("citywide comparison preserves unknowns and counts overlapping boroughs once per company", () => {
+  const office = { borough: "Brooklyn", neighborhood: "Williamsburg", location_type: "office", evidence_status: "verified", source_url: "https://example.com/offices" } as OfficeEvidence;
+  const companies = [
+    { slug: "two-boroughs", offices: [office, { ...office }, { ...office, borough: "Manhattan", neighborhood: "SoHo" }] },
+    { slug: "other-brooklyn", offices: [{ ...office, neighborhood: "DUMBO" }] },
+    { slug: "no-office", offices: [] },
+    { slug: "mailing", offices: [{ ...office, location_type: "mailing" }] },
+    { slug: "historical", offices: [{ ...office, occupancy_status: "historical" }] },
+    { slug: "unverified", offices: [{ ...office, evidence_status: "unverified" }] },
+    { slug: "not-nyc", offices: [{ ...office, borough: "Not a NYC borough" }] },
+  ] as unknown as ResearchCompany[];
+  const coverage = summarizeCitywideCoverage([...companies, companies[0]]);
+  assert.equal(coverage.total_companies, 7);
+  assert.equal(coverage.companies_with_borough, 2);
+  assert.equal(coverage.companies_without_borough, 5);
+  assert.equal(coverage.companies_with_borough + coverage.companies_without_borough, coverage.total_companies);
+  assert.equal(coverage.companies_in_multiple_boroughs, 1);
+  assert.equal(coverage.boroughs.find((row) => row.borough === "Brooklyn")?.company_count, 2);
+  assert.equal(coverage.boroughs.find((row) => row.borough === "Manhattan")?.company_count, 1);
+  assert.equal(coverage.williamsburg_companies, 1);
+  assert.equal(coverage.brooklyn_elsewhere_companies, 1);
+  assert.match(citywideComparisonToCsv(coverage), /"Borough not established","5"/);
+});
+
+test("published comparison reconciles every borough and Williamsburg row to the company filters", () => {
+  const companies = profiles.map((profile) => ({ ...profile, founders: [], offices: officeEvidence.filter((office) => office.company_slug === profile.slug) })) as unknown as ResearchCompany[];
+  const coverage = summarizeCitywideCoverage(companies);
+  for (const row of coverage.boroughs) assert.equal(row.company_count, filterResearchCompanies(companies, { borough: row.borough }).length);
+  assert.equal(coverage.companies_without_borough, filterResearchCompanies(companies, { evidence: "unknown" }).length);
+  assert.equal(coverage.williamsburg_companies, filterResearchCompanies(companies, { borough: "Brooklyn", neighborhood: "Williamsburg" }).length);
+  assert.equal(coverage.williamsburg_companies + coverage.brooklyn_elsewhere_companies, coverage.boroughs.find((row) => row.borough === "Brooklyn")?.company_count);
 });
 
 test("map groups preserve shared tenants and a company's multiple offices, excluding invalid and historical records", () => {
