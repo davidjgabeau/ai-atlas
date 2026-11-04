@@ -10,6 +10,7 @@ import { categories, type Company } from "../src/types/market";
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const only = process.argv.find((arg) => arg.startsWith("--company="))?.slice("--company=".length);
   const backupArg = process.argv.find((arg) => arg.startsWith("--backup-dir="));
   const backupDir = backupArg?.slice("--backup-dir=".length);
   const supabase = createSupabasePrivilegedClient();
@@ -21,7 +22,7 @@ async function main() {
   const stringFields = ["name", "website_url", "category", "stage", "short_description", "one_line_thesis", "funding_round", "funding_amount", "funding_date", "total_raised", "lead_investor"] as const;
   const plan: Array<{ slug: string; action: string; fields?: string[] }> = [];
   const records: Record<string, unknown>[] = [];
-  for (const review of reviews) {
+  for (const review of reviews.filter((review) => !only || review.slug === only)) {
     const r = review as unknown as Record<string, unknown>;
     if (!categories.includes(review.category as Company["category"])) throw new Error(`Unsupported category: ${review.slug}`);
     if (!/^https:\/\//.test(review.website_url)) throw new Error(`Missing canonical HTTPS site: ${review.slug}`);
@@ -37,7 +38,7 @@ async function main() {
     patch.ai_usage_profile = "";
     patch.discoveryReason = { trigger: "source_update", sourceEventIds: [], sourceUrls: review.source_urls, confidence: "high", notes: review.notes || "Reviewed public sources." };
     const payload = companyToDatabasePayload({ ...previous, ...patch, id,
-      status: previous?.status ?? "published", created_at: previous?.created_at ?? String(r.added_at),
+      status: r.publication_review === "publish" ? "published" : previous?.status ?? "published", created_at: previous?.created_at ?? String(r.added_at),
       recent_activity_text: previous?.recent_activity_text ?? "",
       recent_activity_date: previous?.recent_activity_date ?? new Date().toISOString(),
     } as Partial<Company>);
@@ -55,7 +56,7 @@ async function main() {
       }
     }
   }
-  for (const slug of ["new-york-city-startups", "tabs-quickly"]) {
+  for (const slug of only ? [] : ["new-york-city-startups", "tabs-quickly"]) {
     const row = existing.find((row) => row.slug === slug);
     if (!row || row.status !== "published") continue;
     plan.push({ slug, action: "hold article-fragment record for review" });

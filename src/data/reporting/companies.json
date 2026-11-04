@@ -225,7 +225,7 @@
       "https://www.hebbia.com/blog"
     ],
     "verified_at": "2026-11-03",
-    "notes": "Current careers page explicitly documents a Downtown NY office and NYC roles. Classified as office because a current official HQ label was not established. Series B is the latest first-party funding announcement found. Official blog identifies George Sivulka as founder and CEO.",
+    "notes": "Current careers page explicitly documents a Downtown NY office and NYC roles. Classified as office because a current official HQ label was not established. Series B is the latest first-party funding announcement found. Official blog identifies George Sivulka as founder and CEO. Reinstated for the all-stage atlas after a new inclusion review; its Series B stage is now in scope.",
     "blurb_audit": {
       "identity_status": "Current company",
       "sourcing_mode": "Synthesized",
@@ -237,7 +237,8 @@
       "latest_public_message_signal": "October 2026 blog documents new integrations and Headless Hebbia API/MCP access.",
       "latest_signal_source_url": "https://www.hebbia.com/blog"
     },
-    "added_at": "2026-11-04T06:52:01.177017+00:00"
+    "added_at": "2026-11-04T06:52:01.177017+00:00",
+    "publication_review": "publish"
   },
   {
     "slug": "clay",

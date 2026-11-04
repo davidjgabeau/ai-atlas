@@ -12,7 +12,9 @@ await run("npm", ["run", "build"]);
 // A one-time, explicitly selected deployment can import reviewed public records
 // using server-side credentials. This never adds a public write endpoint.
 if (process.env.ATLAS_IMPORT_REVIEWED === "1") {
-  await run("npx", ["tsx", "scripts/import-reviewed-research.ts", "--apply", "--backup-dir=.next/reviewed-import-backup"]);
+  const args = ["tsx", "scripts/import-reviewed-research.ts", "--apply", "--backup-dir=.next/reviewed-import-backup"];
+  if (process.env.ATLAS_IMPORT_ONLY) args.push(`--company=${process.env.ATLAS_IMPORT_ONLY}`);
+  await run("npx", args);
 }
 if (process.env.ATLAS_REFRESH_SOURCES === "1") {
   const env = { ...process.env, ENABLE_AUTO_PUBLISH: "false", AUTO_ARCHIVE_INELIGIBLE_COMPANIES: "false" };

@@ -90,6 +90,9 @@ A deployment can explicitly select `ATLAS_IMPORT_REVIEWED=1` as a build-only
 variable to import after a successful build using server-side credentials.
 `ATLAS_REFRESH_SOURCES=1` additionally runs news, jobs, and known-company
 collection. These flags are one-time operator choices, not persistent settings.
+An optional `ATLAS_IMPORT_ONLY` restricts that operation to one reviewed slug.
+An explicit `publication_review: publish` records a new inclusion decision for a
+previously archived company; other draft/archive states are preserved.
 No unauthenticated write endpoint is added. Local reviewed-registry coverage
 remains usable if a database is unavailable; explicit database draft/archive
 decisions take precedence.
