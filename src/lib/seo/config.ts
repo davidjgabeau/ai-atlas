@@ -2,23 +2,21 @@ export const SITE_URL = "https://aiatlas.nyc";
 
 export const SEO_DEFAULTS = {
   siteName: "AI Atlas NYC",
-  defaultTitle: "AI Atlas NYC | NYC AI Startup Market Map",
+  defaultTitle: "AI Atlas NYC | New York AI Companies & Offices",
   titleTemplate: "%s | AI Atlas NYC",
   description:
-    "AI Atlas NYC is a curated market map of AI companies in New York for founders, seed investors, operators, and analysts, from seed to public companies.",
+    "Research NYC AI companies across stages, with sourced office locations, company profiles, hiring, and dated signals for exploring New York's AI economy.",
   keywords: [
-    "NYC AI startups",
-    "New York AI startups",
-    "AI companies",
-    "AI companies",
-    "AI startup market map",
-    "AI companies for VCs",
-    "NYC AI companies for founders",
-    "seed stage AI companies",
-    "NYC startup map",
+    "NYC AI companies",
+    "New York AI companies",
+    "Williamsburg AI companies",
+    "Brooklyn AI companies",
+    "AI office map",
+    "NYC AI company directory",
+    "AI company research",
+    "AI funding stages",
+    "NYC AI hiring",
     "AI companies in New York",
-    "Series A AI startups",
-    "seed stage AI startups",
   ],
 } as const;
 

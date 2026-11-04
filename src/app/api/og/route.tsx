@@ -82,10 +82,16 @@ export async function GET(request: Request) {
     meta: string;
     spritePath: string;
   }> = {
+    research: {
+      title: "Find New York's AI companies.",
+      body: `${stats.totalCompanies} companies across stages. Sourced offices, dated signals, and public-interest reporting resources.`,
+      meta: "Research desk",
+      spritePath: "/icons/map.png",
+    },
     companies: {
       title: "NYC AI Companies to Know",
       body: `${formatAiStartupCount(stats.totalCompanies)} across consumer, healthcare, infrastructure, and more.`,
-      meta: "Startup directory",
+      meta: "Company directory",
       spritePath: "/icons/map.png",
     },
     categories: {
@@ -125,7 +131,7 @@ export async function GET(request: Request) {
       spritePath: "/icons/bridge-mini.png",
     },
     submit: {
-      title: "Submit a startup.",
+      title: "Submit a company.",
       body: "Add an AI company building AI in New York.",
       meta: "Curation",
       spritePath: "/icons/bridge-mini.png",
