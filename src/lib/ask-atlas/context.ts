@@ -1,7 +1,7 @@
 import reviews from "@/data/reporting/companies.json";
 import reviewedSignals from "@/data/reporting/signals.json";
 import reportingResources from "@/data/reporting/resources.json";
-import { officeEvidence } from "@/lib/research/evidence";
+import { officeEvidence, summarizeOfficeGeography } from "@/lib/research/evidence";
 import { categoryMeta } from "@/data/market";
 import { patterns } from "@/data/patterns";
 import { formatViewCount } from "@/lib/metrics/formatViewCount";
@@ -15,7 +15,7 @@ export type AskAtlasContext = {
   promptContext: {
     product: string;
     scope: string;
-    reporting: { methodology: string; signals: unknown[]; resources: unknown[]; experts: unknown[] };
+    reporting: { methodology: string; officeGeography: ReturnType<typeof summarizeOfficeGeography>; signals: unknown[]; resources: unknown[]; experts: unknown[] };
     counts: {
       companies: number;
       categories: number;
@@ -81,7 +81,7 @@ export async function buildAskAtlasContext(): Promise<AskAtlasContext> {
       product: "AI Atlas NYC",
       scope:
         "A curated map of New York City AI companies at every stage.",
-      reporting: { methodology: "Curated sample, not a citywide census. Office source checks do not independently confirm current occupancy. Mailing addresses and unverified locations do not establish offices. Distinguish event dates, source dates, and review dates. Use source links in reporting answers.", signals: reviewedSignals, resources: reportingResources.resources, experts: reportingResources.experts },
+      reporting: { methodology: "Curated sample, not a citywide census. Office source checks do not independently confirm current occupancy. Mailing addresses and unverified locations do not establish offices. Distinguish event dates, source dates, and review dates. Use source links in reporting answers.", officeGeography: summarizeOfficeGeography(officeEvidence.filter((o) => companiesBySlug.has(o.company_slug))), signals: reviewedSignals, resources: reportingResources.resources, experts: reportingResources.experts },
       counts: {
         companies: companies.length,
         categories: categoryMeta.length,

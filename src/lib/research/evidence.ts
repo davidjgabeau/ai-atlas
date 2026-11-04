@@ -9,6 +9,24 @@ export function isDocumentedOffice(office: OfficeEvidence) {
     && Boolean(office.borough) && Boolean(office.source_url);
 }
 
+/** Counts refer to the documented sample, including offices with no public street address. */
+export function summarizeOfficeGeography(evidence: OfficeEvidence[]) {
+  const documented = evidence.filter(isDocumentedOffice);
+  const neighborhoods = [...new Set(documented.filter((o) => o.neighborhood).map((o) => `${o.borough}|${o.neighborhood}`))];
+  return neighborhoods.map((key) => {
+    const [borough, neighborhood] = key.split("|");
+    const records = documented.filter((o) => o.borough === borough && o.neighborhood === neighborhood);
+    const addresses = [...new Set(records.map((o) => o.address).filter((a): a is string => Boolean(a)))];
+    return {
+      borough, neighborhood,
+      company_count: new Set(records.map((o) => o.company_slug)).size,
+      company_slugs: [...new Set(records.map((o) => o.company_slug))],
+      companies_without_public_street_address: [...new Set(records.filter((o) => !o.address).map((o) => o.company_slug))],
+      addresses: addresses.map((address) => ({ address, company_slugs: [...new Set(records.filter((o) => o.address === address).map((o) => o.company_slug))] })),
+    };
+  });
+}
+
 export function filterResearchCompanies(companies: ResearchCompany[], filters: {
   query?: string; borough?: string; neighborhood?: string; stage?: string;
   category?: string; evidence?: string; outside?: boolean;
@@ -30,7 +48,7 @@ export function filterResearchCompanies(companies: ResearchCompany[], filters: {
 /** Quoted cells preserve commas/newlines; formula-like text is exported as text. */
 export function csvCell(value: unknown) {
   let text = String(value ?? "");
-  if (/^[\s]*[=+@-]/.test(text)) text = `'${text}`;
+  if (typeof value !== "number" && /^[\s]*[=+@-]/.test(text)) text = `'${text}`;
   return `"${text.replace(/"/g, '""')}"`;
 }
 

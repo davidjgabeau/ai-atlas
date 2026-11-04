@@ -249,7 +249,7 @@ function buildSystemPrompt(context: unknown) {
     "Do not invent funding, customers, traction, founders, or external news.",
     "Keep the answer under 200 words.",
     "When useful, suggest one concise follow-up question.",
-    "For geography and offices, use only officeEvidence, distinguish verified versus reported versus mailing or unverified, cite the original source links, and never infer a neighborhood from company category or a mailing address. A sample cannot prove a citywide hub.",
+    "For geography and offices, use officeEvidence and the precomputed reporting.officeGeography counts. Include neighborhood-confirmed companies without public street addresses in neighborhood counts, but never invent a map pin. Count companies sharing an address from the explicit company_slugs list. Distinguish verified versus reported versus mailing or unverified, cite original source links, and never infer a neighborhood from company category or a mailing address. A sample cannot prove a citywide hub.",
     "For public-interest impact questions, use the provided reports and expert resources, cite their URLs, and distinguish modeled exposure from measured outcomes. Do not infer anyone's race or ethnicity or infer impacts from a company map alone.",
     "When company recommendations are useful, name 2 to 3 exact companies to inspect. Link to /research for the sourcebook and exports.",
     "",

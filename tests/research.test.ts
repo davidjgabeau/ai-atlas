@@ -6,7 +6,7 @@ import { hasPublishableDescription, validateDiscoveredCompanyCandidate } from ".
 import { resolveCandidateWebsite } from "../src/lib/agent/discoverySourceUtils";
 import { extractCandidateProfiles } from "../src/lib/agent/discoveryProfiles";
 import { extractSignals } from "../src/lib/agent/extractSignals";
-import { companiesToCsv, csvCell, filterResearchCompanies, isDocumentedOffice } from "../src/lib/research/evidence";
+import { companiesToCsv, csvCell, filterResearchCompanies, isDocumentedOffice, officeEvidence, summarizeOfficeGeography } from "../src/lib/research/evidence";
 import { isNavigableCompanyJob } from "../src/lib/jobs/jobDisplay";
 import type { AgentCompany, RawSourceRecord } from "../src/types/agent";
 import type { OfficeEvidence, ResearchCompany } from "../src/lib/research/types";
@@ -78,8 +78,17 @@ test("mailing addresses and unknown locations stay out of borough evidence", () 
 test("CSV exports evidence and safely quotes formula-like and multiline text", () => {
   assert.equal(csvCell('A, "B"\nC'), '"A, ""B""\nC"');
   assert.equal(csvCell("=IMPORTXML(A1)"), '"\'=IMPORTXML(A1)"');
+  assert.equal(csvCell(-73.968), '"-73.968"');
+  assert.equal(csvCell("-2+3"), '"\'-2+3"');
   const csv = companiesToCsv([{ name: "Example", founders: [], offices: [], sources: ["https://example.com"] } as unknown as ResearchCompany]);
   assert.match(csv, /Office source/); assert.match(csv, /Not verified/); assert.match(csv, /https:\/\/example.com/);
+});
+
+test("Williamsburg counts include the neighborhood-only office and distinguish shared buildings", () => {
+  const summary = summarizeOfficeGeography(officeEvidence).find((g) => g.neighborhood === "Williamsburg");
+  assert.equal(summary?.company_count, 6);
+  assert.deepEqual(summary?.companies_without_public_street_address, ["sentience"]);
+  assert.equal(summary?.addresses.find((a) => a.address.startsWith("300 Kent"))?.company_slugs.length, 4);
 });
 
 test("company portals and founder directories are not job vacancies", () => {
