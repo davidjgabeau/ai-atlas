@@ -1231,7 +1231,7 @@ function CompanyInspector({
           </InspectorSection>
         ) : null}
 
-        <InspectorSection title="Startup Snapshot">
+        <InspectorSection title="Company Snapshot">
           <dl className="grid gap-4 text-sm">
             <SnapshotRow label="Stage" value={company.stage} />
             <SnapshotRow label="NYC footprint" value={company.office_address || "New York, NY"} />

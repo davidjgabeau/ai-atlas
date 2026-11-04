@@ -99,3 +99,32 @@ previously archived company; other draft/archive states are preserved.
 No unauthenticated write endpoint is added. Local reviewed-registry coverage
 remains usable if a database is unavailable; explicit database draft/archive
 decisions take precedence.
+
+## Expanded office map and strict inclusion review (November 4, 2026)
+
+The research desk opens on the interactive office map. Company search, stage,
+category, borough, neighborhood and office-source filters apply to the company
+finder and exports. Geography filters must match the same office. Shared
+buildings retain all tenants, and a company may have more than one office.
+GeoJSON uses longitude/latitude and includes the original evidence and geocode
+provenance. Census and exact-name NYC Planning NYCPAD address points do not
+establish suite, floor, entrance, employee count or present occupancy.
+
+Only approved company arrays are imported from research batches. Discovery
+pools and unresolved candidates are private working material, never company
+listings. `src/data/reporting/exclusions.json` records source-backed holds for
+closed/out-of-scope, duplicate or unresolved legacy identities. A hold does not
+assert closure. The public scope guard also applies to jobs. The importer holds
+matching database rows as drafts with backup and revision checks; it never
+hard-deletes them. Renames use `previous_slug`, preserve database identity and
+addition dates, and redirect old profile URLs.
+
+`Industrial & Robotics AI` is a public category. Reviewed records can specify
+`storage_category` for compatibility with older database category constraints;
+public normalization always restores the canonical reviewed category. This does
+not change database access rules. Expand the database CHECK through the normal
+schema migration process before removing this compatibility field.
+
+A current company review certifies only its stated scope. Existing funding
+stages are not marked rechecked when the review covers AI identity and NYC
+operations only. Source collection timestamps never become event dates.

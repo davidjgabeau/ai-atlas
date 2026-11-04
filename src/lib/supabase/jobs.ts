@@ -6,7 +6,7 @@ import {
   isNavigableCompanyJob,
 } from "@/lib/jobs/jobDisplay";
 import { cleanJobSummaryForDisplay } from "@/lib/jobs/jobSummary";
-import { normalizeCompany } from "@/lib/supabase/market-data";
+import { isPublicCompany, normalizeCompany } from "@/lib/supabase/market-data";
 import { createSupabaseAuthServerClient } from "@/lib/supabase/auth-server";
 import { createSupabasePrivilegedClient } from "@/lib/supabase/privileged";
 import type { CompanyJob, CompanyJobWithCompany } from "@/types/market";
@@ -147,7 +147,7 @@ function normalizeCompanyJobRows(rows: CompanyJobRow[]) {
       ...normalizeCompanyJob(row),
       company: row.companies ? normalizeCompany(row.companies) : undefined,
     }))
-    .filter((job) => job.company?.status === "published" && isNavigableCompanyJob(job));
+    .filter((job) => job.company && isPublicCompany(job.company) && isNavigableCompanyJob(job));
 }
 
 function normalizeRaw(value: unknown) {

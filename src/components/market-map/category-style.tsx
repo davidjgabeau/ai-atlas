@@ -28,6 +28,15 @@ export type CategoryStyle = {
 };
 
 export const categoryStyles: Record<Category, CategoryStyle> = {
+  "Industrial & Robotics AI": {
+    icon: Bot,
+    avatarSrc: "/avatars/categories/agent-infrastructure.png",
+    color: "#64764A",
+    surfaceColor: "rgb(100 118 74 / 6%)",
+    iconClassName: "bg-lime-100 text-[#64764A] ring-[#64764A]/20",
+    badgeClassName: "bg-lime-50 text-[#64764A] ring-[#64764A]/20",
+    surfaceClassName: "app-card-border category-hover-card",
+  },
   "Fintech & Trading AI": {
     icon: Banknote,
     avatarSrc: "/avatars/categories/fintech-trading-ai.png",

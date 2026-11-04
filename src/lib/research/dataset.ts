@@ -6,11 +6,11 @@ import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import { getPublicCompanyJobs } from "@/lib/supabase/jobs";
 import { getNewsItems } from "@/lib/news/news-store";
 import { stageGroup } from "@/lib/company-stages";
-import { officeEvidence } from "./evidence";
+import { officeEvidence, isDocumentedOffice } from "./evidence";
 import { hasCompanyNewsSubject } from "./newsSubject";
 import type { ReportingResources, ResearchCompany, ResearchDataset, ResearchSignal } from "./types";
 
-type ReviewedCompany = { slug: string; source_urls: string[]; verified_at?: string; nyc_presence?: string; stage?: string; review_scope?: string };
+type ReviewedCompany = { slug: string; source_urls: string[]; verified_at?: string; nyc_presence?: string; stage?: string; review_scope?: string; parent_company?: string };
 
 export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
   const [companies, jobs, news] = await Promise.all([
@@ -23,15 +23,16 @@ export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
     return {
       id: company.id, slug: company.slug, name: company.name, stage: company.stage,
       stage_group: stageGroup(company.stage), category: company.category,
+      ...(review?.parent_company ? { parent_company: review.parent_company } : {}),
       description: company.short_description, website: company.website_url,
       founders: company.founders.map((founder) => founder.name),
       funding_round: company.funding_round, funding_amount: company.funding_amount,
       funding_date: company.funding_date, jobs: roles.length,
       jobs_checked_at: latest(roles.map((job) => job.last_seen_at)),
-      checked_at: review?.verified_at ?? null, presence: officeEvidence.some((o) => o.company_slug === company.slug && ["office", "headquarters"].includes(o.location_type) && ["verified", "reported"].includes(o.evidence_status)) ? (officeEvidence.some((o) => o.company_slug === company.slug && o.location_type === "headquarters") ? "headquarters" : "office") : review?.nyc_presence ?? "NYC basis in original profile; recheck for reporting",
+      checked_at: review?.verified_at ?? null, presence: officeEvidence.some((o) => o.company_slug === company.slug && isDocumentedOffice(o)) ? (officeEvidence.some((o) => o.company_slug === company.slug && isDocumentedOffice(o) && o.location_type === "headquarters") ? "headquarters" : "office") : review?.nyc_presence ?? "NYC basis in original profile; recheck for reporting",
       review_scope: review?.review_scope ?? (review ? "Company identity, product and linked public funding sources." : "Original profile has not had a source review in this research pass."),
       stage_reviewed: Boolean(review?.stage),
-      sources: [...new Set([...(review?.source_urls ?? []), ...(company.discoveryReason?.sourceUrls ?? []), company.website_url])].filter(isHttp),
+      sources: [...new Set([...(review ? review.source_urls : company.discoveryReason?.sourceUrls ?? []), company.website_url])].filter(isHttp),
       offices: officeEvidence.filter((office) => office.company_slug === company.slug),
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
@@ -57,7 +58,7 @@ export const getResearchDataset = cache(async (): Promise<ResearchDataset> => {
     companies: directory, signals: datedSignals, resources: resources as ReportingResources,
     generated_at: new Date().toISOString(),
     collection: [
-      { name: "Reviewed profiles", latest: latest(directory.map((c) => c.checked_at)), note: "Dates refer to source review. Older profiles still need reporting verification." },
+      { name: "Reviewed profiles", latest: latest(directory.map((c) => c.checked_at)), note: "Review dates cover the stated scope. Funding stages and office occupancy may need separate checks." },
       { name: "Office evidence", latest: latest(officeEvidence.map((o) => o.verified_at)), note: "Source checks do not independently confirm current occupancy. Reported leases retain their original dates." },
       { name: "Hiring", latest: latest(jobs.map((j) => j.last_seen_at)), note: "Collected openings, seen within 14 days; capped at 1,000 across the site. Check the employer before citing; absence is not zero hiring." },
       { name: "News", latest: latest(news.map((n) => n.discovered_at)), note: "Collected daily from available feeds. Event date is separate from collection date; coverage is not exhaustive." },

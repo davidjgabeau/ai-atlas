@@ -20,7 +20,7 @@ import type { CompanyJobWithCompany } from "@/types/market";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "NYC AI Startup Jobs",
+  title: "NYC AI Company Jobs",
   description:
     "Explore jobs and hiring activity from AI companies in New York.",
   path: "/jobs",

@@ -3,12 +3,14 @@ import reviews from "@/data/reporting/companies.json";
 import offices from "@/data/reporting/offices.json";
 import { companyToDatabasePayload } from "@/lib/admin-company-record";
 import type { Company } from "@/types/market";
+import { isExcludedFromPublicAtlas } from "./scope";
 
 /** Reviewed source records are also available during a database outage. Explicit
  * database draft/archive decisions take precedence over registry additions. */
 export function mergeReviewedCompanyRows<T extends Partial<Company>>(rows: T[]): T[] {
   const existing = new Set(rows.map((row) => row.slug));
   const additions = reviews.filter((review) => {
+    if (isExcludedFromPublicAtlas(review.slug)) return false;
     const previous = (review as Record<string, unknown>).previous_slug;
     return !existing.has(review.slug) && !(typeof previous === "string" && existing.has(previous));
   }).map((review) => {

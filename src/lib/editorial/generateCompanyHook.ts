@@ -25,6 +25,7 @@ const bannedPhrases = [
 ];
 
 const categoryTrendDimensions: Record<Company["category"], string[]> = {
+  "Industrial & Robotics AI": ["physical operations", "robotics and materials"],
   "Fintech & Trading AI": ["regulated buyers", "research workflows"],
   "Legal & Compliance AI": ["regulated buyers", "workflow automation"],
   "Cybersecurity AI": ["security operations", "agentic response"],

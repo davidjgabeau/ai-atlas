@@ -9,7 +9,7 @@ import {
 } from "@/lib/seo/shareMetadata";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "Submit a startup",
+  title: "Submit a company",
   description: `Submit an AI company building AI in New York. ${shareCta}.`,
   path: "/submit",
   image: getShareImageUrl({ page: "submit" }),
@@ -24,10 +24,10 @@ export default function SubmitCompanyPage() {
             Founder signal
           </p>
           <h1 className="mt-3 max-w-[680px] font-heading text-[clamp(40px,5vw,64px)] font-medium leading-[0.95] tracking-[0] text-[#181818]">
-            Submit your NYC AI startup.
+            Submit your NYC AI company.
           </h1>
           <p className="mt-5 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">
-            Get considered for the NYC AI startup directory, featured picks,
+            Get considered for the NYC AI company directory, featured picks,
             and editorial signals. Share what you are building, who it helps,
             and why the scene should know about it. Create a lightweight
             profile first so we know who submitted it.

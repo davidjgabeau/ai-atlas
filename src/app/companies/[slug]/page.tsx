@@ -1,4 +1,6 @@
 import { CompanyEvidence } from "@/components/research/CompanyEvidence";
+import reviewedCompanyProfiles from "@/data/reporting/companies.json";
+import { isDocumentedOffice, officeEvidence } from "@/lib/research/evidence";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -110,7 +112,7 @@ export async function generateMetadata({
   const baseDescription = getCompanyDescription(company);
 
   return createShareMetadata({
-    title: `${company.name} | NYC AI Startup`,
+    title: `${company.name} | NYC AI Company`,
     description: truncateMeta(
       `${baseDescription} ${company.name} is listed in AI Atlas NYC as a ${company.stage} company in ${company.category}.`,
     ),
@@ -134,6 +136,8 @@ export default async function CompanyProfilePage({
   ]);
 
   if (!company) {
+    const renamed = reviewedCompanyProfiles.find((profile) => (profile as Record<string, unknown>).previous_slug === slug);
+    if (renamed && companies.some((item) => item.slug === renamed.slug)) redirect(`/companies/${renamed.slug}`);
     const legacyRedirect = legacyCompanyRedirects[slug];
     if (legacyRedirect) redirect(legacyRedirect);
 
@@ -875,8 +879,17 @@ function getWhatBuildingBody(company: Company) {
 function getNycFootprintRows(company: Company) {
   const rows: Array<{ label: string; value: string }> = [];
   const officeAddress = company.office_address?.trim();
+  const reviewed = reviewedCompanyProfiles.some((profile) => profile.slug === company.slug);
+  const offices = officeEvidence.filter((office) => office.company_slug === company.slug && isDocumentedOffice(office));
 
-  if (officeAddress) {
+  if (offices.length) {
+    for (const office of offices) rows.push({
+      label: office.occupancy_status === "announced" ? "Announced NYC location" : office.occupancy_status === "unknown" ? "Documented NYC location" : "NYC office",
+      value: [office.address || [office.neighborhood, office.borough].filter(Boolean).join(", "), office.occupancy_status === "announced" ? "Move-in not established; see source evidence below." : office.occupancy_status === "unknown" ? "Current occupancy not confirmed; see sources below." : ""].filter(Boolean).join(" · "),
+    });
+  } else if (reviewed) {
+    rows.push({ label: "NYC presence", value: "NYC company or team supported by public sources. Street address has not been verified." });
+  } else if (officeAddress) {
     rows.push({
       label: officeAddress.toLowerCase() === "new york, ny"
         ? "NYC location"

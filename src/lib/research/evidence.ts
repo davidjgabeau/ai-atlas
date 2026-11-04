@@ -1,12 +1,24 @@
 import offices from "@/data/reporting/offices.json";
 import type { OfficeEvidence, ResearchCompany } from "./types";
+import { normalizeCompanyStage } from "../company-stages";
 
 export const officeEvidence = offices as OfficeEvidence[];
 
 export function isDocumentedOffice(office: OfficeEvidence) {
   return office.location_type !== "mailing" && office.location_type !== "unverified"
+    && office.occupancy_status !== "historical"
     && ["verified", "reported"].includes(office.evidence_status)
     && Boolean(office.borough) && Boolean(office.source_url);
+}
+
+export type OfficeFilters = { borough?: string; neighborhood?: string; evidence?: string; outside?: boolean };
+
+export function officeMatchesFilters(office: OfficeEvidence, filters: OfficeFilters) {
+  return isDocumentedOffice(office)
+    && (!filters.borough || office.borough === filters.borough)
+    && (!filters.neighborhood || office.neighborhood === filters.neighborhood)
+    && (!filters.outside || office.borough !== "Manhattan")
+    && (!filters.evidence || filters.evidence === "documented" || office.evidence_status === filters.evidence);
 }
 
 /** Counts refer to the documented sample, including offices with no public street address. */
@@ -31,17 +43,19 @@ export function filterResearchCompanies(companies: ResearchCompany[], filters: {
   query?: string; borough?: string; neighborhood?: string; stage?: string;
   category?: string; evidence?: string; outside?: boolean;
 }) {
-  const query = (filters.query ?? "").toLowerCase().trim();
+  const normalizeSearch = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const tokens = normalizeSearch(filters.query ?? "").trim().split(/\s+/).filter(Boolean);
   return companies.filter((company) => {
     const offices = company.offices.filter(isDocumentedOffice);
-    return (!query || [company.name, company.description, ...company.founders,
-      ...offices.flatMap((o) => [o.address, o.neighborhood, o.borough])].join(" ").toLowerCase().includes(query))
-      && (!filters.stage || (company.stage_group === filters.stage || company.stage === filters.stage))
+    const text = normalizeSearch([company.name, company.slug, company.website, ...(company.sources ?? []).map((url) => new URL(url).hostname), company.description, company.category, company.stage, ...company.founders,
+      ...offices.flatMap((o) => [o.address, o.neighborhood, o.borough])].join(" "));
+    return tokens.every((token) => text.includes(token))
+      && (!filters.stage || company.stage_group === filters.stage || company.stage === filters.stage
+        || ((filters.stage === "Pre-seed" || filters.stage === "Seed" || filters.stage.startsWith("Series ")) && normalizeCompanyStage(company.stage) === filters.stage))
       && (!filters.category || company.category === filters.category)
-      && (!filters.borough || offices.some((o) => o.borough === filters.borough))
-      && (!filters.neighborhood || offices.some((o) => o.neighborhood === filters.neighborhood))
-      && (!filters.evidence || (filters.evidence === "documented" ? offices.length > 0 : filters.evidence === "verified" ? offices.some((o) => o.evidence_status === "verified") : filters.evidence === "reported" ? offices.some((o) => o.evidence_status === "reported") : offices.length === 0))
-      && (!filters.outside || offices.some((o) => o.borough !== "Manhattan"));
+      && (filters.evidence === "unknown"
+        ? offices.length === 0 && !filters.borough && !filters.neighborhood && !filters.outside
+        : !(filters.borough || filters.neighborhood || filters.evidence || filters.outside) || offices.some((o) => officeMatchesFilters(o, filters)));
   });
 }
 
@@ -53,14 +67,14 @@ export function csvCell(value: unknown) {
 }
 
 export function companiesToCsv(companies: ResearchCompany[]) {
-  const headers = ["Company", "Stage", "Category", "Description", "Website", "Founders", "NYC presence", "Borough", "Neighborhood", "Office address", "Office evidence", "Office source", "Office source date", "Office checked", "Office notes", "Funding round", "Funding amount", "Funding date", "Open roles collected", "Hiring checked", "Profile reviewed", "Review scope", "Stage rechecked", "Profile sources", "Latitude", "Longitude", "Geocode source", "Geocode note"];
+  const headers = ["Company", "Stage", "Category", "Description", "Website", "Founders", "NYC presence", "Borough", "Neighborhood", "Office address", "Office evidence", "Office source", "Office source date", "Office checked", "Office notes", "Funding round", "Funding amount", "Funding date", "Open roles collected", "Hiring checked", "Profile reviewed", "Review scope", "Stage rechecked", "Profile sources", "Latitude", "Longitude", "Geocode source", "Geocode note", "Occupancy status", "Parent company"];
   const rows = companies.flatMap((c) => {
     const offices: Array<OfficeEvidence | undefined> = c.offices.length ? c.offices : [undefined];
     return offices.map((o) => [c.name, c.stage, c.category, c.description, c.website,
       c.founders.join("; "), c.presence, o?.borough, o?.neighborhood, o?.address,
       o ? `${o.evidence_status}; ${o.location_type}` : "Not verified", o?.source_url,
       o?.source_date, o?.verified_at, [o?.notes, ...(o?.supporting_sources ?? []).map((s) => s.source_url)].filter(Boolean).join("; "), c.funding_round, c.funding_amount,
-      c.funding_date, c.jobs, c.jobs_checked_at, c.checked_at, c.review_scope, c.stage_reviewed ? "yes" : "no", c.sources.join("; "), o?.latitude, o?.longitude, o?.geocode_source, o?.geocode_note]);
+      c.funding_date, c.jobs, c.jobs_checked_at, c.checked_at, c.review_scope, c.stage_reviewed ? "yes" : "no", c.sources.join("; "), o?.latitude, o?.longitude, o?.geocode_source, o?.geocode_note, o?.occupancy_status ?? "unknown", c.parent_company]);
   });
   return [headers, ...rows].map((row) => row.map(csvCell).join(",")).join("\r\n");
 }

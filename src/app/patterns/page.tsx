@@ -26,7 +26,7 @@ import {
 } from "@/types/market";
 
 export const metadata: Metadata = createShareMetadata({
-  title: "NYC AI Startup Patterns",
+  title: "NYC AI Company Patterns",
   description:
     "Read concrete buyer-led patterns across the NYC AI map, with companies, use cases, and the work each group is solving.",
   path: "/patterns",
@@ -84,7 +84,7 @@ export default async function PatternsPage() {
     <>
       <JsonLd
         data={collectionPageSchema({
-          name: "NYC AI Startup Patterns",
+          name: "NYC AI Company Patterns",
           description:
             "Read concrete buyer-led patterns across the NYC AI map, with companies, use cases, and the work each group is solving.",
           url: absoluteUrl("/patterns"),
