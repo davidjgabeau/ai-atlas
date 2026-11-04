@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const mobileTabs = [
   { label: "Browse", href: "/companies" },
-  { label: "Patterns", href: "/patterns" },
+  { label: "Research", href: "/research" },
   { label: "Submit", href: "/submit" },
 ];
 

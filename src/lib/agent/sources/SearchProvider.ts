@@ -4,6 +4,12 @@ import type { SourceProvider } from "./SourceProvider";
 import { forEachConcurrent } from "../concurrency";
 
 const candidateQueries = [
+  '"NYC" "AI" "Series C"',
+  '"New York" "AI" "Series D"',
+  '"New York" "AI" "public company"',
+  '"Williamsburg" "AI" "office"',
+  '"Brooklyn" "AI" "lease"',
+  '"Queens" "AI" "headquarters"',
   '"New York" "AI" "raises" "$"',
   '"NYC" "AI" "announces" "funding"',
   '"New York-based" "AI" "raises"',

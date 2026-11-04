@@ -40,7 +40,7 @@ export function MarketSnapshot({
         </h2>
       </div>
       <p className="text-body mt-2 text-sm">
-        Series A and earlier, focused on New York.
+        Every stage. One New York AI ecosystem.
       </p>
 
       <dl className="mt-4 grid grid-cols-2 border-y border-[#E7E1D8] lg:mt-6">

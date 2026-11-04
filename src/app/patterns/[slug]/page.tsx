@@ -40,7 +40,7 @@ export async function generateMetadata({
   if (!pattern) {
     return createShareMetadata({
       title: "Pattern",
-      description: `Recurring shapes across early-stage NYC AI startups. ${shareCta}.`,
+      description: `Recurring shapes across NYC AI startups. ${shareCta}.`,
       path: `/patterns/${slug}`,
       image: getShareImageUrl({ page: "insights" }),
     });

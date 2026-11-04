@@ -36,7 +36,7 @@ export function ProfileWatchingPanel({
           </h3>
           <p className="mx-auto mt-3 max-w-[360px] text-sm leading-6 text-[#66625C]">
             You haven&apos;t saved any companies yet. Save companies to build
-            your personal view of the early-stage NYC AI map.
+            your personal view of the NYC AI map.
           </p>
           <Button asChild className="mt-5 app-primary-button">
             <Link href="/companies">

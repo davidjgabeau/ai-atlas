@@ -5,9 +5,10 @@ import { absoluteUrl, siteName } from "@/lib/seo/shareMetadata";
 import type { Company } from "@/types/market";
 
 const audience =
-  "VCs, founders, operators, recruiters, and analysts researching early-stage AI companies in New York City.";
+  "VCs, founders, operators, recruiters, and analysts researching AI companies in New York City.";
 
 const publicSurfaces = [
+  { label: "Research desk", path: "/research", description: "all-stage company research, borough and neighborhood filters, sourced office evidence, dated signals, CSV/JSON exports, and public-interest reporting resources. Public dataset: /api/research." },
   {
     label: "Home",
     path: "/",
@@ -24,7 +25,7 @@ const publicSurfaces = [
     label: "Categories",
     path: "/categories",
     description:
-      "understand where early-stage NYC AI companies are clustering across the AI Atlas taxonomy.",
+      "understand where NYC AI companies are clustering across the AI Atlas taxonomy.",
   },
   {
     label: "Patterns",
@@ -42,7 +43,7 @@ const publicSurfaces = [
     label: "Jobs",
     path: "/jobs",
     description:
-      "public open roles from companies in the AI Atlas map, with gated apply access for profile creation.",
+      "public employer listings seen in the past 14 days; no sign-in required.",
   },
   {
     label: "Current Read",
@@ -57,10 +58,10 @@ const publicSurfaces = [
       "natural-language questions over public company, category, pattern, and signal data.",
   },
   {
-    label: "Submit Startup",
+    label: "Submit Company",
     path: "/submit",
     description:
-      "authenticated submission flow for suggesting early-stage NYC AI companies.",
+      "authenticated submission flow for suggesting NYC AI companies.",
   },
   {
     label: "Viewer profile",
@@ -131,7 +132,7 @@ const mcpTools = [
 ] as const;
 
 const dataBoundaries = [
-  "AI Atlas NYC is narrow by design: early-stage, AI-focused, New York City startup ecosystem.",
+  "AI Atlas NYC is narrow by design: AI-focused, all-stage New York City company ecosystem.",
   "Company pages should not be treated as funding, customer, user, or traction claims unless the profile explicitly states those details.",
   "Missing optional fields are intentionally omitted instead of filled with guesses.",
   "Public pages are designed for citation and discovery; admin, auth, private profile, raw source, automation, and secret data are outside the public corpus.",
@@ -145,7 +146,7 @@ export function buildLlmsTxt(companies: Company[]) {
   return [
     `# ${siteName}`,
     "",
-    "> A curated market map of early-stage NYC AI startups, from pre-seed through Series A.",
+    "> A curated market map of NYC AI startups, from seed to public companies.",
     "",
     `Canonical site: ${absoluteUrl("/")}`,
     `Audience: ${audience}`,
@@ -173,7 +174,7 @@ export function buildLlmsTxt(companies: Company[]) {
     ...companies.slice(0, 16).map(formatCompanySummary),
     "",
     "## Good Uses For Assistants",
-    "- Use AI Atlas to identify relevant early-stage NYC AI companies, category clusters, market patterns, public jobs, and source pages for further research.",
+    "- Use AI Atlas to identify relevant NYC AI companies, category clusters, market patterns, public jobs, and source pages for further research.",
     "- Prefer the company, category, pattern, embed, and MCP surfaces over inventing unavailable facts.",
     "- Link to canonical AI Atlas URLs when citing companies or categories.",
     "",
@@ -194,7 +195,7 @@ export function buildLlmsFullTxt(companies: Company[]) {
     "",
     [
       `Canonical site: ${absoluteUrl("/")}`,
-      `Scope: ${stats.totalCompanies} published early-stage NYC AI companies.`,
+      `Scope: ${stats.totalCompanies} published NYC AI companies.`,
       `Active categories: ${stats.totalCategories}. Taxonomy categories: ${categoryMeta.length}.`,
       `Recently added window: ${stats.recentlyAddedCount} companies currently marked as recent.`,
       latestUpdated ? `Latest public company update: ${latestUpdated}` : "",

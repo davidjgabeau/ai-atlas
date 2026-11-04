@@ -40,24 +40,22 @@ export function HomeFrontPage({
             </div>
 
             <h1 className="homeHeroHeadline mt-8 hidden lg:block">
-              <span className="block">Early</span>
-              <span className="block">NYC AI</span>
-              <span className="block">Companies</span>
-              <span className="block">to Know</span>
+              <span className="block">New York’s</span>
+              <span className="block">AI Economy.</span>
+              <span className="block">Every Stage.</span>
             </h1>
             <h1 className="homeHeroHeadline homeHeroHeadlineMobile lg:hidden">
-              <span className="block whitespace-nowrap">Early</span>
-              <span className="block whitespace-nowrap">NYC AI</span>
-              <span className="block whitespace-nowrap">Companies</span>
-              <span className="block whitespace-nowrap">to Know</span>
+              <span className="block">New York’s</span>
+              <span className="block">AI Economy.</span>
+              <span className="block">Every Stage.</span>
             </h1>
             <HeroSubheadline count={stats.totalCompanies} />
             <HeroStatsRow stats={stats} updatedLabel={updatedLabel} />
             <Link
-              href="#current-read"
+              href="/research"
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B] transition hover:text-[#181818]"
             >
-              Read the memo
+              Explore the evidence
               <ArrowRight className="size-3.5" />
             </Link>
 
@@ -68,6 +66,7 @@ export function HomeFrontPage({
                   <ArrowRight className="size-5 lg:size-4" />
                 </Link>
               </Button>
+              <Button asChild variant="outline" className="h-[50px] w-full rounded-lg"><Link href="/research">Open the research desk <ArrowRight className="size-4" /></Link></Button>
             </div>
           </div>
 

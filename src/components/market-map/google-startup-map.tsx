@@ -187,6 +187,12 @@ export function GoogleStartupMap({
 
   const pins = useMemo(() => buildCompanyMapLocations(companies), [companies]);
 
+  const pinGroups = useMemo(() => {
+    const groups = new Map<string, CompanyMapLocation[]>();
+    for (const pin of pins) { const key = `${pin.position.lat}:${pin.position.lng}`; groups.set(key, [...(groups.get(key) ?? []), pin]); }
+    return [...groups.values()];
+  }, [pins]);
+
   function loadInteractiveMap() {
     setStatus("loading");
     setShouldLoadMap(true);
@@ -229,8 +235,9 @@ export function GoogleStartupMap({
         const infoWindow = new googleMaps.maps.InfoWindow({ maxWidth: 320 });
         infoWindowRef.current = infoWindow;
 
-        markersRef.current = pins.map((pin, index) => {
-          const markerScale = pin.company.is_breakout ? 7.5 : 5.8;
+        markersRef.current = pinGroups.map((group, index) => {
+          const pin = group[0];
+          const markerScale = group.length > 1 ? 9 : pin.company.is_breakout ? 7.5 : 5.8;
           const markerColor = categoryColors[pin.company.category];
           bounds.extend(pin.position);
 
@@ -247,7 +254,7 @@ export function GoogleStartupMap({
             map,
             optimized: true,
             position: pin.position,
-            title: `${pin.company.name} - ${pin.neighborhood}, NYC`,
+            title: `${group.map((p) => p.company.name).join(", ")} - ${pin.neighborhood}, NYC`,
             zIndex:
               100 +
               intensityRank[pin.company.consumption_intensity] * 10 +
@@ -256,7 +263,7 @@ export function GoogleStartupMap({
 
           marker.addListener("click", () => {
             onSelectCompany?.(pin.company.slug);
-            infoWindow.setContent(renderInfoWindow(pin));
+            infoWindow.setContent(`<div style="max-height:340px;overflow:auto">${group.map(renderInfoWindow).join("")}</div>`);
             infoWindow.open({ anchor: marker, map, shouldFocus: false });
           });
 
@@ -283,7 +290,7 @@ export function GoogleStartupMap({
       infoWindowRef.current?.close();
       infoWindowRef.current = null;
     };
-  }, [apiKey, mapId, onSelectCompany, pins, shouldLoadMap]);
+  }, [apiKey, mapId, onSelectCompany, pins, pinGroups, shouldLoadMap]);
 
   return (
     <div className="relative min-h-[320px] overflow-hidden bg-[#081523] sm:min-h-[420px]">

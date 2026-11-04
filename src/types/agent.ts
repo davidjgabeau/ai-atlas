@@ -5,6 +5,11 @@ export type AgentCompanyStage =
   | "Seed"
   | "Series A"
   | "Seed / Series A"
+  | `Series ${"B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J"}`
+  | "Growth"
+  | "Public"
+  | "Acquired"
+  | "Bootstrapped"
   | "Unknown";
 
 export type Founder = {

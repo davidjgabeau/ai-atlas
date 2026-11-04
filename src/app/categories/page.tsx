@@ -32,7 +32,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = createShareMetadata({
   title: "NYC AI Startup Categories",
   description:
-    "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
+    "Explore NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
   path: "/categories",
   image: getShareImageUrl({ page: "categories" }),
 });
@@ -83,7 +83,7 @@ export default async function CategoriesPage() {
         data={collectionPageSchema({
           name: "NYC AI Startup Categories",
           description:
-            "Explore early-stage NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
+            "Explore NYC AI startups across healthcare, infrastructure, finance, legal, consumer, creative, and enterprise automation.",
           url: "https://aiatlas.nyc/categories",
           items: categoryCollectionItems(),
         })}
@@ -110,7 +110,7 @@ function CategoriesHero({ categoryCount }: { categoryCount: number }) {
             </h1>
             <div className="mt-5 h-[3px] w-11 bg-[#A64032]" aria-hidden />
             <p className="mt-5 max-w-[620px] text-[17px] leading-[1.55] text-[#5F5A52] sm:text-[18px]">
-              Browse early-stage NYC AI startups across finance, legal,
+              Browse NYC AI startups across finance, legal,
               creative, healthcare, infrastructure, and more.
             </p>
             <p className="mt-5 max-w-none text-[13px] font-semibold leading-[1.7] text-[#5F5A52] sm:text-sm">

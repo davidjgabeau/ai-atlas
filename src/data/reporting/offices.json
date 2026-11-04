@@ -1,0 +1,713 @@
+[
+  {
+    "company_slug": "flora",
+    "name": "FLORA",
+    "address": "300 Kent Avenue, Brooklyn, NY 11249",
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://flora.ai/careers",
+    "source_title": "FLORA Careers \u2014 Build the Future of Creative Software",
+    "excerpt": "We work in-person out of the beautiful Refinery at Domino in Brooklyn, NYC.",
+    "notes": "Company confirms occupied in-person office at the Refinery. Tenant broker supplies exact street address and Williamsburg; no suite published. Source page is undated; reviewed 2026-11-03. Do not treat broker-reported headcount/space as independently audited.",
+    "nyc_presence": "Current primary company evidence of an occupied Brooklyn office.",
+    "supporting_sources": [
+      {
+        "source_url": "https://nomadgroup.io/casestudy/flora-creative-velocity-real-world-hq/",
+        "source_title": "Flora: Creative velocity, real-world HQ.",
+        "excerpt": "Address 300 Kent Avenue"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.711888063797,
+    "longitude": -73.968127782653,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=300+Kent+Avenue%2C+Brooklyn%2C+NY+11249&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "300 KENT AVE, BROOKLYN, NY, 11249",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "altana",
+    "name": "Altana",
+    "address": "25 Kent Avenue, Suite 501, Brooklyn, NY 11249",
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://altana.ai/legal",
+    "source_title": "Altana | Legal",
+    "source_date": "2025-12-09",
+    "excerpt": "Altana Technologies, Inc. 25 Kent Ave Suite 501 Brooklyn, NY 11249-1060 USA",
+    "notes": "Current company legal address and July 15, 2026 company trust-center update naming Brooklyn headquarters corroborate the 2022 reported 20,874-square-foot, 10-year office lease at 25 Kent in Williamsburg. Physical HQ status is supported by this combined evidence, not legal address alone. No 2026 office photograph was independently verified.",
+    "nyc_presence": "New York headquarters with a reported long-term Williamsburg office lease, corroborated by current company address.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.connectcre.com/stories/ai-startup-altana-inks-lease-with-rubenstein-partners-in-williamsburg/",
+        "source_title": "AI Startup Altana Inks Lease with Rubenstein Partners in Williamsburg",
+        "source_date": "2022-11-07",
+        "excerpt": "The space at 25 Kent Ave. will serve as the company\u2019s New York headquarters."
+      },
+      {
+        "source_url": "https://altana.ai/data-processing-addendum",
+        "source_title": "Altana Data Processing Addendum",
+        "source_date": "2026-09",
+        "excerpt": "Address: 25 Kent Avenue, Suite 501, Brooklyn, NY 11249"
+      },
+      {
+        "source_url": "https://trust.altana.ai/",
+        "source_title": "Altana Trust Center \u2014 ISO recertification update",
+        "source_date": "2026-07-15",
+        "excerpt": "at Altana\u2019s Brooklyn, NY headquarters."
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.723559366919,
+    "longitude": -73.958141159875,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=25+Kent+Avenue%2C+Brooklyn%2C+NY+11249&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "25 KENT AVE, BROOKLYN, NY, 11249",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "outtake",
+    "name": "Outtake",
+    "address": "300 Kent Avenue, Brooklyn, NY 11249",
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://jobs.ashbyhq.com/outtake/cb6d184a-0b12-4e80-b216-58f3af9849aa",
+    "source_title": "General Interest @ Outtake",
+    "excerpt": "working out of a stunning waterfront office in Brooklyn.",
+    "notes": "Company job posting confirms occupied Brooklyn office and five days in person. Company's own LinkedIn page identifies its new home as the old Domino Sugar Refinery on the Williamsburg waterfront. April 7, 2026 reporting places it at the Refinery after moving from Ten Grand. Exact street address resolves via building specifications; suite unknown. Do not map former Ten Grand location as current.",
+    "nyc_presence": "Current primary occupied-office evidence in Brooklyn; building is identified through company and reporting evidence.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.linkedin.com/company/outtakeai",
+        "source_title": "Outtake company page",
+        "excerpt": "Our new home in the old Domino Sugar Refinery on the Williamsburg waterfront"
+      },
+      {
+        "source_url": "https://www.bisnow.com/news/new-york/office/ai-companies-nyc-office-leasing-q1-2026-134012",
+        "source_title": "AI Companies Growing Their NYC Offices At Breakneck Speed",
+        "source_date": "2026-04-07",
+        "excerpt": "Outtake AI, which moved from 3K SF at Ten Grand to 12K SF at The Refinery."
+      },
+      {
+        "source_url": "https://s3.amazonaws.com/therefineryatdominosite/refineryspecsheet10-1698252449626.19",
+        "source_title": "The Refinery at Domino \u2014 Building Specifications",
+        "excerpt": "Location: The Refinery at Domino, 300 Kent Avenue, Brooklyn, NY 11249"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.711888063797,
+    "longitude": -73.968127782653,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=300+Kent+Avenue%2C+Brooklyn%2C+NY+11249&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "300 KENT AVE, BROOKLYN, NY, 11249",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "sentience",
+    "name": "Sentience",
+    "address": null,
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://sentience.com/careers",
+    "source_title": "Careers \u00b7 Sentience",
+    "excerpt": "We work 5 days in person in Williamsburg, NYC.",
+    "notes": "Company confirms physical office and neighborhood, but no exact public street address was found. Count as a neighborhood-confirmed office; do not place a street-level pin or choose a building.",
+    "nyc_presence": "Verified Williamsburg office; street address undisclosed.",
+    "supporting_sources": [
+      {
+        "source_url": "https://sentience.com/careers/ai-engineer",
+        "source_title": "AI Engineer \u00b7 Sentience Careers",
+        "excerpt": "NYC, 5 days in person in our beautiful Williamsburg office."
+      }
+    ],
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "topline-pro",
+    "name": "Topline Pro",
+    "address": "300 Kent Avenue, Brooklyn, NY 11249",
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://jobs.ashbyhq.com/topline-pro/0916634d-739b-431f-a93d-cff224f272d8/",
+    "source_title": "Onboarding Team Lead @ Topline Pro",
+    "excerpt": "Office Location: 300 Kent Ave, Brooklyn NY",
+    "notes": "Company-hosted job copy specifies onsite Monday\u2013Friday, office location, and an onsite hiring step. Search index last crawled this individual role around May 2026; company's careers page remains live. Building's Williamsburg identity is independently corroborated by the Refinery landlord specifications and tenant broker case study. Exact suite not published. Treat as evidence reviewed today with an undated role, not as a dated new move.",
+    "nyc_presence": "Primary role evidence of an occupied Brooklyn office.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.toplinepro.com/careers",
+        "source_title": "Careers at Topline Pro | Join Our Team",
+        "excerpt": "Join our team"
+      },
+      {
+        "source_url": "https://nomadgroup.io/casestudy/flora-creative-velocity-real-world-hq/",
+        "source_title": "Flora broker case study \u2014 building location cross-check",
+        "excerpt": "Neighborhood Williamsburg, New York"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.711888063797,
+    "longitude": -73.968127782653,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=300+Kent+Avenue%2C+Brooklyn%2C+NY+11249&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "300 KENT AVE, BROOKLYN, NY, 11249",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "minerva-bi",
+    "name": "Minerva (Minerva BI)",
+    "address": "300 Kent Avenue, Brooklyn, NY 11249",
+    "borough": "Brooklyn",
+    "neighborhood": "Williamsburg",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://jobs.ashbyhq.com/minerva/735ef16e-ff0a-4387-a869-34c0adafded8",
+    "source_title": "Solutions Engineer @ Minerva",
+    "excerpt": "We work in person from our office at 300 Kent Avenue in Williamsburg, Brooklyn.",
+    "notes": "This is the consumer marketing AI company at minerva.io, legal entity Minerva BI Inc. October 26, 2026 reporting says it expanded from 3,500 square feet on floor 3 to 8,320 square feet on floor 10. Avoid publishing Suite 305 as current: June 2026 privacy page and December 2025 Form D show old suite, while new role omits suite and later lease report indicates move within building.",
+    "nyc_presence": "Current primary occupied-office evidence at the Refinery, reinforced by October 2026 expansion reporting.",
+    "supporting_sources": [
+      {
+        "source_url": "https://commercialobserver.com/2026/10/minerva-lease-expansion-refinery-at-domino/",
+        "source_title": "AI Firm Minerva Doubles Office Footprint at the Refinery at Domino",
+        "source_date": "2026-10-26",
+        "excerpt": "expanded from 3,500 square feet on the third floor ... to 8,320 square feet on the 10th floor"
+      },
+      {
+        "source_url": "https://www.minerva.io/company",
+        "source_title": "Company | Minerva",
+        "excerpt": "\u00a9 2026 Minerva BI, Inc."
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.711888063797,
+    "longitude": -73.968127782653,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=300+Kent+Avenue%2C+Brooklyn%2C+NY+11249&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "300 KENT AVE, BROOKLYN, NY, 11249",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "cubefabs",
+    "name": "CubeFabs (formerly Nanotronics)",
+    "address": "63 Flushing Avenue, Brooklyn Navy Yard, Building 303, Suite 609, Brooklyn, NY 11205",
+    "borough": "Brooklyn",
+    "neighborhood": "Brooklyn Navy Yard",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://cubefabs.com/contact",
+    "source_title": "CubeFabs | Contact",
+    "excerpt": "Offices ... New York ... 63 Flushing Avenue, Brooklyn Navy Yard, Bldg 303 Suite 609 Brooklyn, NY 11205",
+    "notes": "Current company's contact page explicitly labels this an office. Nanotronics' company LinkedIn announces rebrand to CubeFabs. Older Navy Yard tenant directory has Building 218 and old corporate profiles show 19 Morris Avenue; use current CubeFabs contact address and retain historical addresses only in notes. Brooklyn Navy Yard is the named campus/locality rather than an inferred postal neighborhood.",
+    "nyc_presence": "Verified current Brooklyn office; established industrial AI company.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.linkedin.com/company/nanotronics-imaging",
+        "source_title": "Nanotronics company page",
+        "excerpt": "Nanotronics is now CubeFabs"
+      },
+      {
+        "source_url": "https://www.brooklynnavyyard.org/tenants/nanotronics/",
+        "source_title": "Nanotronics \u2014 Brooklyn Navy Yard",
+        "excerpt": "a platform that combines AI, automation, and sophisticated imaging"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.698067463317,
+    "longitude": -73.974935457667,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=63+Flushing+Avenue%2C+Brooklyn%2C+NY+11205&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "63 FLUSHING AVE, BROOKLYN, NY, 11205",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "opentrons",
+    "name": "Opentrons",
+    "address": "45-18 Court Square West, Long Island City, NY 11101",
+    "borough": "Queens",
+    "neighborhood": "Long Island City",
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://docs.opentrons.com/flex/support/",
+    "source_title": "Opentrons Flex: Support and Contact Information",
+    "excerpt": "Opentrons Labworks Inc 45-18 Ct Square W Long Island City, NY 11101, USA",
+    "notes": "Primary product documentation supplies office business information and office hours. Long Island City is named directly. October 29, 2026 company release calls it open AI-native laboratory automation and explicitly states NYC headquarters. Do not use its old 20 Jay Street Brooklyn address.",
+    "nyc_presence": "Verified Queens office and NYC headquarters of AI-native lab robotics company.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.indeed.com/viewjob?jk=726bf4d9deda4395",
+        "source_title": "Opentrons Senior Software Engineer \u2014 Cloud / Applied AI",
+        "excerpt": "Location: Hybrid in Long Island City (Queens), NY"
+      },
+      {
+        "source_url": "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+        "source_title": "Opentrons Series E announcement",
+        "source_date": "2026-10-29",
+        "excerpt": "Founded in 2014 and headquartered in New York City"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.746151039911,
+    "longitude": -73.943873862812,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=45-18+Court+Square+West%2C+Long+Island+City%2C+NY+11101&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "45-18 COURT SQ, LONG ISLAND CITY, NY, 11101",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "hugging-face",
+    "name": "Hugging Face",
+    "address": "20 Jay Street, Suite 620, Brooklyn, NY 11201",
+    "borough": "Brooklyn",
+    "neighborhood": null,
+    "location_type": "office",
+    "evidence_status": "reported",
+    "source_url": "https://www.builtinnyc.com/company/hugging-face",
+    "source_title": "Hugging Face NYC Office: Careers, Perks + Culture",
+    "excerpt": "While we have offices in Paris, Brooklyn, Switzerland, Miami, and more, we happily support remote working",
+    "notes": "Brooklyn physical office is reported on company employment profile and multiple hiring mirrors; company's federal submissions give 20 Jay Street Suite 620 correspondence address. Primary careers portal is live but offered no readable content through research tool. The street-to-current-occupied-office link remains reported, not independently verified. Remote-first company; do not treat NYC HQ label as all employees onsite. Neighborhood omitted rather than inferred from ZIP.",
+    "nyc_presence": "Reported Brooklyn physical office with flexible/remote work; exact occupied-office address requires current primary confirmation.",
+    "supporting_sources": [
+      {
+        "source_url": "https://downloads.regulations.gov/COLC-2023-0006-8969/attachment_1.pdf",
+        "source_title": "Hugging Face response to Copyright Office inquiry",
+        "excerpt": "Hugging Face, Inc. 20 Jay Street, Suite 620, Brooklyn, NY 11201"
+      },
+      {
+        "source_url": "https://apply.workable.com/huggingface/",
+        "source_title": "Hugging Face current openings",
+        "excerpt": ""
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.704191959558,
+    "longitude": -73.9866502493,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=20+Jay+Street%2C+Brooklyn%2C+NY+11201&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "20 JAY ST, BROOKLYN, NY, 11201",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "sandbar",
+    "name": "Sandbar",
+    "address": null,
+    "borough": null,
+    "neighborhood": null,
+    "location_type": "unverified",
+    "evidence_status": "unverified",
+    "source_url": "https://www.sandbar.com/careers",
+    "source_title": "Careers | Sandbar",
+    "excerpt": "Sandbar is an interface company based in New York City.",
+    "notes": "Primary city-level presence verified. No exact office, borough, or Williamsburg evidence found in reviewed primary pages. City-level in-person hiring is insufficient to assign a borough. Do not infer Williamsburg from nearby company leads or founder residence.",
+    "nyc_presence": "NYC-based per company; physical office location unresolved.",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "tapestry",
+    "name": "Tapestry",
+    "address": null,
+    "borough": null,
+    "neighborhood": null,
+    "location_type": "unverified",
+    "evidence_status": "unverified",
+    "source_url": "https://www.linkedin.com/company/usetapestry",
+    "source_title": "Tapestry company profile \u2014 usetapestry",
+    "excerpt": "Based in New York. Building the companion economy.",
+    "notes": "Correct entity is the social graph/Zumi company at usetapestry.dev. Primary company-managed profile verifies city-level presence only. No occupied office address or borough found. Do not confuse with Australian tapestry.ai, apparel holding company tapestry.com, or Tapestry Labs.",
+    "nyc_presence": "NYC-based company; physical office location unresolved.",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "glif",
+    "name": "Glif",
+    "address": "228 Park Avenue South, PMB 22282, New York, NY 10003-1502",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "mailing",
+    "evidence_status": "verified",
+    "source_url": "https://glif.app/privacy",
+    "source_title": "Privacy Policy | Glif",
+    "excerpt": "Spellcasters Inc. 228 Park Ave S PMB 22282 New York New York 10003-1502",
+    "notes": "Company legal entity is Spellcasters Inc. PMB and privacy contact address demonstrate correspondence only. No occupied Brooklyn or Williamsburg office verified. Do not confuse with the unrelated 2015 Glif Inc. trademark at a Brooklyn residential address.",
+    "nyc_presence": "NYC mailing address verified; occupied office and borough of actual work unresolved.",
+    "supporting_sources": [
+      {
+        "source_url": "https://glif.app/legal",
+        "source_title": "Terms of Service | Glif",
+        "source_date": "2025-02-12",
+        "excerpt": "Spellcasters, Inc., a Delaware corporation"
+      }
+    ],
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "channel3",
+    "name": "Channel3",
+    "address": "169 Madison Avenue, Suite 38212, New York, NY 10016",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "mailing",
+    "evidence_status": "verified",
+    "source_url": "https://connect.trychannel3.com/contact",
+    "source_title": "Contact \u2014 Channel3",
+    "excerpt": "Mailing address: 169 Madison Ave STE 38212, New York, NY 10016.",
+    "notes": "Primary company contact explicitly says mailing address. A current hiring mirror describes occupied Flatiron office Monday\u2013Friday; no exact street address was independently verified. Mailing pin must not be presented as physical office. No Williamsburg evidence found.",
+    "nyc_presence": "NYC business presence and reported occupied Flatiron office; exact office street unresolved.",
+    "supporting_sources": [
+      {
+        "source_url": "https://zerogtalent.com/ai-jobs/channel3/backend-engineer-88416",
+        "source_title": "Backend Engineer | Channel3",
+        "excerpt": "We work out of our sunny office in Flatiron in-person together Monday through Friday."
+      }
+    ],
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "general-intelligence-company",
+    "name": "General Intelligence Company",
+    "address": null,
+    "borough": null,
+    "neighborhood": null,
+    "location_type": "unverified",
+    "evidence_status": "unverified",
+    "source_url": "https://www.generalintelligencecompany.com/careers",
+    "source_title": "General Intelligence Company | Careers",
+    "excerpt": "The General Intelligence Company Of New York",
+    "notes": "Company describes its office in primary writing, but reviewed pages do not verify street address. Existing AIAtlas entry says 245 Lexington Avenue floor 4; directory is the target under review, so not independent corroboration. Do not map or assign Manhattan from the existing unsupported address.",
+    "nyc_presence": "Company presents itself as a New York company with an office; exact physical location unresolved.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.generalintelligencecompany.com/writing/a-day-in-the-life-of-the-world-s-most-ai-forward-company",
+        "source_title": "A Day in the Life of the World\u2019s Most AI Forward Company",
+        "excerpt": "We literally have always-on microphones in our office to capture context"
+      }
+    ],
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "runway",
+    "name": "Runway",
+    "address": "18 West 18th Street, Floor 11, New York, NY 10011",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "office",
+    "evidence_status": "reported",
+    "source_url": "https://runway.com/careers",
+    "source_title": "Careers in AI Video Technology | Runway AI",
+    "excerpt": "We have offices in New York, San Francisco, Seattle, London, Paris, Tel Aviv and Tokyo.",
+    "notes": "Current primary company page confirms NYC office and remote options but no street. 2024 Newmark lease table reports 18 West 18th Street; February 2026 federal complaint alleges principal place of business there. Exact street remains reported rather than primary occupied-office confirmation. Old directory addresses 201 Moore Street Brooklyn and 79 Walker Street should not establish current borough.",
+    "nyc_presence": "Verified NYC office at city level; reported current Manhattan address; hybrid/remote.",
+    "supporting_sources": [
+      {
+        "source_url": "https://business.cch.com/ipld/RandomGolfClubRunwayAIComplaint20260218.pdf",
+        "source_title": "Federal complaint naming Runway AI",
+        "source_date": "2026-02-18",
+        "excerpt": "principal place of business at 18 West 18th Street, Floor 11, New York, New York 10011."
+      },
+      {
+        "source_url": "https://mayafiles.tase.co.il/rpdf/1646001-1647000/P1646211-01.pdf",
+        "source_title": "Newmark Manhattan Office Market Analysis \u2014 recent AI leasing activity (2024)",
+        "source_date": "2024",
+        "excerpt": "Runway AI | 18 West 18th Street | 17,705"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.73869846331,
+    "longitude": -73.992415483199,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=18+West+18th+Street%2C+New+York%2C+NY+10011&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "18 W 18TH ST, NEW YORK, NY, 10011",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "hebbia",
+    "name": "Hebbia",
+    "address": "161 Sixth Avenue, Floor 8, New York, NY 10013",
+    "borough": "Manhattan",
+    "neighborhood": "Hudson Square",
+    "location_type": "office",
+    "evidence_status": "reported",
+    "source_url": "https://traded.co/deals/new-york/office/lease/one-soho-square/",
+    "source_title": "Hebbia AI Signs 27,000 SF Lease At One SoHo Square",
+    "source_date": "2026-09-15",
+    "excerpt": "One SoHo Square, 161 6th Ave in Hudson Square.",
+    "notes": "September 2026 reported new full 8th-floor lease; move-in/occupancy date not stated. Current company privacy page last updated May 8, 2026 still lists 233 Spring Street floor 9 postal address. Company's careers page confirms office in Downtown NY but not exact street. Preserve both dates; do not assert new lease equals completed move.",
+    "nyc_presence": "Verified Downtown NYC office at company level; reported new Hudson Square lease with occupancy unconfirmed.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.hebbia.com/careers/",
+        "source_title": "Hebbia Careers",
+        "excerpt": "Office in Downtown NY"
+      },
+      {
+        "source_url": "https://www.hebbia.com/privacy",
+        "source_title": "Hebbia Privacy Policy",
+        "source_date": "2026-05-08",
+        "excerpt": "Postal address: Hebbia Inc., 233 Spring St, 9th Floor, New York, NY 10013"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.725859922037,
+    "longitude": -74.003967755572,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=161+Sixth+Avenue%2C+New+York%2C+NY+10013&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "161 6TH AVE, NEW YORK, NY, 10013",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "dataiku",
+    "name": "Dataiku",
+    "address": "125 West 25th Street, Floor 7, New York, NY 10001",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "office",
+    "evidence_status": "reported",
+    "source_url": "https://www.dataiku.com/legal/privacy",
+    "source_title": "Dataiku Privacy Policy",
+    "source_date": "2025-08-18",
+    "excerpt": "Dataiku Inc., 125 West 25th Street, 7th Floor, New York, NY 10001",
+    "notes": "Current primary company legal contact and reported 2024 lease align on this address; leased/occupied office status remains reported because a legal contact alone does not prove occupancy. More recent 2026 job mirror also uses 125 West 25th Street. Do not use older 902 Broadway correspondence address as current physical office. Neighborhood not independently researched.",
+    "nyc_presence": "NYC corporate address verified, physical office supported by reported lease and hiring.",
+    "supporting_sources": [
+      {
+        "source_url": "https://mayafiles.tase.co.il/rpdf/1646001-1647000/P1646211-01.pdf",
+        "source_title": "Newmark Manhattan Office Market Analysis \u2014 recent AI leasing activity (2024)",
+        "source_date": "2024",
+        "excerpt": "Dataiku | 125 West 25th Street | 11,732"
+      },
+      {
+        "source_url": "https://diversityjobs.com/career/18291922/Sr-Data-Scientist-New-York-New-York",
+        "source_title": "Dataiku Senior Data Scientist job mirror",
+        "source_date": "2026-09-14",
+        "excerpt": "125 West 25th Street"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.74454341866,
+    "longitude": -73.992562956849,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=125+West+25th+Street%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "125 W 25TH ST, NEW YORK, NY, 10001",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "alphasense",
+    "name": "AlphaSense",
+    "address": "441 Ninth Avenue, Floor 4, New York, NY 10001",
+    "borough": "Manhattan",
+    "neighborhood": "Hudson Yards",
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://www.alpha-sense.com/contact/",
+    "source_title": "AlphaSense | Contact Us",
+    "excerpt": "New York (Headquarters) 441 Ninth Ave, 4th Floor New York, NY 10001",
+    "notes": "Current primary company offices page confirms exact headquarters address. Company press release explicitly locates headquarters in Hudson Yards. June 2025 lease announcement alone had no move-in date, but current offices page and May 2026 cohosted event evidence strengthen current occupancy.",
+    "nyc_presence": "Verified current Manhattan headquarters.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.prnewswire.com/news-releases/alphasense-expands-global-footprint-with-new-flagship-headquarters-in-new-york-city-302468973.html",
+        "source_title": "AlphaSense announces new flagship headquarters",
+        "source_date": "2025-06-02",
+        "excerpt": "a new global headquarters location in New York City's Hudson Yards neighborhood"
+      },
+      {
+        "source_url": "https://www.womeninsaleseverywhere.com/events/2026-alphasense-event-from-seed-to-scale",
+        "source_title": "2026 AlphaSense Event: From Seed to Scale",
+        "source_date": "2026-05-13",
+        "excerpt": "We're hosting a live panel and networking event at AlphaSense's NYC office!"
+      }
+    ],
+    "verified_at": "2026-11-03",
+    "latitude": 40.753466856789,
+    "longitude": -73.996333516852,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=441+Ninth+Avenue%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "441 9TH AVE, NEW YORK, NY, 10001",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "strongarm-technologies",
+    "name": "StrongArm Technologies",
+    "address": null,
+    "borough": null,
+    "neighborhood": null,
+    "location_type": "unverified",
+    "evidence_status": "unverified",
+    "source_url": "https://strongarmtech.com/privacy-policy/",
+    "source_title": "StrongArm Technologies Privacy Policy",
+    "excerpt": "RS1Worklete, LLC d/b/a Strongarm Technologies 951 20th Street, #540 Denver, CO 80201",
+    "notes": "Historical Brooklyn safety-tech lead was checked; current site gives Denver legal correspondence address under RS1Worklete LLC. No current Brooklyn occupied-office evidence confirmed in this pass. Do not reuse older Brooklyn/Navy Yard headquarters claims.",
+    "nyc_presence": "Current NYC physical presence unresolved; exclude from Brooklyn office counts pending confirmation.",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "passionfroot",
+    "name": "Passionfroot",
+    "address": null,
+    "borough": "Manhattan",
+    "neighborhood": "SoHo",
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://www.linkedin.com/company/passionfrootme/",
+    "source_title": "Passionfroot official company page and founder office post",
+    "verified_at": "2026-11-03",
+    "excerpt": "We just moved into our office in Soho, New York.",
+    "notes": "Company page reproduces founder Jennifer Phan's office announcement. Post date is relative; no exact move date or street address established. The company's German legal registration remains distinct from this NYC office."
+  },
+  {
+    "company_slug": "eliseai",
+    "name": "EliseAI",
+    "address": "401 Fifth Avenue, New York, NY 10016",
+    "borough": "Manhattan",
+    "neighborhood": "Midtown",
+    "location_type": "headquarters",
+    "evidence_status": "reported",
+    "source_url": "https://eliseai.com/blog/new-office-announcement",
+    "source_title": "EliseAI Expands NYC Footprint with Lease at Iconic Former Tiffany & Co. Building on Fifth Avenue",
+    "source_date": "2026-01-20",
+    "excerpt": "the signing of a 10-year lease agreement ... at 401 Fifth Avenue, establishing the building as its New York headquarters.",
+    "verified_at": "2026-11-03",
+    "notes": "Company-authored lease announcement; the body dateline is January 20, 2026 while the CMS header also shows January 19. It says EliseAI will occupy approximately 109,000 square feet. Current footer repeats the address, but this bounded check did not establish an explicit move-in or occupied-office date. Keep the lease/future-occupancy distinction visible; not independently verified as occupied. The company itself calls the location Midtown. Census matches the street address to New York County (Manhattan).",
+    "supporting_sources": [
+      {
+        "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=401+Fifth+Avenue%2C+New+York%2C+NY+10016&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+        "source_title": "US Census Bureau Geocoder \u2014 address geography match",
+        "excerpt": "401 5TH AVE, NEW YORK, NY, 10016; New York County; GEOID 36061"
+      }
+    ],
+    "latitude": 40.750134838209,
+    "longitude": -73.983237561192,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=401+Fifth+Avenue%2C+New+York%2C+NY+10016&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "401 5TH AVE, NEW YORK, NY, 10016",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "tennr",
+    "name": "Tennr",
+    "address": "345 Hudson Street, Floor 4, New York, NY 10014",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://www.tennr.com/meridian",
+    "source_title": "Meridian 2026 \u2014 Tennr customer summit",
+    "excerpt": "The 2026 Summit will take place October 7-8, 2026 in New York, NY at Tennr headquarters at 345 Hudson Street.",
+    "verified_at": "2026-11-03",
+    "notes": "Company's October 2026 summit page explicitly calls 345 Hudson its headquarters and describes on-site programming, rooftop reception, and phone booths. Current homepage and careers footer supply Floor 4 and ZIP. This is physical office evidence rather than a legal address alone. Source page has no explicit publication date. Census street match identifies New York County (Manhattan).",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.tennr.com/",
+        "source_title": "Tennr homepage",
+        "excerpt": "345 Hudson St, Floor 4 / New York, NY 10014"
+      },
+      {
+        "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=345+Hudson+Street%2C+New+York%2C+NY+10014&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+        "source_title": "US Census Bureau Geocoder \u2014 address geography match",
+        "excerpt": "345 HUDSON ST, NEW YORK, NY, 10014; New York County; GEOID 36061"
+      }
+    ],
+    "latitude": 40.727391870477,
+    "longitude": -74.007385866103,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=345+Hudson+Street%2C+New+York%2C+NY+10014&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "345 HUDSON ST, NEW YORK, NY, 10014",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "pinecone",
+    "name": "Pinecone",
+    "address": "127 West 26th Street, 6th Floor, New York, NY 10001",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://www.pinecone.io/company/",
+    "source_title": "Pinecone \u2014 Company / Our Global Office Locations",
+    "excerpt": "127 W 26th St. 6th Fl. / New York, NY 10001",
+    "verified_at": "2026-11-03",
+    "notes": "Current company page explicitly labels this as New York City HQ in its Global Office Locations section. It is not derived from a privacy or registration address. The page footer separately says San Francisco, CA; retain that inconsistency instead of replacing the explicit office listing. No source publication date is displayed. Census street match identifies New York County (Manhattan).",
+    "supporting_sources": [
+      {
+        "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=127+West+26th+Street%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+        "source_title": "US Census Bureau Geocoder \u2014 address geography match",
+        "excerpt": "127 W 26TH ST, NEW YORK, NY, 10001; New York County; GEOID 36061"
+      }
+    ],
+    "latitude": 40.745184045514,
+    "longitude": -73.992167391684,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=127+West+26th+Street%2C+6th+Floor%2C+New+York%2C+NY+10001&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "127 W 26TH ST, NEW YORK, NY, 10001",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "uipath",
+    "name": "UiPath",
+    "address": "One Vanderbilt Avenue, 60th Floor, New York, NY 10017",
+    "borough": "Manhattan",
+    "neighborhood": "Midtown",
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://ir.uipath.com/financials/sec-filings/content/0001734722-26-000012/path-20260131.htm",
+    "source_title": "UiPath Form 10-K for year ended January 31, 2026",
+    "source_date": "2026-03-25",
+    "excerpt": "One Vanderbilt Avenue, 60th Floor, New York, New York 10017",
+    "verified_at": "2026-11-03",
+    "notes": "The company annual report also identifies New York global headquarters among its leased properties as of January 31, 2026, supporting physical headquarters status beyond the cover-page address. This verification is current-document evidence, not a claim of a site visit. Building co-owner Mori's first-party release explicitly locates One Vanderbilt in Manhattan and Midtown. Census did not return a street match for the branded address; preserve it and use a separately sourced building location when geocoding rather than fabricating coordinates.",
+    "supporting_sources": [
+      {
+        "source_url": "https://www.mori.co.jp/en/press/release/mori_building_acquires_stake_i/",
+        "source_title": "Mori Building Acquires Stake in Manhattan Landmark One Vanderbilt Avenue",
+        "source_date": "2024-11-22",
+        "excerpt": "One Vanderbilt opened in 2020 as a striking addition to the Manhattan skyline."
+      }
+    ]
+  },
+  {
+    "company_slug": "vast-data",
+    "name": "VAST Data",
+    "address": "240 West 37th Street, New York, NY 10018",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "office",
+    "evidence_status": "verified",
+    "source_url": "https://www.vastdata.com/contact",
+    "source_title": "VAST Data \u2014 Contact Us / Sales Locations",
+    "excerpt": "Sales Locations / USA - New York / 240 W 37th Street / New York, NY 10018, USA",
+    "verified_at": "2026-11-03",
+    "notes": "The company explicitly publishes this under Sales Locations. Treat it as a New York sales office, not corporate headquarters; the company describes itself as remote-first elsewhere. This is a current company-published office location, with no separate occupancy or headcount claim. No suite, floor, or publication date is supplied. Census street match identifies New York County (Manhattan).",
+    "supporting_sources": [
+      {
+        "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=240+West+37th+Street%2C+New+York%2C+NY+10018&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+        "source_title": "US Census Bureau Geocoder \u2014 address geography match",
+        "excerpt": "240 W 37TH ST, NEW YORK, NY, 10018; New York County; GEOID 36061"
+      }
+    ],
+    "latitude": 40.75333822221,
+    "longitude": -73.990449447759,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=240+West+37th+Street%2C+New+York%2C+NY+10018&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "240 W 37TH ST, NEW YORK, NY, 10018",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  },
+  {
+    "company_slug": "persado",
+    "name": "Persado",
+    "address": "11 East 26th Street, New York, NY 10010",
+    "borough": "Manhattan",
+    "neighborhood": null,
+    "location_type": "headquarters",
+    "evidence_status": "verified",
+    "source_url": "https://www.persado.com/about",
+    "source_title": "Persado \u2014 About / Our Offices / Global Presence",
+    "verified_at": "2026-11-03",
+    "notes": "Current company About page explicitly labels this address New York Headquarters in Our Offices. No floor, suite, or source publication date is displayed. This is office-location evidence rather than a legal notice alone. Census street match identifies New York County (Manhattan).",
+    "supporting_sources": [
+      {
+        "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=11+East+26th+Street%2C+New+York%2C+NY+10010&benchmark=Public_AR_Current&vintage=Current_Current&format=json",
+        "source_title": "US Census Bureau Geocoder \u2014 address geography match",
+        "excerpt": "11 E 26TH ST, NEW YORK, NY, 10010; New York County; GEOID 36061"
+      }
+    ],
+    "latitude": 40.743409347625,
+    "longitude": -73.987941510052,
+    "geocode_source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?address=11+East+26th+Street%2C+New+York%2C+NY+10010&benchmark=Public_AR_Current&format=json",
+    "geocode_matched_address": "11 E 26TH ST, NEW YORK, NY, 10010",
+    "geocode_note": "Approximate street-address coordinates from Census TIGER; not a unit or building entrance."
+  }
+]

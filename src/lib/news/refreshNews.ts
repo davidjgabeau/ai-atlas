@@ -361,7 +361,7 @@ function toNewsItem(candidate: RawNewsCandidate): NewsItem | null {
   };
 }
 
-function scoreNewsCandidate(
+export function scoreNewsCandidate(
   text: string,
   sourceName: string,
   defaultScope: NewsScope,
@@ -373,17 +373,14 @@ function scoreNewsCandidate(
 } {
   const hasAi =
     /\b(ai|artificial intelligence|generative ai|genai|llm|agentic|machine learning|foundation model|model)\b/i.test(text);
-  const hasEarlyStage =
-    /\b(startup|seed|pre-seed|preseed|series a|series b|early-stage|early stage|launch|launched)\b/i.test(text);
-  const hasFundingSignal = /\b(funding|financing|raised|raises|venture)\b/i.test(text);
-  const hasLateStageSignal =
-    /(series [bcdefgh]|growth-stage|growth stage|ipo|acquires|acquired|buys|unicorn|valuation|billion|\$[2-9]\d{2,}m|\$1[5-9]\d{1}m|\$[1-9](?:\.\d+)?b)/i.test(text);
+  const hasCompanySignal =
+    /\b(startup|compan(?:y|ies)|funding|financing|raised|raises|series [a-z]|growth|ipo|public|launch|launched|office|lease|hiring|jobs|acquisition|acquired|product)\b/i.test(text);
   const isInvestorStory =
     /\b(venture fund|new fund|fund manager|fundraising for its fund|closed its fund|closes fund|launches fund|launched fund)\b/i.test(text) ||
     /\b(ventures|capital|partners)\b.{0,80}\b(launches|launched|raises|raised|closed|closes)\b.{0,80}\bfund\b/i.test(text);
   const hasNyc = /\b(new york|nyc|manhattan|brooklyn|soho|flatiron|nomad|chelsea)\b/i.test(text);
   const prioritySource = /\b(techcrunch|venturebeat|crunchbase|bloomberg|wall street journal|wsj|alleywatch|axios|the information)\b/i.test(sourceName);
-  const hasStage = hasEarlyStage || hasFundingSignal;
+  const hasStage = hasCompanySignal;
   const relevanceScore =
     (hasAi ? 0.4 : 0) +
     (hasStage ? 0.28 : 0) +
@@ -400,14 +397,10 @@ function scoreNewsCandidate(
       hasAi &&
       hasStage &&
       !isInvestorStory &&
-      !(
-        hasLateStageSignal &&
-        !/\b(seed|pre-seed|preseed|series a|series b)\b/i.test(text)
-      ) &&
       relevanceScore >= 0.62,
     relevanceScore: Number(relevanceScore.toFixed(2)),
     scope,
-    topic: hasNyc ? "NYC early-stage AI" : "Broad early-stage AI",
+    topic: hasNyc ? "NYC AI" : "Broad AI",
   };
 }
 
@@ -416,8 +409,8 @@ function createSummary(candidate: RawNewsCandidate) {
   if (cleaned) return truncate(cleaned, 180);
 
   return candidate.defaultScope === "nyc"
-    ? "Early-stage NYC AI news with New York market relevance."
-    : "Broader early-stage AI context for the NYC map.";
+    ? "NYC AI news with New York market relevance."
+    : "Broader AI context for the NYC map.";
 }
 
 function dedupeNewsItems(candidates: RawNewsCandidate[]) {

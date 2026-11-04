@@ -20,7 +20,7 @@ export function CategoryPulse({ items }: { items: CategoryPulseItem[] }) {
         Category Pulse
       </h2>
       <p className="text-body mt-2 text-sm lg:hidden">
-        Where early-stage NYC AI companies are clustering.
+        Where NYC AI companies are clustering.
       </p>
 
       <div className="mt-3 divide-y divide-[#E7E1D8] lg:mt-2 lg:border-0">

@@ -71,20 +71,11 @@ export async function resolveCandidateWebsite({
   if (fromText) return fromText;
 
   const html = await fetchDiscoveryHtml(record.url);
-  if (!html) return inferWebsiteFromCompanySlug(companyName);
+  if (!html) return undefined;
 
   return (
-    extractCompanyWebsiteFromHtml(html, companyName) ??
-    inferWebsiteFromCompanySlug(companyName)
+    extractCompanyWebsiteFromHtml(html, companyName)
   );
-}
-
-function inferWebsiteFromCompanySlug(companyName: string) {
-  const slug = slugify(companyName);
-  if (!slug || slug.length < 5) return undefined;
-
-  const candidates = [`https://${slug}.com/`, `https://${slug}.ai/`, `https://www.${slug}.com/`];
-  return candidates.find((url) => isUsableCompanyWebsite(url));
 }
 
 export function extractCompanyWebsiteFromText(text: string, companyName: string) {

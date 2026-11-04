@@ -34,8 +34,9 @@ export const getCompanyJobsForViewer = cache(async (): Promise<{
     .from("company_jobs")
     .select("*, companies(*)")
     .eq("status", "open")
+    .gte("last_seen_at", new Date(Date.now() - 14 * 86_400_000).toISOString())
     .order("last_seen_at", { ascending: false })
-    .limit(500);
+    .limit(1000);
 
   if (error || !data) {
     return {
@@ -94,8 +95,9 @@ export const getPublicCompanyJobs = cache(async (): Promise<CompanyJobWithCompan
     .from("company_jobs")
     .select("*, companies(*)")
     .eq("status", "open")
+    .gte("last_seen_at", new Date(Date.now() - 14 * 86_400_000).toISOString())
     .order("last_seen_at", { ascending: false })
-    .limit(500);
+    .limit(1000);
 
   if (error || !data) return [];
 
@@ -145,7 +147,7 @@ function normalizeCompanyJobRows(rows: CompanyJobRow[]) {
       ...normalizeCompanyJob(row),
       company: row.companies ? normalizeCompany(row.companies) : undefined,
     }))
-    .filter((job) => Boolean(job.company) && isNavigableCompanyJob(job));
+    .filter((job) => job.company?.status === "published" && isNavigableCompanyJob(job));
 }
 
 function normalizeRaw(value: unknown) {

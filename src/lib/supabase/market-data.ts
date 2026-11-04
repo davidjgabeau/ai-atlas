@@ -1,3 +1,4 @@
+import { mergeReviewedCompanyRows } from "@/lib/research/companyRegistry";
 import { unstable_cache } from "next/cache";
 import { cache } from "react";
 import { applyVerifiedCompanyCorrections } from "@/data/company-corrections";
@@ -87,7 +88,7 @@ export const getMarketCompanies = cache(async (): Promise<Company[]> => {
 
 async function getMarketCompanyRows(): Promise<CompanyRow[]> {
   const supabase = createSupabaseServerClient();
-  if (!supabase) return localCompanies;
+  if (!supabase) return mergeReviewedCompanyRows(localCompanies);
 
   const { data, error } = await supabase
     .from("companies")
@@ -96,10 +97,10 @@ async function getMarketCompanyRows(): Promise<CompanyRow[]> {
 
   if (error || !data) {
     console.warn("Supabase companies fallback:", error?.message);
-    return localCompanies;
+    return mergeReviewedCompanyRows(localCompanies);
   }
 
-  return mergeLocalPublicCompanyOverlays(data as CompanyRow[]);
+  return mergeReviewedCompanyRows(mergeLocalPublicCompanyOverlays(data as CompanyRow[]));
 }
 
 const localPublicCompanyOverlayIds: Record<string, string> = {
@@ -627,7 +628,7 @@ function normalizeShortDescription({
 
   const cleanCandidate =
     candidates.find((candidate) => !isBrokenDescription(candidate)) ||
-    `${name} is an early-stage NYC AI company in the AI Atlas map.`;
+    `${name} is an NYC AI company in the AI Atlas map.`;
 
   return ensureSentence(capitalizeSentence(cleanCandidate));
 }

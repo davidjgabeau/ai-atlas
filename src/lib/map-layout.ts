@@ -1,3 +1,4 @@
+import { officeEvidence, isDocumentedOffice } from "./research/evidence";
 import type { Category, Company } from "@/types/market";
 
 export type LatLngLiteral = {
@@ -39,52 +40,16 @@ export const categoryColors: Record<Category, string> = {
   "Personal AI": "#A855F7",
 };
 
-const knownOfficeCoordinates: Record<
-  string,
-  { position: LatLngLiteral; neighborhood: string }
-> = {
-  hebbia: {
-    neighborhood: "SoHo",
-    position: { lat: 40.7247, lng: -74.0004 },
-  },
-  "norm-ai": {
-    neighborhood: "World Trade Center",
-    position: { lat: 40.713, lng: -74.0117 },
-  },
-  "manifest-os": {
-    neighborhood: "Flatiron",
-    position: { lat: 40.741, lng: -73.9865 },
-  },
-  agentio: {
-    neighborhood: "NoMad",
-    position: { lat: 40.7461, lng: -73.9865 },
-  },
-  anterior: {
-    neighborhood: "NoMad",
-    position: { lat: 40.7457, lng: -73.9847 },
-  },
-  "emergence-ai": {
-    neighborhood: "Bryant Park",
-    position: { lat: 40.7525, lng: -73.9833 },
-  },
-  kalepa: {
-    neighborhood: "Flatiron",
-    position: { lat: 40.7399, lng: -73.9895 },
-  },
-  hyperscience: {
-    neighborhood: "World Trade Center",
-    position: { lat: 40.713, lng: -74.0132 },
-  },
-};
-
-export function buildCompanyMapLocations(
-  companies: Company[],
-): CompanyMapLocation[] {
-  return companies.flatMap((company): CompanyMapLocation[] => {
-    const office = knownOfficeCoordinates[company.slug];
-    if (!office || !company.office_address?.trim()) return [];
-    return [{ company, confidence: "confirmed", neighborhood: office.neighborhood, position: office.position }];
-  });
+export function buildCompanyMapLocations(companies: Company[]): CompanyMapLocation[] {
+  const locations: CompanyMapLocation[] = [];
+  for (const company of companies) {
+    const office = officeEvidence.find((o) => o.company_slug === company.slug && isDocumentedOffice(o)
+      && typeof o.latitude === "number" && typeof o.longitude === "number");
+    if (!office || typeof office.latitude !== "number" || typeof office.longitude !== "number") continue;
+    locations.push({ company, confidence: office.evidence_status === "verified" ? "confirmed" : "estimated",
+      neighborhood: office.neighborhood || office.borough || "NYC", position: { lat: office.latitude, lng: office.longitude } });
+  }
+  return locations;
 }
 
 export function getNormalizedMapPosition(

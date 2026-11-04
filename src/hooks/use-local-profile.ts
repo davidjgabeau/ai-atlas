@@ -580,7 +580,7 @@ export function useLocalProfile({
         name: input.name.trim() || "NYC AI reader",
         one_line_bio:
           input.bio.trim() ||
-          "Saving early-stage NYC AI companies from pre-seed through Series A.",
+          "Saving NYC AI companies from seed to public companies.",
         avatar_id: input.avatarId ?? "",
       };
 

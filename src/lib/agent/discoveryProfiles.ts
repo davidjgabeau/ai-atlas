@@ -1,3 +1,4 @@
+import { normalizeCompanyStage } from "../company-stages";
 import type {
   AgentCompany,
   AgentCompanyStage,
@@ -197,8 +198,8 @@ async function extractCandidateProfile(
     proposedUpdate,
     sourceUrls,
     confidence,
-    reason: eligibility.reason,
-    autoPublishEligible: eligibility.autoPublishEligible,
+    reason: anthropic ? eligibility.reason : "Needs review: deterministic article extraction requires identity and profile verification.",
+    autoPublishEligible: Boolean(anthropic) && eligibility.autoPublishEligible,
   };
 }
 
@@ -259,18 +260,16 @@ async function extractWithAnthropic(
             role: "user",
             content: JSON.stringify({
               task:
-                "Extract one NYC-based early-stage AI startup candidate from this article if present.",
+                "Extract one NYC AI company candidate at any stage from this article if present.",
               eligibleCategories: categories,
-              eligibleStages: ["Pre-seed", "Seed", "Series A", "Seed / Series A", "Unknown"],
+              eligibleStages: ["Pre-seed", "Seed", "Series A", "Series B", "Series C", "Series D", "Series E", "Series F", "Series G", "Series H", "Series I", "Series J", "Growth", "Public", "Acquired", "Unknown"],
               rules: [
                 "nycBased is true only if the source explicitly supports New York City, NYC, Brooklyn, Manhattan, or a NYC neighborhood.",
                 "aiCore is true only when AI, LLMs, agents, ML, generative AI, or model tooling is central to the product.",
-                "earlyStage is true only for pre-seed, seed, or Series A. If stage is unclear, set Unknown and earlyStage false.",
+                "Accept every stage: pre-seed, seed, Series A through J, growth, public, and acquired. If stage is unclear, set Unknown. Only mark NYC basis when the company itself has a documented NYC office or headquarters; an article mentioning NYC is not location evidence.",
                 "Use one of the eligible categories exactly.",
                 "companyName must be the company only, never an article title, byline, author name, timestamp, publisher, fund, or investor.",
                 "If the source is mainly about a VC fund, investor, newsletter item, or broad market article, return no candidate.",
-                "Do not include late-stage companies.",
-                "Do not include companies already described as public, acquired, or beyond Series A.",
               ],
               source: {
                 url: record.url,
@@ -648,14 +647,6 @@ function getEligibility(
     extraction.nycBased === true ||
     mentionsNewYork(text) ||
     mentionsNewYork(proposedUpdate.website ?? "");
-  const lateStage =
-    /\b(series\s+[b-z]|growth round|ipo|public company)\b/i.test(text) ||
-    candidateHasAcquisitionSignal(proposedUpdate.name, text);
-  const earlyStage =
-    extraction.earlyStage === true ||
-    ["Pre-seed", "Seed", "Series A", "Seed / Series A"].includes(
-      proposedUpdate.stage ?? "Unknown",
-    );
   const categoryFit = Boolean(
     proposedUpdate.category && allowedCategories.has(proposedUpdate.category),
   );
@@ -685,14 +676,12 @@ function getEligibility(
   const autoPublishEligible =
     aiCore &&
     nycBased &&
-    earlyStage &&
     categoryFit &&
     enoughDescription &&
     cleanName &&
     hasWebsite &&
     strictCandidateValidation.ok &&
     !investorOrFund &&
-    !lateStage &&
     confidence === "high";
   const shouldKeepForReview =
     (
@@ -703,8 +692,7 @@ function getEligibility(
         categoryFit &&
         cleanName &&
         candidateValidation.ok &&
-        !investorOrFund &&
-        !lateStage
+        !investorOrFund
       )
     ) &&
     confidence !== "low";
@@ -717,7 +705,6 @@ function getEligibility(
       : `Needs review: ${[
           !nycBased ? "NYC basis unclear" : "",
           !aiCore ? "AI-core product unclear" : "",
-          !earlyStage ? "stage is not clearly early" : "",
           !categoryFit ? "category fit unclear" : "",
           !cleanName ? "candidate name needs cleanup" : "",
           !hasWebsite ? "website not found" : "",
@@ -726,19 +713,8 @@ function getEligibility(
             ? strictCandidateValidation.reason
             : "",
           investorOrFund ? "source appears to describe an investor or fund" : "",
-          lateStage ? "late-stage language found" : "",
         ].filter(Boolean).join("; ") || "confidence below auto-publish threshold"}.`,
   };
-}
-
-function candidateHasAcquisitionSignal(name: unknown, text: string) {
-  if (typeof name !== "string" || !name.trim()) return false;
-
-  const escapedName = escapeRegExp(name.trim());
-  return new RegExp(
-    `\\b${escapedName}\\b.{0,160}\\b(acquired|acquisition)\\b|\\b(acquired|acquisition)\\b.{0,160}\\b${escapedName}\\b`,
-    "i",
-  ).test(text);
 }
 
 function isCleanCandidateName(name: unknown) {
@@ -796,12 +772,8 @@ function normalizeCategory(category: unknown, text: string) {
 }
 
 function normalizeStage(stage: unknown, text: string): AgentCompanyStage {
-  const value = `${typeof stage === "string" ? stage : ""} ${text}`.toLowerCase();
-  if (value.includes("series a") && value.includes("seed")) return "Seed / Series A";
-  if (value.includes("series a")) return "Series A";
-  if (value.includes("pre-seed") || value.includes("preseed")) return "Pre-seed";
-  if (value.includes("seed")) return "Seed";
-  return "Unknown";
+  const explicit = normalizeCompanyStage(typeof stage === "string" ? stage : "");
+  return explicit !== "Unknown" ? explicit : normalizeCompanyStage(text);
 }
 
 function normalizeFunding(

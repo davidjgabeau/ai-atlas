@@ -90,7 +90,7 @@ function getSafeBody(company: CompanyLike, triggeringEvents: CompanyEvent[]) {
     categorySpecificReason(company),
     eventSpecificReason(company, triggeringEvents),
     deterministicFallback(company),
-    "Added: fits the map's focus on practical early-stage AI products in New York.",
+    "Added: fits the map's focus on practical AI products in New York.",
   ].filter((item): item is string => Boolean(item));
 
   for (const candidate of candidates) {
@@ -110,7 +110,7 @@ function getSafeBody(company: CompanyLike, triggeringEvents: CompanyEvent[]) {
     }
   }
 
-  return "Added: fits the map's focus on practical early-stage AI products in New York.";
+  return "Added: fits the map's focus on practical AI products in New York.";
 }
 
 function eventSpecificReason(
@@ -217,7 +217,7 @@ function deterministicFallback(company: CompanyLike) {
     return "Added: fits the map's Series A-and-earlier scope.";
   }
 
-  return "Added: fits the map's focus on practical early-stage AI products in New York.";
+  return "Added: fits the map's focus on practical AI products in New York.";
 }
 
 function categoryLabel(category?: string) {

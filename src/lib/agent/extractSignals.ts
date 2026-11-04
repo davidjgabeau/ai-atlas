@@ -4,14 +4,14 @@ import type {
   RawSourceRecord,
 } from "../../types/agent";
 
-const fundingWords = /\b(raised|funding|financing|round|led by|seed|series a|pre-seed|preseed)\b/i;
+const fundingWords = /\b(raised|funding|financing|round|led by|seed|series [a-j]|pre-seed|preseed)\b/i;
 const productWords = /\b(launches|launched|introduces|introduced|announces|announced|ships|released|unveils|unveiled)\b/i;
 const tractionWords = /\b(customers|revenue|arr|users|used by|adopted by|deployed|pilots|signed)\b/i;
 const hiringWords = /\b(hiring|open roles|jobs|careers|headcount|team expansion)\b/i;
 const partnershipWords = /\b(partners with|partnership|integrates with|integration with)\b/i;
 const founderWords = /\b(founder|co-founder|ceo|cto|appointed|joins as)\b/i;
 const amountPattern = /\$[\d,.]+(?:\s?(?:m|b|million|billion))?/i;
-const roundPattern = /\b(pre-seed|preseed|seed|series a|strategic funding|series b)\b/i;
+const roundPattern = /\b(pre-seed|preseed|seed|series [a-j]|strategic funding|growth round|ipo)\b/i;
 
 export function extractSignals(
   raw: RawSourceRecord,
@@ -31,12 +31,14 @@ function extractSignalsDeterministically(
 ): ExtractedSignal[] {
   const text = normalizeWhitespace([raw.title, raw.text].filter(Boolean).join("\n"));
   if (!text || isTrivialMarketing(text)) return [];
+  // A changed homepage is not evidence that an old announcement happened today.
+  if (!raw.publishedAt || !Number.isFinite(Date.parse(raw.publishedAt)) || Date.parse(raw.publishedAt) > Date.now()) return [];
 
   const matchedCompanies = findCompanies(raw, companies, text);
   const signals: ExtractedSignal[] = [];
 
   for (const company of matchedCompanies) {
-    const sourceDate = raw.publishedAt ?? raw.discoveredAt;
+    const sourceDate = raw.publishedAt;
 
     if (fundingWords.test(text)) {
       const amount = text.match(amountPattern)?.[0];
@@ -243,8 +245,8 @@ function extractProductName(text: string) {
 function normalizeRound(round?: string) {
   if (!round) return undefined;
   if (/preseed|pre-seed/i.test(round)) return "Pre-seed";
-  if (/series a/i.test(round)) return "Series A";
-  if (/series b/i.test(round)) return "Series B";
+  const series = round.match(/series\s+([a-j])/i);
+  if (series) return `Series ${series[1].toUpperCase()}`;
   if (/strategic funding/i.test(round)) return "Strategic funding";
   if (/seed/i.test(round)) return "Seed";
   return round;

@@ -82,32 +82,32 @@ export async function GET(request: Request) {
     spritePath: string;
   }> = {
     companies: {
-      title: "Early-Stage NYC AI Companies to Know",
+      title: "NYC AI Companies to Know",
       body: `${formatAiStartupCount(stats.totalCompanies)} across consumer, healthcare, infrastructure, and more.`,
       meta: "Startup directory",
       spritePath: "/icons/map.png",
     },
     categories: {
       title: "Browse the map by category.",
-      body: `${stats.totalCategories} categories across the early-stage NYC AI map.`,
+      body: `${stats.totalCategories} categories across the NYC AI map.`,
       meta: "Category guide",
       spritePath: "/icons/grid.png",
     },
     feed: {
       title: "Newsfeed",
-      body: "Early-stage NYC AI news links and official updates from mapped companies.",
+      body: "NYC AI news links and official updates from mapped companies.",
       meta: "Newsfeed",
       spritePath: "/icons/compass.png",
     },
     jobs: {
-      title: "Roles at Early-Stage NYC AI Companies",
+      title: "Roles at NYC AI Companies",
       body: "A hiring board for people exploring teams in the AI Atlas map.",
       meta: "Jobs board",
       spritePath: "/icons/pin.png",
     },
     insights: {
       title: "Current Read",
-      body: "Short editorial notes from the full early-stage NYC AI map and latest additions.",
+      body: "Short editorial notes from the full NYC AI map and latest additions.",
       meta: "Current read",
       spritePath: "/icons/skyline.png",
     },
@@ -125,7 +125,7 @@ export async function GET(request: Request) {
     },
     submit: {
       title: "Submit a startup.",
-      body: "Add an early-stage company building AI in New York.",
+      body: "Add an AI company building AI in New York.",
       meta: "Curation",
       spritePath: "/icons/bridge-mini.png",
     },

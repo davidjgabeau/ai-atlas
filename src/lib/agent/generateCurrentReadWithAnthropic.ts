@@ -187,7 +187,7 @@ function buildCurrentReadPrompt({
 
   return JSON.stringify({
     task: "Generate exactly 3 Current Read memo items for AI Atlas NYC.",
-    scope: "AI Atlas covers early-stage NYC AI startups from pre-seed through Series A. Write inside that scope, not as a global AI market memo.",
+    scope: "AI Atlas covers NYC AI startups from seed to public companies. Write inside that scope, not as a global AI market memo.",
     requiredInsightTypes: [
       "Market shift: what changed in the map recently",
       "Buyer pattern: who the clearest buyers are",
@@ -200,7 +200,7 @@ function buildCurrentReadPrompt({
       "Do not mention funding, customers, or investors unless present in company or event facts.",
       "Avoid generic category summaries and banned internal language.",
       "Write for a curious reader and a VC analyst scanning for signal.",
-      "Understand the scope as NYC companies at Series A and earlier; do not make global claims.",
+      "Understand the scope as NYC AI companies at every stage; do not make global claims.",
       "Bodies may be up to 280 characters, but shorter is better when specific.",
     ],
     bannedPhrases: [

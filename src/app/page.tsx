@@ -1,3 +1,4 @@
+import reviewedSignals from "@/data/reporting/signals.json";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -58,9 +59,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   return createShareMetadata({
-    title: "Early NYC AI Companies to Know",
+    title: "NYC AI Companies to Know",
     description:
-      "Explore early-stage NYC AI companies for founders, seed investors, VCs, operators, and analysts. AI Atlas NYC tracks New York AI startups from pre-seed through Series A.",
+      "Explore NYC AI companies for founders, seed investors, VCs, operators, and analysts. AI Atlas NYC tracks New York AI startups from seed to public companies.",
     path: "/",
     image: getShareImageUrl({ page: "home" }),
   });
@@ -174,7 +175,14 @@ export default async function Home() {
     .sort((a, b) => b.count - a.count)
     .slice(0, 4);
   const surfaceCurrentRead = getCurrentReadFromSurface(currentReadSurface?.items) ?? [];
-  const displayedLatestSignals = getRecentEditorialSignals(latestSignalsSurface?.items, new Set(companiesById.keys()));
+  const reviewedHomepageSignals: EditorialItem[] = reviewedSignals.flatMap((signal) => {
+    const company = publishedCompanies.find((company) => company.slug === signal.company_slug);
+    return company ? [{ id: `reviewed:${signal.company_slug}:${signal.source_url}`, title: signal.title,
+      body: signal.summary, companyId: company.id, category: company.category,
+      label: signal.type === "funding" ? "Funding signal" : "Company update",
+      sourceUrl: signal.source_url, sourceName: signal.source_name, occurredAt: signal.occurred_at }] : [];
+  });
+  const displayedLatestSignals = getRecentEditorialSignals([...reviewedHomepageSignals, ...(latestSignalsSurface?.items ?? [])], new Set(companiesById.keys()));
 
   return (
     <>
@@ -242,11 +250,11 @@ function SiteNav() {
           <SpriteHeaderLink href="/patterns" icon="compass" label="Patterns" />
           <SpriteHeaderLink href="/feed" icon="pin" label="Newsfeed" />
           <SpriteHeaderLink href="/jobs" icon="skyline" label="Jobs" />
-          <SpriteHeaderLink href="/mcp" icon="bridgeMini" label="MCP" />
+          <SpriteHeaderLink href="/research" icon="compass" label="Research" />
           <AskHeaderLink className="h-11" />
           <ProfileHeaderLink compact className="px-1.5 py-1" />
           <Button asChild className="h-11 rounded-lg px-5 app-primary-button">
-            <Link href="/submit">Submit Startup</Link>
+            <Link href="/submit">Submit Company</Link>
           </Button>
         </nav>
         <div className="ml-auto flex shrink-0 items-center gap-3 2xl:hidden">
@@ -277,12 +285,12 @@ function SubmitCompanyCTA() {
             <h2 className="mt-3 editorial-section-title">Know a company we missed?</h2>
             <p className="mt-3 max-w-[680px] text-base leading-[1.6] text-[#5F5A52]">
               AI Atlas is curated by hand and updated agentically. Submit a
-              meaningful early-stage NYC AI company for review.
+              meaningful NYC AI company for review.
             </p>
           </div>
           <Button asChild size="lg" className="app-primary-button">
             <Link href="/submit">
-              Submit Startup
+              Submit Company
               <ArrowRight className="size-4" />
             </Link>
           </Button>
@@ -304,8 +312,7 @@ function SiteFooter() {
             </p>
           </div>
           <p className="mt-2 text-sm text-[#5F5A52]">
-            A curated map of early-stage NYC AI startups from pre-seed through
-            Series A.
+            A curated map of NYC AI companies at every stage.
           </p>
         </div>
 

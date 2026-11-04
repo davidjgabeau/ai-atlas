@@ -28,7 +28,7 @@ export function LatestSignals({
               </h2>
             </div>
           <Link
-            href="/companies?sort=recent"
+            href="/research?view=signals"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#9A3D2B]"
           >
             View all signals
@@ -95,6 +95,7 @@ export function LatestSignals({
                         />
                       </p>
                     ) : null}
+                    {item.sourceUrl ? <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-block text-xs font-medium text-[#9A3D2B] underline underline-offset-2">{item.sourceName || "Original source"} ↗</a> : null}
                   </div>
                 </article>
               );

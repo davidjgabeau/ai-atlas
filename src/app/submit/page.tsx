@@ -10,7 +10,7 @@ import {
 
 export const metadata: Metadata = createShareMetadata({
   title: "Submit a startup",
-  description: `Submit an early-stage company building AI in New York. ${shareCta}.`,
+  description: `Submit an AI company building AI in New York. ${shareCta}.`,
   path: "/submit",
   image: getShareImageUrl({ page: "submit" }),
 });

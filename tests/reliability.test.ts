@@ -124,7 +124,7 @@ test("a category or an ungeocoded street address cannot invent a map location", 
   const companies = [
     { slug: "unknown-finance", category: "Fintech & Trading AI", office_address: "" },
     { slug: "unknown-agents", category: "Agent Infrastructure", office_address: "123 Example Street, NYC" },
-    { slug: "hebbia", category: "Data & Memory Layer", office_address: "" },
+    { slug: "unknown-data-company", category: "Data & Memory Layer", office_address: "" },
   ] as Company[];
   assert.deepEqual(buildCompanyMapLocations(companies), []);
 });

@@ -47,7 +47,7 @@ export function scoreEvent({
 function getImportanceScore(event: CompanyEvent) {
   if (event.type === "funding") {
     const round = event.extractedFacts.round?.toLowerCase() ?? "";
-    if (round.includes("series a")) return 0.95;
+    if (/series [a-j]|growth|ipo/.test(round)) return 0.95;
     if (round.includes("seed")) return 0.85;
     if (round.includes("pre-seed") || round.includes("preseed")) return 0.7;
     return 0.75;
@@ -100,12 +100,11 @@ function getRelevanceScore(event: CompanyEvent, company?: AgentCompany) {
   const description = `${company.description} ${company.oneSentenceDescription}`.toLowerCase();
 
   if (location.includes("new york") || location.includes("nyc")) score += 0.2;
-  if (stage.includes("pre-seed") || stage === "seed" || stage.includes("series a")) {
+  if (stage !== "unknown") {
     score += 0.15;
   }
   if (description.includes(" ai") || description.startsWith("ai ")) score += 0.1;
   if (strongCategories.some((word) => category.includes(word))) score += 0.15;
-  if (stage.includes("series b") || stage.includes("series c")) score -= 0.2;
 
   if (event.confidence === "low") score -= 0.2;
   if (event.confidence === "high") score += 0.05;

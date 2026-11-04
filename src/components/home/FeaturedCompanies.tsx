@@ -21,7 +21,7 @@ export function FeaturedCompanies({ companies }: { companies: Company[] }) {
             <p className="editorial-label">Editorial picks</p>
             <h2 className="mt-3 editorial-section-title">Featured Companies</h2>
             <p className="text-body mt-2 max-w-[680px] text-sm">
-              A curated set of early-stage NYC AI companies with strong products,
+              A curated set of NYC AI companies with strong products,
               clear buyers, or category momentum.
             </p>
           </div>

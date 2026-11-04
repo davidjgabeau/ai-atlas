@@ -1,3 +1,4 @@
+import { normalizeCompanyStage } from "../company-stages";
 import type { AgentCompany, AgentCompanyStage, Founder } from "../../types/agent";
 import type { Company } from "../../types/market";
 import { getCompanySignalLabel } from "../signals/companySignal";
@@ -5,6 +6,7 @@ import { getCompanySignalLabel } from "../signals/companySignal";
 export function toAgentCompany(company: Company): AgentCompany {
   const sourceUrls = uniqueStrings([
     company.website_url,
+    ...(company.discoveryReason?.sourceUrls ?? []),
     company.x_handle ? `https://x.com/${company.x_handle}` : "",
   ]);
 
@@ -56,19 +58,7 @@ export function toAgentCompanies(companies: Company[]) {
 }
 
 export function normalizeAgentStage(value: string): AgentCompanyStage {
-  const normalized = value.toLowerCase();
-
-  if (normalized.includes("series a") && normalized.includes("seed")) {
-    return "Seed / Series A";
-  }
-
-  if (normalized.includes("series a")) return "Series A";
-  if (normalized.includes("pre-seed") || normalized.includes("preseed")) {
-    return "Pre-seed";
-  }
-  if (normalized.includes("seed")) return "Seed";
-
-  return "Unknown";
+  return normalizeCompanyStage(value);
 }
 
 function parseFounders(value?: string): Founder[] | undefined {

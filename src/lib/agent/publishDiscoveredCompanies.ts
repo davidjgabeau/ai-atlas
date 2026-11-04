@@ -34,7 +34,6 @@ export async function publishDiscoveredCompanies({
 }) {
   const eligibleProfiles = profiles.filter((profile) => {
     return profile.autoPublishEligible && autoApprove && isAutoApproveNewCompaniesEnabled()
-      && ["Pre-seed", "Seed", "Series A", "Seed / Series A"].includes(profile.proposedUpdate.stage ?? "")
       && (hasPublishableDescription(profile.proposedUpdate.oneSentenceDescription) || hasPublishableDescription(profile.proposedUpdate.description));
   });
   if (eligibleProfiles.length === 0) {

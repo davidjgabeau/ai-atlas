@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { BriefcaseBusiness } from "lucide-react";
 
-import {
-  JobsGateAuthReturn,
-  JobsGateBoard,
-} from "@/components/jobs/jobs-gate-board";
+import { JobsGateAuthReturn } from "@/components/jobs/jobs-gate-board";
 import { UnlockedJobBoard } from "@/components/jobs/unlocked-job-board";
 import { PublicShell } from "@/components/site/public-shell";
 import { formatRelativeUpdate } from "@/lib/date/formatRelativeUpdate";
@@ -19,7 +15,6 @@ import {
   getPublicCompanyJobs,
   getPublicCompanyJobStats,
 } from "@/lib/supabase/jobs";
-import { getPublishedCompanies } from "@/lib/supabase/market-data";
 import type { CompanyJobWithCompany } from "@/types/market";
 
 export const dynamic = "force-dynamic";
@@ -27,28 +22,21 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = createShareMetadata({
   title: "NYC AI Startup Jobs",
   description:
-    "Explore jobs and hiring activity from early-stage AI startups in New York.",
+    "Explore jobs and hiring activity from AI companies in New York.",
   path: "/jobs",
   image: getShareImageUrl({ page: "jobs" }),
 });
 
 export default async function JobsPage() {
-  const requestHeaders = await headers();
-  const crawlerBypassed = isJobsGateCrawler(
-    requestHeaders.get("user-agent") ?? "",
-  );
-  const [{ isSignedIn, jobs, error }, companies, publicJobStats, publicJobs] =
+  const [{ isSignedIn, jobs, error }, publicJobStats, publicJobs] =
     await Promise.all([
       getCompanyJobsForViewer(),
-      getPublishedCompanies(),
       getPublicCompanyJobStats(),
       getPublicCompanyJobs(),
     ]);
 
-  const previewCompanies = companies.slice(0, 6);
-  const unlockedJobs = isSignedIn ? jobs : crawlerBypassed ? publicJobs : [];
+  const unlockedJobs = isSignedIn ? jobs : publicJobs;
   const jobStats = isSignedIn ? getStatsFromJobs(jobs) : publicJobStats;
-  const shouldShowUnlockedBoard = isSignedIn || crawlerBypassed;
 
   return (
     <PublicShell>
@@ -62,7 +50,7 @@ export default async function JobsPage() {
               <p className="editorial-label">Jobs</p>
             </div>
             <h1 className="font-heading text-[clamp(36px,10.5vw,46px)] font-medium leading-[0.97] tracking-[0] text-[#181818] sm:text-[clamp(40px,5vw,64px)]">
-              Roles at Early-Stage NYC AI Companies
+              Roles at NYC AI Companies
             </h1>
             <p className="max-w-[640px] text-[16px] leading-[1.45] text-[#5F5A52] sm:text-[18px] sm:leading-[1.55]">
               A simple hiring board for people exploring the teams building
@@ -75,27 +63,12 @@ export default async function JobsPage() {
 
       <section className="bg-section">
         <div className="editorial-container py-4 sm:py-10">
-          {shouldShowUnlockedBoard ? (
-            <>
-              <JobsGateAuthReturn isSignedIn={isSignedIn} />
-              <UnlockedJobBoard jobs={unlockedJobs} error={error} />
-            </>
-          ) : (
-            <JobsGateBoard
-              jobs={publicJobs}
-              previewCompanies={previewCompanies}
-              jobStats={jobStats}
-            />
-          )}
+          <JobsGateAuthReturn isSignedIn={isSignedIn} />
+          <p className="mb-5 text-sm leading-6 text-[#777166]">Public employer listings seen in the past 14 days, capped at 1,000. Verify openings on the employer’s site before citing or applying. No sign-in required.</p>
+          <UnlockedJobBoard jobs={unlockedJobs} error={error} />
         </div>
       </section>
     </PublicShell>
-  );
-}
-
-function isJobsGateCrawler(userAgent: string) {
-  return /Googlebot|Bingbot|Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|Discordbot|OAI-SearchBot|ChatGPT-User|GPTBot|ClaudeBot|Claude-SearchBot|Claude-User|PerplexityBot|Perplexity-User|Applebot/i.test(
-    userAgent,
   );
 }
 

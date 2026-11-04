@@ -79,7 +79,7 @@ function normalizeNewsItem(row: NewsItemRow): NewsItem | null {
     published_at: optionalString(row.published_at),
     discovered_at: safeString(row.discovered_at, new Date().toISOString()),
     scope: row.scope === "nyc" ? "nyc" : "broad",
-    topic: safeString(row.topic, "Early-stage AI"),
+    topic: safeString(row.topic, "AI"),
     relevance_score:
       typeof row.relevance_score === "number" ? row.relevance_score : 0,
     image_url: optionalString(row.image_url),

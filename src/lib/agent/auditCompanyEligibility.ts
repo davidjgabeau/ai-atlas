@@ -19,12 +19,6 @@ type CompanyEligibilityAudit = {
   sourceUrls: string[];
 };
 
-const lateStagePattern =
-  /\b(series\s+[b-z]|growth\s+round|growth-stage|late-stage|ipo|public company|listed company|went public)\b/i;
-const lateStageFieldPattern =
-  /\b(series\s+[b-z]|growth|growth\s+round|growth-stage|late-stage|ipo|public company|listed company|went public)\b/i;
-const acquiredPattern =
-  /\b(acquired by|acquisition of|has joined|joined forces with|is now part of|became part of|now owned by|owned by)\b/i;
 const nonNycHeadquartersPattern =
   /\b(headquartered in|based in|hq in|main office in)\s+(san francisco|bay area|menlo park|palo alto|mountain view|san mateo|boston|cambridge|austin|seattle|los angeles|london|toronto|miami|chicago)\b/i;
 const nycPattern =
@@ -66,7 +60,7 @@ export async function auditAndArchiveIneligibleCompanies({
   };
 }
 
-function auditCompanyEligibility(
+export function auditCompanyEligibility(
   company: AgentCompany,
   rawSourceRecords: RawSourceRecord[],
 ): CompanyEligibilityAudit | null {
@@ -105,64 +99,17 @@ function auditCompanyEligibility(
     ...companyRecords.map((record) => record.url),
   ]);
 
-  if (hasAcquisitionEvidence(company, companyRecords, evidenceText)) {
-    return {
-      company,
-      shouldArchive: true,
-      confidence: "high",
-      reason: `${company.name} appears to have been acquired or folded into another company, which no longer fits the active early-stage startup map.`,
-      sourceUrls,
-    };
-  }
-
-  if (hasLateStageEvidence(company, evidenceText)) {
-    return {
-      company,
-      shouldArchive: true,
-      confidence: "high",
-      reason: `${company.name} appears to be beyond the map's pre-seed, seed, or Series A criteria.`,
-      sourceUrls,
-    };
-  }
-
   if (hasExplicitNonNycEvidence(company, companyRecords, evidenceText)) {
     return {
       company,
       shouldArchive: true,
       confidence: "high",
-      reason: `${company.name} appears to be primarily based outside New York City, so it no longer fits the NYC-based criterion.`,
+      reason: `${company.name} appears to be primarily based outside New York City, so its NYC presence needs review.`,
       sourceUrls,
     };
   }
 
   return null;
-}
-
-function hasAcquisitionEvidence(
-  company: AgentCompany,
-  records: RawSourceRecord[],
-  evidenceText: string,
-) {
-  const namePattern = new RegExp(`\\b${escapeRegExp(company.name)}\\b`, "i");
-  const sourceOwnedByCompany =
-    records.some((record) => record.companyId === company.id && acquiredPattern.test(record.text)) ||
-    records.some((record) => record.companyId === company.id && acquiredPattern.test(record.title ?? ""));
-
-  return (
-    sourceOwnedByCompany ||
-    (namePattern.test(evidenceText) && acquiredPattern.test(evidenceText))
-  );
-}
-
-function hasLateStageEvidence(company: AgentCompany, evidenceText: string) {
-  const stageText = normalizeWhitespace([
-    company.stage,
-    company.funding?.latestRound,
-    company.funding?.latestRoundAmount,
-    company.funding?.totalRaised,
-  ].filter(Boolean).join(" "));
-
-  return lateStageFieldPattern.test(stageText) || lateStagePattern.test(evidenceText);
 }
 
 function hasExplicitNonNycEvidence(
@@ -257,8 +204,4 @@ function uniqueStrings(values: Array<string | undefined>) {
 
 function normalizeWhitespace(value: string) {
   return value.replace(/\s+/g, " ").trim();
-}
-
-function escapeRegExp(value: string) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }

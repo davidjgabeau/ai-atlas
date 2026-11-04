@@ -1,3 +1,4 @@
+import { CompanyEvidence } from "@/components/research/CompanyEvidence";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -109,7 +110,7 @@ export async function generateMetadata({
   const baseDescription = getCompanyDescription(company);
 
   return createShareMetadata({
-    title: `${company.name} | Early-Stage NYC AI Startup`,
+    title: `${company.name} | NYC AI Startup`,
     description: truncateMeta(
       `${baseDescription} ${company.name} is listed in AI Atlas NYC as a ${company.stage} company in ${company.category}.`,
     ),
@@ -241,7 +242,7 @@ export default async function CompanyProfilePage({
                 </a>
               </Button>
             </div>
-            <PanelSection title="Startup snapshot">
+            <PanelSection title="Company snapshot">
               <StartupSnapshotRows
                 company={company}
                 companyWebsiteUrl={companyWebsiteUrl}
@@ -286,6 +287,7 @@ export default async function CompanyProfilePage({
                 excludeCompanyId={company.id}
               />
             ) : null}
+            <CompanyEvidence slug={company.slug} />
             <ProfileSection
               id="notes"
               title="Notes"
@@ -321,7 +323,7 @@ export default async function CompanyProfilePage({
                   </div>
                 </div>
               </div>
-              <PanelSection title="Startup snapshot">
+              <PanelSection title="Company snapshot">
                 <StartupSnapshotRows
                   company={company}
                   companyWebsiteUrl={companyWebsiteUrl}

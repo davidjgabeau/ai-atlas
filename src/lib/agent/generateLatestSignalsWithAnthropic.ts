@@ -247,7 +247,7 @@ function buildLatestSignalsPrompt({
   return JSON.stringify({
     task: "Generate exactly 5 Latest Signals cards for AI Atlas NYC.",
     scope:
-      "AI Atlas covers early-stage NYC AI startups from pre-seed through Series A. Write for a homepage reader scanning for why each company matters now.",
+      "AI Atlas covers NYC AI startups from seed to public companies. Write for a homepage reader scanning for why each company matters now.",
     hardRules: [
       "Pick one company per item from candidates only.",
       "Use the exact companyId and at least one event id from that candidate.",

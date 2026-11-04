@@ -2,15 +2,15 @@ export const SITE_URL = "https://aiatlas.nyc";
 
 export const SEO_DEFAULTS = {
   siteName: "AI Atlas NYC",
-  defaultTitle: "AI Atlas NYC | Early-Stage NYC AI Startup Market Map",
+  defaultTitle: "AI Atlas NYC | NYC AI Startup Market Map",
   titleTemplate: "%s | AI Atlas NYC",
   description:
-    "AI Atlas NYC is a curated market map of early-stage AI startups in New York for founders, seed investors, operators, and analysts, from pre-seed through Series A.",
+    "AI Atlas NYC is a curated market map of AI companies in New York for founders, seed investors, operators, and analysts, from seed to public companies.",
   keywords: [
     "NYC AI startups",
     "New York AI startups",
-    "early-stage AI startups",
-    "early-stage AI companies",
+    "AI companies",
+    "AI companies",
     "AI startup market map",
     "AI companies for VCs",
     "NYC AI companies for founders",

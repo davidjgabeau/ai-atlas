@@ -1,0 +1,102 @@
+[
+  {
+    "company_slug": "modal",
+    "type": "funding",
+    "title": "Modal raises $750M Series D",
+    "summary": "Modal announced a $750 million Series D led by Accel to expand AI inference, training, and sandbox infrastructure.",
+    "source_url": "https://modal.com/blog/1-billion-annualized-run-rate-series-d",
+    "source_name": "Modal",
+    "occurred_at": "2026-10-14",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "clay",
+    "type": "funding",
+    "title": "Clay raises $115M Series D",
+    "summary": "Wellington led Clay's $115 million Series D as the company expands its self-learning revenue engine and AI growth agents.",
+    "source_url": "https://www.clay.com/blog/series-d",
+    "source_name": "Clay",
+    "occurred_at": "2026-09-09",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "harvey",
+    "type": "funding",
+    "title": "Harvey announces $550M growth round",
+    "summary": "Harvey announced a $550 million funding round co-led by Diffusion and Lightspeed Venture Partners to expand legal AI and customer-owned intelligence.",
+    "source_url": "https://www.harvey.ai/blog/harvey-raises-dollar550m-at-a-dollar155b-valuation-to-help-legal-teams-own-their-intelligence",
+    "source_name": "Harvey",
+    "occurred_at": "2026-09-09",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "hugging-face",
+    "type": "acquisition",
+    "title": "NVIDIA agrees to acquire Hugging Face",
+    "summary": "NVIDIA announced an agreement to acquire Hugging Face and said the platform would continue supporting open models, multiple clouds, and multiple accelerators. Completion is not established.",
+    "source_url": "https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/",
+    "source_name": "NVIDIA",
+    "occurred_at": "2026-09-03",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "cursor",
+    "type": "acquisition",
+    "title": "Cursor completes acquisition by SpaceX",
+    "summary": "Cursor's official company post says SpaceX has completed its acquisition, with Cursor continuing to develop AI coding tools and models.",
+    "source_url": "https://prod.cursor.com/blog/joining-spacex",
+    "source_name": "Cursor",
+    "occurred_at": "2026-08-14",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "alphasense",
+    "type": "funding",
+    "title": "AlphaSense raises $350M and launches SuperAnalyst",
+    "summary": "AlphaSense announced a $350 million round led by Vitruvian Partners, Accenture Ventures, and J.P. Morgan Asset Management, alongside its always-on SuperAnalyst agent.",
+    "source_url": "https://www.alpha-sense.com/press/alphasense-raises-350m-at-7-5b-valuation-and-surpasses-600m-in-annual-recurring-revenue/",
+    "source_name": "AlphaSense",
+    "occurred_at": "2026-06-03",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "rogo",
+    "type": "funding",
+    "title": "Rogo raises $160M Series D",
+    "summary": "Rogo announced $160 million in new financing led by Kleiner Perkins to deepen financial AI integrations and expand deployment across institutions.",
+    "source_url": "https://rogo.com/blog/series-d",
+    "source_name": "Rogo",
+    "occurred_at": "2026-04-29",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "eliseai",
+    "type": "office",
+    "title": "EliseAI signs expanded NYC headquarters lease",
+    "summary": "EliseAI announced a 10-year lease for approximately 109,000 square feet at 401 Fifth Avenue, expanding its Midtown New York headquarters.",
+    "source_url": "https://eliseai.com/blog/new-office-announcement",
+    "source_name": "EliseAI",
+    "occurred_at": "2026-01-20",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "opentrons",
+    "type": "funding",
+    "title": "Opentrons announces $40M Series E",
+    "summary": "Opentrons announced a $40 million Series E led by Avego to standardize AI-driven science on its lab robots. The release identifies its NYC headquarters.",
+    "source_url": "https://opentrons.com/archives/news/opentrons-announces-40m-series-e-round-to-standardize-ai-driven-science-on-its-robots",
+    "source_name": "Opentrons",
+    "occurred_at": "2026-10-29",
+    "verified_at": "2026-11-03"
+  },
+  {
+    "company_slug": "minerva-bi",
+    "type": "office",
+    "title": "Minerva expands its Williamsburg office at the Refinery",
+    "summary": "Commercial Observer reports expansion from roughly 3,500 to 8,320 square feet at the Refinery at Domino. A company job posting confirms in-person work at 300 Kent Avenue.",
+    "source_url": "https://commercialobserver.com/2026/10/minerva-lease-expansion-refinery-at-domino/",
+    "source_name": "Commercial Observer",
+    "occurred_at": "2026-10-26",
+    "verified_at": "2026-11-03"
+  }
+]
